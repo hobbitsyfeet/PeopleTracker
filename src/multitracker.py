@@ -1,4 +1,24 @@
+import os
+
 import cv2
+from random import randint
+from sys import exit
+import imutils
+import pandas as pd
+
+import multiprocessing
+CPU_COUNT = multiprocessing.cpu_count()
+from multiprocessing.pool import ThreadPool
+from threading import Thread
+from collections import deque
+
+#For popup windows
+import tkinter as tk
+from tkinter import simpledialog
+
+# the input dialog
+import tkinter
+import mbox
 
 class MultiTracker():
     def __init__(self, name="Person", colour=(255,255,255)):
@@ -9,17 +29,27 @@ class MultiTracker():
         self.distance_data = [] #(CLOSE, MED, FAR) (estimated)
         self.time_data = [] #(frames tracked)
 
+        self.sex = "N/A"
+
         self.record_state = False
 
-        self.tracker = none
+        self.tracker = None
+
+        # initialize the bounding box coordinates of the object we are going
+        # to track
+        self.init_bounding_box = None
+        self.reset = False
+        self.state_tracking = False
 
 
-    def create(self):
+    def create(self,tracker_type='CSRT'):
         """
-        The creation of the tracking square on a frame
+        The creation of the Opencv's Tracking mechanism.
+
+        tracker_type = ['BOOSTING', 'MIL','KCF', 'TLD', 'MEDIANFLOW', 'GOTURN', 'MOSSE', 'CSRT']
         """
-        tracker_types = ['BOOSTING', 'MIL','KCF', 'TLD', 'MEDIANFLOW', 'GOTURN', 'MOSSE', 'CSRT']
-        tracker_type = tracker_types[2]
+        
+        # tracker_type = tracker_types[2]
     
         # if int(minor_ver) < 3:
             # tracker = cv2.Tracker_create(tracker_type)
@@ -39,8 +69,7 @@ class MultiTracker():
             self.tracker = cv2.TrackerMOSSE_create()
         if tracker_type == "CSRT":
             self.tracker = cv2.TrackerCSRT_create()
-    # if int(minor_ver) < 3:
-        # tracker = cv2.Tracker_create()
+
 
 
     def rename(self, name):
@@ -53,11 +82,75 @@ class MultiTracker():
     def set_colour(self, color=(255,255,255)):
         self.colour = color
 
-    def reassign(self):
-        pass
+    def assign(self, frame):
+
+        # select the bounding box of the object we want to track (make
+        # sure you press ENTER or SPACE after selecting the ROI)
+        self.init_bounding_box = cv2.selectROI("Frame", frame, fromCenter=False,
+                showCrosshair=True)
+        #if not selected, stop until it is
+        while self.init_bounding_box[0] is 0 and self.init_bounding_box[1] is 0 and self.init_bounding_box[2] is 0 and self.init_bounding_box[3] is 0:
+            print("No onject selected, select an object to continue")
+            self.init_bounding_box = cv2.selectROI("Frame", frame, fromCenter=False,
+                showCrosshair=True)
+        print (self.init_bounding_box)
+        # start OpenCV object tracker using the supplied bounding box
+        # coordinates, then start the FPS throughput estimator as well
+        if self.init_bounding_box is not None:
+            self.tracker.init(frame, self.init_bounding_box)
+            print(self.reset)
+            self.reset = True
+            root = tkinter.Tk()
+
+            Mbox = mbox.MessageBox
+            Mbox.root = root
+
+            user = {}
+            accept = False
+            while accept is False:
+                # mbox.mbox('starting in 1 second...', t=1)
+                user['name'] = mbox.mbox('Enter Name or ID?', entry=True)
+                if user['name']:
+                    user['sex'] = mbox.mbox('male or female?', ('male', 'm'), ('female', 'f'))
+                    accept = mbox.mbox(user, frame=False)
+                # root.mainloop()
+                self.name = user['name']
+                self.sex = user['sex']
+            root.withdraw()
+
+        if self.reset is True:
+            print("Resetting Location")
+            del self.tracker
+            self.create()
+            self.tracker.init(frame, self.init_bounding_box)
+       
+        # self.fps = imutils.video.FPS().start()
+
+
+    def update_tracker(self, frame):
+        success = False
+        box = None
+        # check to see if we are currently tracking an object
+        if self.init_bounding_box is not None:
+            # grab the new bounding box coordinates of the object
+            (success, box) = self.tracker.update(frame)
+    
+            # check to see if the tracking was a success
+            if success:
+                (x, y, w, h) = [int(v) for v in box]
+                cv2.rectangle(frame, (x, y), (x + w, y + h),
+                    self.colour, 2)
+
+        return success, box, frame
 
     def remove(self):
-        pass
+        
+        remove_check = mbox.mbox('Delete and Remove Tracker?', ('Yes', 'y'), ('No', 'n'))
+        remove_check_2 = mbox.mbox('Are you REALLLLY Sure?!?', ('Fuck it.', 'y'), ('No', 'n'))
+        if remove_check == 'y' and remove_check_2 == 'y':
+            del self.tracker
+            self.init_bounding_box = None
+
 
     def predict(self,):
         """
@@ -65,16 +158,51 @@ class MultiTracker():
         """
         pass
 
-    def record_data(self, frame, x, y, size):
-        self.location_data.append((x,y)) #(x, y)
+    def record_data(self, frame, x, y):
+        self.location_data.append((int(x),int(y))) #(x, y)
         self.time_data.append(frame) #(frames tracked)
-        self.distance_data.append(self.estimate_distance(size)) #(CLOSE, MED, FAR) (estimated)
+        # self.distance_data.append(self.estimate_distance(size)) #(CLOSE, MED, FAR) (estimated)
 
     def append_data(self, dataframe):
         """
         Appends the data into a given dataframe categoriezed with the name given
         """
         pass
+    def export_data(self, vid_width, vid_height, vid_name, fps):
+        if not os.path.exists(("./data/" + vid_name[:-4])):
+            os.makedirs(("./data/" + vid_name[:-4]))
+        
+        export_filename = "./data/" + str(vid_name[:-4]) + "/" + self.name + ".csv"
+
+        #elaborate on the location, record it in percent
+        perc_x_list = []
+        perc_y_list = []
+        for data in self.location_data:
+            perc_x = (data[0]/vid_width)*100
+            perc_y = (data[1]/vid_height)*100
+            perc_x_list.append(round(perc_x,2))
+            perc_y_list.append(round(perc_y,2))
+
+
+        #extend all the data so it can be exported
+        MAX_LEN = len(self.time_data)
+        sex = [self.sex]
+        name = [self.name]
+        total_time = [self.calculate_total_time(self.part_time_to_segments(self.time_data))]
+        
+        sex.extend([sex[0]]*(MAX_LEN-1))
+        name.extend([name[0]]*(MAX_LEN-1))
+        total_time.extend([total_time[0]]*(MAX_LEN-1))
+
+
+        data = {"Frame_Num":self.time_data,
+            "Pixel_Loc": self.location_data,
+            "Perc_X": perc_x_list, "Perc_Y": perc_y_list,
+            "Name": name, "Sex":sex, "Total_Sec_Rec":total_time}
+        
+        df = pd.DataFrame(data)
+        export_csv = df.to_csv (export_filename, index = None, header=True) #Don't forget to add '.csv' at the end of the path
+        
 
     def part_time_to_segments(self, time_data, segment_size=300):
         """
@@ -121,7 +249,6 @@ class MultiTracker():
         
 
     def calculate_time(self, frame_start, frame_end, fps=30):
-
         return (frame_end - frame_start)/fps
     
     def calculate_total_time(self, total_frames, fps=30, segmented=True):
@@ -139,23 +266,154 @@ class MultiTracker():
             total_time += self.calculate_time(seg[0],seg[1])
         return total_time
 
-
 #This main is used to test the time
 if __name__ == "__main__":
-    
-    tracker = MultiTracker()
-    
-    time_tracked = [0,1,3,5,6,7,12,15,20,25,30,35,40,50,70,100,105,106,115,130]
-    print("Testing Segment calculations")
-    segments = tracker.part_time_to_segments(time_tracked, segment_size=20)
-    print(segments)
+    trackerName = 'csrt'
+    vid_dir = "videos/"
+    vid_name = "GP074188.MP4"
+    videoPath = vid_dir + vid_name
 
-    time = tracker.calculate_time(time_tracked[0],time_tracked[-1])
-    print(str(time) + " Seconds")
-
-
-    total_time = tracker.calculate_total_time(segments)
-
-    print("Total Time given segments " + str(total_time) + " seconds")
+    tracker_list = []
+    # initialize OpenCV's special multi-object tracker
+    for new_tracker in range(CPU_COUNT):
+        tracker_list.append(MultiTracker())
 
     
+    selected_tracker = 0
+    
+
+    cap = cv2.VideoCapture(videoPath)
+    #get the video's FPS
+    vid_fps = cap.get(cv2.CAP_PROP_FPS)
+    
+    while cap.isOpened():
+        
+        ret, frame = cap.read()
+
+
+        if frame is None:
+            break
+        frame = imutils.resize(frame, width=720)
+
+        key = cv2.waitKey(1) & 0xFF
+        if key == ord("1"):
+            selected_tracker = 0
+        elif key == ord("2"):
+            selected_tracker = 1
+        elif key == ord("3"):
+            selected_tracker = 2
+        elif key == ord("4"):
+            selected_tracker = 3
+        elif key == ord("5"):
+            selected_tracker = 4
+        elif key == ord("6"):
+            selected_tracker = 5
+        elif key == ord("7"):
+            selected_tracker = 6
+        elif key == ord(' '):
+            tracker_list[selected_tracker].assign(frame)
+        elif key == ord("e"):
+            print("Exporting " + tracker_list[selected_tracker].name + "'s data recorded.")
+            width = cap.get(cv2.CAP_PROP_FRAME_WIDTH)   # float
+            height = cap.get(cv2.CAP_PROP_FRAME_HEIGHT) # float
+            try:
+                tracker_list[selected_tracker].export_data(width,height,videoPath,vid_fps)
+            except IOError as err:
+                print(err)
+        elif key == ord("r"):
+            #remove the tracker that is currently selected
+            tracker_list[selected_tracker].remove()
+            #change selected tracker to the first tracker that is still tracking
+            for tracker in range(len(tracker_list)):
+                if tracker_list[tracker].init_bounding_box is not None:
+                    selected_tracker = tracker
+
+
+        for tracker in range(len(tracker_list)):
+            if tracker == selected_tracker:
+                tracker_list[tracker].colour = (0,0,255)
+            else:
+                tracker_list[tracker].colour = (255,255,255)
+                
+        if tracker_list[selected_tracker].init_bounding_box is None:
+            tracker_list[selected_tracker].create()
+            tracker_list[selected_tracker].assign(frame)
+        
+
+
+        for tracker in tracker_list:
+
+            if tracker.init_bounding_box is not None:
+
+                #attempt to run it on GPU
+                cv2.UMat(frame)
+                
+
+            
+                # if the 's' key is selected, we are going to "select" a bounding
+                # box to track
+                
+                success, box, frame = tracker.update_tracker(frame)
+
+
+
+
+                #Fix the count before error
+                if selected_tracker > CPU_COUNT:
+                    selected_tracker = CPU_COUNT
+
+                #caluclate info needed this frame
+                
+                frame_number = cap.get(cv2.CAP_PROP_POS_FRAMES)
+                bottom_right = box[0]
+                top_left = box[1]
+                width = box[2]
+                height = box[3]
+
+                center_x = bottom_right - (width/2)
+                center_y = top_left + (height/2)
+                
+                tracker.record_data(frame_number, center_x, center_y)
+
+                # if count % 10 == 0:
+                #     count = 0
+            cv2.imshow("Frame", frame)
+        # count += 1
+
+        # # loop over the bounding boxes and draw them on the frame
+        # for box in boxes:
+        #     (x, y, w, h) = [int(v) for v in box]
+        #     cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
+
+        # cv2.imshow("Frame", frame)
+        # key = cv2.waitKey(1) & 0xFF
+
+        # # if the 's' key is selected, we are going to "select" a bounding
+        # # box to track
+        # if key == ord("s"):
+        #     colors = []
+        #     # select the bounding box of the object we want to track (make
+        #     # sure you press ENTER or SPACE after selecting the ROI)
+        #     box = cv2.selectROIs("Frame", frame, fromCenter=False,
+        #                         showCrosshair=True)
+        #     box = tuple(map(tuple, box)) 
+        #     for bb in box:
+        #         tracker = OPENCV_OBJECT_TRACKERS[trackerName]()
+        #         trackers.add(tracker, frame, bb)
+
+        # # if you want to reset bounding box, select the 'r' key 
+        # elif key == ord("r"):
+        #     trackers.clear()
+        #     trackers = cv2.MultiTracker_create()
+
+        #     box = cv2.selectROIs("Frame", frame, fromCenter=False,
+        #                         showCrosshair=True)
+        #     box = tuple(map(tuple, box))
+        #     for bb in box:
+        #         tracker = OPENCV_OBJECT_TRACKERS[trackerName]()
+        #         trackers.add(tracker, frame, bb)
+
+        # elif key == ord("q"):
+        #     break
+    cap.release()
+    cv2.destroyAllWindows()
