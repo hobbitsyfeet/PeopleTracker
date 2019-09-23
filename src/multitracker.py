@@ -128,6 +128,9 @@ class MultiTracker():
 
 
     def update_tracker(self, frame):
+        """
+        #track and draw box on the frame
+        """
         success = False
         box = None
         # check to see if we are currently tracking an object
@@ -144,8 +147,12 @@ class MultiTracker():
         return success, box, frame
 
     def remove(self):
-        
+        """
+        Removes the tracker from being recorded. DOES NOT YET DELETE INFO
+        """
         remove_check = mbox.mbox('Delete and Remove Tracker?', ('Yes', 'y'), ('No', 'n'))
+        if remove_check == 'n':
+            pass
         remove_check_2 = mbox.mbox('Are you REALLLLY Sure?!?', ('Fuck it.', 'y'), ('No', 'n'))
         if remove_check == 'y' and remove_check_2 == 'y':
             del self.tracker
@@ -159,6 +166,9 @@ class MultiTracker():
         pass
 
     def record_data(self, frame, x, y):
+        """
+        Appends location and time to a list of data
+        """
         self.location_data.append((int(x),int(y))) #(x, y)
         self.time_data.append(frame) #(frames tracked)
         # self.distance_data.append(self.estimate_distance(size)) #(CLOSE, MED, FAR) (estimated)
@@ -169,6 +179,9 @@ class MultiTracker():
         """
         pass
     def export_data(self, vid_width, vid_height, vid_name, fps):
+        """
+        Exports the recorded data and appends constants such as name, total time recorded, and pixel% Loc
+        """
         if not os.path.exists(("./data/" + vid_name[:-4])):
             os.makedirs(("./data/" + vid_name[:-4]))
         
@@ -327,43 +340,43 @@ if __name__ == "__main__":
             for tracker in range(len(tracker_list)):
                 if tracker_list[tracker].init_bounding_box is not None:
                     selected_tracker = tracker
+        elif key == ord("w"):
+            print("Nudge Up")
+        elif key == ord("a"):
+            print("Nudge Left")
+        elif key == ord("s"):
+            print("Nudge Down")
+        elif key == ord("d"):
+            print("Nudge Right")
 
-
+        #Set the selected Tracker to Red
         for tracker in range(len(tracker_list)):
             if tracker == selected_tracker:
                 tracker_list[tracker].colour = (0,0,255)
             else:
                 tracker_list[tracker].colour = (255,255,255)
-                
+        
+        #If you select a tracker and it is not running, start a new one
         if tracker_list[selected_tracker].init_bounding_box is None:
             tracker_list[selected_tracker].create()
             tracker_list[selected_tracker].assign(frame)
         
-
-
+        #Loop through every tracker and update
         for tracker in tracker_list:
 
             if tracker.init_bounding_box is not None:
 
                 #attempt to run it on GPU
-                cv2.UMat(frame)
-                
+                cv2.UMat(frame)    
 
-            
-                # if the 's' key is selected, we are going to "select" a bounding
-                # box to track
-                
+                #track and draw box on the frame
                 success, box, frame = tracker.update_tracker(frame)
 
-
-
-
-                #Fix the count before error
+                #Return count to 0 when max is reached
                 if selected_tracker > CPU_COUNT:
                     selected_tracker = CPU_COUNT
 
                 #caluclate info needed this frame
-                
                 frame_number = cap.get(cv2.CAP_PROP_POS_FRAMES)
                 bottom_right = box[0]
                 top_left = box[1]
@@ -373,10 +386,10 @@ if __name__ == "__main__":
                 center_x = bottom_right - (width/2)
                 center_y = top_left + (height/2)
                 
+                #record all the data collected from that frame
                 tracker.record_data(frame_number, center_x, center_y)
 
-                # if count % 10 == 0:
-                #     count = 0
+            #When done processing each tracker, view the frame
             cv2.imshow("Frame", frame)
         # count += 1
 
