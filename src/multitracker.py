@@ -83,7 +83,10 @@ class MultiTracker():
         self.colour = color
 
     def assign(self, frame):
-
+        """
+        Assigns the box, name and sex of a tracked person.
+        Takes care of reassigning as well.
+        """
         # select the bounding box of the object we want to track (make
         # sure you press ENTER or SPACE after selecting the ROI)
         self.init_bounding_box = cv2.selectROI("Frame", frame, fromCenter=False,
@@ -129,7 +132,7 @@ class MultiTracker():
 
     def update_tracker(self, frame):
         """
-        #track and draw box on the frame
+        track and draw box on the frame
         """
         success = False
         box = None
