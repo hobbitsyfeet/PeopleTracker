@@ -12,13 +12,16 @@ from multiprocessing.pool import ThreadPool
 from threading import Thread
 from collections import deque
 
-#For popup windows
+#For popup windows (DEPRECIATED)
 import tkinter as tk
 from tkinter import simpledialog
 
 # the input dialog
 import tkinter
 import mbox
+
+# For extracting video metadata
+# import mutagen
 
 class MultiTracker():
     def __init__(self, name="Person", colour=(255,255,255)):
@@ -41,33 +44,66 @@ class MultiTracker():
         self.reset = False
         self.state_tracking = False
 
+        def get_name(self):
+            """ Returns name of person tracked: returns string """
+            return self.name
 
+        def get_loc(self, frame):
+            """ Returns pixel (x,y) location of person tracked: returns tuple(int,int)"""
+            return self.location_data(frame)
+        
+        def get_sex(self):
+            """ Returns sex of person being tracked: returns string """
+            return self.sex
+
+        def get_time_tracked(self):
+            """ Returns total time being tracked in video: returns  """ 
+            total_time = [self.calculate_total_time(self.part_time_to_segments(self.time_data))]
+            return total_time
+
+        
     def create(self,tracker_type='CSRT'):
         """
         The creation of the Opencv's Tracking mechanism.
 
         tracker_type = ['BOOSTING', 'MIL','KCF', 'TLD', 'MEDIANFLOW', 'GOTURN', 'MOSSE', 'CSRT']
         """
-        
         # tracker_type = tracker_types[2]
     
         # if int(minor_ver) < 3:
             # tracker = cv2.Tracker_create(tracker_type)
         if tracker_type == 'BOOSTING':
+            #Based on the same algorithm used to power the machine learning behind Haar cascades (AdaBoost), but like Haar cascades, is over a decade old. This tracker is slow and doesn’t work very well. Interesting only for legacy reasons and comparing other algorithms.
             self.tracker = cv2.TrackerBoosting_create()
+
         if tracker_type == 'MIL':
+            # Better accuracy than BOOSTING tracker but does a poor job of reporting failure.
             self.tracker = cv2.TrackerMIL_create()
+
         if tracker_type == 'KCF':
+            #Kernelized Correlation Filters. Faster than BOOSTING and MIL. Similar to MIL and KCF, does not handle full occlusion well.
             self.tracker = cv2.TrackerKCF_create()
+            
         if tracker_type == 'TLD':
+            #prone to false-positives. I do not recommend using this OpenCV object tracker.
             self.tracker = cv2.TrackerTLD_create()
+
         if tracker_type == 'MEDIANFLOW':
+            # Does a nice job reporting failures; however, if there is too large of a jump in motion, such as fast moving objects, or objects that change quickly in their appearance, the model will fail.
             self.tracker = cv2.TrackerMedianFlow_create()
+
         if tracker_type == 'GOTURN':
+            #The only deep learning-based object detector included in OpenCV. Reportedly handles viewing changes well 
+            #NOTE must download goturn.protext from https://github.com/Mogball/goturn-files.
+            #This is already downloaded under the models/ folder, will include.
             self.tracker = cv2.TrackerGOTURN_create()
+
         if tracker_type == 'MOSSE':
+            #Very, very fast. Not as accurate as CSRT or KCF but a good choice if you need pure speed
             self.tracker = cv2.TrackerMOSSE_create()
+
         if tracker_type == "CSRT":
+            #Discriminative Correlation Filter (with Channel and Spatial Reliability). Tends to be more accurate than KCF but slightly slower.
             self.tracker = cv2.TrackerCSRT_create()
 
 
@@ -82,7 +118,7 @@ class MultiTracker():
     def set_colour(self, color=(255,255,255)):
         self.colour = color
 
-    def assign(self, frame):
+    def assign(self, frame, tracker_type="CSRT"):
         """
         Assigns the box, name and sex of a tracked person.
         Takes care of reassigning as well.
@@ -124,7 +160,7 @@ class MultiTracker():
         if self.reset is True:
             print("Resetting Location")
             del self.tracker
-            self.create()
+            self.create(tracker_type)
             self.tracker.init(frame, self.init_bounding_box)
        
         # self.fps = imutils.video.FPS().start()
@@ -204,7 +240,7 @@ class MultiTracker():
         MAX_LEN = len(self.time_data)
         sex = [self.sex]
         name = [self.name]
-        total_time = [self.calculate_total_time(self.part_time_to_segments(self.time_data))]
+        total_time = [self.f(self.part_time_to_segments(self.time_data))]
         
         sex.extend([sex[0]]*(MAX_LEN-1))
         name.extend([name[0]]*(MAX_LEN-1))
@@ -284,11 +320,14 @@ class MultiTracker():
 
 #This main is used to test the time
 if __name__ == "__main__":
-    trackerName = 'csrt'
+    trackerName = 'BOOSTING'
     vid_dir = "videos/"
     vid_name = "GP074188.MP4"
     videoPath = vid_dir + vid_name
-
+  
+    # meta_file = mutagen.File("videos/GP074188.MP4")
+    # print(meta_file)
+    
     tracker_list = []
     # initialize OpenCV's special multi-object tracker
     for new_tracker in range(CPU_COUNT):
@@ -301,11 +340,12 @@ if __name__ == "__main__":
     cap = cv2.VideoCapture(videoPath)
     #get the video's FPS
     vid_fps = cap.get(cv2.CAP_PROP_FPS)
-    
+    i = 0
     while cap.isOpened():
-        
+        i += 10
+        cap.set(1 , i)
         ret, frame = cap.read()
-
+        
 
         if frame is None:
             break
@@ -327,7 +367,7 @@ if __name__ == "__main__":
         elif key == ord("7"):
             selected_tracker = 6
         elif key == ord(' '):
-            tracker_list[selected_tracker].assign(frame)
+            tracker_list[selected_tracker].assign(frame,trackerName)
         elif key == ord("e"):
             print("Exporting " + tracker_list[selected_tracker].name + "'s data recorded.")
             width = cap.get(cv2.CAP_PROP_FRAME_WIDTH)   # float
@@ -361,8 +401,8 @@ if __name__ == "__main__":
         
         #If you select a tracker and it is not running, start a new one
         if tracker_list[selected_tracker].init_bounding_box is None:
-            tracker_list[selected_tracker].create()
-            tracker_list[selected_tracker].assign(frame)
+            tracker_list[selected_tracker].create(trackerName)
+            tracker_list[selected_tracker].assign(frame,trackerName)
         
         #Loop through every tracker and update
         for tracker in tracker_list:

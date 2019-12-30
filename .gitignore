@@ -3,3 +3,4 @@ env/Lib/site-packages/numpy/fft/helper.py
 env/
 .vscode/
 *.pyc
+*.MP4
