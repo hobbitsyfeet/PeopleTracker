@@ -4,6 +4,7 @@ from PyQt5.QtWidgets import QApplication, QWidget, QInputDialog, QLineEdit, QLab
 from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import Qt
 from PyQt5.QtCore import pyqtSlot
+
 class App(QWidget):
 
     def __init__(self):
@@ -14,7 +15,9 @@ class App(QWidget):
         self.width = 640
         self.height = 480
         self.initUI()
-    
+
+        self.play_state = False
+
     def initUI(self):
 
 
@@ -24,7 +27,6 @@ class App(QWidget):
 
         # Initialize tab screen
         self.tabs = QTabWidget()
-        # self.tabs.resize(300,200)
         tab_list = []
         
         # Add tabs        
@@ -32,13 +34,32 @@ class App(QWidget):
             tab_list.append(person_tab(self))
             self.tabs.addTab(tab_list[i].tab, ("Person " + str(i)))
 
-        # # Add tabs to widget
+        # Add tabs to widget
         self.layout.addWidget(self.tabs)
-        # #setup scrollbar for video
+
+        # setup scrollbar for video
+        self.scrollframe = QLabel(self)
+        self.scrollframe.setText("00:00")
+
         vidScroll = QSlider(Qt.Horizontal,self)
         vidScroll.setMinimum(0)
         vidScroll.setFocusPolicy(Qt.NoFocus)
-        self.layout.addWidget(vidScroll)
+
+        #assign a 
+        vidScroll.valueChanged.connect(self.slider_update)
+
+        #setup play/pause buttons
+        self.playButton = QPushButton()
+        self.playButton.setIcon(self.style().standardIcon(QStyle.SP_MediaPlay))
+        self.playButton.clicked.connect(self.mediaStateChanged)
+
+
+        media_layout = QHBoxLayout()
+        media_layout.addWidget(self.playButton)
+        media_layout.addWidget(vidScroll)
+        media_layout.addWidget(self.scrollframe)
+
+        self.layout.addLayout(media_layout)
 
         self.setLayout(self.layout)
 
@@ -52,9 +73,24 @@ class App(QWidget):
     
     def set_max_scrollbar(self, maximum):
         self.vidScroll.setMaximum(maximum)
+
     def set_scrollbar(self, value):
         self.vidScroll.setValue(value)
+    
+    def slider_update(self, value, func=None):
+        self.scrollframe.setText(str(value))
 
+    def mediaStateChanged(self, state):
+        if self.play_state == False:
+            self.playButton.setIcon(
+                    self.style().standardIcon(QStyle.SP_MediaPause))
+            self.play_state = True
+        else:
+            self.playButton.setIcon(
+                    self.style().standardIcon(QStyle.SP_MediaPlay))
+            self.play_state = False
+
+        
 
 class person_tab():
     def __init__(self, window):
