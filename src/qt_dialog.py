@@ -17,9 +17,9 @@ class App(QWidget):
         self.initUI()
 
         self.play_state = False
-
+        
+        
     def initUI(self):
-
 
         self.setWindowTitle(self.title)
         self.setGeometry(self.left, self.top, self.width, self.height)
@@ -27,12 +27,12 @@ class App(QWidget):
 
         # Initialize tab screen
         self.tabs = QTabWidget()
-        tab_list = []
+        self.tabs.setMovable(True)
+        self.tab_list = []
         
         # Add tabs        
-        for i in range(5):
-            tab_list.append(person_tab(self))
-            self.tabs.addTab(tab_list[i].tab, ("Person " + str(i)))
+        # for i in range(5):
+        self.add_tab()
 
         # Add tabs to widget
         self.layout.addWidget(self.tabs)
@@ -90,7 +90,17 @@ class App(QWidget):
                     self.style().standardIcon(QStyle.SP_MediaPlay))
             self.play_state = False
 
-        
+    def get_current_tab_info(self):
+        current_tab = self.tab_list[self.tabs.currentIndex()]
+        name = current_tab.name_line.getText()
+        sex = current_tab.sex_line.getText()
+        desc = current_tab.desc_line.getText()
+        time = current_tab.getText()
+        return name, sex, desc, time
+
+    def add_tab(self):
+        self.tab_list.append(person_tab(self))
+        self.tabs.addTab(self.tab_list[-1].tab, ("Person " + str(self.tabs.count())))
 
 class person_tab():
     def __init__(self, window):
@@ -192,8 +202,6 @@ class person_tab():
             # return text
     def update_length_tracked(self, time):
         self.length_tracked.setText("00:00")
-    
-
     
 
         

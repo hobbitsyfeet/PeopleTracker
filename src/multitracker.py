@@ -20,6 +20,9 @@ from tkinter import simpledialog
 import tkinter
 import mbox
 
+import sys
+from PyQt5.QtWidgets import QApplication
+import qt_dialog
 # For extracting video metadata
 # import mutagen
 
@@ -43,6 +46,7 @@ class MultiTracker():
         self.init_bounding_box = None
         self.reset = False
         self.state_tracking = False
+            
 
         def get_name(self):
             """ Returns name of person tracked: returns string """
@@ -324,6 +328,8 @@ if __name__ == "__main__":
     vid_dir = "videos/"
     vid_name = "GP074188.MP4"
     videoPath = vid_dir + vid_name
+    app = QApplication(sys.argv)
+    input_dialog = qt_dialog.App()
   
     # meta_file = mutagen.File("videos/GP074188.MP4")
     # print(meta_file)
@@ -471,5 +477,6 @@ if __name__ == "__main__":
 
         # elif key == ord("q"):
         #     break
+    sys.exit(app.exec_())
     cap.release()
     cv2.destroyAllWindows()
