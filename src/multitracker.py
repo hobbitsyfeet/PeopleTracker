@@ -143,23 +143,23 @@ class MultiTracker():
             self.tracker.init(frame, self.init_bounding_box)
             print(self.reset)
             self.reset = True
-            root = tkinter.Tk()
+            # root = tkinter.Tk()
 
-            Mbox = mbox.MessageBox
-            Mbox.root = root
+            # Mbox = mbox.MessageBox
+            # Mbox.root = root
 
-            user = {}
-            accept = False
-            while accept is False:
-                # mbox.mbox('starting in 1 second...', t=1)
-                user['name'] = mbox.mbox('Enter Name or ID?', entry=True)
-                if user['name']:
-                    user['sex'] = mbox.mbox('male or female?', ('male', 'm'), ('female', 'f'))
-                    accept = mbox.mbox(user, frame=False)
-                # root.mainloop()
-                self.name = user['name']
-                self.sex = user['sex']
-            root.withdraw()
+            # user = {}
+            # accept = False
+            # while accept is False:
+            #     # mbox.mbox('starting in 1 second...', t=1)
+            #     user['name'] = mbox.mbox('Enter Name or ID?', entry=True)
+            #     if user['name']:
+            #         user['sex'] = mbox.mbox('male or female?', ('male', 'm'), ('female', 'f'))
+            #         accept = mbox.mbox(user, frame=False)
+            #     # root.mainloop()
+            #     self.name = user['name']
+            #     self.sex = user['sex']
+            # root.withdraw()
 
         if self.reset is True:
             print("Resetting Location")
@@ -200,6 +200,7 @@ class MultiTracker():
         if remove_check == 'y' and remove_check_2 == 'y':
             del self.tracker
             self.init_bounding_box = None
+        
 
 
     def predict(self,):
@@ -357,46 +358,48 @@ if __name__ == "__main__":
             break
         frame = imutils.resize(frame, width=720)
 
+        selected_tracker = input_dialog.tabs.currentIndex()
         key = cv2.waitKey(1) & 0xFF
-        if key == ord("1"):
-            selected_tracker = 0
-        elif key == ord("2"):
-            selected_tracker = 1
-        elif key == ord("3"):
-            selected_tracker = 2
-        elif key == ord("4"):
-            selected_tracker = 3
-        elif key == ord("5"):
-            selected_tracker = 4
-        elif key == ord("6"):
-            selected_tracker = 5
-        elif key == ord("7"):
-            selected_tracker = 6
-        elif key == ord(' '):
-            tracker_list[selected_tracker].assign(frame,trackerName)
-        elif key == ord("e"):
-            print("Exporting " + tracker_list[selected_tracker].name + "'s data recorded.")
-            width = cap.get(cv2.CAP_PROP_FRAME_WIDTH)   # float
-            height = cap.get(cv2.CAP_PROP_FRAME_HEIGHT) # float
-            try:
-                tracker_list[selected_tracker].export_data(width,height,videoPath,vid_fps)
-            except IOError as err:
-                print(err)
-        elif key == ord("r"):
-            #remove the tracker that is currently selected
-            tracker_list[selected_tracker].remove()
-            #change selected tracker to the first tracker that is still tracking
-            for tracker in range(len(tracker_list)):
-                if tracker_list[tracker].init_bounding_box is not None:
-                    selected_tracker = tracker
-        elif key == ord("w"):
-            print("Nudge Up")
-        elif key == ord("a"):
-            print("Nudge Left")
-        elif key == ord("s"):
-            print("Nudge Down")
-        elif key == ord("d"):
-            print("Nudge Right")
+        # if key == ord("1"):
+        #     selected_tracker = 0
+        # elif key == ord("2"):
+        #     selected_tracker = 1
+        # elif key == ord("3"):
+        #     selected_tracker = 2
+        # elif key == ord("4"):
+        #     selected_tracker = 3
+        # elif key == ord("5"):
+        #     selected_tracker = 4
+        # elif key == ord("6"):
+        #     selected_tracker = 5
+        # elif key == ord("7"):
+        #     selected_tracker = 6
+        if key == ord(' '):
+            tracker_list[selected_tracker].assign(frame, trackerName)
+
+        # elif key == ord("e"):
+        #     print("Exporting " + tracker_list[selected_tracker].name + "'s data recorded.")
+        #     width = cap.get(cv2.CAP_PROP_FRAME_WIDTH)   # float
+        #     height = cap.get(cv2.CAP_PROP_FRAME_HEIGHT) # float
+        #     try:
+        #         tracker_list[selected_tracker].export_data(width,height,videoPath,vid_fps)
+        #     except IOError as err:
+        #         print(err)
+        # elif key == ord("r"):
+        #     #remove the tracker that is currently selected
+        #     tracker_list[selected_tracker].remove()
+        #     #change selected tracker to the first tracker that is still tracking
+        #     for tracker in range(len(tracker_list)):
+        #         if tracker_list[tracker].init_bounding_box is not None:
+        #             selected_tracker = tracker
+        # elif key == ord("w"):
+        #     print("Nudge Up")
+        # elif key == ord("a"):
+        #     print("Nudge Left")
+        # elif key == ord("s"):
+        #     print("Nudge Down")
+        # elif key == ord("d"):
+        #     print("Nudge Right")
 
         #Set the selected Tracker to Red
         for tracker in range(len(tracker_list)):
