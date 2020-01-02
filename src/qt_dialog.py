@@ -1,9 +1,11 @@
 import sys
-from PyQt5.QtWidgets import QApplication, QWidget, QInputDialog, QLineEdit, QLabel, QPushButton, QPlainTextEdit, QSlider, QStyle, QAction, QTabWidget, QVBoxLayout, QHBoxLayout
+from PyQt5.QtWidgets import QApplication, QWidget, QInputDialog, QLineEdit, QLabel, QPushButton, QPlainTextEdit, QSlider, QStyle, QAction, QTabWidget, QVBoxLayout, QHBoxLayout, QMessageBox
 
 from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import Qt
 from PyQt5.QtCore import pyqtSlot
+
+from math import trunc
 
 class App(QWidget):
 
@@ -17,7 +19,8 @@ class App(QWidget):
         self.initUI()
 
         self.play_state = False
-        
+        self.export_state = False
+        self.vid_fps = 30
         
     def initUI(self):
 
@@ -31,16 +34,23 @@ class App(QWidget):
         self.add_tab_btn.clicked.connect(self.add_tab)
         self.tab_control_layout.addWidget(self.add_tab_btn)
 
+        self.add_tab_btn.setEnabled(False)
+
         self.export_tab_btn = QPushButton()
         self.export_tab_btn.setText("Export Data")
         self.tab_control_layout.addWidget(self.export_tab_btn)
-        # self.export_tab_btn.clicked.connect()
+        self.export_tab_btn.clicked.connect(self.export_tab_pressed)
+
+        self.del_tab_state = False
 
         self.del_tab_btn = QPushButton()
         self.del_tab_btn.setText("Delete Tab")
         self.del_tab_btn.clicked.connect(self.remove_tab)
+        
         self.tab_control_layout.addWidget(self.del_tab_btn)
         
+        self.del_tab_btn.setEnabled(False)
+
         self.layout.addLayout(self.tab_control_layout)
 
         # Initialize tab screen
@@ -50,12 +60,8 @@ class App(QWidget):
         self.tabs.setMovable(False)
         self.tab_list = []
         
-
-        
         # Add tabs        
         # for i in range(5):
-        self.add_tab()
-        self.add_tab()
         # self.tabs.changeEvent.connect(lambda: self.tabs.setTabText(self.tabs.currentIndex(),self.tab_list[self.tabs.currentIndex()].name_line.text()))
         # self.tabs.childEvent.connect(lambda: self.tabs.setTabText(self.tabs.currentIndex(),self.tab_list[self.tabs.currentIndex()].name_line.text()))
         # Add tabs to widget
@@ -65,12 +71,12 @@ class App(QWidget):
         self.scrollframe = QLabel(self)
         self.scrollframe.setText("00:00")
 
-        vidScroll = QSlider(Qt.Horizontal,self)
-        vidScroll.setMinimum(0)
-        vidScroll.setFocusPolicy(Qt.NoFocus)
+        self.vidScroll = QSlider(Qt.Horizontal,self)
+        self.vidScroll.setMinimum(0)
+        self.vidScroll.setFocusPolicy(Qt.NoFocus)
 
         #assign a 
-        vidScroll.valueChanged.connect(self.slider_update)
+        self.vidScroll.valueChanged.connect(self.slider_update)
 
         #setup play/pause buttons
         self.playButton = QPushButton()
@@ -80,7 +86,7 @@ class App(QWidget):
 
         media_layout = QHBoxLayout()
         media_layout.addWidget(self.playButton)
-        media_layout.addWidget(vidScroll)
+        media_layout.addWidget(self.vidScroll)
         media_layout.addWidget(self.scrollframe)
 
         self.layout.addLayout(media_layout)
@@ -102,17 +108,31 @@ class App(QWidget):
         self.vidScroll.setValue(value)
     
     def slider_update(self, value, func=None):
-        self.scrollframe.setText(str(value))
+        seconds = (value/self.vid_fps) %60
+        minutes = int(((value/self.vid_fps)/60)%60)
+        hours = int(minutes/60)
+        self.scrollframe.setText( str(hours) + ":"+ str(minutes) + ":" + str(round( ((value/self.vid_fps) %60),2 ) ))
 
     def mediaStateChanged(self, state):
         if self.play_state == False:
             self.playButton.setIcon(
                     self.style().standardIcon(QStyle.SP_MediaPause))
             self.play_state = True
+            print(self.play_state)
         else:
             self.playButton.setIcon(
                     self.style().standardIcon(QStyle.SP_MediaPlay))
             self.play_state = False
+            print(self.play_state)
+
+    def set_tab_names(self):
+        i = 0
+        for tab in self.tab_list:
+            if tab.name_line.text() == "":
+                self.tabs.setTabText(i,"Person " + str(i + 1))
+            else:
+                self.tabs.setTabText(i,tab.name_line.text())
+            i += 1
 
     def get_current_tab_info(self):
         current_tab = self.tab_list[self.tabs.currentIndex()]
@@ -125,12 +145,18 @@ class App(QWidget):
     def add_tab(self):
         self.tab_list.append(person_tab(self))
         self.tabs.addTab(self.tab_list[-1].tab, ("Person " + str(self.tabs.count())))
-    
+        
     
     def remove_tab(self):
+        self.del_tab_state = True
         self.tabs.removeTab(self.tabs.currentIndex())
         del self.tab_list[self.tabs.currentIndex()]
-        print(len(self.tab_list))
+
+    def export_tab_pressed(self):
+        self.export_state = True
+    
+    def set_fps_info(self, fps):
+        self.vid_fps = fps
 
 class person_tab():
     def __init__(self, window):
@@ -191,8 +217,6 @@ class person_tab():
         length_layout.setAlignment(Qt.AlignCenter)
         self.tab.layout.addLayout(length_layout)
 
-
-
         self.tab.setLayout(self.tab.layout)
 
         # #inital load of variables
@@ -230,6 +254,7 @@ class person_tab():
             else:
                 line.setText(text)
             print(text)
+            
             # return text
 
     def update_length_tracked(self, time):
