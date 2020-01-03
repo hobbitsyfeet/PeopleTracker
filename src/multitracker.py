@@ -327,8 +327,11 @@ class MultiTracker():
 if __name__ == "__main__":
     trackerName = 'CSRT'
     vid_dir = "videos/"
-    vid_name = "GP074188.MP4"
+    # vid_name = "GP074188.MP4"
+    # vid_dir = "C:/Users/legom/Documents/GitHub/UofLStudy/"
+    vid_name = "Complex_Trim.mp4"
     videoPath = vid_dir + vid_name
+    # videoPath = "C:/Users/legom/Documents/GitHub/UofLStudy/Complex_Trim.mp4"
     app = QApplication(sys.argv)
     input_dialog = qt_dialog.App()
 
@@ -354,162 +357,272 @@ if __name__ == "__main__":
     
     i = 0
     while cap.isOpened():
-        #Process event to prevent delay with UI
         app.processEvents()
-        if input_dialog.play_state is False:
+        # pass
+        # if i == 0:
+        #     ret, frame = cap.read()
+        #     frame = imutils.resize(frame, width=720)
+        #     cv2.imshow("Frame", frame)
+            
+        #Process event to prevent delay with UI
+        
+        # if input_dialog.play_state is False:
+        #     cap.set(1 , i)
+        #     ret, frame = cap.read()
+        if input_dialog.play_state == True or i is 0:
+            # else:
             input_dialog.set_scrollbar(i)
             i += 10
-            cap.set(1 , i)
-            ret, frame = cap.read()
-        else:
+            # i +=1
             cap.set(1 , i)
             ret, frame = cap.read()
             
-        if frame is None:
-            break
+            if frame is None:
+                break
+            frame = imutils.resize(frame, width=480)
+            frame = imutils.resize(frame, width=1080)
+            input_dialog.set_tab_names()
+            selected_tracker = input_dialog.tabs.currentIndex()
+            key = cv2.waitKey(1) & 0xFF
+            if key == ord("1"):
+                selected_tracker = 0
+                input_dialog.tabs.setCurrentIndex(0)
+            elif key == ord("2"):
+                selected_tracker = 1
+                input_dialog.tabs.setCurrentIndex(1)
+            elif key == ord("3"):
+                selected_tracker = 2
+                input_dialog.tabs.setCurrentIndex(2)
+            elif key == ord("4"):
+                selected_tracker = 3
+                input_dialog.tabs.setCurrentIndex(3)
+            elif key == ord("5"):
+                selected_tracker = 4
+                input_dialog.tabs.setCurrentIndex(4)
+            elif key == ord("6"):
+                selected_tracker = 5
+                input_dialog.tabs.setCurrentIndex(5)
+            elif key == ord("7"):
+                selected_tracker = 6
+                input_dialog.tabs.setCurrentIndex(6)
+
+            elif key == ord("e") or input_dialog.export_state == True:
+                input_dialog.export_state = False
+                print("Exporting " + tracker_list[selected_tracker].get_name() + "'s data recorded.")
+                width = cap.get(cv2.CAP_PROP_FRAME_WIDTH)   # float
+                height = cap.get(cv2.CAP_PROP_FRAME_HEIGHT) # float
+                try:
+                    tracker_list[selected_tracker].export_data(width, height, videoPath, vid_fps)
+                except IOError as err:
+                    print(err)
+            # elif key == ord("r"):
+            elif input_dialog.del_tab_state is True:
+                #remove the tracker that is currently selected
+                tracker_list[selected_tracker].remove()
+                input_dialog.del_tab_state = False
+                #change selected tracker to the first tracker that is still tracking
+                # for tracker in range(len(tracker_list)):
+                #     if tracker_list[tracker].init_bounding_box is not None:
+                #         selected_tracker = tracker
+            # elif key == ord("w"):
+            #     print("Nudge Up")
+            # elif key == ord("a"):
+            #     print("Nudge Left")
+            # elif key == ord("s"):
+            #     print("Nudge Down")
+            # elif key == ord("d"):
+            #     print("Nudge Right")
+
+            #Set the selected Tracker to Red
+            app.processEvents()
+            for tracker in range(len(tracker_list)):
+                if tracker == selected_tracker:
+                    tracker_list[tracker].colour = (0,0,255)
+                else:
+                    tracker_list[tracker].colour = (255,255,255)
+            
+
+            #Loop through every tracker and update
+            
+            for tracker in tracker_list:
+                if tracker.init_bounding_box is not None:
+
+                    #attempt to run it on GPU
+                    cv2.UMat(frame)    
+
+                    #track and draw box on the frame
+                    success, box, frame = tracker.update_tracker(frame)
+                    
+                    # if not success:
+                    #     tracker.assign(frame, trackerName)
+
+                    #Return count to 0 when max is reached
+                    if selected_tracker > CPU_COUNT:
+                        selected_tracker = CPU_COUNT
+
+                    #caluclate info needed this frame
+                    frame_number = cap.get(cv2.CAP_PROP_POS_FRAMES)
+                    bottom_right = box[0]
+                    top_left = box[1]
+                    width = box[2]
+                    height = box[3]
+
+                    center_x = bottom_right - (width/2)
+                    center_y = top_left + (height/2)
+                    
+                    #record all the data collected from that frame
+                    # if input_dialog.play_state == True:
+                    tracker.record_data(frame_number, center_x, center_y)
+                    #If you select a tracker and it is not running, start a new one
+            if tracker_list[selected_tracker].init_bounding_box is None:
+                tracker_list[selected_tracker].create(trackerName)
+                tracker_list[selected_tracker].assign(frame, trackerName)
+            if key == ord(' '):
+                # input_dialog.play_state = False
+                tracker_list[selected_tracker].assign(frame, trackerName)
+                # input_dialog.play_state = True
+            input_dialog.set_scrollbar(i)
+                #When done processing each tracker, view the frame
+            cv2.imshow("Frame", frame)
+            
+                    # count += 1
+
+                    # # loop over the bounding boxes and draw them on the frame
+                    # for box in boxes:
+                    #     (x, y, w, h) = [int(v) for v in box]
+                    #     cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
+
+                    # cv2.imshow("Frame", frame)
+                    # key = cv2.waitKey(1) & 0xFF
+
+                    # # if the 's' key is selected, we are going to "select" a bounding
+                    # # box to track
+                    # if key == ord("s"):
+                    #     colors = []
+                    #     # select the bounding box of the object we want to track (make
+                    #     # sure you press ENTER or SPACE after selecting the ROI)
+                    #     box = cv2.selectROIs("Frame", frame, fromCenter=False,
+                    #                         showCrosshair=True)
+                    #     box = tuple(map(tuple, box)) 
+                    #     for bb in box:
+                    #         tracker = OPENCV_OBJECT_TRACKERS[trackerName]()
+                    #         trackers.add(tracker, frame, bb)
+
+                    # # # if you want to reset bounding box, select the 'r' key 
+                    # if key == ord("r"):
+                    #     trackers.clear()
+                    #     trackers = cv2.MultiTracker_create()
+
+                    #     box = cv2.selectROIs("Frame", frame, fromCenter=False,
+                    #                         showCrosshair=True)
+                    #     box = tuple(map(tuple, box))
+                    #     for bb in box:
+                    #         tracker = OPENCV_OBJECT_TRACKERS[trackerName]()
+                    #         trackers.add(tracker, frame, bb)
+
+                    # elif key == ord("q"):
+                    #     break
+        else:
+            cap.set(1 , i-1)
+            ret, frame = cap.read()
+            frame = imutils.resize(frame, width=480)
+            frame = imutils.resize(frame, width=1080)
+            if frame is None:
+                break
+            # frame = imutils.resize(frame, width=480)
+            # frame = imutils.resize(frame, width=1080)
+            input_dialog.set_tab_names()
+            selected_tracker = input_dialog.tabs.currentIndex()
+            key = cv2.waitKey(1) & 0xFF
+            if key == ord("1"):
+                selected_tracker = 0
+                input_dialog.tabs.setCurrentIndex(0)
+            elif key == ord("2"):
+                selected_tracker = 1
+                input_dialog.tabs.setCurrentIndex(1)
+            elif key == ord("3"):
+                selected_tracker = 2
+                input_dialog.tabs.setCurrentIndex(2)
+            elif key == ord("4"):
+                selected_tracker = 3
+                input_dialog.tabs.setCurrentIndex(3)
+            elif key == ord("5"):
+                selected_tracker = 4
+                input_dialog.tabs.setCurrentIndex(4)
+            elif key == ord("6"):
+                selected_tracker = 5
+                input_dialog.tabs.setCurrentIndex(5)
+            elif key == ord("7"):
+                selected_tracker = 6
+                input_dialog.tabs.setCurrentIndex(6)
+
+            elif key == ord("e") or input_dialog.export_state == True:
+                input_dialog.export_state = False
+                print("Exporting " + tracker_list[selected_tracker].get_name() + "'s data recorded.")
+                width = cap.get(cv2.CAP_PROP_FRAME_WIDTH)   # float
+                height = cap.get(cv2.CAP_PROP_FRAME_HEIGHT) # float
+                try:
+                    tracker_list[selected_tracker].export_data(width, height, videoPath, vid_fps)
+                except IOError as err:
+                    print(err)
+
+            # elif key == ord("r"):
+            elif input_dialog.del_tab_state is True:
+                #remove the tracker that is currently selected
+                tracker_list[selected_tracker].remove()
+                input_dialog.del_tab_state = False
 
 
-        frame = imutils.resize(frame, width=720)
-        input_dialog.set_tab_names()
-        selected_tracker = input_dialog.tabs.currentIndex()
-        key = cv2.waitKey(1) & 0xFF
-        if key == ord("1"):
-            selected_tracker = 0
-            input_dialog.tabs.setCurrentIndex(0)
-        elif key == ord("2"):
-            selected_tracker = 1
-            input_dialog.tabs.setCurrentIndex(1)
-        elif key == ord("3"):
-            selected_tracker = 2
-            input_dialog.tabs.setCurrentIndex(2)
-        elif key == ord("4"):
-            selected_tracker = 3
-            input_dialog.tabs.setCurrentIndex(3)
-        elif key == ord("5"):
-            selected_tracker = 4
-            input_dialog.tabs.setCurrentIndex(4)
-        elif key == ord("6"):
-            selected_tracker = 5
-            input_dialog.tabs.setCurrentIndex(5)
-        elif key == ord("7"):
-            selected_tracker = 6
-            input_dialog.tabs.setCurrentIndex(6)
+            #Set the selected Tracker to Red
+            app.processEvents()
+            for tracker in range(len(tracker_list)):
+                if tracker == selected_tracker:
+                    tracker_list[tracker].colour = (0,0,255)
+                else:
+                    tracker_list[tracker].colour = (255,255,255)
+            
+            #Loop through every tracker and update
+            
+            for tracker in tracker_list:
+                if tracker.init_bounding_box is not None:
 
-        elif key == ord("e") or input_dialog.export_state == True:
-            input_dialog.export_state = False
-            print("Exporting " + tracker_list[selected_tracker].get_name() + "'s data recorded.")
-            width = cap.get(cv2.CAP_PROP_FRAME_WIDTH)   # float
-            height = cap.get(cv2.CAP_PROP_FRAME_HEIGHT) # float
-            try:
-                tracker_list[selected_tracker].export_data(width, height, videoPath, vid_fps)
-            except IOError as err:
-                print(err)
-        # elif key == ord("r"):
-        elif input_dialog.del_tab_state is True:
-            #remove the tracker that is currently selected
-            tracker_list[selected_tracker].remove()
-            input_dialog.del_tab_state = False
-            #change selected tracker to the first tracker that is still tracking
-            # for tracker in range(len(tracker_list)):
-            #     if tracker_list[tracker].init_bounding_box is not None:
-            #         selected_tracker = tracker
-        # elif key == ord("w"):
-        #     print("Nudge Up")
-        # elif key == ord("a"):
-        #     print("Nudge Left")
-        # elif key == ord("s"):
-        #     print("Nudge Down")
-        # elif key == ord("d"):
-        #     print("Nudge Right")
+                    #attempt to run it on GPU
+                    cv2.UMat(frame)   
 
-        #Set the selected Tracker to Red
-        for tracker in range(len(tracker_list)):
-            if tracker == selected_tracker:
-                tracker_list[tracker].colour = (0,0,255)
-            else:
-                tracker_list[tracker].colour = (255,255,255)
-        
+                    #track and draw box on the frame
+                    success, box, frame = tracker.update_tracker(frame)
+                    
+                    if not success:
+                        tracker.assign(frame, trackerName)
 
-        #Loop through every tracker and update
-            # if input_dialog.play_state == True:
-        for tracker in tracker_list:
-            if tracker.init_bounding_box is not None:
+                    #Return count to 0 when max is reached
+                    if selected_tracker > CPU_COUNT:
+                        selected_tracker = CPU_COUNT
 
-                
-                #attempt to run it on GPU
-                cv2.UMat(frame)    
+                    #caluclate info needed this frame
+                    frame_number = cap.get(cv2.CAP_PROP_POS_FRAMES)
+                    bottom_right = box[0]
+                    top_left = box[1]
+                    width = box[2]
+                    height = box[3]
 
-                #track and draw box on the frame
-                success, box, frame = tracker.update_tracker(frame)
-                
-                if not success:
-                    tracker.assign(frame, trackerName)
-
-                #Return count to 0 when max is reached
-                if selected_tracker > CPU_COUNT:
-                    selected_tracker = CPU_COUNT
-
-                #caluclate info needed this frame
-                frame_number = cap.get(cv2.CAP_PROP_POS_FRAMES)
-                bottom_right = box[0]
-                top_left = box[1]
-                width = box[2]
-                height = box[3]
-
-                center_x = bottom_right - (width/2)
-                center_y = top_left + (height/2)
-                
-                #record all the data collected from that frame
-
-                tracker.record_data(frame_number, center_x, center_y)
-                #If you select a tracker and it is not running, start a new one
-        if tracker_list[selected_tracker].init_bounding_box is None:
-            tracker_list[selected_tracker].create(trackerName)
-            tracker_list[selected_tracker].assign(frame, trackerName)
-        if key == ord(' '):
-            input_dialog.play_state = False
-            tracker_list[selected_tracker].assign(frame, trackerName)
-        input_dialog.set_scrollbar(i)
-            #When done processing each tracker, view the frame
-        cv2.imshow("Frame", frame)
-        
-            # count += 1
-
-            # # loop over the bounding boxes and draw them on the frame
-            # for box in boxes:
-            #     (x, y, w, h) = [int(v) for v in box]
-            #     cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
-
-            # cv2.imshow("Frame", frame)
-            # key = cv2.waitKey(1) & 0xFF
-
-            # # if the 's' key is selected, we are going to "select" a bounding
-            # # box to track
-            # if key == ord("s"):
-            #     colors = []
-            #     # select the bounding box of the object we want to track (make
-            #     # sure you press ENTER or SPACE after selecting the ROI)
-            #     box = cv2.selectROIs("Frame", frame, fromCenter=False,
-            #                         showCrosshair=True)
-            #     box = tuple(map(tuple, box)) 
-            #     for bb in box:
-            #         tracker = OPENCV_OBJECT_TRACKERS[trackerName]()
-            #         trackers.add(tracker, frame, bb)
-
-            # # # if you want to reset bounding box, select the 'r' key 
-            # if key == ord("r"):
-            #     trackers.clear()
-            #     trackers = cv2.MultiTracker_create()
-
-            #     box = cv2.selectROIs("Frame", frame, fromCenter=False,
-            #                         showCrosshair=True)
-            #     box = tuple(map(tuple, box))
-            #     for bb in box:
-            #         tracker = OPENCV_OBJECT_TRACKERS[trackerName]()
-            #         trackers.add(tracker, frame, bb)
-
-            # elif key == ord("q"):
-            #     break
+                    center_x = bottom_right - (width/2)
+                    center_y = top_left + (height/2)
+                    
+                    #record all the data collected from that frame
+                    # if input_dialog.play_state == True:
+                    # tracker.record_data(frame_number, center_x, center_y)
+                    #If you select a tracker and it is not running, start a new one
+            if tracker_list[selected_tracker].init_bounding_box is None:
+                tracker_list[selected_tracker].create(trackerName)
+                tracker_list[selected_tracker].assign(frame, trackerName)
+            if key == ord(' '):
+                # input_dialog.play_state = False
+                tracker_list[selected_tracker].assign(frame, trackerName)
+                # input_dialog.play_state = True
+                #When done processing each tracker, view the frame
+            cv2.imshow("Frame", frame)
+            
     sys.exit(app.exec_())
     cap.release()
     cv2.destroyAllWindows()
