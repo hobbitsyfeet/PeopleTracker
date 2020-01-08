@@ -1,7 +1,7 @@
 import sys
 from PyQt5.QtWidgets import QApplication, QWidget, QInputDialog, QLineEdit, QLabel, QPushButton, QPlainTextEdit, QSlider, QStyle, QAction, QTabWidget, QVBoxLayout, QHBoxLayout, QMessageBox
 
-from PyQt5.QtGui import QIcon
+from PyQt5.QtGui import QIcon, QIntValidator
 from PyQt5.QtCore import Qt
 from PyQt5.QtCore import pyqtSlot
 
@@ -20,6 +20,7 @@ class App(QWidget):
 
         self.play_state = False
         self.export_state = False
+        self.scrollbar_changed = False
         self.vid_fps = 30
         
     def initUI(self):
@@ -70,6 +71,7 @@ class App(QWidget):
         # setup scrollbar for video
         self.scrollframe = QLabel(self)
         self.scrollframe.setText("00:00")
+        self.scrollframe.setFixedWidth(50)
 
         self.vidScroll = QSlider(Qt.Horizontal,self)
         self.vidScroll.setMinimum(0)
@@ -83,13 +85,34 @@ class App(QWidget):
         self.playButton.setIcon(self.style().standardIcon(QStyle.SP_MediaPlay))
         self.playButton.clicked.connect(self.mediaStateChanged)
 
-
         media_layout = QHBoxLayout()
         media_layout.addWidget(self.playButton)
         media_layout.addWidget(self.vidScroll)
         media_layout.addWidget(self.scrollframe)
-
+        # media_layout.addWidget(self.skip_frames)
         self.layout.addLayout(media_layout)
+
+        bottom_layout = QHBoxLayout()
+        
+        self.skip_frames = QLineEdit(self)
+        self.onlyInt = QIntValidator()
+        self.skip_frames.setValidator(self.onlyInt)
+        self.skip_frames.setText("1")
+        self.skip_frames.setFixedWidth(25)
+        self.skip_frames.setAlignment(Qt.AlignRight)
+        bottom_layout.addWidget(self.skip_frames)
+
+        self.skip_label = QLabel(self)
+        self.skip_label.setText("Frame Skip")
+        self.skip_label.setAlignment(Qt.AlignLeft)
+        self.skip_label.setFixedHeight(12)
+        bottom_layout.addWidget(self.skip_label)
+        
+        
+        
+
+
+        self.layout.addLayout(bottom_layout)
 
         self.setLayout(self.layout)
 
@@ -108,10 +131,15 @@ class App(QWidget):
         self.vidScroll.setValue(value)
     
     def slider_update(self, value, func=None):
+        self.scrollbar_changed = True
         seconds = (value/self.vid_fps) %60
         minutes = int(((value/self.vid_fps)/60)%60)
         hours = int(minutes/60)
         self.scrollframe.setText( str(hours) + ":"+ str(minutes) + ":" + str(round( ((value/self.vid_fps) %60),2 ) ))
+    
+    def get_scrollbar_value(self):
+        print(self.vidScroll.value())
+        return self.vidScroll.value()
 
     def mediaStateChanged(self, state):
         if self.play_state == False:
@@ -157,6 +185,17 @@ class App(QWidget):
     
     def set_fps_info(self, fps):
         self.vid_fps = fps
+
+    def get_frame_skip(self):
+        try:
+            skip = int(self.skip_frames.text())
+        except:
+            print("Skip value non-valid. Please enter a number.")
+            skip = 0
+        # #ensure skip is not backwards?
+        # if skip < 1:
+        #     skip = 1
+        return skip
 
 class person_tab():
     def __init__(self, window):

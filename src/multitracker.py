@@ -335,7 +335,7 @@ if __name__ == "__main__":
     app = QApplication(sys.argv)
     input_dialog = qt_dialog.App()
 
-    
+    skip_frame_number = 10
 
 
     # meta_file = mutagen.File("videos/GP074188.MP4")
@@ -355,25 +355,23 @@ if __name__ == "__main__":
     vid_fps = cap.get(cv2.CAP_PROP_FPS)
     input_dialog.set_fps_info(vid_fps)
     
+
     i = 0
     while cap.isOpened():
         app.processEvents()
-        # pass
-        # if i == 0:
-        #     ret, frame = cap.read()
-        #     frame = imutils.resize(frame, width=720)
-        #     cv2.imshow("Frame", frame)
-            
-        #Process event to prevent delay with UI
-        
-        # if input_dialog.play_state is False:
-        #     cap.set(1 , i)
-        #     ret, frame = cap.read()
         if input_dialog.play_state == True or i is 0:
-            # else:
-            input_dialog.set_scrollbar(i)
-            i += 10
+
             # i +=1
+            
+            #if the scrollbar is changed, update the frame, else continue with the normal frame
+            if input_dialog.scrollbar_changed == True:
+                i = input_dialog.get_scrollbar_value()
+                # cap.set(1 , i )
+                input_dialog.scrollbar_changed = False
+            else:
+                i += input_dialog.get_frame_skip()
+                input_dialog.set_scrollbar(i)
+            
             cap.set(1 , i)
             ret, frame = cap.read()
             
@@ -523,14 +521,20 @@ if __name__ == "__main__":
                     # elif key == ord("q"):
                     #     break
         else:
-            cap.set(1 , i-1)
+            if input_dialog.scrollbar_changed == True:
+                i = input_dialog.get_scrollbar_value()
+                cap.set(1 , i )
+                input_dialog.scrollbar_changed = False
+
+            cap.set(1 , i)
             ret, frame = cap.read()
             frame = imutils.resize(frame, width=480)
             frame = imutils.resize(frame, width=1080)
+
+
+                
             if frame is None:
                 break
-            # frame = imutils.resize(frame, width=480)
-            # frame = imutils.resize(frame, width=1080)
             input_dialog.set_tab_names()
             selected_tracker = input_dialog.tabs.currentIndex()
             key = cv2.waitKey(1) & 0xFF
@@ -592,8 +596,8 @@ if __name__ == "__main__":
                     #track and draw box on the frame
                     success, box, frame = tracker.update_tracker(frame)
                     
-                    if not success:
-                        tracker.assign(frame, trackerName)
+                    # if not success:
+                    #     tracker.assign(frame, trackerName)
 
                     #Return count to 0 when max is reached
                     if selected_tracker > CPU_COUNT:
