@@ -35,9 +35,12 @@ class MultiTracker():
         self.name = tab.name_line
         self.colour = colour
 
-        self.location_data = [] #(x, y)
+        # self.location_data = [] #(x, y)
         self.distance_data = [] #(CLOSE, MED, FAR) (estimated)
         self.time_data = [] #(frames tracked)
+
+        self.data_dict = dict()
+        self.previous_time = 0
 
         self.sex = tab.sex_line
 
@@ -57,9 +60,9 @@ class MultiTracker():
         """ Returns name of person tracked: returns string """
         return self.name.text()
 
-    def get_loc(self, frame):
-        """ Returns pixel (x,y) location of person tracked: returns tuple(int,int)"""
-        return self.location_data(frame)
+    # def get_loc(self, frame):
+    #     """ Returns pixel (x,y) location of person tracked: returns tuple(int,int)"""
+    #     return self.location_data(frame)
     
     def get_sex(self):
         """ Returns sex of person being tracked: returns string """
@@ -68,13 +71,13 @@ class MultiTracker():
     def get_description(self):
         return self.description.getText()
 
-    def get_time_tracked(self):
+    def get_time_tracked(self, framerate):
         """ Returns total time being tracked in video: returns  """ 
-        total_time = [self.calculate_total_time(self.part_time_to_segments(self.time_data))]
+        total_time = [self.calculate_total_time(self.part_time_to_segments(list(self.data_dict.keys())), framerate)]
         return total_time
 
         
-    def create(self,tracker_type='CSRT'):
+    def create(self, tracker_type='CSRT'):
         """
         The creation of the Opencv's Tracking mechanism.
 
@@ -149,7 +152,7 @@ class MultiTracker():
         # start OpenCV object tracker using the supplied bounding box
         # coordinates, then start the FPS throughput estimator as well
         if self.init_bounding_box is not None:
-            self.tracker.init(frame, self.init_bounding_box)
+            # self.tracker.init(frame, self.init_bounding_box)
             print(self.reset)
             self.reset = True
 
@@ -190,6 +193,7 @@ class MultiTracker():
         """
         del self.tracker
         self.init_bounding_box = None
+        del self
         
 
 
@@ -203,8 +207,11 @@ class MultiTracker():
         """
         Appends location and time to a list of data
         """
-        self.location_data.append((int(x),int(y))) #(x, y)
-        self.time_data.append(frame) #(frames tracked)
+        # print("recording Frame" + str(frame))
+        # self.location_data.append((int(x),int(y))) #(x, y)
+        # self.time_data.append(frame) #(frames tracked)
+        self.data_dict[frame] = (int(x),int(y))
+
         # self.distance_data.append(self.estimate_distance(size)) #(CLOSE, MED, FAR) (estimated)
 
     def append_data(self, dataframe):
@@ -217,15 +224,26 @@ class MultiTracker():
         """
         Exports the recorded data and appends constants such as name, total time recorded, and pixel% Loc
         """
-        if not os.path.exists(("./data/" + vid_name[:-4])):
-            os.makedirs(("./data/" + vid_name[:-4]))
-        
-        export_filename = "./data/" + str(vid_name[:-4]) + "/" + self.get_name() + ".csv"
+        # if not os.path.exists(("./data/" + vid_name[:-4])):
+        #     os.makedirs(("./data/" + vid_name[:-4]))
+        print(self.data_dict)
 
+        export_filename = str(vid_name[:-4]) + ".csv"
+        if not os.path.isfile(export_filename):
+            data = {"Frame_Num":[],#self.time_data,
+                "Pixel_Loc":[],
+                "Perc_X":[], "Perc_Y":[],
+                "Name":[], "Sex":[],"Total_Sec_Rec":[]}
+
+            df = pd.DataFrame(data)
+            export_csv = df.to_csv (export_filename, index = None, header=True, mode='a')
+
+        frames = list(self.data_dict.keys())
+        location = list(self.data_dict.values())
         #elaborate on the location, record it in percent
         perc_x_list = []
         perc_y_list = []
-        for data in self.location_data:
+        for data in location:
             perc_x = (data[0]/vid_width)*100
             perc_y = (data[1]/vid_height)*100
             perc_x_list.append(round(perc_x,2))
@@ -233,24 +251,30 @@ class MultiTracker():
 
 
         #extend all the data so it can be exported
-        MAX_LEN = len(self.time_data)
+        MAX_LEN = len(frames)
         sex = [self.get_sex()]
         name = [self.get_name()]
         # total_time = [self.(self.part_time_to_segments(self.time_data))]
-        # total_time = [self.get_time_tracked()]
+        total_time = self.get_time_tracked(vid_fps)
+        total_time[0] += self.previous_time
+        self.previous_time = total_time[0]
         sex.extend([sex[0]]*(MAX_LEN-1))
         name.extend([name[0]]*(MAX_LEN-1))
-        # total_time.extend([total_time[0]]*(MAX_LEN-1))
+        total_time.extend([total_time[0]]*(MAX_LEN-1))
 
 
-        data = {"Frame_Num":self.time_data,
-            "Pixel_Loc": self.location_data,
+        data = {"Frame_Num":frames,#self.time_data,
+            "Pixel_Loc": location,
             "Perc_X": perc_x_list, "Perc_Y": perc_y_list,
-            "Name": name, "Sex":sex}
-            # , "Total_Sec_Rec":total_time}
+            "Name": name, "Sex":sex, 
+            "Total_Sec_Rec":total_time}
         
         df = pd.DataFrame(data)
-        export_csv = df.to_csv (export_filename, index = None, header=True) #Don't forget to add '.csv' at the end of the path
+
+
+        export_csv = df.to_csv (export_filename, index = None, header=False, mode='a') #Don't forget to add '.csv' at the end of the path
+
+        self.data_dict = dict()
         
 
     def part_time_to_segments(self, time_data, segment_size=300):
@@ -262,7 +286,7 @@ class MultiTracker():
         """
         #three segment markers, starting frame, current frame, and end frame
         seg_start = seg_last =  time_data[0]
-
+        
         total_segments = [] # total segments placed in a list
 
 
@@ -295,8 +319,6 @@ class MultiTracker():
     def estimate_distance(self, size):
         pass
             
-        
-
     def calculate_time(self, frame_start, frame_end, fps=30):
         return (frame_end - frame_start)/fps
     
@@ -312,7 +334,7 @@ class MultiTracker():
             # print("Timing Segment:",end="")
             # print(seg)
             #each seg is a pair of start and end times
-            total_time += self.calculate_time(seg[0],seg[1])
+            total_time += self.calculate_time(seg[0],seg[1],fps)
         return total_time
 
     def adjust_gamma(image, gamma=1.0):
@@ -326,26 +348,29 @@ class MultiTracker():
 #This main is used to test the time
 if __name__ == "__main__":
     trackerName = 'CSRT'
-    vid_dir = "videos/"
+    # vid_dir = "videos/"
     # vid_name = "GP074188.MP4"
     # vid_dir = "C:/Users/legom/Documents/GitHub/UofLStudy/"
-    vid_name = "Complex_Trim.mp4"
-    videoPath = vid_dir + vid_name
+    # vid_name = "Complex_Trim.mp4"
+    # videoPath = vid_dir + vid_name
+    
     # videoPath = "C:/Users/legom/Documents/GitHub/UofLStudy/Complex_Trim.mp4"
     app = QApplication(sys.argv)
     input_dialog = qt_dialog.App()
 
-    skip_frame_number = 10
-
+    videoPath = input_dialog.filename
 
     # meta_file = mutagen.File("videos/GP074188.MP4")
     # print(meta_file)
     
     tracker_list = []
     # initialize OpenCV's special multi-object tracker
-    for new_tracker in range(CPU_COUNT):
-        input_dialog.add_tab()
-        tracker_list.append(MultiTracker(input_dialog.tab_list[new_tracker]))
+    # for new_tracker in range(CPU_COUNT):
+    input_dialog.add_tab()
+    input_dialog.add_tab_state = False
+    tracker_list.append(MultiTracker(input_dialog.tab_list[0]))
+
+
 
     selected_tracker = 0
     cap = cv2.VideoCapture(videoPath)
@@ -359,50 +384,58 @@ if __name__ == "__main__":
     i = 0
     while cap.isOpened():
         app.processEvents()
+        
         if input_dialog.play_state == True or i is 0:
 
-            # i +=1
-            
             #if the scrollbar is changed, update the frame, else continue with the normal frame
             if input_dialog.scrollbar_changed == True:
                 i = input_dialog.get_scrollbar_value()
-                # cap.set(1 , i )
                 input_dialog.scrollbar_changed = False
             else:
                 i += input_dialog.get_frame_skip()
                 input_dialog.set_scrollbar(i)
-            
+
+            if input_dialog.add_tab_state == True:
+                tracker_list.append(MultiTracker(input_dialog.tab_list[len(tracker_list)]))
+                input_dialog.tabs.setCurrentIndex(len(tracker_list))
+                input_dialog.add_tab_state = False
+                
             cap.set(1 , i)
             ret, frame = cap.read()
             
             if frame is None:
                 break
-            frame = imutils.resize(frame, width=480)
-            frame = imutils.resize(frame, width=1080)
+            # frame = imutils.resize(frame, width=480)
+            # frame = imutils.resize(frame, width=1080)
             input_dialog.set_tab_names()
             selected_tracker = input_dialog.tabs.currentIndex()
+
+
+
             key = cv2.waitKey(1) & 0xFF
             if key == ord("1"):
                 selected_tracker = 0
-                input_dialog.tabs.setCurrentIndex(0)
+                # input_dialog.tabs.setCurrentIndex(0)
             elif key == ord("2"):
                 selected_tracker = 1
-                input_dialog.tabs.setCurrentIndex(1)
+                # input_dialog.tabs.setCurrentIndex(1)
             elif key == ord("3"):
                 selected_tracker = 2
-                input_dialog.tabs.setCurrentIndex(2)
+                # input_dialog.tabs.setCurrentIndex(2)
             elif key == ord("4"):
                 selected_tracker = 3
-                input_dialog.tabs.setCurrentIndex(3)
+                # input_dialog.tabs.setCurrentIndex(3)
             elif key == ord("5"):
                 selected_tracker = 4
-                input_dialog.tabs.setCurrentIndex(4)
+                # input_dialog.tabs.setCurrentIndex(4)
             elif key == ord("6"):
                 selected_tracker = 5
-                input_dialog.tabs.setCurrentIndex(5)
+                # input_dialog.tabs.setCurrentIndex(5)
             elif key == ord("7"):
                 selected_tracker = 6
-                input_dialog.tabs.setCurrentIndex(6)
+                # input_dialog.tabs.setCurrentIndex(6)
+
+            
 
             elif key == ord("e") or input_dialog.export_state == True:
                 input_dialog.export_state = False
@@ -417,6 +450,9 @@ if __name__ == "__main__":
             elif input_dialog.del_tab_state is True:
                 #remove the tracker that is currently selected
                 tracker_list[selected_tracker].remove()
+                selected_tracker = input_dialog.tabs.currentIndex()
+                # input_dialog.tabs.setCurrentIndex(selected_tracker)
+
                 input_dialog.del_tab_state = False
                 #change selected tracker to the first tracker that is still tracking
                 # for tracker in range(len(tracker_list)):
@@ -430,6 +466,7 @@ if __name__ == "__main__":
             #     print("Nudge Down")
             # elif key == ord("d"):
             #     print("Nudge Right")
+            selected_tracker = input_dialog.tabs.currentIndex()
 
             #Set the selected Tracker to Red
             app.processEvents()
@@ -441,7 +478,7 @@ if __name__ == "__main__":
             
 
             #Loop through every tracker and update
-            
+            # print(len(tracker_list))
             for tracker in tracker_list:
                 if tracker.init_bounding_box is not None:
 
@@ -455,8 +492,8 @@ if __name__ == "__main__":
                     #     tracker.assign(frame, trackerName)
 
                     #Return count to 0 when max is reached
-                    if selected_tracker > CPU_COUNT:
-                        selected_tracker = CPU_COUNT
+                    # if selected_tracker > CPU_COUNT:
+                    #     selected_tracker = CPU_COUNT
 
                     #caluclate info needed this frame
                     frame_number = cap.get(cv2.CAP_PROP_POS_FRAMES)
@@ -469,19 +506,30 @@ if __name__ == "__main__":
                     center_y = top_left + (height/2)
                     
                     #record all the data collected from that frame
-                    # if input_dialog.play_state == True:
+                # if input_dialog.play_state == True:
+                    # print("RECORDING DATA")
                     tracker.record_data(frame_number, center_x, center_y)
                     #If you select a tracker and it is not running, start a new one
             if tracker_list[selected_tracker].init_bounding_box is None:
+                input_dialog.tabs.setEnabled(False)
                 tracker_list[selected_tracker].create(trackerName)
                 tracker_list[selected_tracker].assign(frame, trackerName)
+                input_dialog.tabs.setEnabled(True)
             if key == ord(' '):
                 # input_dialog.play_state = False
                 tracker_list[selected_tracker].assign(frame, trackerName)
                 # input_dialog.play_state = True
             input_dialog.set_scrollbar(i)
+
+            try:
+                current_tracked_time = tracker_list[selected_tracker].get_time_tracked(vid_fps)[0] + tracker_list[selected_tracker].previous_time
+                input_dialog.tab_list[selected_tracker].update_length_tracked(current_tracked_time)
+            except:
+                pass
                 #When done processing each tracker, view the frame
             cv2.imshow("Frame", frame)
+
+
             
                     # count += 1
 
@@ -528,16 +576,22 @@ if __name__ == "__main__":
 
             cap.set(1 , i)
             ret, frame = cap.read()
-            frame = imutils.resize(frame, width=480)
-            frame = imutils.resize(frame, width=1080)
+            # frame = imutils.resize(frame, width=480)
+            # frame = imutils.resize(frame, width=1080)
 
+            if input_dialog.add_tab_state == True:
+                tracker_list.append(MultiTracker(input_dialog.tab_list[len(tracker_list)]))
+                input_dialog.tabs.setCurrentIndex(len(input_dialog.tab_list))
+                input_dialog.add_tab_state = False
 
                 
             if frame is None:
                 break
             input_dialog.set_tab_names()
+
             selected_tracker = input_dialog.tabs.currentIndex()
-            key = cv2.waitKey(1) & 0xFF
+
+            key = cv2.waitKey(5) & 0xFF
             if key == ord("1"):
                 selected_tracker = 0
                 input_dialog.tabs.setCurrentIndex(0)
@@ -573,12 +627,16 @@ if __name__ == "__main__":
             # elif key == ord("r"):
             elif input_dialog.del_tab_state is True:
                 #remove the tracker that is currently selected
+                # print(selected_tracker)
                 tracker_list[selected_tracker].remove()
+                del tracker_list[selected_tracker]
+                selected_tracker = input_dialog.tabs.currentIndex()
                 input_dialog.del_tab_state = False
 
 
             #Set the selected Tracker to Red
             app.processEvents()
+            
             for tracker in range(len(tracker_list)):
                 if tracker == selected_tracker:
                     tracker_list[tracker].colour = (0,0,255)
@@ -600,8 +658,8 @@ if __name__ == "__main__":
                     #     tracker.assign(frame, trackerName)
 
                     #Return count to 0 when max is reached
-                    if selected_tracker > CPU_COUNT:
-                        selected_tracker = CPU_COUNT
+                    # if selected_tracker > CPU_COUNT:
+                    #     selected_tracker = CPU_COUNT
 
                     #caluclate info needed this frame
                     frame_number = cap.get(cv2.CAP_PROP_POS_FRAMES)
@@ -612,19 +670,33 @@ if __name__ == "__main__":
 
                     center_x = bottom_right - (width/2)
                     center_y = top_left + (height/2)
+
+                    # cv2.imshow("Frame", frame)
                     
                     #record all the data collected from that frame
                     # if input_dialog.play_state == True:
                     # tracker.record_data(frame_number, center_x, center_y)
                     #If you select a tracker and it is not running, start a new one
-            if tracker_list[selected_tracker].init_bounding_box is None:
-                tracker_list[selected_tracker].create(trackerName)
-                tracker_list[selected_tracker].assign(frame, trackerName)
-            if key == ord(' '):
-                # input_dialog.play_state = False
-                tracker_list[selected_tracker].assign(frame, trackerName)
-                # input_dialog.play_state = True
-                #When done processing each tracker, view the frame
+            # print(len(tracker_list))
+                # if len(tracker_list) > 0:
+                if tracker_list[selected_tracker].init_bounding_box is None:
+                    input_dialog.tabs.setEnabled(False)
+                    tracker_list[selected_tracker].create(trackerName)
+                    tracker_list[selected_tracker].assign(frame, trackerName)
+                    input_dialog.tabs.setEnabled(True)
+                if key == ord(' '):
+                    # input_dialog.play_state = False
+                    tracker_list[selected_tracker].assign(frame, trackerName)
+                    # input_dialog.play_state = True
+                    #When done processing each tracker, view the frame
+            # if len(list(tracker_list[input_dialog.tabs.currentIndex()].data_dict.keys())) > 2:
+                # input_dialog.tab_list[input_dialog.tabs.currentIndex()].update_length_tracked(tracker_list[input_dialog.tabs.currentIndex()].get_time_tracked(vid_fps) + tracker_list[input_dialog.tabs.currentIndex()].previous_time)
+
+            try:
+                current_tracked_time = tracker_list[selected_tracker].get_time_tracked(vid_fps)[0] + tracker_list[selected_tracker].previous_time
+                input_dialog.tab_list[selected_tracker].update_length_tracked(current_tracked_time)
+            except:
+                pass
             cv2.imshow("Frame", frame)
             
     sys.exit(app.exec_())

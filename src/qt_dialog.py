@@ -1,11 +1,10 @@
 import sys
-from PyQt5.QtWidgets import QApplication, QWidget, QInputDialog, QLineEdit, QLabel, QPushButton, QPlainTextEdit, QSlider, QStyle, QAction, QTabWidget, QVBoxLayout, QHBoxLayout, QMessageBox
+from PyQt5.QtWidgets import QApplication, QWidget, QInputDialog, QLineEdit, QLabel, QPushButton, QPlainTextEdit, QSlider, QStyle, QAction, QTabWidget, QVBoxLayout, QHBoxLayout, QMessageBox, QFileDialog
 
 from PyQt5.QtGui import QIcon, QIntValidator
 from PyQt5.QtCore import Qt
 from PyQt5.QtCore import pyqtSlot
 
-from math import trunc
 
 class App(QWidget):
 
@@ -27,7 +26,15 @@ class App(QWidget):
 
         self.setWindowTitle(self.title)
         self.setGeometry(self.left, self.top, self.width, self.height)
+        
+        
+        self.openFileNameDialog()
+        # self.openFileNamesDialog()
+        # self.saveFileDialog()
+
         self.layout = QVBoxLayout(self)
+
+        self.add_tab_state = False
 
         self.tab_control_layout = QHBoxLayout()
         self.add_tab_btn = QPushButton()
@@ -35,7 +42,7 @@ class App(QWidget):
         self.add_tab_btn.clicked.connect(self.add_tab)
         self.tab_control_layout.addWidget(self.add_tab_btn)
 
-        self.add_tab_btn.setEnabled(False)
+        # self.add_tab_btn.setEnabled(False)
 
         self.export_tab_btn = QPushButton()
         self.export_tab_btn.setText("Export Data")
@@ -50,7 +57,7 @@ class App(QWidget):
         
         self.tab_control_layout.addWidget(self.del_tab_btn)
         
-        self.del_tab_btn.setEnabled(False)
+        # self.del_tab_btn.setEnabled(False)
 
         self.layout.addLayout(self.tab_control_layout)
 
@@ -173,6 +180,7 @@ class App(QWidget):
     def add_tab(self):
         self.tab_list.append(person_tab(self))
         self.tabs.addTab(self.tab_list[-1].tab, ("Person " + str(self.tabs.count())))
+        self.add_tab_state = True
         
     
     def remove_tab(self):
@@ -191,11 +199,35 @@ class App(QWidget):
             skip = int(self.skip_frames.text())
         except:
             print("Skip value non-valid. Please enter a number.")
-            skip = 0
+            skip = 1
         # #ensure skip is not backwards?
-        # if skip < 1:
-        #     skip = 1
+        if skip == 0:
+            skip = 1
         return skip
+    
+    def openFileNameDialog(self):
+        options = QFileDialog.Options()
+        options |= QFileDialog.DontUseNativeDialog
+        fileName, _ = QFileDialog.getOpenFileName(self,"QFileDialog.getOpenFileName()", "","All Files (*);;Python Files (*.py)", options=options)
+        if fileName:
+            self.filename = fileName
+            print(fileName)
+            
+    
+    def openFileNamesDialog(self):
+        options = QFileDialog.Options()
+        options |= QFileDialog.DontUseNativeDialog
+        files, _ = QFileDialog.getOpenFileNames(self,"QFileDialog.getOpenFileNames()", "","All Files (*);;Python Files (*.py)", options=options)
+        if files:
+            print(files)
+    
+    def saveFileDialog(self):
+        options = QFileDialog.Options()
+        options |= QFileDialog.DontUseNativeDialog
+        fileName, _ = QFileDialog.getSaveFileName(self,"QFileDialog.getSaveFileName()","","All Files (*);;Text Files (*.txt)", options=options)
+        if fileName:
+            print(fileName)
+
 
 class person_tab():
     def __init__(self, window):
@@ -254,6 +286,7 @@ class person_tab():
         length_layout.addWidget(length_label)
         length_layout.addWidget(self.length_tracked)
         length_layout.setAlignment(Qt.AlignCenter)
+
         self.tab.layout.addLayout(length_layout)
 
         self.tab.setLayout(self.tab.layout)
@@ -298,6 +331,9 @@ class person_tab():
 
     def update_length_tracked(self, time):
         self.length_tracked.setText("00:00")
+        seconds = round((time)%60,2)
+        minutes = int(((time)/60)%60)
+        self.length_tracked.setText( str(minutes) + ":" + str(seconds))
     
     # def update_tab_name(self):
     #     self.tab.parentWidget().setTabText(self.tab.parent.currentIndex(),self.name_line.getText())
