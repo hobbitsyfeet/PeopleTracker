@@ -145,7 +145,7 @@ class App(QWidget):
         self.scrollframe.setText( str(hours) + ":"+ str(minutes) + ":" + str(round( ((value/self.vid_fps) %60),2 ) ))
     
     def get_scrollbar_value(self):
-        print(self.vidScroll.value())
+        # print(self.vidScroll.value())
         return self.vidScroll.value()
 
     def mediaStateChanged(self, state):
@@ -153,20 +153,23 @@ class App(QWidget):
             self.playButton.setIcon(
                     self.style().standardIcon(QStyle.SP_MediaPause))
             self.play_state = True
-            print(self.play_state)
+            # print(self.play_state)
         else:
             self.playButton.setIcon(
                     self.style().standardIcon(QStyle.SP_MediaPlay))
             self.play_state = False
-            print(self.play_state)
+            # print(self.play_state)
 
     def set_tab_names(self):
         i = 0
+        # print(tab.name_line.text())
         for tab in self.tab_list:
             if tab.name_line.text() == "":
                 self.tabs.setTabText(i,"Person " + str(i + 1))
             else:
                 self.tabs.setTabText(i,tab.name_line.text())
+                # print(tab.name_line.text())
+                # self.parent.tab_list(i).setTabText(i,tab.name_line.text())
             i += 1
 
     def get_current_tab_info(self):
@@ -181,12 +184,18 @@ class App(QWidget):
         self.tab_list.append(person_tab(self))
         self.tabs.addTab(self.tab_list[-1].tab, ("Person " + str(self.tabs.count())))
         self.add_tab_state = True
+        if len(self.tab_list) > 0:
+            self.del_tab_btn.setEnabled(True)
+
         
     
     def remove_tab(self):
         self.del_tab_state = True
         self.tabs.removeTab(self.tabs.currentIndex())
         del self.tab_list[self.tabs.currentIndex()]
+        self.set_tab_names()
+        if len(self.tab_list) == 0:
+            self.del_tab_btn.setEnabled(False)
 
     def export_tab_pressed(self):
         self.export_state = True
