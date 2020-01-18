@@ -26,6 +26,7 @@ import sys
 from PyQt5.QtWidgets import QApplication
 import qt_dialog
 
+import math
 
 # For extracting video metadata
 # import mutagen
@@ -38,6 +39,7 @@ class MultiTracker():
         # self.location_data = [] #(x, y)
         self.distance_data = [] #(CLOSE, MED, FAR) (estimated)
         self.time_data = [] #(frames tracked)
+        # self.radius_regions = dict
 
         self.data_dict = dict()
         self.previous_time = 0
@@ -348,6 +350,57 @@ class MultiTracker():
         table = np.array([((i / 255.0) ** invGamma) * 255
             for i in np.arange(0, 256)]).astype("uint8")
         return cv2.LUT(image, table)
+class Regions():
+    def __init__(self):
+        self.radius_regions = dict()
+
+    def add_radius(self, name):
+        """
+        Creates a circle given a rectangle ROI.
+        """
+        self.radius_regions[name] = (cv2.selectROI("Frame", frame, fromCenter=False, showCrosshair=True))
+
+
+    
+    def display_radius(self, frame):
+        """
+        Displays all radius created Radius on given frame
+        """
+        for key, region in self.radius_regions.items():
+            x, y, w, h = region[0], region[1], region[2], region[3]
+            ellipse_center = (int(x + (w/2)) ,int( y + (h/2)))
+
+            frame = cv2.ellipse(frame, ellipse_center, (int((w/2)),(int(h/2))), 0, 0,360, (0,255,0) )
+            # cv2.ellipse(frame, box=w/2,color=(0,255,0))
+            cv2.rectangle(frame, (x , y - 1), (x + 10 * (len(key)) , y - 15),(255,255,255),-1)
+            cv2.putText(frame,key, (x , y - 1), cv2.FONT_HERSHEY_PLAIN, 1, (0,0,0),1)
+        return frame
+
+    def test_radius(self, test_point):
+        """
+        Tests weather a point value exists within a radius
+
+        Equation: Given (x-h)^2/a^2 + (y-k)^2/b^2 <= 1
+            Given a test_point (x,y), ellipse_center at (h,k), 
+            radius_width, radius_height as a,b respectivly
+        """
+        #overlapping areas may result in multiple True tests
+        within_points = []
+        x = test_point[0]
+        y = test_point[1]
+        
+        for key, region in self.radius_regions.items():
+
+            x, y, w, h = region[0], region[1], region[2], region[3]
+            ellipse_center = (x + (w/2) , y - (h/2))
+
+            # checking the equation of
+            # ellipse with the given point
+            p = ((math.pow((x - ellipse_center[0]), 2) // math.pow((w/2), 2)) + 
+                (math.pow((y - ellipse_center[1]), 2) // math.pow((h/2), 2)))
+            if p <= 1: #point exists in or on eclipse
+                within_points.append(key)
+        return None
 
     def handle_inputs():
         pass
@@ -376,6 +429,7 @@ if __name__ == "__main__":
     input_dialog.add_tab_state = False
     tracker_list.append(MultiTracker(input_dialog.tab_list[0]))
 
+    regions = Regions()
 
 
     selected_tracker = 0
@@ -444,6 +498,7 @@ if __name__ == "__main__":
             input_dialog.mediaStateChanged(True)
         elif key == ord("s"):
             print("Nudge Down")
+            regions.add_radius(input())
         elif key == ord("d"):
             print("Nudge Right")
         selected_tracker = input_dialog.tabs.currentIndex()
@@ -478,6 +533,7 @@ if __name__ == "__main__":
                 center_x = bottom_right - (width/2)
                 center_y = top_left + (height/2)
                 
+                regions.test_radius((center_x, center_y))
                 if input_dialog.play_state == True:
                     #record all the data collected from that frame
                     tracker.record_data(frame_number, center_x, center_y)
@@ -505,6 +561,9 @@ if __name__ == "__main__":
             input_dialog.tab_list[selected_tracker].update_length_tracked(current_tracked_time)
         except:
             pass
+
+        if len(regions.radius_regions) > 0:
+            frame = regions.display_radius(frame)
             #When done processing each tracker, view the frame
         cv2.imshow("Frame", frame)
 
