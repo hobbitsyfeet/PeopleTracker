@@ -372,8 +372,8 @@ class Regions():
 
             frame = cv2.ellipse(frame, ellipse_center, (int((w/2)),(int(h/2))), 0, 0,360, (0,255,0) )
             # cv2.ellipse(frame, box=w/2,color=(0,255,0))
-            cv2.rectangle(frame, (x , y - 1), (x + 10 * (len(key)) , y - 15),(255,255,255),-1)
-            cv2.putText(frame,key, (x , y - 1), cv2.FONT_HERSHEY_PLAIN, 1, (0,0,0),1)
+            cv2.rectangle(frame, (x + int(w/2.1) , y - 1), (x + int(w/2.1) + 10 * (len(key)) , y - 15),(255,255,255),-1)
+            cv2.putText(frame,key, (x + int(w/2.1) , y - 1), cv2.FONT_HERSHEY_PLAIN, 1, (0,0,0),1)
         return frame
 
     def test_radius(self, test_point):
@@ -386,21 +386,23 @@ class Regions():
         """
         #overlapping areas may result in multiple True tests
         within_points = []
-        x = test_point[0]
-        y = test_point[1]
+        test_x = test_point[0]
+        test_y = test_point[1]
         
         for key, region in self.radius_regions.items():
 
             x, y, w, h = region[0], region[1], region[2], region[3]
-            ellipse_center = (x + (w/2) , y - (h/2))
+            ellipse_center = (x + (w/2) , y + (h/2))
 
-            # checking the equation of
-            # ellipse with the given point
-            p = ((math.pow((x - ellipse_center[0]), 2) // math.pow((w/2), 2)) + 
-                (math.pow((y - ellipse_center[1]), 2) // math.pow((h/2), 2)))
+
+                # checking the equation of
+                # ellipse with the given point
+            p = ((math.pow((test_x - ellipse_center[0]), 2) / math.pow((w/2), 2)) + 
+                (math.pow((test_y - ellipse_center[1]), 2) / math.pow((h/2), 2)))
+
             if p <= 1: #point exists in or on eclipse
                 within_points.append(key)
-        return None
+        return within_points
 
     def handle_inputs():
         pass
@@ -530,10 +532,14 @@ if __name__ == "__main__":
                 width = box[2]
                 height = box[3]
 
-                center_x = bottom_right - (width/2)
+                center_x = bottom_right + (width/2)
                 center_y = top_left + (height/2)
                 
-                regions.test_radius((center_x, center_y))
+                #center dot
+                cv2.circle(frame, (int(center_x),int(center_y)),1,(0,0,0),-1)
+
+                in_region = regions.test_radius((center_x, center_y))
+                print(in_region)
                 if input_dialog.play_state == True:
                     #record all the data collected from that frame
                     tracker.record_data(frame_number, center_x, center_y)
