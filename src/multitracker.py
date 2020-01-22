@@ -71,10 +71,12 @@ class MultiTracker():
         return self.sex.text()
 
     def get_description(self):
-        return self.description.getText()
+        return self.description.toPlainText()
 
     def get_time_tracked(self, framerate):
-        """ Returns total time being tracked in video: returns  """ 
+        """ Returns total time being tracked in video: returns  """
+        
+        # if len(self.data_dict) > 2:
         total_time = [self.calculate_total_time(self.part_time_to_segments(list(self.data_dict.keys())), framerate)]
         return total_time
 
@@ -203,14 +205,15 @@ class MultiTracker():
         """
         pass
 
-    def record_data(self, frame, x, y):
+    def record_data(self, frame, x, y, regions):
         """
         Appends location and time to a list of data
         """
         # print("recording Frame" + str(frame))
         # self.location_data.append((int(x),int(y))) #(x, y)
         # self.time_data.append(frame) #(frames tracked)
-        self.data_dict[frame] = (int(x),int(y))
+        point = (int(x),int(y))
+        self.data_dict[frame] = (point, regions)
 
         # self.distance_data.append(self.estimate_distance(size)) #(CLOSE, MED, FAR) (estimated)
 
@@ -222,7 +225,7 @@ class MultiTracker():
 
     def export_data(self, vid_width, vid_height, vid_name, fps):
         """
-        Exports the recorded data and appends constants such as name, total time recorded, and pixel% Loc
+        Exports the recorded data and appends constants such as name, total time recorded, and pixel percent Loc
         """
         # if not os.path.exists(("./data/" + vid_name[:-4])):
         #     os.makedirs(("./data/" + vid_name[:-4]))
@@ -233,41 +236,71 @@ class MultiTracker():
             data = {"Frame_Num":[],#self.time_data,
                 "Pixel_Loc":[],
                 "Perc_X":[], "Perc_Y":[],
-                "Name":[], "Sex":[],"Total_Sec_Rec":[]}
+                "Region": [],
+                "Name":[], "Sex":[], "Total_Sec_Rec":[],
+                "Description":[]}
 
             df = pd.DataFrame(data)
             export_csv = df.to_csv (export_filename, index = None, header=True, mode='a')
 
         frames = list(self.data_dict.keys())
         location = list(self.data_dict.values())
+
         #elaborate on the location, record it in percent
         perc_x_list = []
         perc_y_list = []
+        pixel_location = []
+        region_list = []
+        
+
         for data in location:
-            perc_x = (data[0]/vid_width)*100
-            perc_y = (data[1]/vid_height)*100
+
+            
+            pixel_location.append(data[0])
+
+            perc_x = (data[0][0]/vid_width)*100
+            perc_y = (data[0][1]/vid_height)*100
             perc_x_list.append(round(perc_x,2))
             perc_y_list.append(round(perc_y,2))
+
+            region_string = ""
+            for text in data[1]:
+                if text == data[1][-1]:
+                    region_string += (text)
+                else:
+                    region_string += (text + ", ")
+            region_list.append(region_string)
+
+        print(len(frames))
+        print(pixel_location)
+        print(len(pixel_location))
+        print(region_list)
+        print(len(region_list))
 
 
         #extend all the data so it can be exported
         MAX_LEN = len(frames)
         sex = [self.get_sex()]
         name = [self.get_name()]
+        description = [self.get_description()]
         # total_time = [self.(self.part_time_to_segments(self.time_data))]
         total_time = self.get_time_tracked(vid_fps)
         total_time[0] += self.previous_time
         self.previous_time = total_time[0]
         sex.extend([sex[0]]*(MAX_LEN-1))
         name.extend([name[0]]*(MAX_LEN-1))
+        description.extend([description[0]]*(MAX_LEN-1))
         total_time.extend([total_time[0]]*(MAX_LEN-1))
+        
 
 
         data = {"Frame_Num":frames,#self.time_data,
-            "Pixel_Loc": location,
+            "Pixel_Loc": pixel_location,
             "Perc_X": perc_x_list, "Perc_Y": perc_y_list,
+            "Region": region_list,
             "Name": name, "Sex":sex, 
-            "Total_Sec_Rec":total_time}
+            "Total_Sec_Rec":total_time,
+            "Description":description}
         
         df = pd.DataFrame(data)
 
@@ -285,7 +318,8 @@ class MultiTracker():
             min_segment is the minimum size of segment allowed. If it is too small, it will be ignored. Defualt is 1 second (30 frames).
         """
         #three segment markers, starting frame, current frame, and end frame
-        seg_start = seg_last =  time_data[0]
+        seg_start =  time_data[0]
+        seg_last = time_data[0]
         
         total_segments = [] # total segments placed in a list
 
@@ -394,7 +428,6 @@ class Regions():
             x, y, w, h = region[0], region[1], region[2], region[3]
             ellipse_center = (x + (w/2) , y + (h/2))
 
-
                 # checking the equation of
                 # ellipse with the given point
             p = ((math.pow((test_x - ellipse_center[0]), 2) / math.pow((w/2), 2)) + 
@@ -448,6 +481,16 @@ if __name__ == "__main__":
         app.processEvents()
         selected_tracker = input_dialog.tabs.currentIndex()
 
+        #if there's no data to export, grey out export button.
+        if tracker_list:
+            if not tracker_list[selected_tracker].data_dict:
+                input_dialog.export_tab_btn.setEnabled(False)
+            else:
+                input_dialog.export_tab_btn.setEnabled(True)
+        elif selected_tracker == -1:
+            input_dialog.export_tab_btn.setEnabled(False)
+
+
         #if the scrollbar is changed, update the frame, else continue with the normal frame
         if input_dialog.scrollbar_changed == True:
             i = input_dialog.get_scrollbar_value()
@@ -462,6 +505,7 @@ if __name__ == "__main__":
             input_dialog.tabs.setEnabled(False)
             input_dialog.add_tab_btn.setEnabled(False)
             input_dialog.del_tab_btn.setEnabled(False)
+            input_dialog.export_tab_btn.setEnabled(False)
             input_dialog.tabs.setEnabled(True)
             input_dialog.add_tab_state = False
         
@@ -539,10 +583,10 @@ if __name__ == "__main__":
                 cv2.circle(frame, (int(center_x),int(center_y)),1,(0,0,0),-1)
 
                 in_region = regions.test_radius((center_x, center_y))
-                print(in_region)
+                
                 if input_dialog.play_state == True:
                     #record all the data collected from that frame
-                    tracker.record_data(frame_number, center_x, center_y)
+                    tracker.record_data(frame_number, center_x, center_y, in_region)
 
 
         #If you select a tracker and it is not running, start a new one
@@ -555,11 +599,13 @@ if __name__ == "__main__":
                 input_dialog.tabs.setEnabled(True)
                 input_dialog.add_tab_btn.setEnabled(True)
                 input_dialog.del_tab_btn.setEnabled(True)
+                input_dialog.export_tab_btn.setEnabled(True)
             if key == ord(' '):
                 input_dialog.play_state = False
                 input_dialog.tabs.setEnabled(False)
                 tracker_list[selected_tracker].assign(frame, trackerName)
                 input_dialog.tabs.setEnabled(True)
+    
             # input_dialog.play_state = True
 
         try:
