@@ -89,9 +89,6 @@ class MultiTracker():
 
         tracker_type = ['BOOSTING', 'MIL','KCF', 'TLD', 'MEDIANFLOW', 'GOTURN', 'MOSSE', 'CSRT']
         """
-        # tracker_type = tracker_types[2]
-    
-        # if int(minor_ver) < 3:
             # tracker = cv2.Tracker_create(tracker_type)
         if tracker_type == 'BOOSTING':
             #Based on the same algorithm used to power the machine learning behind Haar cascades (AdaBoost), but like Haar cascades, is over a decade old. This tracker is slow and doesn’t work very well. Interesting only for legacy reasons and comparing other algorithms.
@@ -257,7 +254,6 @@ class MultiTracker():
 
         for data in location:
 
-            
             pixel_location.append(data[0])
 
             perc_x = (data[0][0]/vid_width)*100
@@ -279,8 +275,7 @@ class MultiTracker():
         print(region_list)
         print(len(region_list))
 
-
-        #extend all the data so it can be exported
+        #extend all the data so it can be exported. All data should be of the same length.
         MAX_LEN = len(frames)
         sex = [self.get_sex()]
         name = [self.get_name()]
@@ -294,19 +289,17 @@ class MultiTracker():
         description.extend([description[0]]*(MAX_LEN-1))
         total_time.extend([total_time[0]]*(MAX_LEN-1))
         
-
-
+        #Create the dataframe
         data = {"Frame_Num":frames,#self.time_data,
             "Pixel_Loc": pixel_location,
             "Perc_X": perc_x_list, "Perc_Y": perc_y_list,
             "Region": region_list,
+            "TimeInRegion":,
             "Name": name, "Sex":sex, 
             "Total_Sec_Rec":total_time,
             "Description":description}
         
         df = pd.DataFrame(data)
-
-
         export_csv = df.to_csv (export_filename, index = None, header=False, mode='a') #Don't forget to add '.csv' at the end of the path
 
         self.data_dict = dict()
@@ -379,10 +372,7 @@ class MultiTracker():
             total_time += self.calculate_time(seg[0],seg[1],fps)
         return total_time
 
-
-
-
-
+    '''
     def adjust_gamma(image, gamma=1.0):
         # build a lookup table mapping the pixel values [0, 255] to
         # their adjusted gamma values
@@ -390,6 +380,7 @@ class MultiTracker():
         table = np.array([((i / 255.0) ** invGamma) * 255
             for i in np.arange(0, 256)]).astype("uint8")
         return cv2.LUT(image, table)
+    '''
 
 
 class Regions(QWidget):
@@ -458,24 +449,34 @@ class Regions(QWidget):
         pass
 
 def export_meta(vid_dir):
+    """
+    Exports a start line into a CSV with the same name as the video. This CSV will initialize with a set of columns on the left
+    with dashed lines for recorded data, and a set of columns on the right with Metadata.
+    This should only be called once, and will only initialize if the file does not exist- will not overwrite.
+
+    Input: vid_dir: directory of filename (string)
+    """
+
+    #get metadata from filepath
+    #NOTE: Exiftool must be in path to access, otherwise pass a string to the path.
     with exiftool.ExifTool() as et:
         metadata = et.get_metadata(vid_dir)
     
-    print(metadata)
+    #Parse date data into [YYYY MM DD HH MM SS]
     date_created = metadata['QuickTime:CreateDate'].replace(":"," ")
-    print(date_created)
     date = list(map(int,date_created.split()))
-    print(date)
-
-
-    print(type(metadata))
+    
+    #Create path string for exporting the data. It's just a change of extention.
     export_filename = str(vid_dir[:-4]) + ".csv"
+    
+    #Create the first 2 rows of data with title and then info. Recorded info should have '-' or 'N/A'
     if not os.path.isfile(export_filename):
         data ={
             "Frame_Num":['-'],#self.time_data,
             "Pixel_Loc":['-'],
             "Perc_X":['-'], "Perc_Y":['-'],
             "Region": ['-'],
+            "TimeInRegion":['-'],
             "Name":['-'], "Sex":['-'], "Total_Sec_Rec":['-'],
             "Description":['-'],
 
@@ -492,54 +493,51 @@ def export_meta(vid_dir):
         }
         print(data)
 
+        #Create a dataframe and then export it.
         df = pd.DataFrame(data,index=[1])
         export_csv = df.to_csv (export_filename, index = None, header=True)
 
-        # data = {}
-
-        # df = pd.DataFrame(data,index=[0])
-        # export_csv = df.to_csv (export_filename, index = None, header=True, mode='a')
         return True
-            
+
+
+        
 #This main is used to test the time
 if __name__ == "__main__":
     trackerName = 'CSRT'
-    # vid_dir = "videos/"
-    # vid_name = "GP074188.MP4"
-    # vid_dir = "C:/Users/legom/Documents/GitHub/UofLStudy/"
-    # vid_name = "Complex_Trim.mp4"
-    # videoPath = vid_dir + vid_name
-    
-    # videoPath = "C:/Users/legom/Documents/GitHub/UofLStudy/Complex_Trim.mp4"
+
+    #Create QT application for the UI
     app = QApplication(sys.argv)
     input_dialog = qt_dialog.App()
 
+    #Get the video path from UI
     videoPath = input_dialog.filename
+
+    #Given the path, export the metadata and setup the csv for data collection
     export_meta(videoPath)
     
-    # meta_file = mutagen.File("videos/GP074188.MP4")
-    # print(meta_file)
-    
+    #initialize empty list to store trackers
     tracker_list = []
+
     # initialize OpenCV's special multi-object tracker
-    # for new_tracker in range(CPU_COUNT):
     input_dialog.add_tab()
     input_dialog.add_tab_state = False
     tracker_list.append(MultiTracker(input_dialog.tab_list[0]))
-
-    regions = Regions()
-
-
     selected_tracker = 0
+
+    #initialize regions object to store all regions
+    regions = Regions()
+    
+    #Initialize video, get the first frame and setup the scrollbar to the video length
     cap = cv2.VideoCapture(videoPath)
     input_dialog.set_max_scrollbar(cap.get(cv2.CAP_PROP_FRAME_COUNT))
     ret, frame = cap.read()
+
     #get the video's FPS
     vid_fps = cap.get(cv2.CAP_PROP_FPS)
     input_dialog.set_fps_info(vid_fps)
     
 
-    i = 0
+    skip_frame = 0
     while cap.isOpened():
         app.processEvents()
         selected_tracker = input_dialog.tabs.currentIndex()
@@ -556,11 +554,12 @@ if __name__ == "__main__":
 
         #if the scrollbar is changed, update the frame, else continue with the normal frame
         if input_dialog.scrollbar_changed == True:
-            i = input_dialog.get_scrollbar_value()
+            skip_frame = input_dialog.get_scrollbar_value()
             input_dialog.scrollbar_changed = False
         else:
-            input_dialog.set_scrollbar(i)
+            input_dialog.set_scrollbar(skip_frame)
 
+        #When we add a tab, finish initializing it before anything else can continue
         if input_dialog.add_tab_state == True:
             print(len(tracker_list))
             input_dialog.tabs.setCurrentIndex(len(tracker_list))
@@ -572,17 +571,22 @@ if __name__ == "__main__":
             input_dialog.tabs.setEnabled(True)
             input_dialog.add_tab_state = False
         
+        #if playing, increment frames by skip_frame count
         if input_dialog.play_state == True:
-            i += input_dialog.get_frame_skip()
+            skip_frame += input_dialog.get_frame_skip()
 
-        cap.set(1 , i)
+        #set tne next frame to skip frame and read it
+        cap.set(1 , skip_frame)
         ret, frame = cap.read()
 
+        #crash the program if no frame exists
         if frame is None:
             break
-
+        
+        #Keep tab names up to date
         input_dialog.set_tab_names()
 
+        #E is for Export
         key = cv2.waitKey(1) & 0xFF
         if key == ord("e") or input_dialog.export_state == True:
             input_dialog.export_state = False
@@ -602,9 +606,10 @@ if __name__ == "__main__":
         elif key == ord("w"):
             print("Nudge Up")
         elif key == ord("a"):
-            i -= input_dialog.get_frame_skip() * 2
+            skip_frame -= input_dialog.get_frame_skip() * 2
             input_dialog.play_state = True
             input_dialog.mediaStateChanged(True)
+        #R is for Radius
         elif key == ord("r"):
             regions.add_radius()
         elif key == ord("d"):
@@ -628,6 +633,7 @@ if __name__ == "__main__":
                 #track and draw box on the frame
                 success, box, frame = tracker.update_tracker(frame)
                 
+                #NOTE: this can be activated if you want to pause the program when trakcer fails
                 # if not success:
                 #     tracker.assign(frame, trackerName)
 
@@ -652,8 +658,8 @@ if __name__ == "__main__":
 
 
         #If you select a tracker and it is not running, start a new one
-
         if selected_tracker >= 0 and len(tracker_list) > 0 and selected_tracker <= len(tracker_list):
+            #If there is no assigned trakcer on selected individual, start one and not allow action until done
             if tracker_list[selected_tracker].init_bounding_box is None:
                 input_dialog.tabs.setEnabled(False)
                 tracker_list[selected_tracker].create(trackerName)
@@ -662,6 +668,7 @@ if __name__ == "__main__":
                 input_dialog.add_tab_btn.setEnabled(True)
                 input_dialog.del_tab_btn.setEnabled(True)
                 input_dialog.export_tab_btn.setEnabled(True)
+            #Press space bar to re-assign
             if key == ord(' '):
                 input_dialog.play_state = False
                 input_dialog.tabs.setEnabled(False)
@@ -670,18 +677,22 @@ if __name__ == "__main__":
     
             # input_dialog.play_state = True
 
+        #NOTE this is in try-catch because initially there are not enough frames to calculate time. 
+        #This could be done with if statement, though I havent found a way...
         try:
             current_tracked_time = tracker_list[selected_tracker].get_time_tracked(vid_fps)[0] + tracker_list[selected_tracker].previous_time
             input_dialog.tab_list[selected_tracker].update_length_tracked(current_tracked_time)
         except:
             pass
-
+        
+        #Display all regions on screen if they exist
         if len(regions.radius_regions) > 0:
             frame = regions.display_radius(frame)
-            #When done processing each tracker, view the frame
+
+        #When done processing each tracker, view the frame
         cv2.imshow("Frame", frame)
 
-            
+    #Close all applications.
     sys.exit(app.exec_())
     cap.release()
     cv2.destroyAllWindows()
