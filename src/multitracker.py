@@ -23,7 +23,7 @@ import mbox
 import numpy as np
 
 import sys
-from PyQt5.QtWidgets import QApplication
+from PyQt5.QtWidgets import QApplication, QInputDialog, QLineEdit, QWidget
 import qt_dialog
 
 import math
@@ -384,17 +384,22 @@ class MultiTracker():
         table = np.array([((i / 255.0) ** invGamma) * 255
             for i in np.arange(0, 256)]).astype("uint8")
         return cv2.LUT(image, table)
-class Regions():
+class Regions(QWidget):
+
     def __init__(self):
+        super().__init__()
+        self.name = ""
+
         self.radius_regions = dict()
 
-    def add_radius(self, name):
+    def add_radius(self):
         """
         Creates a circle given a rectangle ROI.
         """
+        name, okPressed = QInputDialog.getText(self, 'Region', 'Region Name:')
+        if okPressed and name != '':
+            print(name)
         self.radius_regions[name] = (cv2.selectROI("Frame", frame, fromCenter=False, showCrosshair=True))
-
-
     
     def display_radius(self, frame):
         """
@@ -542,9 +547,8 @@ if __name__ == "__main__":
             i -= input_dialog.get_frame_skip() * 2
             input_dialog.play_state = True
             input_dialog.mediaStateChanged(True)
-        elif key == ord("s"):
-            print("Nudge Down")
-            regions.add_radius(input())
+        elif key == ord("r"):
+            regions.add_radius()
         elif key == ord("d"):
             print("Nudge Right")
         selected_tracker = input_dialog.tabs.currentIndex()
