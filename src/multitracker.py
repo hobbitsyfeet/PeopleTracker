@@ -28,6 +28,8 @@ import qt_dialog
 
 import math
 
+import exiftool
+
 # For extracting video metadata
 # import mutagen
 
@@ -377,6 +379,10 @@ class MultiTracker():
             total_time += self.calculate_time(seg[0],seg[1],fps)
         return total_time
 
+
+
+
+
     def adjust_gamma(image, gamma=1.0):
         # build a lookup table mapping the pixel values [0, 255] to
         # their adjusted gamma values
@@ -384,12 +390,12 @@ class MultiTracker():
         table = np.array([((i / 255.0) ** invGamma) * 255
             for i in np.arange(0, 256)]).astype("uint8")
         return cv2.LUT(image, table)
+
+
 class Regions(QWidget):
 
     def __init__(self):
         super().__init__()
-        self.name = ""
-
         self.radius_regions = dict()
 
     def add_radius(self):
@@ -400,6 +406,12 @@ class Regions(QWidget):
         if okPressed and name != '':
             print(name)
         self.radius_regions[name] = (cv2.selectROI("Frame", frame, fromCenter=False, showCrosshair=True))
+
+    def del_radius(self):
+        items = (self.radius_regions.keys())
+        item, okPressed = QInputDialog.getItem(self.parent, "Get item","Sex:", items, 0, False)
+        if okPressed and item:
+            print(item)
     
     def display_radius(self, frame):
         """
@@ -444,6 +456,51 @@ class Regions(QWidget):
 
     def handle_inputs():
         pass
+
+def export_meta(vid_dir):
+    with exiftool.ExifTool() as et:
+        metadata = et.get_metadata(vid_dir)
+    
+    print(metadata)
+    date_created = metadata['QuickTime:CreateDate'].replace(":"," ")
+    print(date_created)
+    date = list(map(int,date_created.split()))
+    print(date)
+
+
+    print(type(metadata))
+    export_filename = str(vid_dir[:-4]) + ".csv"
+    if not os.path.isfile(export_filename):
+        data ={
+            "Frame_Num":['-'],#self.time_data,
+            "Pixel_Loc":['-'],
+            "Perc_X":['-'], "Perc_Y":['-'],
+            "Region": ['-'],
+            "Name":['-'], "Sex":['-'], "Total_Sec_Rec":['-'],
+            "Description":['-'],
+
+            "FileName": metadata['File:FileName'],
+            "FileType": metadata['File:FileType'],
+            "CreateDate(YYYY:MM:DD HH:MM:SS)": metadata['QuickTime:CreateDate'],
+            "CreateYear": date[0], "CreateMonth": date[1], "CreateDay": date[2],
+            "CreateHour": date[3], "CreateMinute": date[4], "CreateSecond": date[5],
+
+            "Width(px)": metadata['QuickTime:ImageWidth'],
+            "Height(px)": metadata['QuickTime:ImageHeight'],
+            "FrameRate": metadata['QuickTime:VideoFrameRate'],
+            "HandlerDescription": metadata['QuickTime:HandlerDescription']
+        }
+        print(data)
+
+        df = pd.DataFrame(data,index=[1])
+        export_csv = df.to_csv (export_filename, index = None, header=True)
+
+        # data = {}
+
+        # df = pd.DataFrame(data,index=[0])
+        # export_csv = df.to_csv (export_filename, index = None, header=True, mode='a')
+        return True
+            
 #This main is used to test the time
 if __name__ == "__main__":
     trackerName = 'CSRT'
@@ -458,7 +515,8 @@ if __name__ == "__main__":
     input_dialog = qt_dialog.App()
 
     videoPath = input_dialog.filename
-
+    export_meta(videoPath)
+    
     # meta_file = mutagen.File("videos/GP074188.MP4")
     # print(meta_file)
     
