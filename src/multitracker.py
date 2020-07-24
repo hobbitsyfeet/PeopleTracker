@@ -21,10 +21,10 @@ import tkinter
 import mbox
 
 import numpy as np
-
-import sys
-from PyQt5.QtWidgets import QApplication, QInputDialog, QLineEdit, QWidget
 import qt_dialog
+import sys
+from PyQt5.QtWidgets import QApplication, QInputDialog, QLineEdit, QWidget, QComboBox, QMessageBox
+
 
 import math
 
@@ -294,7 +294,7 @@ class MultiTracker():
             "Pixel_Loc": pixel_location,
             "Perc_X": perc_x_list, "Perc_Y": perc_y_list,
             "Region": region_list,
-            "TimeInRegion":,
+            # "TimeInRegion":,
             "Name": name, "Sex":sex, 
             "Total_Sec_Rec":total_time,
             "Description":description}
@@ -396,13 +396,36 @@ class Regions(QWidget):
         name, okPressed = QInputDialog.getText(self, 'Region', 'Region Name:')
         if okPressed and name != '':
             print(name)
-        self.radius_regions[name] = (cv2.selectROI("Frame", frame, fromCenter=False, showCrosshair=True))
+            self.radius_regions[name] = (cv2.selectROI("Frame", frame, fromCenter=False, showCrosshair=True))
 
     def del_radius(self):
         items = (self.radius_regions.keys())
-        item, okPressed = QInputDialog.getItem(self.parent, "Get item","Sex:", items, 0, False)
+        # items = ("Red","Blue","Green")
+        item, okPressed = QInputDialog.getItem(self, "Get item","Delete Regions:", items, 0, False)
         if okPressed and item:
             print(item)
+            del self.radius_regions[item]
+        # name, okPressed = QInputDialog.getText(self, 'Region', 'Delete Region Name:')
+        
+        # combo_box = QComboBox(self)
+        # for item in items:
+        #     combo_box.addItem(item)
+        # combo_box.move(50, 250)
+        # combo_box.showPopup() 
+        # selected = combo_box.activated[str]
+                # creating a combo box widget 
+
+  
+        # adding action to the button 
+        # button.pressed.connect(self.action) 
+  
+
+        
+        # comboBox.activated[str].connect(lambda parameter_list: expression)
+        # del self.radius_regions[selected]
+        # item, okPressed = QInputDialog.getItem(self.parent, "Get item","Region Name", items, 0, False)
+        # if okPressed and item:
+        #     print(item)
     
     def display_radius(self, frame):
         """
@@ -476,7 +499,7 @@ def export_meta(vid_dir):
             "Pixel_Loc":['-'],
             "Perc_X":['-'], "Perc_Y":['-'],
             "Region": ['-'],
-            "TimeInRegion":['-'],
+            # "TimeInRegion":['-'],
             "Name":['-'], "Sex":['-'], "Total_Sec_Rec":['-'],
             "Description":['-'],
 
@@ -509,20 +532,24 @@ if __name__ == "__main__":
     app = QApplication(sys.argv)
     input_dialog = qt_dialog.App()
 
+
     #Get the video path from UI
     videoPath = input_dialog.filename
 
+    print("Populating UI")
     #Given the path, export the metadata and setup the csv for data collection
     export_meta(videoPath)
     
     #initialize empty list to store trackers
     tracker_list = []
 
+    
+
     # initialize OpenCV's special multi-object tracker
-    input_dialog.add_tab()
-    input_dialog.add_tab_state = False
-    tracker_list.append(MultiTracker(input_dialog.tab_list[0]))
-    selected_tracker = 0
+    # input_dialog.add_tab()
+    # input_dialog.add_tab_state = False
+    # tracker_list.append(MultiTracker(input_dialog.tab_list[0]))
+    selected_tracker = 1
 
     #initialize regions object to store all regions
     regions = Regions()
@@ -530,14 +557,18 @@ if __name__ == "__main__":
     #Initialize video, get the first frame and setup the scrollbar to the video length
     cap = cv2.VideoCapture(videoPath)
     input_dialog.set_max_scrollbar(cap.get(cv2.CAP_PROP_FRAME_COUNT))
-    ret, frame = cap.read()
+    cap.set(cv2.CAP_PROP_FRAME_WIDTH, input_dialog.resolution_x);
+    cap.set(cv2.CAP_PROP_FRAME_HEIGHT, input_dialog.resolution_y);
 
+    ret, frame = cap.read()
+    frame = cv2.resize(frame, (input_dialog.resolution_x, input_dialog.resolution_y), 0, 0, cv2.INTER_CUBIC)
+    
     #get the video's FPS
     vid_fps = cap.get(cv2.CAP_PROP_FPS)
     input_dialog.set_fps_info(vid_fps)
     
-
-    skip_frame = 0
+    
+    skip_frame = 50
     while cap.isOpened():
         app.processEvents()
         selected_tracker = input_dialog.tabs.currentIndex()
@@ -561,9 +592,11 @@ if __name__ == "__main__":
 
         #When we add a tab, finish initializing it before anything else can continue
         if input_dialog.add_tab_state == True:
-            print(len(tracker_list))
+            print("Adding Tab!")
             input_dialog.tabs.setCurrentIndex(len(tracker_list))
-            tracker_list.append(MultiTracker(input_dialog.tab_list[len(tracker_list)]))
+            selected_tracker = input_dialog.tabs.currentIndex()
+            tracker_list.append(MultiTracker(input_dialog.tab_list[selected_tracker]))
+            
             input_dialog.tabs.setEnabled(False)
             input_dialog.add_tab_btn.setEnabled(False)
             input_dialog.del_tab_btn.setEnabled(False)
@@ -577,7 +610,12 @@ if __name__ == "__main__":
 
         #set tne next frame to skip frame and read it
         cap.set(1 , skip_frame)
-        ret, frame = cap.read()
+        try:
+            ret, frame = cap.read()
+
+            frame = cv2.resize(frame, (input_dialog.resolution_x, input_dialog.resolution_y), 0, 0, cv2.INTER_CUBIC)
+        except:
+            continue
 
         #crash the program if no frame exists
         if frame is None:
@@ -586,9 +624,10 @@ if __name__ == "__main__":
         #Keep tab names up to date
         input_dialog.set_tab_names()
 
-        #E is for Export
+        # E is for Export
         key = cv2.waitKey(1) & 0xFF
-        if key == ord("e") or input_dialog.export_state == True:
+        # if key == ord("e") or input_dialog.export_state == True:
+        if input_dialog.export_state == True:
             input_dialog.export_state = False
             print("Exporting " + tracker_list[selected_tracker].get_name() + "'s data recorded.")
             width = cap.get(cv2.CAP_PROP_FRAME_WIDTH)   # float
@@ -599,39 +638,56 @@ if __name__ == "__main__":
                 print(err)
 
         #remove the tracker that is currently selected
-        elif input_dialog.del_tab_state is True and selected_tracker != -1:
+        # if input_dialog.del_tab_state is True and selected_tracker != -1:
+        if input_dialog.del_tab_state is True:
+            
+            print("Deleting Tracker!")
             del tracker_list[selected_tracker]
+            input_dialog.tabs.setCurrentIndex(len(tracker_list))
             selected_tracker = input_dialog.tabs.currentIndex()
             input_dialog.del_tab_state = False
-        elif key == ord("w"):
-            print("Nudge Up")
-        elif key == ord("a"):
-            skip_frame -= input_dialog.get_frame_skip() * 2
-            input_dialog.play_state = True
-            input_dialog.mediaStateChanged(True)
-        #R is for Radius
-        elif key == ord("r"):
+        # elif key == ord("w"):
+        #     print("Nudge Up")
+        # elif key == ord("a"):
+        #     skip_frame -= input_dialog.get_frame_skip() * 2
+        #     input_dialog.play_state = True
+        #     input_dialog.mediaStateChanged(True)
+        # #R is for Radius
+        
+        elif input_dialog.region_state is True:
             regions.add_radius()
-        elif key == ord("d"):
-            print("Nudge Right")
+            input_dialog.region_state = False
+        elif input_dialog.del_region_state is True:
+            regions.del_radius()
+            input_dialog.del_region_state = False
+
+        # elif key == ord("d"):
+        #     print("Nudge Right")
         selected_tracker = input_dialog.tabs.currentIndex()
 
         #Set the selected Tracker to Red
         for tracker in range(len(tracker_list)):
+            app.processEvents()
             if tracker == selected_tracker:
                 tracker_list[tracker].colour = (0,0,255)
             else:
                 tracker_list[tracker].colour = (255,255,255)
+        app.processEvents()
 
         #Loop through every tracker and update
-        for tracker in tracker_list:
-            if tracker.init_bounding_box is not None:
+        for tracker in enumerate(tracker_list):
+            tracker_num = tracker[0]
+            tracker = tracker[1]
+
+            if tracker.init_bounding_box is not None and input_dialog.tab_list[tracker_num].active is True:
 
                 #allocate frames on GPU, reducing CPU load.
                 cv2.UMat(frame)    
 
+                app.processEvents()
                 #track and draw box on the frame
                 success, box, frame = tracker.update_tracker(frame)
+                app.processEvents()
                 
                 #NOTE: this can be activated if you want to pause the program when trakcer fails
                 # if not success:
@@ -656,6 +712,8 @@ if __name__ == "__main__":
                     #record all the data collected from that frame
                     tracker.record_data(frame_number, center_x, center_y, in_region)
 
+                
+            app.processEvents()
 
         #If you select a tracker and it is not running, start a new one
         if selected_tracker >= 0 and len(tracker_list) > 0 and selected_tracker <= len(tracker_list):

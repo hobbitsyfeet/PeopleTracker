@@ -1,28 +1,55 @@
 import sys
-from PyQt5.QtWidgets import QApplication, QWidget, QInputDialog, QLineEdit, QLabel, QPushButton, QPlainTextEdit, QSlider, QStyle, QAction, QTabWidget, QVBoxLayout, QHBoxLayout, QMessageBox, QFileDialog
+from PyQt5.QtWidgets import QApplication, QWidget, QInputDialog, QLineEdit, QLabel, QPushButton, QPlainTextEdit, QSlider, QStyle, QAction, QTabWidget, QVBoxLayout, QHBoxLayout, QMessageBox, QFileDialog, QCheckBox, QMenuBar
 
 from PyQt5.QtGui import QIcon, QIntValidator
 from PyQt5.QtCore import Qt
 from PyQt5.QtCore import pyqtSlot
 
-
 class App(QWidget):
-
+# TODO ADD A CURRENT STATE INFO TAG WHICH LETS THE USER KNOW WHAT TO DO AT A CERTAIN TIME!
     def __init__(self):
         super().__init__()
         self.title = 'Person'
         self.left = 250
         self.top = 250
-        self.width = 640
-        self.height = 480
+        self.width = 480
+        self.height = 240
         self.initUI()
 
         self.play_state = False
         self.export_state = False
+        self.region_state = False
+        self.del_region_state = False
         self.scrollbar_changed = False
+        self.resolution_x = 720
+        self.resolution_y = 480
         self.vid_fps = 30
-        
+    
+    def keyPressEvent(self, event):
+            self.test_method()
+            
+    def test_method(self):
+        print('key pressed')
+
+    def processtrigger(self,q):
+        print (q.text() + " is triggered")
+        if q.text() == "Display Help":
+            self.display_help()
+        elif q.text() == "Add Region":
+            self.region_state = True
+        elif q.text() == "Delete Region":
+            self.del_region_state = True
+        elif q.text() == "Resize Video":
+            width, okPressed = QInputDialog.getInt(self, 'Width', 'Width:', self.resolution_x)
+            height, okPressed = QInputDialog.getInt(self, 'height', 'Height:', self.resolution_y)
+            if okPressed and height >= 0 and width >= 0:
+                self.resolution_x = int(width)
+                self.resolution_y = int(height)
+        elif q.text() == "Quit":
+            exit(0)
+
     def initUI(self):
+
 
         self.setWindowTitle(self.title)
         self.setGeometry(self.left, self.top, self.width, self.height)
@@ -34,11 +61,59 @@ class App(QWidget):
 
         self.layout = QVBoxLayout(self)
 
+        # Menu bar
+        bar = QMenuBar()
+        file = bar.addMenu("File")
+        file.addAction("New")
+
+        save = QAction("Save",self)
+        save.setShortcut("Ctrl+S")
+        file.addAction(save)
+
+        edit = bar.addMenu("Edit")
+        add_region = QAction("Add Region", self)
+        add_region.setShortcut("Ctrl+R")
+        del_region = QAction("Delete Region", self)
+        del_region.setShortcut("Ctrl+Shift+R")
+
+        # AddTab	Ctrl+T
+        edit.addAction(add_region)
+        edit.addAction(del_region)
+        edit.addAction("copy")
+        edit.addAction("paste")
+        edit.triggered[QAction].connect(self.processtrigger)
+  
+        quit = QAction("Quit", self)
+        file.addAction(quit)
+        file.triggered[QAction].connect(self.processtrigger)
+
+        viewMenu = bar.addMenu("View")
+        resizeVideo = QAction("Resize Video", self)
+        # resizeVideo.setShortcut("Ctrl+R")
+        
+        viewMenu.addAction(resizeVideo)
+        viewMenu.triggered[QAction].connect(self.processtrigger)
+
+        helpMenu = bar.addMenu("Help")
+        helpButton = QAction("Display Help", self)
+        helpButton.setShortcut("Ctrl+H")
+    
+        helpMenu.addAction(helpButton)
+        helpMenu.triggered[QAction].connect(self.processtrigger)
+
+        # self.setLayout(layout)
+        self.layout.addWidget(bar)
+
+        # self.toolbar.addAction(exitAct)
         self.add_tab_state = False
 
         self.tab_control_layout = QHBoxLayout()
         self.add_tab_btn = QPushButton()
         self.add_tab_btn.setText("Add Tab")
+        self.add_tab_btn.setToolTip("Adds a tracking object to the project.\n\n"+
+        "Left Click and Drag on the video to create a tracking box.\n" + 
+        "If unsatisfied with the selection, repeat the Left Click and Drag.\n" +
+        "When satisfied, press Space Bar.")
         self.add_tab_btn.clicked.connect(self.add_tab)
         self.tab_control_layout.addWidget(self.add_tab_btn)
 
@@ -46,6 +121,7 @@ class App(QWidget):
 
         self.export_tab_btn = QPushButton()
         self.export_tab_btn.setText("Export Data")
+        self.export_tab_btn.setToolTip("Exports data and appends it to a .csv named after the video.")
         self.tab_control_layout.addWidget(self.export_tab_btn)
         self.export_tab_btn.clicked.connect(self.export_tab_pressed)
 
@@ -53,7 +129,10 @@ class App(QWidget):
 
         self.del_tab_btn = QPushButton()
         self.del_tab_btn.setText("Delete Tab")
+        self.del_tab_btn.setToolTip("Deletes Tracked Object from project. \n\nWARNING!Export before removing.\nWait until box is cleared to click again.")
+        self.del_tab_btn.setEnabled(False)
         self.del_tab_btn.clicked.connect(self.remove_tab)
+        
         
         self.tab_control_layout.addWidget(self.del_tab_btn)
         
@@ -104,9 +183,10 @@ class App(QWidget):
         self.skip_frames = QLineEdit(self)
         self.onlyInt = QIntValidator()
         self.skip_frames.setValidator(self.onlyInt)
-        self.skip_frames.setText("1")
+        self.skip_frames.setText("50")
         self.skip_frames.setFixedWidth(25)
         self.skip_frames.setAlignment(Qt.AlignRight)
+        self.skip_frames.setToolTip("The number of frames to increment by and 'skip'. This acts as a fast forward (positive) and reverse (negative).")
         bottom_layout.addWidget(self.skip_frames)
 
         self.skip_label = QLabel(self)
@@ -131,6 +211,8 @@ class App(QWidget):
             for currentQTableWidgetItem in self.tableWidget.selectedItems():
                 print(currentQTableWidgetItem.row(), currentQTableWidgetItem.column(), currentQTableWidgetItem.text())
     
+
+
     def set_max_scrollbar(self, maximum):
         self.vidScroll.setMaximum(maximum)
 
@@ -144,6 +226,8 @@ class App(QWidget):
         hours = int(minutes/60)
         self.scrollframe.setText( str(hours) + ":"+ str(minutes) + ":" + str(round( ((value/self.vid_fps) %60),2 ) ))
     
+
+
     def get_scrollbar_value(self):
         # print(self.vidScroll.value())
         return self.vidScroll.value()
@@ -159,6 +243,19 @@ class App(QWidget):
                     self.style().standardIcon(QStyle.SP_MediaPlay))
             self.play_state = False
             # print(self.play_state)
+
+    def btn_state(self,b):
+        if b.text() == "Button1":
+            if b.isChecked() == True:
+                print(b.text()+" is selected")
+            else:
+                print (b.text()+" is deselected")
+                
+        if b.text() == "Button2":
+            if b.isChecked() == True:
+                print (b.text()+" is selected")
+            else:
+                print (b.text()+" is deselected")
 
     def set_tab_names(self):
         i = 0
@@ -178,6 +275,7 @@ class App(QWidget):
         sex = current_tab.sex_line.getText()
         desc = current_tab.desc_line.getText()
         time = current_tab.getText()
+        active = current_tab.toggle_active()
         return name, sex, desc, time
 
     def add_tab(self):
@@ -187,8 +285,6 @@ class App(QWidget):
         if len(self.tab_list) > 0:
             self.del_tab_btn.setEnabled(True)
 
-        
-    
     def remove_tab(self):
         self.del_tab_state = True
         self.tabs.removeTab(self.tabs.currentIndex())
@@ -208,28 +304,20 @@ class App(QWidget):
             skip = int(self.skip_frames.text())
         except:
             print("Skip value non-valid. Please enter a number.")
-            skip = 1
+            skip = 50
         # #ensure skip is not backwards?
         if skip == 0:
-            skip = 1
+            skip = 50
         return skip
     
     def openFileNameDialog(self):
-        options = QFileDialog.Options()
-        options |= QFileDialog.DontUseNativeDialog
-        fileName, _ = QFileDialog.getOpenFileName(self,"QFileDialog.getOpenFileName()", "","All Files (*);;Python Files (*.py)", options=options)
+        # options = QFileDialog.Options()
+        # options |= QFileDialog.DontUseNativeDialog
+        fileName, _ = QFileDialog.getOpenFileName(self,"QFileDialog.getOpenFileName()", "","All Files (*);;Python Files (*.py)")
         if fileName:
             self.filename = fileName
             print(fileName)
             
-    
-    def openFileNamesDialog(self):
-        options = QFileDialog.Options()
-        options |= QFileDialog.DontUseNativeDialog
-        files, _ = QFileDialog.getOpenFileNames(self,"QFileDialog.getOpenFileNames()", "","All Files (*);;Python Files (*.py)", options=options)
-        if files:
-            print(files)
-    
     def saveFileDialog(self):
         options = QFileDialog.Options()
         options |= QFileDialog.DontUseNativeDialog
@@ -237,6 +325,13 @@ class App(QWidget):
         if fileName:
             print(fileName)
 
+    def display_help(self):
+        msg = QMessageBox()
+        msg.setIcon(QMessageBox.Question)
+        msg.setWindowTitle("Help")
+        msg.setText("1) \n2)  \n3)  \n4)  \n")
+        
+        x = msg.exec_()  # this will show our messagebox
 
 class person_tab():
     def __init__(self, window):
@@ -253,6 +348,7 @@ class person_tab():
         self.length_tracked = QLabel(window)
         self.length_tracked.setText("00:00")
     
+        self.active = True
         self.init_tab(window)
 
     def init_tab(self, parent_window):
@@ -296,6 +392,12 @@ class person_tab():
         length_layout.addWidget(self.length_tracked)
         length_layout.setAlignment(Qt.AlignCenter)
 
+        self.active_button = QCheckBox("Active")
+        self.active_button.setChecked(True)
+        self.active_button.stateChanged.connect(lambda:self.toggle_active())
+        self.active_button.setToolTip("Sets the current tracking to actively record. \nIf unchecked, no box will be processed, displayed or recorded.")
+        length_layout.addWidget(self.active_button)
+
         self.tab.layout.addLayout(length_layout)
 
         self.tab.setLayout(self.tab.layout)
@@ -337,6 +439,10 @@ class person_tab():
             print(text)
             
             # return text
+    def toggle_active(self):
+        print("Setting Active to " + str(not self.active))
+        self.active = not self.active
+        return self.active
 
     def update_length_tracked(self, time):
         self.length_tracked.setText("00:00")
