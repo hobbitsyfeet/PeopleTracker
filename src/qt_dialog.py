@@ -7,6 +7,7 @@ from PyQt5.QtCore import pyqtSlot
 
 class App(QWidget):
 # TODO ADD A CURRENT STATE INFO TAG WHICH LETS THE USER KNOW WHAT TO DO AT A CERTAIN TIME!
+# TODO PICKLE THE PROJECT TO SAVE THE STATE!!!
     def __init__(self):
         super().__init__()
         self.title = 'Person'
@@ -27,12 +28,13 @@ class App(QWidget):
     
     def keyPressEvent(self, event):
             self.test_method()
+            # self.log(event)
             
     def test_method(self):
         print('key pressed')
 
     def processtrigger(self,q):
-        print (q.text() + " is triggered")
+        self.log(q.text() + " is triggered")
         if q.text() == "Display Help":
             self.display_help()
         elif q.text() == "Add Region":
@@ -47,12 +49,20 @@ class App(QWidget):
                 self.resolution_y = int(height)
         elif q.text() == "Quit":
             exit(0)
+        elif q.text() == "Active" or q.text() == "Inactive" or q.text() == "Read" or q.text() == "Write":
+            self.set_all_tabs(q.text())
 
     def initUI(self):
 
 
         self.setWindowTitle(self.title)
         self.setGeometry(self.left, self.top, self.width, self.height)
+
+        self.log_label = QLabel(self)
+        self.log_label.setText("Info:")
+        self.log_label.setAlignment(Qt.AlignLeft)
+        self.log_label.setFixedHeight(18)
+        # self.log_label.setFixedWidth(24)
         
         
         self.openFileNameDialog()
@@ -69,6 +79,9 @@ class App(QWidget):
         save = QAction("Save",self)
         save.setShortcut("Ctrl+S")
         file.addAction(save)
+        quit = QAction("Quit", self)
+        file.addAction(quit)
+        file.triggered[QAction].connect(self.processtrigger)
 
         edit = bar.addMenu("Edit")
         add_region = QAction("Add Region", self)
@@ -76,16 +89,37 @@ class App(QWidget):
         del_region = QAction("Delete Region", self)
         del_region.setShortcut("Ctrl+Shift+R")
 
+        edit2 = file.addMenu("Edit")
+        edit2.addAction("copy")
+        edit2.addAction("paste")
         # AddTab	Ctrl+T
         edit.addAction(add_region)
         edit.addAction(del_region)
         edit.addAction("copy")
         edit.addAction("paste")
         edit.triggered[QAction].connect(self.processtrigger)
-  
-        quit = QAction("Quit", self)
-        file.addAction(quit)
-        file.triggered[QAction].connect(self.processtrigger)
+
+        
+        #Set_All
+        set_all =  edit.addMenu("Set All")
+        active = QAction("Active", self)
+        active.setShortcut("Ctrl+A")
+        active.setToolTip("Sets ALL tabs tracking to active.")
+        inactive = QAction("Inactive", self)
+        inactive.setShortcut("Ctrl+Shift+A")
+        inactive.setToolTip("Sets ALL tabs traking to inactive. (Deselects active)")
+        read_on = QAction("Read", self)
+        read_on.setShortcut("Ctrl+W")
+        read_on.setToolTip("Sets ALL tabs to read only. Will not overwrite data. (Good for scrolling)")
+        write_on = QAction("Write", self)
+        write_on.setShortcut("Ctrl+Shift+W")
+        write_on.setToolTip("Sets ALL tabs to WRITE. WILL OVERWRITE DATA WHEN SCROLLING (WARNING)")
+
+        set_all.addAction(active)
+        set_all.addAction(inactive)
+        set_all.addAction(read_on)
+        set_all.addAction(write_on)
+
 
         viewMenu = bar.addMenu("View")
         resizeVideo = QAction("Resize Video", self)
@@ -194,6 +228,8 @@ class App(QWidget):
         self.skip_label.setAlignment(Qt.AlignLeft)
         self.skip_label.setFixedHeight(12)
         bottom_layout.addWidget(self.skip_label)
+        bottom_layout.addWidget(self.log_label)
+        # self.skip_f
         
         
         
@@ -244,18 +280,19 @@ class App(QWidget):
             self.play_state = False
             # print(self.play_state)
 
-    def btn_state(self,b):
+    def btn_state(self, b):
         if b.text() == "Button1":
             if b.isChecked() == True:
-                print(b.text()+" is selected")
+                
+                self.log(b.text()+" is selected")
             else:
-                print (b.text()+" is deselected")
+                self.log(b.text()+" is deselected")
                 
         if b.text() == "Button2":
             if b.isChecked() == True:
-                print (b.text()+" is selected")
+                self.log(b.text()+" is selected")
             else:
-                print (b.text()+" is deselected")
+                self.log(b.text()+" is deselected")
 
     def set_tab_names(self):
         i = 0
@@ -303,7 +340,7 @@ class App(QWidget):
         try:
             skip = int(self.skip_frames.text())
         except:
-            print("Skip value non-valid. Please enter a number.")
+            self.log("Skip value non-valid. Please enter a number.")
             skip = 50
         # #ensure skip is not backwards?
         if skip == 0:
@@ -316,14 +353,14 @@ class App(QWidget):
         fileName, _ = QFileDialog.getOpenFileName(self,"QFileDialog.getOpenFileName()", "","All Files (*);;Python Files (*.py)")
         if fileName:
             self.filename = fileName
-            print(fileName)
+            self.log("Opening" + fileName)
             
     def saveFileDialog(self):
         options = QFileDialog.Options()
         options |= QFileDialog.DontUseNativeDialog
         fileName, _ = QFileDialog.getSaveFileName(self,"QFileDialog.getSaveFileName()","","All Files (*);;Text Files (*.txt)", options=options)
         if fileName:
-            print(fileName)
+            self.log("Saving " + fileName)
 
     def display_help(self):
         msg = QMessageBox()
@@ -332,6 +369,28 @@ class App(QWidget):
         msg.setText("1) \n2)  \n3)  \n4)  \n")
         
         x = msg.exec_()  # this will show our messagebox
+
+    def log(self, text):
+        self.log_label.setText("Info: " + str(text))
+        print(text)
+
+    def set_all_tabs(self, value):
+        for tab in self.tab_list:
+            if value == "Active":
+                # tab.active = True
+                tab.active_button.setChecked(True)
+            elif value == "Inactive":
+                # tab.active = False
+                tab.active_button.setChecked(False)
+            elif value == "Read":
+                # tab.read_only = True
+                tab.read_only_button.setChecked(True)
+            elif value == "Write":
+                # tab.read_only = False
+                tab.read_only_button.setChecked(False)
+
+
+
 
 class person_tab():
     def __init__(self, window):
@@ -349,6 +408,7 @@ class person_tab():
         self.length_tracked.setText("00:00")
     
         self.active = True
+        self.read_only = False
         self.init_tab(window)
 
     def init_tab(self, parent_window):
@@ -398,6 +458,11 @@ class person_tab():
         self.active_button.setToolTip("Sets the current tracking to actively record. \nIf unchecked, no box will be processed, displayed or recorded.")
         length_layout.addWidget(self.active_button)
 
+        self.read_only_button = QCheckBox("Read Only")
+        self.read_only_button.setChecked(False)
+        self.read_only_button.stateChanged.connect(lambda:self.toggle_read())
+        self.read_only_button.setToolTip("Sets the person to read only. \nThis is useful for scrolling through the video without overwriting data.")
+        length_layout.addWidget(self.read_only_button)
         self.tab.layout.addLayout(length_layout)
 
         self.tab.setLayout(self.tab.layout)
@@ -409,23 +474,22 @@ class person_tab():
         
 
 
-    def getInteger(self):
-        i, okPressed = QInputDialog.getInt(self.parent, "Get integer","Percentage:", 28, 0, 100, 1)
-        if okPressed:
-            print(i)
-            # return i
+    # def getInteger(self):
+    #     i, okPressed = QInputDialog.getInt(self.parent, "Get integer","Percentage:", 28, 0, 100, 1)
+    #     if okPressed:
 
-    def getDouble(self):
-        d, okPressed = QInputDialog.getDouble(self.parent, "Get double","Value:", 10.50, 0, 100, 10)
-        if okPressed:
-            print( d)
-            # return d
+    #         # return i
+
+    # def getDouble(self):
+    #     d, okPressed = QInputDialog.getDouble(self.parent, "Get double","Value:", 10.50, 0, 100, 10)
+    #     if okPressed:
+    #         return d
         
     def getChoice(self):
         items = ("Female","Male", "Other")
         item, okPressed = QInputDialog.getItem(self.parent, "Get item","Sex:", items, 0, False)
         if okPressed and item:
-            print(item)
+            # print(item)
             self.sex_line.setText(item)
             # return item
 
@@ -436,13 +500,18 @@ class person_tab():
                 line.setPlainText(text)
             else:
                 line.setText(text)
-            print(text)
+            # print(text)
             
             # return text
     def toggle_active(self):
-        print("Setting Active to " + str(not self.active))
+        self.parent.log("Setting Active to " + str(not self.active))
         self.active = not self.active
         return self.active
+    
+    def toggle_read(self):
+        self.parent.log("Setting Read only to " + str(not self.read_only))
+        self.read_only = not self.read_only
+        return self.read_only
 
     def update_length_tracked(self, time):
         self.length_tracked.setText("00:00")

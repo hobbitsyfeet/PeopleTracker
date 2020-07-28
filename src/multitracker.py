@@ -147,20 +147,20 @@ class MultiTracker():
                 showCrosshair=True)
         #if not selected, stop until it is
         while self.init_bounding_box[0] is 0 and self.init_bounding_box[1] is 0 and self.init_bounding_box[2] is 0 and self.init_bounding_box[3] is 0:
-            print("No onject selected, select an object to continue")
+            input_dialog.log("No onject selected, select an object to continue")
             self.init_bounding_box = cv2.selectROI("Frame", frame, fromCenter=False,
                 showCrosshair=True)
-        print (self.init_bounding_box)
+        input_dialog.log(self.init_bounding_box)
 
         # start OpenCV object tracker using the supplied bounding box
         # coordinates, then start the FPS throughput estimator as well
         if self.init_bounding_box is not None:
             # self.tracker.init(frame, self.init_bounding_box)
-            print(self.reset)
+            input_dialog.log(self.reset)
             self.reset = True
 
         if self.reset is True:
-            print("Resetting Location")
+            input_dialog.log("Resetting Location")
             del self.tracker
             self.create(tracker_type)
             self.tracker.init(frame, self.init_bounding_box)
@@ -208,7 +208,7 @@ class MultiTracker():
         """
         Appends location and time to a list of data
         """
-        # print("recording Frame" + str(frame))
+        # input_dialog.log("recording Frame" + str(frame))
         # self.location_data.append((int(x),int(y))) #(x, y)
         # self.time_data.append(frame) #(frames tracked)
         point = (int(x),int(y))
@@ -228,7 +228,7 @@ class MultiTracker():
         """
         # if not os.path.exists(("./data/" + vid_name[:-4])):
         #     os.makedirs(("./data/" + vid_name[:-4]))
-        print(self.data_dict)
+        input_dialog.log(self.data_dict)
 
         export_filename = str(vid_name[:-4]) + ".csv"
         if not os.path.isfile(export_filename):
@@ -269,11 +269,11 @@ class MultiTracker():
                     region_string += (text + ", ")
             region_list.append(region_string)
 
-        print(len(frames))
-        print(pixel_location)
-        print(len(pixel_location))
-        print(region_list)
-        print(len(region_list))
+        input_dialog.log(len(frames))
+        input_dialog.log(pixel_location)
+        input_dialog.log(len(pixel_location))
+        input_dialog.log(region_list)
+        input_dialog.log(len(region_list))
 
         #extend all the data so it can be exported. All data should be of the same length.
         MAX_LEN = len(frames)
@@ -321,15 +321,15 @@ class MultiTracker():
 
         # iterate through all the times, start comparing time[0] with time[1]
         for time in time_data:
-            # print(time)
+            # input_dialog.log(time)
             #if the size between last segment time and current time is less than segment threshold
             if ((time - seg_last) <= segment_size):
-                # print("Stepping from " + str(seg_last) + " to " + str(time) )
+                # input_dialog.log("Stepping from " + str(seg_last) + " to " + str(time) )
                 seg_last = time
             
             #if the size between last segment time is greater than the threshold, we create a new segment and check if it has been tracked long enough
             if ((time - seg_last) > segment_size):
-                # print("Past Threshold, segmenting time from " + str(seg_start) + " to " + str(seg_last))
+                # input_dialog.log("Past Threshold, segmenting time from " + str(seg_start) + " to " + str(seg_last))
                 if seg_start is not seg_last:
                     #add the start and end of current segment as a pair
                     total_segments.append((seg_start, seg_last))
@@ -363,11 +363,11 @@ class MultiTracker():
             time_segs = self.part_time_to_segments(total_frames)
         else: 
             time_segs = total_frames
-            # print(time_segs)
+            # input_dialog.log(time_segs)
         #sum all the segments together
         for seg in time_segs:
-            # print("Timing Segment:",end="")
-            # print(seg)
+            # input_dialog.log("Timing Segment:",end="")
+            # input_dialog.log(seg)
             #each seg is a pair of start and end times
             total_time += self.calculate_time(seg[0],seg[1],fps)
         return total_time
@@ -395,7 +395,7 @@ class Regions(QWidget):
         """
         name, okPressed = QInputDialog.getText(self, 'Region', 'Region Name:')
         if okPressed and name != '':
-            print(name)
+            input_dialog.log(name)
             self.radius_regions[name] = (cv2.selectROI("Frame", frame, fromCenter=False, showCrosshair=True))
 
     def del_radius(self):
@@ -403,7 +403,7 @@ class Regions(QWidget):
         # items = ("Red","Blue","Green")
         item, okPressed = QInputDialog.getItem(self, "Get item","Delete Regions:", items, 0, False)
         if okPressed and item:
-            print(item)
+            input_dialog.log(item)
             del self.radius_regions[item]
         # name, okPressed = QInputDialog.getText(self, 'Region', 'Delete Region Name:')
         
@@ -425,7 +425,7 @@ class Regions(QWidget):
         # del self.radius_regions[selected]
         # item, okPressed = QInputDialog.getItem(self.parent, "Get item","Region Name", items, 0, False)
         # if okPressed and item:
-        #     print(item)
+        #     input_dialog.log(item)
     
     def display_radius(self, frame):
         """
@@ -514,7 +514,7 @@ def export_meta(vid_dir):
             "FrameRate": metadata['QuickTime:VideoFrameRate'],
             "HandlerDescription": metadata['QuickTime:HandlerDescription']
         }
-        print(data)
+        input_dialog.log(data)
 
         #Create a dataframe and then export it.
         df = pd.DataFrame(data,index=[1])
@@ -536,7 +536,7 @@ if __name__ == "__main__":
     #Get the video path from UI
     videoPath = input_dialog.filename
 
-    print("Populating UI")
+    input_dialog.log("Populating UI")
     #Given the path, export the metadata and setup the csv for data collection
     export_meta(videoPath)
     
@@ -592,7 +592,7 @@ if __name__ == "__main__":
 
         #When we add a tab, finish initializing it before anything else can continue
         if input_dialog.add_tab_state == True:
-            print("Adding Tab!")
+            input_dialog.log("Adding Tab!")
             input_dialog.tabs.setCurrentIndex(len(tracker_list))
             selected_tracker = input_dialog.tabs.currentIndex()
             tracker_list.append(MultiTracker(input_dialog.tab_list[selected_tracker]))
@@ -629,25 +629,25 @@ if __name__ == "__main__":
         # if key == ord("e") or input_dialog.export_state == True:
         if input_dialog.export_state == True:
             input_dialog.export_state = False
-            print("Exporting " + tracker_list[selected_tracker].get_name() + "'s data recorded.")
+            input_dialog.log("Exporting " + tracker_list[selected_tracker].get_name() + "'s data recorded.")
             width = cap.get(cv2.CAP_PROP_FRAME_WIDTH)   # float
             height = cap.get(cv2.CAP_PROP_FRAME_HEIGHT) # float
             try:
                 tracker_list[selected_tracker].export_data(width, height, videoPath, vid_fps)
             except IOError as err:
-                print(err)
+                input_dialog.log(err)
 
         #remove the tracker that is currently selected
         # if input_dialog.del_tab_state is True and selected_tracker != -1:
         if input_dialog.del_tab_state is True:
             
-            print("Deleting Tracker!")
+            input_dialog.log("Deleting Tracker!")
             del tracker_list[selected_tracker]
             input_dialog.tabs.setCurrentIndex(len(tracker_list))
             selected_tracker = input_dialog.tabs.currentIndex()
             input_dialog.del_tab_state = False
         # elif key == ord("w"):
-        #     print("Nudge Up")
+        #     input_dialog.log("Nudge Up")
         # elif key == ord("a"):
         #     skip_frame -= input_dialog.get_frame_skip() * 2
         #     input_dialog.play_state = True
@@ -655,14 +655,18 @@ if __name__ == "__main__":
         # #R is for Radius
         
         elif input_dialog.region_state is True:
+            input_dialog.log("Adding region... Write name and then draw boundaries")
             regions.add_radius()
             input_dialog.region_state = False
+            input_dialog.log("Adding region complete.")
         elif input_dialog.del_region_state is True:
+            input_dialog.log("Select a region to remove...")
             regions.del_radius()
             input_dialog.del_region_state = False
+            input_dialog.log("Removing region complete.")
 
         # elif key == ord("d"):
-        #     print("Nudge Right")
+        #     input_dialog.log("Nudge Right")
         selected_tracker = input_dialog.tabs.currentIndex()
 
         #Set the selected Tracker to Red
