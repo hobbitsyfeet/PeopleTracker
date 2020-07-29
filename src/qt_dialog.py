@@ -102,12 +102,12 @@ class App(QWidget):
         
         #Set_All
         set_all =  edit.addMenu("Set All")
-        active = QAction("Active", self)
-        active.setShortcut("Ctrl+A")
-        active.setToolTip("Sets ALL tabs tracking to active.")
-        inactive = QAction("Inactive", self)
-        inactive.setShortcut("Ctrl+Shift+A")
-        inactive.setToolTip("Sets ALL tabs traking to inactive. (Deselects active)")
+        # active = QAction("Active", self)
+        # active.setShortcut("Ctrl+A")
+        # active.setToolTip("Sets ALL tabs tracking to active.")
+        # inactive = QAction("Inactive", self)
+        # inactive.setShortcut("Ctrl+Shift+A")
+        # inactive.setToolTip("Sets ALL tabs traking to inactive. (Deselects active)")
         read_on = QAction("Read", self)
         read_on.setShortcut("Ctrl+W")
         read_on.setToolTip("Sets ALL tabs to read only. Will not overwrite data. (Good for scrolling)")
@@ -115,8 +115,8 @@ class App(QWidget):
         write_on.setShortcut("Ctrl+Shift+W")
         write_on.setToolTip("Sets ALL tabs to WRITE. WILL OVERWRITE DATA WHEN SCROLLING (WARNING)")
 
-        set_all.addAction(active)
-        set_all.addAction(inactive)
+        # set_all.addAction(active)
+        # set_all.addAction(inactive)
         set_all.addAction(read_on)
         set_all.addAction(write_on)
 
@@ -127,6 +127,7 @@ class App(QWidget):
         
         viewMenu.addAction(resizeVideo)
         viewMenu.triggered[QAction].connect(self.processtrigger)
+
 
         helpMenu = bar.addMenu("Help")
         helpButton = QAction("Display Help", self)
@@ -452,16 +453,16 @@ class person_tab():
         length_layout.addWidget(self.length_tracked)
         length_layout.setAlignment(Qt.AlignCenter)
 
-        self.active_button = QCheckBox("Active")
-        self.active_button.setChecked(True)
-        self.active_button.stateChanged.connect(lambda:self.toggle_active())
-        self.active_button.setToolTip("Sets the current tracking to actively record. \nIf unchecked, no box will be processed, displayed or recorded.")
-        length_layout.addWidget(self.active_button)
+        # self.active_button = QCheckBox("Active")
+        # self.active_button.setChecked(True)
+        # self.active_button.stateChanged.connect(lambda:self.toggle_active())
+        # self.active_button.setToolTip("Sets the current tracking to actively record. \nIf unchecked, no box will be processed, displayed or recorded.")
+        # length_layout.addWidget(self.active_button)
 
         self.read_only_button = QCheckBox("Read Only")
         self.read_only_button.setChecked(False)
         self.read_only_button.stateChanged.connect(lambda:self.toggle_read())
-        self.read_only_button.setToolTip("Sets the person to read only. \nThis is useful for scrolling through the video without overwriting data.")
+        self.read_only_button.setToolTip("Sets the person to read only. \nThis is useful for scrolling through the video without overwriting data.\n Also useful for people exiting the frame")
         length_layout.addWidget(self.read_only_button)
         self.tab.layout.addLayout(length_layout)
 

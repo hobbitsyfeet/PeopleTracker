@@ -683,7 +683,7 @@ if __name__ == "__main__":
             tracker_num = tracker[0]
             tracker = tracker[1]
 
-            if tracker.init_bounding_box is not None and input_dialog.tab_list[tracker_num].active is True:
+            if tracker.init_bounding_box is not None and input_dialog.tab_list[tracker_num].active is True and input_dialog.tab_list[tracker_num].read_only is False:
 
                 #allocate frames on GPU, reducing CPU load.
                 cv2.UMat(frame)    
@@ -708,13 +708,28 @@ if __name__ == "__main__":
                 center_y = top_left + (height/2)
                 
                 #center dot
-                cv2.circle(frame, (int(center_x),int(center_y)),1,(0,0,0),-1)
+                cv2.circle(frame, (int(center_x),int(center_y)),2,(0,0,255),-1)
 
                 in_region = regions.test_radius((center_x, center_y))
                 
                 if input_dialog.play_state == True:
                     #record all the data collected from that frame
                     tracker.record_data(frame_number, center_x, center_y, in_region)
+
+            elif input_dialog.tab_list[tracker_num].read_only is True:
+                #if read only, display the center
+                frame_number = cap.get(cv2.CAP_PROP_POS_FRAMES)
+
+                if frame_number in tracker.data_dict:
+                    # If key exists in data
+                    center, _ = tracker.data_dict[frame_number]
+
+                    if selected_tracker == tracker_num:
+                        #center dot
+                        cv2.circle(frame, (int(center[0]),int(center[1])),2,(0,255,0),-1)
+                    else: 
+                        cv2.circle(frame, (int(center[0]),int(center[1])),2,(0,0,255),-1)
+
 
                 
             app.processEvents()
