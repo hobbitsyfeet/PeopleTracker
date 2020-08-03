@@ -7,9 +7,4 @@ Dependencies:
 
 Ref: https://github.com/smarnach/pyexiftool/issues/26
 
-
-If Opencv-python-contrib does not work, try:
-
-    pip install opencv-contrib-python-headless
-  
 (Date: January 21, 2020)
