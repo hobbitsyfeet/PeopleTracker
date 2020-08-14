@@ -410,6 +410,7 @@ class person_tab():
     
         self.active = True
         self.read_only = False
+        self.beginning = False
         self.init_tab(window)
 
     def init_tab(self, parent_window):
@@ -466,6 +467,13 @@ class person_tab():
         length_layout.addWidget(self.read_only_button)
         self.tab.layout.addLayout(length_layout)
 
+        self.read_only_button = QCheckBox("Beginning")
+        self.read_only_button.setChecked(False)
+        self.read_only_button.stateChanged.connect(lambda:self.toggle_beginning())
+        self.read_only_button.setToolTip("Sets the 'present at beginning' to be True or False for this person.")
+        length_layout.addWidget(self.read_only_button)
+        self.tab.layout.addLayout(length_layout)
+
         self.tab.setLayout(self.tab.layout)
 
         # #inital load of variables
@@ -504,6 +512,10 @@ class person_tab():
             # print(text)
             
             # return text
+
+    def get_beginning(self):
+        return self.beginning
+
     def toggle_active(self):
         self.parent.log("Setting Active to " + str(not self.active))
         self.active = not self.active
@@ -513,6 +525,11 @@ class person_tab():
         self.parent.log("Setting Read only to " + str(not self.read_only))
         self.read_only = not self.read_only
         return self.read_only
+    
+    def toggle_beginning(self):
+        self.parent.log("Setting person present at beginning to " + str(not self.beginning))
+        self.beginning = not self.beginning
+        return self.beginning
 
     def update_length_tracked(self, time):
         self.length_tracked.setText("00:00")

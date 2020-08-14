@@ -49,6 +49,7 @@ class MultiTracker():
         self.sex = tab.sex_line
 
         self.description = tab.desc_line
+        self.beginning = tab.get_beginning
         self.record_state = False
 
         self.tracker = None
@@ -82,7 +83,6 @@ class MultiTracker():
         total_time = [self.calculate_total_time(self.part_time_to_segments(list(self.data_dict.keys())), framerate)]
         return total_time
 
-        
     def create(self, tracker_type='CSRT'):
         """
         The creation of the Opencv's Tracking mechanism.
@@ -230,6 +230,7 @@ class MultiTracker():
         #     os.makedirs(("./data/" + vid_name[:-4]))
         input_dialog.log(self.data_dict)
 
+        #Generate the base dataframe to fill and file
         export_filename = str(vid_name[:-4]) + ".csv"
         if not os.path.isfile(export_filename):
             data = {"Frame_Num":[],#self.time_data,
@@ -237,7 +238,9 @@ class MultiTracker():
                 "Perc_X":[], "Perc_Y":[],
                 "Region": [],
                 "Name":[], "Sex":[], "Total_Sec_Rec":[],
-                "Description":[]}
+                "Description":[],
+                "Present At Beginning":[],
+                }
 
             df = pd.DataFrame(data)
             export_csv = df.to_csv (export_filename, index = None, header=True, mode='a')
@@ -251,7 +254,7 @@ class MultiTracker():
         pixel_location = []
         region_list = []
         
-
+        #Iterate through data and record
         for data in location:
 
             pixel_location.append(data[0])
@@ -280,6 +283,7 @@ class MultiTracker():
         sex = [self.get_sex()]
         name = [self.get_name()]
         description = [self.get_description()]
+        beginning = [self.beginning()]
         # total_time = [self.(self.part_time_to_segments(self.time_data))]
         total_time = self.get_time_tracked(vid_fps)
         total_time[0] += self.previous_time
@@ -287,7 +291,9 @@ class MultiTracker():
         sex.extend([sex[0]]*(MAX_LEN-1))
         name.extend([name[0]]*(MAX_LEN-1))
         description.extend([description[0]]*(MAX_LEN-1))
+        beginning.extend([beginning[0]]*(MAX_LEN-1))
         total_time.extend([total_time[0]]*(MAX_LEN-1))
+
         
         #Create the dataframe
         data = {"Frame_Num":frames,#self.time_data,
@@ -297,12 +303,16 @@ class MultiTracker():
             # "TimeInRegion":,
             "Name": name, "Sex":sex, 
             "Total_Sec_Rec":total_time,
-            "Description":description}
+            "Description":description,
+            "Beginning":beginning,
+            }
         
         df = pd.DataFrame(data)
         export_csv = df.to_csv (export_filename, index = None, header=False, mode='a') #Don't forget to add '.csv' at the end of the path
 
         self.data_dict = dict()
+
+        input_dialog.log("Export Data Complete!")
         
 
     def part_time_to_segments(self, time_data, segment_size=300):
@@ -502,6 +512,7 @@ def export_meta(vid_dir):
             # "TimeInRegion":['-'],
             "Name":['-'], "Sex":['-'], "Total_Sec_Rec":['-'],
             "Description":['-'],
+            "Present At Beginning":['-'],
 
             "FileName": metadata['File:FileName'],
             "FileType": metadata['File:FileType'],
@@ -520,6 +531,7 @@ def export_meta(vid_dir):
         df = pd.DataFrame(data,index=[1])
         export_csv = df.to_csv (export_filename, index = None, header=True)
 
+        input_dialog.log("Export Metadata Complete!")
         return True
 
 
