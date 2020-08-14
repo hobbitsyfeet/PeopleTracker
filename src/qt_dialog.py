@@ -324,12 +324,20 @@ class App(QWidget):
             self.del_tab_btn.setEnabled(True)
 
     def remove_tab(self):
-        self.del_tab_state = True
-        self.tabs.removeTab(self.tabs.currentIndex())
-        del self.tab_list[self.tabs.currentIndex()]
-        self.set_tab_names()
-        if len(self.tab_list) == 0:
-            self.del_tab_btn.setEnabled(False)
+        warning = QMessageBox()
+        warning.setIcon(QMessageBox.Warning)
+        warning.setWindowTitle("Delete Tracker Warning")
+        warning.setText("You are about to delete the tracker and all of the recorded information... \n Do you still want to continue?")
+        warning.setStandardButtons(QMessageBox.Yes | QMessageBox.Cancel)
+        # answer = warning.buttonClicked.connect(warning)
+        answer = warning.exec()
+        if answer == QMessageBox.Yes:
+            self.del_tab_state = True
+            self.tabs.removeTab(self.tabs.currentIndex())
+            del self.tab_list[self.tabs.currentIndex()]
+            self.set_tab_names()
+            if len(self.tab_list) == 0:
+                self.del_tab_btn.setEnabled(False)
 
     def export_tab_pressed(self):
         self.export_state = True
