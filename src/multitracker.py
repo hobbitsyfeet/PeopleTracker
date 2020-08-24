@@ -30,6 +30,8 @@ import math
 
 import exiftool
 
+from Video import FileVideoStream
+
 # For extracting video metadata
 # import mutagen
 
@@ -571,17 +573,38 @@ if __name__ == "__main__":
     input_dialog.set_max_scrollbar(cap.get(cv2.CAP_PROP_FRAME_COUNT))
     cap.set(cv2.CAP_PROP_FRAME_WIDTH, input_dialog.resolution_x);
     cap.set(cv2.CAP_PROP_FRAME_HEIGHT, input_dialog.resolution_y);
+    fvs = FileVideoStream(videoPath).start()
 
-    ret, frame = cap.read()
+    # ret, frame = cap.read()
+
+    frame = fvs.read()
+    # frame = imutils.resize(frame, width=450)
+    # frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+    # frame = np.dstack([frame, frame, frame])
+
     frame = cv2.resize(frame, (input_dialog.resolution_x, input_dialog.resolution_y), 0, 0, cv2.INTER_CUBIC)
     
+    previous_frame = frame
     #get the video's FPS
-    vid_fps = cap.get(cv2.CAP_PROP_FPS)
+    # vid_fps = cap.get(cv2.CAP_PROP_FPS)
+    vid_fps = 30
     input_dialog.set_fps_info(vid_fps)
     
     
-    skip_frame = 50
-    while cap.isOpened():
+    skip_frame = 10
+    
+    input_dialog.log("Gathering frames...")
+    
+    while True:
+
+        previous_skip = fvs.skip_value
+        next_skip = input_dialog.get_frame_skip()
+        if fvs.skip_value != input_dialog.get_frame_skip():
+            fvs.next = input_dialog.get_scrollbar_value()
+            fvs.reset = True
+            frame = fvs.read()
+            fvs.skip_value = input_dialog.get_frame_skip()
+            
         app.processEvents()
         selected_tracker = input_dialog.tabs.currentIndex()
 
@@ -594,13 +617,26 @@ if __name__ == "__main__":
         elif selected_tracker == -1:
             input_dialog.export_tab_btn.setEnabled(False)
 
-
         #if the scrollbar is changed, update the frame, else continue with the normal frame
         if input_dialog.scrollbar_changed == True:
-            skip_frame = input_dialog.get_scrollbar_value()
+            # input_dialog.log("Scrolled.")
+            # skip_frame = input_dialog.get_scrollbar_value()
+            
+            fvs.next = input_dialog.get_scrollbar_value()
+            
+            fvs.reset = True
+            # input_dialog.set_scrollbar(fvs.next)
+            frame = fvs.read()
+            
+            # frame = fvs.read()
+            previous_frame = frame
             input_dialog.scrollbar_changed = False
-        else:
-            input_dialog.set_scrollbar(skip_frame)
+            
+        # else:
+        # #     # input_dialog.set_scrollbar(skip_frame)
+        #     input_dialog.set_scrollbar(fvs.frame_number)
+            # input_dialog.scrollbar_changed = False
+
 
         #When we add a tab, finish initializing it before anything else can continue
         if input_dialog.add_tab_state == True:
@@ -616,15 +652,41 @@ if __name__ == "__main__":
             input_dialog.tabs.setEnabled(True)
             input_dialog.add_tab_state = False
         
+        if input_dialog.snap_state is not None and tracker_list[selected_tracker].data_dict:
+            #grabs frames that tracker was tracked
+            # frame_number = cap.get(cv2.CAP_PROP_POS_FRAMES)
+            frame_number = fvs.frame_number
+            frames_tracked = tracker_list[selected_tracker].data_dict
+            closest_frame = frames_tracked.get(frame_number, frames_tracked[min(frames_tracked.keys(), key=lambda k: abs(k-frame_number))])
+            print(closest_frame)
+            if frame_number - closest_frame[0][0] > frame_number-closest_frame[0][1]:
+                closest_frame = closest_frame[0][0]
+            else:
+                closest_frame = closest_frame[0][1]
+            print(type(closest_frame))
+            input_dialog.log("Closest: " + str(closest_frame))
+            # cap.set(1 , closest_frame)
+            input_dialog.play_state = False
+            input_dialog.snap_state = None
         #if playing, increment frames by skip_frame count
         if input_dialog.play_state == True:
-            skip_frame += input_dialog.get_frame_skip()
+            input_dialog.set_scrollbar(fvs.frame_number)
+            # fvs.stopped = False
+            frame = fvs.read()
+            previous_frame = frame
+            # skip_frame += input_dialog.get_frame_skip()
+
+            
+        else:
+            frame = previous_frame
+            input_dialog.set_scrollbar(fvs.frame_number)
+
+
 
         #set tne next frame to skip frame and read it
-        cap.set(1 , skip_frame)
+        # cap.set(1 , skip_frame)
         try:
-            ret, frame = cap.read()
-
+            # ret, frame = cap.read()
             frame = cv2.resize(frame, (input_dialog.resolution_x, input_dialog.resolution_y), 0, 0, cv2.INTER_CUBIC)
         except:
             continue
@@ -710,7 +772,8 @@ if __name__ == "__main__":
                 #     tracker.assign(frame, trackerName)
 
                 #caluclate info needed this frame
-                frame_number = cap.get(cv2.CAP_PROP_POS_FRAMES)
+                # frame_number = cap.get(cv2.CAP_PROP_POS_FRAMES)
+                frame_number = fvs.frame_number
                 bottom_right = box[0]
                 top_left = box[1]
                 width = box[2]
@@ -730,7 +793,8 @@ if __name__ == "__main__":
 
             elif input_dialog.tab_list[tracker_num].read_only is True:
                 #if read only, display the center
-                frame_number = cap.get(cv2.CAP_PROP_POS_FRAMES)
+                # frame_number = cap.get(cv2.CAP_PROP_POS_FRAMES)
+                frame_number = fvs.frame_number
 
                 if frame_number in tracker.data_dict:
                     # If key exists in data
@@ -758,11 +822,12 @@ if __name__ == "__main__":
                 input_dialog.del_tab_btn.setEnabled(True)
                 input_dialog.export_tab_btn.setEnabled(True)
             #Press space bar to re-assign
-            if key == ord(' '):
+            if key == ord(' ') or input_dialog.set_tracker_state is True:
                 input_dialog.play_state = False
                 input_dialog.tabs.setEnabled(False)
                 tracker_list[selected_tracker].assign(frame, trackerName)
                 input_dialog.tabs.setEnabled(True)
+                input_dialog.set_tracker_state = False
     
             # input_dialog.play_state = True
 
@@ -784,4 +849,5 @@ if __name__ == "__main__":
     #Close all applications.
     sys.exit(app.exec_())
     cap.release()
+    fvs.stop()
     cv2.destroyAllWindows()

@@ -25,6 +25,8 @@ class App(QWidget):
         self.resolution_x = 720
         self.resolution_y = 480
         self.vid_fps = 30
+        self.snap_state = None
+        self.set_tracker_state = False
     
     def keyPressEvent(self, event):
             self.test_method()
@@ -51,12 +53,21 @@ class App(QWidget):
             exit(0)
         elif q.text() == "Active" or q.text() == "Inactive" or q.text() == "Read" or q.text() == "Write":
             self.set_all_tabs(q.text())
-
+        elif q.text() == "Snap Closest":
+            self.snap_state = "Closest"
+        elif q.text() == "Snap Forward":
+            self.snap_state = "Forward"
+        elif q.text() == "Snap Backward":
+            self.snap_state = "Backward"
+        elif q.text() == "Set Tracker":
+            print("SETTING")
+            self.set_tracker_state = True
     def initUI(self):
 
 
         self.setWindowTitle(self.title)
         self.setGeometry(self.left, self.top, self.width, self.height)
+        self.setWindowIcon(QIcon('person.svg'))
 
         self.log_label = QLabel(self)
         self.log_label.setText("Info:")
@@ -89,12 +100,27 @@ class App(QWidget):
         del_region = QAction("Delete Region", self)
         del_region.setShortcut("Ctrl+Shift+R")
 
+        snap_closest = QAction("Snap Closest", self)
+        snap_closest.setShortcut(Qt.Key_Up)
+        snap_forward = QAction("Snap Forward", self)
+        snap_forward.setShortcut(Qt.Key_Right)
+        snap_backward = QAction("Snap Backward", self)
+        snap_backward.setShortcut(Qt.Key_Left)
+
+        set_tracker = QAction("Set Tracker", self)
+        set_tracker.setShortcut(Qt.Key_Space)
+
+
         edit2 = file.addMenu("Edit")
         edit2.addAction("copy")
         edit2.addAction("paste")
         # AddTab	Ctrl+T
         edit.addAction(add_region)
         edit.addAction(del_region)
+        edit.addAction(snap_closest)
+        edit.addAction(snap_forward)
+        edit.addAction(snap_backward)
+        edit.addAction(set_tracker)
         edit.addAction("copy")
         edit.addAction("paste")
         edit.triggered[QAction].connect(self.processtrigger)
@@ -199,7 +225,8 @@ class App(QWidget):
         self.vidScroll.setFocusPolicy(Qt.NoFocus)
 
         #assign a 
-        self.vidScroll.valueChanged.connect(self.slider_update)
+        self.vidScroll.sliderMoved.connect(self.slider_update)
+        self.vidScroll.valueChanged.connect(self.slider_new)
 
         #setup play/pause buttons
         self.playButton = QPushButton()
@@ -218,7 +245,7 @@ class App(QWidget):
         self.skip_frames = QLineEdit(self)
         self.onlyInt = QIntValidator()
         self.skip_frames.setValidator(self.onlyInt)
-        self.skip_frames.setText("50")
+        self.skip_frames.setText("10")
         self.skip_frames.setFixedWidth(25)
         self.skip_frames.setAlignment(Qt.AlignRight)
         self.skip_frames.setToolTip("The number of frames to increment by and 'skip'. This acts as a fast forward (positive) and reverse (negative).")
@@ -258,6 +285,8 @@ class App(QWidget):
     
     def slider_update(self, value, func=None):
         self.scrollbar_changed = True
+
+    def slider_new(self, value, func=None):
         seconds = (value/self.vid_fps) %60
         minutes = int(((value/self.vid_fps)/60)%60)
         hours = int(minutes/60)
