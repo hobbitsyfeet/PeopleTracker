@@ -8,3 +8,6 @@ Dependencies:
 Ref: https://github.com/smarnach/pyexiftool/issues/26
 
 (Date: January 21, 2020)
+
+
+### ***Please Visit the [PeopleTrackerWiki](https://github.com/hobbitsyfeet/PeopleTracker/wiki) for Documentation and help!***
