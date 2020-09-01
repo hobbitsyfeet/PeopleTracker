@@ -1,5 +1,5 @@
 opencv-python>=4.3
-opencv-contrib-python>=4.3
+opencv-contrib-python-contrib>=4.3
 imutils==0.5.3
 pandas==0.25.1
 pyqt5==5.14.0
