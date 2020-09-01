@@ -1,38 +1,33 @@
-import os
-
-import cv2
-from random import randint
-from sys import exit
-import imutils
-import pandas as pd
-
+# -*- coding: utf-8 -*-
+import math
 import multiprocessing
-CPU_COUNT = multiprocessing.cpu_count()
-from multiprocessing.pool import ThreadPool
-from threading import Thread
-from collections import deque
-
+import os
+import sys
+# the input dialog
 #For popup windows (DEPRECIATED)
 import tkinter as tk
+import traceback
+from collections import deque
+from multiprocessing.pool import ThreadPool
+from random import randint
+from sys import exit
+from threading import Thread
 from tkinter import simpledialog
 
-# the input dialog
-import tkinter
-import mbox
-
-import numpy as np
-import qt_dialog
-import sys
-from PyQt5.QtWidgets import QApplication, QInputDialog, QLineEdit, QWidget, QComboBox, QMessageBox
-
-
-import math
-
+import cv2
 import exiftool
-
-from Video import FileVideoStream
+import imutils
+import numpy as np
+import pandas as pd
+from PyQt5.QtWidgets import (QApplication, QComboBox, QInputDialog, QLineEdit,
+                             QMessageBox, QWidget)
 
 import crashlogger
+import mbox
+import qt_dialog
+from Video import FileVideoStream
+
+CPU_COUNT = multiprocessing.cpu_count()
 
 # For extracting video metadata
 # import mutagen
@@ -89,9 +84,9 @@ class MultiTracker():
 
     def create(self, tracker_type='CSRT'):
         """
-        The creation of the Opencv's Tracking mechanism.
+        The creation of the Opencvs Tracking mechanism.
 
-        tracker_type = ['BOOSTING', 'MIL','KCF', 'TLD', 'MEDIANFLOW', 'GOTURN', 'MOSSE', 'CSRT']
+        tracker_type = ["BOOSTING", "MIL","KCF", "TLD", "MEDIANFLOW", "GOTURN", "MOSSE", "CSRT"]
         """
             # tracker = cv2.Tracker_create(tracker_type)
         if tracker_type == 'BOOSTING':
@@ -107,7 +102,7 @@ class MultiTracker():
             self.tracker = cv2.TrackerKCF_create()
             
         if tracker_type == 'TLD':
-            #prone to false-positives. I do not recommend using this OpenCV object tracker.
+            #prone to false positives. I do not recommend using this OpenCV object tracker.
             self.tracker = cv2.TrackerTLD_create()
 
         if tracker_type == 'MEDIANFLOW':
@@ -545,7 +540,6 @@ def export_meta(vid_dir):
     # fvs.stop()
     # cv2.destroyAllWindows()
 
-import traceback
 #This main is used to test the time
 if __name__ == "__main__":
     try:
@@ -571,7 +565,7 @@ if __name__ == "__main__":
 
         
 
-        # initialize OpenCV's special multi-object tracker
+        # initialize OpenCV's special multi object tracker
         # input_dialog.add_tab()
         # input_dialog.add_tab_state = False
         # tracker_list.append(MultiTracker(input_dialog.tab_list[0]))
