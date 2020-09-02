@@ -31,6 +31,7 @@ class App(QWidget):
         self.vid_fps = 30
         self.snap_state = None
         self.set_tracker_state = False
+        self.retain_region = True
         self.quit_State = False
     
     def keyPressEvent(self, event):
@@ -69,6 +70,8 @@ class App(QWidget):
             elif q.text() == "Set Tracker":
                 print("SETTING")
                 self.set_tracker_state = True
+            elif q.text() == "Retain Region":
+                self.toggle_retain_region()
         except:
             crashlogger.log(str(traceback.format_exc()))
 
@@ -123,11 +126,11 @@ class App(QWidget):
             set_tracker = QAction("Set Tracker", self)
             set_tracker.setShortcut(Qt.Key_Space)
 
+            retain_moveing_region = QAction("Retain Region", self)
+            retain_moveing_region.setShortcut("Ctrl+C")
 
 
             edit2 = file.addMenu("Edit")
-            edit2.addAction("copy")
-            edit2.addAction("paste")
             # AddTab	Ctrl+T
             edit.addAction(add_region)
             edit.addAction(del_region)
@@ -135,10 +138,10 @@ class App(QWidget):
             edit.addAction(snap_forward)
             edit.addAction(snap_backward)
             edit.addAction(set_tracker)
-            edit.addAction("copy")
-            edit.addAction("paste")
+            edit.addAction(retain_moveing_region)
             edit.triggered[QAction].connect(self.processtrigger)
 
+            
             
             #Set_All
             set_all =  edit.addMenu("Set All")
@@ -430,7 +433,7 @@ class App(QWidget):
     def log(self, text):
         self.log_label.setText("Info: " + str(text))
         crashlogger.log(text, "Crashlog.txt")
-        print(text)
+        # print(text)
 
     def set_all_tabs(self, value):
         for tab in self.tab_list:
@@ -441,7 +444,9 @@ class App(QWidget):
                 # tab.read_only = False
                 tab.read_only_button.setChecked(False)
 
-
+    def toggle_retain_region(self):
+        self.log("Retain Region set to " + str(not self.retain_region))
+        self.retain_region = not self.retain_region
 
 
 class person_tab():
@@ -462,6 +467,7 @@ class person_tab():
         self.active = True
         self.read_only = False
         self.beginning = False
+        self.is_region = False
         self.init_tab(window)
 
     def init_tab(self, parent_window):
@@ -519,12 +525,20 @@ class person_tab():
             length_layout.addWidget(self.read_only_button)
             self.tab.layout.addLayout(length_layout)
 
+
             self.beginning_button = QCheckBox("Beginning")
             self.beginning_button.setChecked(False)
             self.beginning_button.stateChanged.connect(lambda:self.toggle_beginning())
             self.beginning_button.setToolTip("Sets the 'present at beginning' to be True or False for this person.")
             length_layout.addWidget(self.beginning_button)
             self.tab.layout.addLayout(length_layout)
+
+            self.is_region_button = QCheckBox("Is Region")
+            self.is_region_button.setChecked(False)
+            self.is_region_button.stateChanged.connect(lambda:self.toggle_region())
+            length_layout.addWidget(self.is_region_button)
+            self.tab.layout.addLayout(length_layout)
+
 
             self.tab.setLayout(self.tab.layout)
         
@@ -570,6 +584,12 @@ class person_tab():
 
     def get_beginning(self):
         return self.beginning
+    
+    def get_is_region(self):
+        return self.is_region
+    
+    def get_read_only(self):
+        return self.read_only
 
     def toggle_active(self):
         self.parent.log("Setting Active to " + str(not self.active))
@@ -585,6 +605,11 @@ class person_tab():
         self.parent.log("Setting person present at beginning to " + str(not self.beginning))
         self.beginning = not self.beginning
         return self.beginning
+
+    def toggle_region(self):
+        self.parent.log("Setting person to a region " + str(not self.is_region))
+        self.is_region = not self.is_region
+        return self.is_region
 
     def update_length_tracked(self, time):
         self.length_tracked.setText("00:00")
