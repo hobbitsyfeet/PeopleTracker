@@ -46,7 +46,7 @@ class MultiTracker():
         self.previous_time = 0
 
         self.sex = tab.sex_line
-
+        self.group = tab.group_line
         self.description = tab.desc_line
         self.beginning = tab.get_beginning
         self.is_region = tab.get_is_region
@@ -76,6 +76,9 @@ class MultiTracker():
 
     def get_description(self):
         return self.description.toPlainText()
+
+    def get_group(self):
+        return self.group.text()
 
     def get_time_tracked(self, framerate):
         """ Returns total time being tracked in video: returns  """
@@ -239,7 +242,9 @@ class MultiTracker():
                 "Pixel_Loc":[],
                 "Perc_X":[], "Perc_Y":[],
                 "Region": [],
-                "Name":[], "Sex":[], "Total_Sec_Rec":[],
+                "Name":[], "Sex":[],
+                "Group_Size":[],
+                "Total_Sec_Rec":[],
                 "Description":[],
                 "Present At Beginning":[],
                 }
@@ -284,6 +289,7 @@ class MultiTracker():
         MAX_LEN = len(frames)
         sex = [self.get_sex()]
         name = [self.get_name()]
+        group = [self.get_group()]
         description = [self.get_description()]
         beginning = [self.beginning()]
         # total_time = [self.(self.part_time_to_segments(self.time_data))]
@@ -292,6 +298,7 @@ class MultiTracker():
         self.previous_time = total_time[0]
         sex.extend([sex[0]]*(MAX_LEN-1))
         name.extend([name[0]]*(MAX_LEN-1))
+        group.extend([group[0]]*(MAX_LEN-1))
         description.extend([description[0]]*(MAX_LEN-1))
         beginning.extend([beginning[0]]*(MAX_LEN-1))
         total_time.extend([total_time[0]]*(MAX_LEN-1))
@@ -303,7 +310,9 @@ class MultiTracker():
             "Perc_X": perc_x_list, "Perc_Y": perc_y_list,
             "Region": region_list,
             # "TimeInRegion":,
-            "Name": name, "Sex":sex, 
+            "Name": name, 
+            "Sex":sex,
+            "Group_Size":group,
             "Total_Sec_Rec":total_time,
             "Description":description,
             "Beginning":beginning,
@@ -531,7 +540,9 @@ def export_meta(vid_dir):
             "Perc_X":['-'], "Perc_Y":['-'],
             "Region": ['-'],
             # "TimeInRegion":['-'],
-            "Name":['-'], "Sex":['-'], "Total_Sec_Rec":['-'],
+            "Name":['-'], "Sex":['-'], 
+            "Group_Size":['-'],
+            "Total_Sec_Rec":['-'],
             "Description":['-'],
             "Present At Beginning":['-'],
 
@@ -614,8 +625,8 @@ if __name__ == "__main__":
         
         previous_frame = frame
         #get the video's FPS
-        # vid_fps = cap.get(cv2.CAP_PROP_FPS)
-        vid_fps = 30
+        vid_fps = cap.get(cv2.CAP_PROP_FPS)
+        # vid_fps = 30
         input_dialog.set_fps_info(vid_fps)
         
         
@@ -624,6 +635,12 @@ if __name__ == "__main__":
         input_dialog.log("Gathering frames...")
         
         while True:
+            
+            if input_dialog.export_all_state is True:
+                input_dialog.export_all_state = False
+                for tracker in tracker_list:
+                    tracker.export_data(input_dialog.width, input_dialog.height, videoPath, vid_fps)
+
             if input_dialog.quit_State is True:
                 # sys.exit(app.exec_())
                 # cap.release()
@@ -808,88 +825,95 @@ if __name__ == "__main__":
             for tracker in enumerate(tracker_list):
                 tracker_num = tracker[0]
                 tracker = tracker[1]
+                try:
 
-                if tracker.init_bounding_box is not None and input_dialog.tab_list[tracker_num].active is True and input_dialog.tab_list[tracker_num].read_only is False:
-                    
-                    #allocate frames on GPU, reducing CPU load.
-                    cv2.UMat(frame)    
+                    if tracker.init_bounding_box is not None and input_dialog.tab_list[tracker_num].active is True and input_dialog.tab_list[tracker_num].read_only is False:
+                        
+                        #allocate frames on GPU, reducing CPU load.
+                        cv2.UMat(frame)    
 
-                    app.processEvents()
-                    #track and draw box on the frame
-                    success, box, frame = tracker.update_tracker(frame)
-                    app.processEvents()
-                    
-                    #NOTE: this can be activated if you want to pause the program when trakcer fails
-                    # if not success:
-                    #     tracker.assign(frame, trackerName)
+                        app.processEvents()
+                        #track and draw box on the frame
+                        success, box, frame = tracker.update_tracker(frame)
+                        app.processEvents()
+                        
+                        #NOTE: this can be activated if you want to pause the program when trakcer fails
+                        # if not success:
+                        #     tracker.assign(frame, trackerName)
 
-                    #caluclate info needed this frame
-                    # frame_number = cap.get(cv2.CAP_PROP_POS_FRAMES)
-                    frame_number = fvs.frame_number
-                    bottom_right = box[0]
-                    top_left = box[1]
-                    width = box[2]
-                    height = box[3]
+                        #caluclate info needed this frame
+                        # frame_number = cap.get(cv2.CAP_PROP_POS_FRAMES)
+                        frame_number = fvs.frame_number
+                        bottom_right = box[0]
+                        top_left = box[1]
+                        width = box[2]
+                        height = box[3]
 
-                    center_x = bottom_right + (width/2)
-                    center_y = top_left + (height/2)
-                    if tracker.is_region() is True and tracker.get_name() != "":
-
-                        regions.set_moving_radius(name = tracker.get_name(), 
-                                                  point = (int(center_x - width), int(center_y - height)),
-                                                  dimensions = (int(width*2), int(height*2))
-                                                  )
-                        regions.display_radius(frame)
-
-                    elif tracker.is_region() is False:
-                        # If tracker region is no longer selected, delete moving radius
-                        regions.del_moving_radius(tracker.get_name())
-
-                    #center dot                   
-                    cv2.circle(frame, (int(center_x),int(center_y)),2,(0,0,255),-1)
-
-                    in_region = regions.test_radius((center_x, center_y))
-                    
-                    if input_dialog.play_state == True:
-                        #record all the data collected from that frame
-                        tracker.record_data(frame_number, center_x, center_y, width, height, in_region)
-
-                if input_dialog.tab_list[tracker_num].read_only is True:
-                    #if read only, display the center
-                    # frame_number = cap.get(cv2.CAP_PROP_POS_FRAMES)
-                    # print(frame_number, fvs.frame_number)
-                    frame_number = fvs.frame_number
-                    # frame_number = input_dialog.get_scrollbar_value()
-                    # regions.del_moving_radius(tracker.get_name())
-
-                    
-                    if frame_number in tracker.data_dict:
-                        # print("Exists")
-                        # If key exists in data
-                        center, _, dim = tracker.data_dict[frame_number]
-
+                        center_x = bottom_right + (width/2)
+                        center_y = top_left + (height/2)
                         if tracker.is_region() is True and tracker.get_name() != "":
-                            point = (int(center[0] - dim[0]), int(center[1] - dim[1]))
-                            dim = (int(dim[0]*2), int(dim[1]*2))
-                            regions.set_moving_radius(tracker.get_name(), point, dim)
 
-                        if tracker.is_region() is False:
+                            regions.set_moving_radius(name = tracker.get_name(), 
+                                                    point = (int(center_x - width), int(center_y - height)),
+                                                    dimensions = (int(width*2), int(height*2))
+                                                    )
+                            regions.display_radius(frame)
+
+                        elif tracker.is_region() is False:
                             # If tracker region is no longer selected, delete moving radius
                             regions.del_moving_radius(tracker.get_name())
 
+                        #center dot                   
+                        cv2.circle(frame, (int(center_x),int(center_y)),2,(0,0,255),-1)
 
-                        if selected_tracker == tracker_num:
-                            # print("Green")
-                            #center dot
-                            cv2.circle(frame, (int(center[0]),int(center[1])),2,(0,255,0),-1)
-                            
-                        else: 
-                            # print("Red Dot")
-                            cv2.circle(frame, (int(center[0]),int(center[1])),2,(0,0,255),-1)
-                    
-                    #Exclude if you want regions to not exist
-                    elif not input_dialog.retain_region:
-                        regions.del_moving_radius(tracker.get_name())
+                        in_region = regions.test_radius((center_x, center_y))
+                        
+                        if input_dialog.play_state == True:
+                            #record all the data collected from that frame
+                            tracker.record_data(frame_number, center_x, center_y, width, height, in_region)
+                except:
+                    input_dialog.log("Crashed while deleting. Continuing")
+
+                try:
+                    if input_dialog.tab_list[tracker_num].read_only is True:
+                        #if read only, display the center
+                        # frame_number = cap.get(cv2.CAP_PROP_POS_FRAMES)
+                        # print(frame_number, fvs.frame_number)
+                        frame_number = fvs.frame_number
+                        # frame_number = input_dialog.get_scrollbar_value()
+                        # regions.del_moving_radius(tracker.get_name())
+
+                        
+                        if frame_number in tracker.data_dict:
+                            # print("Exists")
+                            # If key exists in data
+                            center, _, dim = tracker.data_dict[frame_number]
+
+                            if tracker.is_region() is True and tracker.get_name() != "":
+                                point = (int(center[0] - dim[0]), int(center[1] - dim[1]))
+                                dim = (int(dim[0]*2), int(dim[1]*2))
+                                regions.set_moving_radius(tracker.get_name(), point, dim)
+
+                            if tracker.is_region() is False:
+                                # If tracker region is no longer selected, delete moving radius
+                                regions.del_moving_radius(tracker.get_name())
+
+
+                            if selected_tracker == tracker_num:
+                                # print("Green")
+                                #center dot
+                                cv2.circle(frame, (int(center[0]),int(center[1])),2,(0,255,0),-1)
+                                
+                            else: 
+                                # print("Red Dot")
+                                cv2.circle(frame, (int(center[0]),int(center[1])),2,(0,0,255),-1)
+                        
+                        #Exclude if you want regions to not exist
+                        elif not input_dialog.retain_region:
+                            regions.del_moving_radius(tracker.get_name())
+                except:
+                    input_dialog.log("Could not handle read only. List index out of range, Continuing")
+
 
                     
                 app.processEvents()
@@ -938,6 +962,7 @@ if __name__ == "__main__":
 
             #When done processing each tracker, view the frame
             cv2.imshow("Frame", frame)
+            # input_dialog.videoWindow.show_image(frame)
     except:
         print(traceback.format_exc())
         crashlogger.log(str(traceback.format_exc()))
