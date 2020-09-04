@@ -1,10 +1,9 @@
 import sys
 from PyQt5.QtWidgets import QApplication, QWidget, QInputDialog, QLineEdit, QLabel, QPushButton, QPlainTextEdit, QSlider, QStyle, QAction, QTabWidget, QVBoxLayout, QHBoxLayout, QMessageBox, QFileDialog, QCheckBox, QMenuBar
 
-from PyQt5.QtGui import QIcon, QIntValidator
-from PyQt5.QtCore import Qt
-from PyQt5.QtCore import pyqtSlot
-
+from PyQt5.QtGui import QIcon, QIntValidator, QPixmap, QImage, QPainter, QPen, QKeySequence
+from PyQt5.QtCore import Qt, QRect
+from PyQt5.QtCore import pyqtSlot, pyqtSignal
 import webbrowser
 import crashlogger
 import traceback
@@ -25,14 +24,20 @@ class App(QWidget):
         self.export_state = False
         self.region_state = False
         self.del_region_state = False
+        self.export_all_state = False
         self.scrollbar_changed = False
         self.resolution_x = 720
         self.resolution_y = 480
         self.vid_fps = 30
         self.snap_state = None
         self.set_tracker_state = False
+        self.retain_region = True
         self.quit_State = False
+        self.image = None
     
+        # self.videoWindow = VideoWindow()
+        # self.videoWindow.show()
+
     def keyPressEvent(self, event):
             self.test_method()
             # self.log(event)
@@ -69,6 +74,10 @@ class App(QWidget):
             elif q.text() == "Set Tracker":
                 print("SETTING")
                 self.set_tracker_state = True
+            elif q.text() == "Retain Region":
+                self.toggle_retain_region()
+            elif q.text() == "Export All":
+                self.export_all_state = True
         except:
             crashlogger.log(str(traceback.format_exc()))
 
@@ -102,6 +111,11 @@ class App(QWidget):
             file.addAction(save)
             quit = QAction("Quit", self)
             file.addAction(quit)
+            
+            export_all = QAction("Export All", self)
+            export_all.setShortcut("Ctrl+E")
+            file.addAction(export_all)
+
             file.triggered[QAction].connect(self.processtrigger)
 
             edit = bar.addMenu("Edit")
@@ -121,13 +135,14 @@ class App(QWidget):
             snap_backward.setShortcut(Qt.Key_Left)
 
             set_tracker = QAction("Set Tracker", self)
-            set_tracker.setShortcut(Qt.Key_Space)
+            # set_tracker.setShortcut(Qt.Key_Space)
+            set_tracker.setShortcut(QKeySequence(Qt.CTRL + Qt.Key_Space))
 
+            retain_moveing_region = QAction("Retain Region", self)
+            retain_moveing_region.setShortcut("Ctrl+C")
 
 
             edit2 = file.addMenu("Edit")
-            edit2.addAction("copy")
-            edit2.addAction("paste")
             # AddTab	Ctrl+T
             edit.addAction(add_region)
             edit.addAction(del_region)
@@ -135,10 +150,10 @@ class App(QWidget):
             edit.addAction(snap_forward)
             edit.addAction(snap_backward)
             edit.addAction(set_tracker)
-            edit.addAction("copy")
-            edit.addAction("paste")
+            edit.addAction(retain_moveing_region)
             edit.triggered[QAction].connect(self.processtrigger)
 
+            
             
             #Set_All
             set_all =  edit.addMenu("Set All")
@@ -211,7 +226,7 @@ class App(QWidget):
             
             
             self.tab_control_layout.addWidget(self.del_tab_btn)
-            
+
             # self.del_tab_btn.setEnabled(False)
 
             self.layout.addLayout(self.tab_control_layout)
@@ -286,11 +301,11 @@ class App(QWidget):
 
         self.show()
 
-        @pyqtSlot()
-        def on_click(self):
-            print("\n")
-            for currentQTableWidgetItem in self.tableWidget.selectedItems():
-                print(currentQTableWidgetItem.row(), currentQTableWidgetItem.column(), currentQTableWidgetItem.text())
+        # @pyQtSlot()
+        # def on_click(self):
+        #     print("\n")
+        #     for currentQTableWidgetItem in self.tableWidget.selectedItems():
+        #         print(currentQTableWidgetItem.row(), currentQTableWidgetItem.column(), currentQTableWidgetItem.text())
     
 
 
@@ -357,6 +372,7 @@ class App(QWidget):
         current_tab = self.tab_list[self.tabs.currentIndex()]
         name = current_tab.name_line.getText()
         sex = current_tab.sex_line.getText()
+        group = current_tab.group_line.getText()
         desc = current_tab.desc_line.getText()
         time = current_tab.getText()
         active = current_tab.toggle_active()
@@ -430,7 +446,7 @@ class App(QWidget):
     def log(self, text):
         self.log_label.setText("Info: " + str(text))
         crashlogger.log(text, "Crashlog.txt")
-        print(text)
+        # print(text)
 
     def set_all_tabs(self, value):
         for tab in self.tab_list:
@@ -441,7 +457,9 @@ class App(QWidget):
                 # tab.read_only = False
                 tab.read_only_button.setChecked(False)
 
-
+    def toggle_retain_region(self):
+        self.log("Retain Region set to " + str(not self.retain_region))
+        self.retain_region = not self.retain_region
 
 
 class person_tab():
@@ -452,6 +470,8 @@ class person_tab():
 
         #these are used to record metadata
         self.name_line = QLineEdit(window)
+        self.group_line = QLineEdit(window)
+        self.group_line.setValidator(QIntValidator(0,999))
         # self.name_line.textChanged.connect(self.update_tab_name)
         self.sex_line = QLineEdit(window)
         self.desc_line = QPlainTextEdit(window)
@@ -462,6 +482,7 @@ class person_tab():
         self.active = True
         self.read_only = False
         self.beginning = False
+        self.is_region = False
         self.init_tab(window)
 
     def init_tab(self, parent_window):
@@ -478,14 +499,20 @@ class person_tab():
             name_layout.addWidget(self.name_line)
             self.tab.layout.addLayout(name_layout)
 
-            #Start Sex
-            sex_layout = QHBoxLayout()
+            # #Start Sex
+            # sex_layout = QHBoxLayout()
 
             sex_btn = QPushButton('Sex', parent_window)
             sex_btn.clicked.connect(self.getChoice)
             
             name_layout.addWidget(sex_btn)
             name_layout.addWidget(self.sex_line)
+
+            group_size_btn = QPushButton('Group Size', parent_window)
+            group_size_btn.clicked.connect(lambda: self.getInteger())
+
+            name_layout.addWidget(group_size_btn)
+            name_layout.addWidget(self.group_line)
 
             #Start Description
             desc_layout = QHBoxLayout()
@@ -495,6 +522,8 @@ class person_tab():
             
             desc_layout.addWidget(desc_btn)
             desc_layout.addWidget(self.desc_line)
+
+            self.image = QPixmap()
             self.tab.layout.addLayout(desc_layout)
             
             #setup length of time tracked
@@ -519,12 +548,20 @@ class person_tab():
             length_layout.addWidget(self.read_only_button)
             self.tab.layout.addLayout(length_layout)
 
+
             self.beginning_button = QCheckBox("Beginning")
             self.beginning_button.setChecked(False)
             self.beginning_button.stateChanged.connect(lambda:self.toggle_beginning())
             self.beginning_button.setToolTip("Sets the 'present at beginning' to be True or False for this person.")
             length_layout.addWidget(self.beginning_button)
             self.tab.layout.addLayout(length_layout)
+
+            self.is_region_button = QCheckBox("Is Region")
+            self.is_region_button.setChecked(False)
+            self.is_region_button.stateChanged.connect(lambda:self.toggle_region())
+            length_layout.addWidget(self.is_region_button)
+            self.tab.layout.addLayout(length_layout)
+
 
             self.tab.setLayout(self.tab.layout)
         
@@ -538,11 +575,12 @@ class person_tab():
         
 
 
-    # def getInteger(self):
-    #     i, okPressed = QInputDialog.getInt(self.parent, "Get integer","Percentage:", 28, 0, 100, 1)
-    #     if okPressed:
-
-    #         # return i
+    def getInteger(self):
+        i, okPressed = QInputDialog.getInt(self.parent, "QInputDialog().getInteger()",
+                                 "Percentage:", 1, 0, 999, 1)
+        self.group_line.setText(str(i))
+        if okPressed:
+            return i
 
     # def getDouble(self):
     #     d, okPressed = QInputDialog.getDouble(self.parent, "Get double","Value:", 10.50, 0, 100, 10)
@@ -570,6 +608,12 @@ class person_tab():
 
     def get_beginning(self):
         return self.beginning
+    
+    def get_is_region(self):
+        return self.is_region
+    
+    def get_read_only(self):
+        return self.read_only
 
     def toggle_active(self):
         self.parent.log("Setting Active to " + str(not self.active))
@@ -586,6 +630,11 @@ class person_tab():
         self.beginning = not self.beginning
         return self.beginning
 
+    def toggle_region(self):
+        self.parent.log("Setting person to a region " + str(not self.is_region))
+        self.is_region = not self.is_region
+        return self.is_region
+
     def update_length_tracked(self, time):
         self.length_tracked.setText("00:00")
         seconds = round((time)%60,2)
@@ -595,6 +644,66 @@ class person_tab():
     # def update_tab_name(self):
     #     self.tab.parentWidget().setTabText(self.tab.parent.currentIndex(),self.name_line.getText())
     #     print(self.tab.parentWidget)
+
+# class VideoWindow(QWidget):
+#     """
+#     This "window" is a QWidget. If it has no parent, it 
+#     will appear as a free-floating window as we want.
+#     """
+#     def __init__(self):
+#         super().__init__()
+#         layout = QVBoxLayout()
+#         layout.setContentsMargins(0, 0, 0, 0)
+#         self.setLayout(layout)
+#         self.label = label()
+#         self.image = QPixmap("./Blank.jpg")
+#         self.label.setPixmap(self.image)
+#         layout.addWidget(self.label)
+#         self.pressed_pos = None
+#         self.dragged_pos = None
+#         self.setting = False
+
+    
+#     def mousePressEvent(self, event):
+#         print("Pressed")
+#         self.setting = True
+#         print(event.x(), event.y())
+#         self.pressed_pos = (event.x(), event.y())
+
+#     def mouseMoveEvent(self, event):
+#         print(event.x(), event.y())
+#         self.dragged_pos = (event.x(), event.y())
+
+#     def mouseReleaseEvent(self, event):
+#         print("Released")
+#         self.setting = False
+
+#     def paintEvent(self, event):
+
+#         painter = QPainter(self)
+
+#         painter.setPen(QPen(Qt.black,  5, Qt.SolidLine))
+
+#         painter.drawRect(40, 40, 400, 200)
+
+#     def show_image(self, cv2Frame):
+#         print("ShowImage")
+#         if cv2Frame is not None:
+#             # print(cv2Frame)
+#             height, width, channel = cv2Frame.shape
+#             bytesPerLine = 3 * width
+#             qimg = QImage(cv2Frame.data, width, height, bytesPerLine, QImage.Format_RGB888).rgbSwapped()
+#             # print(qimg)
+#             self.label.setPixmap(QPixmap(qimg))
+
+
+
+# class label (QLabel):
+#     def __init__(self):
+#         super().__init__()
+#         def mousePressEvent(self, event):
+#             super(self).mousePressEvent(QMouseEvent)
+#             print("MOUSE")
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
