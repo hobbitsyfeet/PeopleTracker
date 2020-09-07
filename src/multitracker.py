@@ -5,14 +5,14 @@ import os
 import sys
 # the input dialog
 #For popup windows (DEPRECIATED)
-import tkinter as tk
+#import tkinter as tk
 import traceback
 from collections import deque
 from multiprocessing.pool import ThreadPool
 from random import randint
 from sys import exit
 from threading import Thread
-from tkinter import simpledialog
+#from tkinter import simpledialog
 
 import cv2
 import exiftool
@@ -23,7 +23,7 @@ from PyQt5.QtWidgets import (QApplication, QComboBox, QInputDialog, QLineEdit,
                              QMessageBox, QWidget)
 
 import crashlogger
-import mbox
+#import mbox
 import qt_dialog
 from Video import FileVideoStream
 
