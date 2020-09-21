@@ -84,7 +84,7 @@ class MultiTracker():
         """ Returns total time being tracked in video: returns  """
         
         # if len(self.data_dict) > 2:
-        total_time = [self.calculate_total_time(self.part_time_to_segments(list(self.data_dict.keys())), framerate)]
+        total_time = [self.calculate_total_time(self.part_time_to_segments(list(sorted(self.data_dict.keys()))), framerate)]
         return total_time
 
     def create(self, tracker_type='CSRT'):
@@ -154,20 +154,24 @@ class MultiTracker():
             input_dialog.log("No onject selected, select an object to continue")
             self.init_bounding_box = cv2.selectROI("Frame", frame, fromCenter=False,
                 showCrosshair=True)
-        input_dialog.log(self.init_bounding_box)
+        input_dialog.log("Bounding Box Coordinates: " + str(self.init_bounding_box))
 
         # start OpenCV object tracker using the supplied bounding box
         # coordinates, then start the FPS throughput estimator as well
         if self.init_bounding_box is not None:
             # self.tracker.init(frame, self.init_bounding_box)
-            input_dialog.log(self.reset)
+            input_dialog.log("Testing bounding box exists: " + str(self.reset))
             self.reset = True
 
         if self.reset is True:
-            input_dialog.log("Resetting Location")
-            del self.tracker
-            self.create(tracker_type)
-            self.tracker.init(frame, self.init_bounding_box)
+            try:
+                input_dialog.log("Setting Location")
+                del self.tracker
+                self.create(tracker_type)
+                self.tracker.init(frame, self.init_bounding_box)
+                input_dialog.log("Setting Location Successful.")
+            except:
+                input_dialog.log("Setting Location Failed.")
        
         # self.fps = imutils.video.FPS().start()
 
@@ -326,6 +330,21 @@ class MultiTracker():
         input_dialog.log("Export Data Complete!")
         
 
+    def merge_intervals(self, total_segments):
+        """
+        On a continous set of intervals, merges them such that intersecting inervals will become a new interval with new limits. 
+        Example: [[0, 20], [10, 50]] becomes [[0,50]]
+        """
+        total_segments.sort(key=lambda interval: interval[0])
+        merged = [total_segments[0]]
+        for current in total_segments:
+            previous = merged[-1]
+            if current[0] <= previous[1]:
+                previous[1] = max(previous[1], current[1])
+            else:
+                merged.append(current)
+        return merged
+
     def part_time_to_segments(self, time_data, segment_size=300):
         """
         Parts the times into segments based on the distance between tracked frames.
@@ -342,7 +361,6 @@ class MultiTracker():
 
         # iterate through all the times, start comparing time[0] with time[1]
         for time in time_data:
-            # input_dialog.log(time)
             #if the size between last segment time and current time is less than segment threshold
             if ((time - seg_last) <= segment_size):
                 # input_dialog.log("Stepping from " + str(seg_last) + " to " + str(time) )
@@ -353,17 +371,20 @@ class MultiTracker():
                 # input_dialog.log("Past Threshold, segmenting time from " + str(seg_start) + " to " + str(seg_last))
                 if seg_start is not seg_last:
                     #add the start and end of current segment as a pair
-                    total_segments.append((seg_start, seg_last))
+                    total_segments.append([seg_start, seg_last])
+      
                 seg_start = time
                 seg_last = time
             
             #if we reach the end of the tracked data, we end the segments and close the loop
             if (time == time_data[-1]):
-                if seg_start == seg_last:
+                if seg_start == seg_last or seg_start >= seg_last:
                     break
-                total_segments.append((seg_start, seg_last))
+                total_segments.append([seg_start, seg_last])
                 break
         
+        #merge intervals overlapping to maintain efficiency
+        total_segments = self.merge_intervals(total_segments)
         return total_segments
 
     def estimate_distance(self, size):
@@ -384,24 +405,16 @@ class MultiTracker():
             time_segs = self.part_time_to_segments(total_frames)
         else: 
             time_segs = total_frames
-            # input_dialog.log(time_segs)
         #sum all the segments together
         for seg in time_segs:
-            # input_dialog.log("Timing Segment:",end="")
-            # input_dialog.log(seg)
             #each seg is a pair of start and end times
             total_time += self.calculate_time(seg[0],seg[1],fps)
-        return total_time
 
-    '''
-    def adjust_gamma(image, gamma=1.0):
-        # build a lookup table mapping the pixel values [0, 255] to
-        # their adjusted gamma values
-        invGamma = 1.0 / gamma
-        table = np.array([((i / 255.0) ** invGamma) * 255
-            for i in np.arange(0, 256)]).astype("uint8")
-        return cv2.LUT(image, table)
-    '''
+        #May not need, no negative time allowed.
+        if total_time <= 0:
+            total_time = 0
+
+        return total_time
 
 
 class Regions(QWidget):
@@ -626,6 +639,7 @@ if __name__ == "__main__":
         previous_frame = frame
         #get the video's FPS
         vid_fps = cap.get(cv2.CAP_PROP_FPS)
+        input_dialog.log("Video FPS set to " + str(vid_fps))
         # vid_fps = 30
         input_dialog.set_fps_info(vid_fps)
         
@@ -940,11 +954,17 @@ if __name__ == "__main__":
                     input_dialog.export_tab_btn.setEnabled(True)
                 #Press space bar to re-assign
                 if key == ord(' ') or input_dialog.set_tracker_state is True:
-                    input_dialog.play_state = False
-                    input_dialog.tabs.setEnabled(False)
-                    tracker_list[selected_tracker].assign(frame, trackerName)
-                    input_dialog.tabs.setEnabled(True)
-                    input_dialog.set_tracker_state = False
+                    try:
+                        input_dialog.play_state = False
+                        input_dialog.tabs.setEnabled(False)
+                        tracker_list[selected_tracker].assign(frame, trackerName)
+                        input_dialog.tabs.setEnabled(True)
+                        input_dialog.set_tracker_state = False
+                    except:
+                        input_dialog.log("Could not assign tracker, try again")
+                        input_dialog.tabs.setEnabled(True)
+                        input_dialog.set_tracker_state = False
+
         
                 # input_dialog.play_state = True
 
