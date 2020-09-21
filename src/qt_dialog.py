@@ -481,6 +481,7 @@ class person_tab():
     
         self.active = True
         self.read_only = False
+        self.other_room = False
         self.beginning = False
         self.is_region = False
         self.init_tab(window)
@@ -546,7 +547,12 @@ class person_tab():
             self.read_only_button.stateChanged.connect(lambda:self.toggle_read())
             self.read_only_button.setToolTip("Sets the person to read only. \nThis is useful for scrolling through the video without overwriting data.\n Also useful for people exiting the frame")
             length_layout.addWidget(self.read_only_button)
-            self.tab.layout.addLayout(length_layout)
+
+            self.other_room_button = QCheckBox("Other Room")
+            self.other_room_button.setChecked(False)
+            self.other_room_button.stateChanged.connect(lambda:self.toggle_other_room())
+            self.other_room_button.setToolTip("Sets the person to Other Room. \n This is useful for maintaining time  without location.")
+            length_layout.addWidget(self.other_room_button)
 
 
             self.beginning_button = QCheckBox("Beginning")
@@ -615,6 +621,9 @@ class person_tab():
     def get_read_only(self):
         return self.read_only
 
+    def get_other_room(self):
+        return self.other_room
+
     def toggle_active(self):
         self.parent.log("Setting Active to " + str(not self.active))
         self.active = not self.active
@@ -634,6 +643,11 @@ class person_tab():
         self.parent.log("Setting person to a region " + str(not self.is_region))
         self.is_region = not self.is_region
         return self.is_region
+
+    def toggle_other_room(self):
+        self.parent.log("Setting person to other room " + str(not self.other_room))
+        self.other_room = not self.other_room
+        return self.other_room
 
     def update_length_tracked(self, time):
         self.length_tracked.setText("00:00")
