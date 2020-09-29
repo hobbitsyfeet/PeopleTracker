@@ -35,6 +35,7 @@ CPU_COUNT = multiprocessing.cpu_count()
 class MultiTracker():
     def __init__(self, tab, name="Person", colour=(255,255,255)):
         self.name = tab.name_line
+        self.pid = tab.id_line
         self.colour = colour
 
         # self.location_data = [] #(x, y)
@@ -50,6 +51,7 @@ class MultiTracker():
         self.description = tab.desc_line
         self.beginning = tab.get_beginning
         self.is_region = tab.get_is_region
+        self.is_chair = tab.get_is_chair
         self.read_only = tab.get_read_only
         # self.other_room = tab.get_other_room
         self.record_state = False
@@ -66,6 +68,10 @@ class MultiTracker():
     def get_name(self):
         """ Returns name of person tracked: returns string """
         return self.name.text()
+    
+    def get_id(self):
+        """ Returns ID of person tracked: returns string """
+        return self.pid.text()
 
     # def get_loc(self, frame):
     #     """ Returns pixel (x,y) location of person tracked: returns tuple(int,int)"""
@@ -213,7 +219,7 @@ class MultiTracker():
         """
         pass
 
-    def record_data(self, frame, x=-1, y=-1, w=-1, h=-1, regions=[], other_room=False):
+    def record_data(self, frame, total_people, x=-1, y=-1, w=-1, h=-1, regions=[], other_room=False):
         """
         Appends location and time to a list of data
 
@@ -224,7 +230,7 @@ class MultiTracker():
         # self.time_data.append(frame) #(frames tracked)
         point = (int(x),int(y))
         dimensions = (int(w), int(h))
-        self.data_dict[frame] = (point, regions, dimensions, other_room)
+        self.data_dict[frame] = (point, regions, dimensions, other_room, total_people, self.is_chair())
 
         # self.distance_data.append(self.estimate_distance(size)) #(CLOSE, MED, FAR) (estimated)
 
@@ -244,20 +250,6 @@ class MultiTracker():
 
         #Generate the base dataframe to fill and file
         export_filename = str(vid_name[:-4]) + ".csv"
-        if not os.path.isfile(export_filename):
-            data = {"Frame_Num":[],#self.time_data,
-                "Pixel_Loc":[],
-                "Perc_X":[], "Perc_Y":[],
-                "Region": [],
-                "Name":[], "Sex":[],
-                "Group_Size":[],
-                "Total_Sec_Rec":[],
-                "Description":[],
-                "Beginning":[],
-                "Other_Room":[],
-                }
-            df = pd.DataFrame(data)
-            export_csv = df.to_csv (export_filename, index = None, header=True, mode='a')
 
         frames = list(self.data_dict.keys())
         location = list(self.data_dict.values())
@@ -268,6 +260,8 @@ class MultiTracker():
         pixel_location = []
         region_list = []
         other_room_list = []
+        total_people_list = []
+        is_chair_list = []
         
         #Iterate through data and record
         for data in location:
@@ -296,6 +290,8 @@ class MultiTracker():
                     region_string += (text + ", ")
             region_list.append(region_string)
             other_room_list.append(data[3])
+            total_people_list.append(data[4])
+            is_chair_list.append(data[5])
 
         # input_dialog.log(len(frames))
         # input_dialog.log(pixel_location)
@@ -307,6 +303,7 @@ class MultiTracker():
         MAX_LEN = len(frames)
         sex = [self.get_sex()]
         name = [self.get_name()]
+        pid = [self.get_id()]
         group = [self.get_group()]
         description = [self.get_description()]
         beginning = [self.beginning()]
@@ -316,10 +313,26 @@ class MultiTracker():
         self.previous_time = total_time[0]
         sex.extend([sex[0]]*(MAX_LEN-1))
         name.extend([name[0]]*(MAX_LEN-1))
+        pid.extend([pid[0]]*(MAX_LEN-1))
         group.extend([group[0]]*(MAX_LEN-1))
         description.extend([description[0]]*(MAX_LEN-1))
         beginning.extend([beginning[0]]*(MAX_LEN-1))
+
         total_time.extend([total_time[0]]*(MAX_LEN-1))
+        # total_people.extend([total_people[0]]*(MAX_LEN-1))
+
+        time_rec = total_time[0]
+        print("Time Recorded", time_rec)
+        seconds = [round((time_rec)%60,2)]
+        minutes = [int(((time_rec)/60)%60)]
+        hours = [int(((minutes[0])/60)%60)]
+
+        seconds.extend([seconds[0]]*(MAX_LEN-1))
+        minutes.extend([minutes[0]]*(MAX_LEN-1))
+        hours.extend([hours[0]]*(MAX_LEN-1))
+        print(hours[0], minutes[0], seconds[0])
+        
+
 
         
         #Create the dataframe
@@ -328,13 +341,19 @@ class MultiTracker():
             "Perc_X": perc_x_list, "Perc_Y": perc_y_list,
             "Region": region_list,
             # "TimeInRegion":,
-            "Name": name, 
+            "Name": name,
+            "ID":pid, 
             "Sex":sex,
             "Group_Size":group,
             "Total_Sec_Rec":total_time,
+            "Time_Rec(Hour)":hours,
+            "Time_Rec(Min)":minutes,
+            "Time_Rec(Sec)":seconds,
             "Description":description,
             "Beginning":beginning,
             "Other_Room":other_room_list,
+            "Chair":is_chair_list,
+            "Total_People":total_people_list
             }
         
         df = pd.DataFrame(data)
@@ -538,27 +557,9 @@ class Regions(QWidget):
 
     def handle_inputs():
         pass
-
-def export_meta(vid_dir):
-    """
-    Exports a start line into a CSV with the same name as the video. This CSV will initialize with a set of columns on the left
-    with dashed lines for recorded data, and a set of columns on the right with Metadata.
-    This should only be called once, and will only initialize if the file does not exist- will not overwrite.
-
-    Input: vid_dir: directory of filename (string)
-    """
-
-    #get metadata from filepath
-    #NOTE: Exiftool must be in path to access, otherwise pass a string to the path.
-    with exiftool.ExifTool() as et:
-        metadata = et.get_metadata(vid_dir)
-    
-    #Parse date data into [YYYY MM DD HH MM SS]
-    date_created = metadata['QuickTime:CreateDate'].replace(":"," ")
-    date = list(map(int,date_created.split()))
-    
+def export_null_meta(vid_dir):
     #Create path string for exporting the data. It's just a change of extention.
-    export_filename = str(vid_dir[:-4]) + ".csv"
+    export_filename = str(videoPath[:-4]) + ".csv"
     
     #Create the first 2 rows of data with title and then info. Recorded info should have '-' or 'N/A'
     if not os.path.isfile(export_filename):
@@ -568,12 +569,100 @@ def export_meta(vid_dir):
             "Perc_X":['-'], "Perc_Y":['-'],
             "Region": ['-'],
             # "TimeInRegion":['-'],
-            "Name":['-'], "Sex":['-'], 
+            "Name":['-'], 
+            "ID":['-'],
+            "Sex":['-'], 
             "Group_Size":['-'],
             "Total_Sec_Rec":['-'],
+
+            "Time_Rec(Hour)":['-'],
+            "Time_Rec(Min)":['-'],
+            "Time_Rec(Sec)":['-'],
+
             "Description":['-'],
             "Present At Beginning":['-'],
             "Other_Room":['-'],
+            "Chair":['-'],
+            "Total_People":['-'],
+
+            "FileName":['-'],
+            "FileType":['-'],
+            "CreateDate(YYYY:MM:DD HH:MM:SS)": ['-'],
+            "CreateYear": ['-'],
+            "CreateHour": ['-'],
+
+            "Width(px)": ['-'],
+            "Height(px)": ['-'],
+            "VideoLength":['-'],
+            "FrameRate": ['-'],
+            "VideoLength(Hour)":['-'],
+            "VideoLength(Min)":['-'],
+            "VideoLength(Sec)":['-'],
+            "HandlerDescription": ['-']
+        }
+        input_dialog.log(data)
+
+        #Create a dataframe and then export it.
+        df = pd.DataFrame(data,index=[1])
+        export_csv = df.to_csv (export_filename, index = None, header=True)
+
+        input_dialog.log("Exported Null Metadata!")
+        
+def export_meta(vid_dir):
+    """
+    Exports a start line into a CSV with the same name as the video. This CSV will initialize with a set of columns on the left
+    with dashed lines for recorded data, and a set of columns on the right with Metadata.
+    This should only be called once, and will only initialize if the file does not exist- will not overwrite.
+
+    Input: vid_dir: directory of filename (string)
+    """
+    #get metadata from filepath
+    #NOTE: Exiftool must be in path to access, otherwise pass a string to the path.
+    try:
+        with exiftool.ExifTool() as et:
+            metadata = et.get_metadata(vid_dir)
+    except:
+        print("Could not collect")
+        export_null_meta(vid_dir)
+        return False
+
+    # try:
+        #Parse date data into [YYYY MM DD HH MM SS]
+    date_created = metadata['QuickTime:CreateDate'].replace(":"," ")
+    date = list(map(int,date_created.split()))
+    
+    duration = metadata['QuickTime:Duration']
+    seconds = round((duration)%60,2)
+    minutes = int(((duration)/60)%60)
+    hours = int(((minutes)/60)%60)
+    print(hours, minutes, seconds)
+    #Create path string for exporting the data. It's just a change of extention.
+    export_filename = str(vid_dir[:-4]) + ".csv"
+    #Create the first 2 rows of data with title and then info. Recorded info should have '-' or 'N/A'
+    if not os.path.isfile(export_filename):
+        data ={
+            "Frame_Num":['-'],#self.time_data,
+            "Pixel_Loc":['-'],
+            "Perc_X":['-'], "Perc_Y":['-'],
+            "Region": ['-'],
+            # "TimeInRegion":['-'],
+            "Name":['-'],
+            "ID":['-'],
+            "Sex":['-'], 
+            "Group_Size":['-'],
+
+            "Total_Sec_Rec":['-'],
+
+            "Time_Rec(Hour)":['-'],
+            "Time_Rec(Min)":['-'],
+            "Time_Rec(Sec)":['-'],
+
+            
+            "Description":['-'],
+            "Present At Beginning":['-'],
+            "Other_Room":['-'],
+            "Chair":['-'],
+            "Total_People":['-'],
 
             "FileName": metadata['File:FileName'],
             "FileType": metadata['File:FileType'],
@@ -584,9 +673,16 @@ def export_meta(vid_dir):
             "Width(px)": metadata['QuickTime:ImageWidth'],
             "Height(px)": metadata['QuickTime:ImageHeight'],
             "FrameRate": metadata['QuickTime:VideoFrameRate'],
+            "VideoLength(Hour)":hours,
+            "VideoLength(Min)":minutes,
+            "VideoLength(Sec)":seconds,
             "HandlerDescription": metadata['QuickTime:HandlerDescription']
         }
         input_dialog.log(data)
+    # except:
+    #     export_null_meta(vid_dir)
+    #     return False
+        
 
         #Create a dataframe and then export it.
         df = pd.DataFrame(data,index=[1])
@@ -749,23 +845,23 @@ if __name__ == "__main__":
                 input_dialog.tabs.setEnabled(True)
                 input_dialog.add_tab_state = False
             
-            if input_dialog.snap_state is not None and tracker_list[selected_tracker].data_dict:
-                #grabs frames that tracker was tracked
-                # frame_number = cap.get(cv2.CAP_PROP_POS_FRAMES)
-                frame_number = fvs.frame_number
-                frames_tracked = tracker_list[selected_tracker].data_dict
-                closest_frame = frames_tracked.get(frame_number, frames_tracked[min(frames_tracked.keys(), key=lambda k: abs(k-frame_number))])
-                print(closest_frame)
-                if frame_number - closest_frame[0][0] > frame_number-closest_frame[0][1]:
-                    closest_frame = closest_frame[0][0]
-                else:
-                    closest_frame = closest_frame[0][1]
+            # if input_dialog.snap_state is not None and tracker_list[selected_tracker].data_dict:
+            #     #grabs frames that tracker was tracked
+            #     # frame_number = cap.get(cv2.CAP_PROP_POS_FRAMES)
+            #     frame_number = fvs.frame_number
+            #     frames_tracked = tracker_list[selected_tracker].data_dict
+            #     closest_frame = frames_tracked.get(frame_number, frames_tracked[min(frames_tracked.keys(), key=lambda k: abs(k-frame_number))])
+            #     print(closest_frame)
+            #     if frame_number - closest_frame[0][0] > frame_number-closest_frame[0][1]:
+            #         closest_frame = closest_frame[0][0]
+            #     else:
+            #         closest_frame = closest_frame[0][1]
 
-                print(type(closest_frame))
-                input_dialog.log("Closest: " + str(closest_frame))
-                # cap.set(1 , closest_frame)
-                input_dialog.play_state = False
-                input_dialog.snap_state = None
+            #     print(type(closest_frame))
+            #     input_dialog.log("Closest: " + str(closest_frame))
+            #     # cap.set(1 , closest_frame)
+            #     input_dialog.play_state = False
+            #     input_dialog.snap_state = None
             #if playing, increment frames by skip_frame count
             if input_dialog.play_state == True and not input_dialog.scrollbar_changed:
                 input_dialog.set_scrollbar(fvs.frame_number)
@@ -809,6 +905,8 @@ if __name__ == "__main__":
                     tracker_list[selected_tracker].export_data(width, height, videoPath, vid_fps)
                 except IOError as err:
                     input_dialog.log(err)
+                    input_dialog.show_warning(str(err) + "\n Please close open CSV and try again.")
+
 
             #remove the tracker that is currently selected
             # if input_dialog.del_tab_state is True and selected_tracker != -1:
@@ -858,7 +956,7 @@ if __name__ == "__main__":
                 # try:
                 frame_number = fvs.frame_number
                 if input_dialog.tab_list[tracker_num].other_room:
-                    tracker.record_data(frame_number, other_room=True)
+                    tracker.record_data(frame_number, input_dialog.num_people.value(), other_room=True)
                 elif tracker.init_bounding_box is not None and input_dialog.tab_list[tracker_num].active is True and input_dialog.tab_list[tracker_num].read_only is False:
                     
                     #allocate frames on GPU, reducing CPU load.
@@ -902,7 +1000,7 @@ if __name__ == "__main__":
                     
                     if input_dialog.play_state == True:
                         #record all the data collected from that frame
-                        tracker.record_data(frame_number, center_x, center_y, width, height, in_region)
+                        tracker.record_data(frame_number, input_dialog.num_people.value(), center_x, center_y, width, height, in_region)
                 # except:
                 #     input_dialog.log("Crashed while deleting. Continuing")
 
@@ -919,7 +1017,8 @@ if __name__ == "__main__":
                         if frame_number in tracker.data_dict:
                             # print("Exists")
                             # If key exists in data
-                            center, _, dim = tracker.data_dict[frame_number]
+                            # point, regions, dimensions, other_room, total_people
+                            center, _, dim, other_room, total_people, is_chair = tracker.data_dict[frame_number]
 
                             if tracker.is_region() is True and tracker.get_name() != "":
                                 point = (int(center[0] - dim[0]), int(center[1] - dim[1]))

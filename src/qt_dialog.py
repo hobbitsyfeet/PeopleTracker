@@ -1,5 +1,5 @@
 import sys
-from PyQt5.QtWidgets import QApplication, QWidget, QInputDialog, QLineEdit, QLabel, QPushButton, QPlainTextEdit, QSlider, QStyle, QAction, QTabWidget, QVBoxLayout, QHBoxLayout, QMessageBox, QFileDialog, QCheckBox, QMenuBar
+from PyQt5.QtWidgets import QApplication, QWidget, QInputDialog, QLineEdit, QLabel, QPushButton, QPlainTextEdit, QSlider, QStyle, QAction, QTabWidget, QVBoxLayout, QHBoxLayout, QMessageBox, QFileDialog, QCheckBox, QMenuBar, QSpinBox, QErrorMessage
 
 from PyQt5.QtGui import QIcon, QIntValidator, QPixmap, QImage, QPainter, QPen, QKeySequence
 from PyQt5.QtCore import Qt, QRect
@@ -72,12 +72,15 @@ class App(QWidget):
             elif q.text() == "Snap Backward":
                 self.snap_state = "Backward"
             elif q.text() == "Set Tracker":
-                print("SETTING")
+                # print("SETTING")
                 self.set_tracker_state = True
             elif q.text() == "Retain Region":
                 self.toggle_retain_region()
             elif q.text() == "Export All":
                 self.export_all_state = True
+            elif q.text() == "Play/Pause":
+                
+                self.mediaStateChanged()
         except:
             crashlogger.log(str(traceback.format_exc()))
 
@@ -142,7 +145,11 @@ class App(QWidget):
             retain_moveing_region.setShortcut("Ctrl+C")
 
 
-            edit2 = file.addMenu("Edit")
+            play_key = QAction("Play/Pause",self)
+            play_key.setShortcuts([QKeySequence(Qt.Key_P), QKeySequence(Qt.CTRL + Qt.Key_P) ])
+
+
+            # edit2 = file.addMenu("Edit")
             # AddTab	Ctrl+T
             edit.addAction(add_region)
             edit.addAction(del_region)
@@ -151,6 +158,7 @@ class App(QWidget):
             edit.addAction(snap_backward)
             edit.addAction(set_tracker)
             edit.addAction(retain_moveing_region)
+            edit.addAction(play_key)
             edit.triggered[QAction].connect(self.processtrigger)
 
             
@@ -217,7 +225,6 @@ class App(QWidget):
             self.export_tab_btn.clicked.connect(self.export_tab_pressed)
 
             self.del_tab_state = False
-
             self.del_tab_btn = QPushButton()
             self.del_tab_btn.setText("Delete Tab")
             self.del_tab_btn.setToolTip("Deletes Tracked Object from project. \n\nWARNING!Export before removing.\nWait until box is cleared to click again.")
@@ -229,7 +236,22 @@ class App(QWidget):
 
             # self.del_tab_btn.setEnabled(False)
 
+            self.row2 = QHBoxLayout()
+
+            self.num_people_btn = QPushButton("Total in view")
+            self.num_people_btn.clicked.connect(lambda: self.get_integer())
+            self.num_people_btn.setFixedWidth(100)
+            # self.num_people_btn.setAlignment(Qt.AlignLeft)
+            self.num_people = QSpinBox()
+            # self.num_people.setValidator(QIntValidator(0,999))
+            self.num_people.setFixedWidth(50)
+            self.num_people.setAlignment(Qt.AlignLeft)
+
+            self.row2.addWidget(self.num_people_btn, 0 , Qt.AlignLeft)
+            self.row2.addWidget(self.num_people, 1 , Qt.AlignLeft)
+
             self.layout.addLayout(self.tab_control_layout)
+            self.layout.addLayout(self.row2)
 
             # Initialize tab screen
             self.tabs = QTabWidget()
@@ -272,12 +294,15 @@ class App(QWidget):
 
             bottom_layout = QHBoxLayout()
             
-            self.skip_frames = QLineEdit(self)
+            self.skip_frames = QSpinBox(self)
             self.onlyInt = QIntValidator()
-            self.skip_frames.setValidator(self.onlyInt)
-            self.skip_frames.setText("10")
-            self.skip_frames.setFixedWidth(25)
+            # self.skip_frames.setValidator(self.onlyInt)
+            self.skip_frames.setValue(10)
+            self.skip_frames.setFixedWidth(40)
             self.skip_frames.setAlignment(Qt.AlignRight)
+            self.skip_frames.setMaximum(200)
+            self.skip_frames.setMinimum(1)
+            # self.skip_frames.setValidator(QIntValidator(-999,999))
             self.skip_frames.setToolTip("The number of frames to increment by and 'skip'. This acts as a fast forward (positive) and reverse (negative).")
             bottom_layout.addWidget(self.skip_frames)
 
@@ -307,7 +332,19 @@ class App(QWidget):
         #     for currentQTableWidgetItem in self.tableWidget.selectedItems():
         #         print(currentQTableWidgetItem.row(), currentQTableWidgetItem.column(), currentQTableWidgetItem.text())
     
+    def show_warning(self, message):
+        error_dialog = QErrorMessage()
+        error_dialog.showMessage(message)
+        error_dialog.setWindowTitle("PeopleTracker ERROR")
+        error_dialog.exec()
 
+    def get_integer(self):
+        i, okPressed = QInputDialog.getInt(self, "QInputDialog().getInteger()",
+                                 "Number of people in room:", 1, 0, 999, 1)
+        # self.num_people.setText(str(i))
+        self.num_people.setValue(i)
+        if okPressed:
+            return i
 
     def set_max_scrollbar(self, maximum):
         self.vidScroll.setMaximum(maximum)
@@ -330,7 +367,7 @@ class App(QWidget):
         # print(self.vidScroll.value())
         return self.vidScroll.value()
 
-    def mediaStateChanged(self, state):
+    def mediaStateChanged(self):
         if self.play_state == False:
             self.playButton.setIcon(
                     self.style().standardIcon(QStyle.SP_MediaPause))
@@ -412,13 +449,13 @@ class App(QWidget):
 
     def get_frame_skip(self):
         try:
-            skip = int(self.skip_frames.text())
+            skip = int(self.skip_frames.value())
         except:
             self.log("Skip value non-valid. Please enter a number.")
-            skip = 50
+            skip = 0
         # #ensure skip is not backwards?
-        if skip == 0:
-            skip = 50
+        # if skip == 0:
+        #     skip = 50
         return skip
     
     def openFileNameDialog(self):
@@ -470,6 +507,7 @@ class person_tab():
 
         #these are used to record metadata
         self.name_line = QLineEdit(window)
+        self.id_line = QLineEdit(window)
         self.group_line = QLineEdit(window)
         self.group_line.setValidator(QIntValidator(0,999))
         # self.name_line.textChanged.connect(self.update_tab_name)
@@ -484,6 +522,7 @@ class person_tab():
         self.other_room = False
         self.beginning = False
         self.is_region = False
+        self.is_chair = False
         self.init_tab(window)
 
     def init_tab(self, parent_window):
@@ -492,14 +531,22 @@ class person_tab():
 
             #Start Name
             name_layout = QHBoxLayout()
+            self.tab.layout.addLayout(name_layout)
             
             name_btn = QPushButton('Name', parent_window)
             name_btn.clicked.connect(lambda: self.getText(input_name="Name:",line=self.name_line))
 
             name_layout.addWidget(name_btn)
-            name_layout.addWidget(self.name_line)
-            self.tab.layout.addLayout(name_layout)
 
+            name_layout.addWidget(self.name_line)
+            
+
+            id_btn = QPushButton('ID', parent_window)
+            id_btn.clicked.connect(lambda: self.getText(input_name="ID:",line=self.id_line))
+
+            name_layout.addWidget(id_btn)
+
+            name_layout.addWidget(self.id_line)
             # #Start Sex
             # sex_layout = QHBoxLayout()
 
@@ -566,6 +613,13 @@ class person_tab():
             self.is_region_button.setChecked(False)
             self.is_region_button.stateChanged.connect(lambda:self.toggle_region())
             length_layout.addWidget(self.is_region_button)
+
+            self.is_chair_button = QCheckBox("Chair")
+            self.is_chair_button.setChecked(False)
+            self.is_chair_button.stateChanged.connect(lambda:self.toggle_chair())
+            length_layout.addWidget(self.is_chair_button)
+
+
             self.tab.layout.addLayout(length_layout)
 
 
@@ -583,7 +637,7 @@ class person_tab():
 
     def getInteger(self):
         i, okPressed = QInputDialog.getInt(self.parent, "QInputDialog().getInteger()",
-                                 "Percentage:", 1, 0, 999, 1)
+                                 "Number:", 1, 0, 999, 1)
         self.group_line.setText(str(i))
         if okPressed:
             return i
@@ -617,6 +671,9 @@ class person_tab():
     
     def get_is_region(self):
         return self.is_region
+
+    def get_is_chair(self):
+        return self.is_chair
     
     def get_read_only(self):
         return self.read_only
@@ -649,11 +706,18 @@ class person_tab():
         self.other_room = not self.other_room
         return self.other_room
 
+    def toggle_chair(self):
+        self.parent.log("Setting person in chair " + str(not self.is_region))
+        self.is_chair = not self.is_chair
+        return self.is_chair
+
     def update_length_tracked(self, time):
         self.length_tracked.setText("00:00")
         seconds = round((time)%60,2)
         minutes = int(((time)/60)%60)
         self.length_tracked.setText( str(minutes) + ":" + str(seconds))
+
+
     
     # def update_tab_name(self):
     #     self.tab.parentWidget().setTabText(self.tab.parent.currentIndex(),self.name_line.getText())
