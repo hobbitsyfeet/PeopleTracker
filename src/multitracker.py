@@ -548,8 +548,12 @@ class Regions(QWidget):
 
                 # checking the equation of
                 # ellipse with the given point
-            p = ((math.pow((test_x - ellipse_center[0]), 2) / denom_x) + 
-                (math.pow((test_y - ellipse_center[1]), 2) / denom_y))
+            try:
+                p = ((math.pow((test_x - ellipse_center[0]), 2) / denom_x) + 
+                    (math.pow((test_y - ellipse_center[1]), 2) / denom_y))
+            except ZeroDivisionError as zerodiverr:
+                print(zerodiverr)
+                p = -1
 
             if p <= 1: #point exists in or on eclipse
                 within_points.append(key)
