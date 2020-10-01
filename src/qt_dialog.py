@@ -40,7 +40,17 @@ class App(QWidget):
 
     def keyPressEvent(self, event):
             self.test_method()
-            # self.log(event)
+            if int(event.modifiers()) == (Qt.ControlModifier+Qt.AltModifier):
+                self.log("Setting Tracker")
+                self.set_tracker_state = True
+
+    def mousePressEvent(self, event):
+        if event.button() == Qt.MidButton:
+            self.set_tracker_state = True
+        elif event.button() == Qt.RightButton:
+            self.log("Play Toggled.")
+            self.mediaStateChanged()
+
             
     def test_method(self):
         print('key pressed')
