@@ -959,43 +959,44 @@ if __name__ == "__main__":
                 tracker = tracker[1]
                 # try:
                 frame_number = fvs.frame_number
-                if input_dialog.tab_list[tracker_num].other_room:
-                    tracker.record_data(frame_number, input_dialog.num_people.value(), other_room=True)
-                elif tracker.init_bounding_box is not None and input_dialog.tab_list[tracker_num].active is True and input_dialog.tab_list[tracker_num].read_only is False:
-                    
-                    #allocate frames on GPU, reducing CPU load.
-                    cv2.UMat(frame)    
+                try:
+                    if input_dialog.tab_list[tracker_num].other_room:
+                        tracker.record_data(frame_number, input_dialog.num_people.value(), other_room=True)
+                    elif tracker.init_bounding_box is not None and input_dialog.tab_list[tracker_num].active is True and input_dialog.tab_list[tracker_num].read_only is False:
+                        
+                        #allocate frames on GPU, reducing CPU load.
+                        cv2.UMat(frame)    
 
-                    app.processEvents()
-                    #track and draw box on the frame
-                    success, box, frame = tracker.update_tracker(frame)
-                    app.processEvents()
-                    
-                    #NOTE: this can be activated if you want to pause the program when trakcer fails
-                    # if not success:
-                    #     tracker.assign(frame, trackerName)
+                        app.processEvents()
+                        #track and draw box on the frame
+                        success, box, frame = tracker.update_tracker(frame)
+                        app.processEvents()
+                        
+                        #NOTE: this can be activated if you want to pause the program when trakcer fails
+                        # if not success:
+                        #     tracker.assign(frame, trackerName)
 
-                    #caluclate info needed this frame
-                    # frame_number = cap.get(cv2.CAP_PROP_POS_FRAMES)
-                    frame_number = fvs.frame_number
-                    bottom_right = box[0]
-                    top_left = box[1]
-                    width = box[2]
-                    height = box[3]
+                        #caluclate info needed this frame
+                        # frame_number = cap.get(cv2.CAP_PROP_POS_FRAMES)
+                        frame_number = fvs.frame_number
+                        bottom_right = box[0]
+                        top_left = box[1]
+                        width = box[2]
+                        height = box[3]
 
-                    center_x = bottom_right + (width/2)
-                    center_y = top_left + (height/2)
-                    if tracker.is_region() is True and tracker.get_name() != "":
+                        center_x = bottom_right + (width/2)
+                        center_y = top_left + (height/2)
+                        if tracker.is_region() is True and tracker.get_name() != "":
 
-                        regions.set_moving_radius(name = tracker.get_name(), 
-                                                point = (int(center_x - width), int(center_y - height)),
-                                                dimensions = (int(width*2), int(height*2))
-                                                )
-                        regions.display_radius(frame)
+                            regions.set_moving_radius(name = tracker.get_name(), 
+                                                    point = (int(center_x - width), int(center_y - height)),
+                                                    dimensions = (int(width*2), int(height*2))
+                                                    )
+                            regions.display_radius(frame)
 
-                    elif tracker.is_region() is False:
-                        # If tracker region is no longer selected, delete moving radius
-                        regions.del_moving_radius(tracker.get_name())
+                        elif tracker.is_region() is False:
+                            # If tracker region is no longer selected, delete moving radius
+                            regions.del_moving_radius(tracker.get_name())
 
                     #center dot                   
                     cv2.circle(frame, (int(center_x),int(center_y)),2,(0,0,255),-1)
@@ -1005,8 +1006,8 @@ if __name__ == "__main__":
                     if input_dialog.play_state == True:
                         #record all the data collected from that frame
                         tracker.record_data(frame_number, input_dialog.num_people.value(), center_x, center_y, width, height, in_region)
-                # except:
-                #     input_dialog.log("Crashed while deleting. Continuing")
+                except:
+                    input_dialog.log("Crashed while deleting. Continuing")
 
                 try:
                     if input_dialog.tab_list[tracker_num].read_only is True:
@@ -1074,7 +1075,7 @@ if __name__ == "__main__":
                     input_dialog.del_tab_btn.setEnabled(True)
                     input_dialog.export_tab_btn.setEnabled(True)
                 #Press space bar to re-assign
-                if key == ord(' ') or input_dialog.set_tracker_state is True:
+                if input_dialog.set_tracker_state is True:
                     try:
                         input_dialog.play_state = False
                         input_dialog.tabs.setEnabled(False)
