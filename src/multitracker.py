@@ -285,13 +285,13 @@ class MultiTracker():
             
             height = data[2][1]
             #point plus half of box height
-            top = (data[0][0], data[0][1] + (height/2))
-            bottom = (data[0][0], data[0][1] - (height/2))
+            top = (data[0][0], int(data[0][1] + (height/2)))
+            bottom = (data[0][0], int(data[0][1] - (height/2)))
             print(data[2])
             print("Middle:", data[0], " Top:", top, "Bottom:", bottom)
 
-            top_loc.append(int(top))
-            bottom_loc.append(int(bottom))
+            top_loc.append(top)
+            bottom_loc.append(bottom)
             
             #Handle invalid data to maintain consistency
             if new_data[0] == -1 or new_data[1] == -1:
