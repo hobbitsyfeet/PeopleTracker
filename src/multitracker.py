@@ -246,6 +246,7 @@ class MultiTracker():
         """
         # if not os.path.exists(("./data/" + vid_name[:-4])):
         #     os.makedirs(("./data/" + vid_name[:-4]))
+        # self.data_dict[frame] = (point, regions, dimensions, other_room, total_people, self.is_chair())
         input_dialog.log(self.data_dict)
 
         #Generate the base dataframe to fill and file
@@ -253,11 +254,22 @@ class MultiTracker():
 
         frames = list(self.data_dict.keys())
         location = list(self.data_dict.values())
+        
+        
 
         #elaborate on the location, record it in percent
         perc_x_list = []
         perc_y_list = []
         pixel_location = []
+
+        
+        top_loc = []
+        bottom_loc = []
+
+        top_perc = []
+        bottom_perc = []
+
+
         region_list = []
         other_room_list = []
         total_people_list = []
@@ -266,19 +278,37 @@ class MultiTracker():
         #Iterate through data and record
         for data in location:
 
-            pixel_location.append(data[0])
 
+            pixel_location.append(data[0])
+            
+            height = data[2][1]
+            #point plus half of box height
+            top = (data[0][0], data[0][1] + (height/2))
+            bottom = (data[0][0], data[0][1] - (height/2))
+            print(data[2])
+            print("Middle:", data[0], " Top:", top, "Bottom:", bottom)
+
+            top_loc.append(int(top))
+            bottom_loc.append(int(bottom))
+            
             #Handle invalid data to maintain consistency
             if data[0][0] == -1 or data[0][1] == -1:
                 perc_x = -1
                 perc_y = -1
                 perc_x_list.append(round(perc_x,2))
                 perc_y_list.append(round(perc_y,2))
+
+                top_perc.append(round(-1,2))
+                bottom_perc.append(round(-1,2))
+
             else:
                 perc_x = (data[0][0]/vid_width)*100
                 perc_y = (data[0][1]/vid_height)*100
                 perc_x_list.append(round(perc_x,2))
                 perc_y_list.append(round(perc_y,2))
+
+                top_perc.append(round( ((top[1]/vid_height)*100), 2))
+                bottom_perc.append(round( ((bottom[1]/vid_height)*100), 2))
 
 
 
@@ -338,6 +368,12 @@ class MultiTracker():
         #Create the dataframe
         data = {"Frame_Num":frames,#self.time_data,
             "Pixel_Loc": pixel_location,
+
+            "Top_Loc":top_loc, #NEW
+            "Top_Perc":top_perc,
+            "Bottom_Loc":bottom_loc,
+            "Bottom_Perc":bottom_perc,
+
             "Perc_X": perc_x_list, "Perc_Y": perc_y_list,
             "Region": region_list,
             # "TimeInRegion":,
@@ -570,6 +606,12 @@ def export_null_meta(vid_dir):
         data ={
             "Frame_Num":['-'],#self.time_data,
             "Pixel_Loc":['-'],
+
+            "Top_Loc":['-'], #NEW
+            "Top_Perc":['-'],
+            "Bottom_Loc":['-'],
+            "Bottom_Perc":['-'],
+
             "Perc_X":['-'], "Perc_Y":['-'],
             "Region": ['-'],
             # "TimeInRegion":['-'],
@@ -647,6 +689,12 @@ def export_meta(vid_dir):
         data ={
             "Frame_Num":['-'],#self.time_data,
             "Pixel_Loc":['-'],
+
+            "Top_Loc":['-'], #NEW
+            "Top_Perc":['-'],
+            "Bottom_Loc":['-'],
+            "Bottom_Perc":['-'],
+
             "Perc_X":['-'], "Perc_Y":['-'],
             "Region": ['-'],
             # "TimeInRegion":['-'],
