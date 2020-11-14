@@ -63,6 +63,8 @@ class MultiTracker():
         self.init_bounding_box = None
         self.reset = False
         self.state_tracking = False
+        self.vid_width = None
+        self.vid_height = None
             
 
     def get_name(self):
@@ -274,12 +276,12 @@ class MultiTracker():
         other_room_list = []
         total_people_list = []
         is_chair_list = []
-        
         #Iterate through data and record
         for data in location:
+            new_data = (data[0][0], vid_height - data[0][1])
 
-
-            pixel_location.append(data[0])
+        
+            pixel_location.append(new_data)
             
             height = data[2][1]
             #point plus half of box height
@@ -292,7 +294,7 @@ class MultiTracker():
             bottom_loc.append(int(bottom))
             
             #Handle invalid data to maintain consistency
-            if data[0][0] == -1 or data[0][1] == -1:
+            if new_data[0] == -1 or new_data[1] == -1:
                 perc_x = -1
                 perc_y = -1
                 perc_x_list.append(round(perc_x,2))
@@ -302,8 +304,8 @@ class MultiTracker():
                 bottom_perc.append(round(-1,2))
 
             else:
-                perc_x = (data[0][0]/vid_width)*100
-                perc_y = (data[0][1]/vid_height)*100
+                perc_x = (new_data[0]/vid_width)*100
+                perc_y = (new_data[1]/vid_height)*100
                 perc_x_list.append(round(perc_x,2))
                 perc_y_list.append(round(perc_y,2))
 
@@ -360,7 +362,7 @@ class MultiTracker():
         seconds.extend([seconds[0]]*(MAX_LEN-1))
         minutes.extend([minutes[0]]*(MAX_LEN-1))
         hours.extend([hours[0]]*(MAX_LEN-1))
-        print(hours[0], minutes[0], seconds[0])
+        # print(hours[0], minutes[0], seconds[0])
         
 
 
@@ -798,6 +800,7 @@ if __name__ == "__main__":
         # frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
         # frame = np.dstack([frame, frame, frame])
 
+
         frame = cv2.resize(frame, (input_dialog.resolution_x, input_dialog.resolution_y), 0, 0, cv2.INTER_CUBIC)
         
         previous_frame = frame
@@ -811,13 +814,12 @@ if __name__ == "__main__":
         skip_frame = 10
         
         input_dialog.log("Gathering frames...")
-        
         while True:
             
             if input_dialog.export_all_state is True:
                 input_dialog.export_all_state = False
                 for tracker in tracker_list:
-                    tracker.export_data(input_dialog.width, input_dialog.height, videoPath, vid_fps)
+                    tracker.export_data(input_dialog.resolution_x, input_dialog.resolution_y, videoPath, vid_fps)
 
             if input_dialog.quit_State is True:
                 # sys.exit(app.exec_())
@@ -951,10 +953,8 @@ if __name__ == "__main__":
             if input_dialog.export_state == True:
                 input_dialog.export_state = False
                 input_dialog.log("Exporting " + tracker_list[selected_tracker].get_name() + "'s data recorded.")
-                width = cap.get(cv2.CAP_PROP_FRAME_WIDTH)   # float
-                height = cap.get(cv2.CAP_PROP_FRAME_HEIGHT) # float
                 try:
-                    tracker_list[selected_tracker].export_data(width, height, videoPath, vid_fps)
+                    tracker_list[selected_tracker].export_data(input_dialog.resolution_x, input_dialog.resolution_y, videoPath, vid_fps)
                 except IOError as err:
                     input_dialog.log(err)
                     input_dialog.show_warning(str(err) + "\n Please close open CSV and try again.")
