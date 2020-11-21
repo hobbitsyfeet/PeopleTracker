@@ -1046,9 +1046,13 @@ if __name__ == "__main__":
                             # If tracker region is no longer selected, delete moving radius
                             regions.del_moving_radius(tracker.get_name())
 
-                    #center dot                   
+                    #center dot               
                     cv2.circle(frame, (int(center_x),int(center_y)),2,(0,0,255),-1)
 
+                    top = (int(center_x), int(center_y + height/2))
+                    bottom = (int(center_x), int(center_y - height/2))
+                    cv2.circle(frame, top, 3, (0,255,255),-1)
+                    cv2.circle(frame, bottom, 3, (0,255,255),-1)
                     in_region = regions.test_radius((center_x, center_y))
                     
                     if input_dialog.play_state == True:
@@ -1074,9 +1078,12 @@ if __name__ == "__main__":
                             center, _, dim, other_room, total_people, is_chair = tracker.data_dict[frame_number]
 
                             if tracker.is_region() is True and tracker.get_name() != "":
+                                
                                 point = (int(center[0] - dim[0]), int(center[1] - dim[1]))
                                 dim = (int(dim[0]*2), int(dim[1]*2))
                                 regions.set_moving_radius(tracker.get_name(), point, dim)
+                                top = (int(center[0]) - dim[0], int(center[1], - dim[1]/2))
+                                bottom = (int(center[0]) - dim[0], int(center[1], + dim[1]/2))
 
                             if tracker.is_region() is False:
                                 # If tracker region is no longer selected, delete moving radius
@@ -1087,10 +1094,14 @@ if __name__ == "__main__":
                                 # print("Green")
                                 #center dot
                                 cv2.circle(frame, (int(center[0]),int(center[1])),2,(0,255,0),-1)
+                                cv2.circle(frame, top, 3, (0,255,0),-1)
+                                cv2.circle(frame, bottom, 3, (0,255,0),-1)
                                 
                             else: 
                                 # print("Red Dot")
                                 cv2.circle(frame, (int(center[0]),int(center[1])),2,(0,0,255),-1)
+                                cv2.circle(frame, top, 3, (0,0,255),-1)
+                                cv2.circle(frame, bottom, 3, (0,0,255),-1)
                         
                         #Exclude if you want regions to not exist
                         elif not input_dialog.retain_region:
