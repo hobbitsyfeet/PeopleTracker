@@ -63,8 +63,6 @@ class MultiTracker():
         self.init_bounding_box = None
         self.reset = False
         self.state_tracking = False
-        self.vid_width = None
-        self.vid_height = None
             
 
     def get_name(self):
@@ -256,52 +254,31 @@ class MultiTracker():
 
         frames = list(self.data_dict.keys())
         location = list(self.data_dict.values())
-        
-        
 
         #elaborate on the location, record it in percent
         perc_x_list = []
         perc_y_list = []
         pixel_location = []
 
-        
-        top_loc = []
-        bottom_loc = []
-
-        top_perc = []
-        bottom_perc = []
-
-
         region_list = []
         other_room_list = []
         total_people_list = []
         is_chair_list = []
+        
         #Iterate through data and record
         for data in location:
             new_data = (data[0][0], vid_height - data[0][1])
-
-        
             pixel_location.append(new_data)
-            
-            height = data[2][1]
-            #point plus half of box height
-            top = (data[0][0], int(data[0][1] + (height/2)))
-            bottom = (data[0][0], int(data[0][1] - (height/2)))
-            print(data[2])
-            print("Middle:", data[0], " Top:", top, "Bottom:", bottom)
 
-            top_loc.append(top)
-            bottom_loc.append(bottom)
-            
             #Handle invalid data to maintain consistency
-            if new_data[0] == -1 or new_data[1] == -1:
+            if new_data == -1 or new_data == -1:
                 perc_x = -1
                 perc_y = -1
                 perc_x_list.append(round(perc_x,2))
                 perc_y_list.append(round(perc_y,2))
 
-                top_perc.append(round(-1,2))
-                bottom_perc.append(round(-1,2))
+                # top_perc.append(round(-1,2))
+                # bottom_perc.append(round(-1,2))
 
             else:
                 perc_x = (new_data[0]/vid_width)*100
@@ -309,8 +286,8 @@ class MultiTracker():
                 perc_x_list.append(round(perc_x,2))
                 perc_y_list.append(round(perc_y,2))
 
-                top_perc.append(round( ((top[1]/vid_height)*100), 2))
-                bottom_perc.append(round( ((bottom[1]/vid_height)*100), 2))
+                # top_perc.append(round( ((top[1]/vid_height)*100), 2))
+                # bottom_perc.append(round( ((bottom[1]/vid_height)*100), 2))
 
 
 
@@ -362,7 +339,7 @@ class MultiTracker():
         seconds.extend([seconds[0]]*(MAX_LEN-1))
         minutes.extend([minutes[0]]*(MAX_LEN-1))
         hours.extend([hours[0]]*(MAX_LEN-1))
-        # print(hours[0], minutes[0], seconds[0])
+        print(hours[0], minutes[0], seconds[0])
         
 
 
@@ -370,12 +347,6 @@ class MultiTracker():
         #Create the dataframe
         data = {"Frame_Num":frames,#self.time_data,
             "Pixel_Loc": pixel_location,
-
-            "Top_Loc":top_loc, #NEW
-            "Top_Perc":top_perc,
-            "Bottom_Loc":bottom_loc,
-            "Bottom_Perc":bottom_perc,
-
             "Perc_X": perc_x_list, "Perc_Y": perc_y_list,
             "Region": region_list,
             # "TimeInRegion":,
@@ -608,12 +579,6 @@ def export_null_meta(vid_dir):
         data ={
             "Frame_Num":['-'],#self.time_data,
             "Pixel_Loc":['-'],
-
-            "Top_Loc":['-'], #NEW
-            "Top_Perc":['-'],
-            "Bottom_Loc":['-'],
-            "Bottom_Perc":['-'],
-
             "Perc_X":['-'], "Perc_Y":['-'],
             "Region": ['-'],
             # "TimeInRegion":['-'],
@@ -691,12 +656,6 @@ def export_meta(vid_dir):
         data ={
             "Frame_Num":['-'],#self.time_data,
             "Pixel_Loc":['-'],
-
-            "Top_Loc":['-'], #NEW
-            "Top_Perc":['-'],
-            "Bottom_Loc":['-'],
-            "Bottom_Perc":['-'],
-
             "Perc_X":['-'], "Perc_Y":['-'],
             "Region": ['-'],
             # "TimeInRegion":['-'],
@@ -800,7 +759,6 @@ if __name__ == "__main__":
         # frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
         # frame = np.dstack([frame, frame, frame])
 
-
         frame = cv2.resize(frame, (input_dialog.resolution_x, input_dialog.resolution_y), 0, 0, cv2.INTER_CUBIC)
         
         previous_frame = frame
@@ -814,6 +772,7 @@ if __name__ == "__main__":
         skip_frame = 10
         
         input_dialog.log("Gathering frames...")
+        
         while True:
             
             if input_dialog.export_all_state is True:
@@ -953,6 +912,8 @@ if __name__ == "__main__":
             if input_dialog.export_state == True:
                 input_dialog.export_state = False
                 input_dialog.log("Exporting " + tracker_list[selected_tracker].get_name() + "'s data recorded.")
+                width = cap.get(cv2.CAP_PROP_FRAME_WIDTH)   # float
+                height = cap.get(cv2.CAP_PROP_FRAME_HEIGHT) # float
                 try:
                     tracker_list[selected_tracker].export_data(input_dialog.resolution_x, input_dialog.resolution_y, videoPath, vid_fps)
                 except IOError as err:
@@ -1049,10 +1010,10 @@ if __name__ == "__main__":
                     #center dot               
                     cv2.circle(frame, (int(center_x),int(center_y)),2,(0,0,255),-1)
 
-                    top = (int(center_x), int(center_y + height/2))
-                    bottom = (int(center_x), int(center_y - height/2))
-                    cv2.circle(frame, top, 3, (0,255,255),-1)
-                    cv2.circle(frame, bottom, 3, (0,255,255),-1)
+                    # top = (int(center_x), int(center_y + height/2))
+                    # bottom = (int(center_x), int(center_y - height/2))
+                    # cv2.circle(frame, top, 3, (0,255,255),-1)
+                    # cv2.circle(frame, bottom, 3, (0,255,255),-1)
                     in_region = regions.test_radius((center_x, center_y))
                     
                     if input_dialog.play_state == True:
@@ -1082,8 +1043,8 @@ if __name__ == "__main__":
                                 point = (int(center[0] - dim[0]), int(center[1] - dim[1]))
                                 dim = (int(dim[0]*2), int(dim[1]*2))
                                 regions.set_moving_radius(tracker.get_name(), point, dim)
-                                top = (int(center[0]) - dim[0], int(center[1], - dim[1]/2))
-                                bottom = (int(center[0]) - dim[0], int(center[1], + dim[1]/2))
+                                # top = (int(center[0]) - dim[0], int(center[1], - dim[1]/2))
+                                # bottom = (int(center[0]) - dim[0], int(center[1], + dim[1]/2))
 
                             if tracker.is_region() is False:
                                 # If tracker region is no longer selected, delete moving radius
@@ -1094,14 +1055,14 @@ if __name__ == "__main__":
                                 # print("Green")
                                 #center dot
                                 cv2.circle(frame, (int(center[0]),int(center[1])),2,(0,255,0),-1)
-                                cv2.circle(frame, top, 3, (0,255,0),-1)
-                                cv2.circle(frame, bottom, 3, (0,255,0),-1)
+                                # cv2.circle(frame, top, 3, (0,255,0),-1)
+                                # cv2.circle(frame, bottom, 3, (0,255,0),-1)
                                 
                             else: 
                                 # print("Red Dot")
                                 cv2.circle(frame, (int(center[0]),int(center[1])),2,(0,0,255),-1)
-                                cv2.circle(frame, top, 3, (0,0,255),-1)
-                                cv2.circle(frame, bottom, 3, (0,0,255),-1)
+                                # cv2.circle(frame, top, 3, (0,0,255),-1)
+                                # cv2.circle(frame, bottom, 3, (0,0,255),-1)
                         
                         #Exclude if you want regions to not exist
                         elif not input_dialog.retain_region:
