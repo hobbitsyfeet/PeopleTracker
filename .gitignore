@@ -4,3 +4,6 @@ env/
 .vscode/
 *.pyc
 *.MP4
+build
+dist
+*.csv

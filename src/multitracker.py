@@ -12,28 +12,32 @@ from multiprocessing.pool import ThreadPool
 from random import randint
 from sys import exit
 from threading import Thread
-#from tkinter import simpledialog
 
 import cv2
 import exiftool
 import imutils
 import numpy as np
 import pandas as pd
+from PyQt5.QtCore import QCoreApplication
 from PyQt5.QtWidgets import (QApplication, QComboBox, QInputDialog, QLineEdit,
                              QMessageBox, QWidget)
 
 import crashlogger
+# import maskrcnn
 #import mbox
 import qt_dialog
 from Video import FileVideoStream
 
 CPU_COUNT = multiprocessing.cpu_count()
 
+#start tracking version at 1.0
+PEOPLETRACKER_VERSION = 1.0
+
 # For extracting video metadata
 # import mutagen
 
 class MultiTracker():
-    def __init__(self, tab, name="Person", colour=(255,255,255)):
+    def __init__(self, tab, name="Person", colour=(255,255,255)):    
         self.name = tab.name_line
         self.pid = tab.id_line
         self.colour = colour
@@ -258,7 +262,8 @@ class MultiTracker():
         #elaborate on the location, record it in percent
         perc_x_list = []
         perc_y_list = []
-        pixel_location = []
+        pixel_location_x = []
+        pixel_location_y = []
 
         region_list = []
         other_room_list = []
@@ -268,7 +273,8 @@ class MultiTracker():
         #Iterate through data and record
         for data in location:
             new_data = (data[0][0], vid_height - data[0][1])
-            pixel_location.append(new_data)
+            pixel_location_x.append(new_data[0])
+            pixel_location_y.append(new_data[1])
 
             #Handle invalid data to maintain consistency
             if new_data == -1 or new_data == -1:
@@ -341,12 +347,11 @@ class MultiTracker():
         hours.extend([hours[0]]*(MAX_LEN-1))
         print(hours[0], minutes[0], seconds[0])
         
-
-
         
         #Create the dataframe
         data = {"Frame_Num":frames,#self.time_data,
-            "Pixel_Loc": pixel_location,
+            "Pixel_Loc_x": pixel_location_x,
+            "Pixel_Loc_y": pixel_location_y,
             "Perc_X": perc_x_list, "Perc_Y": perc_y_list,
             "Region": region_list,
             # "TimeInRegion":,
@@ -578,7 +583,8 @@ def export_null_meta(vid_dir):
     if not os.path.isfile(export_filename):
         data ={
             "Frame_Num":['-'],#self.time_data,
-            "Pixel_Loc":['-'],
+            "Pixel_Loc_x":['-'],
+            "Pixel_Loc_y":['-'],
             "Perc_X":['-'], "Perc_Y":['-'],
             "Region": ['-'],
             # "TimeInRegion":['-'],
@@ -611,7 +617,8 @@ def export_null_meta(vid_dir):
             "VideoLength(Hour)":['-'],
             "VideoLength(Min)":['-'],
             "VideoLength(Sec)":['-'],
-            "HandlerDescription": ['-']
+            "HandlerDescription": ['-'],
+            "PeopleTrackerVersion":['-']
         }
         input_dialog.log(data)
 
@@ -655,7 +662,8 @@ def export_meta(vid_dir):
     if not os.path.isfile(export_filename):
         data ={
             "Frame_Num":['-'],#self.time_data,
-            "Pixel_Loc":['-'],
+            "Pixel_Loc_x":['-'],
+            "Pixel_Loc_y":['-'],
             "Perc_X":['-'], "Perc_Y":['-'],
             "Region": ['-'],
             # "TimeInRegion":['-'],
@@ -689,7 +697,8 @@ def export_meta(vid_dir):
             "VideoLength(Hour)":hours,
             "VideoLength(Min)":minutes,
             "VideoLength(Sec)":seconds,
-            "HandlerDescription": metadata['QuickTime:HandlerDescription']
+            "HandlerDescription": metadata['QuickTime:HandlerDescription'],
+            "PeopleTrackerVersion":PEOPLETRACKER_VERSION
         }
         input_dialog.log(data)
     # except:
@@ -774,7 +783,12 @@ if __name__ == "__main__":
         input_dialog.log("Gathering frames...")
         
         while True:
-            
+            QCoreApplication.processEvents()
+
+            if input_dialog.predict_state is True:
+                # frame, rois, scores = maskrcnn.predict(videoPath, step=input_dialog.skip_frames.value(), display=True, logger=input_dialog.log)
+                input_dialog.predict_state = False
+
             if input_dialog.export_all_state is True:
                 input_dialog.export_all_state = False
                 for tracker in tracker_list:
@@ -835,6 +849,7 @@ if __name__ == "__main__":
                 frame = fvs.read()
                 previous_frame = frame
                 input_dialog.scrollbar_changed = False
+                # segmask, frame = custom_model.segmentFrame(frame,True)
                 
             else:
             #     # input_dialog.set_scrollbar(skip_frame)
@@ -842,7 +857,6 @@ if __name__ == "__main__":
                 input_dialog.get_scrollbar_value()
                 # frame = fvs.read()
                 # input_dialog.scrollbar_changed = False
-
 
             #When we add a tab, finish initializing it before anything else can continue
             if input_dialog.add_tab_state == True:
@@ -876,21 +890,19 @@ if __name__ == "__main__":
             #     input_dialog.play_state = False
             #     input_dialog.snap_state = None
             #if playing, increment frames by skip_frame count
+
             if input_dialog.play_state == True and not input_dialog.scrollbar_changed:
                 input_dialog.set_scrollbar(fvs.frame_number)
                 # fvs.stopped = False
                 frame = fvs.read()
                 previous_frame = frame
+                # segmask, frame = custom_model.segmentFrame(frame,True)
                 # skip_frame += input_dialog.get_frame_skip()
-
                 
             else:
                 # frame = input_dialog.get_scrollbar_value()
                 frame = previous_frame
                 
-
-
-
             #set tne next frame to skip frame and read it
             # cap.set(1 , skip_frame)
             try:

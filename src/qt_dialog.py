@@ -1,16 +1,18 @@
 import sys
-from PyQt5.QtWidgets import QApplication, QWidget, QInputDialog, QLineEdit, QLabel, QPushButton, QPlainTextEdit, QSlider, QStyle, QAction, QTabWidget, QVBoxLayout, QHBoxLayout, QMessageBox, QFileDialog, QCheckBox, QMenuBar, QSpinBox, QErrorMessage
+from PyQt5.QtWidgets import QApplication, QWidget, QInputDialog, QLineEdit, QLabel, QPushButton, QPlainTextEdit, QSlider, QStyle, QAction, QTabWidget, QVBoxLayout, QHBoxLayout, QMessageBox, QFileDialog, QCheckBox, QMenuBar, QSpinBox, QErrorMessage, QProgressDialog
 
 from PyQt5.QtGui import QIcon, QIntValidator, QPixmap, QImage, QPainter, QPen, QKeySequence
-from PyQt5.QtCore import Qt, QRect
+from PyQt5.QtCore import Qt, QRect, QCoreApplication
 from PyQt5.QtCore import pyqtSlot, pyqtSignal
 import webbrowser
 import crashlogger
 import traceback
+# import maskrcnn
+
+
 
 class App(QWidget):
 # TODO ADD A CURRENT STATE INFO TAG WHICH LETS THE USER KNOW WHAT TO DO AT A CERTAIN TIME!
-# TODO PICKLE THE PROJECT TO SAVE THE STATE!!!
     def __init__(self):
         super().__init__()
         self.title = 'Person'
@@ -34,6 +36,9 @@ class App(QWidget):
         self.retain_region = True
         self.quit_State = False
         self.image = None
+
+        self.predict_state = False
+        
     
         # self.videoWindow = VideoWindow()
         # self.videoWindow.show()
@@ -91,6 +96,13 @@ class App(QWidget):
             elif q.text() == "Play/Pause":
                 
                 self.mediaStateChanged()
+            elif q.text() == "Predict":
+                self.log("Predict selected. Please wait while it loads the model...")
+                progress = QProgressDialog(self)
+                QCoreApplication.processEvents()
+                # self.predict_state = True
+                # frame, rois, scores = maskrcnn.predict(self.filename, step=self.skip_frames.value(), display=True, progress=progress, logger=self.log)  
+                
         except:
             crashlogger.log(str(traceback.format_exc()))
 
@@ -121,9 +133,12 @@ class App(QWidget):
 
             save = QAction("Save",self)
             save.setShortcut("Ctrl+S")
+            predict = QAction("Predict",self)
+            file.addAction(predict)
             file.addAction(save)
             quit = QAction("Quit", self)
             file.addAction(quit)
+            
             
             export_all = QAction("Export All", self)
             export_all.setShortcut("Ctrl+E")
