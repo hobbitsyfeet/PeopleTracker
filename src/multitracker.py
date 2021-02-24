@@ -8,7 +8,7 @@ import sys
 #import tkinter as tk
 import traceback
 from collections import deque
-from multiprocessing.pool import ThreadPool
+# from multiprocessing.pool import ThreadPool
 from random import randint
 from sys import exit
 from threading import Thread
@@ -23,7 +23,7 @@ from PyQt5.QtWidgets import (QApplication, QComboBox, QInputDialog, QLineEdit,
                              QMessageBox, QWidget)
 
 import crashlogger
-# import maskrcnn
+# import maskrcnn UNCOMMENT FOR LATER
 #import mbox
 import qt_dialog
 from Video import FileVideoStream
@@ -31,7 +31,7 @@ from Video import FileVideoStream
 CPU_COUNT = multiprocessing.cpu_count()
 
 #start tracking version at 1.0
-PEOPLETRACKER_VERSION = 1.0
+PEOPLETRACKER_VERSION = 2.0
 
 # For extracting video metadata
 # import mutagen
@@ -67,7 +67,13 @@ class MultiTracker():
         self.init_bounding_box = None
         self.reset = False
         self.state_tracking = False
-            
+
+    def compare_predicted(self, frame_num):
+        """
+        Compares predicted file to tracked file in frame using IOU and overlapping measures.
+        """
+        pass
+
 
     def get_name(self):
         """ Returns name of person tracked: returns string """
@@ -698,7 +704,7 @@ def export_meta(vid_dir):
             "VideoLength(Min)":minutes,
             "VideoLength(Sec)":seconds,
             "HandlerDescription": metadata['QuickTime:HandlerDescription'],
-            "PeopleTrackerVersion":PEOPLETRACKER_VERSION
+            "PeopleTrackerVersion":float(PEOPLETRACKER_VERSION)
         }
         input_dialog.log(data)
     # except:
@@ -743,7 +749,9 @@ if __name__ == "__main__":
         #initialize empty list to store trackers
         tracker_list = []
 
+        pred_dict = None
         
+
 
         # initialize OpenCV's special multi object tracker
         # input_dialog.add_tab()
@@ -756,14 +764,28 @@ if __name__ == "__main__":
         
         #Initialize video, get the first frame and setup the scrollbar to the video length
         cap = cv2.VideoCapture(videoPath)
+
+        resized_ratio_x = input_dialog.resolution_x / cap.get(cv2.CAP_PROP_FRAME_WIDTH)
+        resized_ratio_y = input_dialog.resolution_y / cap.get(cv2.CAP_PROP_FRAME_HEIGHT)
+        # print("WIDTH:", cap.get(cv2.CAP_PROP_FRAME_WIDTH), " HEIGHT:", cv2.CAP_PROP_FRAME_HEIGHT)
+
+        print(resized_ratio_x, resized_ratio_y)
+
         input_dialog.set_max_scrollbar(cap.get(cv2.CAP_PROP_FRAME_COUNT))
-        cap.set(cv2.CAP_PROP_FRAME_WIDTH, input_dialog.resolution_x);
-        cap.set(cv2.CAP_PROP_FRAME_HEIGHT, input_dialog.resolution_y);
+        cap.set(cv2.CAP_PROP_FRAME_WIDTH, input_dialog.resolution_x)
+        cap.set(cv2.CAP_PROP_FRAME_HEIGHT, input_dialog.resolution_y)
         fvs = FileVideoStream(videoPath).start()
 
         # ret, frame = cap.read()
 
-        frame = fvs.read()
+        frame, frame_num = fvs.read()
+        input_dialog.set_scrollbar(0)
+        fvs.frame_number = input_dialog.get_scrollbar_value()
+        fvs.reset = True
+        input_dialog.scrollbar_changed = True
+
+        previous_frame = frame
+        # print(frame_num)
         # frame = imutils.resize(frame, width=450)
         # frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
         # frame = np.dstack([frame, frame, frame])
@@ -784,8 +806,9 @@ if __name__ == "__main__":
         
         while True:
             QCoreApplication.processEvents()
-
+            
             if input_dialog.predict_state is True:
+                #UNCOMMENT BELOW
                 # frame, rois, scores = maskrcnn.predict(videoPath, step=input_dialog.skip_frames.value(), display=True, logger=input_dialog.log)
                 input_dialog.predict_state = False
 
@@ -793,6 +816,10 @@ if __name__ == "__main__":
                 input_dialog.export_all_state = False
                 for tracker in tracker_list:
                     tracker.export_data(input_dialog.resolution_x, input_dialog.resolution_y, videoPath, vid_fps)
+            # if input_dialog.load_predictions_state is True:
+            #     pred_dict = maskrcnn.load_predicted((videoPath[:-4] + "_predict.csv"))
+            #     print(pred_dict)
+            #     input_dialog.load_predictions_state = False
 
             if input_dialog.quit_State is True:
                 # sys.exit(app.exec_())
@@ -800,31 +827,29 @@ if __name__ == "__main__":
                 # fvs.stop()
                 # cv2.destroyAllWindows()
                 
-                input_dialog.log("Stopping FVS")
-                fvs.stopped=True
-                fvs.stop()
                 input_dialog.log("Cap Release")
                 cap.release()
                 input_dialog.log("Destroy cv2")
                 cv2.destroyAllWindows()
                 input_dialog.log("Quitting App")
-                app.quit()
-                input_dialog.close()
+                
                 input_dialog.log("System Exit")
-                try:
-                    sys.exit()
-                except:
-                    pass
+                input_dialog.close()
+
+
+                app.quit()
+                input_dialog.log("Stopping FVS")
+                # fvs.stop()
+                os._exit(1)
                 
             previous_skip = fvs.skip_value
             next_skip = input_dialog.get_frame_skip()
             if fvs.skip_value != input_dialog.get_frame_skip():
                 print("Skipbo")
-                fvs.next = input_dialog.get_scrollbar_value()
                 fvs.reset = True
                 # frame = fvs.read()
                 fvs.skip_value = input_dialog.get_frame_skip()
-                
+                 
             app.processEvents()
             selected_tracker = input_dialog.tabs.currentIndex()
 
@@ -839,22 +864,72 @@ if __name__ == "__main__":
 
             #if the scrollbar is changed, update the frame, else continue with the normal frame
             if input_dialog.scrollbar_changed == True:
-                # input_dialog.log("Scrolled.")
-                fvs.reset = True
+                # input_dialog.mediaStateChanged()
+                input_dialog.play_state = False
                 fvs.frame_number = input_dialog.get_scrollbar_value()
-                
-                # input_dialog.set_scrollbar(fvs.frame_number)
-                # frame = fvs.read()
-                
-                frame = fvs.read()
+                input_dialog.log("Scrolled.")  
+                fvs.reset = True
+                frame, frame_num = fvs.read()
+                print(frame_num)
                 previous_frame = frame
                 input_dialog.scrollbar_changed = False
                 # segmask, frame = custom_model.segmentFrame(frame,True)
+
+            # print(frame_num, skip_frame)
+            if input_dialog.snap_state == "Forward":
+                print(input_dialog.get_scrollbar_value() + input_dialog.get_frame_skip())
+                # print(frame_num)
+                fvs.reset = True
+                input_dialog.set_scrollbar(input_dialog.get_scrollbar_value() + input_dialog.get_frame_skip())
+                fvs.frame_number = input_dialog.get_scrollbar_value() + input_dialog.get_frame_skip()
                 
-            else:
+                input_dialog.scrollbar_changed = True
+                input_dialog.snap_state = None
+                fvs.reset = True
+
+            if input_dialog.snap_state == "Backward":
+                print(input_dialog.get_scrollbar_value() - input_dialog.get_frame_skip())
+                # print(frame_num)
+                # print(frame_num - input_dialog.get_frame_skip())
+                
+                fvs.reset = True
+                if frame_num - input_dialog.get_frame_skip() < 0:
+                    input_dialog.set_scrollbar(input_dialog.get_scrollbar_value() - input_dialog.get_frame_skip())
+                    fvs.frame_number = input_dialog.get_scrollbar_value() - (input_dialog.get_frame_skip())
+                else:
+                    input_dialog.set_scrollbar(0)
+                    fvs.frame_number = 0
+
+                input_dialog.scrollbar_changed = True
+                input_dialog.snap_state = None
+                fvs.reset = True
+                
+
+            #When at the end, go to the beginning and pause
+            if input_dialog.get_scrollbar_value() >= input_dialog.vidScroll.maximum() or (input_dialog.get_scrollbar_value() + skip_frame) >= input_dialog.vidScroll.maximum():
+                input_dialog.set_scrollbar(0)
+                fvs.frame_number = input_dialog.get_scrollbar_value()
+                fvs.reset = True
+                input_dialog.scrollbar_changed = True
+                input_dialog.set_pause_state()
+                input_dialog.set_all_tabs("Read")
+            
+            # if input_dialog.get_scrollbar_value() == 0 and fvs.frame_number != input_dialog.get_scrollbar_value():
+            #     fvs.frame_number = input_dialog.get_scrollbar_value()
+            #     input_dialog.scrollbar_changed = True
+                # input_dialog.
+                # fvs.frame_number = input_dialog.get_scrollbar_value()
+
+                # fvs.reset = True
+                # input_dialog.scrollbar_changed = True
+                # input_dialog.set_pause_state()
+                # input_dialog.set_all_tabs("Read")
+                
+            # else:
             #     # input_dialog.set_scrollbar(skip_frame)
-                # input_dialog.set_scrollbar(fvs.frame_number)
-                input_dialog.get_scrollbar_value()
+                # input_dialog.set_scrollbar(frame_num)
+                # print(input_dialog.get_scrollbar_value(), frame_num)
+                # frame, frame_num = fvs.read()
                 # frame = fvs.read()
                 # input_dialog.scrollbar_changed = False
 
@@ -871,6 +946,7 @@ if __name__ == "__main__":
                 input_dialog.export_tab_btn.setEnabled(False)
                 input_dialog.tabs.setEnabled(True)
                 input_dialog.add_tab_state = False
+
             
             # if input_dialog.snap_state is not None and tracker_list[selected_tracker].data_dict:
             #     #grabs frames that tracker was tracked
@@ -891,11 +967,20 @@ if __name__ == "__main__":
             #     input_dialog.snap_state = None
             #if playing, increment frames by skip_frame count
 
+
+
             if input_dialog.play_state == True and not input_dialog.scrollbar_changed:
-                input_dialog.set_scrollbar(fvs.frame_number)
+
                 # fvs.stopped = False
-                frame = fvs.read()
+                frame, frame_num = fvs.read()
                 previous_frame = frame
+
+                input_dialog.set_scrollbar(frame_num)
+                if frame_num != input_dialog.get_scrollbar_value():
+                    print("Trying Again:", frame_num, fvs.frame_number, input_dialog.get_scrollbar_value())
+                    continue
+                # print("Reading Play:", frame_num)
+                # previous_frame = frame
                 # segmask, frame = custom_model.segmentFrame(frame,True)
                 # skip_frame += input_dialog.get_frame_skip()
                 
@@ -908,8 +993,16 @@ if __name__ == "__main__":
             try:
                 # ret, frame = cap.read()
                 frame = cv2.resize(frame, (input_dialog.resolution_x, input_dialog.resolution_y), 0, 0, cv2.INTER_CUBIC)
+                
             except:
+                print("No resize")
                 continue
+
+
+            #UNCOMMENT BELOW
+            # if pred_dict is not None:
+            #     frame = maskrcnn.display_preds(frame, frame_num, pred_dict[0], (resized_ratio_x,resized_ratio_y))
+                
 
             #crash the program if no frame exists
             if frame is None:
@@ -979,48 +1072,56 @@ if __name__ == "__main__":
                 tracker_num = tracker[0]
                 tracker = tracker[1]
                 # try:
-                frame_number = fvs.frame_number
-                try:
-                    if input_dialog.tab_list[tracker_num].other_room:
-                        tracker.record_data(frame_number, input_dialog.num_people.value(), other_room=True)
-                    elif tracker.init_bounding_box is not None and input_dialog.tab_list[tracker_num].active is True and input_dialog.tab_list[tracker_num].read_only is False:
-                        
-                        #allocate frames on GPU, reducing CPU load.
-                        cv2.UMat(frame)    
+                # frame_number = fvs.frame_number
+                frame_number = frame_num
+                # try:
+                if input_dialog.tab_list[tracker_num].other_room:
+                    tracker.record_data(frame_number, input_dialog.num_people.value(), other_room=True)
+                elif tracker.init_bounding_box is not None and input_dialog.tab_list[tracker_num].active is True and input_dialog.tab_list[tracker_num].read_only is False:
+                    
+                    #allocate frames on GPU, reducing CPU load.
+                    cv2.UMat(frame)    
 
-                        app.processEvents()
-                        #track and draw box on the frame
-                        success, box, frame = tracker.update_tracker(frame)
-                        app.processEvents()
-                        
-                        #NOTE: this can be activated if you want to pause the program when trakcer fails
-                        # if not success:
-                        #     tracker.assign(frame, trackerName)
+                    app.processEvents()
+                    #track and draw box on the frame
+                    success, box, frame = tracker.update_tracker(frame)
+                    app.processEvents()
+                    
+                    #NOTE: this can be activated if you want to pause the program when trakcer fails
+                    # if not success:
+                    #     tracker.assign(frame, trackerName)
 
-                        #caluclate info needed this frame
-                        # frame_number = cap.get(cv2.CAP_PROP_POS_FRAMES)
-                        frame_number = fvs.frame_number
-                        bottom_right = box[0]
-                        top_left = box[1]
-                        width = box[2]
-                        height = box[3]
+                    #caluclate info needed this frame
+                    # frame_number = cap.get(cv2.CAP_PROP_POS_FRAMES)
+                    # frame_number = fvs.frame_number
+                    # frame_number = frame_num
+                    bottom_right = box[0]
+                    top_left = box[1]
+                    width = box[2]
+                    height = box[3]
 
-                        center_x = bottom_right + (width/2)
-                        center_y = top_left + (height/2)
-                        if tracker.is_region() is True and tracker.get_name() != "":
+                    center_x = bottom_right + (width/2)
+                    center_y = top_left + (height/2)
+                    if tracker.is_region() is True and tracker.get_name() != "":
 
-                            regions.set_moving_radius(name = tracker.get_name(), 
-                                                    point = (int(center_x - width), int(center_y - height)),
-                                                    dimensions = (int(width*2), int(height*2))
-                                                    )
-                            regions.display_radius(frame)
+                        regions.set_moving_radius(name = tracker.get_name(), 
+                                                point = (int(center_x - width), int(center_y - height)),
+                                                dimensions = (int(width*2), int(height*2))
+                                                )
+                        regions.display_radius(frame)
 
-                        elif tracker.is_region() is False:
-                            # If tracker region is no longer selected, delete moving radius
-                            regions.del_moving_radius(tracker.get_name())
+                    elif tracker.is_region() is False:
+                        # If tracker region is no longer selected, delete moving radius
+                        regions.del_moving_radius(tracker.get_name())
+
+                    # UNCOMMENT BELOW
+                    # if pred_dict is not None and frame_num in pred_dict.keys():
+                    #     area = (box[0] - box[2]) * (box[1] - box[3])
+                    #     iou = maskrcnn.compute_iou(box, pred_dict[frame_num][0],area,pred_dict[frame_num][1] (resized_ratio_x, resized_ratio_y))
+                    #     print("IOUs", iou)
 
                     #center dot               
-                    cv2.circle(frame, (int(center_x),int(center_y)),2,(0,0,255),-1)
+                    # cv2.circle(frame, (int(center_x),int(center_y)),2,(0,0,255),-1)
 
                     # top = (int(center_x), int(center_y + height/2))
                     # bottom = (int(center_x), int(center_y - height/2))
@@ -1028,28 +1129,33 @@ if __name__ == "__main__":
                     # cv2.circle(frame, bottom, 3, (0,255,255),-1)
                     in_region = regions.test_radius((center_x, center_y))
                     
-                    if input_dialog.play_state == True:
+                    if input_dialog.play_state == True and input_dialog.tab_list[tracker_num].read_only is False:
                         #record all the data collected from that frame
-                        tracker.record_data(frame_number, input_dialog.num_people.value(), center_x, center_y, width, height, in_region)
-                except:
-                    input_dialog.log("Crashed while deleting. Continuing")
+                        # print("Recording data")
+                        tracker.record_data(input_dialog.get_scrollbar_value(), input_dialog.num_people.value(), center_x, center_y, width, height, in_region)
+                # except:
+                #     # continue
+                #     input_dialog.log("Crashed while deleting. Continuing")
 
                 try:
                     if input_dialog.tab_list[tracker_num].read_only is True:
+                        # print("Displaying read only")
                         #if read only, display the center
                         # frame_number = cap.get(cv2.CAP_PROP_POS_FRAMES)
                         # print(frame_number, fvs.frame_number)
-                        frame_number = fvs.frame_number
-                        # frame_number = input_dialog.get_scrollbar_value()
+                        # frame_number = frame_num
+                        # print(frame_number)
+                        frame_number = input_dialog.get_scrollbar_value()
                         # regions.del_moving_radius(tracker.get_name())
 
-                        
+                        # print(selected_tracker, tracker_num)
                         if frame_number in tracker.data_dict:
                             # print("Exists")
                             # If key exists in data
                             # point, regions, dimensions, other_room, total_people
                             center, _, dim, other_room, total_people, is_chair = tracker.data_dict[frame_number]
-
+                            # print(frame_number, center)
+                            
                             if tracker.is_region() is True and tracker.get_name() != "":
                                 
                                 point = (int(center[0] - dim[0]), int(center[1] - dim[1]))
@@ -1062,11 +1168,13 @@ if __name__ == "__main__":
                                 # If tracker region is no longer selected, delete moving radius
                                 regions.del_moving_radius(tracker.get_name())
 
-
+                            
                             if selected_tracker == tracker_num:
                                 # print("Green")
                                 #center dot
+                                
                                 cv2.circle(frame, (int(center[0]),int(center[1])),2,(0,255,0),-1)
+                                # print("Green")
                                 # cv2.circle(frame, top, 3, (0,255,0),-1)
                                 # cv2.circle(frame, bottom, 3, (0,255,0),-1)
                                 
@@ -1134,8 +1242,10 @@ if __name__ == "__main__":
             if len(regions.radius_regions) > 0:
                 frame = regions.display_radius(frame)
 
+            # print("FRAMES", frame_num, fvs.frame_number, input_dialog.get_scrollbar_value())
             #When done processing each tracker, view the frame
             cv2.imshow("Frame", frame)
+        
             # input_dialog.videoWindow.show_image(frame)
     except:
         print(traceback.format_exc())

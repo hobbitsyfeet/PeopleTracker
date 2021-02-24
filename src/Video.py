@@ -18,12 +18,13 @@ class FileVideoStream:
     def __init__(self, path, transform=None, queue_size=200):
         # initialize the file video stream along with the boolean
         # used to indicate if the thread should be stopped or not
-        self.frame_number = 1
+        self.frame_number = 0
         self.skip_value = 10
         self.next = self.frame_number + self.skip_value
         self.reset = False
         self.stream = cv2.VideoCapture(path)
         self.stopped = False
+        self.grabbed = False
         self.transform = transform
 
         # initialize the queue used to store frames read from
@@ -56,21 +57,32 @@ class FileVideoStream:
                 self.stream.set(1, self.frame_number)
                 self.reset = False
                 self.Q.queue.clear()
+                # 
+                
 
             # otherwise, ensure the queue has room in it
-            if not self.Q.full():
+            if not self.Q.full() or self.grabbed:
                 # read the next frame from the file
-                for i in range(self.skip_value):
-                    self.stream.grab()
-                (grabbed, frame) = self.stream.read()
+                # if self.frame_number == 0:
+                #     (self.grabbed, frame) = self.stream.read()
+
+
+                # time.sleep(0.025)
+                # self.frame_number += 1
+                (self.grabbed, frame) = self.stream.read()
+                if self.grabbed:
+                    # self.frame_number += 1
+                    self.frame_number += self.skip_value
                 
+                for i in range(self.skip_value - 1):
+                    # self.frame_number += 1
+                    self.grabbed = self.stream.grab()
                 
 
                 # if the `grabbed` boolean is `False`, then we have
                 # reached the end of the video file
-                # if not grabbed:
-                #     self.stream.set(1,0)
-                #     self.frame_number = 0
+                if not self.grabbed:
+                    self.stream.set(1,self.stream.get(cv2.CAP_PROP_FRAME_COUNT))
                     
                     # self.stopped = True
                     
@@ -90,7 +102,9 @@ class FileVideoStream:
                     frame = self.transform(frame)
 
                 # add the frame to the queue
-                self.Q.put(frame)
+                if self.grabbed:
+                    # self.thread.join()
+                    self.Q.put((frame, self.frame_number))
                 
             else:
                 time.sleep(0.1)  # Rest for 10ms, we have a full queue
@@ -98,10 +112,7 @@ class FileVideoStream:
         self.stream.release()
 
     def read(self):
-        
         # return next frame in the queue
-        self.frame_number += self.skip_value
-        # print(self.frame_number)
         return self.Q.get()
 
     # Insufficient to have consumer use while(more()) which does
@@ -126,6 +137,8 @@ class FileVideoStream:
         try:
             self.thread.join()
             del self.thread
+            cv2.destroyAllWindows()
+            # os._exit(1)
         except:
             print("Cannot Join Thread (Should only happen while Quitting)")
             cv2.destroyAllWindows()

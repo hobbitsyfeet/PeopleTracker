@@ -7,7 +7,7 @@ from PyQt5.QtCore import pyqtSlot, pyqtSignal
 import webbrowser
 import crashlogger
 import traceback
-# import maskrcnn
+# import maskrcnn CAN REMOVE
 
 
 
@@ -38,16 +38,17 @@ class App(QWidget):
         self.image = None
 
         self.predict_state = False
+        self.load_predictions_state = False
         
     
         # self.videoWindow = VideoWindow()
         # self.videoWindow.show()
 
     def keyPressEvent(self, event):
-            self.test_method()
-            if int(event.modifiers()) == (Qt.ControlModifier+Qt.AltModifier):
-                self.log("Setting Tracker")
-                self.set_tracker_state = True
+        self.test_method()
+        if int(event.modifiers()) == (Qt.ControlModifier+Qt.AltModifier):
+            self.log("Setting Tracker")
+            self.set_tracker_state = True
 
     def mousePressEvent(self, event):
         if event.button() == Qt.MidButton:
@@ -102,6 +103,12 @@ class App(QWidget):
                 QCoreApplication.processEvents()
                 # self.predict_state = True
                 # frame, rois, scores = maskrcnn.predict(self.filename, step=self.skip_frames.value(), display=True, progress=progress, logger=self.log)  
+            elif q.text() == "Load Predictions":
+                self.load_predictions_state = True
+            elif q.text() == "Return to Beginning":
+                self.set_scrollbar(0)
+                self.scrollbar_changed = True
+                # self.scrollbar_changed = True
                 
         except:
             crashlogger.log(str(traceback.format_exc()))
@@ -133,9 +140,12 @@ class App(QWidget):
 
             save = QAction("Save",self)
             save.setShortcut("Ctrl+S")
+            file.addAction(save)
             predict = QAction("Predict",self)
             file.addAction(predict)
-            file.addAction(save)
+            load_preds = QAction("Load Predictions", self)
+            file.addAction(load_preds)
+            
             quit = QAction("Quit", self)
             file.addAction(quit)
             
@@ -169,6 +179,8 @@ class App(QWidget):
             retain_moveing_region = QAction("Retain Region", self)
             retain_moveing_region.setShortcut("Ctrl+C")
 
+            beginning = QAction("Return to Beginning", self)
+            
 
             play_key = QAction("Play/Pause",self)
             play_key.setShortcuts([QKeySequence(Qt.Key_P), QKeySequence(Qt.CTRL + Qt.Key_P) ])
@@ -184,6 +196,7 @@ class App(QWidget):
             edit.addAction(set_tracker)
             edit.addAction(retain_moveing_region)
             edit.addAction(play_key)
+            edit.addAction(beginning)
             edit.triggered[QAction].connect(self.processtrigger)
 
             
@@ -373,6 +386,7 @@ class App(QWidget):
 
     def set_max_scrollbar(self, maximum):
         self.vidScroll.setMaximum(maximum)
+        self.vidScroll.maximum()
 
     def set_scrollbar(self, value):
         self.vidScroll.setValue(value)
@@ -403,6 +417,17 @@ class App(QWidget):
                     self.style().standardIcon(QStyle.SP_MediaPlay))
             self.play_state = False
             # print(self.play_state)
+        self.log("Play State: " + str(self.play_state))
+
+    def set_pause_state(self):
+        self.playButton.setIcon(
+                self.style().standardIcon(QStyle.SP_MediaPlay))
+        self.play_state = False
+
+    def set_play_state(self):
+        self.playButton.setIcon(
+                self.style().standardIcon(QStyle.SP_MediaPause))
+        self.play_state = True
 
     def btn_state(self, b):
         if b.text() == "Button1":
