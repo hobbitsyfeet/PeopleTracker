@@ -187,7 +187,8 @@ class MultiTracker():
                 self.create(tracker_type)
                 self.tracker.init(frame, self.init_bounding_box)
                 input_dialog.log("Setting Location Successful.")
-            except:
+            except Exception as e:
+                crashlogger.log(str(e))
                 input_dialog.log("Setting Location Failed.")
        
         # self.fps = imutils.video.FPS().start()
@@ -647,7 +648,8 @@ def export_meta(vid_dir):
     try:
         with exiftool.ExifTool() as et:
             metadata = et.get_metadata(vid_dir)
-    except:
+    except Exception as e:
+        crashlogger.log(str(e))
         print("Could not collect")
         export_null_meta(vid_dir)
         return False
@@ -867,7 +869,7 @@ if __name__ == "__main__":
                 # input_dialog.mediaStateChanged()
                 input_dialog.play_state = False
                 fvs.frame_number = input_dialog.get_scrollbar_value()
-                input_dialog.log("Scrolled.")  
+                # input_dialog.log("Scrolled.")  
                 fvs.reset = True
                 frame, frame_num = fvs.read()
                 print(frame_num)
@@ -994,7 +996,8 @@ if __name__ == "__main__":
                 # ret, frame = cap.read()
                 frame = cv2.resize(frame, (input_dialog.resolution_x, input_dialog.resolution_y), 0, 0, cv2.INTER_CUBIC)
                 
-            except:
+            except Exception as e:
+                crashlogger.log(str(e))
                 print("No resize")
                 continue
 
@@ -1187,7 +1190,8 @@ if __name__ == "__main__":
                         #Exclude if you want regions to not exist
                         elif not input_dialog.retain_region:
                             regions.del_moving_radius(tracker.get_name())
-                except:
+                except Exception as e:
+                    crashlogger.log(str(e))
                     input_dialog.log("Could not handle read only. List index out of range, Continuing")
 
 
@@ -1206,7 +1210,8 @@ if __name__ == "__main__":
                             tracker_list[selected_tracker].create(trackerName)
                             tracker_list[selected_tracker].assign(frame, trackerName) #Breaks if create was not sucessful
                             create_success = True
-                        except:
+                        except Exception as e:
+                            crashlogger.log(str(e))
                             input_dialog.log("Could not create Tracker, Please Draw and select (Space) a rectangle")
 
                     
@@ -1222,7 +1227,8 @@ if __name__ == "__main__":
                         tracker_list[selected_tracker].assign(frame, trackerName)
                         input_dialog.tabs.setEnabled(True)
                         input_dialog.set_tracker_state = False
-                    except:
+                    except Exception as e:
+                        crashlogger.log(str(e))
                         input_dialog.log("Could not assign tracker, try again")
                         input_dialog.tabs.setEnabled(True)
                         input_dialog.set_tracker_state = False
@@ -1235,7 +1241,8 @@ if __name__ == "__main__":
             try:
                 current_tracked_time = tracker_list[selected_tracker].get_time_tracked(vid_fps)[0] + tracker_list[selected_tracker].previous_time
                 input_dialog.tab_list[selected_tracker].update_length_tracked(current_tracked_time)
-            except:
+            except Exception as e:
+                # crashlogger.log(str(e))
                 pass
             
             #Display all regions on screen if they exist
@@ -1247,6 +1254,6 @@ if __name__ == "__main__":
             cv2.imshow("Frame", frame)
         
             # input_dialog.videoWindow.show_image(frame)
-    except:
+    except Exception as e:
         print(traceback.format_exc())
         crashlogger.log(str(traceback.format_exc()))
