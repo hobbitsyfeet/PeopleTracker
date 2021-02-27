@@ -82,9 +82,13 @@ class FileVideoStream:
                 # if the `grabbed` boolean is `False`, then we have
                 # reached the end of the video file
                 if not self.grabbed:
-                    self.stream.set(1,self.stream.get(cv2.CAP_PROP_FRAME_COUNT))
-                    
-                    # self.stopped = True
+                    self.stream.set(1,self.stream.get(cv2.CAP_PROP_FRAME_COUNT)-1)
+
+                # Sets frame to beginning if frame is past end. This buffers the beginning after it buffers the end
+                elif self.frame_number >= self.stream.get(cv2.CAP_PROP_FRAME_COUNT):
+                    self.stream.set(1,0)
+                    self.frame_number = 0
+
                     
                 # if there are transforms to be done, might as well
                 # do them on producer thread before handing back to
