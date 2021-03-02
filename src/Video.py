@@ -13,6 +13,56 @@ if sys.version_info >= (3, 0):
 else:
     from Queue import Queue
 
+class STFileVideoStream:
+    """
+    Single Thread File Video Stream
+    """
+    def __init__(self, path):
+        # initialize the file video stream along with the boolean
+        # used to indicate if the thread should be stopped or not
+        self.frame_number = 0
+        self.skip_value = 10
+        self.next = self.frame_number + self.skip_value
+        self.reset = False
+        self.stream = cv2.VideoCapture(path)
+        self.stopped = False
+        self.grabbed = False
+
+
+    def read(self):
+        if self.reset is True:
+            self.stream.set(1, self.frame_number)
+            self.reset = False
+
+        # self.frame_number += 1
+        (self.grabbed, frame) = self.stream.read()
+        if self.grabbed:
+            # self.frame_number += 1
+            self.frame_number += self.skip_value
+        
+        for i in range(self.skip_value - 1):
+            # self.frame_number += 1
+            self.grabbed = self.stream.grab()
+        
+
+        # if the `grabbed` boolean is `False`, then we have
+        # reached the end of the video file
+        if not self.grabbed:
+            self.stream.set(1,self.stream.get(cv2.CAP_PROP_FRAME_COUNT)-1)
+
+        # Sets frame to beginning if frame is past end. This buffers the beginning after it buffers the end
+        elif self.frame_number >= self.stream.get(cv2.CAP_PROP_FRAME_COUNT):
+            self.stream.set(1,0)
+            self.frame_number = 0
+
+        # return next frame in the queue
+        return (frame, self.frame_number)
+
+    def stop(self):
+        self.stopped = True
+        cv2.destroyAllWindows()
+        exit(0)
+
 
 class FileVideoStream:
     def __init__(self, path, transform=None, queue_size=200):

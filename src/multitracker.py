@@ -26,12 +26,12 @@ import crashlogger
 # import maskrcnn UNCOMMENT FOR LATER
 #import mbox
 import qt_dialog
-from Video import FileVideoStream
+from Video import FileVideoStream, STFileVideoStream
 
 CPU_COUNT = multiprocessing.cpu_count()
 
 #start tracking version at 1.0
-PEOPLETRACKER_VERSION = 2.0
+PEOPLETRACKER_VERSION = 2.1
 
 # For extracting video metadata
 # import mutagen
@@ -776,7 +776,8 @@ if __name__ == "__main__":
         input_dialog.set_max_scrollbar(cap.get(cv2.CAP_PROP_FRAME_COUNT))
         cap.set(cv2.CAP_PROP_FRAME_WIDTH, input_dialog.resolution_x)
         cap.set(cv2.CAP_PROP_FRAME_HEIGHT, input_dialog.resolution_y)
-        fvs = FileVideoStream(videoPath).start()
+        # fvs = FileVideoStream(videoPath).start()
+        fvs = STFileVideoStream(videoPath)
 
         # ret, frame = cap.read()
 
