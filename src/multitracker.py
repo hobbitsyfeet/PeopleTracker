@@ -31,7 +31,7 @@ from Video import FileVideoStream, STFileVideoStream
 CPU_COUNT = multiprocessing.cpu_count()
 
 #start tracking version at 1.0
-PEOPLETRACKER_VERSION = 2.1
+PEOPLETRACKER_VERSION = 2.11
 
 # For extracting video metadata
 # import mutagen
@@ -880,7 +880,7 @@ if __name__ == "__main__":
 
             # print(frame_num, skip_frame)
             if input_dialog.snap_state == "Forward":
-                print(input_dialog.get_scrollbar_value() + input_dialog.get_frame_skip())
+                # print(input_dialog.get_scrollbar_value() + input_dialog.get_frame_skip())
                 # print(frame_num)
                 fvs.reset = True
                 input_dialog.set_scrollbar(input_dialog.get_scrollbar_value() + input_dialog.get_frame_skip())
@@ -896,9 +896,9 @@ if __name__ == "__main__":
                 # print(frame_num - input_dialog.get_frame_skip())
                 
                 fvs.reset = True
-                if frame_num - input_dialog.get_frame_skip() < 0:
+                if frame_num - input_dialog.get_frame_skip() > 0:
                     input_dialog.set_scrollbar(input_dialog.get_scrollbar_value() - input_dialog.get_frame_skip())
-                    fvs.frame_number = input_dialog.get_scrollbar_value() - (input_dialog.get_frame_skip())
+                #     fvs.frame_number = input_dialog.get_scrollbar_value() - (input_dialog.get_frame_skip())
                 else:
                     input_dialog.set_scrollbar(0)
                     fvs.frame_number = 0
