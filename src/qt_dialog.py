@@ -1,5 +1,5 @@
 import sys
-from PyQt5.QtWidgets import QApplication, QWidget, QInputDialog, QLineEdit, QLabel, QPushButton, QPlainTextEdit, QSlider, QStyle, QAction, QTabWidget, QVBoxLayout, QHBoxLayout, QMessageBox, QFileDialog, QCheckBox, QMenuBar, QSpinBox, QErrorMessage, QProgressDialog
+from PyQt5.QtWidgets import QApplication, QWidget, QInputDialog, QLineEdit, QLabel, QPushButton, QPlainTextEdit, QSlider, QStyle, QAction, QTabWidget, QVBoxLayout, QHBoxLayout, QMessageBox, QFileDialog, QCheckBox, QMenuBar, QSpinBox, QErrorMessage, QProgressDialog, QFormLayout, QDoubleSpinBox
 
 from PyQt5.QtGui import QIcon, QIntValidator, QPixmap, QImage, QPainter, QPen, QKeySequence
 from PyQt5.QtCore import Qt, QRect, QCoreApplication
@@ -7,7 +7,7 @@ from PyQt5.QtCore import pyqtSlot, pyqtSignal
 import webbrowser
 import crashlogger
 import traceback
-# import maskrcnn CAN REMOVE
+import maskrcnn
 
 
 
@@ -21,6 +21,8 @@ class App(QWidget):
         self.width = 480
         self.height = 240
         self.initUI()
+        
+        self.snap_to_frame_skip = True
 
         self.play_state = False
         self.export_state = False
@@ -101,14 +103,24 @@ class App(QWidget):
                 self.log("Predict selected. Please wait while it loads the model...")
                 progress = QProgressDialog(self)
                 QCoreApplication.processEvents()
-                # self.predict_state = True
-                # frame, rois, scores = maskrcnn.predict(self.filename, step=self.skip_frames.value(), display=True, progress=progress, logger=self.log)  
+                self.predict_state = True
+                h5, _ = QFileDialog.getOpenFileName(self,"QFileDialog.getOpenFileName()", "Select A Model","All Files (*);;H5 (*.h5)")
+                frame, rois, scores = maskrcnn.predict(self.filename, model=h5, step=self.skip_frames.value(), display=True, progress=progress, logger=self.log,class_names=['BG', 'Vervet'])  
+                
             elif q.text() == "Load Predictions":
                 self.load_predictions_state = True
             elif q.text() == "Return to Beginning":
                 self.set_scrollbar(0)
                 self.scrollbar_changed = True
                 # self.scrollbar_changed = True
+            elif q.text() == "Snap Scroll to Skip":
+                self.snap_to_frame_skip = not self.snap_to_frame_skip
+            elif q.text() == "Mask-RCNN Options":
+                self.mcrnn_options.show()
+            elif q.text() == "Predictor Options":
+                self.predictor_options.show()
+            
+
                 
         except:
             crashlogger.log(str(traceback.format_exc()))
@@ -119,6 +131,9 @@ class App(QWidget):
             self.setWindowTitle(self.title)
             self.setGeometry(self.left, self.top, self.width, self.height)
             self.setWindowIcon(QIcon('person.svg'))
+
+            self.mcrnn_options = MaskRCNN_IOU_Options()
+            self.predictor_options = Predictor_Options()
 
             self.log_label = QLabel(self)
             self.log_label.setText("Info:")
@@ -171,6 +186,7 @@ class App(QWidget):
             snap_forward.setShortcut(Qt.Key_Right)
             snap_backward = QAction("Snap Backward", self)
             snap_backward.setShortcut(Qt.Key_Left)
+            snap_skip_frame = QAction("Snap Scroll to Skip", self)
 
             set_tracker = QAction("Set Tracker", self)
             # set_tracker.setShortcut(Qt.Key_Space)
@@ -185,7 +201,8 @@ class App(QWidget):
             play_key = QAction("Play/Pause",self)
             play_key.setShortcuts([QKeySequence(Qt.Key_P), QKeySequence(Qt.CTRL + Qt.Key_P) ])
 
-
+            maskrcnn_options_action = QAction("Mask-RCNN Options", self)
+            predictor_options_action = QAction("Predictor Options", self)
             # edit2 = file.addMenu("Edit")
             # AddTab	Ctrl+T
             edit.addAction(add_region)
@@ -193,10 +210,13 @@ class App(QWidget):
             edit.addAction(snap_closest)
             edit.addAction(snap_forward)
             edit.addAction(snap_backward)
+            edit.addAction(snap_skip_frame)
             edit.addAction(set_tracker)
             edit.addAction(retain_moveing_region)
             edit.addAction(play_key)
             edit.addAction(beginning)
+            edit.addAction(maskrcnn_options_action)
+            edit.addAction(predictor_options_action)
             edit.triggered[QAction].connect(self.processtrigger)
 
             
@@ -350,6 +370,9 @@ class App(QWidget):
             self.skip_label.setFixedHeight(12)
             bottom_layout.addWidget(self.skip_label)
             bottom_layout.addWidget(self.log_label)
+            self.layout.addLayout(bottom_layout)
+            self.setLayout(self.layout)
+            self.show()
         except:
             crashlogger.log(str(traceback.format_exc()))
         # self.skip_f
@@ -358,11 +381,7 @@ class App(QWidget):
         
 
 
-        self.layout.addLayout(bottom_layout)
 
-        self.setLayout(self.layout)
-
-        self.show()
 
         # @pyQtSlot()
         # def on_click(self):
@@ -768,7 +787,109 @@ class person_tab():
         self.length_tracked.setText( str(minutes) + ":" + str(seconds))
 
 
+
+class MaskRCNN_IOU_Options(QWidget):
+    """
+    UI for setting Mask-RCNN IOU options
+    """
+    def __init__(self):
+        super().__init__()
+        layout = QVBoxLayout()
+        self.setWindowTitle("IOU Options")
+        # self.setGeometry(self.left, self.top, self.width, self.height)
+        self.label = QLabel("Intersection over Union is the measure comparing how well two rectangles fit over eachother. \n Like a percent fit [0-1]")
+        layout.addWidget(self.label)
+        iou_form = QFormLayout()
+        layout.addLayout(iou_form)
+
+        self.setLayout(layout)
+
+        self.min_value = QDoubleSpinBox(self)
+        # self.onlyInt = QIntValidator()
+        # self.skip_frames.setValidator(self.onlyInt)
+        self.min_value.setValue(0.45)
+        self.min_value.setFixedWidth(70)
+        self.min_value.setAlignment(Qt.AlignLeft)
+        self.min_value.setMaximum(1)
+        self.min_value.setMinimum(0)
+        self.min_value.setSingleStep(0.05)
+        # self.skip_frames.setValidator(QIntValidator(-999,999))
+        self.min_value.setToolTip("The minimum IOU value which considers to be 'out of range'")
+        iou_form.addRow("Out of Range", self.min_value)
+
+
+        self.auto_assign_value = QDoubleSpinBox(self)
+        self.auto_assign_value.setValue(0.8)
+        self.auto_assign_value.setFixedWidth(70)
+        self.auto_assign_value.setAlignment(Qt.AlignLeft)
+        self.auto_assign_value.setMaximum(1)
+        self.auto_assign_value.setMinimum(0)
+        self.auto_assign_value.setSingleStep(0.05)
+        self.auto_assign_value.setToolTip("The minimum IOU value which is used to automatically re-assign")
+        iou_form.addRow("Auto Assign", self.auto_assign_value)
+
+        self.similarity = QDoubleSpinBox(self)
+        self.similarity.setValue(0.15)
+        self.similarity.setFixedWidth(70)
+        self.similarity.setAlignment(Qt.AlignLeft)
+        self.similarity.setMaximum(1)
+        self.similarity.setMinimum(0)
+        self.similarity.setSingleStep(0.05)
+        self.similarity.setToolTip("The minimum IOU difference which is used to detect when trackers are too similar/close")
+        iou_form.addRow("Too close", self.similarity)
+
+    def get_min_value(self):
+        return self.min_value.value()
+
+    def get_auto_assign(self):
+        return self.auto_assign_value.value()
+
+    def get_similarity(self):
+        return self.similarity.value()
+
+class Predictor_Options(QWidget):
+    def __init__(self):
+        super().__init__()
+        layout = QVBoxLayout()
+        self.setWindowTitle("IOU Options")
+        # self.setGeometry(self.left, self.top, self.width, self.height)
+        self.label = QLabel("Intersection over Union is the measure comparing how well two rectangles fit over eachother. \n Like a percent fit [0-1]\n \n Distance is line distance between pixels.")
+        layout.addWidget(self.label)
+        iou_form = QFormLayout()
+        layout.addLayout(iou_form)
+
+        self.setLayout(layout)
+
+        self.min_value_IOU = QDoubleSpinBox(self)
+        # self.onlyInt = QIntValidator()
+        # self.skip_frames.setValidator(self.onlyInt)
+        self.min_value_IOU.setValue(0.45)
+        self.min_value_IOU.setFixedWidth(70)
+        self.min_value_IOU.setAlignment(Qt.AlignLeft)
+        self.min_value_IOU.setMaximum(1)
+        self.min_value_IOU.setMinimum(0)
+        self.min_value_IOU.setSingleStep(0.05)
+        # self.skip_frames.setValidator(QIntValidator(-999,999))
+        self.min_value_IOU.setToolTip("The minimum IOU value which considers tracker to be 'out of range'")
+        iou_form.addRow("Bounding Box Out of Range", self.min_value_IOU)
+
+
+        self.min_value_distance = QDoubleSpinBox(self)
+        self.min_value_distance.setValue(20)
+        self.min_value_distance.setFixedWidth(70)
+        self.min_value_distance.setAlignment(Qt.AlignLeft)
+        # self.min_value_distance.setMaximum()
+        self.min_value_distance.setMinimum(0)
+        self.min_value_distance.setSingleStep(10)
+        self.min_value_distance.setToolTip("The minimum straight line (euclidean) distance (in pixels) which is used to detect when the predicted tracker is too different")
+        iou_form.addRow("Centroid Out of Range", self.min_value_distance)
+
+    def get_min_IOU(self):
+        return self.min_value_IOU.value()
     
+    def min_distance(self):
+        return self.min_value_distance.value()
+
     # def update_tab_name(self):
     #     self.tab.parentWidget().setTabText(self.tab.parent.currentIndex(),self.name_line.getText())
     #     print(self.tab.parentWidget)
