@@ -1,20 +1,23 @@
 import sys
-from PyQt5.QtWidgets import QApplication, QWidget, QInputDialog, QLineEdit, QLabel, QPushButton, QPlainTextEdit, QSlider, QStyle, QAction, QTabWidget, QVBoxLayout, QHBoxLayout, QMessageBox, QFileDialog, QCheckBox, QMenuBar, QSpinBox, QErrorMessage, QProgressDialog, QFormLayout, QDoubleSpinBox
+from PyQt5.QtWidgets import QApplication, QWidget, QInputDialog, QLineEdit, QLabel, QPushButton, QPlainTextEdit, QSlider, QStyle, QAction, QTabWidget, QVBoxLayout, QHBoxLayout, QMessageBox, QFileDialog, QCheckBox, QMenuBar, QSpinBox, QErrorMessage, QProgressDialog, QFormLayout, QDoubleSpinBox, QSplashScreen
 
 from PyQt5.QtGui import QIcon, QIntValidator, QPixmap, QImage, QPainter, QPen, QKeySequence
-from PyQt5.QtCore import Qt, QRect, QCoreApplication
+from PyQt5.QtCore import Qt, QRect, QCoreApplication, QTimer
 from PyQt5.QtCore import pyqtSlot, pyqtSignal
 import webbrowser
 import crashlogger
 import traceback
-import maskrcnn
+
 
 
 
 class App(QWidget):
 # TODO ADD A CURRENT STATE INFO TAG WHICH LETS THE USER KNOW WHAT TO DO AT A CERTAIN TIME!
     def __init__(self):
+        self.flashSplash()
+
         super().__init__()
+
         self.title = 'Person'
         self.left = 250
         self.top = 250
@@ -42,9 +45,14 @@ class App(QWidget):
         self.predict_state = False
         self.load_predictions_state = False
         
+        
     
         # self.videoWindow = VideoWindow()
         # self.videoWindow.show()
+
+    def flashSplash(self):
+        self.splash = QSplashScreen(QPixmap('./MinimalSplash.png'))
+        self.splash.show()
 
     def keyPressEvent(self, event):
         self.test_method()
@@ -105,6 +113,7 @@ class App(QWidget):
                 QCoreApplication.processEvents()
                 self.predict_state = True
                 h5, _ = QFileDialog.getOpenFileName(self,"QFileDialog.getOpenFileName()", "Select A Model","H5 (*.h5);;All Files (*)")
+                import maskrcnn
                 frame, rois, scores = maskrcnn.predict(self.filename, model=h5, step=self.skip_frames.value(), display=True, progress=progress, logger=self.log,class_names=['BG', 'Vervet'])  
                 
             elif q.text() == "Load Predictions":
@@ -530,6 +539,7 @@ class App(QWidget):
     def openFileNameDialog(self):
         # options = QFileDialog.Options()
         # options |= QFileDialog.DontUseNativeDialog
+        
         fileName, _ = QFileDialog.getOpenFileName(self,"QFileDialog.getOpenFileName()", "","All Files (*);;Python Files (*.py)")
         if fileName:
             self.filename = fileName

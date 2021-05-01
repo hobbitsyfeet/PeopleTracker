@@ -20,10 +20,10 @@ import numpy as np
 import pandas as pd
 from PyQt5.QtCore import QCoreApplication
 from PyQt5.QtWidgets import (QApplication, QComboBox, QInputDialog, QLineEdit,
-                             QMessageBox, QWidget)
+                             QMessageBox, QWidget,QSplashScreen)
 
 import crashlogger
-import maskrcnn
+
 #import mbox
 import qt_dialog
 from Video import FileVideoStream, STFileVideoStream
@@ -901,7 +901,10 @@ if __name__ == "__main__":
         skip_frame = 10
         
         input_dialog.log("Gathering frames...")
-        
+
+        import maskrcnn
+        input_dialog.splash.close()
+
         while True:
             QCoreApplication.processEvents()
             
