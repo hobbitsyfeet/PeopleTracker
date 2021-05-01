@@ -33,7 +33,7 @@ import regression
 CPU_COUNT = multiprocessing.cpu_count()
 
 #start tracking version at 1.0
-PEOPLETRACKER_VERSION = 2.2
+PEOPLETRACKER_VERSION = 2.21
 
 # For extracting video metadata
 # import mutagen
@@ -744,8 +744,14 @@ def export_meta(vid_dir):
     print(hours, minutes, seconds)
     #Create path string for exporting the data. It's just a change of extention.
     export_filename = str(vid_dir[:-4]) + ".csv"
+    print(metadata)
+    try: 
+        handler = metadata['QuickTime:HandlerDescription']
+    except:
+        handler = metadata['MakerNotes:Make'] + ' ' + metadata['MakerNotes:Model']
     #Create the first 2 rows of data with title and then info. Recorded info should have '-' or 'N/A'
     if not os.path.isfile(export_filename):
+        
         data ={
             "Frame_Num":['-'],#self.time_data,
 
@@ -794,7 +800,7 @@ def export_meta(vid_dir):
             "VideoLength(Hour)":hours,
             "VideoLength(Min)":minutes,
             "VideoLength(Sec)":seconds,
-            "HandlerDescription": metadata['QuickTime:HandlerDescription'],
+            "HandlerDescription": handler,
             "PeopleTrackerVersion":float(PEOPLETRACKER_VERSION)
         }
         input_dialog.log(data)

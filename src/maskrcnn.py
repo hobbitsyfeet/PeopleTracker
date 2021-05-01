@@ -106,6 +106,10 @@ def predict(filename, model="mask_rcnn_coco_person.h5", class_names=["BG", "pers
         except RuntimeError as e:
             print(e)
 
+    class_name = model.split('_')[-1] #CLASSNAME.h5
+    class_name = class_name.split('.')[0] #CLASSNAME
+    class_names = ["BG", class_name]
+    print(class_name)
     #loads models
     custom_model = custom_segmentation()
     custom_model.inferConfig(num_classes= 1, class_names=class_names)
@@ -133,10 +137,13 @@ def predict(filename, model="mask_rcnn_coco_person.h5", class_names=["BG", "pers
         if ret:
 
             if progress is not None:
+                if progress.wasCanceled():
+                    return None, None, None
                 if frame_num == 0:
                     progress.setLabelText("Predict people location progress")
                     progress.setRange(0,vid_length)
                 progress.setValue(frame_num)
+                
                 QtCore.QCoreApplication.processEvents()
 
             #Segment the image

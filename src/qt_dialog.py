@@ -104,7 +104,7 @@ class App(QWidget):
                 progress = QProgressDialog(self)
                 QCoreApplication.processEvents()
                 self.predict_state = True
-                h5, _ = QFileDialog.getOpenFileName(self,"QFileDialog.getOpenFileName()", "Select A Model","All Files (*);;H5 (*.h5)")
+                h5, _ = QFileDialog.getOpenFileName(self,"QFileDialog.getOpenFileName()", "Select A Model","H5 (*.h5);;All Files (*)")
                 frame, rois, scores = maskrcnn.predict(self.filename, model=h5, step=self.skip_frames.value(), display=True, progress=progress, logger=self.log,class_names=['BG', 'Vervet'])  
                 
             elif q.text() == "Load Predictions":
