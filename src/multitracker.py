@@ -33,7 +33,7 @@ import regression
 CPU_COUNT = multiprocessing.cpu_count()
 
 #start tracking version at 1.0
-PEOPLETRACKER_VERSION = 2.22
+PEOPLETRACKER_VERSION = 2.23
 
 # For extracting video metadata
 # import mutagen
@@ -1224,7 +1224,7 @@ if __name__ == "__main__":
                             # If tracker region is no longer selected, delete moving radius
                             regions.del_moving_radius(tracker.get_name())
 
-                        if pred_dict:
+                        if pred_dict and input_dialog.mcrnn_options.get_active() is True:
                             if input_dialog.get_scrollbar_value() in pred_dict.keys():
                                 # print("GETTING IOU")
                                 iou, show_frame = maskrcnn.compute_iou(
@@ -1281,6 +1281,8 @@ if __name__ == "__main__":
                         if input_dialog.play_state == True and input_dialog.tab_list[tracker_num].read_only is False:
                             #record all the data collected from that frame
                             # print("Recording data")
+                            
+
 
                             pred_line = tracker.predictor.predict((center_x,center_y))
 
@@ -1302,28 +1304,36 @@ if __name__ == "__main__":
                             tracker.predicted_bbox = (pred_p1[0],pred_p1[1], pred_p2[0],pred_p2[1])
                             tracker.predicted_centroid = (pred_centroid)
                             try:
-                                predicted_bbox_iou, _ = maskrcnn.compute_iou(
-                                                    box=tracker.predicted_bbox,
-                                                    boxes=[(top_left_x,top_left_y,(top_left_x + width), (top_left_y + height) )],
-                                                    boxes_area=[(pred_p2[0] - pred_p1[0]), (pred_p2[1] - pred_p1[1]) ]
-                                                )
-                                print("P_IOU: ", predicted_bbox_iou, end=" | ")
+                                if input_dialog.predictor_options.get_active_iou():
+                                    predicted_bbox_iou, _ = maskrcnn.compute_iou(
+                                                        box=tracker.predicted_bbox,
+                                                        boxes=[(top_left_x,top_left_y,(top_left_x + width), (top_left_y + height) )],
+                                                        boxes_area=[(pred_p2[0] - pred_p1[0]), (pred_p2[1] - pred_p1[1]) ]
+                                                    )
+                                    cv2.rectangle(show_frame, pred_p1, pred_p2, (0,255,0), 1)
+                                    # print("P_IOU: ", predicted_bbox_iou, end=" | ")
 
-                                if predicted_bbox_iou[0] <= input_dialog.predictor_options.get_min_IOU() and predicted_bbox_iou[0] > 0:
-                                    print("Pausing")
-                                    input_dialog.set_pause_state()
+                                    if predicted_bbox_iou[0] <= input_dialog.predictor_options.get_min_IOU() and predicted_bbox_iou[0] > 0:
+                                        print("Pausing")
+                                        input_dialog.set_pause_state()
+                                        
                                 
 
                             except:
                                 print("Cannot Compute IOU")
                             try:
-                                pred_dist = regression.distance_2d((center_x,center_y), (int((pred_line[0] + pred_line[2])[0]), int((pred_line[1] + pred_line[3])[0]) ))
-                                print("POINT_DIST: ", pred_dist)
+                                if input_dialog.predictor_options.get_active_centroid():
+                                    pred_dist = regression.distance_2d((center_x,center_y), (int((pred_line[0] + pred_line[2])[0]), int((pred_line[1] + pred_line[3])[0]) ))
+                                    print("POINT_DIST: ", pred_dist)
+                                    cv2.arrowedLine(show_frame, (int(pred_line[0]),int(pred_line[1])), (int((pred_line[0] + pred_line[2])[0]), int((pred_line[1] + pred_line[3])[0]) ),  (0,0,255), 3, tipLength=1)
+                                    if pred_dist >= input_dialog.predictor_options.get_min_distance():
+                                        print("Pausing")
+                                        input_dialog.set_pause_state()
                             except:
                                 print("Cannot Compute Distance")
-                            cv2.rectangle(show_frame, pred_p1, pred_p2, (0,255,0), 2)
+                            
 
-                            cv2.arrowedLine(show_frame, (int(pred_line[0]),int(pred_line[1])), (int((pred_line[0] + pred_line[2])[0]), int((pred_line[1] + pred_line[3])[0]) ),  (0,0,255), 5, tipLength=1)
+                            
 
                             if tracker.regression:
                                 slope, intercept, correlation = tracker.regression.predict((center_x,center_y))
@@ -1462,7 +1472,7 @@ if __name__ == "__main__":
                         input_dialog.set_tracker_state = False
                         
             #UNCOMMENT BELOW
-            if pred_dict is not None:
+            if pred_dict is not None and input_dialog.mcrnn_options.get_active():
                 show_frame = maskrcnn.display_preds(show_frame, input_dialog.get_scrollbar_value(), pred_dict, (resized_ratio_x,resized_ratio_y))
         
                 # input_dialog.play_state = True

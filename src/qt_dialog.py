@@ -51,7 +51,7 @@ class App(QWidget):
         # self.videoWindow.show()
 
     def flashSplash(self):
-        self.splash = QSplashScreen(QPixmap('./MinimalSplash.png'))
+        self.splash = QSplashScreen(QPixmap('CursedSplash.png'))
         self.splash.show()
 
     def keyPressEvent(self, event):
@@ -805,7 +805,7 @@ class MaskRCNN_IOU_Options(QWidget):
     def __init__(self):
         super().__init__()
         layout = QVBoxLayout()
-        self.setWindowTitle("IOU Options")
+        self.setWindowTitle("Mask-RCNN Options")
         # self.setGeometry(self.left, self.top, self.width, self.height)
         self.label = QLabel("Intersection over Union is the measure comparing how well two rectangles fit over eachother. \n Like a percent fit [0-1]")
         layout.addWidget(self.label)
@@ -813,6 +813,12 @@ class MaskRCNN_IOU_Options(QWidget):
         layout.addLayout(iou_form)
 
         self.setLayout(layout)
+
+        self.active = QCheckBox("Activate",self)
+        self.active.setTristate(False)
+        self.active.setCheckState(Qt.Checked)
+        # self.active.connect(lambda: self._toggle_checkbox(self.active))
+        iou_form.addRow(self.active)
 
         self.min_value = QDoubleSpinBox(self)
         # self.onlyInt = QIntValidator()
@@ -824,7 +830,7 @@ class MaskRCNN_IOU_Options(QWidget):
         self.min_value.setMinimum(0)
         self.min_value.setSingleStep(0.05)
         # self.skip_frames.setValidator(QIntValidator(-999,999))
-        self.min_value.setToolTip("The minimum IOU value which considers to be 'out of range'")
+        self.min_value.setToolTip("The minimum IOU value which considers to be 'out of range' (1 means that it will always be out of range, 0 means it will never be out of range)")
         iou_form.addRow("Out of Range", self.min_value)
 
 
@@ -835,7 +841,7 @@ class MaskRCNN_IOU_Options(QWidget):
         self.auto_assign_value.setMaximum(1)
         self.auto_assign_value.setMinimum(0)
         self.auto_assign_value.setSingleStep(0.05)
-        self.auto_assign_value.setToolTip("The minimum IOU value which is used to automatically re-assign")
+        self.auto_assign_value.setToolTip("The minimum IOU value which is used to automatically re-assign (1 needs perfect alignment to assign, 0 will always align no matter how different)")
         iou_form.addRow("Auto Assign", self.auto_assign_value)
 
         self.similarity = QDoubleSpinBox(self)
@@ -845,7 +851,7 @@ class MaskRCNN_IOU_Options(QWidget):
         self.similarity.setMaximum(1)
         self.similarity.setMinimum(0)
         self.similarity.setSingleStep(0.05)
-        self.similarity.setToolTip("The minimum IOU difference which is used to detect when trackers are too similar/close")
+        self.similarity.setToolTip("The minimum IOU difference which is used to detect when trackers are too similar/close. (0 means there no difference, and therefore perfect alignment. 1 means they are completely different) ")
         iou_form.addRow("Too close", self.similarity)
 
     def get_min_value(self):
@@ -856,6 +862,15 @@ class MaskRCNN_IOU_Options(QWidget):
 
     def get_similarity(self):
         return self.similarity.value()
+    
+    def get_active(self):
+        return self.active.isChecked()
+
+    def _toggle_checkbox(self, checkbox):
+        if checkbox.isChecked():
+            checkbox.setCheckState(Qt.Checked)
+        else:
+            checkbox.setCheckState(Qt.Unchecked)
 
 class Predictor_Options(QWidget):
     def __init__(self):
@@ -870,6 +885,12 @@ class Predictor_Options(QWidget):
 
         self.setLayout(layout)
 
+        self.activate_iou = QCheckBox("Activate IOU",self)
+        self.activate_iou.setTristate(False)
+        self.activate_iou.setCheckState(Qt.Checked)
+        # self.activate_iou.connect(lambda: self._toggle_checkbox(self.activate_iou))
+        iou_form.addRow(self.activate_iou)
+
         self.min_value_IOU = QDoubleSpinBox(self)
         # self.onlyInt = QIntValidator()
         # self.skip_frames.setValidator(self.onlyInt)
@@ -880,9 +901,14 @@ class Predictor_Options(QWidget):
         self.min_value_IOU.setMinimum(0)
         self.min_value_IOU.setSingleStep(0.05)
         # self.skip_frames.setValidator(QIntValidator(-999,999))
-        self.min_value_IOU.setToolTip("The minimum IOU value which considers tracker to be 'out of range'")
+        self.min_value_IOU.setToolTip("The minimum IOU value which considers to be 'out of range' (1 means that it will always be out of range, 0 means it will never be out of range)")
         iou_form.addRow("Bounding Box Out of Range", self.min_value_IOU)
 
+        self.activate_centroid = QCheckBox("Activate Centroid",self)
+        self.activate_centroid.setTristate(False)
+        self.activate_centroid.setCheckState(Qt.Checked)
+        # self.activate_centroid.connect(lambda: self._toggle_checkbox(self.activate_centroid))
+        iou_form.addRow(self.activate_centroid)
 
         self.min_value_distance = QDoubleSpinBox(self)
         self.min_value_distance.setValue(20)
@@ -897,9 +923,20 @@ class Predictor_Options(QWidget):
     def get_min_IOU(self):
         return self.min_value_IOU.value()
     
-    def min_distance(self):
+    def get_min_distance(self):
         return self.min_value_distance.value()
+    
+    def get_active_iou(self):
+        return self.activate_iou.isChecked()
+    
+    def get_active_centroid(self):
+        return self.activate_centroid.isChecked()
 
+    def _toggle_checkbox(self, checkbox):
+        if checkbox.isChecked():
+            checkbox.setCheckState(Qt.Checked)
+        else:
+            checkbox.setCheckState(Qt.Unchecked)
     # def update_tab_name(self):
     #     self.tab.parentWidget().setTabText(self.tab.parent.currentIndex(),self.name_line.getText())
     #     print(self.tab.parentWidget)
