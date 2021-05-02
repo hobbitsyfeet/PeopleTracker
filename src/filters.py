@@ -7,8 +7,11 @@ from filterpy.kalman import ExtendedKalmanFilter
 
 class KalmanPred():
     def __init__(self, white=False):
+        self.reset(white)
 
-        previous_location = np.array((0,0))
+    def reset(self, white=False):
+
+        self.previous_location = np.array((-1,-1))
 
         self.k_filter = KalmanFilter(dim_x=4, dim_z=4)
 
@@ -49,11 +52,19 @@ class KalmanPred():
                                 [ 0,  0,  0, 0.1]]
 
 
-        print(self.k_filter.Q)
-
-
     def predict(self, location=None):
-        if location is not None:
+
+        # Indicates user set a new location or starting a new tracker
+        if self.previous_location[0] == -1:
+            
+            self.previous_location = np.array(location)
+
+            self.k_filter.x = np.array([[location[0]],[location[1]],
+                                    [0],[0]])     # state transition matrix
+
+
+        # We are predicting new data and updating the model
+        elif location is not None:
             self.previous_location = np.array(location)
             velocity_x = self.previous_location[0] - location[0]
             velocity_y = self.previous_location[1] - location[1]
@@ -61,6 +72,8 @@ class KalmanPred():
             self.k_filter.predict()
             self.k_filter.update(np.array([[location[0]],[location[1]],
                                     [velocity_x],[velocity_y]]))
+        
+        #We are further predicting future steps
         else:
             self.k_filter.predict()
             
@@ -129,19 +142,19 @@ class KalmanPred():
 #         print(self.k_filter.Q)
 
 
-    def predict(self, location=None):
-        if location is not None:
-            self.previous_location = np.array(location)
-            velocity_x = self.previous_location[0] - location[0]
-            velocity_y = self.previous_location[1] - location[1]
+    # def predict(self, location=None):
+    #     if location is not None:
+    #         self.previous_location = np.array(location)
+    #         velocity_x = self.previous_location[0] - location[0]
+    #         velocity_y = self.previous_location[1] - location[1]
 
-            self.k_filter.predict()
-            self.k_filter.update(np.array([[location[0]],[location[1]],
-                                    [velocity_x],[velocity_y]]))
-        else:
-            self.k_filter.predict()
+    #         self.k_filter.predict()
+    #         self.k_filter.update(np.array([[location[0]],[location[1]],
+    #                                 [velocity_x],[velocity_y]]))
+    #     else:
+    #         self.k_filter.predict()
             
-        return self.k_filter.x
+    #     return self.k_filter.x
 if __name__ == "__main__":
 
     locations = np.array([

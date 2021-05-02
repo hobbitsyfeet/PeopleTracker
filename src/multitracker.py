@@ -33,7 +33,7 @@ import regression
 CPU_COUNT = multiprocessing.cpu_count()
 
 #start tracking version at 1.0
-PEOPLETRACKER_VERSION = 2.21
+PEOPLETRACKER_VERSION = 2.22
 
 # For extracting video metadata
 # import mutagen
@@ -197,6 +197,12 @@ class MultiTracker():
                 self.tracker.init(frame, self.init_bounding_box)
                 input_dialog.log("Bounding Box Coordinates: " + str(self.init_bounding_box))
                 input_dialog.log("Setting Location Successful.")
+                
+                # Tell the predictors to reset
+                self.box_predictor[0].reset()
+                self.box_predictor[1].reset()
+                self.predictor.reset()
+
             except Exception as e:
                 crashlogger.log(str(e))
                 input_dialog.log("Setting Location Failed.")
