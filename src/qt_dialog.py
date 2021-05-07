@@ -199,7 +199,7 @@ class App(QWidget):
 
             set_tracker = QAction("Set Tracker", self)
             # set_tracker.setShortcut(Qt.Key_Space)
-            set_tracker.setShortcuts([QKeySequence(Qt.CTRL + Qt.Key_Z), QKeySequence(Qt.CTRL + Qt.Key_Space) ])
+            set_tracker.setShortcuts([QKeySequence(Qt.CTRL + Qt.Key_Z), QKeySequence(Qt.CTRL + Qt.Key_Space), QKeySequence(Qt.CTRL + Qt.Key_D) ])
 
             retain_moveing_region = QAction("Retain Region", self)
             retain_moveing_region.setShortcut("Ctrl+C")
