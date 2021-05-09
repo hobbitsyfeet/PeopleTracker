@@ -33,7 +33,7 @@ import regression
 CPU_COUNT = multiprocessing.cpu_count()
 
 #start tracking version at 1.0
-PEOPLETRACKER_VERSION = 2.23
+PEOPLETRACKER_VERSION = 2.24
 
 # For extracting video metadata
 # import mutagen
@@ -1101,7 +1101,32 @@ if __name__ == "__main__":
             try:
                 # ret, frame = cap.read()
                 frame = cv2.resize(frame, (input_dialog.resolution_x, input_dialog.resolution_y), 0, 0, cv2.INTER_CUBIC)
+
+            # if input_dialog.image_options.brightness.value() != 0:
+                # frame = input_dialog.image_options.add_brightness(frame)
+
+
+                if input_dialog.image_options.roi_normalize_flag:
+                    input_dialog.image_options.set_normalized_region(frame)
+                    input_dialog.image_options.roi_normalize_flag = False
+
+                frame = input_dialog.image_options.enhance_normalized_roi(frame)
+
+                if input_dialog.image_options.get_equalize_hist():
+                    frame = input_dialog.image_options.equalize_hist(frame)
+                
+                if input_dialog.image_options.get_equalize_clahe_hist():
+                    frame = input_dialog.image_options.equalize_clahe_hist(frame)
+
+                frame = input_dialog.image_options.enhance_brightness_contrast(frame)
+                frame = input_dialog.image_options.enhance_gamma(frame)
+
+                # frame = input_dialog.image_options.enhance_brightness(frame)
+                # _, frame = input_dialog.image_options.auto_enhance(frame)
+
                 show_frame = frame.copy()
+                
+
 
             except Exception as e:
                 crashlogger.log(str(e))

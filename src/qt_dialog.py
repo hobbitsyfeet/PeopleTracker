@@ -8,6 +8,9 @@ import webbrowser
 import crashlogger
 import traceback
 
+import cv2
+import numpy as np
+import math
 
 
 
@@ -44,6 +47,8 @@ class App(QWidget):
 
         self.predict_state = False
         self.load_predictions_state = False
+
+        
         
         
     
@@ -128,6 +133,8 @@ class App(QWidget):
                 self.mcrnn_options.show()
             elif q.text() == "Predictor Options":
                 self.predictor_options.show()
+            elif q.text() == "Image Options":
+                self.image_options.show()
             
 
                 
@@ -143,6 +150,7 @@ class App(QWidget):
 
             self.mcrnn_options = MaskRCNN_IOU_Options()
             self.predictor_options = Predictor_Options()
+            self.image_options = Image_Enhancement()
 
             self.log_label = QLabel(self)
             self.log_label.setText("Info:")
@@ -212,6 +220,7 @@ class App(QWidget):
 
             maskrcnn_options_action = QAction("Mask-RCNN Options", self)
             predictor_options_action = QAction("Predictor Options", self)
+            image_options_action = QAction("Image Options", self)
             # edit2 = file.addMenu("Edit")
             # AddTab	Ctrl+T
             edit.addAction(add_region)
@@ -226,6 +235,7 @@ class App(QWidget):
             edit.addAction(beginning)
             edit.addAction(maskrcnn_options_action)
             edit.addAction(predictor_options_action)
+            edit.addAction(image_options_action)
             edit.triggered[QAction].connect(self.processtrigger)
 
             
@@ -937,6 +947,234 @@ class Predictor_Options(QWidget):
             checkbox.setCheckState(Qt.Checked)
         else:
             checkbox.setCheckState(Qt.Unchecked)
+
+class Image_Enhancement(QWidget):
+    """
+    UI for setting Mask-RCNN IOU options
+    """
+    def __init__(self):
+        super().__init__()
+        layout = QVBoxLayout()
+        self.setWindowTitle("Image Options")
+        # self.setGeometry(self.left, self.top, self.width, self.height)
+        self.label = QLabel("Image options for brightness and contrast.")
+        layout.addWidget(self.label)
+        bar_form = QFormLayout()
+        layout.addLayout(bar_form)
+        self.setLayout(layout)
+
+        # self.brightness = QSlider(Qt.Horizontal)
+        # self.brightness.setMaximum(255)
+        # self.brightness.setMinimum(-255)
+        # self.brightness.setValue(0)
+        
+        
+        # self.brightness_label = QLabel("brightness: " + str(self.brightness.value()))
+        # self.brightness.valueChanged.connect(lambda: self.update_brightness())
+        # bar_form.addRow(self.brightness_label , self.brightness)
+
+
+
+        self.alpha = QSlider(Qt.Horizontal)
+        self.alpha.setValue(10)
+        self.alpha.setMinimum(0)
+        self.alpha.setMaximum(100)
+        self.alpha_label = QLabel("Contrast: " + str(self.alpha.value()))
+        self.alpha.valueChanged.connect(lambda: self.update_alpha())
+        bar_form.addRow(self.alpha_label , self.alpha)
+
+        self.beta = QSlider(Qt.Horizontal)
+        self.beta.setValue(10)
+        self.beta.setMinimum(-200)
+        self.beta.setMaximum(2000)
+        self.beta_label = QLabel("Brightness: "+ str(self.beta.value()))
+        self.beta.valueChanged.connect(lambda: self.update_beta())
+        bar_form.addRow(self.beta_label, self.beta)
+
+        self.gamma = QSlider(Qt.Horizontal)
+        self.gamma.setValue(10)
+        self.gamma.setMinimum(0)
+        self.gamma.setMaximum(250)
+        self.gamma.setSingleStep(0.1)
+        self.gamma_label = QLabel("gamma: "+ str(self.gamma.value()/10))
+        self.gamma.valueChanged.connect(lambda: self.update_gamma())
+        bar_form.addRow(self.gamma_label, self.gamma)
+
+        self.roi_normalize = QPushButton("Normalize Region")
+        self.roi_normalize.clicked.connect(lambda: self.set_normalize_flag())
+        self.roi_normalize_region = None
+        self.roi_normalize_flag = False
+        # self.roi_clear_button = QPushButton("Clear Region")
+        # self.roi_clear_button.clicked.connect(lambda: self.clear_normalized_region())
+        # bar_form.addWidget(self.roi_normalize)
+        # bar_form.addWidget(self.roi_clear_button)
+        self.reset_button = QPushButton("Default")
+        self.reset_button.clicked.connect(lambda: self.reset_default())
+        bar_form.addWidget(self.reset_button)
+
+        self.equalize_hist_button = QCheckBox("Equalize Histogram")
+        self.equalize_hist_button.setChecked(False)
+        self.equalize_hist_button.clicked.connect(lambda: self.toggle_equalize_hist())
+        self.equalize_hist_button.setToolTip("Uses OpenCV's Equalize Histogram method. 'Improves the contrast in an image'")
+        bar_form.addWidget(self.equalize_hist_button)
+        
+
+        self.equalize_chahe_hist_button = QCheckBox("CLAHE Equalize Histogram")
+        self.equalize_chahe_hist_button.setChecked(False)
+        self.equalize_chahe_hist_button.clicked.connect(lambda: self.toggle_chahe_hist())
+        self.equalize_chahe_hist_button.setToolTip("Uses OpenCV's Equalize Histogram method. 'Improves the contrast in an image'")
+        bar_form.addWidget(self.equalize_chahe_hist_button)
+
+    def reset_default(self):
+        self.gamma.setValue(10)
+        self.beta.setValue(10)
+        self.alpha.setValue(10)
+        self.roi_normalize_region = None
+        # self.brightness.setValue(0)
+
+    def update_brightness(self):
+        self.brightness_label.setText("brightness: "+ str(self.brightness.value()))
+
+    def update_gamma(self):
+        self.gamma_label.setText("gamma: "+ str(self.gamma.value()/10))
+
+    def update_alpha(self):
+        self.roi_normalize_region = None
+        self.alpha_label.setText("Alpha: " + str(self.alpha.value()/10))
+
+    def update_beta(self):
+        self.beta_label.setText("Beta: "+ str(self.beta.value()/10))
+    
+    def toggle_equalize_hist(self):
+        self.equalize_hist_button.setChecked(self.equalize_hist_button.isChecked())
+
+    def toggle_chahe_hist(self):
+        self.equalize_chahe_hist_button.setChecked(self.equalize_chahe_hist_button.isChecked())
+
+    def get_equalize_hist(self):
+        return self.equalize_hist_button.isChecked()
+
+    def get_equalize_clahe_hist(self):
+        return self.equalize_chahe_hist_button.isChecked()
+
+    def set_normalized_region(self, image):
+        self.roi_normalize_region = cv2.selectROI("Frame", image)
+    
+    def clear_normalized_region(self):
+        self.roi_normalize_region = None
+
+    def set_normalize_flag(self):
+        self.roi_normalize_flag = True
+
+    def enhance_normalized_roi(self, image):
+        if self.roi_normalize_region is not None:
+            # Calculate mean and STD
+            # norm_crop = image.crop(self.roi_normalize_region)
+            x = self.roi_normalize_region[0]
+            y = self.roi_normalize_region[1]
+            w = self.roi_normalize_region[2]
+            h = self.roi_normalize_region[3]
+            norm_crop = image[y:y+h,x:x+w]
+
+        
+            gray_crop = cv2.cvtColor(norm_crop, cv2.COLOR_BGR2GRAY)
+            avg = np.average(gray_crop)
+            increase = 255 - avg
+            normalized = (increase-0)/(255-0)
+            # print("normalized", normalized)
+            try:
+                normalized = ((normalized + 1)/(10 + 1))  *100
+                # print("-1 to 10" , normalized)
+                self.alpha.setValue(normalized)
+            except Exception as e:
+                print(e)
+                
+            # print(image)
+            # mean, STD  = cv2.meanStdDev(self.roi_normalize_region)
+            # print(mean,STD)
+
+            # # Clip frame to lower and upper STD
+            # offset = 0.2
+            # clipped = np.clip(image, mean - offset*STD, mean + offset*STD).astype(np.uint8)
+
+            # res = cv.convertScaleAbs(img, alpha = alpha, beta = beta)
+            # self.alpha.setValue(255/mean)
+            # self.beta.setValue()
+            # print(clipped)
+            # # Normalize to range
+            # return cv2.normalize(clipped, clipped, 0, 255, norm_type=cv2.NORM_MINMAX)
+        return image
+
+    def add_brightness(self, image):
+        bright = image + self.brightness.value()
+        bright = np.clip(bright,0,255)
+        return bright.astype('uint8')
+
+    def enhance_brightness_contrast(self, image):
+        return cv2.convertScaleAbs(image, alpha=self.alpha.value()/10, beta=self.beta.value()/10)
+    
+    def enhance_gamma(self, image):
+        lookUpTable = np.empty((1,256), np.uint8)
+        for i in range(256):
+            lookUpTable[0,i] = np.clip(pow(i / 255.0, self.gamma.value()/10) * 255.0, 0, 255)
+        new_image = cv2.LUT(image, lookUpTable)
+        return new_image
+        
+    def equalize_hist(self, image):
+        R, G, B = cv2.split(image)
+        output1_R = cv2.equalizeHist(R)
+        output1_G = cv2.equalizeHist(G)
+        output1_B = cv2.equalizeHist(B)
+
+        return cv2.merge((output1_R, output1_G, output1_B))
+
+    def equalize_clahe_hist(self, image):
+        lab = cv2.cvtColor(image, cv2.COLOR_BGR2LAB)
+        lab_planes = cv2.split(lab)
+        clahe = cv2.createCLAHE(clipLimit=2.0,tileGridSize=(4,4))
+        lab_planes[0] = clahe.apply(lab_planes[0])
+        lab = cv2.merge(lab_planes)
+        bgr = cv2.cvtColor(lab, cv2.COLOR_LAB2BGR)
+        return bgr
+
+    def auto_enhance(self, image):
+        # METHOD 1: RGB
+        # convert img to gray
+        gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+
+        # compute gamma = log(mid*255)/log(mean)
+        mid = 0.5
+        mean = np.mean(gray)
+        gamma = math.log(mid*255)/math.log(mean)
+        print(gamma)
+
+        # do gamma correction
+        img_gamma1 = np.power(image, gamma).clip(0,255).astype(np.uint8)
+
+
+
+        # METHOD 2: HSV (or other color spaces)
+
+        # convert img to HSV
+        hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
+        hue, sat, val = cv2.split(hsv)
+
+        # compute gamma = log(mid*255)/log(mean)
+        mid = 0.5
+        mean = np.mean(val)
+        gamma = math.log(mid*255)/math.log(mean)
+        print(gamma)
+
+        # do gamma correction on value channel
+        val_gamma = np.power(val, gamma).clip(0,255).astype(np.uint8)
+
+        # combine new value channel with original hue and sat channels
+        hsv_gamma = cv2.merge([hue, sat, val_gamma])
+        img_gamma2 = cv2.cvtColor(hsv_gamma, cv2.COLOR_HSV2BGR)
+
+        return img_gamma1, img_gamma2
+
+
     # def update_tab_name(self):
     #     self.tab.parentWidget().setTabText(self.tab.parent.currentIndex(),self.name_line.getText())
     #     print(self.tab.parentWidget)
