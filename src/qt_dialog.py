@@ -1057,6 +1057,19 @@ class Image_Enhancement(QWidget):
     def get_equalize_clahe_hist(self):
         return self.equalize_chahe_hist_button.isChecked()
 
+    def get_alpha(self):
+        return self.alpha.value()
+
+    def get_beta(self):
+        return self.beta.value()
+    
+    def get_gamma(self):
+        return self.gamma.value()
+
+    
+
+    # def get_contrast()
+
     def set_normalized_region(self, image):
         self.roi_normalize_region = cv2.selectROI("Frame", image)
     

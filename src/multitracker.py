@@ -33,7 +33,7 @@ import regression
 CPU_COUNT = multiprocessing.cpu_count()
 
 #start tracking version at 1.0
-PEOPLETRACKER_VERSION = 2.24
+PEOPLETRACKER_VERSION = 2.25
 
 # For extracting video metadata
 # import mutagen
@@ -110,7 +110,7 @@ class MultiTracker():
         """ Returns total time being tracked in video: returns  """
         
         # if len(self.data_dict) > 2:
-        total_time = [self.calculate_total_time(self.part_time_to_segments(list(sorted(self.data_dict.keys()))), framerate)]
+        total_time = [self.calculate_total_time(self.part_time_to_segments(self.data_dict.keys()), framerate)]
         return total_time
 
     def create(self, tracker_type='CSRT'):
@@ -176,10 +176,16 @@ class MultiTracker():
         self.init_bounding_box = cv2.selectROI("Frame", frame, fromCenter=False,
                 showCrosshair=True)
         #if not selected, stop until it is
-        while self.init_bounding_box[0] is 0 and self.init_bounding_box[1] is 0 and self.init_bounding_box[2] is 0 and self.init_bounding_box[3] is 0:
-            input_dialog.log("No onject selected, select an object to continue")
-            self.init_bounding_box = cv2.selectROI("Frame", frame, fromCenter=False,
-                showCrosshair=True)
+        # while self.init_bounding_box[0] is 0 and self.init_bounding_box[1] is 0 and self.init_bounding_box[2] is 0 and self.init_bounding_box[3] is 0:
+        # while self.init_bounding_box[2] == 0 or self.init_bounding_box[3] == 0:
+        #     input_dialog.log("No object selected, draw a rectangle with an area larger than 0.")
+            # self.init_bounding_box = cv2.selectROI("Frame", frame, fromCenter=False,
+            #     showCrosshair=True)
+        if self.init_bounding_box[2] == 0 or self.init_bounding_box[3] == 0:
+            input_dialog.log("No object selected, draw a rectangle with an area larger than 0, Try again")
+            self.self.init_bounding_box = None
+            return
+
         input_dialog.log("Bounding Box Coordinates: " + str(self.init_bounding_box))
 
         # start OpenCV object tracker using the supplied bounding box
@@ -190,32 +196,31 @@ class MultiTracker():
             self.reset = True
 
         if self.reset is True:
-            try:
+            # try:
                 input_dialog.log("Setting Location")
                 del self.tracker
                 self.create(tracker_type)
                 self.tracker.init(frame, self.init_bounding_box)
-                input_dialog.log("Bounding Box Coordinates: " + str(self.init_bounding_box))
-                input_dialog.log("Setting Location Successful.")
+                input_dialog.log(("Setting Location Successful. " + "Bounding Box Coordinates: " + str(self.init_bounding_box)))
                 
                 # Tell the predictors to reset
                 self.box_predictor[0].reset()
                 self.box_predictor[1].reset()
                 self.predictor.reset()
 
-            except Exception as e:
-                crashlogger.log(str(e))
-                input_dialog.log("Setting Location Failed.")
+            # except Exception as e:
+            #     crashlogger.log(str(e))
+            #     input_dialog.log("Setting Location Failed.")
     
 
     def auto_assign(self, frame, bounding_box, tracker_type="CSRT"):
         try:
-            print(self.init_bounding_box)
-            print(bounding_box)
+            # print(self.init_bounding_box)
+            # print(bounding_box)
             width = bounding_box[2] - bounding_box[0]
             height = bounding_box[3] - bounding_box[1]
             bounding_box = [bounding_box[0], bounding_box[1], width, height]
-            print(bounding_box)
+            # print(bounding_box)
             input_dialog.log("Setting Location")
             del self.tracker
             self.create(tracker_type)
@@ -317,11 +322,11 @@ class MultiTracker():
         for data in location:
             
             center = data[0]        # center -> (x,y)
-            print("Center", center)
+            # print("Center", center)
 
 
             corrected_center = (center[0], (vid_height - center[1]))
-            print(corrected_center)
+            # print(corrected_center)
 
             dimentions = data[2]    # dimentions -> (width, height) where (0,0) is top left
 
@@ -462,15 +467,24 @@ class MultiTracker():
         """
         On a continous set of intervals, merges them such that intersecting inervals will become a new interval with new limits. 
         Example: [[0, 20], [10, 50]] becomes [[0,50]]
+        [[0, 500]] stays the same
         """
-        total_segments.sort(key=lambda interval: interval[0])
-        merged = [total_segments[0]]
-        for current in total_segments:
-            previous = merged[-1]
-            if current[0] <= previous[1]:
-                previous[1] = max(previous[1], current[1])
-            else:
-                merged.append(current)
+        # print("Merge_Interval", total_segments)
+        
+        try:
+            assert(len(total_segments) >= 1)
+            total_segments.sort(key=lambda interval: interval[0])
+            merged = [total_segments[0]]
+            for current in total_segments:
+                previous = merged[-1]
+                if current[0] <= previous[1]:
+                    previous[1] = max(previous[1], current[1])
+                else:
+                    merged.append(current)
+        except Exception as e:
+            print("Handling single element in merge_intervals by duplicating single value", e)
+            return [[total_segments[0][0], total_segments[0][0]]]
+
         return merged
 
     def part_time_to_segments(self, time_data, segment_size=300):
@@ -479,11 +493,22 @@ class MultiTracker():
             time_data is the entire time of the object tracked.
             segment_size is the distance between frames that should be considered as one segment. Default is 10 seconds at 30fps.
             min_segment is the minimum size of segment allowed. If it is too small, it will be ignored. Defualt is 1 second (30 frames).
+
+        Example with default segment size of 300:
+            [0, 10, 20, 30, 100, 200, 300, 400, 1000, 1010, 1020] results in [[0, 400], [1000, 1020]]
         """
+        if len(time_data) < 2:
+            return [[0]]
+
+        time_data = list(sorted(time_data))
+
         #three segment markers, starting frame, current frame, and end frame
-        seg_start =  time_data[0]
-        seg_last = time_data[0]
-        
+        try:
+            seg_start = time_data[0]
+            seg_last = time_data[0]
+        except:
+            # raise ValueError
+            return [[0]]
         total_segments = [] # total segments placed in a list
 
 
@@ -510,9 +535,19 @@ class MultiTracker():
                     break
                 total_segments.append([seg_start, seg_last])
                 break
-        
+        # if not total_segments:
+        #     print("TOTAL_SEGMENTS EMPTY")
+        #     return [[time_data[0], time_data[0]]]
         #merge intervals overlapping to maintain efficiency
-        total_segments = self.merge_intervals(total_segments)
+        if len(total_segments) >= 2:
+            total_segments = self.merge_intervals(total_segments)
+            if total_segments == None:
+                return [[0]]
+        elif len(total_segments) == 1:
+            total_segments = [total_segments[0]]
+        else:
+            total_segments = [[0]]
+
         return total_segments
 
     def estimate_distance(self, size):
@@ -522,7 +557,8 @@ class MultiTracker():
         """
         Calculates time between two given frames and the FPS rate
         """
-        return (frame_end - frame_start)/fps
+        time = (frame_end - frame_start)/fps
+        return time
     
     def calculate_total_time(self, total_frames, fps=30, segmented=True):
         """
@@ -535,11 +571,16 @@ class MultiTracker():
             time_segs = total_frames
         #sum all the segments together
         for seg in time_segs:
+            if len(seg) < 2:
+                seg = [seg[0], seg[0]]
+            first = seg[0]
+            last = seg[1]
             #each seg is a pair of start and end times
-            total_time += self.calculate_time(seg[0],seg[1],fps)
+            total_time += self.calculate_time(first, last, fps)
 
         #May not need, no negative time allowed.
         if total_time <= 0:
+            print("Time less than or equal to Zero")
             total_time = 0
 
         return total_time
@@ -871,7 +912,7 @@ if __name__ == "__main__":
         resized_ratio_y = input_dialog.resolution_y / cap.get(cv2.CAP_PROP_FRAME_HEIGHT)
         # print("WIDTH:", cap.get(cv2.CAP_PROP_FRAME_WIDTH), " HEIGHT:", cv2.CAP_PROP_FRAME_HEIGHT)
 
-        print(resized_ratio_x, resized_ratio_y)
+        # print(resized_ratio_x, resized_ratio_y)
 
         input_dialog.set_max_scrollbar(cap.get(cv2.CAP_PROP_FRAME_COUNT))
         cap.set(cv2.CAP_PROP_FRAME_WIDTH, input_dialog.resolution_x)
@@ -1110,16 +1151,20 @@ if __name__ == "__main__":
                     input_dialog.image_options.set_normalized_region(frame)
                     input_dialog.image_options.roi_normalize_flag = False
 
-                frame = input_dialog.image_options.enhance_normalized_roi(frame)
+                # if input_dialog.image_options.get_equalize_clahe_hist() is True:
+                #     frame = input_dialog.image_options.enhance_normalized_roi(frame)
 
-                if input_dialog.image_options.get_equalize_hist():
+                if input_dialog.image_options.get_equalize_hist() is True:
                     frame = input_dialog.image_options.equalize_hist(frame)
                 
                 if input_dialog.image_options.get_equalize_clahe_hist():
                     frame = input_dialog.image_options.equalize_clahe_hist(frame)
 
-                frame = input_dialog.image_options.enhance_brightness_contrast(frame)
-                frame = input_dialog.image_options.enhance_gamma(frame)
+                if input_dialog.image_options.get_alpha() != 10 or input_dialog.image_options.get_beta() != 10: 
+                    frame = input_dialog.image_options.enhance_brightness_contrast(frame)
+                
+                if input_dialog.image_options.get_gamma() != 10:
+                    frame = input_dialog.image_options.enhance_gamma(frame)
 
                 # frame = input_dialog.image_options.enhance_brightness(frame)
                 # _, frame = input_dialog.image_options.auto_enhance(frame)
@@ -1349,10 +1394,10 @@ if __name__ == "__main__":
                             try:
                                 if input_dialog.predictor_options.get_active_centroid():
                                     pred_dist = regression.distance_2d((center_x,center_y), (int((pred_line[0] + pred_line[2])[0]), int((pred_line[1] + pred_line[3])[0]) ))
-                                    print("POINT_DIST: ", pred_dist)
+                                    # print("POINT_DIST: ", pred_dist)
                                     cv2.arrowedLine(show_frame, (int(pred_line[0]),int(pred_line[1])), (int((pred_line[0] + pred_line[2])[0]), int((pred_line[1] + pred_line[3])[0]) ),  (0,0,255), 3, tipLength=1)
                                     if pred_dist >= input_dialog.predictor_options.get_min_distance():
-                                        print("Pausing")
+                                        # print("Pausing")
                                         input_dialog.set_pause_state()
                             except:
                                 print("Cannot Compute Distance")
@@ -1504,12 +1549,12 @@ if __name__ == "__main__":
 
             #NOTE this is in try-catch because initially there are not enough frames to calculate time. 
             #This could be done with if statement, though I havent found a way...
-            try:
-                current_tracked_time = tracker_list[selected_tracker].get_time_tracked(vid_fps)[0] + tracker_list[selected_tracker].previous_time
-                input_dialog.tab_list[selected_tracker].update_length_tracked(current_tracked_time)
-            except Exception as e:
-                # crashlogger.log(str(e))
-                pass
+            # try:
+            current_tracked_time = tracker_list[selected_tracker].get_time_tracked(vid_fps)[0] + tracker_list[selected_tracker].previous_time
+            input_dialog.tab_list[selected_tracker].update_length_tracked(current_tracked_time)
+            # except Exception as e:
+            #     # crashlogger.log(str(e))
+            #     pass
             
             #Display all regions on screen if they exist
             if len(regions.radius_regions) > 0:
