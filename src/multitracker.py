@@ -196,7 +196,7 @@ class MultiTracker():
             self.reset = True
 
         if self.reset is True:
-            # try:
+            try:
                 input_dialog.log("Setting Location")
                 del self.tracker
                 self.create(tracker_type)
@@ -208,9 +208,9 @@ class MultiTracker():
                 self.box_predictor[1].reset()
                 self.predictor.reset()
 
-            # except Exception as e:
-            #     crashlogger.log(str(e))
-            #     input_dialog.log("Setting Location Failed.")
+            except Exception as e:
+                crashlogger.log(str(e))
+                input_dialog.log("Setting Location Failed.")
     
 
     def auto_assign(self, frame, bounding_box, tracker_type="CSRT"):
@@ -1549,12 +1549,12 @@ if __name__ == "__main__":
 
             #NOTE this is in try-catch because initially there are not enough frames to calculate time. 
             #This could be done with if statement, though I havent found a way...
-            # try:
-            current_tracked_time = tracker_list[selected_tracker].get_time_tracked(vid_fps)[0] + tracker_list[selected_tracker].previous_time
-            input_dialog.tab_list[selected_tracker].update_length_tracked(current_tracked_time)
-            # except Exception as e:
-            #     # crashlogger.log(str(e))
-            #     pass
+            try:
+                current_tracked_time = tracker_list[selected_tracker].get_time_tracked(vid_fps)[0] + tracker_list[selected_tracker].previous_time
+                input_dialog.tab_list[selected_tracker].update_length_tracked(current_tracked_time)
+            except Exception as e:
+                # crashlogger.log(str(e))
+                pass
             
             #Display all regions on screen if they exist
             if len(regions.radius_regions) > 0:
