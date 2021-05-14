@@ -580,7 +580,7 @@ class MultiTracker():
 
         #May not need, no negative time allowed.
         if total_time <= 0:
-            print("Time less than or equal to Zero")
+            # print("Time less than or equal to Zero")
             total_time = 0
 
         return total_time
