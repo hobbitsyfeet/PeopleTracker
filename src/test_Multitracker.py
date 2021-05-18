@@ -1,4 +1,4 @@
-from multitracker import MultiTracker
+from multitracker import MultiTracker, Regions
 from qt_dialog import person_tab
 from PyQt5 import QtWidgets
 import sys

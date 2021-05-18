@@ -11,7 +11,7 @@ class KalmanPred():
 
     def reset(self, white=False):
 
-        self.previous_location = np.array((-1,-1))
+        self.previous_location = np.array((float('inf'),float('inf')))
 
         self.k_filter = KalmanFilter(dim_x=4, dim_z=4)
 
@@ -55,7 +55,7 @@ class KalmanPred():
     def predict(self, location=None):
 
         # Indicates user set a new location or starting a new tracker
-        if self.previous_location[0] == -1:
+        if self.previous_location[0] == float('inf'):
             
             self.previous_location = np.array(location)
 

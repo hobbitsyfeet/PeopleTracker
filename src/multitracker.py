@@ -33,7 +33,7 @@ import regression
 CPU_COUNT = multiprocessing.cpu_count()
 
 #start tracking version at 1.0
-PEOPLETRACKER_VERSION = 2.25
+PEOPLETRACKER_VERSION = 2.26
 
 # For extracting video metadata
 # import mutagen
@@ -657,21 +657,28 @@ class Regions(QWidget):
 
     def test_radius(self, test_point):
         """
-        Tests weather a point value exists within a radius
+        Tests weather a point value exists within an eclipse
+         p <= 1 exists in or on eclipse
 
-        Equation: Given (x-h)^2/a^2 + (y-k)^2/b^2 <= 1
-            Given a test_point (x,y), ellipse_center at (h,k), 
+        Equation: Given p = (x-h)^2/a^2 + (y-k)^2/b^2
+            Where test_point is (x,y) and ellipse_center is (h,k), 
             radius_width, radius_height as a,b respectivly
+
+        Returns list(regions), p
         """
         #overlapping areas may result in multiple True tests
         within_points = []
         test_x = test_point[0]
         test_y = test_point[1]
-        
+        p = float('inf')
         for key, region in self.radius_regions.items():
 
             x, y, w, h = region[0], region[1], region[2], region[3]
 
+            #Invalid inputs are areas with zero or less, return no region and invalid p value
+            if w <= 0 or h <= 0:
+                return [], float("inf")
+            
             #handle if devisor == 0
             denom_x = math.pow((w/2), 2)
             denom_y = math.pow((h/2), 2)
@@ -687,12 +694,11 @@ class Regions(QWidget):
                 p = ((math.pow((test_x - ellipse_center[0]), 2) / denom_x) + 
                     (math.pow((test_y - ellipse_center[1]), 2) / denom_y))
             except ZeroDivisionError as zerodiverr:
-                print(zerodiverr)
-                p = -1
+                p = float("inf") # Does not count inside the eclipse
 
             if p <= 1: #point exists in or on eclipse
                 within_points.append(key)
-        return within_points
+        return within_points, p
 
     def handle_inputs():
         pass
@@ -1280,6 +1286,9 @@ if __name__ == "__main__":
                         center_y = top_left_y + (height/2)
 
                         # cv2.circle(frame, (box[0],box[1]), 10, (0,0,255))
+                        if tracker.is_region() is True and tracker.get_name().strip() == "":
+                            input_dialog.tab_list[tracker_num].getText(input_name="Region Name:",line=input_dialog.tab_list[tracker_num].name_line)
+
                         if tracker.is_region() is True and tracker.get_name() != "":
 
                             regions.set_moving_radius(name = tracker.get_name(), 
@@ -1346,7 +1355,7 @@ if __name__ == "__main__":
                         # bottom = (int(center_x), int(center_y - height/2))
                         # cv2.circle(frame, top, 3, (0,255,255),-1)
                         # cv2.circle(frame, bottom, 3, (0,255,255),-1)
-                        in_region = regions.test_radius((center_x, center_y))
+                        in_region, p = regions.test_radius((center_x, center_y))
                         
                         if input_dialog.play_state == True and input_dialog.tab_list[tracker_num].read_only is False:
                             #record all the data collected from that frame
@@ -1458,7 +1467,6 @@ if __name__ == "__main__":
                         # print(frame_number)
                         frame_number = input_dialog.get_scrollbar_value()
                         # regions.del_moving_radius(tracker.get_name())
-
                         # print(selected_tracker, tracker_num)
                         if frame_number in tracker.data_dict:
                             # print("Exists")
@@ -1466,7 +1474,6 @@ if __name__ == "__main__":
                             # point, regions, dimensions, other_room, total_people
                             center, _, dim, other_room, total_people, is_chair = tracker.data_dict[frame_number]
                             # print(frame_number, center)
-                            
                             if tracker.is_region() is True and tracker.get_name() != "":
                                 
                                 point = (int(center[0] - dim[0]), int(center[1] - dim[1]))
