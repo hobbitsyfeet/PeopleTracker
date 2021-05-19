@@ -18,6 +18,7 @@ import exiftool
 import imutils
 import numpy as np
 import pandas as pd
+
 from PyQt5.QtCore import QCoreApplication
 from PyQt5.QtWidgets import (QApplication, QComboBox, QInputDialog, QLineEdit,
                              QMessageBox, QWidget,QSplashScreen)
@@ -29,11 +30,12 @@ import qt_dialog
 from Video import FileVideoStream, STFileVideoStream
 import filters
 import regression
+from Regions import Regions
 
 CPU_COUNT = multiprocessing.cpu_count()
 
 #start tracking version at 1.0
-PEOPLETRACKER_VERSION = 2.26
+PEOPLETRACKER_VERSION = 2.3
 
 # For extracting video metadata
 # import mutagen
@@ -47,18 +49,21 @@ class MultiTracker():
         # self.location_data = [] #(x, y)
         self.distance_data = [] #(CLOSE, MED, FAR) (estimated)
         self.time_data = [] #(frames tracked)
-        # self.radius_regions = dict
+        # self.region_dict = dict
 
         self.data_dict = dict()
         self.previous_time = 0
 
+        #Set these variables to getter functions (to update whenever accessed)
         self.sex = tab.sex_line
         self.group = tab.group_line
         self.description = tab.desc_line
         self.beginning = tab.get_beginning
         self.is_region = tab.get_is_region
+        # self.region_state = tab.get_region_state
         self.is_chair = tab.get_is_chair
         self.read_only = tab.get_read_only
+        self.id = tab.get_uuid
         # self.other_room = tab.get_other_room
         self.record_state = False
 
@@ -239,18 +244,18 @@ class MultiTracker():
         # check to see if we are currently tracking an object
         if self.init_bounding_box is not None:
             # grab the new bounding box coordinates of the object
-            (success, box) = self.tracker.update(show_frame)
+            (success, box) = self.tracker.update(frame)
     
             # check to see if the tracking was a success
             if success:
                 (x, y, w, h) = [int(v) for v in box]
-                cv2.rectangle(show_frame, (x, y), (x + w, y + h),
+                cv2.rectangle(frame, (x, y), (x + w, y + h),
                     self.colour, 2)
-                cv2.rectangle(show_frame, (x , y - 1), (x + 10 * (len(self.get_name())) , y - 15),(255,255,255),-1)
-                cv2.putText(show_frame,self.get_name(), (x , y - 1), cv2.FONT_HERSHEY_PLAIN, 1, (0,0,0),1)
+                cv2.rectangle(frame, (x , y - 1), (x + 10 * (len(self.get_name())) , y - 15),(255,255,255),-1)
+                cv2.putText(frame,self.get_name(), (x , y - 1), cv2.FONT_HERSHEY_PLAIN, 1, (0,0,0),1)
                 
                 # cv2.putText(frame,self.get_name(), (x , y - 1), cv2.FONT_HERSHEY_COMPLEX_SMALL, 0.75, (0,0,0),1)
-        return success, box, show_frame
+        return success, box, frame
 
     def remove(self):
         """
@@ -362,11 +367,13 @@ class MultiTracker():
 
 
             region_string = ""
-            for text in data[1]:
-                if text == data[1][-1]:
+            for index, text in enumerate(data[1]):
+                #If there is no item, 1 item or the item is the last item in the list, do not append comma and space
+                if len(data[1]) <= 1 or index == len(data[1]) -1:
                     region_string += (text)
                 else:
                     region_string += (text + ", ")
+
             region_list.append(region_string)
             other_room_list.append(data[3])
             total_people_list.append(data[4])
@@ -586,122 +593,6 @@ class MultiTracker():
         return total_time
 
 
-class Regions(QWidget):
-
-    def __init__(self):
-        super().__init__()
-        self.radius_regions = dict()
-
-    def add_radius(self):
-        """
-        Creates a circle given a rectangle ROI.
-        """
-        name, okPressed = QInputDialog.getText(self, 'Region', 'Region Name:')
-        if okPressed and name != '':
-            input_dialog.log(name)
-            self.radius_regions[name] = (cv2.selectROI("Frame", frame, fromCenter=False, showCrosshair=True))
-
-    def set_moving_radius(self, name, point, dimensions):
-        """
-         Creates and sets a radius with a given name, and given dimensions
-         Point (x, y) : (int, int)
-         Dimensions (width, height), (int, int)
-        """
-        self.radius_regions[name] = (point[0], point[1], dimensions[0], dimensions[1])
-
-    def del_radius(self):
-        items = (self.radius_regions.keys())
-        # items = ("Red","Blue","Green")
-        item, okPressed = QInputDialog.getItem(self, "Get item","Delete Regions:", items, 0, False)
-        if okPressed and item:
-            input_dialog.log(item)
-            del self.radius_regions[item]
-        # name, okPressed = QInputDialog.getText(self, 'Region', 'Delete Region Name:')
-        
-    def del_moving_radius(self, name):
-        if name in self.radius_regions:
-            del self.radius_regions[name]
-        # combo_box = QComboBox(self)
-        # for item in items:
-        #     combo_box.addItem(item)
-        # combo_box.move(50, 250)
-        # combo_box.showPopup() 
-        # selected = combo_box.activated[str]
-                # creating a combo box widget 
-
-  
-        # adding action to the button 
-        # button.pressed.connect(self.action) 
-  
-
-        
-        # comboBox.activated[str].connect(lambda parameter_list: expression)
-        # del self.radius_regions[selected]
-        # item, okPressed = QInputDialog.getItem(self.parent, "Get item","Region Name", items, 0, False)
-        # if okPressed and item:
-        #     input_dialog.log(item)
-    
-    def display_radius(self, frame):
-        """
-        Displays all radius created Radius on given frame
-        """
-        for key, region in self.radius_regions.items():
-            x, y, w, h = region[0], region[1], region[2], region[3]
-            ellipse_center = (int(x + (w/2)) ,int( y + (h/2)))
-
-            frame = cv2.ellipse(frame, ellipse_center, (int((w/2)),(int(h/2))), 0, 0,360, (0,255,0) )
-            # cv2.ellipse(frame, box=w/2,color=(0,255,0))
-            cv2.rectangle(frame, (x + int(w/2.1) , y - 1), (x + int(w/2.1) + 10 * (len(key)) , y - 15),(255,255,255),-1)
-            cv2.putText(frame,key, (x + int(w/2.1) , y - 1), cv2.FONT_HERSHEY_PLAIN, 1, (0,0,0),1)
-        return frame
-
-    def test_radius(self, test_point):
-        """
-        Tests weather a point value exists within an eclipse
-         p <= 1 exists in or on eclipse
-
-        Equation: Given p = (x-h)^2/a^2 + (y-k)^2/b^2
-            Where test_point is (x,y) and ellipse_center is (h,k), 
-            radius_width, radius_height as a,b respectivly
-
-        Returns list(regions), p
-        """
-        #overlapping areas may result in multiple True tests
-        within_points = []
-        test_x = test_point[0]
-        test_y = test_point[1]
-        p = float('inf')
-        for key, region in self.radius_regions.items():
-
-            x, y, w, h = region[0], region[1], region[2], region[3]
-
-            #Invalid inputs are areas with zero or less, return no region and invalid p value
-            if w <= 0 or h <= 0:
-                return [], float("inf")
-            
-            #handle if devisor == 0
-            denom_x = math.pow((w/2), 2)
-            denom_y = math.pow((h/2), 2)
-            if denom_x == 0:
-                denom_x = 1
-            elif denom_y == 0:
-                denom_y = 1
-            ellipse_center = (x + (w/2) , y + (h/2))
-
-                # checking the equation of
-                # ellipse with the given point
-            try:
-                p = ((math.pow((test_x - ellipse_center[0]), 2) / denom_x) + 
-                    (math.pow((test_y - ellipse_center[1]), 2) / denom_y))
-            except ZeroDivisionError as zerodiverr:
-                p = float("inf") # Does not count inside the eclipse
-
-            if p <= 1: #point exists in or on eclipse
-                within_points.append(key)
-        return within_points, p
-
-    def handle_inputs():
-        pass
 def export_null_meta(vid_dir):
     #Create path string for exporting the data. It's just a change of extention.
     export_filename = str(videoPath[:-4]) + ".csv"
@@ -909,7 +800,7 @@ if __name__ == "__main__":
         selected_tracker = 1
 
         #initialize regions object to store all regions
-        regions = Regions()
+        regions = Regions(log=input_dialog.log)
         
         #Initialize video, get the first frame and setup the scrollbar to the video length
         cap = cv2.VideoCapture(videoPath)
@@ -935,10 +826,6 @@ if __name__ == "__main__":
         input_dialog.scrollbar_changed = True
 
         previous_frame = frame
-        # print(frame_num)
-        # frame = imutils.resize(frame, width=450)
-        # frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-        # frame = np.dstack([frame, frame, frame])
 
         frame = cv2.resize(frame, (input_dialog.resolution_x, input_dialog.resolution_y), 0, 0, cv2.INTER_CUBIC)
         show_frame = frame.copy()
@@ -947,9 +834,7 @@ if __name__ == "__main__":
         #get the video's FPS
         vid_fps = cap.get(cv2.CAP_PROP_FPS)
         input_dialog.log("Video FPS set to " + str(vid_fps))
-        # vid_fps = 30
         input_dialog.set_fps_info(vid_fps)
-        
         
         skip_frame = 10
         
@@ -1226,12 +1111,12 @@ if __name__ == "__main__":
             
             elif input_dialog.region_state is True:
                 input_dialog.log("Adding region... Write name and then draw boundaries")
-                regions.add_radius()
+                regions.add_region(show_frame)
                 input_dialog.region_state = False
                 input_dialog.log("Adding region complete.")
             elif input_dialog.del_region_state is True:
                 input_dialog.log("Select a region to remove...")
-                regions.del_radius()
+                regions.del_region()
                 input_dialog.del_region_state = False
                 input_dialog.log("Removing region complete.")
 
@@ -1252,12 +1137,13 @@ if __name__ == "__main__":
             for tracker in enumerate(tracker_list):
                 tracker_num = tracker[0]
                 tracker = tracker[1]
-                # try:
-                # frame_number = fvs.frame_number
+
                 frame_number = frame_num
                 try:
                     if input_dialog.tab_list[tracker_num].other_room:
                         tracker.record_data(frame_number, input_dialog.num_people.value(), other_room=True)
+                        regions.del_moving_region(tracker.get_name(), id=tracker.id())
+
                     elif tracker.init_bounding_box is not None and input_dialog.tab_list[tracker_num].active is True and input_dialog.tab_list[tracker_num].read_only is False:
                         
                         #allocate frames on GPU, reducing CPU load.
@@ -1273,9 +1159,6 @@ if __name__ == "__main__":
                         #     tracker.assign(frame, trackerName)
 
                         #caluclate info needed this frame
-                        # frame_number = cap.get(cv2.CAP_PROP_POS_FRAMES)
-                        # frame_number = fvs.frame_number
-                        # frame_number = frame_num
                         top_left_x = box[0]
                         top_left_y = box[1]
                         width = box[2]
@@ -1291,17 +1174,18 @@ if __name__ == "__main__":
 
                         if tracker.is_region() is True and tracker.get_name() != "":
 
-                            regions.set_moving_radius(name = tracker.get_name(), 
+                            regions.set_moving_region(name = tracker.get_name(), 
                                                     point = (int(center_x - width), int(center_y - height)),
-                                                    dimensions = (int(width*2), int(height*2))
+                                                    dimensions = (int(width*2), int(height*2)),
+                                                    id=tracker.id()
                                                     )
-                            regions.display_radius(show_frame)
+                            regions.display_region(show_frame)
 
                         
 
                         elif tracker.is_region() is False:
-                            # If tracker region is no longer selected, delete moving radius
-                            regions.del_moving_radius(tracker.get_name())
+                            # If tracker region is no longer selected, delete moving region
+                            regions.del_moving_region(tracker.get_name(), id=tracker.id())
 
                         if pred_dict and input_dialog.mcrnn_options.get_active() is True:
                             if input_dialog.get_scrollbar_value() in pred_dict.keys():
@@ -1355,7 +1239,7 @@ if __name__ == "__main__":
                         # bottom = (int(center_x), int(center_y - height/2))
                         # cv2.circle(frame, top, 3, (0,255,255),-1)
                         # cv2.circle(frame, bottom, 3, (0,255,255),-1)
-                        in_region, p = regions.test_radius((center_x, center_y))
+                        in_region, p = regions.test_region((center_x, center_y))
                         
                         if input_dialog.play_state == True and input_dialog.tab_list[tracker_num].read_only is False:
                             #record all the data collected from that frame
@@ -1466,7 +1350,7 @@ if __name__ == "__main__":
                         # frame_number = frame_num
                         # print(frame_number)
                         frame_number = input_dialog.get_scrollbar_value()
-                        # regions.del_moving_radius(tracker.get_name())
+                        # regions.del_moving_region(tracker.get_name())
                         # print(selected_tracker, tracker_num)
                         if frame_number in tracker.data_dict:
                             # print("Exists")
@@ -1478,13 +1362,13 @@ if __name__ == "__main__":
                                 
                                 point = (int(center[0] - dim[0]), int(center[1] - dim[1]))
                                 dim = (int(dim[0]*2), int(dim[1]*2))
-                                regions.set_moving_radius(tracker.get_name(), point, dim)
+                                regions.set_moving_region(tracker.get_name(), point, dim)
                                 # top = (int(center[0]) - dim[0], int(center[1], - dim[1]/2))
                                 # bottom = (int(center[0]) - dim[0], int(center[1], + dim[1]/2))
 
                             if tracker.is_region() is False:
-                                # If tracker region is no longer selected, delete moving radius
-                                regions.del_moving_radius(tracker.get_name())
+                                # If tracker region is no longer selected, delete moving region
+                                regions.del_moving_region(tracker.get_name(), id=tracker.id())
 
                             
                             if selected_tracker == tracker_num:
@@ -1504,7 +1388,8 @@ if __name__ == "__main__":
                         
                         #Exclude if you want regions to not exist
                         elif not input_dialog.retain_region:
-                            regions.del_moving_radius(tracker.get_name())
+                            regions.del_moving_region(tracker.get_name(), id=tracker.id())
+
                 except Exception as e:
                     crashlogger.log(str(e))
                     input_dialog.log("Could not handle read only. List index out of range, Continuing")
@@ -1564,8 +1449,8 @@ if __name__ == "__main__":
                 pass
             
             #Display all regions on screen if they exist
-            if len(regions.radius_regions) > 0:
-                show_frame = regions.display_radius(show_frame)
+            if len(regions.region_dict) > 0:
+                show_frame = regions.display_region(show_frame)
 
             # print("FRAMES", frame_num, fvs.frame_number, input_dialog.get_scrollbar_value())
             #When done processing each tracker, view the frame
