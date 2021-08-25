@@ -8,7 +8,7 @@ PyExifTool==0.1.1
 numpy==1.19.2
 
 pixellib>=0.5.2
-tensorflow==2.4.0
+tensorflow==2.5.1
 #tensorflow-gpu==2.3.0
 
 sklearn
