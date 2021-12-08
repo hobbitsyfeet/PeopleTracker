@@ -32,10 +32,12 @@ import filters
 import regression
 from Regions import Regions
 
+import evaluate
+
 CPU_COUNT = multiprocessing.cpu_count()
 
 #start tracking version at 1.0
-PEOPLETRACKER_VERSION = 2.3
+PEOPLETRACKER_VERSION = 2.4
 
 # For extracting video metadata
 # import mutagen
@@ -88,6 +90,18 @@ class MultiTracker():
     #     Compares predicted file to tracked file in frame using IOU and overlapping measures.
     #     """
 
+    def grab_cut(self, frame, rect, export_path=None):
+        bgdModel = np.zeros((1,65),np.float64)
+        fgdModel = np.zeros((1,65),np.float64)
+
+
+        mask = np.zeros(frame.shape[:2],np.uint8)
+
+        cv2.grabCut(frame, mask, rect, bgdModel, fgdModel, iterCount=2, mode=cv2.GC_INIT_WITH_RECT)
+        mask2 = np.where((mask==2)|(mask==0),0,1).astype('uint8')
+        img = frame*mask2[:,:,np.newaxis] 
+        cv2.imshow("Cropped Image", img)
+        
 
     def get_name(self):
         """ Returns name of person tracked: returns string """
@@ -437,8 +451,8 @@ class MultiTracker():
             "Pixel_Loc_y": pixel_location_y,
             "Perc_X": perc_x_list, "Perc_Y": perc_y_list,
 
-            "Max_Pixel_x":max_height,
-            "Max_Pixel_y":max_width,
+            "Max_Pixel_x":max_width,
+            "Max_Pixel_y":max_height,
 
             "BBox_TopLeft_x":bounding_box_top_left_x,
             "BBox_TopLeft_y":bounding_box_top_left_y,
@@ -468,6 +482,9 @@ class MultiTracker():
         self.data_dict = dict()
 
         input_dialog.log("Export Data Complete!")
+        
+    def evaluate_data(self):
+        te = evaluate.tracker_evaluation()
         
 
     def merge_intervals(self, total_segments):
@@ -1242,10 +1259,9 @@ if __name__ == "__main__":
                         in_region, p = regions.test_region((center_x, center_y))
                         
                         if input_dialog.play_state == True and input_dialog.tab_list[tracker_num].read_only is False:
+                            # tracker.grab_cut(frame,box)
                             #record all the data collected from that frame
                             # print("Recording data")
-                            
-
 
                             pred_line = tracker.predictor.predict((center_x,center_y))
 

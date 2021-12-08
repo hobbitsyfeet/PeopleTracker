@@ -8,6 +8,7 @@ import webbrowser
 import crashlogger
 import traceback
 from TrackerTab import person_tab
+import evaluate
 
 import cv2
 import numpy as np
@@ -77,6 +78,47 @@ class App(QWidget):
     def test_method(self):
         print('key pressed')
 
+    def evaluate_errors(self):
+        filename = str(self.filename[:-4]) + ".csv"
+        print(filename)
+        te = evaluate.tracker_evaluation()
+
+        te.load_tracker_data(filename)
+
+        json_folder = QFileDialog.getExistingDirectory(self, 'Select Ground Truth folder')
+        json_folder += "/"
+
+        te.load_json(json_folder)
+
+        if bool(te.ground_truth_dict) is False:
+            self.log("Failed To load Json Files in Folder...")
+            return
+
+        self.log("Calculating Errors...")
+        errors = te.calculate_errors()
+        self.log("Done Calculating Errors..")
+        print(errors)
+
+        info_box = QMessageBox(self)
+        info_box.setWindowTitle("Evaluation Results")
+        message =   ("False Positive (FP):\t\t" + str(errors['FP']) +
+                        "\nFalse Negative (FN):\t\t" + str(errors['FN']) +
+                        "\nMultiple Trackers (MT):\t\t" + str(errors['MT']) +
+                        "\nMultiple Objects (MO):\t\t" + str(errors['MO']) +
+                        "\nConfiguration Distance (CD):\t" + str(errors['CD']) +
+                        "\nFalsely Identified Tracker (FIT):\t" + str(errors['FIT']) +
+                        "\nFalsely Identified Object (FIO):\t" + str(errors['FIO']) +
+                        "\nTracker Purity (TP):\t\t" + str(errors['TP']) +
+                        "\nObject Purity (OP):\t\t" + str(errors['OP'])
+                    )
+        f = open((self.filename[:-4]+"_Evaluation_Results.txt"), "w")
+        f.write(message)
+        f.close()
+
+        info_box.setText(message)
+        info_box.show()
+
+
     def processtrigger(self,q):
         try:
             self.log(q.text() + " is triggered")
@@ -136,6 +178,10 @@ class App(QWidget):
                 self.predictor_options.show()
             elif q.text() == "Image Options":
                 self.image_options.show()
+            elif q.text() == "Evaluate Errors":
+                self.evaluate_errors()
+
+
             
 
                 
@@ -178,6 +224,9 @@ class App(QWidget):
             file.addAction(predict)
             load_preds = QAction("Load Predictions", self)
             file.addAction(load_preds)
+
+            evaluate_errors = QAction("Evaluate Errors", self)
+            file.addAction(evaluate_errors)
             
             quit = QAction("Quit", self)
             file.addAction(quit)
