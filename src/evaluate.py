@@ -24,6 +24,9 @@ import cv2
 # from pandas._libs.missing import NA
 from pandas.core import frame
 
+import matplotlib.pyplot as plt
+import numpy as np
+
 # NOTE: Ground Truth frames are One full second ahead of the estimates. This is because we calculate from 1*60 = 60 so either we subtract a constant fps from the ground truth or add 60 to our data. Adjusting Ground truth would be the best option.
 
 img = cv2.imread('F:/MONKE_Ground_Truth/Gallery Videos/Contemporary/GOPR4190/img_028.jpg')
@@ -109,6 +112,70 @@ class tracker_evaluation:
     def plot_scene(self):
         # Plots a colour coded point over the scene. additionally plots id and errors spatially.
         pass
+
+    def identification_graph(self):
+        fig, ax = plt.subplots()  # Create a figure containing a single axes.
+        start_frame = 0
+        end_frame = self.total_images * self.fps
+        data = []
+        
+        frame_number = []
+        data = []
+        
+        gt_count = self.get_groundtruth_count()
+        es_count = self.get_estimate_count()
+        print("ES_COUNT", es_count)
+        colors = {}
+        es_colors = {}
+
+        #Create Colour maps
+        for index, gt in enumerate(gt_count.keys()):
+            colors[gt] = index+1
+            
+        for index, es in enumerate(es_count.keys()):
+            es_colors[es] = index+1
+        # cmaps = {}
+        self.gt_map, self.es_map = self.calculate_identification_map()
+        
+        print("Loading data to plot")
+        
+        
+        figs =[]
+        cmap = []
+        id_map_colors = []
+        for frame in self.ground_truth_dict:
+            # print(frame)
+            ground_truths = self.get_ground_truths(frame)
+            id_map = self.indentification_map(frame)
+            for gt in ground_truths:
+                # ax.plot(gt['label'], frame)
+                data.append(gt['label'])
+                cmap.append(colors[gt['label']])
+                frame_number.append(frame)
+                if id_map is not None:
+                    es_map = id_map['Estimate']
+                    gt_map = id_map['Ground_Truth']
+
+                    keys = [k for k, v in es_map.items() if v == gt['label']]
+                    added = False
+                    for key in keys:
+                        if key == gt_map[gt['label']]:
+                            id_map_colors.append(es_colors[gt_map[gt['label']]])
+                            added = True
+                            break
+                    if not added:
+                        id_map_colors.append(0) 
+                        
+                else:
+                    id_map_colors.append(0)
+
+        self.gt_map, self.es_map = self.calculate_identification_map()
+    
+        ax.scatter(frame_number, data, c=id_map_colors,  cmap="inferno", marker="s", s=80)
+        ax.scatter(frame_number, data, c=cmap,  cmap="RdYlGn", marker=".", s=50)  # Plot some data on the axes.
+        
+        print("SHOWING PLOT")
+        plt.show()
 
     def false_positive(self, es_config):
         '''
@@ -916,5 +983,6 @@ if __name__ == "__main__":
     te.load_tracker_data("F:/MONKE_Ground_Truth/Gallery Videos/Contemporary/GOPR4190/GOPR4190.csv")
     te.load_json("F:/MONKE_Ground_Truth/Gallery Videos/Contemporary/GOPR4190/", fps=60)
     
-    errors = te.calculate_errors()
-    print(errors)
+    te.identification_graph()
+    # errors = te.calculate_errors()
+    # print(errors)

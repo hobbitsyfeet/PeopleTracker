@@ -37,7 +37,7 @@ import evaluate
 CPU_COUNT = multiprocessing.cpu_count()
 
 #start tracking version at 1.0
-PEOPLETRACKER_VERSION = 2.4
+PEOPLETRACKER_VERSION = 2.41
 
 # For extracting video metadata
 # import mutagen

@@ -100,6 +100,7 @@ class App(QWidget):
         print(errors)
 
         info_box = QMessageBox(self)
+        
         info_box.setWindowTitle("Evaluation Results")
         message =   ("False Positive (FP):\t\t" + str(errors['FP']) +
                         "\nFalse Negative (FN):\t\t" + str(errors['FN']) +
@@ -114,9 +115,12 @@ class App(QWidget):
         f = open((self.filename[:-4]+"_Evaluation_Results.txt"), "w")
         f.write(message)
         f.close()
-
+        
         info_box.setText(message)
         info_box.show()
+        ret = info_box.question(self, 'Graph Option', "Would you like to show a graph?", QMessageBox.Yes | QMessageBox.No | QMessageBox.Cancel, QMessageBox.Cancel)
+        if ret == QMessageBox.Yes:
+            te.identification_graph()
 
 
     def processtrigger(self,q):
