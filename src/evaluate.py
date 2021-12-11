@@ -174,8 +174,7 @@ class tracker_evaluation:
         ax.scatter(frame_number, data, c=id_map_colors,  cmap="inferno", marker="s", s=80)
         ax.scatter(frame_number, data, c=cmap,  cmap="RdYlGn", marker=".", s=50)  # Plot some data on the axes.
         
-        print("SHOWING PLOT")
-        plt.show()
+        plt.show(block = False)
 
     def false_positive(self, es_config):
         '''
