@@ -29,8 +29,6 @@ import numpy as np
 
 # NOTE: Ground Truth frames are One full second ahead of the estimates. This is because we calculate from 1*60 = 60 so either we subtract a constant fps from the ground truth or add 60 to our data. Adjusting Ground truth would be the best option.
 
-img = cv2.imread('F:/MONKE_Ground_Truth/Gallery Videos/Contemporary/GOPR4190/img_028.jpg')
-dirty_img = img
 
 class tracker_evaluation:
     def __init__(self, tracker_file = None, ground_thruth_folder = None, fps=None):
