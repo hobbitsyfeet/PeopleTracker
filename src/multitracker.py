@@ -559,9 +559,9 @@ class MultiTracker():
                     break
                 total_segments.append([seg_start, seg_last])
                 break
-        # if not total_segments:
         #     print("TOTAL_SEGMENTS EMPTY")
         #     return [[time_data[0], time_data[0]]]
+        # if not total_segments:
         #merge intervals overlapping to maintain efficiency
         if len(total_segments) >= 2:
             total_segments = self.merge_intervals(total_segments)
@@ -618,11 +618,10 @@ def export_null_meta(vid_dir):
     if not os.path.isfile(export_filename):
         data ={
             "Frame_Num":['-'],#self.time_data,
-            
-
 
             "Pixel_Loc_x":['-'],
             "Pixel_Loc_y":['-'],
+
             "Perc_X":['-'], "Perc_Y":['-'],
 
             "Max_Pixel_x":['-'],
@@ -632,18 +631,21 @@ def export_null_meta(vid_dir):
             "BBox_TopLeft_y":['-'],
             "BBox_BottomRight_x":['-'],
             "BBox_BottomRight_y":['-'],
+
             "Region": ['-'],
             # "TimeInRegion":['-'],
-            "Name":['-'], 
+            "Name":['-'],
             "ID":['-'],
             "Sex":['-'], 
             "Group_Size":['-'],
+
             "Total_Sec_Rec":['-'],
 
             "Time_Rec(Hour)":['-'],
             "Time_Rec(Min)":['-'],
             "Time_Rec(Sec)":['-'],
 
+            
             "Description":['-'],
             "Present At Beginning":['-'],
             "Other_Room":['-'],
@@ -653,18 +655,17 @@ def export_null_meta(vid_dir):
             "FileName":['-'],
             "FileType":['-'],
             "CreateDate(YYYY:MM:DD HH:MM:SS)": ['-'],
-            "CreateYear": ['-'],
-            "CreateHour": ['-'],
+            "CreateYear":['-'], "CreateMonth": ['-'], "CreateDay": ['-'],
+            "CreateHour": ['-'], "CreateMinute": ['-'], "CreateSecond": ['-'],
 
             "Width(px)": ['-'],
             "Height(px)": ['-'],
-            "VideoLength":['-'],
             "FrameRate": ['-'],
             "VideoLength(Hour)":['-'],
             "VideoLength(Min)":['-'],
             "VideoLength(Sec)":['-'],
             "HandlerDescription": ['-'],
-            "PeopleTrackerVersion":['-']
+            "PeopleTrackerVersion":float(PEOPLETRACKER_VERSION)
         }
         input_dialog.log(data)
 
