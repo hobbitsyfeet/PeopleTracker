@@ -37,7 +37,7 @@ import evaluate
 CPU_COUNT = multiprocessing.cpu_count()
 
 #start tracking version at 1.0
-PEOPLETRACKER_VERSION = 2.41
+PEOPLETRACKER_VERSION = 2.5
 
 # For extracting video metadata
 # import mutagen
@@ -708,9 +708,14 @@ def export_meta(vid_dir):
     export_filename = str(vid_dir[:-4]) + ".csv"
     print(metadata)
     try: 
+
         handler = metadata['QuickTime:HandlerDescription']
     except:
-        handler = metadata['MakerNotes:Make'] + ' ' + metadata['MakerNotes:Model']
+        try:
+            handler = metadata['EXIF:Make'] + ' ' + metadata['EXIF:Model']
+        except:
+            handler = metadata['MakerNotes:Make'] + ' ' + metadata['MakerNotes:Model']
+        
     #Create the first 2 rows of data with title and then info. Recorded info should have '-' or 'N/A'
     if not os.path.isfile(export_filename):
         
@@ -877,6 +882,11 @@ if __name__ == "__main__":
                 pred_dict = maskrcnn.load_predicted((videoPath[:-4] + "_predict.csv"))
                 print(pred_dict)
                 input_dialog.load_predictions_state = False
+            
+            if input_dialog.track_preds_state is True and bool(pred_dict) is True:
+                maskrcnn.track_predictions(pred_dict, videoPath, preview=True)
+                input_dialog.track_preds_state = False
+
 
             if input_dialog.quit_State is True:
                 # sys.exit(app.exec_())

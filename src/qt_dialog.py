@@ -1,3 +1,4 @@
+from fileinput import filename
 import sys
 from PyQt5.QtWidgets import QApplication, QWidget, QInputDialog, QLineEdit, QLabel, QPushButton, QPlainTextEdit, QSlider, QStyle, QAction, QTabWidget, QVBoxLayout, QHBoxLayout, QMessageBox, QFileDialog, QCheckBox, QMenuBar, QSpinBox, QErrorMessage, QProgressDialog, QFormLayout, QDoubleSpinBox, QSplashScreen
 
@@ -10,6 +11,7 @@ import traceback
 from TrackerTab import person_tab
 import evaluate
 
+from multiple_inputs import InputDialog
 import cv2
 import numpy as np
 import math
@@ -49,6 +51,7 @@ class App(QWidget):
 
         self.predict_state = False
         self.load_predictions_state = False
+        self.track_preds_state = False
 
         
         
@@ -122,6 +125,30 @@ class App(QWidget):
         if ret == QMessageBox.Yes:
             te.identification_graph()
 
+    def train_model(self):
+        from train import train
+        
+        inputs = ["Classes", "Batch Size", "Number of Epochs", "Pretrained Model", "Network Type"]
+        defaults = ["Person", "1", "300", "mask_rcnn_coco.h5", "resnet101"]
+        dialog = InputDialog(labels=inputs, defaults=defaults, parent=None)
+        if dialog.exec():
+            inputs = dialog.getInputs()
+
+            dataset_path = QFileDialog.getExistingDirectory(self, 'Select Dataset to train')
+            # output_path = QFileDialog.getExistingDirectory(self, 'Select Dataset to train')
+            
+            
+            classes = inputs[0].replace(',', "").split(",")
+            batch = int(inputs[1])
+            epochs = int(inputs[2])
+            pretrained_model = inputs[3]
+
+            output_path = classes[0] + "/models"
+            train(classes, dataset_path, pretrained_model, output_path=output_path, batch_size=batch, num_epochs=epochs)
+        else:
+            print("Dialog Error")
+
+
 
     def processtrigger(self,q):
         try:
@@ -184,6 +211,11 @@ class App(QWidget):
                 self.image_options.show()
             elif q.text() == "Evaluate Errors":
                 self.evaluate_errors()
+            elif q.text() == "Train":
+                self.train_model()
+            elif q.text() == "Track Predictions":
+                self.track_preds_state = True
+
 
 
             
@@ -210,7 +242,7 @@ class App(QWidget):
             # self.log_label.setFixedWidth(24)
             
             
-            self.openFileNameDialog()
+            self.filename = self.openFileNameDialog()
             # self.openFileNamesDialog()
             # self.saveFileDialog()
 
@@ -224,10 +256,15 @@ class App(QWidget):
             save = QAction("Save",self)
             save.setShortcut("Ctrl+S")
             file.addAction(save)
+            train = QAction("Train", self)
+            file.addAction(train)
             predict = QAction("Predict",self)
             file.addAction(predict)
             load_preds = QAction("Load Predictions", self)
             file.addAction(load_preds)
+
+            track_preds = QAction("Track Predictions", self)
+            file.addAction(track_preds)
 
             evaluate_errors = QAction("Evaluate Errors", self)
             file.addAction(evaluate_errors)
@@ -606,8 +643,9 @@ class App(QWidget):
         
         fileName, _ = QFileDialog.getOpenFileName(self,"QFileDialog.getOpenFileName()", "","All Files (*);;Python Files (*.py)")
         if fileName:
-            self.filename = fileName
+            filename = fileName
             self.log("Opening" + fileName)
+        return filename
             
     def saveFileDialog(self):
         options = QFileDialog.Options()
@@ -615,6 +653,7 @@ class App(QWidget):
         fileName, _ = QFileDialog.getSaveFileName(self,"QFileDialog.getSaveFileName()","","All Files (*);;Text Files (*.txt)", options=options)
         if fileName:
             self.log("Saving " + fileName)
+        return filename
 
     def display_help(self):
         webbrowser.open('https://github.com/hobbitsyfeet/PeopleTracker/wiki')
