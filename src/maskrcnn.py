@@ -259,6 +259,8 @@ def track_predictions(pred_dict, video, method = 0, id_prefix="P", KalmanFilter=
         ret, frame = cap.read() 
         boxes = pred_dict[frame_num][0]
         if boxes == [()]:
+            cv2.imshow("IDs", frame)
+            key = cv2.waitKey(1)
             continue
         # rects = []
         
