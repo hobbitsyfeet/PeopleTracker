@@ -259,7 +259,7 @@ def track_predictions(pred_dict, video, method = 0, id_prefix="P", KalmanFilter=
         ret, frame = cap.read() 
         boxes = pred_dict[frame_num][0]
         if boxes == [()]:
-            break
+            continue
         # rects = []
         
         # loop over the detections

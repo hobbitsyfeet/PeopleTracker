@@ -884,8 +884,9 @@ if __name__ == "__main__":
                 input_dialog.load_predictions_state = False
             
             if input_dialog.track_preds_state is True and bool(pred_dict) is True:
-                maskrcnn.track_predictions(pred_dict, videoPath, preview=True)
                 input_dialog.track_preds_state = False
+                maskrcnn.track_predictions(pred_dict, videoPath, preview=True)
+                
 
 
             if input_dialog.quit_State is True:
