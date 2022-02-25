@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from fileinput import filename
 import math
 import multiprocessing
 import os
@@ -24,6 +25,7 @@ from PyQt5.QtWidgets import (QApplication, QComboBox, QInputDialog, QLineEdit,
                              QMessageBox, QWidget,QSplashScreen)
 
 import crashlogger
+import datalogger
 
 #import mbox
 import qt_dialog
@@ -781,7 +783,7 @@ def export_meta(vid_dir):
         export_csv = df.to_csv (export_filename, index = None, header=True)
 
         input_dialog.log("Export Metadata Complete!")
-        return True
+        return metadata
     
     #Close all applications.
     # sys.exit(app.exec_())
@@ -800,14 +802,17 @@ if __name__ == "__main__":
         #Create QT application for the UI
         app = QApplication(sys.argv)
         input_dialog = qt_dialog.App()
-
+        
 
         #Get the video path from UI
         videoPath = input_dialog.filename
+        
 
         input_dialog.log("Populating UI")
         #Given the path, export the metadata and setup the csv for data collection
-        export_meta(videoPath)
+        metadata = export_meta(videoPath)
+        activity_logger = datalogger.DataLogger(videoPath, metadata)
+        
         
         #initialize empty list to store trackers
         tracker_list = []
@@ -868,7 +873,15 @@ if __name__ == "__main__":
 
         while True:
             QCoreApplication.processEvents()
+            # This is needed for activity logger to end pause timers
+            if input_dialog.pause_to_play:
+                activity_logger.end_pause()
+                input_dialog.pause_to_play = False
             
+            if input_dialog.play_to_pause:
+                activity_logger.paused(frame_number, "USER", "USER_PAUSE")
+                input_dialog.play_to_pause = False
+
             if input_dialog.predict_state is True:
                 #UNCOMMENT BELOW
                 # frame, rois, scores = maskrcnn.predict(videoPath, step=input_dialog.skip_frames.value(), display=True, logger=input_dialog.log)
@@ -878,6 +891,7 @@ if __name__ == "__main__":
                 input_dialog.export_all_state = False
                 for tracker in tracker_list:
                     tracker.export_data(input_dialog.resolution_x, input_dialog.resolution_y, videoPath, vid_fps)
+
             if input_dialog.load_predictions_state is True:
                 pred_dict = maskrcnn.load_predicted((videoPath[:-4] + "_predict.csv"))
                 print(pred_dict)
@@ -886,8 +900,18 @@ if __name__ == "__main__":
             if input_dialog.track_preds_state is True and bool(pred_dict) is True:
                 input_dialog.track_preds_state = False
                 maskrcnn.track_predictions(pred_dict, videoPath, preview=True)
-                
+            
+            if input_dialog.export_charactoristics:
+                print("Exporting")
+                export_filename = str(videoPath[:-4])
+                activity_logger.get_video_characteristics()
+                activity_logger.export_logger(export_filename)
+                input_dialog.export_charactoristics = False
 
+            if input_dialog.export_activity:
+                export_filename = str(videoPath[:-4])
+                activity_logger.export_activity(export_filename)
+                input_dialog.export_activity = False
 
             if input_dialog.quit_State is True:
                 # sys.exit(app.exec_())
@@ -963,6 +987,7 @@ if __name__ == "__main__":
                 input_dialog.scrollbar_changed = True
                 input_dialog.set_pause_state()
                 input_dialog.set_all_tabs("Read")
+                # activity_logger.end_timer(activity_logger.start_time_ID)
             
             # if input_dialog.get_scrollbar_value() == 0 and fvs.frame_number != input_dialog.get_scrollbar_value():
             #     fvs.frame_number = input_dialog.get_scrollbar_value()
@@ -1036,10 +1061,11 @@ if __name__ == "__main__":
                 print(frame_num)
                 previous_frame = frame
                 input_dialog.scrollbar_changed = False
+
                 # segmask, frame = custom_model.segmentFrame(frame,True)
 
             if input_dialog.play_state == True and not input_dialog.scrollbar_changed:
-
+                
                 # fvs.stopped = False
                 frame, frame_num = fvs.read()
                 previous_frame = frame
@@ -1239,19 +1265,28 @@ if __name__ == "__main__":
                                     # print("Out of range")
                                     show_frame = cv2.rectangle(frame, p1, p2, (150, 150, 220), 3)
                                     input_dialog.set_pause_state()
+                                    activity_logger.paused(frame_number, "MRCNN", "MRCNN")
 
                                 elif closest >= input_dialog.mcrnn_options.get_auto_assign():
                                     show_frame = cv2.rectangle(frame, p1, p2, (50, 200, 50), 3)
                                     if tracker.auto_assign_state:
                                         # print("Auto Assigning")
+                                        
+                                        activity_logger.adjustment(frame_number=frame_number, 
+                                                                    from_box=(top_left_x, top_left_y, (top_left_x + width), (top_left_y + height)), 
+                                                                    to_box=(p1[0], p1[1], p2[0], p2[1]), 
+                                                                    timer_id="MRCNN_Adjust", 
+                                                                    intervention_type="MRCNN"
+                                                                    )
+
                                         tracker.auto_assign(frame, (p1[0], p1[1], p2[0], p2[1]))
 
                                 for pred_index, pred in enumerate(iou):
                                     diff = abs(pred - closest)
 
                                     if pred != closest and diff <= input_dialog.mcrnn_options.get_similarity():
-                                        # print(diff)
                                         # input_dialog.log("Possible ID Switch!")
+                                        activity_logger.paused(frame_num, "USER_MRCNN", "MRCNN")
                                         pred_box = pred_dict[input_dialog.get_scrollbar_value()][0][pred_index]
                                         pred_p1 = (int(pred_box[0]*resized_ratio_x), int(pred_box[1]*resized_ratio_y))
                                         pred_p2 = (int(pred_box[2]*resized_ratio_x), int(pred_box[3]*resized_ratio_y))
@@ -1259,7 +1294,6 @@ if __name__ == "__main__":
                                         show_frame = cv2.rectangle(frame, p1, p2, (50, 200, 50), 3)
                                         input_dialog.set_pause_state()
                                         # .index(closest)
-
 
                         #center dot               
                         cv2.circle(show_frame, (int(center_x),int(center_y)),1,(0,255,0),-1)
@@ -1296,6 +1330,7 @@ if __name__ == "__main__":
                             tracker.predicted_centroid = (pred_centroid)
                             try:
                                 if input_dialog.predictor_options.get_active_iou():
+                                    # activity_logger.intervention = datalogger.HUMAN_INTERVENTION_KALMAN
                                     predicted_bbox_iou, _ = maskrcnn.compute_iou(
                                                         box=tracker.predicted_bbox,
                                                         boxes=[(top_left_x,top_left_y,(top_left_x + width), (top_left_y + height) )],
@@ -1307,6 +1342,8 @@ if __name__ == "__main__":
                                     if predicted_bbox_iou[0] <= input_dialog.predictor_options.get_min_IOU() and predicted_bbox_iou[0] > 0:
                                         print("Pausing")
                                         input_dialog.set_pause_state()
+                                        activity_logger.paused(frame_number, datalogger.HUMAN_INTERVENTION_MCRNN, "MRCNN")
+
                                         
                                 
 
@@ -1320,6 +1357,7 @@ if __name__ == "__main__":
                                     if pred_dist >= input_dialog.predictor_options.get_min_distance():
                                         # print("Pausing")
                                         input_dialog.set_pause_state()
+                                        activity_logger.paused(frame_number, datalogger.HUMAN_INTERVENTION_MCRNN, "MRCNN")
                             except:
                                 print("Cannot Compute Distance")
                             
@@ -1450,6 +1488,7 @@ if __name__ == "__main__":
                 #Press space bar to re-assign
                 if input_dialog.set_tracker_state is True:
                     try:
+                        
                         input_dialog.play_state = False
                         input_dialog.tabs.setEnabled(False)
                         tracker_list[selected_tracker].assign(frame, trackerName)
@@ -1464,7 +1503,6 @@ if __name__ == "__main__":
             #UNCOMMENT BELOW
             if pred_dict is not None and input_dialog.mcrnn_options.get_active():
                 show_frame = maskrcnn.display_preds(show_frame, input_dialog.get_scrollbar_value(), pred_dict, (resized_ratio_x,resized_ratio_y))
-        
                 # input_dialog.play_state = True
 
             #NOTE this is in try-catch because initially there are not enough frames to calculate time. 

@@ -261,6 +261,10 @@ def track_predictions(pred_dict, video, method = 0, id_prefix="P", KalmanFilter=
         if boxes == [()]:
             cv2.imshow("IDs", frame)
             key = cv2.waitKey(1)
+            if key == ord('q'):
+                print("QUITTING")
+                cv2.destroyWindow("IDs")
+                break
             continue
         # rects = []
         

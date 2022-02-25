@@ -34,6 +34,8 @@ class App(QWidget):
         
         self.snap_to_frame_skip = True
 
+        self.pause_to_play = False
+        self.play_to_pause = False
         self.play_state = False
         self.export_state = False
         self.region_state = False
@@ -52,6 +54,8 @@ class App(QWidget):
         self.predict_state = False
         self.load_predictions_state = False
         self.track_preds_state = False
+        self.export_charactoristics = False
+        self.export_activity = False
 
         
         
@@ -184,8 +188,8 @@ class App(QWidget):
             elif q.text() == "Export All":
                 self.export_all_state = True
             elif q.text() == "Play/Pause":
-                
                 self.mediaStateChanged()
+
             elif q.text() == "Predict":
                 self.log("Predict selected. Please wait while it loads the model...")
                 progress = QProgressDialog(self)
@@ -215,6 +219,10 @@ class App(QWidget):
                 self.train_model()
             elif q.text() == "Track Predictions":
                 self.track_preds_state = True
+            elif q.text() == "Export Charactoristics":
+                self.export_charactoristics = True
+            elif q.text() == "Export Activity":
+                self.export_activity = True
 
 
 
@@ -256,6 +264,13 @@ class App(QWidget):
             save = QAction("Save",self)
             save.setShortcut("Ctrl+S")
             file.addAction(save)
+
+            export_videochar = QAction("Export Charactoristics", self)
+            file.addAction(export_videochar)
+
+            export_activity = QAction("Export Activity", self)
+            file.addAction(export_activity)
+
             train = QAction("Train", self)
             file.addAction(train)
             predict = QAction("Predict",self)
@@ -540,11 +555,13 @@ class App(QWidget):
             self.playButton.setIcon(
                     self.style().standardIcon(QStyle.SP_MediaPause))
             self.play_state = True
+            self.pause_to_play = True
             # print(self.play_state)
         else:
             self.playButton.setIcon(
                     self.style().standardIcon(QStyle.SP_MediaPlay))
             self.play_state = False
+            self.play_to_pause = True
             # print(self.play_state)
         self.log("Play State: " + str(self.play_state))
 

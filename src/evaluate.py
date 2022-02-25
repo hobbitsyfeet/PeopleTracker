@@ -629,7 +629,6 @@ class tracker_evaluation:
                         else:
                             correct_dict[name] = 1
                     else:
-
                         print("TRACKER PURITY FALSE", name, estimates['name'])
         purity = {}
         
@@ -703,18 +702,19 @@ class tracker_evaluation:
     def calculate_frame_errors(self, frame_number, ratios=(1,1), y_offset=720):
         '''
         '''
-        # img = cv2.imread('F:/MONKE_Ground_Truth/Gallery Videos/Contemporary/GOPR4190/img_028.jpg')
-        # cv2.putText(img, ("Frame:" + str(frame_number)), (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0,0,255), thickness=2)
         # print("Getting map...", end='/n')
         gt_map, es_map = self.configuration_map(frame_number)
         # print("Getting CD...", end='/n')
         cd, total_cd = self.configuration_distance(frame_number)
         # print("Calculating Results")
-        results = {"FP": self.false_positive(es_map), 
+        results = { "FP": self.false_positive(es_map), 
                     "FN": self.false_negative(gt_map),
                     "MT": self.multiple_trackers(gt_map, frame_number),
                     "MO": self.multiple_objects(es_map, frame_number),
-                    "CD": cd}
+                    "CD": cd,
+                    "FIT":self.falsly_identified_tracker(frame_number), 
+                    "FIO":self.falsly_identified_object(frame_number)
+                    }
         # print("Results:", results)
         return results
 
@@ -981,5 +981,5 @@ if __name__ == "__main__":
     te.load_json("F:/MONKE_Ground_Truth/Gallery Videos/Contemporary/GOPR4190/", fps=60)
     
     te.identification_graph()
-    # errors = te.calculate_errors()
-    # print(errors)
+    errors = te.calculate_errors()
+    print(errors)
