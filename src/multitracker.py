@@ -39,7 +39,7 @@ import evaluate
 CPU_COUNT = multiprocessing.cpu_count()
 
 #start tracking version at 1.0
-PEOPLETRACKER_VERSION = 2.5
+PEOPLETRACKER_VERSION = 2.6
 
 # For extracting video metadata
 # import mutagen
@@ -79,6 +79,7 @@ class MultiTracker():
         self.reset = False
         self.state_tracking = False
         self.auto_assign_state = True
+        self.box = None
 
         self.predictor = filters.KalmanPred()
         self.box_predictor = (filters.KalmanPred(white=True), filters.KalmanPred(white=True)) #One point predictor for two points on box (Top Left, Bottom Right)
@@ -208,6 +209,7 @@ class MultiTracker():
             return
 
         input_dialog.log("Bounding Box Coordinates: " + str(self.init_bounding_box))
+        self.box = self.init_bounding_box
 
         # start OpenCV object tracker using the supplied bounding box
         # coordinates, then start the FPS throughput estimator as well
@@ -261,6 +263,7 @@ class MultiTracker():
         if self.init_bounding_box is not None:
             # grab the new bounding box coordinates of the object
             (success, box) = self.tracker.update(frame)
+            self.box = box
     
             # check to see if the tracking was a success
             if success:
@@ -875,11 +878,14 @@ if __name__ == "__main__":
             QCoreApplication.processEvents()
             # This is needed for activity logger to end pause timers
             if input_dialog.pause_to_play:
+                print("Playing...")
                 activity_logger.end_pause()
+                activity_logger.end_slider(fvs.frame_number, "SLIDER")
                 input_dialog.pause_to_play = False
             
             if input_dialog.play_to_pause:
-                activity_logger.paused(frame_number, "USER", "USER_PAUSE")
+                if tracker_list:
+                    activity_logger.paused(frame_num, "USER", "USER_Pause",  tracker_list[selected_tracker].get_name())
                 input_dialog.play_to_pause = False
 
             if input_dialog.predict_state is True:
@@ -1044,6 +1050,8 @@ if __name__ == "__main__":
 
             #if the scrollbar is changed, update the frame, else continue with the normal frame
             if input_dialog.scrollbar_changed == True:
+                if tracker_list:
+                    activity_logger.slider_moved(frame_num, "SLIDER", tracker_list[selected_tracker].get_name())
                 #If Snapping enabled, snap the scrollbar to the nearest multiple of skip_frame
                 # print("MOD", (input_dialog.get_scrollbar_value() % input_dialog.get_frame_skip()))
                 if input_dialog.get_scrollbar_value() % input_dialog.get_frame_skip() != 0 and input_dialog.snap_to_frame_skip:
@@ -1060,6 +1068,7 @@ if __name__ == "__main__":
                 frame, frame_num = fvs.read()
                 print(frame_num)
                 previous_frame = frame
+                
                 input_dialog.scrollbar_changed = False
 
                 # segmask, frame = custom_model.segmentFrame(frame,True)
@@ -1207,6 +1216,7 @@ if __name__ == "__main__":
                         app.processEvents()
                         #track and draw box on the frame
                         success, box, show_frame = tracker.update_tracker(show_frame)
+                        tracker.box = box
                         app.processEvents()
                         
                         #NOTE: this can be activated if you want to pause the program when trakcer fails
@@ -1265,19 +1275,22 @@ if __name__ == "__main__":
                                     # print("Out of range")
                                     show_frame = cv2.rectangle(frame, p1, p2, (150, 150, 220), 3)
                                     input_dialog.set_pause_state()
-                                    activity_logger.paused(frame_number, "MRCNN", "MRCNN")
+                                    activity_logger.paused(frame_number, "MRCNN", "MRCNN_Pause", tracker_list[tracker_num].get_name())
 
                                 elif closest >= input_dialog.mcrnn_options.get_auto_assign():
                                     show_frame = cv2.rectangle(frame, p1, p2, (50, 200, 50), 3)
                                     if tracker.auto_assign_state:
                                         # print("Auto Assigning")
-                                        
-                                        activity_logger.adjustment(frame_number=frame_number, 
-                                                                    from_box=(top_left_x, top_left_y, (top_left_x + width), (top_left_y + height)), 
-                                                                    to_box=(p1[0], p1[1], p2[0], p2[1]), 
-                                                                    timer_id="MRCNN_Adjust", 
-                                                                    intervention_type="MRCNN"
-                                                                    )
+
+                                        if input_dialog.play_state is True:
+                                            # Only record auto assignment while video is playing
+                                            activity_logger.adjustment(frame_number=frame_number, 
+                                                                        from_box=(top_left_x, top_left_y, (top_left_x + width), (top_left_y + height)), 
+                                                                        to_box=(p1[0], p1[1], p2[0], p2[1]), 
+                                                                        timer_id="MRCNN_Adjust",
+                                                                        tracker_id=tracker_list[tracker_num].get_name(),
+                                                                        intervention_type="MRCNN"
+                                                                        )
 
                                         tracker.auto_assign(frame, (p1[0], p1[1], p2[0], p2[1]))
 
@@ -1286,7 +1299,7 @@ if __name__ == "__main__":
 
                                     if pred != closest and diff <= input_dialog.mcrnn_options.get_similarity():
                                         # input_dialog.log("Possible ID Switch!")
-                                        activity_logger.paused(frame_num, "USER_MRCNN", "MRCNN")
+                                        activity_logger.paused(frame_num, "MRCNN", "MRCNN_Adjust", tracker_list[tracker_num].get_name())
                                         pred_box = pred_dict[input_dialog.get_scrollbar_value()][0][pred_index]
                                         pred_p1 = (int(pred_box[0]*resized_ratio_x), int(pred_box[1]*resized_ratio_y))
                                         pred_p2 = (int(pred_box[2]*resized_ratio_x), int(pred_box[3]*resized_ratio_y))
@@ -1342,7 +1355,7 @@ if __name__ == "__main__":
                                     if predicted_bbox_iou[0] <= input_dialog.predictor_options.get_min_IOU() and predicted_bbox_iou[0] > 0:
                                         print("Pausing")
                                         input_dialog.set_pause_state()
-                                        activity_logger.paused(frame_number, datalogger.HUMAN_INTERVENTION_MCRNN, "MRCNN")
+                                        activity_logger.paused(frame_number, "KALMAN", "KALMAN_Pause", tracker_list[tracker_num].get_name())
 
                                         
                                 
@@ -1357,7 +1370,7 @@ if __name__ == "__main__":
                                     if pred_dist >= input_dialog.predictor_options.get_min_distance():
                                         # print("Pausing")
                                         input_dialog.set_pause_state()
-                                        activity_logger.paused(frame_number, datalogger.HUMAN_INTERVENTION_MCRNN, "MRCNN")
+                                        activity_logger.paused(frame_number, "REGRESSION", "REGRESSION_Pause", tracker_list[tracker_num].get_name())
                             except:
                                 print("Cannot Compute Distance")
                             
@@ -1485,13 +1498,18 @@ if __name__ == "__main__":
                     input_dialog.add_tab_btn.setEnabled(True)
                     input_dialog.del_tab_btn.setEnabled(True)
                     input_dialog.export_tab_btn.setEnabled(True)
+
                 #Press space bar to re-assign
                 if input_dialog.set_tracker_state is True:
                     try:
                         
                         input_dialog.play_state = False
                         input_dialog.tabs.setEnabled(False)
+                        
+                        activity_logger.adjustment(frame_number, tracker_list[selected_tracker].box, "USER_Adjust", tracker_list[selected_tracker].get_name())
                         tracker_list[selected_tracker].assign(frame, trackerName)
+                        activity_logger.end_adjustment(tracker_list[selected_tracker].box, "USER_Adjust")
+
                         input_dialog.tabs.setEnabled(True)
                         input_dialog.set_tracker_state = False
                     except Exception as e:

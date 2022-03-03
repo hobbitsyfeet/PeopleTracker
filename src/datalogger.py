@@ -20,13 +20,15 @@ class DataLogger:
         self.metadata = video_metadata
         self.video = video
 
-        self.start_time_ID = "START_STOP"
+        self.start_time_id = "START_STOP"
 
         self.previous_frame = None
         self.logging_dict = {}
         self.timer_dict = {}
 
         self.paused_data = {}
+        self.slider_data = {}
+        self.adjust_data = {}
 
 
         self.logger_df = pd.DataFrame(columns =['Frame_Number',
@@ -35,7 +37,10 @@ class DataLogger:
                                                 'Event_Type',
                                                 'Event_Value',
                                                 'Intervention_Level',
-                                                'Intervention_Type'])
+                                                'Intervention_Type',
+                                                'Tracker_ID']) # NOTE: Tracker ID is one of either: Selected (And active Tracker), or tracker acted upon by additional methods.
+                                                               # This means that all USER Intervention_Types, the tracker_ID is the current tracker
+                                                               # When Kalman, Regressuion or MRCNN make changes, it does not need to be the current tracker selected. 
 
         self.video_info_df = pd.DataFrame(columns=['Frame_Number', 
                                                     'Mean_Illumination', 
@@ -49,30 +54,47 @@ class DataLogger:
     # User input logging starts here #
     ##################################
 
-    def start_timer(self, id):
+    def start_recording(self):
+        '''
+        Starts the recording timer
+        '''
+        start_time = time.time()
+        self.timer_dict[self.start_time_id] = (start_time, None)
+        
+    def end_recording(self):
+        '''
+        '''
+        self.timer_dict[self.start_time_id][1] = time.time()
+
+    def start_timer(self, timer_id):
         """
         Starts the timer from when the project is initiated
         """
-        self.timer_dict[id] = (time.time(), None)
 
-    def get_time_elapsed(self, id):
+        # We start recording when the first action is done
+        if self.start_time_id not in self.timer_dict:
+            self.start_recording()
+
+        start_record = self.timer_dict[self.start_time_id][0]
+        start_time = time.time() - start_record
+        self.timer_dict[timer_id] = (start_time, None)
+        return start_time
+
+    def get_time_elapsed(self, timer_id):
         """
         returns elapsed time of a timer in seconds
         """
-        if self.timer_dict[id][1] is None:
-            #if timer is not done, give current time
-            return time.time() - self.timer_dict[id][0]
-        else:
-            # Get the start - end time if timer has ended
-            return  self.timer_dict[id][1] - self.timer_dict[id][0]
+        return time.time() - self.timer_dict[self.start_time_id][0] - self.timer_dict[timer_id][0]
 
-    def end_timer(self, id):
+
+    def end_timer(self, timer_id):
         """
         Ends the timer from when the project is finished
         """
-        self.timer_dict[id] = (self.timer_dict[id][0], time.time())
+        duration = self.get_time_elapsed(timer_id)
+        self.timer_dict[timer_id] = (self.timer_dict[timer_id][0], duration)
 
-    def adjustment(self, frame_number, from_box, to_box, timer_id, intervention_type="Human"):
+    def adjustment(self, frame_number, from_box, timer_id, tracker_id, intervention_type="USER", to_box=None):
         """
         Records the frame number and locations where the tracker is moved from and to.
 
@@ -82,27 +104,44 @@ class DataLogger:
             
             Model - If the MaskRCNN model made the automatic adjustment
         """
-        time_started, timer_ended = self.timer_dict[timer_id]
-        duration = self.get_time_elapsed(timer_id)
+
+        time_started = self.start_timer(timer_id)
         data = [frame_number,
         time_started,
-        duration,
+        0,
         "Assignment",
-        str(from_box)+str(to_box),
+        str(from_box),
         self.intervention_level,
-        intervention_type
+        intervention_type,
+        tracker_id
         ]
-        self.logger_df.loc[self.logger_df.shape[0]] = data
-        print(self.logger_df)
+        self.adjust_data[timer_id] = data
 
-    def paused(self, frame_number, pause_type, timer_id):
+        if to_box:
+            self.end_adjustment(to_box, timer_id)
+
+        
+        # print(self.logger_df)
+    
+    def end_adjustment(self, to_box, timer_id):
+        '''
+        Records the adjustment when final changes are made. This contributes final location and duration.
+        '''
+        duration = self.get_time_elapsed(timer_id)
+        data = self.adjust_data[timer_id]
+        data[2] = duration
+
+        data[4] = str(data[4]) + str(to_box)
+        self.logger_df.loc[self.logger_df.shape[0]] = data
+
+
+    def paused(self, frame_number, pause_type, timer_id, tracker_id):
         """
         Records what initiated the pause, and for how long the pause existed for.
 
         This requires an external timer, and will be recorded when *Play* has been selected.
         """
-        self.start_timer(timer_id)
-        time_started, timer_ended = self.timer_dict[timer_id]
+        time_started = self.start_timer(timer_id)
         
         data = [
             frame_number,
@@ -111,41 +150,61 @@ class DataLogger:
             "Pause",
             None,
             self.intervention_level,
-            pause_type
+            pause_type,
+            tracker_id
         ]
         self.paused_data[timer_id] = data
-        print(self.logger_df)
+        # print(self.logger_df)
         
     
     def end_pause(self):
         if self.paused_data:
             for pause_ids in self.paused_data.keys():
-                print(pause_ids)
-                self.end_timer(pause_ids)
-                duration = self.get_time_elapsed(pause_ids)
-                data = self.paused_data[pause_ids]
-                data[2] = duration
-                self.logger_df.loc[self.logger_df.shape[0]] = data
-                self.paused_data = {}
-                print(self.logger_df)
+                if pause_ids is not self.start_time_id:
+                    # print(pause_ids)
+                    self.end_timer(pause_ids)
+                    duration = self.get_time_elapsed(pause_ids)
+                    data = self.paused_data[pause_ids]
+                    data[2] = duration
+                    self.logger_df.loc[self.logger_df.shape[0]] = data
+                
+                # print(self.logger_df)
+            self.paused_data = {}
 
-    def slider_moved(self, frame_from, frame_to, timer_id):
+    def slider_moved(self, frame_from, timer_id, tracker_id):
         """
         Records when the slider was changed, where from, and where to.
         """
-        time_started, timer_ended = self.timer_dict[timer_id]
-        duration = self.get_time_elapsed(timer_id)
-        data = [
-        frame_from,
-        time_started,
-        duration,
-        "Pause",
-        frame_to,
-        self.intervention_level,
-        "USER"
-        ]
-        self.logger_df.loc[self.logger_df.shape[0]] = data
-        print(self.logger_df)
+        if timer_id not in self.timer_dict.keys():
+            # print("Recording Slider")
+            time_started = self.start_timer(timer_id)
+            data = [
+            frame_from,
+            time_started,
+            0,
+            "Slider",
+            None,
+            self.intervention_level,
+            "USER",
+            tracker_id
+            ]
+            self.slider_data[timer_id] = data
+            # print(self.logger_df)
+    
+    def end_slider(self, frame_to, timer_id):
+        if self.slider_data:
+            # time_started, timer_ended = self.timer_dict[timer_id]
+            duration = self.get_time_elapsed(timer_id)
+            data = self.slider_data[timer_id]
+            data[2] = duration
+            data[4] = frame_to
+            self.logger_df.loc[self.logger_df.shape[0]] = data
+            self.slider_data = {}
+            
+            self.end_timer(timer_id)
+            del self.timer_dict[timer_id]
+
+            # print(self.logger_df)
     
     def record_errors(self, frame):
         pass
@@ -249,8 +308,8 @@ class DataLogger:
 
     def export_activity(self, file_path):
         if self.logger_df.shape[0] > 0:
-            logger_filename =   file_path + "ACTIVITY_LOGGER_" + self.intervention_level + ".csv"
-            self.video_info_df.to_csv(logger_filename)
+            logger_filename =   file_path + "_ACTIVITY_LOGGER_" + self.intervention_level + ".csv"
+            self.logger_df.to_csv(logger_filename)
             print("Exported")
         else:
             print("No Data Available")
