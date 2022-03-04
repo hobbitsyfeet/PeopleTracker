@@ -311,6 +311,32 @@ class tracker_evaluation:
         # print("Es:", total_es, " | GTs:",  total_gt, end=" - ")
         return cd, total_cd
 
+    def ground_truth_exists(self, frame_num):
+        if frame_num in self.ground_truth_dict.keys():
+            return True
+        return False
+
+    def get_ground_truth_difference(self, frame_num_1, frame_num_2):
+        '''
+        Returns the sets of ground truths where ids are new, or leaving.
+        '''
+        gt_1 = self.get_ground_truths(frame_num_1)
+        gt_2 = self.get_ground_truths(frame_num_2)
+
+        set_1 = set()
+        if gt_1:
+            for gt in gt_1:
+                set_1.add(gt['label'])
+            
+        set_2 = set()
+        if gt_2:
+            for gt in gt_2:
+                set_2.add(gt['label'])
+            
+        new = set_2 - set_1
+        leaving = set_1 - set_2
+        return new, leaving
+
     def check_occlusion(self, gt,  frame_num):
         all_gt = self.get_ground_truths(frame_num)
 
@@ -328,6 +354,22 @@ class tracker_evaluation:
 
         # No occlusion if no value exceeds
         return False
+
+    def get_occlusion_count(self, frame_num):
+        all_gt = self.get_ground_truths(frame_num)
+
+        if all_gt is None:
+            return 0
+
+        count = 0
+        # Iterate over all ground truths and record how many others overlap with excess threshold_to
+        for gt in all_gt:
+            occluded = self.check_occlusion(gt, frame_num)
+            if occluded:
+                count += 1
+        
+        return count
+
     
     def precision(self, estimate, ground_truth):
         '''
@@ -876,6 +918,9 @@ class tracker_evaluation:
             intersections.append(interArea)
 
         return ious, intersections, frame
+    
+    def get_frame_count(self):
+        return self.ground_truth_dict.keys() 
 
     def get_area(self, box):
         return (box[0] - box[2]) * (box[1] - box[3])
@@ -889,6 +934,7 @@ class tracker_evaluation:
                         return [ground_truth]
             return ground_truths
         else:
+            # print("frame out of range")
             return None
     
     def get_estimates(self, frame_number, id=None):
@@ -920,8 +966,11 @@ class tracker_evaluation:
         es = self.get_estimates(frame_number)
         return es.shape[0]
 
-    def get_number_ground_truths(self, frame_number):
+    def get_ground_truth_count(self, frame_number):
         gts = self.get_ground_truths(frame_number)
+        # print(gts, frame_number)
+        if gts == None:
+            return None
         return len(gts)
 
     def list_labels(self):

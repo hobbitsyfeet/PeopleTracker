@@ -1,22 +1,32 @@
 
+from itertools import count
 from matplotlib.pyplot import pause
-import evaluate
 import time
 import pandas as pd
 import cv2
 import numpy as np
+import os
+
+from evaluate import tracker_evaluation
 
 # Constants for intervention Level
 NO_INTVERVENTION_TRACKER = "NONE"
 HUMAN_INTERVENTION = "USER"
 HUMAN_INTERVENTION_KALMAN = "USER_KALMAN"
+HUMAN_INTERVENTION_REGRESSION_KALMAN = "USER_KALMAN_REGRESSION" # NOTE: USE THIS ONLY?
+
+
 HUMAN_INTERVENTION_MCRNN = "USER_MRCNN"
 HUMAN_INTERVENTION_KALMAN_MCRNN = "USER_KALMAN_MRCNN"
+HUMAN_INTERVENTION_MRCNN_REGRESSION = "USER_REGRESSION_MRCNN"
+HUMAN_INTERVENTION_MRCNN_KALMAN_REGRESSION = "USER_KALMAN_REGRESSION_MRCNN" # NOTE: USE THIS ONLY?
+
 NO_INTERVENTION_MODEL = "MRCNN"
 
 class DataLogger:
-    def __init__(self, video, video_metadata=None, intervention_level=NO_INTVERVENTION_TRACKER):
+    def __init__(self, video, video_metadata=None, intervention_level=NO_INTVERVENTION_TRACKER, ground_truth_folder=None):
         self.intervention_level = intervention_level
+        self.ground_truth_folder = ground_truth_folder
         self.metadata = video_metadata
         self.video = video
 
@@ -47,7 +57,13 @@ class DataLogger:
                                                     'Std_Illumination', 
                                                     'Mean_Opticalflow', 
                                                     'Median_Opticalflow', 
-                                                    'Std_Opticalflow', 
+                                                    'Std_Opticalflow',
+                                                    'Ground_Truth_Count',
+                                                    'Occluded_Ground_Truths_Count',
+                                                    'Entering_Ground_Truths',
+                                                    'Entering_Ground_Truths_Count',
+                                                    'Exiting_Ground_Truths',
+                                                    'Exiting_Ground_Truths_Count',
                                                     'Video_ID', 
                                                     'Video_Location'])
     ##################################
@@ -222,13 +238,22 @@ class DataLogger:
             This will be done independently from the user input 
             and will be constants between intervention types
         """
+
         if video is None:
             video = self.video
         cap = cv2.VideoCapture(video)
+        fps = cap.get(cv2.CAP_PROP_FPS)
+
+        folder = os.path.dirname(video)
+        te = tracker_evaluation()
+        te.load_json(self.ground_truth_folder)
+        print("Done")
 
         if (cap.isOpened()== False): 
             print("Error opening video  file")
         
+        previous_gt_frame = 0
+
         # Read until video is completed
         while(cap.isOpened()):
             # Capture frame-by-frame
@@ -237,8 +262,26 @@ class DataLogger:
             if ret == True:
                 ill_mean, ill_std = self.illumination(frame)
                 flow_mean, flow_median, flow_std = self.optical_flow(frame)
-                print(ill_mean, ill_std, flow_mean, flow_median, flow_std)
-                data = [frame_num, ill_mean, ill_std, flow_mean, flow_median, flow_std, "VIDEO_ID", "VIDEO_LOCATION"]
+
+                gt_count = te.get_ground_truth_count(int(frame_num))
+                occluded_count = te.get_occlusion_count(int(frame_num))
+
+                new_trackers = None
+                nt_count = None
+                leaving_trackers = None
+                leaving_count = None
+
+                if te.ground_truth_exists(frame_num):
+                    if te.ground_truth_exists(frame_num):
+                        new_trackers, leaving_trackers = te.get_ground_truth_difference(previous_gt_frame, frame_num)
+                        nt_count = len(new_trackers)
+                        leaving_count = len(leaving_trackers)
+                        print("NEW_TRACKER", new_trackers, nt_count, "  LEAVING_TRACKERS", leaving_trackers, leaving_count)
+                    previous_gt_frame = frame_num
+                    
+                
+                # print(ill_mean, ill_std, flow_mean, flow_median, flow_std, gt_count, occluded_count)
+                data = [frame_num, ill_mean, ill_std, flow_mean, flow_median, flow_std, gt_count, occluded_count, new_trackers, nt_count, leaving_trackers, leaving_count,  "VIDEO_ID", "VIDEO_LOCATION"]
                 self.video_info_df.loc[self.video_info_df.shape[0]] = data
                 # # Display the resulting frame
                 cv2.imshow('Frame', frame)
@@ -284,24 +327,56 @@ class DataLogger:
 
         return mean, median ,std
 
-    def objects_occluded(self, frame_number):
+    def objects_occluded(self, folder_path, fps):
         """
         Records weather the occlusion flag has occured on that frame. Records how many IDs have been occluded.
         """
-        pass
+        te = tracker_evaluation()
+        te.load_json(folder_path, fps=fps)
+        occlusion_dict = {}
+        for frame in te.get_frame_count():
+            occlusion_dict[frame] = te.count_occlusion(frame)
 
-    def get_tracked_count(self, dataframe):
-        """
-        Records the number of ground truths exist in the frame.
+        return occlusion_dict
+
+
+    
+    def check_intervention_level(self):
+        intervention = pd.unique(self.logger_df['Intervention_Type'])
+        if "USER" in intervention:
+            self.intervention_level = HUMAN_INTERVENTION
+
+            if "KALMAN" in intervention or "REGRESSION" in intervention:
+                self.intervention_level = HUMAN_INTERVENTION_REGRESSION_KALMAN
+            
+                if "MRCNN" in intervention:
+                    self.intervention_level = HUMAN_INTERVENTION_MRCNN_KALMAN_REGRESSION
+
+
+            if "MRCNN" in intervention:
+                self.intervention_level = HUMAN_INTERVENTION_MCRNN
+
+                if "KALMAN" in intervention or "REGRESSION":
+                    self.intervention_level = HUMAN_INTERVENTION_MRCNN_KALMAN_REGRESSION
         
-        This reflects tracker complexity
-        """
-        pass
+        # If there is no human intervention
+        elif "MRCNN" in intervention:
+            self.intervention_level = NO_INTERVENTION_MODEL
+        
+        else:
+            self.intervention_level = NO_INTVERVENTION_TRACKER
+
+        return self.intervention_level
+
+            
+
+
 
     def export_charactoristics(self, file_path):
         print("Saving Characteristics")
+
         char_filename =  file_path + "CHARACTERISTICS " + ".csv"
-        self.video_info_df.to_csv(char_filename)
+        self.video_info_df.to_csv(char_filename, index=False)
         
             
         print("Saving complete")
@@ -309,7 +384,13 @@ class DataLogger:
     def export_activity(self, file_path):
         if self.logger_df.shape[0] > 0:
             logger_filename =   file_path + "_ACTIVITY_LOGGER_" + self.intervention_level + ".csv"
-            self.logger_df.to_csv(logger_filename)
+
+            intervention_level = self.check_intervention_level()
+            print(intervention_level)
+
+            self.logger_df = self.logger_df.assign(Intervention_Level=intervention_level)
+
+            self.logger_df.to_csv(logger_filename, index=False)
             print("Exported")
         else:
             print("No Data Available")
@@ -318,9 +399,14 @@ class DataLogger:
         pass
 
 if __name__ == "__main__":
-    logger = DataLogger("L:/.shortcut-targets-by-id/1BBxJzDfQqUGSfvkILX9LLVkQKSuQcTji/Monkey Videos (for tracker)/Yes/MVI_2975.MOV")
+    # logger = DataLogger("L:/.shortcut-targets-by-id/1BBxJzDfQqUGSfvkILX9LLVkQKSuQcTji/Monkey Videos (for tracker)/Yes/MVI_2975.MOV")
+    # logger = DataLogger("D:/GitHub/PeopleTracker/videos/(Simple) GP014125.MP4")
+    logger = DataLogger("C:/Users/legom/Downloads/ChrisCran_Labels/GOPR3814.MP4")
+    logger.ground_truth_folder = "C:/Users/legom/Downloads/ChrisCran_Labels/GOPR3814/"
+    
     # logger = DataLogger("L:/.shortcut-targets-by-id/1MP4p63J_OlME1O2ysxy_aSATSfgtn850/Gallery Videos/Historical Videos/Nov 18/GP044104.MP4")
-    
+    print("LOGGING")
     logger.get_video_characteristics()
-    
+    # logger.export_activity("")
+    logger.export_charactoristics("C:/Users/legom/Downloads/ChrisCran_Labels/")
     # logger.video_info_df.to_csv("K:/Github/PeopleTracker/VIDEO_CHARACTERISTICS_GALLERY.csv")
