@@ -1,5 +1,6 @@
 
 from itertools import count
+from importlib_metadata import metadata
 from matplotlib.pyplot import pause
 import time
 import pandas as pd
@@ -24,11 +25,30 @@ HUMAN_INTERVENTION_MRCNN_KALMAN_REGRESSION = "USER_KALMAN_REGRESSION_MRCNN" # NO
 NO_INTERVENTION_MODEL = "MRCNN"
 
 class DataLogger:
-    def __init__(self, video, video_metadata=None, intervention_level=NO_INTVERVENTION_TRACKER, ground_truth_folder=None):
+    def __init__(self, video, video_location=None, video_metadata=None, intervention_level=NO_INTVERVENTION_TRACKER, ground_truth_folder=None):
         self.intervention_level = intervention_level
         self.ground_truth_folder = ground_truth_folder
+        self.te = tracker_evaluation()
+        self.te.fps = float(video_metadata['QuickTime:VideoFrameRate'])
+        if self.ground_truth_folder is None:
+            #Check the same folder and see if it works
+            print("Checking to see if ground truths are in the same folder as video...")
+            self.ground_truth_folder = os.path.dirname(video) + "/"
+            self.te.load_json(self.ground_truth_folder, fps=int(self.te.fps))
+            
+            if not self.te.ground_truth_dict:
+                print("Checking Adjacent folder with the same name...")
+                self.ground_truth_folder = os.path.dirname(video) + "/" + os.path.basename(video)[:-4] + "/"
+                self.te.load_json(self.ground_truth_folder, fps=int(self.te.fps))
+        
+        if not self.te.ground_truth_dict:
+            print("Could not find groudn truths")
+
         self.metadata = video_metadata
         self.video = video
+
+        self.video_id = os.path.basename(video)[:-4]
+        self.video_location = video_location
 
         self.start_time_id = "START_STOP"
 
@@ -243,16 +263,17 @@ class DataLogger:
             video = self.video
         cap = cv2.VideoCapture(video)
         fps = cap.get(cv2.CAP_PROP_FPS)
+        te_loaded = True
 
         folder = os.path.dirname(video)
-        te = tracker_evaluation()
-        te.load_json(self.ground_truth_folder)
         print("Done")
 
         if (cap.isOpened()== False): 
             print("Error opening video  file")
         
         previous_gt_frame = 0
+        gt_count = None
+        occluded_count = None
 
         # Read until video is completed
         while(cap.isOpened()):
@@ -263,25 +284,25 @@ class DataLogger:
                 ill_mean, ill_std = self.illumination(frame)
                 flow_mean, flow_median, flow_std = self.optical_flow(frame)
 
-                gt_count = te.get_ground_truth_count(int(frame_num))
-                occluded_count = te.get_occlusion_count(int(frame_num))
+                if te_loaded:
+                    gt_count = self.te.get_ground_truth_count(int(frame_num))
+                    occluded_count = self.te.get_occlusion_count(int(frame_num))
 
                 new_trackers = None
                 nt_count = None
                 leaving_trackers = None
                 leaving_count = None
 
-                if te.ground_truth_exists(frame_num):
-                    if te.ground_truth_exists(frame_num):
-                        new_trackers, leaving_trackers = te.get_ground_truth_difference(previous_gt_frame, frame_num)
+                if self.te.ground_truth_exists(frame_num) and te_loaded:
+                    if self.te.ground_truth_exists(frame_num):
+                        new_trackers, leaving_trackers = self.te.get_ground_truth_difference(previous_gt_frame, frame_num)
                         nt_count = len(new_trackers)
                         leaving_count = len(leaving_trackers)
-                        print("NEW_TRACKER", new_trackers, nt_count, "  LEAVING_TRACKERS", leaving_trackers, leaving_count)
                     previous_gt_frame = frame_num
                     
                 
                 # print(ill_mean, ill_std, flow_mean, flow_median, flow_std, gt_count, occluded_count)
-                data = [frame_num, ill_mean, ill_std, flow_mean, flow_median, flow_std, gt_count, occluded_count, new_trackers, nt_count, leaving_trackers, leaving_count,  "VIDEO_ID", "VIDEO_LOCATION"]
+                data = [frame_num, ill_mean, ill_std, flow_mean, flow_median, flow_std, gt_count, occluded_count, new_trackers, nt_count, leaving_trackers, leaving_count,  self.video_id, self.video_location]
                 self.video_info_df.loc[self.video_info_df.shape[0]] = data
                 # # Display the resulting frame
                 cv2.imshow('Frame', frame)
@@ -331,11 +352,10 @@ class DataLogger:
         """
         Records weather the occlusion flag has occured on that frame. Records how many IDs have been occluded.
         """
-        te = tracker_evaluation()
-        te.load_json(folder_path, fps=fps)
         occlusion_dict = {}
-        for frame in te.get_frame_count():
-            occlusion_dict[frame] = te.count_occlusion(frame)
+        for frame in self.te.get_frame_count():
+            occlusion_dict[frame] = self.te.count_occlusion(frame)
+            print(occlusion_dict[frame])
 
         return occlusion_dict
 

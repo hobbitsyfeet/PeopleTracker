@@ -345,9 +345,8 @@ class tracker_evaluation:
         for test in all_gt:
             if gt['label'] == test['label']:
                 continue
-
+            
             percent_covered = self.precision(gt['points'], test['points'])
-
             #Iterate through all other ground truths, returning true if any intersection exceeds threshold_to
             if percent_covered > self.threshold_to:
                 return True
@@ -358,9 +357,9 @@ class tracker_evaluation:
     def get_occlusion_count(self, frame_num):
         all_gt = self.get_ground_truths(frame_num)
 
-        if all_gt is None:
-            return 0
-
+        if not self.ground_truth_exists(frame_num):
+            return None
+            
         count = 0
         # Iterate over all ground truths and record how many others overlap with excess threshold_to
         for gt in all_gt:
@@ -574,7 +573,7 @@ class tracker_evaluation:
 
     def falsly_identified_object(self, frame_number):
         """
-        Calculates FIT for a single frame normalized by the number of estimates in that frame
+        Calculates FIO for a single frame normalized by the number of estimates in that frame
         """
         #Calculates the id_map for the frame, both estimates and ground_truths
         id_map = self.indentification_map(frame_number)
@@ -653,7 +652,12 @@ class tracker_evaluation:
         return normalized_error, total_errors, scores
 
     def calculate_tracker_purity(self):
-        
+        '''
+        Measure I-3: (TP) Tracker Purity. If the identity map
+        w.r.t. E indicates Ei identifies GT j , the ratio of frames
+        that Ei correctly identifies GT j ( niˆji ) to the total num-
+        ber of frames Ei exists (ni) 
+        '''
         e_count = self.get_estimate_count() #total number of frames Ei exists (ni)
         correct_dict = {}
 
@@ -688,6 +692,12 @@ class tracker_evaluation:
         return tp, total_correct, purity
 
     def calculate_object_purity(self):
+        '''
+        Measure I-4: (OP) - Object Purity. If the identity map
+        w.r.t. GT indicates GTj is identified by Ei, the ratio of
+        frames that GT j is correctly identified by Ei ( njˆij ) to
+        the total number of frames GT j exists (nj ) 
+        '''
         g_count = self.get_groundtruth_count() #total number of frames Ei exists (ni)
         correct_dict = {}
 

@@ -39,7 +39,7 @@ import evaluate
 CPU_COUNT = multiprocessing.cpu_count()
 
 #start tracking version at 1.0
-PEOPLETRACKER_VERSION = 2.61
+PEOPLETRACKER_VERSION = 2.62
 
 # For extracting video metadata
 # import mutagen
@@ -787,6 +787,7 @@ def export_meta(vid_dir):
 
         input_dialog.log("Export Metadata Complete!")
         return metadata
+    return metadata
     
     #Close all applications.
     # sys.exit(app.exec_())
@@ -814,7 +815,7 @@ if __name__ == "__main__":
         input_dialog.log("Populating UI")
         #Given the path, export the metadata and setup the csv for data collection
         metadata = export_meta(videoPath)
-        activity_logger = datalogger.DataLogger(videoPath, metadata)
+        activity_logger = datalogger.DataLogger(videoPath, video_metadata=metadata)
         
         
         #initialize empty list to store trackers
@@ -910,8 +911,10 @@ if __name__ == "__main__":
             if input_dialog.export_charactoristics:
                 print("Exporting")
                 export_filename = str(videoPath[:-4])
+                text, ok = QInputDialog.getText(input_dialog, 'Video Location', 'Enter Recorded Location:')
+                activity_logger.video_location = text
                 activity_logger.get_video_characteristics()
-                activity_logger.export_logger(export_filename)
+                activity_logger.export_charactoristics(export_filename)
                 input_dialog.export_charactoristics = False
 
             if input_dialog.export_activity:
