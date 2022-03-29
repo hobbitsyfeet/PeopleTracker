@@ -12,11 +12,11 @@ import traceback
 # from multiprocessing.pool import ThreadPool
 from random import randint
 from sys import exit
-from threading import Thread
+# from threading import Thread
 
 import cv2
 import exiftool
-import imutils
+# import imutils
 import numpy as np
 import pandas as pd
 
