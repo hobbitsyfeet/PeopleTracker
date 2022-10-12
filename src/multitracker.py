@@ -4,19 +4,14 @@ import math
 import multiprocessing
 import os
 import sys
-# the input dialog
-#For popup windows (DEPRECIATED)
-#import tkinter as tk
 import traceback
 # from collections import deque
 # from multiprocessing.pool import ThreadPool
 from random import randint
 from sys import exit
-# from threading import Thread
 
 import cv2
 import exiftool
-# import imutils
 import numpy as np
 import pandas as pd
 
@@ -41,8 +36,6 @@ CPU_COUNT = multiprocessing.cpu_count()
 #start tracking version at 1.0
 PEOPLETRACKER_VERSION = 2.62
 
-# For extracting video metadata
-# import mutagen
 
 class MultiTracker():
     def __init__(self, tab, name="Person", colour=(255,255,255)):    
@@ -268,13 +261,18 @@ class MultiTracker():
             # check to see if the tracking was a success
             if success:
                 (x, y, w, h) = [int(v) for v in box]
-                cv2.rectangle(frame, (x, y), (x + w, y + h),
-                    self.colour, 2)
+                cv2.rectangle(frame, (x, y), (x + w, y + h), self.colour, 2)
                 cv2.rectangle(frame, (x , y - 1), (x + 10 * (len(self.get_name())) , y - 15),(255,255,255),-1)
                 cv2.putText(frame,self.get_name(), (x , y - 1), cv2.FONT_HERSHEY_PLAIN, 1, (0,0,0),1)
                 
                 # cv2.putText(frame,self.get_name(), (x , y - 1), cv2.FONT_HERSHEY_COMPLEX_SMALL, 0.75, (0,0,0),1)
         return success, box, frame
+
+    def draw_tracker(self, box):
+        (x, y, w, h) = [int(v) for v in box]
+        cv2.rectangle(frame, (x, y), (x + w, y + h), self.colour, 2)
+        cv2.rectangle(frame, (x , y - 1), (x + 10 * (len(self.get_name())) , y - 15),(255,255,255),-1)
+        cv2.putText(frame,self.get_name(), (x , y - 1), cv2.FONT_HERSHEY_PLAIN, 1, (0,0,0),1)
 
     def remove(self):
         """
@@ -1199,6 +1197,10 @@ if __name__ == "__main__":
                 else:
                     tracker_list[tracker].colour = (255,255,255)
             app.processEvents()
+            
+            #Display all regions on screen if they exist
+            if len(regions.region_dict) > 0:
+                show_frame = regions.display_region(show_frame)
 
             #Loop through every tracker and update
             for tracker in enumerate(tracker_list):
@@ -1535,9 +1537,7 @@ if __name__ == "__main__":
                 # crashlogger.log(str(e))
                 pass
             
-            #Display all regions on screen if they exist
-            if len(regions.region_dict) > 0:
-                show_frame = regions.display_region(show_frame)
+
 
             # print("FRAMES", frame_num, fvs.frame_number, input_dialog.get_scrollbar_value())
             #When done processing each tracker, view the frame
