@@ -7,3 +7,5 @@ env/
 build
 dist
 *.csv
+*.jpg
+*.json

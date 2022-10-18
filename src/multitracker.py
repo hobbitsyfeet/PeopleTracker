@@ -873,6 +873,8 @@ if __name__ == "__main__":
         import maskrcnn
         input_dialog.splash.close()
 
+        snap_called = False
+
         while True:
             QCoreApplication.processEvents()
             # This is needed for activity logger to end pause timers
@@ -971,7 +973,9 @@ if __name__ == "__main__":
                 
                 input_dialog.scrollbar_changed = True
                 input_dialog.snap_state = None
+                snap_called = True
                 fvs.reset = True
+
 
             if input_dialog.snap_state == "Backward":
                 fvs.reset = True
@@ -983,6 +987,7 @@ if __name__ == "__main__":
 
                 input_dialog.scrollbar_changed = True
                 input_dialog.snap_state = None
+                snap_called = True
                 fvs.reset = True
                 
 
@@ -1134,6 +1139,7 @@ if __name__ == "__main__":
                 input_dialog.snap_state = "Forward"
                 print("No resize")
                 continue
+
 
             #crash the program if no frame exists
             if frame is None:
@@ -1322,7 +1328,12 @@ if __name__ == "__main__":
                         # cv2.circle(frame, bottom, 3, (0,255,255),-1)
                         in_region, p = regions.test_region((center_x, center_y))
                         
-                        if input_dialog.play_state == True and input_dialog.tab_list[tracker_num].read_only is False:
+                        # Defines when to record while play is active
+                        play_active = input_dialog.play_state == True and input_dialog.tab_list[tracker_num].read_only is False
+                        paused_snap_active = input_dialog.play_state == False and input_dialog.tab_list[tracker_num].read_only is False and snap_called == True
+
+                        snap_called = False
+                        if play_active or paused_snap_active:
                             # tracker.grab_cut(frame,box)
                             #record all the data collected from that frame
                             # print("Recording data")
