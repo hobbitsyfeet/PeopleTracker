@@ -446,9 +446,7 @@ class MultiTracker():
         
         
         #Create the dataframe
-        data = {"Frame_Num":frames,#self.time_data,
-
-
+        export_df = {"Frame_Num":frames,#self.time_data,
 
             "Pixel_Loc_x": pixel_location_x,
             "Pixel_Loc_y": pixel_location_y,
@@ -479,7 +477,7 @@ class MultiTracker():
             "Total_People":total_people_list
             }
         
-        df = pd.DataFrame(data)
+        df = pd.DataFrame(export_df)
         export_csv = df.to_csv (export_filename, index = None, header=False, mode='a') #Don't forget to add '.csv' at the end of the path
 
         self.data_dict = dict()
@@ -897,7 +895,8 @@ if __name__ == "__main__":
             if input_dialog.export_all_state is True:
                 input_dialog.export_all_state = False
                 for tracker in tracker_list:
-                    tracker.export_data(input_dialog.resolution_x, input_dialog.resolution_y, videoPath, vid_fps)
+                    if tracker.data_dict: # Check if dataframe is empty before exporting.
+                        tracker.export_data(input_dialog.resolution_x, input_dialog.resolution_y, videoPath, vid_fps)
 
             if input_dialog.load_predictions_state is True:
                 pred_dict = maskrcnn.load_predicted((videoPath[:-4] + "_predict.csv"))
@@ -1157,7 +1156,8 @@ if __name__ == "__main__":
                 width = cap.get(cv2.CAP_PROP_FRAME_WIDTH)   # float
                 height = cap.get(cv2.CAP_PROP_FRAME_HEIGHT) # float
                 try:
-                    tracker_list[selected_tracker].export_data(input_dialog.resolution_x, input_dialog.resolution_y, videoPath, vid_fps)
+                    if tracker_list[selected_tracker].data_dict: # Ensure data exists in dictionary before exporting
+                        tracker_list[selected_tracker].export_data(input_dialog.resolution_x, input_dialog.resolution_y, videoPath, vid_fps)
                 except IOError as err:
                     input_dialog.log(err)
                     input_dialog.show_warning(str(err) + "\n Please close open CSV and try again.")
