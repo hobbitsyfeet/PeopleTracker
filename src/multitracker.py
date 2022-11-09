@@ -1219,6 +1219,7 @@ if __name__ == "__main__":
                         tracker.record_data(frame_number, input_dialog.num_people.value(), other_room=True)
                         regions.del_moving_region(tracker.get_name(), id=tracker.id())
 
+                    # Collect active tracker data
                     elif tracker.init_bounding_box is not None and input_dialog.tab_list[tracker_num].active is True and input_dialog.tab_list[tracker_num].read_only is False:
                         
                         #allocate frames on GPU, reducing CPU load.
@@ -1332,7 +1333,6 @@ if __name__ == "__main__":
                         play_active = input_dialog.play_state == True and input_dialog.tab_list[tracker_num].read_only is False
                         paused_snap_active = input_dialog.play_state == False and input_dialog.tab_list[tracker_num].read_only is False and snap_called == True
 
-                        snap_called = False
                         if play_active or paused_snap_active:
                             # tracker.grab_cut(frame,box)
                             #record all the data collected from that frame
@@ -1428,7 +1428,7 @@ if __name__ == "__main__":
                             # print( ((pred_line[0] + pred_line[2])[0], (pred_line[1] + pred_line[3])[0]) )      
 
                             tracker.record_data(input_dialog.get_scrollbar_value(), input_dialog.num_people.value(), center_x, center_y, width, height, in_region)
-
+            
                 except Exception as e:
                     crashlogger.log(str(e))
                     # print("No resize")
@@ -1492,6 +1492,10 @@ if __name__ == "__main__":
 
                     
                 app.processEvents()
+
+            # Snap called is only false after done processing the current frame
+            snap_called = False
+
 
             #If you select a tracker and it is not running, start a new one
             if selected_tracker >= 0 and len(tracker_list) > 0 and selected_tracker <= len(tracker_list):
