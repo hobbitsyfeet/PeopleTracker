@@ -9,7 +9,7 @@ numpy==1.19.2
 
 pixellib>=0.5.2
 #tensorflow==2.4.0 CRITICAL DEPENDENCY
-tensorflow==2.5.2
+tensorflow==2.9.3
 #tensorflow-gpu==2.3.0
 
 sklearn
