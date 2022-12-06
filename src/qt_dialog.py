@@ -32,7 +32,7 @@ class App(QWidget):
         self.height = 240
         self.initUI()
         
-        self.snap_to_frame_skip = True
+        self.snap_to_frame_skip = True 
 
         self.pause_to_play = False
         self.play_to_pause = False
@@ -44,6 +44,7 @@ class App(QWidget):
         self.scrollbar_changed = False
         self.resolution_x = 720
         self.resolution_y = 480
+        self.original_resolution = (None, None)
         self.vid_fps = 30
         self.snap_state = None
         self.set_tracker_state = False
@@ -96,10 +97,12 @@ class App(QWidget):
         json_folder += "/"
 
         te.load_json(json_folder)
-
+        print(te.ground_truth_dict)
         if bool(te.ground_truth_dict) is False:
             self.log("Failed To load Json Files in Folder...")
             return
+
+        frames_removed = te.validate_and_correct_ground_tuths()
 
         self.log("Calculating Errors...")
         errors = te.calculate_errors()
@@ -169,6 +172,11 @@ class App(QWidget):
                 if okPressed and height >= 0 and width >= 0:
                     self.resolution_x = int(width)
                     self.resolution_y = int(height)
+
+            elif q.text() == "Resize to default resolution":
+                self.resolution_x = int(self.original_resolution[0])
+                self.resolution_y = int(self.original_resolution[1])
+
             elif q.text() == "Quit":
                 self.quit_State = True
                 # exit(0)
@@ -327,6 +335,8 @@ class App(QWidget):
             maskrcnn_options_action = QAction("Mask-RCNN Options", self)
             predictor_options_action = QAction("Predictor Options", self)
             image_options_action = QAction("Image Options", self)
+
+
             # edit2 = file.addMenu("Edit")
             # AddTab	Ctrl+T
             edit.addAction(add_region)
@@ -369,12 +379,12 @@ class App(QWidget):
 
             viewMenu = bar.addMenu("View")
             resizeVideo = QAction("Resize Video", self)
-
-            # resizeVideo.setShortcut("Ctrl+R")
-            
             viewMenu.addAction(resizeVideo)
             viewMenu.triggered[QAction].connect(self.processtrigger)
-
+            
+            resize_to_original = QAction("Resize to default resolution", self)
+            viewMenu.triggered[QAction].connect(self.processtrigger)
+            viewMenu.addAction(resize_to_original)
 
             helpMenu = bar.addMenu("Help")
             helpButton = QAction("Display Help", self)

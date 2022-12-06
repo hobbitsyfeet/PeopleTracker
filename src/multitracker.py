@@ -34,7 +34,7 @@ import evaluate
 CPU_COUNT = multiprocessing.cpu_count()
 
 #start tracking version at 1.0
-PEOPLETRACKER_VERSION = 2.62
+PEOPLETRACKER_VERSION = 2.7
 
 
 class MultiTracker():
@@ -129,7 +129,7 @@ class MultiTracker():
         return total_time
 
     def create(self, tracker_type='CSRT'):
-        """
+        """ 
         The creation of the Opencvs Tracking mechanism.
 
         tracker_type = ["BOOSTING", "MIL","KCF", "TLD", "MEDIANFLOW", "GOTURN", "MOSSE", "CSRT"]
@@ -832,6 +832,8 @@ if __name__ == "__main__":
         
         #Initialize video, get the first frame and setup the scrollbar to the video length
         cap = cv2.VideoCapture(videoPath)
+        # Assign original resolution variable
+        input_dialog.original_resolution = (cap.get(cv2.CAP_PROP_FRAME_WIDTH), cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
 
         resized_ratio_x = input_dialog.resolution_x / cap.get(cv2.CAP_PROP_FRAME_WIDTH)
         resized_ratio_y = input_dialog.resolution_y / cap.get(cv2.CAP_PROP_FRAME_HEIGHT)

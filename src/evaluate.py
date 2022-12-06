@@ -15,14 +15,11 @@ NOTE: Add additional evaluation methods to help plot data
 
 import json
 import glob
-from numpy.core import numeric
-from numpy.lib.function_base import diff
 
 import pandas as pd
 
 import cv2
 # from pandas._libs.missing import NA
-from pandas.core import frame
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -935,6 +932,12 @@ class tracker_evaluation:
     def get_area(self, box):
         return (box[0] - box[2]) * (box[1] - box[3])
 
+    def get_height(self, box):
+        return (box[1] - box[3])
+    
+    def get_width(self, box):
+        return (box[0] - box[2])
+
     def get_ground_truths(self, frame_number, id=None):
         if frame_number in self.ground_truth_dict.keys():
             ground_truths = self.ground_truth_dict[frame_number]
@@ -1027,6 +1030,28 @@ class tracker_evaluation:
                     gt_count[gt['label']] = 1
 
         return gt_count
+    
+    def validate_and_correct_ground_tuths(self):
+        '''
+        This function removes ground truths where files imported are faulty.
+
+        1: Labelme file is created but no ground truths are assigned.
+        '''
+        frames_removed = []
+        for frame in self.ground_truth_dict:
+            gt = self.ground_truth_dict[frame]
+            # removes the frame from the dictionary
+            if gt == []:
+                frames_removed.append(frame)
+                print("Removing frame ", frame, " because no ground truths found:", gt)
+                # del self.ground_truth_dict[frame]
+
+        for del_key in frames_removed:
+            del self.ground_truth_dict[del_key]
+
+        return frames_removed
+        
+
 
 
 if __name__ == "__main__":

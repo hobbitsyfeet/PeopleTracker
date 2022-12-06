@@ -7,6 +7,7 @@ import pandas as pd
 import cv2
 import numpy as np
 import os
+import math
 
 from evaluate import tracker_evaluation
 
@@ -42,7 +43,7 @@ class DataLogger:
                 self.te.load_json(self.ground_truth_folder, fps=int(self.te.fps))
         
         if not self.te.ground_truth_dict:
-            print("Could not find groudn truths")
+            print("Could not find ground truths")
 
         self.metadata = video_metadata
         self.video = video
@@ -72,18 +73,36 @@ class DataLogger:
                                                                # This means that all USER Intervention_Types, the tracker_ID is the current tracker
                                                                # When Kalman, Regressuion or MRCNN make changes, it does not need to be the current tracker selected. 
 
-        self.video_info_df = pd.DataFrame(columns=['Frame_Number', 
+        self.video_info_df = pd.DataFrame(columns=[ 'Frame_Number', 
                                                     'Mean_Illumination', 
                                                     'Std_Illumination', 
+
                                                     'Mean_Opticalflow', 
-                                                    'Median_Opticalflow', 
+                                                    'Median_Opticalflow',
+                                                    'Mean_Magnitude_Opticalflow',
                                                     'Std_Opticalflow',
+
+                                                    'Zoom_Opticalflow',
+                                                    'Zoom_Dominance_Percent',
+                                                    'Zoom_Dominance_Threshold',
+                                                    'Zoom_Mean_Magnitude_Threshold',
+
+                                                    'Pan_Opticalflow',
+                                                    'Pan_Dominance_Percent',
+                                                    'Pan_Dominance_Threshold',
+                                                    'Pan_Mean_Magnitude_Threshold',
+                                                    
                                                     'Ground_Truth_Count',
                                                     'Occluded_Ground_Truths_Count',
                                                     'Entering_Ground_Truths',
                                                     'Entering_Ground_Truths_Count',
                                                     'Exiting_Ground_Truths',
                                                     'Exiting_Ground_Truths_Count',
+                                                    'Ground_Truth_Labels',
+                                                    'Ground_Truth_Areas',
+                                                    'Ground_Truth_Heights',
+                                                    'Ground_Truth_Widths',
+
                                                     'Video_ID', 
                                                     'Video_Location'])
     ##################################
@@ -282,27 +301,45 @@ class DataLogger:
             frame_num = cap.get(cv2.CAP_PROP_POS_FRAMES)
             if ret == True:
                 ill_mean, ill_std = self.illumination(frame)
-                flow_mean, flow_median, flow_std = self.optical_flow(frame)
-
+                of_dict = self.optical_flow(frame) # Mean Median STD Mean_Magnitude Dominant_Zoom Percent_Zoom 
+                                                             # Zoom_Dominance_Thresh Zoom_Magnitude_Thresh Dominant_Pan Percent_Pan 
+                                                             # Pan_Dominance_Thresh Pan_Magnitude_Thresh
+                print(of_dict)
                 if te_loaded:
                     gt_count = self.te.get_ground_truth_count(int(frame_num))
                     occluded_count = self.te.get_occlusion_count(int(frame_num))
+
+                    
 
                 new_trackers = None
                 nt_count = None
                 leaving_trackers = None
                 leaving_count = None
 
+                labels = None
+                areas = None
+                heights = None
+                widths = None
+
                 if self.te.ground_truth_exists(frame_num) and te_loaded:
                     if self.te.ground_truth_exists(frame_num):
                         new_trackers, leaving_trackers = self.te.get_ground_truth_difference(previous_gt_frame, frame_num)
                         nt_count = len(new_trackers)
                         leaving_count = len(leaving_trackers)
+                        labels, areas, heights, widths = self.ground_truth_characteristics(frame_num)
+                        
+
                     previous_gt_frame = frame_num
                     
-                
                 # print(ill_mean, ill_std, flow_mean, flow_median, flow_std, gt_count, occluded_count)
-                data = [frame_num, ill_mean, ill_std, flow_mean, flow_median, flow_std, gt_count, occluded_count, new_trackers, nt_count, leaving_trackers, leaving_count,  self.video_id, self.video_location]
+                data = [frame_num, ill_mean, ill_std, of_dict["Mean"], of_dict["Median"], 
+                        of_dict["STD"], of_dict["Mean_Magnitude"], of_dict["Dominant_Zoom"], 
+                        of_dict["Percent_Zoom"], of_dict["Zoom_Dominance_Thresh"], of_dict["Zoom_Magnitude_Thresh"],
+                        of_dict["Dominant_Pan"], of_dict["Percent_Pan"], of_dict["Pan_Dominance_Thresh"], of_dict["Pan_Magnitude_Thresh"],
+                        gt_count, occluded_count, new_trackers, nt_count, leaving_trackers, leaving_count, labels, areas, heights, widths,  
+                        self.video_id, self.video_location
+                ]
+
                 self.video_info_df.loc[self.video_info_df.shape[0]] = data
                 # # Display the resulting frame
                 cv2.imshow('Frame', frame)
@@ -326,10 +363,27 @@ class DataLogger:
         Uses optical flow to measure the average magnitude of movement from the flow of pixels.
 
         Also records the resolution of the image
+
+        Returns values in a dictionary with names:
+            Mean
+            Median
+            STD
+            Mean_Magnitude
+            Dominant_Zoom
+            Percent_Zoom
+            Zoom_Dominance_Thresh
+            Zoom_Magnitude_Thresh
+            Dominant_Pan
+            Percent_Pan
+            Pan_Dominance_Thresh
+            Pan_Magnitude_Thresh
+
+        [66] Gunnar Farnebäck. Two-frame motion estimation based on polynomial expansion. In Image Analysis, pages 363–370. Springer, 2003. 
         """
         if self.previous_frame is None:
             self.previous_frame = frame
-            return 0, 0, 0
+            
+            return {"Mean":0, "Median": 0, "STD":0, "Mean_Magnitude":0, "Dominant_Zoom":0, "Percent_Zoom":0, "Zoom_Dominance_Thresh":0, "Zoom_Magnitude_Thresh": 0,"Dominant_Pan": 0, "Percent_Pan": 0, "Pan_Dominance_Thresh": 0, "Pan_Magnitude_Thresh":0}
 
         gray_prev = cv2.cvtColor(self.previous_frame, cv2.COLOR_BGR2GRAY)
         gray_current = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
@@ -339,14 +393,143 @@ class DataLogger:
         gray_current = cv2.resize(gray_current, (0,0), fx=0.25, fy=0.25)
 
         flow = cv2.calcOpticalFlowFarneback(gray_prev, gray_current, flow=None, pyr_scale=0.5, levels=6, winsize=50, iterations=3, poly_n=5, poly_sigma=1.2, flags=None)
-        # flow = cv2.calcOpticalFlowFarneback(previous_frame, frame, None, 0.5, 3, 15, 3, 5, 1.2, 0)
 
+        mean_magnitude = np.mean(cv2.cartToPolar(flow[..., 0], flow[..., 1])[0])
+
+        zoom_dom_direction, zoom_perc_dom, zoom_dom_thresh, zoom_mean_mag_thresh  =  self.optical_flow_zoom(flow)
+        pan_dom_direction, pan_perc_dom, pan_dom_thresh, pan_mean_mag_thresh =  self.optical_flow_pan(flow)
+        # flow = cv2.calcOpticalFlowFarneback(previous_frame, frame, None, 0.5, 3, 15, 3, 5, 1.2, 0)
+        
         mean = np.mean(flow)
         median = np.median(flow)
         std = np.std(flow)
         self.previous_frame = frame
 
-        return mean, median ,std
+        opticalflow_dict = {"Mean":mean, "Median": median, "STD":std, "Mean_Magnitude":mean_magnitude, "Dominant_Zoom":zoom_dom_direction, "Percent_Zoom":zoom_perc_dom, "Zoom_Dominance_Thresh":zoom_dom_thresh, "Zoom_Magnitude_Thresh": zoom_mean_mag_thresh,"Dominant_Pan": pan_dom_direction, "Percent_Pan": pan_perc_dom, "Pan_Dominance_Thresh": pan_dom_thresh, "Pan_Magnitude_Thresh":pan_mean_mag_thresh}
+        print(opticalflow_dict)
+        return opticalflow_dict
+
+    def optical_flow_pan(self, flow, dominance_threshold=0.4, magnitude_threshold=0.5):
+        """
+        Vector orientation:
+        t+1=current frame, t=previous frame
+
+        atan( 
+            (yi^(t+1) - yi^(t)) / 
+            (xi^(t+1) - xi^(t)) 
+        )
+
+
+        Calculate Dominant Orientation = Peak value in orientation histogram of the imag
+        np.histogram(np.array(vector orientation))
+
+        returns the dominant orientation given a threshold, the threshold it passed by, and the average magnitude of movement.
+
+
+        Makkapati, V. (2008). Robust camera pan and zoom change detection using optical flow. 
+        In National conference on computer vision, pattern recognition, 
+        image processing and graphics (pp. 73-78).
+        """
+        # get all vector orientations
+        orientation = np.rad2deg(cv2.cartToPolar(flow[..., 0], flow[..., 1])[1])
+        magnitude = cv2.cartToPolar(flow[..., 0], flow[..., 1])[0]
+        orientation_hist = np.histogram(orientation, bins=8, range=(0,360)) # Bin every 45 degrees
+
+        # print(orientation_hist)
+        max_value_index = np.argmax(orientation_hist[0], axis=0)
+        percent = orientation_hist[0][max_value_index]/np.sum(orientation_hist[0])
+        dominant_orientation = orientation_hist[1][max_value_index]
+        
+        
+        if percent >= dominance_threshold and np.mean(magnitude) >= magnitude_threshold:
+            print("PANNING:", dominant_orientation, percent, np.mean(magnitude))
+            return dominant_orientation, percent, dominance_threshold, magnitude_threshold
+
+        return None, None, None, None
+
+        
+
+    def optical_flow_zoom(self, flow, dominance_threshold=0.7, magnitude_threshold=1):
+        """
+        Describe each vector's direction. 
+        
+        Returns 
+            0 if diverging (zoom in), 1 if converging (zoom out), otherwise none.
+            percent of dominance
+            domenance threshold
+            mean magnitude threshold
+
+
+        Makkapati, V. (2008). Robust camera pan and zoom change detection using optical flow. 
+        In National conference on computer vision, pattern recognition, 
+        image processing and graphics (pp. 73-78).
+        """
+
+        orientation = np.rad2deg(cv2.cartToPolar(flow[..., 0], flow[..., 1])[1])
+        magnitude = cv2.cartToPolar(flow[..., 0], flow[..., 1])[0]
+
+        height, width, dim = flow.shape
+        center = (width/2, height/2) # (x,y)
+
+        # converging = np.full((height, width), False)
+        
+        original_location = np.moveaxis(np.mgrid[:height,:width], 0, -1)
+
+        original_diff_x = (original_location[...,0]**2 - center[0]**2)
+        original_diff_y = (original_location[...,1]**2 - center[1]**2)
+
+        # flow_location_x = original_location[..., 0] + flow[..., 0]
+        # flow_location_y = original_location[..., 1] + flow[..., 1]
+        flow_diff_x = ((original_location[...,0] + flow[..., 0])**2 - center[0]**2)
+        flow_diff_y = ((original_location[...,1] + flow[..., 1])**2 - center[1]**2)
+
+        # print(flow_diff_x)
+        # print(flow_diff_y)
+        flow_diff = abs((flow_diff_x + flow_diff_y)**1/2)
+        original_diff = abs((original_diff_x + original_diff_y)**1/2)
+
+        converging = flow_diff <= original_diff
+
+        # print(converging)
+        convergence_hist = np.histogram(converging, bins=2, range=(0,1))
+        # print(convergence_hist)
+        max_value_index = np.argmax(convergence_hist[0], axis=0) # Get the most dominant
+        percent = convergence_hist[0][max_value_index]/np.sum(convergence_hist[0]) # get dominance percentage
+        dominant_convergence = convergence_hist[1][max_value_index] # get the dominant convergence (True is converging)
+
+        if percent >= dominance_threshold and np.mean(magnitude) >= magnitude_threshold:
+            if dominant_convergence >= 0:
+                print("ZOOM IN:", dominant_convergence, percent, np.mean(magnitude))
+            else:
+                print("ZOOM OUT:", dominant_convergence, percent, np.mean(magnitude))
+            
+            return dominant_convergence, percent, dominance_threshold, magnitude_threshold
+
+        return None, None, None, None
+
+
+        # print(flow.shape)
+        # print(np.ndindex(flow.shape))
+        # for iy, ix,  in np.ndindex(flow.shape):
+        #     print(iy, ix)
+
+    def ground_truth_characteristics(self, frame_num):
+        '''
+        Records ground truth height, width, and distance from last frame
+        '''
+        ground_truths = self.te.get_ground_truths(frame_num)
+        labels = []
+        gt_areas = []
+        gt_heights = []
+        gt_widths = []
+        for gt in ground_truths:
+            box = gt['points']
+            labels.append(gt['label'])
+            gt_areas.append(self.te.get_area(box))
+            gt_heights.append(self.te.get_height(box))
+            gt_widths.append(self.te.get_width(box))
+
+        return labels, gt_areas, gt_heights, gt_widths
 
     def objects_occluded(self, folder_path, fps):
         """
@@ -421,12 +604,12 @@ class DataLogger:
 if __name__ == "__main__":
     # logger = DataLogger("L:/.shortcut-targets-by-id/1BBxJzDfQqUGSfvkILX9LLVkQKSuQcTji/Monkey Videos (for tracker)/Yes/MVI_2975.MOV")
     # logger = DataLogger("D:/GitHub/PeopleTracker/videos/(Simple) GP014125.MP4")
-    logger = DataLogger("C:/Users/legom/Downloads/ChrisCran_Labels/GOPR3814.MP4")
-    logger.ground_truth_folder = "C:/Users/legom/Downloads/ChrisCran_Labels/GOPR3814/"
+    logger = DataLogger("K:/Github/PeopleTracker/Evaluation/Monkeys/Displays Aggression/MVI_2889.MOV")
+    logger.ground_truth_folder = "K:/Github/PeopleTracker/Evaluation/Monkeys/Displays Aggression/MVI_2889/"
     
     # logger = DataLogger("L:/.shortcut-targets-by-id/1MP4p63J_OlME1O2ysxy_aSATSfgtn850/Gallery Videos/Historical Videos/Nov 18/GP044104.MP4")
     print("LOGGING")
     logger.get_video_characteristics()
     # logger.export_activity("")
-    logger.export_charactoristics("C:/Users/legom/Downloads/ChrisCran_Labels/")
+    logger.export_charactoristics("K:/Github/PeopleTracker/Evaluation/Monkeys/Displays Aggression/MVI_2889/")
     # logger.video_info_df.to_csv("K:/Github/PeopleTracker/VIDEO_CHARACTERISTICS_GALLERY.csv")
