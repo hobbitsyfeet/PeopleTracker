@@ -137,6 +137,7 @@ def predict(filename, model="mask_rcnn_coco_person.h5", class_names=["BG", "pers
     score_list = []
     
     time_queue = []
+    fps_list = []
     print(vid_length)
     #iterate through the video by said steps
     for frame_num in range(0, vid_length, step):
@@ -178,6 +179,7 @@ def predict(filename, model="mask_rcnn_coco_person.h5", class_names=["BG", "pers
                 time_queue.pop()
             
             fps = 1/(stop - start)
+            fps_list.append(fps)
 
             time_queue.append(fps)
             print('FPS:', fps)
@@ -196,12 +198,13 @@ def predict(filename, model="mask_rcnn_coco_person.h5", class_names=["BG", "pers
                 eta = ((vid_length-frame_num)/(step*fps)) 
                 print("ETA:", time.strftime('%H:%M:%S', time.gmtime(eta)))
 
-        
+    end_time = time.time()
     #create dataframe
     data = {
         "Frame_Num":frame_list,
         "Region_of_interest":roi_list,
-        "Scores":score_list
+        "Scores":score_list,
+        "Predict_Duration":fps_list
     }
 
     #export dataframe
