@@ -15,6 +15,7 @@ from multiple_inputs import InputDialog
 import cv2
 import numpy as np
 import math
+import pandas as pd
 
 
 
@@ -86,7 +87,7 @@ class App(QWidget):
     def test_method(self):
         print('key pressed')
 
-    def evaluate_errors(self, filename):
+    def evaluate_errors(self, filename, is_mrcnn):
         # filename = str(self.filename[:-4]) + ".csv"
         # print(filename)
         te = evaluate.tracker_evaluation()
@@ -105,7 +106,7 @@ class App(QWidget):
         frames_removed = te.validate_and_correct_ground_tuths()
 
         self.log("Calculating Errors...")
-        errors = te.calculate_errors()
+        errors, error_dict = te.calculate_errors()
         self.log("Done Calculating Errors..")
         print(errors)
 
@@ -122,9 +123,16 @@ class App(QWidget):
                         "\nTracker Purity (TP):\t\t" + str(errors['TP']) +
                         "\nObject Purity (OP):\t\t" + str(errors['OP'])
                     )
-        f = open((self.filename[:-4]+"_Evaluation_Results.txt"), "w")
+        out_filename = self.filename[:-4]
+        if is_mrcnn:
+            out_filename += "_predicted"
+
+        f = open((out_filename+"_Evaluation_Results.txt"), "w")
         f.write(message)
         f.close()
+
+        errors_hist = pd.DataFrame(error_dict)
+        errors_hist.to_csv(out_filename+"_Evaluation_History.csv")
         
         info_box.setText(message)
         info_box.show()
@@ -223,7 +231,9 @@ class App(QWidget):
                 self.image_options.show()
             elif q.text() == "Evaluate Errors":
                 csv, _ = QFileDialog.getOpenFileName(self,"QFileDialog.getOpenFileName()", "Select Tracked CSV","CSV (*.csv);;All Files (*)")
-                self.evaluate_errors(csv)
+                is_prediction = QMessageBox()
+                ret = is_prediction.question(self,'', "Was this data predicted by Mask RCNN?", QMessageBox.Yes | QMessageBox.No)
+                self.evaluate_errors(csv, ret)
             elif q.text() == "Train":
                 self.train_model()
             elif q.text() == "Track Predictions":

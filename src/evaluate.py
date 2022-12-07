@@ -775,7 +775,12 @@ class tracker_evaluation:
     def calculate_errors(self, printout=False):
         """
         Iterates through every ground truth frame and compares a list of estimates. 
+
+        Returns final video score, as well as normalized results through the video.
+        Normalized results are results where the number of errors on a frame is normalized by the number of ground truths.
         """
+        errors_dict = {}
+
         total_fp = 0
         total_fn = 0
         total_mt = 0
@@ -801,7 +806,17 @@ class tracker_evaluation:
         count_fit = 0
         count_fio = 0
 
+        record_frames = []
+        record_fp = []
+        record_fn = []
+        record_mt = []
+        record_mo = []
+        record_cd = []
+        record_fit = []
+        record_fio = []
+
         for frame in self.ground_truth_dict:
+            
             # print("\nFRAME", frame)
             ngt = max(len(self.get_ground_truths(frame)),1)
             # nes = len(self.list_estimates())
@@ -828,11 +843,20 @@ class tracker_evaluation:
             fit, c_fit, fit_scores = self.falsly_identified_tracker(frame)
             fio, c_fio, fio_scores = self.falsly_identified_object(frame)
 
-
             total_fio += fio
             total_fit += fit
             count_fit += c_fit
             count_fio += c_fio 
+
+            # Records normalized results per frame
+            record_frames.append(frame)
+            record_fp.append(errors['FP']/ngt)
+            record_fn.append(errors['FN']/ngt)
+            record_mt.append(errors['MT']/ngt)
+            record_mo.append(errors['MO']/ngt)
+            record_cd.append(abs(cd))
+            record_fit.append(fit)
+            record_fio.append(fio)
             
             # id_errors = self.calculate_identification_errors(frame)
             # total_tp += id_errors['TP']
@@ -882,8 +906,21 @@ class tracker_evaluation:
                     "OP": round((op),3)     #Untested
                     }
 
+        # Runs through history of the errors, normalized to compare errors over time, between videos 
+        #NOTE tp and op are not recorded because those are performance across the entire video
+        recorded_results = {
+            "Frames":record_frames,
+            "FP":record_fp,
+            "FN":record_fn,
+            "MT":record_mt,
+            "MO":record_mo,
+            "CD":record_cd,
+            "FIT":record_fit,
+            "FIO":record_fio
+        }
+
         print("\nNORMALIZED", normalized_results)
-        return normalized_results
+        return normalized_results, recorded_results
         # return results, normalized_results
 
     def compute_iou(self, box, boxes, ratios=(1,1), frame=None):
@@ -1065,5 +1102,5 @@ if __name__ == "__main__":
     te.load_json("F:/MONKE_Ground_Truth/Gallery Videos/Contemporary/GOPR4190/", fps=60)
     
     te.identification_graph()
-    errors = te.calculate_errors()
+    errors, errors_dict = te.calculate_errors()
     print(errors)
