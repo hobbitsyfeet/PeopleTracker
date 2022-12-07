@@ -50,7 +50,7 @@ class tracker_evaluation:
 
         
         self.threshold_to = 0.8
-        self.threshold_tc = 0.5
+        self.threshold_tc = 0.5 # Used for evaluating F-Measure, Higher F-value, the higher allowed error.
 
         self.id_map = {}
 
@@ -159,15 +159,15 @@ class tracker_evaluation:
                             added = True
                             break
                     if not added:
-                        id_map_colors.append(0) 
+                        id_map_colors.append(-20) 
                         
                 else:
-                    id_map_colors.append(0)
+                    id_map_colors.append(-20)
 
         self.gt_map, self.es_map = self.calculate_identification_map()
     
-        ax.scatter(frame_number, data, c=id_map_colors,  cmap="inferno", marker="s", s=80)
-        ax.scatter(frame_number, data, c=cmap,  cmap="RdYlGn", marker=".", s=50)  # Plot some data on the axes.
+        ax.scatter(frame_number, data, c=id_map_colors,  cmap="Spectral", marker="s", s=80)
+        ax.scatter(frame_number, data, c=cmap,  cmap="inferno", marker=".", s=50)  # Plot some data on the axes.
         
         plt.show(block = False)
 
@@ -500,12 +500,12 @@ class tracker_evaluation:
         
         majority_vote_estimates = {}
         for es in self.list_estimates():
-            print(es)
+            # print(es)
             # Majority = ((label,estimate), count)
             majority = None
             for pair in e_map.keys():
                 # Assign the majority to the first
-                print(es, pair)
+                # print(es, pair)
                 if es == pair[0]:
                     
                     if majority is None:

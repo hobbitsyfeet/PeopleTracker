@@ -906,8 +906,10 @@ if __name__ == "__main__":
                 input_dialog.load_predictions_state = False
             
             if input_dialog.track_preds_state is True and bool(pred_dict) is True:
+                export_filename = str(videoPath[:-4]) + "Predictions_Ids.csv"
                 input_dialog.track_preds_state = False
-                maskrcnn.track_predictions(pred_dict, videoPath, preview=True)
+                prediction_dict = maskrcnn.track_predictions(pred_dict, videoPath, preview=True)
+                prediction_dict.to_csv(export_filename)
             
             if input_dialog.export_charactoristics:
                 print("Exporting")
@@ -1000,6 +1002,8 @@ if __name__ == "__main__":
                 input_dialog.scrollbar_changed = True
                 input_dialog.set_pause_state()
                 input_dialog.set_all_tabs("Read")
+                # When we reach the end of the video, actively selected trackers turn to read only (trackerID = None then) and we assign END_VIDEO tag to it.
+                activity_logger.paused(fvs.frame_number, "END_VIDEO", "END_VIDEO", None)
                 # activity_logger.end_timer(activity_logger.start_time_ID)
             
             # if input_dialog.get_scrollbar_value() == 0 and fvs.frame_number != input_dialog.get_scrollbar_value():

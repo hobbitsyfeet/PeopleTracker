@@ -21,10 +21,10 @@ class CentroidTracker():
         # need to deregister the object from tracking
         self.maxDisappeared = maxDisappeared
 
-    def register(self, centroid, filter=None):
+    def register(self, centroid, corners,  filter=None):
         # when registering an object we use the next available object
         # ID to store the centroid
-        self.objects[self.nextObjectID] = centroid
+        self.objects[self.nextObjectID] = (centroid, corners)
         self.disappeared[self.nextObjectID] = 0
         if filter is not None:
             self.filters[self.nextObjectID] = filter
@@ -34,12 +34,14 @@ class CentroidTracker():
     def deregister(self, objectID):
         # to deregister an object ID we delete the object ID from
         # both of our respective dictionaries
+        print("Deleting:", objectID)
         del self.objects[objectID]
         del self.disappeared[objectID]
 
     def update(self, rects, are_centroids=False):
         # check to see if the list of input bounding box rectangles
         # is empty
+        box_corners = []
         if len(rects) == 0:
             # loop over any existing tracked objects and mark them
             # as disappeared
@@ -59,12 +61,15 @@ class CentroidTracker():
         if are_centroids is False:
             # initialize an array of input centroids for the current frame
             inputCentroids = np.zeros((len(rects), 2), dtype="int")
+            box_corners = np.zeros((len(rects), 4), dtype="int")
 
             # loop over the bounding box rectangles
             for (i, (startX, startY, endX, endY)) in enumerate(rects):
                 # use the bounding box coordinates to derive the centroid
                 cX = int((startX + endX) / 2.0)
                 cY = int((startY + endY) / 2.0)
+                # box_corners.append((startX, startY, endX, endY))
+                box_corners[i] = (startX, startY, endX, endY)
                 inputCentroids[i] = (cX, cY)
 
         else:
@@ -72,12 +77,13 @@ class CentroidTracker():
             inputCentroids = np.zeros((len(rects), 2), dtype="int")
             for i, rect in enumerate(rects):
                 inputCentroids[i] = rect
+                box_corners[i] = (startX, startY, endX, endY)
 
         # if we are currently not tracking any objects take the input
         # centroids and register each of them
         if len(self.objects) == 0:
             for i in range(0, len(inputCentroids)):
-                self.register(inputCentroids[i])
+                self.register(inputCentroids[i], box_corners[i])
 
         # otherwise, are are currently tracking objects so we need to
         # try to match the input centroids to existing object
@@ -85,14 +91,25 @@ class CentroidTracker():
         else:
             # grab the set of object IDs and corresponding centroids
             objectIDs = list(self.objects.keys())
-            objectCentroids = list(self.objects.values())
+            values = list(self.objects.values())
+            centroid_array = np.zeros((len(objectIDs), 2), dtype="int")
+
+            for i, val in enumerate(values):
+                centroid = val[0]
+                centroid_array[i][0] = centroid[0]
+                centroid_array[i][1] = centroid[1]
+            objectCentroids = centroid_array
+            # objectCentroids = 
+            print(objectCentroids.shape)
+            # objectCentroids = np.array([objectCentroids])
             objectFilters = list(self.filters.values())
 
             # compute the distance between each pair of object
             # centroids and input centroids, respectively -- our
             # goal will be to match an input centroid to an existing
             # object centroid
-            D = dist.cdist(np.array(objectCentroids), inputCentroids)
+            D = dist.cdist(objectCentroids, inputCentroids)
+            print(D)
 
             # in order to perform this matching we must (1) find the
             # smallest value in each row and then (2) sort the row
@@ -125,7 +142,8 @@ class CentroidTracker():
                 # set its new centroid, and reset the disappeared
                 # counter
                 objectID = objectIDs[row]
-                self.objects[objectID] = inputCentroids[col]
+                self.objects[objectID] = (inputCentroids[col], box_corners[col])
+                # print(self.objects[objectID])
                 self.disappeared[objectID] = 0
 
                 # indicate that we have examined each of the row and
@@ -161,7 +179,7 @@ class CentroidTracker():
             # register each new input centroid as a trackable object
             else:
                 for col in unusedCols:
-                    self.register(inputCentroids[col])
+                    self.register(inputCentroids[col], box_corners[col])
 
         # return the set of trackable objects
         return self.objects

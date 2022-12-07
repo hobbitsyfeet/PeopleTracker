@@ -1,5 +1,10 @@
 '''
 Model from: https://github.com/Superlee506/Mask_RCNN_Humanpose
+
+Cuda Version 10.1
+CUDNN Version
+                         # tensorflow==2.4.0 (Could be wrong??? just use GPU)d
+Tensorflow version 2.3.0 # tensorflow-gpu==2.3.0
 '''
 
 import cv2
@@ -103,7 +108,8 @@ def predict(filename, model="mask_rcnn_coco_person.h5", class_names=["BG", "pers
     '''
     from pixellib.instance import custom_segmentation
     import tensorflow as tf
-    
+    print("Using Tensorflow: ", tf. __version__) 
+
     gpus = tf.config.experimental.list_physical_devices('GPU')
     if gpus:
         try:
@@ -243,7 +249,25 @@ def compute_iou(box, boxes, boxes_area, ratios=(1,1), frame=None):
 
     return ious, frame
 
-def track_predictions(pred_dict, video, method = 0, id_prefix="P", KalmanFilter=KalmanPred(), buffer=10, preview=True):
+def track_predictions(pred_dict, video, method = 0, id_prefix="P", KalmanFilter=KalmanPred(), ratios=(1,1), buffer=10, preview=True):
+    
+    # pred_track_dict = {}
+
+    Frames = []
+    Name = []
+    Id = []
+    Pixel_Loc_x = []
+    Pixel_Loc_y = []
+    BBox_TopLeft_x = []
+    BBox_TopLeft_y = []
+    BBox_BottomRight_x = []
+    BBox_BottomRight_y = []
+    FrameRate = []
+    Max_Pixel_X = []
+    Max_Pixel_Y = []
+    
+    
+
     ct = CentroidTracker(buffer)
     # ct = NewCentroidTracker(buffer, KalmanFilter)
 
@@ -254,10 +278,12 @@ def track_predictions(pred_dict, video, method = 0, id_prefix="P", KalmanFilter=
 
 
     for frame_num in pred_dict.keys():
-        print(frame_num)
+        # print(frame_num)
         cap.set(cv2.CAP_PROP_POS_FRAMES, frame_num)
         ret, frame = cap.read() 
         boxes = pred_dict[frame_num][0]
+
+        # show the frame and don't do anything if there are no predictions
         if boxes == [()]:
             cv2.imshow("IDs", frame)
             key = cv2.waitKey(1)
@@ -287,25 +313,62 @@ def track_predictions(pred_dict, video, method = 0, id_prefix="P", KalmanFilter=
         # update our centroid tracker using the computed set of bounding
         # box rectangles
         objects = ct.update(boxes)
+        # print(objects)
 
-        if preview:
-            # loop over the tracked objects
-            for (objectID, centroid) in objects.items():
-                # draw both the ID of the object and the centroid of the
+        # track_object = boxe
+        # if preview:
+        # index = 0
+        # print("BOXES LENGTH", boxes, len(boxes))
+        # loop over the tracked objects
+        # print(len(objects))
+        for ObjectId in objects.keys():
+            data = objects[ObjectId]
+            centroid = data[0]
+            box = data[1]
+
+            x1 = int(box[0]*ratios[0])
+            y1 = int(box[1]*ratios[1])
+            x2 = int(box[2]*ratios[0])
+            y2 = int(box[3]*ratios[1])
+            
+            # draw both the ID of the object and the centroid of the
+            Frames.append(frame_num)
+            Name.append(ObjectId)
+            Id.append(ObjectId)
+            Pixel_Loc_x.append(centroid[0])
+            Pixel_Loc_y.append(centroid[1])
+            BBox_TopLeft_x.append(x1)
+            BBox_TopLeft_y.append(cap.get(cv2.CAP_PROP_FRAME_HEIGHT) - y1)
+            BBox_BottomRight_x.append(x2)
+            BBox_BottomRight_y.append(cap.get(cv2.CAP_PROP_FRAME_HEIGHT) - y2)
+            FrameRate.append(cap.get(cv2.CAP_PROP_FPS))
+            Max_Pixel_X.append(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
+            Max_Pixel_Y.append(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
+
+            if preview:
                 # object on the output frame
-                text = "ID {}".format(objectID)
+                text = "ID {}".format(ObjectId)
                 cv2.putText(frame, text, (centroid[0] - 10, centroid[1] - 10),
                     cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
                 cv2.circle(frame, (centroid[0], centroid[1]), 4, (0, 255, 0), -1)
+                cv2.rectangle(frame, (x1,y1), (x2,y2), (150,150,0), 1)
 
-            cv2.imshow("IDs", frame)
-            key = cv2.waitKey(1)
+        cv2.imshow("IDs", frame)
+        key = cv2.waitKey(1)
 
-            if key == ord('q'):
-                print("QUITTING")
-                cv2.destroyWindow("IDs")
-                break
-    return
+        if key == ord('q'):
+            print("QUITTING")
+            cv2.destroyWindow("IDs")
+            break
+        
+        predicted_ids = {"Frame_Num": Frames, "Name":Name, "ID":Id, "Pixel_Loc_x":Pixel_Loc_x, "Pixel_Loc_y":Pixel_Loc_y, 
+                        "BBox_TopLeft_x":BBox_TopLeft_x, "BBox_TopLeft_y":BBox_TopLeft_y, 
+                        "BBox_BottomRight_x":BBox_BottomRight_x,"BBox_BottomRight_y":BBox_BottomRight_y, 
+                        "FrameRate":FrameRate, "Max_Pixel_x":Max_Pixel_X, "Max_Pixel_y":Max_Pixel_Y
+        }
+        output_dict = pd.DataFrame(predicted_ids)
+
+    return output_dict
 
 NEAREST_CENTROID = 0
 NEAREST_CORNERS = 1
@@ -481,7 +544,7 @@ NEAREST_KALMAN = 5
 
 #     return 
 if __name__ == "__main__":
-    # predict("./videos/(Simple) GP014125.MP4",display=True,step=100)
+    predict("./videos/(Simple) GP014125.MP4",display=True,step=100)
 
     # box_1 = (485, 461, 714, 588)
     # area_1 = (box_1[0] - box_1[2]) * (box_1[1] - box_1[3])

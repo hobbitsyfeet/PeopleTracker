@@ -86,9 +86,9 @@ class App(QWidget):
     def test_method(self):
         print('key pressed')
 
-    def evaluate_errors(self):
-        filename = str(self.filename[:-4]) + ".csv"
-        print(filename)
+    def evaluate_errors(self, filename):
+        # filename = str(self.filename[:-4]) + ".csv"
+        # print(filename)
         te = evaluate.tracker_evaluation()
 
         te.load_tracker_data(filename)
@@ -222,7 +222,8 @@ class App(QWidget):
             elif q.text() == "Image Options":
                 self.image_options.show()
             elif q.text() == "Evaluate Errors":
-                self.evaluate_errors()
+                csv, _ = QFileDialog.getOpenFileName(self,"QFileDialog.getOpenFileName()", "Select Tracked CSV","CSV (*.csv);;All Files (*)")
+                self.evaluate_errors(csv)
             elif q.text() == "Train":
                 self.train_model()
             elif q.text() == "Track Predictions":

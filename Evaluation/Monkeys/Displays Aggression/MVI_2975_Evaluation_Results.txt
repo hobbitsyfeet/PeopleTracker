@@ -1,0 +1,9 @@
+False Positive (FP):		0.178
+False Negative (FN):		0.859
+Multiple Trackers (MT):		0.003
+Multiple Objects (MO):		0.0
+Configuration Distance (CD):	0.863
+Falsely Identified Tracker (FIT):	0.095
+Falsely Identified Object (FIO):	0.047
+Tracker Purity (TP):		0.797
+Object Purity (OP):		0.265
