@@ -877,6 +877,30 @@ if __name__ == "__main__":
 
         while True:
             QCoreApplication.processEvents()
+
+                                   
+            if input_dialog.del_frame:
+                input_dialog.snap_state = "Backward"
+                selected_tracker = input_dialog.tabs.currentIndex()
+                # input_dialog.tab_list[selected_tracker].read_only = True
+                if input_dialog.tab_list[selected_tracker].read_only is False:
+                    input_dialog.tab_list[selected_tracker].toggle_read()
+                # delete data dictionary key on active tracker
+                # print("Deleting frame number", fvs.frame_number)
+                # print(tracker_list[selected_tracker].data_dict.keys())
+
+                if (fvs.frame_number) in tracker_list[selected_tracker].data_dict.keys():
+                    del tracker_list[selected_tracker].data_dict[(fvs.frame_number)]
+
+                    input_dialog.del_frame = False
+                if (fvs.frame_number-fvs.skip_value) in tracker_list[selected_tracker].data_dict.keys():
+                    del tracker_list[selected_tracker].data_dict[(fvs.frame_number-fvs.skip_value)]
+                    input_dialog.del_frame = False
+                else:
+                    input_dialog.log("No track to remove on this frame.")
+                    input_dialog.del_frame = False
+
+
             # This is needed for activity logger to end pause timers
             if input_dialog.pause_to_play:
                 print("Playing...")

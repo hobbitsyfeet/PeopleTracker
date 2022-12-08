@@ -59,7 +59,8 @@ class App(QWidget):
         self.export_charactoristics = False
         self.export_activity = False
 
-        
+        self.del_frame = False
+        self.del_active_frame = False
         
         
     
@@ -242,8 +243,10 @@ class App(QWidget):
                 self.export_charactoristics = True
             elif q.text() == "Export Activity":
                 self.export_activity = True
-
-
+            elif q.text() == "Remove Tracked Frame":
+                self.del_frame = True
+            elif q.text() == "Remove All Active Tracked Frame":
+                self.del_active_frame = True
 
             
 
@@ -319,6 +322,12 @@ class App(QWidget):
             del_region = QAction("Delete Region", self)
             del_region.setShortcut("Ctrl+Shift+R")
 
+            remove_tracked_frame = QAction("Remove Tracked Frame", self)
+            remove_tracked_frame.setShortcut("Backspace")
+
+            remove_all_active_tracked_frame = QAction("Remove All Active Tracked Frame", self)
+            remove_all_active_tracked_frame.setShortcut("Shift+Backspace")
+
             set_all_read = QAction("Set All Read", self)
             set_all_write = QAction("Set All Write", self)
 
@@ -350,6 +359,8 @@ class App(QWidget):
 
             # edit2 = file.addMenu("Edit")
             # AddTab	Ctrl+T
+            edit.addAction(remove_tracked_frame)
+            edit.addAction(remove_all_active_tracked_frame)
             edit.addAction(add_region)
             edit.addAction(del_region)
             edit.addAction(snap_closest)
