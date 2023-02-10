@@ -875,11 +875,13 @@ def load_tracker_data(csv, input_dialog, frame):
         tracker_data["Sex"] = tracker_data["Sex"].fillna("")
         tracker_data["Description"] = tracker_data["Description"].fillna("")
         tracker_data["Group_Size"] = tracker_data["Group_Size"].fillna(0)
+        tracker_data["Region"] = tracker_data["Region"].fillna("")
         print(tracker_data.iloc[1])
         # Build tab info, this tab info is used to build the tracker
         new_tab.name_line.setText(tracker_data["Name"].iloc[1])
         new_tab.id_line.setText(tracker_data["ID"].iloc[1])
         new_tab.sex_line.setText(str(tracker_data["Sex"].iloc[1]))
+        new_tab.group_line.setText(str(tracker_data["Group_Size"].iloc[1]))
 
         description_text = ""
         if tracker_data["Description"].iloc[1] == "":
@@ -894,6 +896,7 @@ def load_tracker_data(csv, input_dialog, frame):
         new_tab.read_only_button.setChecked(True)
         new_tab.read_only = True
         new_tab.beginning_button.setChecked(eval(tracker_data["Present At Beginning"].iloc[1]))
+
 
 
         
