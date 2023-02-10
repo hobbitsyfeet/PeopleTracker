@@ -948,7 +948,7 @@ def load_tracker_data(csv, input_dialog, frame):
         tracker.box = tracker.init_bounding_box
         tracker.auto_assign(frame, xywh=((x-int(w/2)), (y - int(h/2)), (x + int(w/2)), (y + int(h/2))))
 
-        cv2.imshow("Loading", frame)
+        #cv2.imshow("Loading", frame)
         # tracker.auto_assign(frame, (p1[0], p1[1], p2[0], p2[1]))
         # self.tracker.init(frame, init_bounding_box)
 
