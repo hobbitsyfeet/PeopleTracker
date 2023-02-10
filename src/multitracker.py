@@ -1,44 +1,43 @@
 # -*- coding: utf-8 -*-
-from fileinput import filename
-import math
 import multiprocessing
 import os
 import sys
 import traceback
+import glob
 # from collections import deque
 # from multiprocessing.pool import ThreadPool
-from random import randint
-from sys import exit
+
+import PyQt5 
+# from PyQt5 import QtCore
+# from PyQt5 import QtWidgets
 
 import cv2
 import exiftool
 import numpy as np
 import pandas as pd
 
-from PyQt5.QtCore import QCoreApplication
-from PyQt5.QtWidgets import (QApplication, QComboBox, QInputDialog, QLineEdit,
-                             QMessageBox, QWidget,QSplashScreen)
-
+# from PyQt5.QtCore import QCoreApplication
+# from PyQt5.QtWidgets import QApplication, QInputDialog
 import crashlogger
 import datalogger
 
 #import mbox
 import qt_dialog
-from Video import FileVideoStream, STFileVideoStream
+# from Video import STFileVideoStream
+import Video
 import filters
 import regression
 from Regions import Regions
 
 import evaluate
-
 CPU_COUNT = multiprocessing.cpu_count()
 
 #start tracking version at 1.0
-PEOPLETRACKER_VERSION = 2.7
+PEOPLETRACKER_VERSION = 2.8
 
 
 class MultiTracker():
-    def __init__(self, tab, name="Person", colour=(255,255,255)):    
+    def __init__(self, tab, colour=(255,255,255)):    
         self.name = tab.name_line
         self.pid = tab.id_line
         self.colour = colour
@@ -198,7 +197,7 @@ class MultiTracker():
             #     showCrosshair=True)
         if self.init_bounding_box[2] == 0 or self.init_bounding_box[3] == 0:
             input_dialog.log("No object selected, draw a rectangle with an area larger than 0, Try again")
-            self.self.init_bounding_box = None
+            self.init_bounding_box = None
             return
 
         input_dialog.log("Bounding Box Coordinates: " + str(self.init_bounding_box))
@@ -212,39 +211,42 @@ class MultiTracker():
             self.reset = True
 
         if self.reset is True:
-            try:
-                input_dialog.log("Setting Location")
-                del self.tracker
-                self.create(tracker_type)
-                self.tracker.init(frame, self.init_bounding_box)
-                input_dialog.log(("Setting Location Successful. " + "Bounding Box Coordinates: " + str(self.init_bounding_box)))
-                
-                # Tell the predictors to reset
-                self.box_predictor[0].reset()
-                self.box_predictor[1].reset()
-                self.predictor.reset()
-
-            except Exception as e:
-                crashlogger.log(str(e))
-                input_dialog.log("Setting Location Failed.")
-    
-
-    def auto_assign(self, frame, bounding_box, tracker_type="CSRT"):
-        try:
-            # print(self.init_bounding_box)
-            # print(bounding_box)
-            width = bounding_box[2] - bounding_box[0]
-            height = bounding_box[3] - bounding_box[1]
-            bounding_box = [bounding_box[0], bounding_box[1], width, height]
-            # print(bounding_box)
+            # try:
             input_dialog.log("Setting Location")
             del self.tracker
             self.create(tracker_type)
-            self.tracker.init(frame, bounding_box)
-            input_dialog.log("Setting Location Successful.")
-        except Exception as e:
-            crashlogger.log(str(e))
-            input_dialog.log("Setting Location Failed.")
+            self.tracker.init(frame, self.init_bounding_box)
+            input_dialog.log(("Setting Location Successful. " + "Bounding Box Coordinates: " + str(self.init_bounding_box)))
+            
+            # Tell the predictors to reset
+            self.box_predictor[0].reset()
+            self.box_predictor[1].reset()
+            self.predictor.reset()
+
+            # except Exception as e:
+            #     crashlogger.log(str(e))
+            #     input_dialog.log("Setting Location Failed.")
+    
+
+    def auto_assign(self, frame, bounding_box=None, xywh=None, tracker_type="CSRT"):
+        # try:
+        # print(self.init_bounding_box)
+        # print(bounding_box)
+        if xywh is None:
+            width = bounding_box[2] - bounding_box[0]
+            height = bounding_box[3] - bounding_box[1]
+            bounding_box = [bounding_box[0], bounding_box[1], width, height]
+        else:
+            bounding_box = xywh
+        # print(bounding_box)
+        input_dialog.log("Setting Location")
+        del self.tracker
+        self.create(tracker_type)
+        self.tracker.init(frame, bounding_box)
+        input_dialog.log("Setting Location Successful.")
+        # except Exception as e:
+        #     crashlogger.log(str(e))
+        #     input_dialog.log("Setting Location Failed.")
 
     def update_tracker(self, frame):
         """
@@ -309,18 +311,18 @@ class MultiTracker():
         """
         pass
 
-    def export_data(self, vid_width, vid_height, vid_name, fps):
+    def export_data(self, vid_width, vid_height, vid_name, fps, new_version=None):
         """
         Exports the recorded data and appends constants such as name, total time recorded, and pixel percent Loc
         """
         # if not os.path.exists(("./data/" + vid_name[:-4])):
         #     os.makedirs(("./data/" + vid_name[:-4]))
         # self.data_dict[frame] = (point, regions, dimensions, other_room, total_people, self.is_chair())
-        input_dialog.log(self.data_dict)
+        # input_dialog.log(self.data_dict)
 
         #Generate the base dataframe to fill and file
         export_filename = str(vid_name[:-4]) + ".csv"
-
+        
         frames = list(self.data_dict.keys())
         location = list(self.data_dict.values())
 
@@ -478,6 +480,26 @@ class MultiTracker():
             }
         
         df = pd.DataFrame(export_df)
+
+        
+        # If version, check for new versions
+        if new_version is not None:
+            out_path, old_filename = os.path.split(vid_name)
+            new_filename = (out_path + "/" + new_version[0])
+
+            # If file does not exist, generate metadata
+            files = glob.glob((out_path+"/*.csv"))
+            file_exists = False
+            for file in files:
+                if new_version[0] in file:
+                    file_exists = True
+            
+            if not file_exists:
+                export_meta(vid_name, output_csv=new_filename)
+
+            # change export filename to the new version
+            export_filename = new_filename
+        
         export_csv = df.to_csv (export_filename, index = None, header=False, mode='a') #Don't forget to add '.csv' at the end of the path
 
         self.data_dict = dict()
@@ -676,7 +698,7 @@ def export_null_meta(vid_dir):
 
         input_dialog.log("Exported Null Metadata!")
         
-def export_meta(vid_dir):
+def export_meta(vid_dir, output_csv=None):
     """
     Exports a start line into a CSV with the same name as the video. This CSV will initialize with a set of columns on the left
     with dashed lines for recorded data, and a set of columns on the right with Metadata.
@@ -687,13 +709,35 @@ def export_meta(vid_dir):
     #get metadata from filepath
     #NOTE: Exiftool must be in path to access, otherwise pass a string to the path.
     try:
-        with exiftool.ExifTool() as et:
-            metadata = et.get_metadata(vid_dir)
+
+        with exiftool.ExifToolHelper(executable="F:/Exiftool/exiftool.exe") as et:
+            metadata = et.get_metadata(vid_dir)[0]
+            print(metadata)
+            print("collected metadata")
+
     except Exception as e:
-        crashlogger.log(str(e))
-        print("Could not collect")
-        export_null_meta(vid_dir)
-        return False
+        print(e)
+
+        try:
+            # if LooseVersion(exiftool.__version__) < LooseVersion("0.5.5"):
+            try:
+                with exiftool.ExifTool() as et:
+                    metadata = et.get_metadata(vid_dir)
+                    print(metadata)
+            except Exception as e:
+                print(e)
+                with exiftool.ExifToolHelper() as et:
+                    metadata = et.get_metadata(vid_dir)[0]
+                    print(metadata)
+        except Exception as e:
+            crashlogger.log(str(e))
+            print("Could not collect")
+            export_null_meta(vid_dir)
+
+
+
+
+            # return False
 
     # try:
         #Parse date data into [YYYY MM DD HH MM SS]
@@ -706,7 +750,10 @@ def export_meta(vid_dir):
     hours = int(((minutes)/60)%60)
     print(hours, minutes, seconds)
     #Create path string for exporting the data. It's just a change of extention.
-    export_filename = str(vid_dir[:-4]) + ".csv"
+    if output_csv is not None:
+        export_filename = output_csv
+    else:
+        export_filename = str(vid_dir[:-4]) + ".csv"
     print(metadata)
     try: 
 
@@ -782,17 +829,143 @@ def export_meta(vid_dir):
         export_csv = df.to_csv (export_filename, index = None, header=True)
 
         input_dialog.log("Export Metadata Complete!")
-        return metadata
+        # return metadata
     return metadata
-    
+
+
+def load_tracker_data(csv, input_dialog, frame):
+    print("Loading csv")
+    new_trackers = []
+
+    df = pd.read_csv(csv)
+    df = df.loc[1:] # Ignore first line, this is metadata
+    df[["Name"]].fillna("")
+    df[["ID"]].fillna("")
+
+    # make sure columns are the proper data types
+    # df["Present At Beginning"] = df["Present At Beginning"].astype('bool')
+    # df["Other_Room"] = df["Other_Room"].astype('bool')
+    # df["Chair"] = df["Chair"].astype('bool')
+
+    # df["Frame_Num"] = df["Frame_Num"].astype('int32')
+
+
+    # unique_trackers = df.groupby(['Name','ID'], as_index=False).size()
+    # unique_trackers = df.groupby(['Name','ID']).size().reset_index().rename(columns={0:'count'})
+    # print
+    unique_trackers = df[['Name', 'ID']].drop_duplicates()
+    unique_trackers = unique_trackers[unique_trackers['Name'].notna()]
+    for name_index in range(len(unique_trackers)):
+        print(name_index)
+        # get the unique ids
+        name = unique_trackers["Name"].iloc[name_index]
+        pid = unique_trackers["ID"].iloc[name_index]
+
+
+        # grab all the columns where this data exists.
+        tracker_data = df.loc[(df['Name'] == name)]
+        # print(tracker_data)
+        # Add a new tab to the 
+        tab_index, new_tab = input_dialog.add_tab()
+        input_dialog.add_tab_state = False
+
+        # Fill string columns NaN to empty string
+        tracker_data["Name"] = tracker_data["Name"].fillna("")
+        tracker_data["ID"] = tracker_data["ID"].fillna("")
+        tracker_data["Sex"] = tracker_data["Sex"].fillna("")
+        tracker_data["Description"] = tracker_data["Description"].fillna("")
+        tracker_data["Group_Size"] = tracker_data["Group_Size"].fillna(0)
+        print(tracker_data.iloc[1])
+        # Build tab info, this tab info is used to build the tracker
+        new_tab.name_line.setText(tracker_data["Name"].iloc[1])
+        new_tab.id_line.setText(tracker_data["ID"].iloc[1])
+        new_tab.sex_line.setText(str(tracker_data["Sex"].iloc[1]))
+
+        description_text = ""
+        if tracker_data["Description"].iloc[1] == "":
+            description_text = str(tracker_data["Description"].iloc[1]) + "V"
+        else:
+            description_text = str(tracker_data["Description"].iloc[1]) + "\nV"
+
+        description_text += str(input_dialog.newest_version)
+
+        new_tab.desc_line.setPlainText(description_text)
+        new_tab.update_length_tracked(float(tracker_data["Total_Sec_Rec"].iloc[1]))
+        new_tab.read_only_button.setChecked(True)
+        new_tab.read_only = True
+        new_tab.beginning_button.setChecked(eval(tracker_data["Present At Beginning"].iloc[1]))
+
+
+        
+        # Build new tracker with info loaded
+        tracker = MultiTracker(new_tab)
+        tracker.reset = True
+        
+        # Assign static variables not from tab to Multitracker object
+        # tracker.beginning = 
+
+        
+        # Populate data dict
+        for index, row in tracker_data.iterrows():
+            frame_num = int(row["Frame_Num"])
+            center = (float(row["Pixel_Loc_x"]), float(row["Max_Pixel_y"]) - float(row["Pixel_Loc_y"]) )
+            regions = str(row["Region"]).strip("[]").split(", ")
+            height = abs(float(row["BBox_TopLeft_y"]) - float(row["BBox_BottomRight_y"]))
+            width = abs(float(row["BBox_TopLeft_x"]) - float(row["BBox_BottomRight_x"]) )
+
+            dimensions = (int(width), int(height))
+
+            other_room = eval(row["Other_Room"])
+            is_chair = eval(row["Chair"])
+            total_people = int(row["Total_People"])
+
+
+            tracker.data_dict[frame_num] = (center, regions, dimensions, other_room, total_people, is_chair)
+        
+        current_frame = input_dialog.get_scrollbar_value()
+        tracked_frames = list(tracker.data_dict.keys())
+
+        # Set tracker to closest frame
+        closest = tracked_frames[0]
+        min_difference = abs(current_frame - closest)
+        for value in tracked_frames[1:]:
+            difference = abs(current_frame - value)
+            if difference < min_difference:
+                closest = value
+                min_difference = difference
+
+        print(closest)
+
+        data = tracker.data_dict[closest]
+
+        w = int(data[2][0])
+        h = int(data[2][1])
+        x = int(data[0][0])
+        y = int(data[0][1])
+        tracker.init_bounding_box = (x, y, w, h)
+        frame = cv2.circle(frame, center=(x,y), radius=3, color=(5,5,5), thickness=2)
+        frame = cv2.rectangle(frame, (x-int(w/2), y - int(h/2)), (x + int(w/2), y + int(h/2)), color = (255, 0, 0), thickness = 2)
+        tracker.box = tracker.init_bounding_box
+        tracker.auto_assign(frame, xywh=((x-int(w/2)), (y - int(h/2)), (x + int(w/2)), (y + int(h/2))))
+
+        cv2.imshow("Loading", frame)
+        # tracker.auto_assign(frame, (p1[0], p1[1], p2[0], p2[1]))
+        # self.tracker.init(frame, init_bounding_box)
+
+        # Append new tracker to list
+        new_trackers.append(tracker)
+
+
     #Close all applications.
     # sys.exit(app.exec_())
     # cap.release()
     # fvs.stop()
     # cv2.destroyAllWindows()
-
+    print("End of loading.")
+    return new_trackers, frame
 #This main is used to test the time
 if __name__ == "__main__":
+    startup_video = "K:/Github/PeopleTracker/Evaluation/People/John Scott/GP020002.MP4"
     try:
             # initialize the log settings
         # logging.basicConfig(filename = 'app.log', level = logging.INFO)
@@ -800,8 +973,9 @@ if __name__ == "__main__":
         trackerName = 'CSRT'
 
         #Create QT application for the UI
-        app = QApplication(sys.argv)
-        input_dialog = qt_dialog.App()
+        app = PyQt5.QtWidgets.QApplication(sys.argv)
+
+        input_dialog = qt_dialog.App(startup_video)
         
 
         #Get the video path from UI
@@ -809,8 +983,10 @@ if __name__ == "__main__":
         
 
         input_dialog.log("Populating UI")
+
         #Given the path, export the metadata and setup the csv for data collection
         metadata = export_meta(videoPath)
+        print(metadata)
         activity_logger = datalogger.DataLogger(videoPath, video_metadata=metadata)
         
         
@@ -845,7 +1021,7 @@ if __name__ == "__main__":
         cap.set(cv2.CAP_PROP_FRAME_WIDTH, input_dialog.resolution_x)
         cap.set(cv2.CAP_PROP_FRAME_HEIGHT, input_dialog.resolution_y)
         # fvs = FileVideoStream(videoPath).start()
-        fvs = STFileVideoStream(videoPath)
+        fvs = Video.STFileVideoStream(videoPath)
 
         # ret, frame = cap.read()
 
@@ -876,13 +1052,27 @@ if __name__ == "__main__":
         snap_called = False
 
         while True:
-            QCoreApplication.processEvents()
+            PyQt5.QtCore.QCoreApplication.processEvents()
 
-                                   
+            if input_dialog.load_tracked_video_state:
+                # import_filename = str(videoPath[:-4]) + ".csv"
+                import_filename = input_dialog.openFileNameDialog(task="Select CSV to load Tracker Data", extensions="*.csv")
+                loaded_trackers, frame = load_tracker_data(import_filename, input_dialog, frame)
+                tracker_list.extend(loaded_trackers)
+                input_dialog.load_tracked_video_state = False                
+
             if input_dialog.del_frame:
                 input_dialog.snap_state = "Backward"
                 selected_tracker = input_dialog.tabs.currentIndex()
                 # input_dialog.tab_list[selected_tracker].read_only = True
+                activity_logger.adjustment(frame_number=frame_number, 
+                                            from_box=(top_left_x, top_left_y, (top_left_x + width), (top_left_y + height)), 
+                                            to_box=None, 
+                                            timer_id="DELETE_FRAME",
+                                            tracker_id=tracker_list[tracker_num].get_name(),
+                                            intervention_type="USER"
+                                            )
+
                 if input_dialog.tab_list[selected_tracker].read_only is False:
                     input_dialog.tab_list[selected_tracker].toggle_read()
                 # delete data dictionary key on active tracker
@@ -899,6 +1089,7 @@ if __name__ == "__main__":
                 else:
                     input_dialog.log("No track to remove on this frame.")
                     input_dialog.del_frame = False
+
 
 
             # This is needed for activity logger to end pause timers
@@ -922,7 +1113,16 @@ if __name__ == "__main__":
                 input_dialog.export_all_state = False
                 for tracker in tracker_list:
                     if tracker.data_dict: # Check if dataframe is empty before exporting.
-                        tracker.export_data(input_dialog.resolution_x, input_dialog.resolution_y, videoPath, vid_fps)
+                        if input_dialog.was_loaded:
+                            input_dialog.log("Exporting to new version")
+                            tracker.export_data(input_dialog.resolution_x, input_dialog.resolution_y, videoPath, vid_fps, new_version=input_dialog.get_new_data_version())
+                            input_dialog.data_version_updated = False
+                        else:
+                            tracker.export_data(input_dialog.resolution_x, input_dialog.resolution_y, videoPath, vid_fps)
+
+                # When we export everything assume loaded data is all exported so we do not overwrite
+                
+
 
             if input_dialog.load_predictions_state is True:
                 pred_dict = maskrcnn.load_predicted((videoPath[:-4] + "_predict.csv"))
@@ -938,7 +1138,7 @@ if __name__ == "__main__":
             if input_dialog.export_charactoristics:
                 print("Exporting")
                 export_filename = str(videoPath[:-4])
-                text, ok = QInputDialog.getText(input_dialog, 'Video Location', 'Enter Recorded Location:')
+                text, ok = PyQt5.QtWidgets.QInputDialog.getText(input_dialog, 'Video Location', 'Enter Recorded Location:')
                 activity_logger.video_location = text
                 activity_logger.get_video_characteristics()
                 activity_logger.export_charactoristics(export_filename)
@@ -1187,7 +1387,11 @@ if __name__ == "__main__":
                 height = cap.get(cv2.CAP_PROP_FRAME_HEIGHT) # float
                 try:
                     if tracker_list[selected_tracker].data_dict: # Ensure data exists in dictionary before exporting
-                        tracker_list[selected_tracker].export_data(input_dialog.resolution_x, input_dialog.resolution_y, videoPath, vid_fps)
+                        if input_dialog.was_loaded:
+                            tracker_list[selected_tracker].export_data(input_dialog.resolution_x, input_dialog.resolution_y, videoPath, vid_fps, new_version=input_dialog.get_new_data_version())
+                            input_dialog.data_version_updated = False
+                        else:
+                            tracker_list[selected_tracker].export_data(input_dialog.resolution_x, input_dialog.resolution_y, videoPath, vid_fps)
                 except IOError as err:
                     input_dialog.log(err)
                     input_dialog.show_warning(str(err) + "\n Please close open CSV and try again.")
@@ -1239,232 +1443,232 @@ if __name__ == "__main__":
                 show_frame = regions.display_region(show_frame)
 
             #Loop through every tracker and update
-            for tracker in enumerate(tracker_list):
-                tracker_num = tracker[0]
-                tracker = tracker[1]
+            for index, tracker in enumerate(tracker_list):
+                tracker_num = index
+                tracker = tracker
 
                 frame_number = frame_num
-                try:
-                    if input_dialog.tab_list[tracker_num].other_room:
-                        tracker.record_data(frame_number, input_dialog.num_people.value(), other_room=True)
+                # try:
+                if input_dialog.tab_list[tracker_num].other_room:
+                    tracker.record_data(frame_number, input_dialog.num_people.value(), other_room=True)
+                    regions.del_moving_region(tracker.get_name(), id=tracker.id())
+
+                # Collect active tracker data
+                elif tracker.init_bounding_box is not None and input_dialog.tab_list[tracker_num].active is True and input_dialog.tab_list[tracker_num].read_only is False:
+                    
+                    #allocate frames on GPU, reducing CPU load.
+                    cv2.UMat(frame)    
+
+                    app.processEvents()
+                    #track and draw box on the frame
+                    success, box, show_frame = tracker.update_tracker(show_frame)
+                    tracker.box = box
+                    app.processEvents()
+                    
+                    #NOTE: this can be activated if you want to pause the program when trakcer fails
+                    # if not success:
+                    #     tracker.assign(frame, trackerName)
+
+                    #caluclate info needed this frame
+                    top_left_x = box[0]
+                    top_left_y = box[1]
+                    width = box[2]
+                    height = box[3]
+
+
+                    center_x = top_left_x + (width/2)
+                    center_y = top_left_y + (height/2)
+
+                    # cv2.circle(frame, (box[0],box[1]), 10, (0,0,255))
+                    if tracker.is_region() is True and tracker.get_name().strip() == "":
+                        input_dialog.tab_list[tracker_num].getText(input_name="Region Name:",line=input_dialog.tab_list[tracker_num].name_line)
+
+                    if tracker.is_region() is True and tracker.get_name() != "":
+
+                        regions.set_moving_region(name = tracker.get_name(), 
+                                                point = (int(center_x - width), int(center_y - height)),
+                                                dimensions = (int(width*2), int(height*2)),
+                                                id=tracker.id()
+                                                )
+                        regions.display_region(show_frame)
+
+                    
+
+                    elif tracker.is_region() is False:
+                        # If tracker region is no longer selected, delete moving region
                         regions.del_moving_region(tracker.get_name(), id=tracker.id())
 
-                    # Collect active tracker data
-                    elif tracker.init_bounding_box is not None and input_dialog.tab_list[tracker_num].active is True and input_dialog.tab_list[tracker_num].read_only is False:
-                        
-                        #allocate frames on GPU, reducing CPU load.
-                        cv2.UMat(frame)    
+                    if pred_dict and input_dialog.mcrnn_options.get_active() is True:
+                        if input_dialog.get_scrollbar_value() in pred_dict.keys():
+                            # print("GETTING IOU")
+                            iou, show_frame = maskrcnn.compute_iou(
+                                    box=(top_left_x, top_left_y, top_left_x + width, top_left_y + height), 
+                                    boxes=pred_dict[input_dialog.get_scrollbar_value()][0], 
+                                    boxes_area=pred_dict[input_dialog.get_scrollbar_value()][1], 
+                                    ratios=(resized_ratio_x, resized_ratio_y),
+                                    frame=frame
+                                )
+                            # print("IOUs", iou)
 
-                        app.processEvents()
-                        #track and draw box on the frame
-                        success, box, show_frame = tracker.update_tracker(show_frame)
-                        tracker.box = box
-                        app.processEvents()
-                        
-                        #NOTE: this can be activated if you want to pause the program when trakcer fails
-                        # if not success:
-                        #     tracker.assign(frame, trackerName)
+                            closest = max(iou)
+                            index = iou.index(closest)
+                            box = pred_dict[input_dialog.get_scrollbar_value()][0][index]
+                            p1 = (int(box[0]*resized_ratio_x), int(box[1]*resized_ratio_y))
+                            p2 = (int(box[2]*resized_ratio_x), int(box[3]*resized_ratio_y))
 
-                        #caluclate info needed this frame
-                        top_left_x = box[0]
-                        top_left_y = box[1]
-                        width = box[2]
-                        height = box[3]
+                            # if closest < 0.45:
+                            if closest <= input_dialog.mcrnn_options.get_min_value():
+                                # print("Out of range")
+                                show_frame = cv2.rectangle(frame, p1, p2, (150, 150, 220), 3)
+                                input_dialog.set_pause_state()
+                                activity_logger.paused(frame_number, "MRCNN", "MRCNN_Pause", tracker_list[tracker_num].get_name())
 
+                            elif closest >= input_dialog.mcrnn_options.get_auto_assign():
+                                show_frame = cv2.rectangle(frame, p1, p2, (50, 200, 50), 3)
+                                if tracker.auto_assign_state:
+                                    # print("Auto Assigning")
 
-                        center_x = top_left_x + (width/2)
-                        center_y = top_left_y + (height/2)
+                                    if input_dialog.play_state is True:
+                                        # Only record auto assignment while video is playing
+                                        activity_logger.adjustment(frame_number=frame_number, 
+                                                                    from_box=(top_left_x, top_left_y, (top_left_x + width), (top_left_y + height)), 
+                                                                    to_box=(p1[0], p1[1], p2[0], p2[1]), 
+                                                                    timer_id="MRCNN_Adjust",
+                                                                    tracker_id=tracker_list[tracker_num].get_name(),
+                                                                    intervention_type="MRCNN"
+                                                                    )
 
-                        # cv2.circle(frame, (box[0],box[1]), 10, (0,0,255))
-                        if tracker.is_region() is True and tracker.get_name().strip() == "":
-                            input_dialog.tab_list[tracker_num].getText(input_name="Region Name:",line=input_dialog.tab_list[tracker_num].name_line)
+                                    tracker.auto_assign(frame, (p1[0], p1[1], p2[0], p2[1]))
 
-                        if tracker.is_region() is True and tracker.get_name() != "":
+                            for pred_index, pred in enumerate(iou):
+                                diff = abs(pred - closest)
 
-                            regions.set_moving_region(name = tracker.get_name(), 
-                                                    point = (int(center_x - width), int(center_y - height)),
-                                                    dimensions = (int(width*2), int(height*2)),
-                                                    id=tracker.id()
-                                                    )
-                            regions.display_region(show_frame)
-
-                        
-
-                        elif tracker.is_region() is False:
-                            # If tracker region is no longer selected, delete moving region
-                            regions.del_moving_region(tracker.get_name(), id=tracker.id())
-
-                        if pred_dict and input_dialog.mcrnn_options.get_active() is True:
-                            if input_dialog.get_scrollbar_value() in pred_dict.keys():
-                                # print("GETTING IOU")
-                                iou, show_frame = maskrcnn.compute_iou(
-                                        box=(top_left_x, top_left_y, top_left_x + width, top_left_y + height), 
-                                        boxes=pred_dict[input_dialog.get_scrollbar_value()][0], 
-                                        boxes_area=pred_dict[input_dialog.get_scrollbar_value()][1], 
-                                        ratios=(resized_ratio_x, resized_ratio_y),
-                                        frame=frame
-                                    )
-                                # print("IOUs", iou)
-
-                                closest = max(iou)
-                                index = iou.index(closest)
-                                box = pred_dict[input_dialog.get_scrollbar_value()][0][index]
-                                p1 = (int(box[0]*resized_ratio_x), int(box[1]*resized_ratio_y))
-                                p2 = (int(box[2]*resized_ratio_x), int(box[3]*resized_ratio_y))
-
-                                # if closest < 0.45:
-                                if closest <= input_dialog.mcrnn_options.get_min_value():
-                                    # print("Out of range")
-                                    show_frame = cv2.rectangle(frame, p1, p2, (150, 150, 220), 3)
-                                    input_dialog.set_pause_state()
-                                    activity_logger.paused(frame_number, "MRCNN", "MRCNN_Pause", tracker_list[tracker_num].get_name())
-
-                                elif closest >= input_dialog.mcrnn_options.get_auto_assign():
+                                if pred != closest and diff <= input_dialog.mcrnn_options.get_similarity():
+                                    # input_dialog.log("Possible ID Switch!")
+                                    activity_logger.paused(frame_num, "MRCNN", "MRCNN_Adjust", tracker_list[tracker_num].get_name())
+                                    pred_box = pred_dict[input_dialog.get_scrollbar_value()][0][pred_index]
+                                    pred_p1 = (int(pred_box[0]*resized_ratio_x), int(pred_box[1]*resized_ratio_y))
+                                    pred_p2 = (int(pred_box[2]*resized_ratio_x), int(pred_box[3]*resized_ratio_y))
+                                    show_frame = cv2.rectangle(frame, pred_p1, pred_p2, (255, 0, 255), 1)
                                     show_frame = cv2.rectangle(frame, p1, p2, (50, 200, 50), 3)
-                                    if tracker.auto_assign_state:
-                                        # print("Auto Assigning")
+                                    input_dialog.set_pause_state()
+                                    # .index(closest)
 
-                                        if input_dialog.play_state is True:
-                                            # Only record auto assignment while video is playing
-                                            activity_logger.adjustment(frame_number=frame_number, 
-                                                                        from_box=(top_left_x, top_left_y, (top_left_x + width), (top_left_y + height)), 
-                                                                        to_box=(p1[0], p1[1], p2[0], p2[1]), 
-                                                                        timer_id="MRCNN_Adjust",
-                                                                        tracker_id=tracker_list[tracker_num].get_name(),
-                                                                        intervention_type="MRCNN"
-                                                                        )
+                    #center dot               
+                    cv2.circle(show_frame, (int(center_x),int(center_y)),1,(0,255,0),-1)
 
-                                        tracker.auto_assign(frame, (p1[0], p1[1], p2[0], p2[1]))
-
-                                for pred_index, pred in enumerate(iou):
-                                    diff = abs(pred - closest)
-
-                                    if pred != closest and diff <= input_dialog.mcrnn_options.get_similarity():
-                                        # input_dialog.log("Possible ID Switch!")
-                                        activity_logger.paused(frame_num, "MRCNN", "MRCNN_Adjust", tracker_list[tracker_num].get_name())
-                                        pred_box = pred_dict[input_dialog.get_scrollbar_value()][0][pred_index]
-                                        pred_p1 = (int(pred_box[0]*resized_ratio_x), int(pred_box[1]*resized_ratio_y))
-                                        pred_p2 = (int(pred_box[2]*resized_ratio_x), int(pred_box[3]*resized_ratio_y))
-                                        show_frame = cv2.rectangle(frame, pred_p1, pred_p2, (255, 0, 255), 1)
-                                        show_frame = cv2.rectangle(frame, p1, p2, (50, 200, 50), 3)
-                                        input_dialog.set_pause_state()
-                                        # .index(closest)
-
-                        #center dot               
-                        cv2.circle(show_frame, (int(center_x),int(center_y)),1,(0,255,0),-1)
-
-                        # top = (int(center_x), int(center_y + height/2))
-                        # bottom = (int(center_x), int(center_y - height/2))
-                        # cv2.circle(frame, top, 3, (0,255,255),-1)
-                        # cv2.circle(frame, bottom, 3, (0,255,255),-1)
-                        in_region, p = regions.test_region((center_x, center_y))
-                        
-                        # Defines when to record while play is active
-                        play_active = input_dialog.play_state == True and input_dialog.tab_list[tracker_num].read_only is False
-                        paused_snap_active = input_dialog.play_state == False and input_dialog.tab_list[tracker_num].read_only is False and snap_called == True
-
-                        if play_active or paused_snap_active:
-                            # tracker.grab_cut(frame,box)
-                            #record all the data collected from that frame
-                            # print("Recording data")
-
-                            pred_line = tracker.predictor.predict((center_x,center_y))
-
-                            pred_line = tracker.predictor.predict()
-                            pred_line = tracker.predictor.predict()
-
-                            box_pred_p1 = tracker.box_predictor[0].predict((top_left_x,top_left_y))
-                            box_pred_p2 = tracker.box_predictor[1].predict(((top_left_x + width), (top_left_y + height)))
-
-                            for i in range(input_dialog.get_frame_skip()):
-                                box_pred_p1 = tracker.box_predictor[0].predict()
-                                box_pred_p2 = tracker.box_predictor[1].predict()
-
-                            pred_p1 = (int((box_pred_p1[0] + box_pred_p1[2])[0]), int((box_pred_p1[1] + box_pred_p1[3])[0]) )
-                            pred_p2 = (int((box_pred_p2[0] + box_pred_p2[2])[0]), int((box_pred_p2[1] + box_pred_p2[3])[0]) )
-
-                            pred_centroid = (int((pred_line[0] + pred_line[2])[0]), int((pred_line[1] + pred_line[3])[0]) )
-
-                            tracker.predicted_bbox = (pred_p1[0],pred_p1[1], pred_p2[0],pred_p2[1])
-                            tracker.predicted_centroid = (pred_centroid)
-                            try:
-                                if input_dialog.predictor_options.get_active_iou():
-                                    # activity_logger.intervention = datalogger.HUMAN_INTERVENTION_KALMAN
-                                    predicted_bbox_iou, _ = maskrcnn.compute_iou(
-                                                        box=tracker.predicted_bbox,
-                                                        boxes=[(top_left_x,top_left_y,(top_left_x + width), (top_left_y + height) )],
-                                                        boxes_area=[(pred_p2[0] - pred_p1[0]), (pred_p2[1] - pred_p1[1]) ]
-                                                    )
-                                    cv2.rectangle(show_frame, pred_p1, pred_p2, (0,255,0), 1)
-                                    # print("P_IOU: ", predicted_bbox_iou, end=" | ")
-
-                                    if predicted_bbox_iou[0] <= input_dialog.predictor_options.get_min_IOU() and predicted_bbox_iou[0] > 0:
-                                        print("Pausing")
-                                        input_dialog.set_pause_state()
-                                        activity_logger.paused(frame_number, "KALMAN", "KALMAN_Pause", tracker_list[tracker_num].get_name())
-
-                                        
-                                
-
-                            except:
-                                print("Cannot Compute IOU")
-                            try:
-                                if input_dialog.predictor_options.get_active_centroid():
-                                    pred_dist = regression.distance_2d((center_x,center_y), (int((pred_line[0] + pred_line[2])[0]), int((pred_line[1] + pred_line[3])[0]) ))
-                                    # print("POINT_DIST: ", pred_dist)
-                                    cv2.arrowedLine(show_frame, (int(pred_line[0]),int(pred_line[1])), (int((pred_line[0] + pred_line[2])[0]), int((pred_line[1] + pred_line[3])[0]) ),  (0,0,255), 3, tipLength=1)
-                                    if pred_dist >= input_dialog.predictor_options.get_min_distance():
-                                        # print("Pausing")
-                                        input_dialog.set_pause_state()
-                                        activity_logger.paused(frame_number, "REGRESSION", "REGRESSION_Pause", tracker_list[tracker_num].get_name())
-                            except:
-                                print("Cannot Compute Distance")
-                            
-
-                            
-
-                            if tracker.regression:
-                                slope, intercept, correlation = tracker.regression.predict((center_x,center_y))
-                                if slope is not None and correlation is not None and abs(correlation) >= 0.5:
-                                    # y = Ax + b, therefore x = (y - b) / A
-                                    try:
-                                        #If moving up and right
-                                        # print(tracker.regression.get_direction())
-                                        # if tracker.regression.get_direction()[0] and tracker.regression.get_direction()[1]:
-                                        # print(slope)
-                                        if slope == 0:
-                                            cv2.line(show_frame, (0,int(center_y)), (800,int(center_y)), (0,0,255), 1)
-                                        else:
-                                            startY = 0
-                                            endY = 800
-                                            startX = (startY - intercept) / slope
-                                            endX = (endY - intercept) / slope
-
-                                            cv2.arrowedLine(show_frame, (startX,startY), (endX,endY), (0,0,255), 1)
-                                            # else:
-                                            #     startY = int(center_y)
-                                                #     endY = int(center_y) + 10
-                                    
-                                                    # print(min_point, max_point)
-                                                # if tracker.regression.get_direction():
-                                                # else:
-                                                #     cv2.arrowedLine(frame, (startX,startY), (endX,endY), (0,0,255), 1)
-                                            
-                                    except ZeroDivisionError as e:
-                                        cv2.line(show_frame, (0,int(center_y)), (800,int(center_y)), (0,0,255), 1)
-                                    except:
-                                        cv2.line(show_frame, (int(center_x),0), (int(center_x),800), (0,0,255), 1)
-                                    # cv2.line(frame, (int(center_x-30),int(center_y)), (int(center_x + 30),int(center_y)), (0,0,255), 1)
-                            # print( ((pred_line[0] + pred_line[2])[0], (pred_line[1] + pred_line[3])[0]) )      
-
-                            tracker.record_data(input_dialog.get_scrollbar_value(), input_dialog.num_people.value(), center_x, center_y, width, height, in_region)
-            
-                except Exception as e:
-                    crashlogger.log(str(e))
-                    # print("No resize")
+                    # top = (int(center_x), int(center_y + height/2))
+                    # bottom = (int(center_x), int(center_y - height/2))
+                    # cv2.circle(frame, top, 3, (0,255,255),-1)
+                    # cv2.circle(frame, bottom, 3, (0,255,255),-1)
+                    in_region, p = regions.test_region((center_x, center_y))
                     
-                    input_dialog.log("Crashed while deleting. Continuing")
-                    continue
+                    # Defines when to record while play is active
+                    play_active = input_dialog.play_state == True and input_dialog.tab_list[tracker_num].read_only is False
+                    paused_snap_active = input_dialog.play_state == False and input_dialog.tab_list[tracker_num].read_only is False and snap_called == True
+
+                    if play_active or paused_snap_active:
+                        # tracker.grab_cut(frame,box)
+                        #record all the data collected from that frame
+                        # print("Recording data")
+
+                        pred_line = tracker.predictor.predict((center_x,center_y))
+
+                        pred_line = tracker.predictor.predict()
+                        pred_line = tracker.predictor.predict()
+
+                        box_pred_p1 = tracker.box_predictor[0].predict((top_left_x,top_left_y))
+                        box_pred_p2 = tracker.box_predictor[1].predict(((top_left_x + width), (top_left_y + height)))
+
+                        for i in range(input_dialog.get_frame_skip()):
+                            box_pred_p1 = tracker.box_predictor[0].predict()
+                            box_pred_p2 = tracker.box_predictor[1].predict()
+
+                        pred_p1 = (int((box_pred_p1[0] + box_pred_p1[2])[0]), int((box_pred_p1[1] + box_pred_p1[3])[0]) )
+                        pred_p2 = (int((box_pred_p2[0] + box_pred_p2[2])[0]), int((box_pred_p2[1] + box_pred_p2[3])[0]) )
+
+                        pred_centroid = (int((pred_line[0] + pred_line[2])[0]), int((pred_line[1] + pred_line[3])[0]) )
+
+                        tracker.predicted_bbox = (pred_p1[0],pred_p1[1], pred_p2[0],pred_p2[1])
+                        tracker.predicted_centroid = (pred_centroid)
+                        try:
+                            if input_dialog.predictor_options.get_active_iou():
+                                # activity_logger.intervention = datalogger.HUMAN_INTERVENTION_KALMAN
+                                predicted_bbox_iou, _ = maskrcnn.compute_iou(
+                                                    box=tracker.predicted_bbox,
+                                                    boxes=[(top_left_x,top_left_y,(top_left_x + width), (top_left_y + height) )],
+                                                    boxes_area=[(pred_p2[0] - pred_p1[0]), (pred_p2[1] - pred_p1[1]) ]
+                                                )
+                                cv2.rectangle(show_frame, pred_p1, pred_p2, (0,255,0), 1)
+                                # print("P_IOU: ", predicted_bbox_iou, end=" | ")
+
+                                if predicted_bbox_iou[0] <= input_dialog.predictor_options.get_min_IOU() and predicted_bbox_iou[0] > 0:
+                                    print("Pausing")
+                                    input_dialog.set_pause_state()
+                                    activity_logger.paused(frame_number, "KALMAN", "KALMAN_Pause", tracker_list[tracker_num].get_name())
+
+                                    
+                            
+
+                        except:
+                            print("Cannot Compute IOU")
+                        try:
+                            if input_dialog.predictor_options.get_active_centroid():
+                                pred_dist = regression.distance_2d((center_x,center_y), (int((pred_line[0] + pred_line[2])[0]), int((pred_line[1] + pred_line[3])[0]) ))
+                                # print("POINT_DIST: ", pred_dist)
+                                cv2.arrowedLine(show_frame, (int(pred_line[0]),int(pred_line[1])), (int((pred_line[0] + pred_line[2])[0]), int((pred_line[1] + pred_line[3])[0]) ),  (0,0,255), 3, tipLength=1)
+                                if pred_dist >= input_dialog.predictor_options.get_min_distance():
+                                    # print("Pausing")
+                                    input_dialog.set_pause_state()
+                                    activity_logger.paused(frame_number, "REGRESSION", "REGRESSION_Pause", tracker_list[tracker_num].get_name())
+                        except:
+                            print("Cannot Compute Distance")
+                        
+
+                        
+
+                        if tracker.regression:
+                            slope, intercept, correlation = tracker.regression.predict((center_x,center_y))
+                            if slope is not None and correlation is not None and abs(correlation) >= 0.5:
+                                # y = Ax + b, therefore x = (y - b) / A
+                                try:
+                                    #If moving up and right
+                                    # print(tracker.regression.get_direction())
+                                    # if tracker.regression.get_direction()[0] and tracker.regression.get_direction()[1]:
+                                    # print(slope)
+                                    if slope == 0:
+                                        cv2.line(show_frame, (0,int(center_y)), (800,int(center_y)), (0,0,255), 1)
+                                    else:
+                                        startY = 0
+                                        endY = 800
+                                        startX = (startY - intercept) / slope
+                                        endX = (endY - intercept) / slope
+
+                                        cv2.arrowedLine(show_frame, (startX,startY), (endX,endY), (0,0,255), 1)
+                                        # else:
+                                        #     startY = int(center_y)
+                                            #     endY = int(center_y) + 10
+                                
+                                                # print(min_point, max_point)
+                                            # if tracker.regression.get_direction():
+                                            # else:
+                                            #     cv2.arrowedLine(frame, (startX,startY), (endX,endY), (0,0,255), 1)
+                                        
+                                except ZeroDivisionError as e:
+                                    cv2.line(show_frame, (0,int(center_y)), (800,int(center_y)), (0,0,255), 1)
+                                except:
+                                    cv2.line(show_frame, (int(center_x),0), (int(center_x),800), (0,0,255), 1)
+                                # cv2.line(frame, (int(center_x-30),int(center_y)), (int(center_x + 30),int(center_y)), (0,0,255), 1)
+                        # print( ((pred_line[0] + pred_line[2])[0], (pred_line[1] + pred_line[3])[0]) )      
+
+                        tracker.record_data(input_dialog.get_scrollbar_value(), input_dialog.num_people.value(), center_x, center_y, width, height, in_region)
+            
+                # except Exception as e:
+                #     crashlogger.log(str(e))
+                #     # print("No resize")
+                    
+                #     input_dialog.log("Crashed while deleting. Continuing")
+                #     continue
 
                 try:
                     if input_dialog.tab_list[tracker_num].read_only is True:
@@ -1475,7 +1679,8 @@ if __name__ == "__main__":
                         # frame_number = frame_num
                         # print(frame_number)
                         frame_number = input_dialog.get_scrollbar_value()
-                        # regions.del_moving_region(tracker.get_name())
+                        # regions.del_moving_region(tracker.get_name()) 
+                        # dendregion
                         # print(selected_tracker, tracker_num)
                         if frame_number in tracker.data_dict:
                             # print("Exists")

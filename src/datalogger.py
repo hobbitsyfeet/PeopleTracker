@@ -1,15 +1,12 @@
-
-from itertools import count
-from importlib_metadata import metadata
-from matplotlib.pyplot import pause
 import time
 import pandas as pd
 import cv2
 import numpy as np
 import os
-import math
 
-from evaluate import tracker_evaluation
+# print("Datalogger import 1")
+import evaluate
+# print("Datalogger import 2")
 
 # Constants for intervention Level
 NO_INTVERVENTION_TRACKER = "NONE"
@@ -29,7 +26,7 @@ class DataLogger:
     def __init__(self, video, video_location=None, video_metadata=None, intervention_level=NO_INTVERVENTION_TRACKER, ground_truth_folder=None):
         self.intervention_level = intervention_level
         self.ground_truth_folder = ground_truth_folder
-        self.te = tracker_evaluation()
+        self.te = evaluate.tracker_evaluation()
         self.te.fps = float(video_metadata['QuickTime:VideoFrameRate'])
         if self.ground_truth_folder is None:
             #Check the same folder and see if it works
@@ -571,10 +568,6 @@ class DataLogger:
 
         return self.intervention_level
 
-            
-
-
-
     def export_charactoristics(self, file_path):
         print("Saving Characteristics")
 
@@ -600,6 +593,56 @@ class DataLogger:
 
     def plot_chars_df(self):
         pass
+
+    def occuding_objects(self, occluding_tracks_csv, occluding_threshold=0.8):
+        '''
+        Given recorded occluding objects, check the precision of ground truth onto occluding object.
+        If precision of ground truth is above threshold, this means that object is occluded.
+        This is the same measure as check_occlusion but data in this context is different and 
+        therefore a different function
+        '''
+        percent_occluded = {}
+        
+        # Load occluding tracks
+        occlusion_dict = self.te.load_tracker_data(occluding_tracks_csv)
+
+        occluding_frame = []
+        occluding_name = []
+        occluded_list = []
+        percent_occluded_list = []
+
+        #convert occlusions to gt form
+        for frame in occlusion_dict.keys():
+            occlusion_trackers = self.te.get_estimates(frame)
+
+            for occlusion_object in occlusion_trackers:
+                # Correct for comparing tracker to ground_truths based on loaded information
+                corrected_occlusion = self.estimate_to_point(occlusion_object, invert_y=self.te.invert_y)
+
+                # Get precision of occluding object onto ground truths.
+                # This method looks all ground truths, and checks intersection with occlusion.
+                # Precision measures how much of the E covers the GT
+                occluded, percent_occluded = self.te.check_occlusion(corrected_occlusion, frame)
+
+                occluding_frame.append(frame)
+                occluding_name.append(occlusion_object['name'])
+                occluded_list.append(occluded)
+                percent_occluded_list.append(percent_occluded)
+
+
+
+        # # Return Dictionary of objects and their percent occlusion
+        # data = {
+        #         "Frame_Num": occluding_frame,
+        #         "Occluding_Name": occluding_name,
+        #         "Ground_Truth": 
+        #         "Occluding": occluded_list,
+        #         "Percent_Occluding": percent_occluded_list,
+        #         ""
+
+
+        #         }
+        # pass
 
 if __name__ == "__main__":
     # logger = DataLogger("L:/.shortcut-targets-by-id/1BBxJzDfQqUGSfvkILX9LLVkQKSuQcTji/Monkey Videos (for tracker)/Yes/MVI_2975.MOV")

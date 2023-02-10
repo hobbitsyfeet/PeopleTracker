@@ -1,17 +1,17 @@
-from fileinput import filename
 import sys
-from PyQt5.QtWidgets import QApplication, QWidget, QInputDialog, QLineEdit, QLabel, QPushButton, QPlainTextEdit, QSlider, QStyle, QAction, QTabWidget, QVBoxLayout, QHBoxLayout, QMessageBox, QFileDialog, QCheckBox, QMenuBar, QSpinBox, QErrorMessage, QProgressDialog, QFormLayout, QDoubleSpinBox, QSplashScreen
+import os
+import glob
 
-from PyQt5.QtGui import QIcon, QIntValidator, QPixmap, QImage, QPainter, QPen, QKeySequence
-from PyQt5.QtCore import Qt, QRect, QCoreApplication, QTimer
-from PyQt5.QtCore import pyqtSlot, pyqtSignal
+import PyQt5
 import webbrowser
 import crashlogger
 import traceback
-from TrackerTab import person_tab
+# from TrackerTab import person_tab
+import TrackerTab
 import evaluate
 
-from multiple_inputs import InputDialog
+# from multiple_inputs import InputDialog
+import multiple_inputs
 import cv2
 import numpy as np
 import math
@@ -19,9 +19,10 @@ import pandas as pd
 
 
 
-class App(QWidget):
+
+class App(PyQt5.QtWidgets.QWidget):
 # TODO ADD A CURRENT STATE INFO TAG WHICH LETS THE USER KNOW WHAT TO DO AT A CERTAIN TIME!
-    def __init__(self):
+    def __init__(self, start_file=None):
         self.flashSplash()
 
         super().__init__()
@@ -31,7 +32,7 @@ class App(QWidget):
         self.top = 250
         self.width = 480
         self.height = 240
-        self.initUI()
+        self.initUI(start_file)
         
         self.snap_to_frame_skip = True 
 
@@ -55,12 +56,19 @@ class App(QWidget):
 
         self.predict_state = False
         self.load_predictions_state = False
+        self.load_tracked_video_state = False
+        self.was_loaded = False
         self.track_preds_state = False
         self.export_charactoristics = False
         self.export_activity = False
+        self.evaluate_occlusion = False
 
         self.del_frame = False
         self.del_active_frame = False
+        self.data_version_updated = False
+
+        self.newest_version_path, self.newest_version = self.get_new_data_version()
+
         
         
     
@@ -68,19 +76,19 @@ class App(QWidget):
         # self.videoWindow.show()
 
     def flashSplash(self):
-        self.splash = QSplashScreen(QPixmap('CursedSplash.png'))
+        self.splash = PyQt5.QtWidgets.QSplashScreen(PyQt5.QtGui.QPixmap('CursedSplash.png'))
         self.splash.show()
 
     def keyPressEvent(self, event):
         self.test_method()
-        if int(event.modifiers()) == (Qt.ControlModifier+Qt.AltModifier):
+        if int(event.modifiers()) == (PyQt5.QtCore.Qt.ControlModifier+PyQt5.QtCore.Qt.AltModifier):
             self.log("Setting Tracker")
             self.set_tracker_state = True
 
     def mousePressEvent(self, event):
-        if event.button() == Qt.MidButton:
+        if event.button() == PyQt5.QtCore.Qt.MidButton:
             self.set_tracker_state = True
-        elif event.button() == Qt.RightButton:
+        elif event.button() == PyQt5.QtCore.Qt.RightButton:
             self.log("Play Toggled.")
             self.mediaStateChanged()
 
@@ -95,7 +103,7 @@ class App(QWidget):
 
         te.load_tracker_data(filename)
 
-        json_folder = QFileDialog.getExistingDirectory(self, 'Select Ground Truth folder')
+        json_folder = PyQt5.QtWidgets.QFileDialog.getExistingDirectory(self, 'Select Ground Truth folder')
         json_folder += "/"
 
         te.load_json(json_folder)
@@ -111,7 +119,7 @@ class App(QWidget):
         self.log("Done Calculating Errors..")
         print(errors)
 
-        info_box = QMessageBox(self)
+        info_box = PyQt5.QtWidgets.QMessageBox(self)
         
         info_box.setWindowTitle("Evaluation Results")
         message =   ("False Positive (FP):\t\t" + str(errors['FP']) +
@@ -137,8 +145,8 @@ class App(QWidget):
         
         info_box.setText(message)
         info_box.show()
-        ret = info_box.question(self, 'Graph Option', "Would you like to show a graph?", QMessageBox.Yes | QMessageBox.No | QMessageBox.Cancel, QMessageBox.Cancel)
-        if ret == QMessageBox.Yes:
+        ret = info_box.question(self, 'Graph Option', "Would you like to show a graph?", PyQt5.QtWidgets.QMessageBox.Yes | PyQt5.QtWidgets.QMessageBox.No | PyQt5.QtWidgets.QMessageBox.Cancel, PyQt5.QtWidgets.QMessageBox.Cancel)
+        if ret == PyQt5.QtWidgets.QMessageBox.Yes:
             te.identification_graph()
 
     def train_model(self):
@@ -146,12 +154,12 @@ class App(QWidget):
         
         inputs = ["Classes", "Batch Size", "Number of Epochs", "Pretrained Model", "Network Type"]
         defaults = ["Person", "1", "300", "mask_rcnn_coco.h5", "resnet101"]
-        dialog = InputDialog(labels=inputs, defaults=defaults, parent=None)
+        dialog = multiple_inputs.InputDialog(labels=inputs, defaults=defaults, parent=None)
         if dialog.exec():
             inputs = dialog.getInputs()
 
-            dataset_path = QFileDialog.getExistingDirectory(self, 'Select Dataset to train')
-            # output_path = QFileDialog.getExistingDirectory(self, 'Select Dataset to train')
+            dataset_path = PyQt5.QtWidgets.QFileDialog.getExistingDirectory(self, 'Select Dataset to train')
+            # output_path = PyQt5.QtWidgets.QFileDialog.getExistingDirectory(self, 'Select Dataset to train')
             
             
             classes = inputs[0].replace(',', "").split(",")
@@ -176,8 +184,8 @@ class App(QWidget):
             elif q.text() == "Delete Region":
                 self.del_region_state = True
             elif q.text() == "Resize Video":
-                width, okPressed = QInputDialog.getInt(self, 'Width', 'Width:', self.resolution_x)
-                height, okPressed = QInputDialog.getInt(self, 'height', 'Height:', self.resolution_y)
+                width, okPressed = PyQt5.QtWidgets.QInputDialog.getInt(self, 'Width', 'Width:', self.resolution_x)
+                height, okPressed = PyQt5.QtWidgets.QInputDialog.getInt(self, 'height', 'Height:', self.resolution_y)
                 if okPressed and height >= 0 and width >= 0:
                     self.resolution_x = int(width)
                     self.resolution_y = int(height)
@@ -209,15 +217,22 @@ class App(QWidget):
 
             elif q.text() == "Predict":
                 self.log("Predict selected. Please wait while it loads the model...")
-                progress = QProgressDialog(self)
-                QCoreApplication.processEvents()
+                progress = PyQt5.QtWidgets.QProgressDialog(self)
+                PyQt5.QtCore.QCoreApplication.processEvents()
                 self.predict_state = True
-                h5, _ = QFileDialog.getOpenFileName(self,"QFileDialog.getOpenFileName()", "Select A Model","H5 (*.h5);;All Files (*)")
+                h5, _ = PyQt5.QtWidgets.QFileDialog.getOpenFileName(self,"PyQt5.QtWidgets.QFileDialog.getOpenFileName()", "Select A Model","H5 (*.h5);;All Files (*)")
                 import maskrcnn
-                frame, rois, scores = maskrcnn.predict(self.filename, model=h5, step=self.skip_frames.value(), display=True, progress=progress, logger=self.log,class_names=['BG', 'Vervet'])  
+                frame, rois, scores = maskrcnn.predict(self.filename, model=h5, step=self.skip_frames.value(), display=True, progress=progress, logger=self.log, class_names=['BG', 'Vervet'])  
                 
             elif q.text() == "Load Predictions":
                 self.load_predictions_state = True
+            elif q.text() == "Load Trackers From CSV":
+                self.load_tracked_video_state = True
+                self.was_loaded = True
+                self.version_name, self.newest_version = self.get_new_data_version()
+                # self.log(filename)
+                self.data_version_updated = True
+                
             elif q.text() == "Return to Beginning":
                 self.set_scrollbar(0)
                 self.scrollbar_changed = True
@@ -231,10 +246,12 @@ class App(QWidget):
             elif q.text() == "Image Options":
                 self.image_options.show()
             elif q.text() == "Evaluate Errors":
-                csv, _ = QFileDialog.getOpenFileName(self,"QFileDialog.getOpenFileName()", "Select Tracked CSV","CSV (*.csv);;All Files (*)")
-                is_prediction = QMessageBox()
-                ret = is_prediction.question(self,'', "Was this data predicted by Mask RCNN?", QMessageBox.Yes | QMessageBox.No)
+                csv, _ = PyQt5.QtWidgets.QFileDialog.getOpenFileName(self,"PyQt5.QtWidgets.QFileDialog.getOpenFileName()", "Select Tracked CSV","CSV (*.csv);;All Files (*)")
+                is_prediction = PyQt5.QtWidgets.QMessageBox()
+                ret = is_prediction.question(self,'', "Was this data predicted by Mask RCNN?", PyQt5.QtWidgets.QMessageBox.Yes | PyQt5.QtWidgets.QMessageBox.No)
                 self.evaluate_errors(csv, ret)
+            elif q.text() == "Evaluate Occlusion":
+                self.evaluate_occlusion = True
             elif q.text() == "Train":
                 self.train_model()
             elif q.text() == "Track Predictions":
@@ -254,107 +271,117 @@ class App(QWidget):
         except:
             crashlogger.log(str(traceback.format_exc()))
 
-    def initUI(self):
+    def initUI(self, start_file):
 
         try:
             self.setWindowTitle(self.title)
             self.setGeometry(self.left, self.top, self.width, self.height)
-            self.setWindowIcon(QIcon('person.svg'))
+            self.setWindowIcon(PyQt5.QtGui.QIcon('person.svg'))
 
             self.mcrnn_options = MaskRCNN_IOU_Options()
             self.predictor_options = Predictor_Options()
             self.image_options = Image_Enhancement()
 
-            self.log_label = QLabel(self)
+            self.log_label = PyQt5.QtWidgets.QLabel(self)
             self.log_label.setText("Info:")
-            self.log_label.setAlignment(Qt.AlignLeft)
+            self.log_label.setAlignment(PyQt5.QtCore.Qt.AlignLeft)
             self.log_label.setFixedHeight(18)
             # self.log_label.setFixedWidth(24)
             
-            
-            self.filename = self.openFileNameDialog()
+            if start_file is None:
+                self.filename = self.openFileNameDialog()
+            else:
+                self.filename = start_file
             # self.openFileNamesDialog()
             # self.saveFileDialog()
 
-            self.layout = QVBoxLayout(self)
+            self.layout = PyQt5.QtWidgets.QVBoxLayout(self)
 
             # Menu bar
-            bar = QMenuBar()
+            bar = PyQt5.QtWidgets.QMenuBar()
             file = bar.addMenu("File")
             file.addAction("New")
 
-            save = QAction("Save",self)
+            save = PyQt5.QtWidgets.QAction("Save",self)
             save.setShortcut("Ctrl+S")
             file.addAction(save)
 
-            export_videochar = QAction("Export Charactoristics", self)
+            load_trackers = PyQt5.QtWidgets.QAction("Load Trackers From CSV", self)
+            file.addAction(load_trackers)
+
+            export_videochar = PyQt5.QtWidgets.QAction("Export Charactoristics", self)
             file.addAction(export_videochar)
 
-            export_activity = QAction("Export Activity", self)
+            export_activity = PyQt5.QtWidgets.QAction("Export Activity", self)
             file.addAction(export_activity)
 
-            train = QAction("Train", self)
+            train = PyQt5.QtWidgets.QAction("Train", self)
             file.addAction(train)
-            predict = QAction("Predict",self)
+            predict = PyQt5.QtWidgets.QAction("Predict",self)
             file.addAction(predict)
-            load_preds = QAction("Load Predictions", self)
+            load_preds = PyQt5.QtWidgets.QAction("Load Predictions", self)
             file.addAction(load_preds)
 
-            track_preds = QAction("Track Predictions", self)
+            track_preds = PyQt5.QtWidgets.QAction("Track Predictions", self)
             file.addAction(track_preds)
 
-            evaluate_errors = QAction("Evaluate Errors", self)
-            file.addAction(evaluate_errors)
+            evaluate_menu = file.addMenu("Evaluate")
+
+            evaluate_errors = PyQt5.QtWidgets.QAction("Evaluate Errors", self)
+            evaluate_occlusion = PyQt5.QtWidgets.QAction("Evaluate Occlusion", self)
+            # file.addAction(evaluate_errors)
+            evaluate_menu.addAction(evaluate_errors)
+            evaluate_menu.addAction(evaluate_occlusion)
             
-            quit = QAction("Quit", self)
+            quit = PyQt5.QtWidgets.QAction("Quit", self)
             file.addAction(quit)
             
             
-            export_all = QAction("Export All", self)
+            export_all = PyQt5.QtWidgets.QAction("Export All", self)
             export_all.setShortcut("Ctrl+E")
             file.addAction(export_all)
 
-            file.triggered[QAction].connect(self.processtrigger)
+            file.triggered[PyQt5.QtWidgets.QAction].connect(self.processtrigger)
 
             edit = bar.addMenu("Edit")
-            add_region = QAction("Add Region", self)
+            add_region = PyQt5.QtWidgets.QAction("Add Region", self)
             add_region.setShortcut("Ctrl+R")
-            del_region = QAction("Delete Region", self)
+            del_region = PyQt5.QtWidgets.QAction("Delete Region", self)
             del_region.setShortcut("Ctrl+Shift+R")
 
-            remove_tracked_frame = QAction("Remove Tracked Frame", self)
+            remove_tracked_frame = PyQt5.QtWidgets.QAction("Remove Tracked Frame", self)
             remove_tracked_frame.setShortcut("Backspace")
 
-            remove_all_active_tracked_frame = QAction("Remove All Active Tracked Frame", self)
+            remove_all_active_tracked_frame = PyQt5.QtWidgets.QAction("Remove All Active Tracked Frame", self)
             remove_all_active_tracked_frame.setShortcut("Shift+Backspace")
 
-            set_all_read = QAction("Set All Read", self)
-            set_all_write = QAction("Set All Write", self)
+            set_all_read = PyQt5.QtWidgets.QAction("Set All Read", self)
+            set_all_write = PyQt5.QtWidgets.QAction("Set All Write", self)
 
-            snap_closest = QAction("Snap Closest", self)
-            snap_closest.setShortcut(Qt.Key_Up)
-            snap_forward = QAction("Snap Forward", self)
-            snap_forward.setShortcut(Qt.Key_Right)
-            snap_backward = QAction("Snap Backward", self)
-            snap_backward.setShortcut(Qt.Key_Left)
-            snap_skip_frame = QAction("Snap Scroll to Skip", self)
+            snap_closest = PyQt5.QtWidgets.QAction("Snap Closest", self)
+            snap_closest.setShortcut(PyQt5.QtCore.Qt.Key_Up)
+            snap_forward = PyQt5.QtWidgets.QAction("Snap Forward", self)
+            snap_forward.setShortcut(PyQt5.QtCore.Qt.Key_Right)
+            snap_backward = PyQt5.QtWidgets.QAction("Snap Backward", self)
+            snap_backward.setShortcut(PyQt5.QtCore.Qt.Key_Left)
+            snap_skip_frame = PyQt5.QtWidgets.QAction("Snap Scroll to Skip", self)
 
-            set_tracker = QAction("Set Tracker", self)
-            # set_tracker.setShortcut(Qt.Key_Space)
-            set_tracker.setShortcuts([QKeySequence(Qt.CTRL + Qt.Key_Z), QKeySequence(Qt.CTRL + Qt.Key_Space), QKeySequence(Qt.CTRL + Qt.Key_D) ])
+            set_tracker = PyQt5.QtWidgets.QAction("Set Tracker", self)
+            # set_tracker.setShortcut(PyQt5.QtCore.Qt.Key_Space)
+            set_tracker.setShortcuts([PyQt5.QtGui.QKeySequence(PyQt5.QtCore.Qt.CTRL + PyQt5.QtCore.Qt.Key_Z), PyQt5.QtGui.QKeySequence(PyQt5.QtCore.Qt.CTRL + PyQt5.QtCore.Qt.Key_Space), PyQt5.QtGui.QKeySequence(PyQt5.QtCore.Qt.CTRL + PyQt5.QtCore.Qt.Key_D) ])
 
-            retain_moveing_region = QAction("Retain Region", self)
+            retain_moveing_region = PyQt5.QtWidgets.QAction("Retain Region", self)
             retain_moveing_region.setShortcut("Ctrl+C")
 
-            beginning = QAction("Return to Beginning", self)
+            beginning = PyQt5.QtWidgets.QAction("Return to Beginning", self)
             
 
-            play_key = QAction("Play/Pause",self)
-            play_key.setShortcuts([QKeySequence(Qt.Key_P), QKeySequence(Qt.CTRL + Qt.Key_P) ])
+            play_key = PyQt5.QtWidgets.QAction("Play/Pause",self)
+            play_key.setShortcuts([PyQt5.QtGui.QKeySequence(PyQt5.QtCore.Qt.Key_P), PyQt5.QtGui.QKeySequence(PyQt5.QtCore.Qt.CTRL + PyQt5.QtCore.Qt.Key_P) ])
 
-            maskrcnn_options_action = QAction("Mask-RCNN Options", self)
-            predictor_options_action = QAction("Predictor Options", self)
-            image_options_action = QAction("Image Options", self)
+            maskrcnn_options_action = PyQt5.QtWidgets.QAction("Mask-RCNN Options", self)
+            predictor_options_action = PyQt5.QtWidgets.QAction("Predictor Options", self)
+            image_options_action = PyQt5.QtWidgets.QAction("Image Options", self)
 
 
             # edit2 = file.addMenu("Edit")
@@ -374,22 +401,22 @@ class App(QWidget):
             edit.addAction(maskrcnn_options_action)
             edit.addAction(predictor_options_action)
             edit.addAction(image_options_action)
-            edit.triggered[QAction].connect(self.processtrigger)
+            edit.triggered[PyQt5.QtWidgets.QAction].connect(self.processtrigger)
 
             
             
             #Set_All
             set_all =  edit.addMenu("Set All")
-            # active = QAction("Active", self)
+            # active = PyQt5.QtWidgets.QAction("Active", self)
             # active.setShortcut("Ctrl+A")
             # active.setToolTip("Sets ALL tabs tracking to active.")
-            # inactive = QAction("Inactive", self)
+            # inactive = PyQt5.QtWidgets.QAction("Inactive", self)
             # inactive.setShortcut("Ctrl+Shift+A")
             # inactive.setToolTip("Sets ALL tabs traking to inactive. (Deselects active)")
-            read_on = QAction("Read", self)
+            read_on = PyQt5.QtWidgets.QAction("Read", self)
             read_on.setShortcut("Ctrl+W")
             read_on.setToolTip("Sets ALL tabs to read only. Will not overwrite data. (Good for scrolling)")
-            write_on = QAction("Write", self)
+            write_on = PyQt5.QtWidgets.QAction("Write", self)
             write_on.setShortcut("Ctrl+Shift+W")
             write_on.setToolTip("Sets ALL tabs to WRITE. WILL OVERWRITE DATA WHEN SCROLLING (WARNING)")
 
@@ -400,20 +427,20 @@ class App(QWidget):
 
 
             viewMenu = bar.addMenu("View")
-            resizeVideo = QAction("Resize Video", self)
+            resizeVideo = PyQt5.QtWidgets.QAction("Resize Video", self)
             viewMenu.addAction(resizeVideo)
-            viewMenu.triggered[QAction].connect(self.processtrigger)
+            viewMenu.triggered[PyQt5.QtWidgets.QAction].connect(self.processtrigger)
             
-            resize_to_original = QAction("Resize to default resolution", self)
-            viewMenu.triggered[QAction].connect(self.processtrigger)
+            resize_to_original = PyQt5.QtWidgets.QAction("Resize to default resolution", self)
+            viewMenu.triggered[PyQt5.QtWidgets.QAction].connect(self.processtrigger)
             viewMenu.addAction(resize_to_original)
 
             helpMenu = bar.addMenu("Help")
-            helpButton = QAction("Display Help", self)
+            helpButton = PyQt5.QtWidgets.QAction("Display Help", self)
             helpButton.setShortcut("Ctrl+H")
         
             helpMenu.addAction(helpButton)
-            helpMenu.triggered[QAction].connect(self.processtrigger)
+            helpMenu.triggered[PyQt5.QtWidgets.QAction].connect(self.processtrigger)
 
             # self.setLayout(layout)
             self.layout.addWidget(bar)
@@ -421,8 +448,8 @@ class App(QWidget):
             # self.toolbar.addAction(exitAct)
             self.add_tab_state = False
 
-            self.tab_control_layout = QHBoxLayout()
-            self.add_tab_btn = QPushButton()
+            self.tab_control_layout = PyQt5.QtWidgets.QHBoxLayout()
+            self.add_tab_btn = PyQt5.QtWidgets.QPushButton()
             self.add_tab_btn.setText("Add Tab")
             self.add_tab_btn.setToolTip("Adds a tracking object to the project.\n\n"+
             "Left Click and Drag on the video to create a tracking box.\n" + 
@@ -433,14 +460,14 @@ class App(QWidget):
 
             # self.add_tab_btn.setEnabled(False)
 
-            self.export_tab_btn = QPushButton()
+            self.export_tab_btn = PyQt5.QtWidgets.QPushButton()
             self.export_tab_btn.setText("Export Data")
             self.export_tab_btn.setToolTip("Exports data and appends it to a .csv named after the video.")
             self.tab_control_layout.addWidget(self.export_tab_btn)
             self.export_tab_btn.clicked.connect(self.export_tab_pressed)
 
             self.del_tab_state = False
-            self.del_tab_btn = QPushButton()
+            self.del_tab_btn = PyQt5.QtWidgets.QPushButton()
             self.del_tab_btn.setText("Delete Tab")
             self.del_tab_btn.setToolTip("Deletes Tracked Object from project. \n\nWARNING!Export before removing.\nWait until box is cleared to click again.")
             self.del_tab_btn.setEnabled(False)
@@ -451,25 +478,25 @@ class App(QWidget):
 
             # self.del_tab_btn.setEnabled(False)
 
-            self.row2 = QHBoxLayout()
+            self.row2 = PyQt5.QtWidgets.QHBoxLayout()
 
-            self.num_people_btn = QPushButton("Total in view")
+            self.num_people_btn = PyQt5.QtWidgets.QPushButton("Total in view")
             self.num_people_btn.clicked.connect(lambda: self.get_integer())
             self.num_people_btn.setFixedWidth(100)
-            # self.num_people_btn.setAlignment(Qt.AlignLeft)
-            self.num_people = QSpinBox()
-            # self.num_people.setValidator(QIntValidator(0,999))
+            # self.num_people_btn.setAlignment(PyQt5.QtCore.Qt.AlignLeft)
+            self.num_people = PyQt5.QtWidgets.QSpinBox()
+            # self.num_people.setValidator(PyQt5.QtGui.QIntValidator(0,999))
             self.num_people.setFixedWidth(50)
-            self.num_people.setAlignment(Qt.AlignLeft)
+            self.num_people.setAlignment(PyQt5.QtCore.Qt.AlignLeft)
 
-            self.row2.addWidget(self.num_people_btn, 0 , Qt.AlignLeft)
-            self.row2.addWidget(self.num_people, 1 , Qt.AlignLeft)
+            self.row2.addWidget(self.num_people_btn, 0 , PyQt5.QtCore.Qt.AlignLeft)
+            self.row2.addWidget(self.num_people, 1 , PyQt5.QtCore.Qt.AlignLeft)
 
             self.layout.addLayout(self.tab_control_layout)
             self.layout.addLayout(self.row2)
 
             # Initialize tab screen
-            self.tabs = QTabWidget()
+            self.tabs = PyQt5.QtWidgets.QTabWidget()
             
             # self.tabs.tabText()
             self.tabs.setMovable(False)
@@ -483,47 +510,47 @@ class App(QWidget):
             self.layout.addWidget(self.tabs)
 
             # setup scrollbar for video
-            self.scrollframe = QLabel(self)
+            self.scrollframe = PyQt5.QtWidgets.QLabel(self)
             self.scrollframe.setText("00:00")
             self.scrollframe.setFixedWidth(50)
 
-            self.vidScroll = QSlider(Qt.Horizontal,self)
+            self.vidScroll = PyQt5.QtWidgets.QSlider(PyQt5.QtCore.Qt.Horizontal,self)
             self.vidScroll.setMinimum(0)
-            self.vidScroll.setFocusPolicy(Qt.NoFocus)
+            self.vidScroll.setFocusPolicy(PyQt5.QtCore.Qt.NoFocus)
 
             #assign a 
             self.vidScroll.sliderMoved.connect(self.slider_update)
             self.vidScroll.valueChanged.connect(self.slider_new)
 
             #setup play/pause buttons
-            self.playButton = QPushButton()
-            self.playButton.setIcon(self.style().standardIcon(QStyle.SP_MediaPlay))
+            self.playButton = PyQt5.QtWidgets.QPushButton()
+            self.playButton.setIcon(self.style().standardIcon(PyQt5.QtWidgets.QStyle.SP_MediaPlay))
             self.playButton.clicked.connect(self.mediaStateChanged)
 
-            media_layout = QHBoxLayout()
+            media_layout = PyQt5.QtWidgets.QHBoxLayout()
             media_layout.addWidget(self.playButton)
             media_layout.addWidget(self.vidScroll)
             media_layout.addWidget(self.scrollframe)
             # media_layout.addWidget(self.skip_frames)
             self.layout.addLayout(media_layout)
 
-            bottom_layout = QHBoxLayout()
+            bottom_layout = PyQt5.QtWidgets.QHBoxLayout()
             
-            self.skip_frames = QSpinBox(self)
-            self.onlyInt = QIntValidator()
+            self.skip_frames = PyQt5.QtWidgets.QSpinBox(self)
+            self.onlyInt = PyQt5.QtGui.QIntValidator()
             # self.skip_frames.setValidator(self.onlyInt)
             self.skip_frames.setValue(10)
             self.skip_frames.setFixedWidth(40)
-            self.skip_frames.setAlignment(Qt.AlignRight)
+            self.skip_frames.setAlignment(PyQt5.QtCore.Qt.AlignRight)
             self.skip_frames.setMaximum(200)
             self.skip_frames.setMinimum(1)
-            # self.skip_frames.setValidator(QIntValidator(-999,999))
+            # self.skip_frames.setValidator(PyQt5.QtGui.QIntValidator(-999,999))
             self.skip_frames.setToolTip("The number of frames to increment by and 'skip'. This acts as a fast forward (positive) and reverse (negative).")
             bottom_layout.addWidget(self.skip_frames)
 
-            self.skip_label = QLabel(self)
+            self.skip_label = PyQt5.QtWidgets.QLabel(self)
             self.skip_label.setText("Frame Skip")
-            self.skip_label.setAlignment(Qt.AlignLeft)
+            self.skip_label.setAlignment(PyQt5.QtCore.Qt.AlignLeft)
             self.skip_label.setFixedHeight(12)
             bottom_layout.addWidget(self.skip_label)
             bottom_layout.addWidget(self.log_label)
@@ -547,13 +574,13 @@ class App(QWidget):
         #         print(currentQTableWidgetItem.row(), currentQTableWidgetItem.column(), currentQTableWidgetItem.text())
     
     def show_warning(self, message):
-        error_dialog = QErrorMessage()
+        error_dialog = PyQt5.QtWidgets.QErrorMessage()
         error_dialog.showMessage(message)
         error_dialog.setWindowTitle("PeopleTracker ERROR")
         error_dialog.exec()
 
     def get_integer(self):
-        i, okPressed = QInputDialog.getInt(self, "QInputDialog().getInteger()",
+        i, okPressed = PyQt5.QtWidgets.QInputDialog.getInt(self, "PyQt5.QtWidgets.QInputDialog().getInteger()",
                                  "Number of people in room:", 1, 0, 999, 1)
         # self.num_people.setText(str(i))
         self.num_people.setValue(i)
@@ -585,13 +612,13 @@ class App(QWidget):
     def mediaStateChanged(self):
         if self.play_state == False:
             self.playButton.setIcon(
-                    self.style().standardIcon(QStyle.SP_MediaPause))
+                    self.style().standardIcon(PyQt5.QtWidgets.QStyle.SP_MediaPause))
             self.play_state = True
             self.pause_to_play = True
             # print(self.play_state)
         else:
             self.playButton.setIcon(
-                    self.style().standardIcon(QStyle.SP_MediaPlay))
+                    self.style().standardIcon(PyQt5.QtWidgets.QStyle.SP_MediaPlay))
             self.play_state = False
             self.play_to_pause = True
             # print(self.play_state)
@@ -599,12 +626,12 @@ class App(QWidget):
 
     def set_pause_state(self):
         self.playButton.setIcon(
-                self.style().standardIcon(QStyle.SP_MediaPlay))
+                self.style().standardIcon(PyQt5.QtWidgets.QStyle.SP_MediaPlay))
         self.play_state = False
 
     def set_play_state(self):
         self.playButton.setIcon(
-                self.style().standardIcon(QStyle.SP_MediaPause))
+                self.style().standardIcon(PyQt5.QtWidgets.QStyle.SP_MediaPause))
         self.play_state = True
 
     def btn_state(self, b):
@@ -643,23 +670,27 @@ class App(QWidget):
         active = current_tab.toggle_active()
         return name, sex, desc, time
 
-    def add_tab(self):
-        self.tab_list.append(person_tab(self))
+    def add_tab(self, name=None):
+        self.tab_list.append(TrackerTab.person_tab(self))
+
         self.tabs.addTab(self.tab_list[-1].tab, ("Person " + str(self.tabs.count())))
         self.add_tab_state = True
         if len(self.tab_list) > 0:
             self.del_tab_btn.setEnabled(True)
+        
+        # return the last tab index
+        return len(self.tab_list), self.tab_list[-1]
 
     def remove_tab(self):
         try:
-            warning = QMessageBox()
-            warning.setIcon(QMessageBox.Warning)
+            warning = PyQt5.QtWidgets.QMessageBox()
+            warning.setIcon(PyQt5.QtWidgets.QMessageBox.Warning)
             warning.setWindowTitle("Delete Tracker Warning")
             warning.setText("You are about to delete the tracker and all of the recorded information... \n Do you still want to continue?")
-            warning.setStandardButtons(QMessageBox.Yes | QMessageBox.Cancel)
+            warning.setStandardButtons(PyQt5.QtWidgets.QMessageBox.Yes | PyQt5.QtWidgets.QMessageBox.Cancel)
             # answer = warning.buttonClicked.connect(warning)
             answer = warning.exec()
-            if answer == QMessageBox.Yes:
+            if answer == PyQt5.QtWidgets.QMessageBox.Yes:
                 self.del_tab_state = True
                 self.tabs.removeTab(self.tabs.currentIndex())
                 del self.tab_list[self.tabs.currentIndex()]
@@ -686,28 +717,32 @@ class App(QWidget):
         #     skip = 50
         return skip
     
-    def openFileNameDialog(self):
-        # options = QFileDialog.Options()
-        # options |= QFileDialog.DontUseNativeDialog
-        
-        fileName, _ = QFileDialog.getOpenFileName(self,"QFileDialog.getOpenFileName()", "","All Files (*);;Python Files (*.py)")
+    def openFileNameDialog(self, task=None, extensions=None):
+        fileName=""
+        if extensions and task:
+            fileName, _ = PyQt5.QtWidgets.QFileDialog.getOpenFileName(self, task, "",("All Files (*);;(" + extensions +")") )
+        else:
+        # options = PyQt5.QtWidgets.QFileDialog.Options()
+        # options |= PyQt5.QtWidgets.QFileDialog.DontUseNativeDialog
+            fileName, _ = PyQt5.QtWidgets.QFileDialog.getOpenFileName(self,"PyQt5.QtWidgets.QFileDialog.getOpenFileName()", "","All Files (*);;Python Files (*.py)")
+
         if fileName:
             filename = fileName
             self.log("Opening" + fileName)
         return filename
             
     def saveFileDialog(self):
-        options = QFileDialog.Options()
-        options |= QFileDialog.DontUseNativeDialog
-        fileName, _ = QFileDialog.getSaveFileName(self,"QFileDialog.getSaveFileName()","","All Files (*);;Text Files (*.txt)", options=options)
+        options = PyQt5.QtWidgets.QFileDialog.Options()
+        options |= PyQt5.QtWidgets.QFileDialog.DontUseNativeDialog
+        fileName, _ = PyQt5.QtWidgets.QFileDialog.getSaveFileName(self,"PyQt5.QtWidgets.QFileDialog.getSaveFileName()","","All Files (*);;Text Files (*.txt)", options=options)
         if fileName:
             self.log("Saving " + fileName)
-        return filename
+        return fileName
 
     def display_help(self):
         webbrowser.open('https://github.com/hobbitsyfeet/PeopleTracker/wiki')
-        # msg = QMessageBox()
-        # msg.setIcon(QMessageBox.Question)
+        # msg = PyQt5.QtWidgets.QMessageBox()
+        # msg.setIcon(PyQt5.QtWidgets.QMessageBox.Question)
         # msg.setWindowTitle("Help")
         # msg.setText("1) \n2)  \n3)  \n4)  \n")
 
@@ -730,60 +765,91 @@ class App(QWidget):
         self.retain_region = not self.retain_region
 
 
+    def get_new_data_version(self):
+        # Use the video path loaded
+
+        # version_filename = (export_filename[:-4] + "_V")
+        # version_filename = self.filename
+        # out_path = os.path.abspath(self.filename)
+        out_path, filename = os.path.split(self.filename)
+        version_filename = filename.split(".")[0] + "_V"
+        # Collect all csv in video folder
+        current_csv = glob.glob((out_path + "/*.csv"))
+
+        # Get version file number
+        newest_version = 0
+        for file in current_csv:
+            # Check if there's a version and get the highest version count
+            if version_filename in file:
+                # Get the version number in it
+                version = int(file.split("_V")[-1].split(".")[0])
+                if newest_version <= version:
+                    newest_version = version
+
+        # Newest version will be the largest version +1
+        if self.data_version_updated:
+            newest_version += 1   
+
+        version_filename += str(newest_version) + ".csv"     
+        self.newest_version_path = version_filename
+        self.newest_version = newest_version
+        return version_filename, newest_version
+        # export_meta(version_filename, new_version=True)
+        # export_csv = df.to_csv (version_filename, index = None, header=False, mode='a') #Don't forget to add '.csv' at the end of the path
 
 
 
 
-class MaskRCNN_IOU_Options(QWidget):
+class MaskRCNN_IOU_Options(PyQt5.QtWidgets.QWidget):
     """
     UI for setting Mask-RCNN IOU options
     """
     def __init__(self):
         super().__init__()
-        layout = QVBoxLayout()
+        layout = PyQt5.QtWidgets.QVBoxLayout()
         self.setWindowTitle("Mask-RCNN Options")
         # self.setGeometry(self.left, self.top, self.width, self.height)
-        self.label = QLabel("Intersection over Union is the measure comparing how well two rectangles fit over eachother. \n Like a percent fit [0-1]")
+        self.label = PyQt5.QtWidgets.QLabel("Intersection over Union is the measure comparing how well two rectangles fit over eachother. \n Like a percent fit [0-1]")
         layout.addWidget(self.label)
-        iou_form = QFormLayout()
+        iou_form = PyQt5.QtWidgets.QFormLayout()
         layout.addLayout(iou_form)
 
         self.setLayout(layout)
 
-        self.active = QCheckBox("Activate",self)
+        self.active = PyQt5.QtWidgets.QCheckBox("Activate",self)
         self.active.setTristate(False)
-        self.active.setCheckState(Qt.Checked)
+        self.active.setCheckState(PyQt5.QtCore.Qt.Checked)
         # self.active.connect(lambda: self._toggle_checkbox(self.active))
         iou_form.addRow(self.active)
 
-        self.min_value = QDoubleSpinBox(self)
-        # self.onlyInt = QIntValidator()
+        self.min_value = PyQt5.QtWidgets.QDoubleSpinBox(self)
+        # self.onlyInt = PyQt5.QtGui.QIntValidator()
         # self.skip_frames.setValidator(self.onlyInt)
         self.min_value.setValue(0.45)
         self.min_value.setFixedWidth(70)
-        self.min_value.setAlignment(Qt.AlignLeft)
+        self.min_value.setAlignment(PyQt5.QtCore.Qt.AlignLeft)
         self.min_value.setMaximum(1)
         self.min_value.setMinimum(0)
         self.min_value.setSingleStep(0.05)
-        # self.skip_frames.setValidator(QIntValidator(-999,999))
+        # self.skip_frames.setValidator(PyQt5.QtGui.QIntValidator(-999,999))
         self.min_value.setToolTip("The minimum IOU value which considers to be 'out of range' (1 means that it will always be out of range, 0 means it will never be out of range)")
         iou_form.addRow("Out of Range", self.min_value)
 
 
-        self.auto_assign_value = QDoubleSpinBox(self)
+        self.auto_assign_value = PyQt5.QtWidgets.QDoubleSpinBox(self)
         self.auto_assign_value.setValue(0.8)
         self.auto_assign_value.setFixedWidth(70)
-        self.auto_assign_value.setAlignment(Qt.AlignLeft)
+        self.auto_assign_value.setAlignment(PyQt5.QtCore.Qt.AlignLeft)
         self.auto_assign_value.setMaximum(1)
         self.auto_assign_value.setMinimum(0)
         self.auto_assign_value.setSingleStep(0.05)
         self.auto_assign_value.setToolTip("The minimum IOU value which is used to automatically re-assign (1 needs perfect alignment to assign, 0 will always align no matter how different)")
         iou_form.addRow("Auto Assign", self.auto_assign_value)
 
-        self.similarity = QDoubleSpinBox(self)
+        self.similarity = PyQt5.QtWidgets.QDoubleSpinBox(self)
         self.similarity.setValue(0.15)
         self.similarity.setFixedWidth(70)
-        self.similarity.setAlignment(Qt.AlignLeft)
+        self.similarity.setAlignment(PyQt5.QtCore.Qt.AlignLeft)
         self.similarity.setMaximum(1)
         self.similarity.setMinimum(0)
         self.similarity.setSingleStep(0.05)
@@ -804,52 +870,52 @@ class MaskRCNN_IOU_Options(QWidget):
 
     def _toggle_checkbox(self, checkbox):
         if checkbox.isChecked():
-            checkbox.setCheckState(Qt.Checked)
+            checkbox.setCheckState(PyQt5.QtCore.Qt.Checked)
         else:
-            checkbox.setCheckState(Qt.Unchecked)
+            checkbox.setCheckState(PyQt5.QtCore.Qt.Unchecked)
 
-class Predictor_Options(QWidget):
+class Predictor_Options(PyQt5.QtWidgets.QWidget):
     def __init__(self):
         super().__init__()
-        layout = QVBoxLayout()
+        layout = PyQt5.QtWidgets.QVBoxLayout()
         self.setWindowTitle("IOU Options")
         # self.setGeometry(self.left, self.top, self.width, self.height)
-        self.label = QLabel("Intersection over Union is the measure comparing how well two rectangles fit over eachother. \n Like a percent fit [0-1]\n \n Distance is line distance between pixels.")
+        self.label = PyQt5.QtWidgets.QLabel("Intersection over Union is the measure comparing how well two rectangles fit over eachother. \n Like a percent fit [0-1]\n \n Distance is line distance between pixels.")
         layout.addWidget(self.label)
-        iou_form = QFormLayout()
+        iou_form = PyQt5.QtWidgets.QFormLayout()
         layout.addLayout(iou_form)
 
         self.setLayout(layout)
 
-        self.activate_iou = QCheckBox("Activate IOU",self)
+        self.activate_iou = PyQt5.QtWidgets.QCheckBox("Activate IOU",self)
         self.activate_iou.setTristate(False)
-        self.activate_iou.setCheckState(Qt.Checked)
+        self.activate_iou.setCheckState(PyQt5.QtCore.Qt.Checked)
         # self.activate_iou.connect(lambda: self._toggle_checkbox(self.activate_iou))
         iou_form.addRow(self.activate_iou)
 
-        self.min_value_IOU = QDoubleSpinBox(self)
-        # self.onlyInt = QIntValidator()
+        self.min_value_IOU = PyQt5.QtWidgets.QDoubleSpinBox(self)
+        # self.onlyInt = PyQt5.QtGui.QIntValidator()
         # self.skip_frames.setValidator(self.onlyInt)
         self.min_value_IOU.setValue(0.45)
         self.min_value_IOU.setFixedWidth(70)
-        self.min_value_IOU.setAlignment(Qt.AlignLeft)
+        self.min_value_IOU.setAlignment(PyQt5.QtCore.Qt.AlignLeft)
         self.min_value_IOU.setMaximum(1)
         self.min_value_IOU.setMinimum(0)
         self.min_value_IOU.setSingleStep(0.05)
-        # self.skip_frames.setValidator(QIntValidator(-999,999))
+        # self.skip_frames.setValidator(PyQt5.QtGui.QIntValidator(-999,999))
         self.min_value_IOU.setToolTip("The minimum IOU value which considers to be 'out of range' (1 means that it will always be out of range, 0 means it will never be out of range)")
         iou_form.addRow("Bounding Box Out of Range", self.min_value_IOU)
 
-        self.activate_centroid = QCheckBox("Activate Centroid",self)
+        self.activate_centroid = PyQt5.QtWidgets.QCheckBox("Activate Centroid",self)
         self.activate_centroid.setTristate(False)
-        self.activate_centroid.setCheckState(Qt.Checked)
+        self.activate_centroid.setCheckState(PyQt5.QtCore.Qt.Checked)
         # self.activate_centroid.connect(lambda: self._toggle_checkbox(self.activate_centroid))
         iou_form.addRow(self.activate_centroid)
 
-        self.min_value_distance = QDoubleSpinBox(self)
+        self.min_value_distance = PyQt5.QtWidgets.QDoubleSpinBox(self)
         self.min_value_distance.setValue(20)
         self.min_value_distance.setFixedWidth(70)
-        self.min_value_distance.setAlignment(Qt.AlignLeft)
+        self.min_value_distance.setAlignment(PyQt5.QtCore.Qt.AlignLeft)
         # self.min_value_distance.setMaximum()
         self.min_value_distance.setMinimum(0)
         self.min_value_distance.setSingleStep(10)
@@ -870,82 +936,82 @@ class Predictor_Options(QWidget):
 
     def _toggle_checkbox(self, checkbox):
         if checkbox.isChecked():
-            checkbox.setCheckState(Qt.Checked)
+            checkbox.setCheckState(PyQt5.QtCore.Qt.Checked)
         else:
-            checkbox.setCheckState(Qt.Unchecked)
+            checkbox.setCheckState(PyQt5.QtCore.Qt.Unchecked)
 
-class Image_Enhancement(QWidget):
+class Image_Enhancement(PyQt5.QtWidgets.QWidget):
     """
     UI for setting Mask-RCNN IOU options
     """
     def __init__(self):
         super().__init__()
-        layout = QVBoxLayout()
+        layout = PyQt5.QtWidgets.QVBoxLayout()
         self.setWindowTitle("Image Options")
         # self.setGeometry(self.left, self.top, self.width, self.height)
-        self.label = QLabel("Image options for brightness and contrast.")
+        self.label = PyQt5.QtWidgets.QLabel("Image options for brightness and contrast.")
         layout.addWidget(self.label)
-        bar_form = QFormLayout()
+        bar_form = PyQt5.QtWidgets.QFormLayout()
         layout.addLayout(bar_form)
         self.setLayout(layout)
 
-        # self.brightness = QSlider(Qt.Horizontal)
+        # self.brightness = PyQt5.QtWidgets.QSlider(PyQt5.QtCore.Qt.Horizontal)
         # self.brightness.setMaximum(255)
         # self.brightness.setMinimum(-255)
         # self.brightness.setValue(0)
         
         
-        # self.brightness_label = QLabel("brightness: " + str(self.brightness.value()))
+        # self.brightness_label = PyQt5.QtWidgets.QLabel("brightness: " + str(self.brightness.value()))
         # self.brightness.valueChanged.connect(lambda: self.update_brightness())
         # bar_form.addRow(self.brightness_label , self.brightness)
 
 
 
-        self.alpha = QSlider(Qt.Horizontal)
+        self.alpha = PyQt5.QtWidgets.QSlider(PyQt5.QtCore.Qt.Horizontal)
         self.alpha.setValue(10)
         self.alpha.setMinimum(0)
         self.alpha.setMaximum(100)
-        self.alpha_label = QLabel("Contrast: " + str(self.alpha.value()))
+        self.alpha_label = PyQt5.QtWidgets.QLabel("Contrast: " + str(self.alpha.value()))
         self.alpha.valueChanged.connect(lambda: self.update_alpha())
         bar_form.addRow(self.alpha_label , self.alpha)
 
-        self.beta = QSlider(Qt.Horizontal)
+        self.beta = PyQt5.QtWidgets.QSlider(PyQt5.QtCore.Qt.Horizontal)
         self.beta.setValue(10)
         self.beta.setMinimum(-200)
         self.beta.setMaximum(2000)
-        self.beta_label = QLabel("Brightness: "+ str(self.beta.value()))
+        self.beta_label = PyQt5.QtWidgets.QLabel("Brightness: "+ str(self.beta.value()))
         self.beta.valueChanged.connect(lambda: self.update_beta())
         bar_form.addRow(self.beta_label, self.beta)
 
-        self.gamma = QSlider(Qt.Horizontal)
+        self.gamma = PyQt5.QtWidgets.QSlider(PyQt5.QtCore.Qt.Horizontal)
         self.gamma.setValue(10)
         self.gamma.setMinimum(0)
         self.gamma.setMaximum(250)
         self.gamma.setSingleStep(0.1)
-        self.gamma_label = QLabel("gamma: "+ str(self.gamma.value()/10))
+        self.gamma_label = PyQt5.QtWidgets.QLabel("gamma: "+ str(self.gamma.value()/10))
         self.gamma.valueChanged.connect(lambda: self.update_gamma())
         bar_form.addRow(self.gamma_label, self.gamma)
 
-        self.roi_normalize = QPushButton("Normalize Region")
+        self.roi_normalize = PyQt5.QtWidgets.QPushButton("Normalize Region")
         self.roi_normalize.clicked.connect(lambda: self.set_normalize_flag())
         self.roi_normalize_region = None
         self.roi_normalize_flag = False
-        # self.roi_clear_button = QPushButton("Clear Region")
+        # self.roi_clear_button = PyQt5.QtWidgets.QPushButton("Clear Region")
         # self.roi_clear_button.clicked.connect(lambda: self.clear_normalized_region())
         # bar_form.addWidget(self.roi_normalize)
         # bar_form.addWidget(self.roi_clear_button)
-        self.reset_button = QPushButton("Default")
+        self.reset_button = PyQt5.QtWidgets.QPushButton("Default")
         self.reset_button.clicked.connect(lambda: self.reset_default())
         bar_form.addWidget(self.reset_button)
 
-        self.equalize_hist_button = QCheckBox("Equalize Histogram")
+        self.equalize_hist_button = PyQt5.QtWidgets.QCheckBox("Equalize Histogram")
         self.equalize_hist_button.setChecked(False)
         self.equalize_hist_button.clicked.connect(lambda: self.toggle_equalize_hist())
         self.equalize_hist_button.setToolTip("Uses OpenCV's Equalize Histogram method. 'Improves the contrast in an image'")
         bar_form.addWidget(self.equalize_hist_button)
         
 
-        self.equalize_chahe_hist_button = QCheckBox("CLAHE Equalize Histogram")
+        self.equalize_chahe_hist_button = PyQt5.QtWidgets.QCheckBox("CLAHE Equalize Histogram")
         self.equalize_chahe_hist_button.setChecked(False)
         self.equalize_chahe_hist_button.clicked.connect(lambda: self.toggle_chahe_hist())
         self.equalize_chahe_hist_button.setToolTip("Uses OpenCV's Equalize Histogram method. 'Improves the contrast in an image'")
@@ -1118,18 +1184,18 @@ class Image_Enhancement(QWidget):
     #     self.tab.parentWidget().setTabText(self.tab.parent.currentIndex(),self.name_line.getText())
     #     print(self.tab.parentWidget)
 
-# class VideoWindow(QWidget):
+# class VideoWindow(PyQt5.QtWidgets.QWidget):
 #     """
-#     This "window" is a QWidget. If it has no parent, it 
+#     This "window" is a PyQt5.QtWidgets.QWidget. If it has no parent, it 
 #     will appear as a free-floating window as we want.
 #     """
 #     def __init__(self):
 #         super().__init__()
-#         layout = QVBoxLayout()
+#         layout = PyQt5.QtWidgets.QVBoxLayout()
 #         layout.setContentsMargins(0, 0, 0, 0)
 #         self.setLayout(layout)
 #         self.label = label()
-#         self.image = QPixmap("./Blank.jpg")
+#         self.image = PyQt5.QtGui.QPixmap("./Blank.jpg")
 #         self.label.setPixmap(self.image)
 #         layout.addWidget(self.label)
 #         self.pressed_pos = None
@@ -1153,9 +1219,9 @@ class Image_Enhancement(QWidget):
 
 #     def paintEvent(self, event):
 
-#         painter = QPainter(self)
+#         painter = PyQt5.QtGui.QPainter(self)
 
-#         painter.setPen(QPen(Qt.black,  5, Qt.SolidLine))
+#         painter.setPen(PyQt5.QtGui.QPen(PyQt5.QtCore.Qt.black,  5, PyQt5.QtCore.Qt.SolidLine))
 
 #         painter.drawRect(40, 40, 400, 200)
 
@@ -1165,13 +1231,13 @@ class Image_Enhancement(QWidget):
 #             # print(cv2Frame)
 #             height, width, channel = cv2Frame.shape
 #             bytesPerLine = 3 * width
-#             qimg = QImage(cv2Frame.data, width, height, bytesPerLine, QImage.Format_RGB888).rgbSwapped()
+#             qimg = PyQt5.QtGui.QImage(cv2Frame.data, width, height, bytesPerLine, PyQt5.QtGui.QImage.Format_RGB888).rgbSwapped()
 #             # print(qimg)
-#             self.label.setPixmap(QPixmap(qimg))
+#             self.label.setPixmap(PyQt5.QtGui.QPixmap(qimg))
 
 
 
-# class label (QLabel):
+# class label (PyQt5.QtWidgets.QLabel):
 #     def __init__(self):
 #         super().__init__()
 #         def mousePressEvent(self, event):
@@ -1179,6 +1245,6 @@ class Image_Enhancement(QWidget):
 #             print("MOUSE")
 
 if __name__ == '__main__':
-    app = QApplication(sys.argv)
+    app = PyQt5.QtWidgets.QApplication(sys.argv)
     ex = App()
     sys.exit(app.exec_())

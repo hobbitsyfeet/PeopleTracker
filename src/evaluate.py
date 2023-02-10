@@ -18,11 +18,10 @@ import glob
 
 import pandas as pd
 
-import cv2
-# from pandas._libs.missing import NA
 
+import matplotlib
 import matplotlib.pyplot as plt
-import numpy as np
+# import numpy as np
 
 # NOTE: Ground Truth frames are One full second ahead of the estimates. This is because we calculate from 1*60 = 60 so either we subtract a constant fps from the ground truth or add 60 to our data. Adjusting Ground truth would be the best option.
 
@@ -56,6 +55,9 @@ class tracker_evaluation:
 
         self.invert_y = 0
 
+        self.correction_ratio_x = None
+        self.correction_ratio_y = None
+
     
 
     def load_json(self, folder, fps=None):
@@ -64,10 +66,13 @@ class tracker_evaluation:
         if fps:
             self.fps = fps
         print("Loading JSON")
-        for file in glob.glob(folder+"*.json"):
+        files = glob.glob(folder+"*.json")
+
+        self.total_images = len(files)
+        for file in files:
             # Parse the filename and get the image number
-            self.total_images = int(file.split(".")[0].split("_")[-1])
-            frame_number = self.total_images * self.fps
+            json_image_number = int(file.split(".")[0].split("_")[-1])
+            frame_number = json_image_number * self.fps
             with open(file) as f:
                 data = json.load(f)
                 for shape in data['shapes']:
@@ -80,11 +85,46 @@ class tracker_evaluation:
         self.labels = self.list_labels()
 
     def load_tracker_data(self, tracker_file):
+        '''
+        Loads estimates from people tracker exported data.
+        
+        It loads private variables estimate_dict and estimates (a list of all estimate names)
+
+        Returns a dataframe of tracker data
+
+        '''
         print("Loading Tracker Data")
         df = pd.read_csv(tracker_file)
         self.fps = int(round(df.iloc[0]['FrameRate']))
+
         self.invert_y = int(df.iloc[1]['Max_Pixel_y'])
+        # self.invert_y = 0
+
+        # try:
+        try:
+            video_width = int(df.iloc[0]['Width(px)'])
+            video_height = int(df.iloc[0]['Height(px)'])
+
+            recorded_width = int(df.iloc[1]['Max_Pixel_x'])
+            recorded_height = int(df.iloc[1]['Max_Pixel_y'])
+
+            # Example: Estimates are recorded at 480x720 while ground truths are recorded at 720x1280. The ratio inputed would be (720/480, 1280/720) or (1.5, 1.777778)
+            self.correction_ratio_x = video_width/recorded_width
+            self.correction_ratio_y = video_height/recorded_height
+
+        except:
+            print("It's likely that this data is MaskRCNN Predicted and recorded at full resolution: Setting scale ratio to 1:1")
+            # Example: Estimates are recorded at 480x720 while ground truths are recorded at 720x1280. The ratio inputed would be (720/480, 1280/720) or (1.5, 1.777778)
+            self.correction_ratio_x = 1
+            self.correction_ratio_y = 1
+
+        # except:
+        # self.correction_ratio_x = 1
+        # self.correction_ratio_y = 1
+
         df = df.iloc[1: , :] # Drop first row
+
+
         
         print("FRAME RATE", self.fps)
         tracker_data = df[["Frame_Num", "Name", "ID", "BBox_TopLeft_x", "BBox_TopLeft_y", "BBox_BottomRight_x", "BBox_BottomRight_y"]]
@@ -95,10 +135,12 @@ class tracker_evaluation:
                                 'BBox_TopLeft_y': 'y2',
                                 'BBox_BottomRight_x': 'x2',
                                 'BBox_BottomRight_y': 'y1'})
-        print(tracker_data)
+        # print(tracker_data)
         self.estimate_dict = tracker_data
         self.estimates = self.list_estimates()
         print("Done loading Data")
+        return self.estimate_dict
+
         
     def plot_score(self):
         # Plots timeline (in frames) according to ground truth. Additionally, plots id and errors.
@@ -111,7 +153,7 @@ class tracker_evaluation:
     def identification_graph(self):
         fig, ax = plt.subplots()  # Create a figure containing a single axes.
         start_frame = 0
-        end_frame = self.total_images * self.fps
+
         data = []
         
         frame_number = []
@@ -141,7 +183,7 @@ class tracker_evaluation:
         for frame in self.ground_truth_dict:
             # print(frame)
             ground_truths = self.get_ground_truths(frame)
-            id_map = self.indentification_map(frame)
+            id_map = self.identification_map(frame)
             for gt in ground_truths:
                 # ax.plot(gt['label'], frame)
                 data.append(gt['label'])
@@ -181,11 +223,11 @@ class tracker_evaluation:
         '''
         # An estimate exists that is not associated with a ground truth object
         # Tracker is on but not on a ground truth
-        fn = 0
+        fp_count = 0
         for estimate in es_config.values():
             if None in estimate:
-                fn += 1
-        return fn
+                fp_count += 1
+        return fp_count
 
     def false_negative(self, gt_config):
         '''
@@ -207,8 +249,8 @@ class tracker_evaluation:
 
 
         fn_count = 0
-        for estimate in gt_config.values():
-            if None in estimate:
+        for gt in gt_config.values():
+            if None in gt:
                 fn_count += 1
         return fn_count
 
@@ -230,7 +272,7 @@ class tracker_evaluation:
         mt = 0
         for gt in gt_config:
             gts = self.get_ground_truths(frame_number, gt)
-            occluded = self.check_occlusion(gts[0], frame_number)
+            occluded, _ = self.check_occlusion(gts[0], frame_number)
 
             es = gt_config[gt]
             if not occluded:
@@ -257,7 +299,7 @@ class tracker_evaluation:
             #Iterate through all the ground truths and check for occlusion.
             for ground_truth in gt:
                 gts = self.get_ground_truths(frame_number, ground_truth)
-                occluded = self.check_occlusion(gts[0], frame_number)
+                occluded, _ = self.check_occlusion(gts[0], frame_number)
                 #If it is occluded we don't need to keep checking if it is
                 if occluded:
                     break
@@ -336,7 +378,7 @@ class tracker_evaluation:
 
     def check_occlusion(self, gt,  frame_num):
         all_gt = self.get_ground_truths(frame_num)
-
+        percent_covered = 0
         # Remove current shape from list so all other shapes are compared
         # Calculate intersection of other points onto ground truth
         for test in all_gt:
@@ -346,10 +388,10 @@ class tracker_evaluation:
             percent_covered = self.precision(gt['points'], test['points'])
             #Iterate through all other ground truths, returning true if any intersection exceeds threshold_to
             if percent_covered > self.threshold_to:
-                return True
+                return True, percent_covered
 
         # No occlusion if no value exceeds
-        return False
+        return False, percent_covered
 
     def get_occlusion_count(self, frame_num):
         all_gt = self.get_ground_truths(frame_num)
@@ -360,41 +402,52 @@ class tracker_evaluation:
         count = 0
         # Iterate over all ground truths and record how many others overlap with excess threshold_to
         for gt in all_gt:
-            occluded = self.check_occlusion(gt, frame_num)
+            occluded, _ = self.check_occlusion(gt, frame_num)
             if occluded:
                 count += 1
         
         return count
 
     
-    def precision(self, estimate, ground_truth):
+    def precision(self, estimate, ground_truth, correct_estimate=False):
         '''
         Precision measures how much of the E covers the GT and
         can take values between 0 (no overlap) and 1 (fully overlapped)
         '''
-        measures = self.compute_iou(estimate, [ground_truth])
+
+        if correct_estimate:
+            measures = self.compute_iou(estimate, [ground_truth], ratios=(self.correction_ratio_x, self.correction_ratio_y))
+        else:
+            measures = self.compute_iou(estimate, [ground_truth])
+
         intersection = measures[1]
 
         gt = self.get_area(ground_truth)
         return abs(intersection[0])/abs(gt)
     
-    def recall(self, estimate, ground_truth):
+    def recall(self, estimate, ground_truth, correct_estimate=False):
         '''
         Recall measures how much of the GT covered by the
         E and can take values between 0 (no overlap) and 1 (fully overlapped)
         '''
-        measures = self.compute_iou(estimate, [ground_truth])
+
+        if correct_estimate:
+            measures = self.compute_iou(estimate, [ground_truth], ratios=(self.correction_ratio_x, self.correction_ratio_y))
+        else:
+            measures = self.compute_iou(estimate, [ground_truth])
         intersection = measures[1]
         es = self.get_area(estimate)
         return abs(intersection[0])/abs(es)
 
-    def fmeasure(self, estimate, ground_truth):
+    def fmeasure(self, estimate, ground_truth, correct_estimate=False):
         '''
         The F-measure(F = 2νρ/ν+ρ ) is suited to this task, as F is only high when both recall and precision are high
         '''
         # print("FMEASURE COMPARE ESTIMATE:", estimate, " | GT:", ground_truth)
-        p = self.precision(estimate, ground_truth)
-        r = self.recall(estimate, ground_truth)
+
+        if correct_estimate is False:
+            p = self.precision(estimate, ground_truth)
+            r = self.recall(estimate, ground_truth)
 
         # Avoids division by zero
         if p == 0 and r == 0:
@@ -412,10 +465,10 @@ class tracker_evaluation:
         es_config = {}
         for index, estimate in estimates.iterrows():
             
-            es = self.estimate_to_point(estimate, invert_y=self.invert_y)
+            es = self.estimate_to_point(estimate)
             name = estimate['name']
             for gt in ground_truths:
-                f = self.fmeasure(es, gt['points'])
+                f = self.fmeasure(es, gt['points'], correct_estimate=False)
                 if f > self.threshold_tc:
                     if name not in es_config.keys():
                         es_config[name] = [gt['label']]
@@ -439,19 +492,22 @@ class tracker_evaluation:
         
         return gt_config, es_config
 
-    def calculate_identification_map(self):
+    def calculate_identification_map(self, manual_gtmap=None, manual_emap=None):
         """ Calculates Identification map for an entire video
 
         Calculate_identification_map calculates the id map of every frame based on how one fits onto another. 
         Next is majority voting which counts the occurances of maps and grabs the ones which have the most.
 
         """
+        if manual_gtmap is not None and manual_emap is not None:
+            return manual_gtmap, manual_emap
         
+
         #Calculates ID Map for every frame. One frame can have multiple maps
         e_map = []
         g_map = []
         for frame in self.ground_truth_dict:
-            maps = self.indentification_map(frame)
+            maps = self.identification_map(frame)
             
             if maps is not None:
                 e = maps["Estimate"]
@@ -500,12 +556,10 @@ class tracker_evaluation:
         
         majority_vote_estimates = {}
         for es in self.list_estimates():
-            # print(es)
             # Majority = ((label,estimate), count)
             majority = None
             for pair in e_map.keys():
                 # Assign the majority to the first
-                # print(es, pair)
                 if es == pair[0]:
                     
                     if majority is None:
@@ -519,11 +573,12 @@ class tracker_evaluation:
             if majority is not None:
                 majority_vote_estimates[majority[0][0]] = majority[0][1]
 
+        
         return majority_vote_labels, majority_vote_estimates
 
 
 
-    def indentification_map(self, frame_number):
+    def identification_map(self, frame_number):
         """
         Identification map produces a map for a specific frame number
         """
@@ -538,10 +593,10 @@ class tracker_evaluation:
         for index, estimate in estimates.iterrows():
             # print(estimate)
             
-            es = self.estimate_to_point(estimate, invert_y=self.invert_y)
+            es = self.estimate_to_point(estimate)
             fmeasures = []
             for gt in ground_truths:
-                f = self.fmeasure(es, gt['points'])
+                f = self.fmeasure(es, gt['points'], correct_estimate=False)
                 # print("F", f)
                 fmeasures.append(f)
             # Use the best estimate
@@ -554,8 +609,8 @@ class tracker_evaluation:
         for gt in ground_truths:
             fmeasures = []
             for index, estimate in estimates.iterrows():
-                es = self.estimate_to_point(estimate, invert_y=self.invert_y)
-                f = self.fmeasure(es, gt['points'])
+                es = self.estimate_to_point(estimate)
+                f = self.fmeasure(es, gt['points'], correct_estimate=False)
                 fmeasures.append(f)
             
             max_index = fmeasures.index(max(fmeasures))
@@ -573,7 +628,7 @@ class tracker_evaluation:
         Calculates FIO for a single frame normalized by the number of estimates in that frame
         """
         #Calculates the id_map for the frame, both estimates and ground_truths
-        id_map = self.indentification_map(frame_number)
+        id_map = self.identification_map(frame_number)
 
         if id_map is not None:
             es_map = id_map["Estimate"]
@@ -617,7 +672,7 @@ class tracker_evaluation:
         GTs indicated by the identity maps. Label segments as FIT,
         FIO, or correct
         """      
-        id_map = self.indentification_map(frame_number)
+        id_map = self.identification_map(frame_number)
         
 
         if id_map is not None:
@@ -660,7 +715,7 @@ class tracker_evaluation:
 
         # Frames that Ei correctly identifies GTj ( niˆji )
         for frame in self.ground_truth_dict:
-            id_map = self.indentification_map(frame)
+            id_map = self.identification_map(frame)
             # print(id_map)
             if id_map is not None:
                 estimate_map = id_map['Estimate']
@@ -702,7 +757,7 @@ class tracker_evaluation:
 
         #Iterate over the entire video's frames
         for frame in self.ground_truth_dict:
-            id_map = self.indentification_map(frame)
+            id_map = self.identification_map(frame)
 
             #Check if ID map is valid
             if id_map is not None:
@@ -753,6 +808,7 @@ class tracker_evaluation:
         '''
         # print("Getting map...", end='/n')
         gt_map, es_map = self.configuration_map(frame_number)
+        print(gt_map, es_map)
         # print("Getting CD...", end='/n')
         cd, total_cd = self.configuration_distance(frame_number)
         # print("Calculating Results")
@@ -772,12 +828,15 @@ class tracker_evaluation:
             
 
 
-    def calculate_errors(self, printout=False):
+    def calculate_errors(self, printout=False, gt_maps_itself=True):
         """
         Iterates through every ground truth frame and compares a list of estimates. 
 
         Returns final video score, as well as normalized results through the video.
         Normalized results are results where the number of errors on a frame is normalized by the number of ground truths.
+
+        We define GT maps itself to override majority voting to determine what the correct labels are. This accounts for the problem where
+        an estimate incorrectly labels a ground truth forthe majority of the time
         """
         errors_dict = {}
 
@@ -791,7 +850,11 @@ class tracker_evaluation:
         total_fio = 0
 
         self.gt_map, self.es_map = self.calculate_identification_map()
-        # print("MAPS", self.gt_map, self.es_map)
+
+        # if gt_maps_itself:
+        #     self.es_map = self.gt_map
+
+        print("MAPS", self.gt_map, self.es_map)
         # input()
         
         # self.gt_map, self.es_map = self.calculate_identification_map()
@@ -820,7 +883,7 @@ class tracker_evaluation:
             # print("\nFRAME", frame)
             ngt = max(len(self.get_ground_truths(frame)),1)
             # nes = len(self.list_estimates())
-            errors = self.calculate_frame_errors(frame, ratios=(1, 1))
+            errors = self.calculate_frame_errors(frame)
             cd, cd_t = self.configuration_distance(frame)
 
             # print(errors)
@@ -887,21 +950,22 @@ class tracker_evaluation:
         #             "OP": total_op,
         #             "FIT": total_fit,
         #             "FIO": total_fio
-        #             } 
+        #             } test
         
         # print(normalization)
         total_frames = self.total_images
-        
+        print("Total FP:", total_fp)
+        print(self.total_images)
         # Normalization
         normalized_results = {
-                    "FP": round(1/(total_frames) * (total_fp),3),    #Good
-                    "FN": round(1/(total_frames) * (total_fn),3),    #Good 
-                    "MT": round(1/(total_frames) * (total_mt),3),    #Good
-                    "MO": round(1/(total_frames) * (total_mo),3),    #Good
-                    "CD": round(1/(total_frames) * total_cd,3),      #Good
+                    "FP": round((1/(total_frames)) * (total_fp),3),    #Good
+                    "FN": round((1/(total_frames)) * (total_fn),3),    #Good 
+                    "MT": round((1/(total_frames)) * (total_mt),3),    #Good
+                    "MO": round((1/(total_frames)) * (total_mo),3),    #Good
+                    "CD": round((1/(total_frames)) * total_cd,3),      #Good
 
-                    "FIT": round(1/total_frames * (total_fit),3),    #Good
-                    "FIO": round(1/total_frames * (total_fio),3),     #Good
+                    "FIT": round((1/total_frames) * (total_fit),3),    #Good
+                    "FIO": round((1/total_frames) * (total_fio),3),     #Good
                     "TP": round((tp), 3),                         #Good
                     "OP": round((op),3)     #Untested
                     }
@@ -923,7 +987,7 @@ class tracker_evaluation:
         return normalized_results, recorded_results
         # return results, normalized_results
 
-    def compute_iou(self, box, boxes, ratios=(1,1), frame=None):
+    def compute_iou(self, box, boxes, ratios=None, frame=None):
         """Calculates IoU of the given box with the array of the given boxes.
         box: 1D vector [x1, y1, x2, y2]
         boxes: [boxes_count, (x1, y1, x2, y2)]
@@ -934,25 +998,33 @@ class tracker_evaluation:
         Note: the areas are passed in rather than calculated here for
         efficiency. Calculate once in the caller to avoid duplicate work.
         """
+        if ratios is None:
+            ratios = self.correction_ratio_x, self.correction_ratio_y
 
         area = (box[0] - box[2]) * (box[1] - box[3]) # SOMETHING IS WRONG WITH BOX. GOOD NIGHT!
         ious = []
         intersections = []
         for index, preds in enumerate(boxes):
             
-            x1 = int(preds[0]*ratios[0])
-            y1 = int(preds[1]*ratios[1])
-            x2 = int(preds[2]*ratios[0])
-            y2 = int(preds[3]*ratios[1])
-
-            if frame is not None:
-                cv2.rectangle(frame, (x1,y1), (x2,y2), (150,150,0), 1)
+            # x1 = int(preds[0]*ratios[0])
+            # y1 = int(preds[1]*ratios[1])
+            # x2 = int(preds[2]*ratios[0])
+            # y2 = int(preds[3]*ratios[1])
+                        
+            x1 = int(preds[0])
+            y1 = int(preds[1])
+            x2 = int(preds[2])
+            y2 = int(preds[3])
+            # if frame is not None:
+            #     cv2.rectangle(frame, (x1,y1), (x2,y2), (150,150,0), 1)
 
             xA = max(box[0], x1)
             yA = max(box[1], y1)
             xB = min(box[2], x2)
             yB = min(box[3], y2)
 
+            # print(x1,y1, x2,y2)
+            # print(box)
             interArea = max(0, xB - xA + 1) * max(0, yB - yA + 1)
             
             boxBArea = (x2 - x1 + 1) * (y2 - y1 + 1)
@@ -988,6 +1060,9 @@ class tracker_evaluation:
             return None
     
     def get_estimates(self, frame_number, id=None):
+        '''
+        Returns all estimates by frame number
+        '''
         estimates = self.estimate_dict
         estimates = estimates.loc[estimates['frame'].astype(int) == frame_number]
         if id:
@@ -995,9 +1070,10 @@ class tracker_evaluation:
 
         return estimates
 
-    def estimate_to_point(self, estimate, ratios = (1,1),invert_y=0):
+    def estimate_to_point(self, estimate, ratios = None , invert_y=None):
         """
-        ratios is the x,y|width,height ratios of the estimate to the ground truth.
+        compute_iou
+        ratios is the x,y|width,height ratios of the estimate to the ground truth.compute_iou
         Example: Estimates are recorded at 480x720 while ground truths are recorded at 720x1280. The ratio inputed would be (720/480, 1280/720) or (1.5, 1.777778)
         
 
@@ -1005,11 +1081,18 @@ class tracker_evaluation:
         This means we subtract the height of the video to inverse this effect.
         If the height of the video is 720, invert_y=720. If the data being tested IS NOT inverted, leave it as 0 
         """
+        if ratios is None:
+            ratios = (self.correction_ratio_x, self.correction_ratio_y)
+
+        if invert_y is None:
+            invert_y = self.invert_y
+
         point = (float(estimate['x1'])*ratios[0],
         (invert_y-float(estimate['y2']))*ratios[1],
                 float(estimate['x2'])*ratios[0],
         (invert_y-float(estimate['y1']))*ratios[1]
         )
+
         return point
 
     def get_number_estimates(self, frame_number):
@@ -1032,6 +1115,9 @@ class tracker_evaluation:
         return list(label_set)
 
     def list_estimates(self):
+        '''
+        Returns a list of estimate names
+        '''
         estimate_set = set()
         # print(self.ground_truth_dict)
         for frame in self.ground_truth_dict:

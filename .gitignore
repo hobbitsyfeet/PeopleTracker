@@ -1,7 +1,12 @@
 
 env/Lib/site-packages/numpy/fft/helper.py
 env/
+rasenv/
+moved/
 .vscode/
+RoomDimensions/
+GorpoCalibration
+Evaluation/
 *.pyc
 *.MP4
 build
@@ -10,3 +15,4 @@ dist
 *.jpg
 *.json
 *.h5
+
