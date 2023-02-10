@@ -965,7 +965,7 @@ def load_tracker_data(csv, input_dialog, frame):
     return new_trackers, frame
 #This main is used to test the time
 if __name__ == "__main__":
-    startup_video = "K:/Github/PeopleTracker/Evaluation/People/John Scott/GP020002.MP4"
+    # startup_video = "K:/Github/PeopleTracker/Evaluation/People/John Scott/GP020002.MP4"
     try:
             # initialize the log settings
         # logging.basicConfig(filename = 'app.log', level = logging.INFO)
@@ -975,7 +975,7 @@ if __name__ == "__main__":
         #Create QT application for the UI
         app = PyQt5.QtWidgets.QApplication(sys.argv)
 
-        input_dialog = qt_dialog.App(startup_video)
+        input_dialog = qt_dialog.App()
         
 
         #Get the video path from UI
