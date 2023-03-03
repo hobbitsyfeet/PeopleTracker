@@ -895,6 +895,7 @@ def load_tracker_data(csv, input_dialog, frame):
         new_tab.update_length_tracked(float(tracker_data["Total_Sec_Rec"].iloc[1]))
         new_tab.read_only_button.setChecked(True)
         new_tab.read_only = True
+        # tracker_data['Present At Beginning'] = (tracker_data['Present At Beginning'] == 'TRUE')
         new_tab.beginning_button.setChecked(eval(tracker_data["Present At Beginning"].iloc[1]))
 
 
@@ -918,8 +919,8 @@ def load_tracker_data(csv, input_dialog, frame):
 
             dimensions = (int(width), int(height))
 
-            other_room = eval(row["Other_Room"])
-            is_chair = eval(row["Chair"])
+            other_room = eval(str(row["Other_Room"]))
+            is_chair = eval(str(row["Chair"]))
             total_people = int(row["Total_People"])
 
 
@@ -937,7 +938,6 @@ def load_tracker_data(csv, input_dialog, frame):
                 closest = value
                 min_difference = difference
 
-        print(closest)
 
         data = tracker.data_dict[closest]
 
@@ -945,6 +945,17 @@ def load_tracker_data(csv, input_dialog, frame):
         h = int(data[2][1])
         x = int(data[0][0])
         y = int(data[0][1])
+
+        # Correct for invalid non-area data
+        if w <= 0:
+            w = 5
+        if h <= 0:
+            h = 5
+        if x <= 0:
+            x = 10
+        if y <= 0:
+            y = 10
+
         tracker.init_bounding_box = (x, y, w, h)
         frame = cv2.circle(frame, center=(x,y), radius=3, color=(5,5,5), thickness=2)
         frame = cv2.rectangle(frame, (x-int(w/2), y - int(h/2)), (x + int(w/2), y + int(h/2)), color = (255, 0, 0), thickness = 2)
