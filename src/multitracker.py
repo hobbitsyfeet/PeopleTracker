@@ -242,11 +242,12 @@ class MultiTracker():
         input_dialog.log("Setting Location")
         del self.tracker
         self.create(tracker_type)
-        self.tracker.init(frame, bounding_box)
-        input_dialog.log("Setting Location Successful.")
-        # except Exception as e:
-        #     crashlogger.log(str(e))
-        #     input_dialog.log("Setting Location Failed.")
+        try:
+            self.tracker.init(frame, bounding_box)
+            input_dialog.log("Setting Location Successful.")
+        except Exception as e:
+            crashlogger.log(str(e))
+            input_dialog.log("Setting Location Failed.")
 
     def update_tracker(self, frame):
         """
