@@ -103,10 +103,15 @@ class App(PyQt5.QtWidgets.QWidget):
 
         te.load_tracker_data(filename)
 
-        json_folder = PyQt5.QtWidgets.QFileDialog.getExistingDirectory(self, 'Select Ground Truth folder')
-        json_folder += "/"
+        ground_truth_folder = os.path.dirname(self.filename) + "/" + os.path.basename(self.filename)[:-4] + "/"
+        
+        if os.path.exists(ground_truth_folder):
+            te.load_json(ground_truth_folder)
+        else:
+            ground_truth_folder = PyQt5.QtWidgets.QFileDialog.getExistingDirectory(self, 'Select Ground Truth folder')
+            ground_truth_folder += "/"
+            te.load_json(ground_truth_folder)
 
-        te.load_json(json_folder)
         print(te.ground_truth_dict)
         if bool(te.ground_truth_dict) is False:
             self.log("Failed To load Json Files in Folder...")
@@ -343,6 +348,7 @@ class App(PyQt5.QtWidgets.QWidget):
 
             file.triggered[PyQt5.QtWidgets.QAction].connect(self.processtrigger)
 
+
             edit = bar.addMenu("Edit")
             add_region = PyQt5.QtWidgets.QAction("Add Region", self)
             add_region.setShortcut("Ctrl+R")
@@ -384,6 +390,11 @@ class App(PyQt5.QtWidgets.QWidget):
             image_options_action = PyQt5.QtWidgets.QAction("Image Options", self)
 
 
+            clear_selection_focus = PyQt5.QtWidgets.QAction("Clear Selection Focus", self)
+            clear_selection_focus.triggered.connect(lambda: self.clear_focus())
+            clear_selection_focus.setShortcut("Escape")
+
+
             # edit2 = file.addMenu("Edit")
             # AddTab	Ctrl+T
             edit.addAction(remove_tracked_frame)
@@ -401,6 +412,7 @@ class App(PyQt5.QtWidgets.QWidget):
             edit.addAction(maskrcnn_options_action)
             edit.addAction(predictor_options_action)
             edit.addAction(image_options_action)
+            edit.addAction(clear_selection_focus)
             edit.triggered[PyQt5.QtWidgets.QAction].connect(self.processtrigger)
 
             
@@ -557,7 +569,9 @@ class App(PyQt5.QtWidgets.QWidget):
             self.layout.addLayout(bottom_layout)
             self.setLayout(self.layout)
             self.show()
-        except:
+        except Exception as e:
+            print(e)
+            crashlogger.log(e)
             crashlogger.log(str(traceback.format_exc()))
         # self.skip_f
         
@@ -797,6 +811,9 @@ class App(PyQt5.QtWidgets.QWidget):
         # export_meta(version_filename, new_version=True)
         # export_csv = df.to_csv (version_filename, index = None, header=False, mode='a') #Don't forget to add '.csv' at the end of the path
 
+    def clear_focus(self):
+        if self.focusWidget() is not None:
+            self.focusWidget().clearFocus()
 
 
 
