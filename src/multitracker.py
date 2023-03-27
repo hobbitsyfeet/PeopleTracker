@@ -263,19 +263,34 @@ class MultiTracker():
     
             # check to see if the tracking was a success
             if success:
-                (x, y, w, h) = [int(v) for v in box]
-                cv2.rectangle(frame, (x, y), (x + w, y + h), self.colour, 2)
-                cv2.rectangle(frame, (x , y - 1), (x + 10 * (len(self.get_name())) , y - 15),(255,255,255),-1)
-                cv2.putText(frame,self.get_name(), (x , y - 1), cv2.FONT_HERSHEY_PLAIN, 1, (0,0,0),1)
+                frame = self.draw_tracker(frame, box)
+
+                # (x, y, w, h) = [int(v) for v in box]
+                # cv2.rectangle(frame, (x, y), (x + w, y + h), self.colour, 2)
+                # cv2.rectangle(frame, (x , y - 1), (x + 10 * (len(self.get_name())) , y - 15),(255,255,255),-1)
+                # cv2.putText(frame,self.get_name(), (x , y - 1), cv2.FONT_HERSHEY_PLAIN, 1, (0,0,0),1)
                 
                 # cv2.putText(frame,self.get_name(), (x , y - 1), cv2.FONT_HERSHEY_COMPLEX_SMALL, 0.75, (0,0,0),1)
         return success, box, frame
 
-    def draw_tracker(self, box):
+    def draw_tracker(self, frame, box, opacity=0.5, name=True):
+        
         (x, y, w, h) = [int(v) for v in box]
-        cv2.rectangle(frame, (x, y), (x + w, y + h), self.colour, 2)
-        cv2.rectangle(frame, (x , y - 1), (x + 10 * (len(self.get_name())) , y - 15),(255,255,255),-1)
-        cv2.putText(frame,self.get_name(), (x , y - 1), cv2.FONT_HERSHEY_PLAIN, 1, (0,0,0),1)
+
+        # Apply translucent layer
+        alpha_layer = np.zeros_like(frame, np.uint8)
+        cv2.rectangle(alpha_layer, (x , y - 1), (x + 10 * (len(self.get_name())) , y - 15),(255,255,255),-1)
+        out = frame.copy()
+        alpha = opacity
+        mask = alpha_layer.astype(bool)
+        out[mask] = cv2.addWeighted(frame, alpha, alpha_layer, 1 - alpha, 0)[mask]
+
+        # Apply opaque name and bounding box ontop of translucent layer
+        cv2.rectangle(out, (x, y), (x + w, y + h), self.colour, 2)
+        if name is True:
+            cv2.putText(out, self.get_name(), (x , y - 1), cv2.FONT_HERSHEY_PLAIN, 1, (0,0,0),1)
+
+        return out
 
     def remove(self):
         """
@@ -418,7 +433,7 @@ class MultiTracker():
         max_height = [vid_height]
 
         # total_time = [self.(self.part_time_to_segments(self.time_data))]
-        total_time = self.get_time_tracked(vid_fps)
+        total_time = self.get_time_tracked(fps)
         total_time[0] += self.previous_time
         self.previous_time = total_time[0]
         sex.extend([sex[0]]*(MAX_LEN-1))
@@ -896,8 +911,14 @@ def load_tracker_data(csv, input_dialog, frame):
         new_tab.update_length_tracked(float(tracker_data["Total_Sec_Rec"].iloc[1]))
         new_tab.read_only_button.setChecked(True)
         new_tab.read_only = True
-        # tracker_data['Present At Beginning'] = (tracker_data['Present At Beginning'] == 'TRUE')
-        new_tab.beginning_button.setChecked(eval(tracker_data["Present At Beginning"].iloc[1]))
+        tracker_data['Present At Beginning'] = (tracker_data['Present At Beginning'] == 'TRUE')
+
+        try:
+            new_tab.beginning_button.setChecked(eval(tracker_data["Present At Beginning"].iloc[1]))
+        except:
+            print(tracker_data["Present At Beginning"].iloc[1])
+            print("Error occured when setting to beginning while loading. Setting it to False by default")
+            new_tab.beginning_button.setChecked(False)
 
 
 
@@ -978,8 +999,9 @@ def load_tracker_data(csv, input_dialog, frame):
     # cv2.destroyAllWindows()
     print("End of loading.")
     return new_trackers, frame
-#This main is used to test the time
-if __name__ == "__main__":
+
+
+def run(video_path=None):
     # startup_video = "K:/Github/PeopleTracker/Evaluation/People/John Scott/GP020002.MP4"
     try:
             # initialize the log settings
@@ -990,7 +1012,10 @@ if __name__ == "__main__":
         #Create QT application for the UI
         app = PyQt5.QtWidgets.QApplication(sys.argv)
 
-        input_dialog = qt_dialog.App()
+        # sets input_dialog as global so we can access it from other functions (For automation)
+        global input_dialog
+
+        input_dialog = qt_dialog.App(video_path)
         
 
         #Get the video path from UI
@@ -1812,3 +1837,7 @@ if __name__ == "__main__":
     except Exception as e:
         print(traceback.format_exc())
         crashlogger.log(str(traceback.format_exc()))
+
+#This main is used to test the time
+if __name__ == "__main__":
+    run()
