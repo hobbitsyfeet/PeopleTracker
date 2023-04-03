@@ -651,7 +651,7 @@ class MultiTracker():
 
 def export_null_meta(vid_dir):
     #Create path string for exporting the data. It's just a change of extention.
-    export_filename = str(videoPath[:-4]) + ".csv"
+    export_filename = str(vid_dir[:-4]) + ".csv"
     
     #Create the first 2 rows of data with title and then info. Recorded info should have '-' or 'N/A'
     if not os.path.isfile(export_filename):
