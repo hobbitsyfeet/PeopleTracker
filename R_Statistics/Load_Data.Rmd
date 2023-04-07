@@ -1,0 +1,148 @@
+---
+title: "Load Results"
+output: html_notebook
+---
+
+```{r Install packages}
+# run once to install
+install.packages("readxl")
+install.packages("reshape")
+install.packages("brms")
+```
+
+```{r load packages}
+library("readxl")
+library(ggplot2)
+library(dplyr)
+library(reshape)
+library(brms)
+
+# Load functions from this file for multiplesheets function which 
+# loads all sheets within an excel workbook.
+source("load_help.r")
+```
+
+```{r Load Tracked Data and Evaluations}
+# People Data
+justin_activity <- multiplesheets("R_data/People/Justin_Activity.xlsx")
+justin_tracked <- multiplesheets("R_data/People/Justin_Tracked.xlsx")
+justin_tracked_results <- read_excel("R_data/People/Justin_Results.xlsx")
+justin_results_history <- multiplesheets("R_data/People/Justin_Results_History.xlsx")
+
+model_results <- read_excel("R_data/People/Model_Results.xlsx")
+model_results_history <- multiplesheets("R_data/People/Model_Results_History.xlsx")
+
+video_complexity <- multiplesheets("R_data/People/Gallery_Characteristics.xlsx")
+
+
+
+# Monkey Data
+justin_monkey_activity <- multiplesheets("R_data/Monkey/Justin_Tracked_Activity.xlsx")
+justin_monkey_tracked <- multiplesheets("R_data/Monkey/Justin_Tracked.xlsx")
+
+
+for (complexity in video_complexity){
+  print(complexity)
+}
+
+names(justin_activity)
+names(justin_tracked)
+names(justin_activity)
+
+names(justin_results_history)
+names(model_results_history)
+
+names(video_complexity)
+
+```
+
+```{r correct dataframe flaws}
+justin_tracked_results <- na.omit(justin_tracked_results)
+justin_tracked_results$`Falsely Identified Tracker (FIT)` <- as.numeric(justin_tracked_results$`Falsely Identified Tracker (FIT)`)
+justin_tracked_results$`Tracker Purity (TP)` <- as.numeric(justin_tracked_results$`Tracker Purity (TP)`)
+
+# Removes colons in error names to match tracked_results
+names(model_results) <- c("Location", "Video", "Person", 
+                             "False Positive (FP)", "False Negative (FN)", 
+                             "Multiple Trackers (MT)",  "Multiple Objects (MO)",
+                             "Configuration Distance (CD)",
+                             "Falsely Identified Tracker (FIT)", "Falsely Identified Object (FIO)",
+                             "Tracker Purity (TP)", "Object Purity (OP)")
+                             
+                             
+```
+
+
+```{r visualize data}
+video_names <- names(justin_activity)
+for (video_index in 1:length(justin_activity)){
+  
+  # Get the name of the video
+  name <- video_names[[video_index]]
+  name <- strsplit(name, '_')[1]
+  
+  # Video Activity histograms
+  video_activity <- justin_activity[[video_index]]
+  video_errors <- justin_results_history[[video_index]]
+  
+  # activity_histogram <- ggplot(data=video_activity) + geom_histogram(aes(x=Frame_Number), main=paste("Video :", name))
+  # print(activity_histogram)
+  
+  
+  errors <- ggplot(data=video_errors) + 
+    geom_smooth(aes(x=Frames, y=FP, color="FP")) +  
+    geom_smooth(aes(x=Frames, y=FN, color="FN")) + 
+    geom_smooth(aes(x=Frames, y=FIT, color="FIT")) +
+    geom_smooth(aes(x=Frames, y=FIT, color="FIO"))
+   # geom_histogram(data=video_activity, aes(x=Frame_Number))
+   print(errors)
+}
+
+# plot justin errors
+ggplot(data=justin_tracked_results) + 
+  geom_boxplot(aes(x='False Negative (FN)', y=`False Positive (FP)`))+
+  geom_boxplot(aes(x='False Positive (FP)', y=`False Negative (FN)`))+
+  geom_boxplot(aes(x='Multiple Trackers (MT)', y=`Multiple Trackers (MT)`))+
+  geom_boxplot(aes(x='Multiple Objects (MO)', y=`Multiple Objects (MO)`))+
+  geom_boxplot(aes(x='Configuration Distance (CD)', y=`Configuration Distance (CD)`))+
+  geom_boxplot(aes(x='Falsely Identified Tracker (FIT)', y=`Falsely Identified Tracker (FIT)`))+
+  geom_boxplot(aes(x='Falsely Identified Object (FIO)', y=`Falsely Identified Object (FIO)`))+ 
+  labs(title="Justin's Tracking Errors") + xlab("Error Type") + ylab("Normalized Error")+
+  theme(axis.text.x = element_text(angle=45, hjust=1)) + ylim(0,4) # Rotate x axis labels 45 degrees
+  # geom_boxplot(aes(x="Tracker Purity (TP)", y=`Tracker Purity (TP)`))
+  # geom_boxplot(aes(x="Objecy Purity (OP)", y=`Object Purity (OP)`))
+  
+# plot people errors
+ggplot(data=model_results) + 
+  geom_boxplot(aes(x='False Negative (FN)', y=`False Positive (FP)`))+
+  geom_boxplot(aes(x='False Positive (FP)', y=`False Negative (FN)`))+
+  geom_boxplot(aes(x='Multiple Trackers (MT)', y=`Multiple Trackers (MT)`))+
+  geom_boxplot(aes(x='Multiple Objects (MO)', y=`Multiple Objects (MO)`))+
+  geom_boxplot(aes(x='Configuration Distance (CD)', y=`Configuration Distance (CD)`))+
+  geom_boxplot(aes(x='Falsely Identified Tracker (FIT)', y=`Falsely Identified Tracker (FIT)`))+
+  geom_boxplot(aes(x='Falsely Identified Object (FIO)', y=`Falsely Identified Object (FIO)`))+ 
+  labs(title="Model Tracking Errors",) + xlab("Error Type") + ylab("Normalized Error")+
+  theme(axis.text.x = element_text(angle=45, hjust=1)) + ylim(0,4)    # Rotate x axis labels 45 degrees
+  # geom_boxplot(aes(x="Tracker Purity (TP)", y=`Tracker Purity (TP)`))
+  # geom_boxplot(aes(x="Objecy Purity (OP)", y=`Object Purity (OP)`))
+
+```
+
+There are a few questiosn we want to ask
+- What actions have what impact on errors (assignment, does KALMAN catch errors, does more interaction reduce error)
+- How does video complexity influence error types
+- 
+
+
+```{r data prep}
+# Join dataframes of the same video based on frame number
+
+
+```
+
+
+```{r}
+prior <- rnorm(30, mean = 0, sd = 1)
+fit_zinb1 <- brm(count ~ persons + child + camper,
+                 data = zinb, family = zero_inflated_poisson())
+```
