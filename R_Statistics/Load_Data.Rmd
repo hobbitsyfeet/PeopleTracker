@@ -5,9 +5,11 @@ output: html_notebook
 
 ```{r Install packages}
 # run once to install
+# install.packages("rlang") # Make sure things are up to date
 install.packages("readxl")
 install.packages("reshape")
 install.packages("brms")
+
 ```
 
 ```{r load packages}
@@ -22,37 +24,34 @@ library(brms)
 source("load_help.r")
 ```
 
-```{r Load Tracked Data and Evaluations}
-# People Data
+```{r Load Tracked Data and Evaluations (People)}
+# Tracked Data
 justin_activity <- multiplesheets("R_data/People/Justin_Activity.xlsx")
 justin_tracked <- multiplesheets("R_data/People/Justin_Tracked.xlsx")
 justin_tracked_results <- read_excel("R_data/People/Justin_Results.xlsx")
 justin_results_history <- multiplesheets("R_data/People/Justin_Results_History.xlsx")
 
+# Models
 model_results <- read_excel("R_data/People/Model_Results.xlsx")
 model_results_history <- multiplesheets("R_data/People/Model_Results_History.xlsx")
 
+# Complexity
 video_complexity <- multiplesheets("R_data/People/Gallery_Characteristics.xlsx")
+```
 
-
-
-# Monkey Data
-justin_monkey_activity <- multiplesheets("R_data/Monkey/Justin_Tracked_Activity.xlsx")
+```{r Load Tracked Data and Evaluations (Monkey)}
+# Tracked Data
+justin_monkey_activity <- multiplesheets("R_data/Monkey/Justin_Activity.xlsx")
 justin_monkey_tracked <- multiplesheets("R_data/Monkey/Justin_Tracked.xlsx")
+justin_monkey_results <- multiplesheets("R_data/Monkey/Justin_Results.xlsx")
+justin_monkey_results_history <- multiplesheets("R_data/Monkey/Justin_Results_History.xlsx")
 
+# Models
+model_monkey_results <- read_excel("R_data/Monkey/Model_Results.xlsx")
+model_monkey_results_history <- multiplesheets("Model_Results_History.xlsx")
 
-for (complexity in video_complexity){
-  print(complexity)
-}
-
-names(justin_activity)
-names(justin_tracked)
-names(justin_activity)
-
-names(justin_results_history)
-names(model_results_history)
-
-names(video_complexity)
+# Complexity
+monkey_complexity <- multiplesheets("Monkey_Characteristics.xlsx")
 
 ```
 
