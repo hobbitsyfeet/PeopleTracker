@@ -5,6 +5,16 @@ output: html_notebook
 
 ```{r Install packages}
 # run once to install
+install.packages(c("StanHeaders","rstan"),type="source")
+install.packages("rstan")
+# 
+# 
+# Justin Only
+# remove.packages(c("rstan","StanHeaders"))
+# install.packages("StanHeaders", repos = c("https://mc-stan.org/r-packages/", getOption("repos")))
+# install.packages("rstan", repos = c("https://mc-stan.org/r-packages/", getOption("repos")))
+
+
 # install.packages("rlang") # Make sure things are up to date
 install.packages("readxl")
 install.packages("reshape")
@@ -13,11 +23,14 @@ install.packages("brms")
 ```
 
 ```{r load packages}
-library("readxl")
+library(readxl)
+library(rstan)
 library(ggplot2)
 library(dplyr)
 library(reshape)
 library(brms)
+
+library("bayesplot")
 
 # Load functions from this file for multiplesheets function which 
 # loads all sheets within an excel workbook.
@@ -25,6 +38,7 @@ source("load_help.r")
 ```
 
 ```{r Load Tracked Data and Evaluations (People)}
+options(warn=-1)
 # Tracked Data
 justin_activity <- multiplesheets("R_data/People/Justin_Activity.xlsx")
 justin_tracked <- multiplesheets("R_data/People/Justin_Tracked.xlsx")
@@ -37,22 +51,24 @@ model_results_history <- multiplesheets("R_data/People/Model_Results_History.xls
 
 # Complexity
 video_complexity <- multiplesheets("R_data/People/Gallery_Characteristics.xlsx")
+options(warn=0)
 ```
 
 ```{r Load Tracked Data and Evaluations (Monkey)}
+options(warn=-1)
 # Tracked Data
 justin_monkey_activity <- multiplesheets("R_data/Monkey/Justin_Activity.xlsx")
 justin_monkey_tracked <- multiplesheets("R_data/Monkey/Justin_Tracked.xlsx")
-justin_monkey_results <- multiplesheets("R_data/Monkey/Justin_Results.xlsx")
+justin_monkey_results <- read_excel("R_data/Monkey/Justin_Results.xlsx")
 justin_monkey_results_history <- multiplesheets("R_data/Monkey/Justin_Results_History.xlsx")
 
 # Models
 model_monkey_results <- read_excel("R_data/Monkey/Model_Results.xlsx")
-model_monkey_results_history <- multiplesheets("Model_Results_History.xlsx")
+model_monkey_results_history <- multiplesheets("R_data/Monkey/Model_Results_History.xlsx")
 
 # Complexity
-monkey_complexity <- multiplesheets("Monkey_Characteristics.xlsx")
-
+monkey_complexity <- multiplesheets("R_data/Monkey/Monkey_Characteristics.xlsx")
+options(warn=0)
 ```
 
 ```{r correct dataframe flaws}
@@ -61,8 +77,8 @@ justin_tracked_results$`Falsely Identified Tracker (FIT)` <- as.numeric(justin_t
 justin_tracked_results$`Tracker Purity (TP)` <- as.numeric(justin_tracked_results$`Tracker Purity (TP)`)
 
 # Removes colons in error names to match tracked_results
-names(model_results) <- c("Location", "Video", "Person", 
-                             "False Positive (FP)", "False Negative (FN)", 
+names(model_results) <- c("Location", "Video", "Person",
+                             "False Positive (FP)", "False Negative (FN)",
                              "Multiple Trackers (MT)",  "Multiple Objects (MO)",
                              "Configuration Distance (CD)",
                              "Falsely Identified Tracker (FIT)", "Falsely Identified Object (FIO)",
@@ -86,62 +102,213 @@ for (video_index in 1:length(justin_activity)){
   
   # activity_histogram <- ggplot(data=video_activity) + geom_histogram(aes(x=Frame_Number), main=paste("Video :", name))
   # print(activity_histogram)
-  
+
   
   errors <- ggplot(data=video_errors) + 
     geom_smooth(aes(x=Frames, y=FP, color="FP")) +  
     geom_smooth(aes(x=Frames, y=FN, color="FN")) + 
     geom_smooth(aes(x=Frames, y=FIT, color="FIT")) +
-    geom_smooth(aes(x=Frames, y=FIT, color="FIO"))
-   # geom_histogram(data=video_activity, aes(x=Frame_Number))
+    geom_smooth(aes(x=Frames, y=FIT, color="FIO")) + 
+    geom_point(data=video_activity, aes(x=Frame_Number, y=scale(Event_Duration)/20, color=Event_Type))
    print(errors)
 }
 
-# plot justin errors
-ggplot(data=justin_tracked_results) + 
-  geom_boxplot(aes(x='False Negative (FN)', y=`False Positive (FP)`))+
-  geom_boxplot(aes(x='False Positive (FP)', y=`False Negative (FN)`))+
-  geom_boxplot(aes(x='Multiple Trackers (MT)', y=`Multiple Trackers (MT)`))+
-  geom_boxplot(aes(x='Multiple Objects (MO)', y=`Multiple Objects (MO)`))+
-  geom_boxplot(aes(x='Configuration Distance (CD)', y=`Configuration Distance (CD)`))+
-  geom_boxplot(aes(x='Falsely Identified Tracker (FIT)', y=`Falsely Identified Tracker (FIT)`))+
-  geom_boxplot(aes(x='Falsely Identified Object (FIO)', y=`Falsely Identified Object (FIO)`))+ 
-  labs(title="Justin's Tracking Errors") + xlab("Error Type") + ylab("Normalized Error")+
-  theme(axis.text.x = element_text(angle=45, hjust=1)) + ylim(0,4) # Rotate x axis labels 45 degrees
-  # geom_boxplot(aes(x="Tracker Purity (TP)", y=`Tracker Purity (TP)`))
-  # geom_boxplot(aes(x="Objecy Purity (OP)", y=`Object Purity (OP)`))
   
+justin_colour= 'lightblue'
+justin_alpha = 1
+model_colour = 'orange'
+model_alpha = 0.5
+colors <- c("Justin" = justin_colour, "Model" = model_colour)
+justin_data=justin_tracked_results
+model_data=model_results
+
+
+justin_data=justin_monkey_results
+model_data=model_monkey_results
+model_data
+justin_data
+subtitle = "Monkey"
 # plot people errors
-ggplot(data=model_results) + 
-  geom_boxplot(aes(x='False Negative (FN)', y=`False Positive (FP)`))+
-  geom_boxplot(aes(x='False Positive (FP)', y=`False Negative (FN)`))+
-  geom_boxplot(aes(x='Multiple Trackers (MT)', y=`Multiple Trackers (MT)`))+
-  geom_boxplot(aes(x='Multiple Objects (MO)', y=`Multiple Objects (MO)`))+
-  geom_boxplot(aes(x='Configuration Distance (CD)', y=`Configuration Distance (CD)`))+
-  geom_boxplot(aes(x='Falsely Identified Tracker (FIT)', y=`Falsely Identified Tracker (FIT)`))+
-  geom_boxplot(aes(x='Falsely Identified Object (FIO)', y=`Falsely Identified Object (FIO)`))+ 
-  labs(title="Model Tracking Errors",) + xlab("Error Type") + ylab("Normalized Error")+
-  theme(axis.text.x = element_text(angle=45, hjust=1)) + ylim(0,4)    # Rotate x axis labels 45 degrees
+model_plot <- ggplot() + 
+  # Justin data
+  geom_boxplot(data=justin_data, aes(x='False Positive \n(FP)', y=`False Positive (FP)`, color='Justin'),  alpha=justin_alpha)+
+  geom_boxplot(data=justin_data, aes(x='False Negative \n(FN)', y=`False Negative (FN)`, color='Justin'),  alpha=justin_alpha)+
+  geom_boxplot(data=justin_data, aes(x='Multiple Trackers \n(MT)', y=`Multiple Trackers (MT)`, color='Justin'),  alpha=justin_alpha)+
+  geom_boxplot(data=justin_data, aes(x='Multiple Objects \n(MO)', y=`Multiple Objects (MO)`, color='Justin'),  alpha=justin_alpha)+
+  geom_boxplot(data=justin_data, aes(x='Configuration Distance \n(CD)', y=`Configuration Distance (CD)`, color='Justin'), alpha=justin_alpha)+
+  geom_boxplot(data=justin_data, aes(x='Falsely Identified Tracker \n(FIT)', y=`Falsely Identified Tracker (FIT)`, color='Justin'), alpha=justin_alpha)+
+  geom_boxplot(data=justin_data, aes(x='Falsely Identified Object \n(FIO)', y=`Falsely Identified Object (FIO)`, color='Justin'), alpha=justin_alpha)+ 
+  
+  #model_data
+  geom_boxplot(data=model_data, aes(x='False Positive \n(FP)', y=`False Positive (FP)`, color='Model'), alpha=model_alpha)+
+  geom_boxplot(data=model_data, aes(x='False Negative \n(FN)', y=`False Negative (FN)`, color='Model'), alpha=model_alpha)+
+  geom_boxplot(data=model_data, aes(x='Multiple Trackers \n(MT)', y=`Multiple Trackers (MT)`, color='Model'), alpha=model_alpha)+
+  geom_boxplot(data=model_data, aes(x='Multiple Objects \n(MO)', y=`Multiple Objects (MO)`, color='Model'), alpha=model_alpha)+
+  geom_boxplot(data=model_data, aes(x='Configuration Distance \n(CD)', y=`Configuration Distance (CD)`, color='Model'), alpha=model_alpha)+
+  geom_boxplot(data=model_data, aes(x='Falsely Identified Tracker \n(FIT)', y=`Falsely Identified Tracker (FIT)`, color='Model'),  alpha=model_alpha)+
+  geom_boxplot(data=model_data, aes(x='Falsely Identified Object \n(FIO)', y=`Falsely Identified Object (FIO)`, color='Model'),  alpha=model_alpha)+ 
+  
+  labs(title="Tracking Errors", subtitle=subtitle) + xlab("Error Type") + ylab("Normalized Error")+ labs(color = "Legend")+
+  theme(axis.text.x = element_text(angle=45, hjust=1)) + ylim(0,3.6) +  # Rotate x axis labels 45 degrees
+  theme(plot.title = element_text(hjust = 0.5), plot.subtitle = element_text(hjust = 0.5))
+  # legend(1, 95, legend=c("Justin", "Model"),
+  #      col=c("lightblue", "orange"), lty=1:2, cex=0.8)
   # geom_boxplot(aes(x="Tracker Purity (TP)", y=`Tracker Purity (TP)`))
   # geom_boxplot(aes(x="Objecy Purity (OP)", y=`Object Purity (OP)`))
+
+model_plot 
+
 
 ```
 
-There are a few questiosn we want to ask
+There are a few questions we want to ask
 - What actions have what impact on errors (assignment, does KALMAN catch errors, does more interaction reduce error)
 - How does video complexity influence error types
-- 
 
 
-```{r data prep}
-# Join dataframes of the same video based on frame number
+Here we will simply look at results and type of evaluation which is described in the plots above. We will look at the impact of Tracking_Type, Tracking_Environment and all of the normalized errors (FN, FP, ... FIO, FIT)
+We will also take into account the impacts of location as a random effect on the tracking behaviour, because we expect a similar outcome where regression slope and intercept will represent a similar direction, but at different intensities.
 
+
+```{r Join Results}
+
+justin_tracked_results['Environment'] <- "Gallery"
+justin_tracked_results
+model_results['Environment'] <- "Gallery"
+justin_tracked_results
+justin_monkey_results['Environment'] <- "Field"
+model_monkey_results['Environment'] <-"Field"
+
+justin_tracked_results %>% names() %>% sort()
+model_results %>% names() %>% sort()
+justin_monkey_results %>% names() %>% sort()
+model_monkey_results %>% names() %>% sort()
+model_monkey_results%>% names() %>% sort()
+
+# Join results
+results <- rbind(justin_tracked_results, model_results, justin_monkey_results, model_monkey_results)
+
+# set environment to first column
+results <- results %>% select('Environment', everything())
+
+# Rename errors for easier modeling and rename "Person" to "Tracking"
+names(results) <- c("Environment", "Video", "Location", "Tracking", "FP", "FN", "MT", "MO", "CD", "FIT", "FIO", "TP", "OP")
+
+results
+
+summary(results)
+```
+```{r Build Results Model }
+priors =  prior("normal(2,1)", class= "b" ) + prior("normal(0,1)", class = "Intercept")
+prior
+
+# Fit linear priors
+fit.linear.priors <- brm(Tracking ~ FP + FN + MT + MO + CD + FIT + FIO + TP + OP, data=results, family = "bernoulli", iter=1000, chains = 4, prior = priors, sample_prior = "only")
+
+fit.linear.priors
+
+fit.linear <- brm(Tracking ~ FP + FN + MT + MO + CD + FIT + FIO + TP + OP, data=results, family = "bernoulli", iter=2000, chains = 4, cores = 4, prior = priors, control = list(adapt_delta=0.95, max_treedepth = 14))
+
+
+```
+
+
+```{r Visualize Model}
+plot(fit.linear, ask=F)
+pp_check(fit.linear)
+plot(marginal_effects(fit.linear), ask=F, points=T)
+```
+
+```{r Beysplot}
+posterior <- as.matrix(fit.linear)
+posterior
+
+mcmc_areas(posterior,
+           pars = c("b_FP", "b_FN", "b_MT", "b_MO", "b_MO", "b_CD", "b_FIT", "b_FIO", "b_TP", "b_OP"),
+           prob = 0.8)
+```
+After we visualize the effects of errors on intervention level, we want to look at how each intervention level affects each error so we build one model where intervention and other factors such as location have an effect on each error
+```{r}
+fit.FP.linear <- brm(FP ~ Tracking, data=results, family = "gaussian", iter=2000, chains = 4, cores = 4, prior = priors, control = list(adapt_delta=0.95, max_treedepth = 14))
+fit.FN.linear <- brm(FP ~ Tracking, data=results, family = "gaussian", iter=2000, chains = 4, cores = 4, prior = priors, control = list(adapt_delta=0.95, max_treedepth = 14))
+fit.MT.linear <- brm(FN ~ Tracking, data=results, family = "gaussian", iter=2000, chains = 4, cores = 4, prior = priors, control = list(adapt_delta=0.95, max_treedepth = 14))
+fit.MO.linear <- brm(MO ~ Tracking, data=results, family = "gaussian", iter=2000, chains = 4, cores = 4, prior = priors, control = list(adapt_delta=0.95, max_treedepth = 14))
+fit.CD.linear <- brm(CD ~ Tracking, data=results, family = "gaussian", iter=2000, chains = 4, cores = 4, prior = priors, control = list(adapt_delta=0.95, max_treedepth = 14))
+fit.FIT.linear <- brm(FIT ~ Tracking, data=results, family = "gaussian", iter=2000, chains = 4, cores = 4, prior = priors, control = list(adapt_delta=0.95, max_treedepth = 14))
+fit.FIO.linear <- brm(FIO ~ Tracking, data=results, family = "gaussian", iter=2000, chains = 4, cores = 4, prior = priors, control = list(adapt_delta=0.95, max_treedepth = 14))
+fit.TP.linear <- brm(TP ~ Tracking, data=results, family = "gaussian", iter=2000, chains = 4, cores = 4, prior = priors, control = list(adapt_delta=0.95, max_treedepth = 14))
+fit.OP.linear <- brm(OP ~ Tracking, data=results, family = "gaussian", iter=2000, chains = 4, cores = 4, prior = priors, control = list(adapt_delta=0.95, max_treedepth = 14))
+```
+```{r plot errors}
+mcmc_areas(as.matrix(fit.FP.linear),pars = c("b_TrackingMaskRcnn"),prob = 0.8) + xlim(-4,4) + ggtitle("FP Error")
+mcmc_areas(as.matrix(fit.FN.linear),pars = c("b_TrackingMaskRcnn"),prob = 0.8)+ xlim(-4,4)+ ggtitle("FN Error")
+mcmc_areas(as.matrix(fit.MT.linear),pars = c("b_TrackingMaskRcnn"),prob = 0.8)+ xlim(-4,4)+ ggtitle("MT Error")
+mcmc_areas(as.matrix(fit.MO.linear),pars = c("b_TrackingMaskRcnn"),prob = 0.8)+ xlim(-4,4)+ ggtitle("MO Error")
+mcmc_areas(as.matrix(fit.CD.linear),pars = c("b_TrackingMaskRcnn"),prob = 0.8)+ xlim(-4,4)+ ggtitle("CD Error")
+mcmc_areas(as.matrix(fit.FIT.linear),pars = c("b_TrackingMaskRcnn"),prob = 0.8)+ xlim(-4,4)+ ggtitle("FIT Error")
+mcmc_areas(as.matrix(fit.FIO.linear),pars = c("b_TrackingMaskRcnn"),prob = 0.8)+ xlim(-4,4)+ ggtitle("FIO Error")
+mcmc_areas(as.matrix(fit.TP.linear),pars = c("b_TrackingMaskRcnn"),prob = 0.8)+ xlim(-4,4)+ ggtitle("TP")
+mcmc_areas(as.matrix(fit.OP.linear),pars = c("b_TrackingMaskRcnn"),prob = 0.8)+ xlim(-4,4)+ ggtitle("OP")
+
+```
+
+Here we merge the results over time and the activity of the tracker to help explain how the results may have came to be.
+This looks at activity, and errors in an aligned manner.
+
+```{r merge activity and evaluation results}
+# Print to make sure activity and results match up
+names(justin_activity)
+names(justin_results_history)
+
+merge_results <- function(activity, results){
+  # Merge results takes Activity data of a tracked user and evaluation results from a multiplesheets (multiple videos loaded in from excel sheets) and merges them in one dataframe
+  # ! IMPORTANT !
+  # This function assumes that activity and results sheet indices are in the same respective order for videos that recorded them
+
+  final_df <- NULL
+  for (i in 1:length(activity)){
+    # grab dataframes at this index
+    activity_df <- activity[[i]]
+    results_df <- results[[i]]
+  
+    # Split the name (nth grabs the first index)
+    video_name <- names(activity)[i] %>% strsplit(name, split="_") %>% unlist() %>% nth(1)
+    print(video_name)
+    print(results_df)
+    # rename Frames column to be consistent with Frame_Number
+    results_df <- results_df %>% dplyr::rename(Frame_Number = Frames)
+    results_df %>% select(-1) # Drop the indexing column
+    
+    # Merge activity and results
+    merged_df <- dplyr::left_join(activity_df, results_df, by="Frame_Number")
+    
+    # Add the video name (ASSUME INDEXING IS CONSISTENT)
+    merged_df['Video'] = video_name
+    
+    # Grab only the columns we're interested in (it's inconsistent depending if the data was recorded in stages (therefore adding Accumulated_Event_time))
+    # So here we just drop event time since the frame number is a good way to align the data
+    merged_df <- merged_df %>% dplyr::select("Video", "Frame_Number", "Event_Duration", "Event_Type", "Event_Value", 
+                                "Intervention_Level", "Intervention_Type", "Tracker_ID",
+                                "FP", "FN", "MT", "MO", "CD", "FIT", "FIO")
+    
+    if (is.null(final_df)){
+      final_df <- merged_df  
+    }
+    else{
+      # Extend the final dataframe with data from each video
+      final_df <- rbind(final_df, merged_df)
+    }
+    
+  }
+  return(final_df)
+}
+
+final_df <- merge_results(justin_activity, justin_results_history)
+final_df
 
 ```
 
 
 ```{r}
-prior <- rnorm(30, mean = 0, sd = 1)
-fit_zinb1 <- brm(count ~ persons + child + camper,
-                 data = zinb, family = zero_inflated_poisson())
+
 ```
