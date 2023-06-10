@@ -69,7 +69,8 @@ class App(PyQt5.QtWidgets.QWidget):
 
         self.newest_version_path, self.newest_version = self.get_new_data_version()
 
-        
+        self.exported_data = False
+        self.exported_activity = False
         
     
         # self.videoWindow = VideoWindow()
@@ -201,6 +202,57 @@ class App(PyQt5.QtWidgets.QWidget):
 
             elif q.text() == "Quit":
                 self.quit_State = True
+
+                final_message = ""
+                # Handles a case where information is not saved before exiting
+                if self.exported_activity is False:
+                    warning = PyQt5.QtWidgets.QMessageBox()
+                    warning.setIcon(PyQt5.QtWidgets.QMessageBox.Warning)
+                    warning.setWindowTitle("Export Activity")
+                    warning.setText("Your activity is not exported (Export Activity not used)... \n Do you still want to continue? (Cancel will export data)")
+                    warning.setStandardButtons(PyQt5.QtWidgets.QMessageBox.Save | PyQt5.QtWidgets.QMessageBox.Cancel | PyQt5.QtWidgets.QMessageBox.Close)
+                    # answer = warning.buttonClicked.connect(warning)
+                    answer = warning.exec()
+
+                    
+                    
+                    if answer == PyQt5.QtWidgets.QMessageBox.Save:
+                        self.quit_State = False
+                        self.export_activity = True
+                        self.exported_activity = True
+
+                        final_message += "\n Activity Exported."
+
+
+                    if answer == PyQt5.QtWidgets.QMessageBox.Cancel:
+                        self.quit_State = False
+
+                        final_message += "\n Activity Export skipped."
+
+
+                if self.exported_data is False:
+                    warning = PyQt5.QtWidgets.QMessageBox()
+                    warning.setIcon(PyQt5.QtWidgets.QMessageBox.Warning)
+                    warning.setWindowTitle("Export All")
+                    warning.setText("All of your data is not saved (Export All not used)... \n Do you still want to continue?")
+                    warning.setStandardButtons(PyQt5.QtWidgets.QMessageBox.Save | PyQt5.QtWidgets.QMessageBox.Cancel | PyQt5.QtWidgets.QMessageBox.Close)
+                    # answer = warning.buttonClicked.connect(warning)
+                    answer = warning.exec()
+                    
+                    if answer == PyQt5.QtWidgets.QMessageBox.Save:
+                        self.quit_State = False
+                        self.export_state = True
+                        self.exported_data = True
+
+                        final_message += "\n Export All called."
+
+                    if answer == PyQt5.QtWidgets.QMessageBox.Cancel:
+                        self.quit_State = False
+                        final_message += "\n Export All skipped."
+
+                if not self.quit_State:
+                    self.show_warning(final_message)
+
                 # exit(0)
             elif q.text() == "Active" or q.text() == "Inactive" or q.text() == "Read" or q.text() == "Write":
                 self.set_all_tabs(q.text())
@@ -217,6 +269,7 @@ class App(PyQt5.QtWidgets.QWidget):
                 self.toggle_retain_region()
             elif q.text() == "Export All":
                 self.export_all_state = True
+                self.exported_data = True
             elif q.text() == "Play/Pause":
                 self.mediaStateChanged()
 
@@ -265,6 +318,7 @@ class App(PyQt5.QtWidgets.QWidget):
                 self.export_charactoristics = True
             elif q.text() == "Export Activity":
                 self.export_activity = True
+                self.exported_activity = True # To test if this has been called
             elif q.text() == "Remove Tracked Frame":
                 self.del_frame = True
             elif q.text() == "Remove All Active Tracked Frame":
