@@ -1,0 +1,321 @@
+\doxysection{Regions}
+\hypertarget{a00198}{}\label{a00198}\index{Regions@{Regions}}
+
+
+Inheritance diagram for Regions\+:
+% FIG 0
+
+
+Collaboration diagram for Regions\+:
+% FIG 1
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{a00198_aad814d522561b11a0153a27fbeef2f76}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, log=None)
+\item 
+\mbox{\hyperlink{a00198_a89700c3be1f743a710b70fbc86d8dfe7}{add\+\_\+region}} (self, frame)
+\item 
+\mbox{\hyperlink{a00198_a461a49c632e7d7cf717ef335c92128b8}{add\+\_\+moving\+\_\+region}} (self, name, point, dimensions, id=None)
+\item 
+\mbox{\hyperlink{a00198_ac69072c9e8f9bb71ae2107cfeab27ca3}{set\+\_\+moving\+\_\+region}} (self, name, point, dimensions, id)
+\item 
+\mbox{\hyperlink{a00198_afdf1ef8a30e9bc1c85b42c723b6649c8}{del\+\_\+region}} (self)
+\item 
+\mbox{\hyperlink{a00198_af96c1535e941e333711c6c56d883c0d0}{del\+\_\+moving\+\_\+region}} (self, name, id=None)
+\item 
+\mbox{\hyperlink{a00198_a4d1c2522bead251ed698af05ffb015d6}{display\+\_\+region}} (self, frame)
+\item 
+\mbox{\hyperlink{a00198_a1e456cb1d544c85ca419094f660ed2dd}{test\+\_\+region}} (self, test\+\_\+point)
+\item 
+\mbox{\hyperlink{a00198_a313fa979c0dbfcb67a0f3623f8b66a87}{handle\+\_\+inputs}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{a00198_a43ae9e55f56e794ff92b0f3712af33a1}\label{a00198_a43ae9e55f56e794ff92b0f3712af33a1} 
+{\bfseries region\+\_\+dict}
+\item 
+\Hypertarget{a00198_ab09a63eb35b270b5cdbead1983ebdccb}\label{a00198_ab09a63eb35b270b5cdbead1983ebdccb} 
+{\bfseries log}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{a00198_aad814d522561b11a0153a27fbeef2f76}\label{a00198_aad814d522561b11a0153a27fbeef2f76} 
+\index{Regions@{Regions}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!Regions@{Regions}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily \+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{log = {\ttfamily None} }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keyword}{def\ }\_\_init\_\_(self,\ log\ =\ None): }
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ super().\_\_init\_\_() }
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ self.region\_dict\ =\ dict() }
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ self.log\ =\ log\ \textcolor{comment}{\#logs\ the\ information }}
+\DoxyCodeLine{00015\  }
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{a00198_a461a49c632e7d7cf717ef335c92128b8}\label{a00198_a461a49c632e7d7cf717ef335c92128b8} 
+\index{Regions@{Regions}!add\_moving\_region@{add\_moving\_region}}
+\index{add\_moving\_region@{add\_moving\_region}!Regions@{Regions}}
+\doxysubsubsection{\texorpdfstring{add\_moving\_region()}{add\_moving\_region()}}
+{\footnotesize\ttfamily add\+\_\+moving\+\_\+region (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{name,  }\item[{}]{point,  }\item[{}]{dimensions,  }\item[{}]{id = {\ttfamily None} }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keyword}{def\ }add\_moving\_region(self,\ name,\ point,\ dimensions,\ id=None): }
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ name\ \textcolor{keywordflow}{not}\ \textcolor{keywordflow}{in}\ [self.region\_dict.keys()]: }
+\DoxyCodeLine{00030\  }
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ uuid\ \textcolor{keywordflow}{is}\ \textcolor{keywordtype}{None}: }
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ id\ =\ uuid.uuid1() }
+\DoxyCodeLine{00033\  }
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ self.region\_dict[id]\ =\ (name,\ point[0],\ point[1],\ dimensions[0],\ dimensions[1]) }
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}: }
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{"{}Radius\ already\ Exists"{}}) }
+\DoxyCodeLine{00037\  }
+
+\end{DoxyCode}
+\Hypertarget{a00198_a89700c3be1f743a710b70fbc86d8dfe7}\label{a00198_a89700c3be1f743a710b70fbc86d8dfe7} 
+\index{Regions@{Regions}!add\_region@{add\_region}}
+\index{add\_region@{add\_region}!Regions@{Regions}}
+\doxysubsubsection{\texorpdfstring{add\_region()}{add\_region()}}
+{\footnotesize\ttfamily add\+\_\+region (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{frame }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Creates an ellipse given a rectangle ROI.
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keyword}{def\ }add\_region(self,\ frame): }
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{} }}
+\DoxyCodeLine{00018\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Creates\ an\ ellipse\ given\ a\ rectangle\ ROI. }}
+\DoxyCodeLine{00019\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}} }
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ name,\ okPressed\ =\ QInputDialog.getText(self,\ \textcolor{stringliteral}{'Region'},\ \textcolor{stringliteral}{'Region\ Name:'}) }
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ okPressed\ \textcolor{keywordflow}{and}\ name\ !=\ \textcolor{stringliteral}{''}: }
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ self.log\ \textcolor{keywordflow}{is}\ \textcolor{keywordflow}{not}\ \textcolor{keywordtype}{None}: }
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.log(name) }
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ key\ =\ uuid.uuid1() }
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ point\_x,\ point\_y,\ width,\ height\ =\ cv2.selectROI(\textcolor{stringliteral}{"{}Frame"{}},\ frame,\ fromCenter=\textcolor{keyword}{False},\ showCrosshair=\textcolor{keyword}{True}) }
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ self.region\_dict[key]\ =\ (name,\ point\_x,\ point\_y,\ width,\ height) }
+\DoxyCodeLine{00027\  }
+
+\end{DoxyCode}
+
+
+References App.\+log(), Regions.\+log, and Regions.\+region\+\_\+dict.
+
+Here is the call graph for this function\+:
+% FIG 2
+\Hypertarget{a00198_af96c1535e941e333711c6c56d883c0d0}\label{a00198_af96c1535e941e333711c6c56d883c0d0} 
+\index{Regions@{Regions}!del\_moving\_region@{del\_moving\_region}}
+\index{del\_moving\_region@{del\_moving\_region}!Regions@{Regions}}
+\doxysubsubsection{\texorpdfstring{del\_moving\_region()}{del\_moving\_region()}}
+{\footnotesize\ttfamily del\+\_\+moving\+\_\+region (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{name,  }\item[{}]{id = {\ttfamily None} }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keyword}{def\ }del\_moving\_region(self,\ name,\ id=None): }
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ id\ \textcolor{keywordflow}{in}\ self.region\_dict: }
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ del\ self.region\_dict[id] }
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ combo\_box\ =\ QComboBox(self) }}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ for\ item\ in\ items: }}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ \ \ \ \ combo\_box.addItem(item) }}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ combo\_box.move(50,\ 250) }}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ combo\_box.showPopup()\  }}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ selected\ =\ combo\_box.activated[str] }}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ creating\ a\ combo\ box\ widget\  }}
+\DoxyCodeLine{00079\  }
+\DoxyCodeLine{00080\ \ \  }
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ adding\ action\ to\ the\ button\  }}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ button.pressed.connect(self.action)\  }}
+\DoxyCodeLine{00083\ \ \  }
+\DoxyCodeLine{00084\  }
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ comboBox.activated[str].connect(lambda\ parameter\_list:\ expression) }}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ del\ self.region\_dict[selected] }}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ item,\ okPressed\ =\ QInputDialog.getItem(self.parent,\ "{}Get\ item"{},"{}Region\ Name"{},\ items,\ 0,\ False) }}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ if\ okPressed\ and\ item: }}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ \ \ \ \ input\_dialog.log(item) }}
+\DoxyCodeLine{00091\ \ \ \ \  }
+
+\end{DoxyCode}
+\Hypertarget{a00198_afdf1ef8a30e9bc1c85b42c723b6649c8}\label{a00198_afdf1ef8a30e9bc1c85b42c723b6649c8} 
+\index{Regions@{Regions}!del\_region@{del\_region}}
+\index{del\_region@{del\_region}!Regions@{Regions}}
+\doxysubsubsection{\texorpdfstring{del\_region()}{del\_region()}}
+{\footnotesize\ttfamily del\+\_\+region (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keyword}{def\ }del\_region(self): }
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ items\ =\ (self.region\_dict.values()) }
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ name\_list\ =\ [] }
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ item\ \textcolor{keywordflow}{in}\ items: }
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ name\_list.append(item[0]) }
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ items\ =\ ("{}Red"{},"{}Blue"{},"{}Green"{}) }}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ item,\ okPressed\ =\ QInputDialog.getItem(self,\ \textcolor{stringliteral}{"{}Select\ Region"{}},\textcolor{stringliteral}{"{}Delete\ Regions:"{}},\ name\_list,\ 0,\ \textcolor{keyword}{False}) }
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ okPressed\ \textcolor{keywordflow}{and}\ item: }
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ index,\ value\ \textcolor{keywordflow}{in}\ enumerate(items): }
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ print(value) }
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ item\ \textcolor{keywordflow}{in}\ value: }
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ self.log\ \textcolor{keywordflow}{is}\ \textcolor{keywordflow}{not}\ \textcolor{keywordtype}{None}: }
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.log(str((\textcolor{stringliteral}{"{}Deleting\ "{}}\ +\ str(item)))) }
+\DoxyCodeLine{00060\  }
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ key\ =\ items.index(index) }}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print(items) }}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ key\ =\ list(self.region\_dict.keys())[index] }
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{"{}KEY"{}},\ key) }
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ del\ self.region\_dict[key] }
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return} }
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ name,\ okPressed\ =\ QInputDialog.getText(self,\ 'Region',\ 'Delete\ Region\ Name:') }}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \  }
+
+\end{DoxyCode}
+\Hypertarget{a00198_a4d1c2522bead251ed698af05ffb015d6}\label{a00198_a4d1c2522bead251ed698af05ffb015d6} 
+\index{Regions@{Regions}!display\_region@{display\_region}}
+\index{display\_region@{display\_region}!Regions@{Regions}}
+\doxysubsubsection{\texorpdfstring{display\_region()}{display\_region()}}
+{\footnotesize\ttfamily display\+\_\+region (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{frame }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Displays all region created Radius on given frame
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keyword}{def\ }display\_region(self,\ frame): }
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{} }}
+\DoxyCodeLine{00094\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Displays\ all\ region\ created\ Radius\ on\ given\ frame }}
+\DoxyCodeLine{00095\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}} }
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ key,\ region\ \textcolor{keywordflow}{in}\ self.region\_dict.items(): }
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ name\ =\ region[0] }
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ x,\ y,\ w,\ h\ =\ region[1],\ region[2],\ region[3],\ region[4] }
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ ellipse\_center\ =\ (int(x\ +\ (w/2))\ ,int(\ y\ +\ (h/2))) }
+\DoxyCodeLine{00100\  }
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ frame\ =\ cv2.ellipse(frame,\ ellipse\_center,\ (int((w/2)),(int(h/2))),\ 0,\ 0,360,\ (0,255,0)\ ) }
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ cv2.ellipse(frame,\ box=w/2,color=(0,255,0)) }}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ cv2.rectangle(frame,\ (x\ +\ int(w/2.1)\ ,\ y\ -\/\ 1),\ (x\ +\ int(w/2.1)\ +\ 10\ *\ (len(name))\ ,\ y\ -\/\ 15),(255,255,255),-\/1) }
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ cv2.putText(frame,\ name,\ (x\ +\ int(w/2.1)\ ,\ y\ -\/\ 1),\ cv2.FONT\_HERSHEY\_PLAIN,\ 1,\ (0,0,0),1) }
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ frame }
+\DoxyCodeLine{00106\  }
+
+\end{DoxyCode}
+
+
+References Regions.\+region\+\_\+dict.
+
+\Hypertarget{a00198_a313fa979c0dbfcb67a0f3623f8b66a87}\label{a00198_a313fa979c0dbfcb67a0f3623f8b66a87} 
+\index{Regions@{Regions}!handle\_inputs@{handle\_inputs}}
+\index{handle\_inputs@{handle\_inputs}!Regions@{Regions}}
+\doxysubsubsection{\texorpdfstring{handle\_inputs()}{handle\_inputs()}}
+{\footnotesize\ttfamily handle\+\_\+inputs (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00152\ \ \ \ \ \textcolor{keyword}{def\ }handle\_inputs(): }
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{pass}}
+
+\end{DoxyCode}
+\Hypertarget{a00198_ac69072c9e8f9bb71ae2107cfeab27ca3}\label{a00198_ac69072c9e8f9bb71ae2107cfeab27ca3} 
+\index{Regions@{Regions}!set\_moving\_region@{set\_moving\_region}}
+\index{set\_moving\_region@{set\_moving\_region}!Regions@{Regions}}
+\doxysubsubsection{\texorpdfstring{set\_moving\_region()}{set\_moving\_region()}}
+{\footnotesize\ttfamily set\+\_\+moving\+\_\+region (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{name,  }\item[{}]{point,  }\item[{}]{dimensions,  }\item[{}]{id }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb} Creates and sets a region with a given name, and given dimensions
+ Point (x, y) : (int, int)
+ Dimensions (width, height), (int, int)
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keyword}{def\ }set\_moving\_region(self,\ name,\ point,\ dimensions,\ id): }
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{} }}
+\DoxyCodeLine{00040\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ Creates\ and\ sets\ a\ region\ with\ a\ given\ name,\ and\ given\ dimensions }}
+\DoxyCodeLine{00041\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ Point\ (x,\ y)\ :\ (int,\ int) }}
+\DoxyCodeLine{00042\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ Dimensions\ (width,\ height),\ (int,\ int) }}
+\DoxyCodeLine{00043\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}} }
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ if\ id\ in\ [self.region\_dict.keys()]: }}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ self.region\_dict[id]\ =\ (name,\ point[0],\ point[1],\ dimensions[0],\ dimensions[1]) }
+\DoxyCodeLine{00046\  }
+
+\end{DoxyCode}
+
+
+References App.\+log(), Regions.\+log, and Regions.\+region\+\_\+dict.
+
+Here is the call graph for this function\+:
+% FIG 3
+\Hypertarget{a00198_a1e456cb1d544c85ca419094f660ed2dd}\label{a00198_a1e456cb1d544c85ca419094f660ed2dd} 
+\index{Regions@{Regions}!test\_region@{test\_region}}
+\index{test\_region@{test\_region}!Regions@{Regions}}
+\doxysubsubsection{\texorpdfstring{test\_region()}{test\_region()}}
+{\footnotesize\ttfamily test\+\_\+region (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{test\+\_\+point }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Tests weather a point value exists within an eclipse
+ p <= 1 exists in or on eclipse
+
+Equation: Given p = (x-h)^2/a^2 + (y-k)^2/b^2
+    Where test_point is (x,y) and ellipse_center is (h,k), 
+    radius_width, radius_height as a,b respectivly
+
+Returns list(regions), p
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00107\ \ \ \ \ \textcolor{keyword}{def\ }test\_region(self,\ test\_point): }
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{} }}
+\DoxyCodeLine{00109\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Tests\ weather\ a\ point\ value\ exists\ within\ an\ eclipse }}
+\DoxyCodeLine{00110\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ p\ <=\ 1\ exists\ in\ or\ on\ eclipse }}
+\DoxyCodeLine{00111\ \textcolor{stringliteral}{ }}
+\DoxyCodeLine{00112\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Equation:\ Given\ p\ =\ (x-\/h)\string^2/a\string^2\ +\ (y-\/k)\string^2/b\string^2 }}
+\DoxyCodeLine{00113\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ Where\ test\_point\ is\ (x,y)\ and\ ellipse\_center\ is\ (h,k),\  }}
+\DoxyCodeLine{00114\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ radius\_width,\ radius\_height\ as\ a,b\ respectivly }}
+\DoxyCodeLine{00115\ \textcolor{stringliteral}{ }}
+\DoxyCodeLine{00116\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns\ list(regions),\ p }}
+\DoxyCodeLine{00117\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}} }
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#overlapping\ areas\ may\ result\ in\ multiple\ True\ tests }}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ within\_points\ =\ [] }
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ test\_x\ =\ test\_point[0] }
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ test\_y\ =\ test\_point[1] }
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ p\ =\ float(\textcolor{stringliteral}{'inf'}) }
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ key,\ region\ \textcolor{keywordflow}{in}\ self.region\_dict.items(): }
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ name\ =\ region[0] }
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ x,\ y,\ w,\ h\ =\ region[1],\ region[2],\ region[3],\ region[4] }
+\DoxyCodeLine{00126\  }
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#Invalid\ inputs\ are\ areas\ with\ zero\ or\ less,\ return\ no\ region\ and\ invalid\ p\ value }}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ w\ <=\ 0\ \textcolor{keywordflow}{or}\ h\ <=\ 0: }
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ [],\ float(\textcolor{stringliteral}{"{}inf"{}}) }
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#handle\ if\ devisor\ ==\ 0 }}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ denom\_x\ =\ math.pow((w/2),\ 2) }
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ denom\_y\ =\ math.pow((h/2),\ 2) }
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ denom\_x\ ==\ 0: }
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ denom\_x\ =\ 1 }
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{elif}\ denom\_y\ ==\ 0: }
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ denom\_y\ =\ 1 }
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \ \ \ \ ellipse\_center\ =\ (x\ +\ (w/2)\ ,\ y\ +\ (h/2)) }
+\DoxyCodeLine{00139\  }
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ checking\ the\ equation\ of }}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ ellipse\ with\ the\ given\ point }}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}: }
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ p\ =\ ((math.pow((test\_x\ -\/\ ellipse\_center[0]),\ 2)\ /\ denom\_x)\ +\  }
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (math.pow((test\_y\ -\/\ ellipse\_center[1]),\ 2)\ /\ denom\_y)) }
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{except}\ ZeroDivisionError\ \textcolor{keyword}{as}\ zerodiverr: }
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ p\ =\ float(\textcolor{stringliteral}{"{}inf"{}})\ \textcolor{comment}{\#\ Does\ not\ count\ inside\ the\ eclipse }}
+\DoxyCodeLine{00147\  }
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ p\ <=\ 1:\ \textcolor{comment}{\#point\ exists\ in\ or\ on\ eclipse }}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ within\_points.append(name) }
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ within\_points,\ p }
+\DoxyCodeLine{00151\  }
+
+\end{DoxyCode}
+
+
+References Regions.\+region\+\_\+dict.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+K\+:/\+Github/\+People\+Tracker/src/Regions.\+py\end{DoxyCompactItemize}

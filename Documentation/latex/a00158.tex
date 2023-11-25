@@ -1,0 +1,203 @@
+\doxysection{Kalman\+Pred}
+\hypertarget{a00158}{}\label{a00158}\index{KalmanPred@{KalmanPred}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{a00158_ac5c301dd153be637d1c50c0025e8cc67}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, white=False)
+\item 
+\mbox{\hyperlink{a00158_a191136ec5ac829d87bd8c4ee7a4bb47e}{reset}} (self, white=False)
+\item 
+\mbox{\hyperlink{a00158_a43fa9170cbdc861d963795aedb267864}{predict}} (self, location=None)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{a00158_accb18deb2b4ce3c9a83c9ade36e5d598}\label{a00158_accb18deb2b4ce3c9a83c9ade36e5d598} 
+{\bfseries previous\+\_\+location}
+\item 
+\Hypertarget{a00158_a17f68c6450dd54016ebb88886c6bb0dc}\label{a00158_a17f68c6450dd54016ebb88886c6bb0dc} 
+{\bfseries k\+\_\+filter}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{a00158_ac5c301dd153be637d1c50c0025e8cc67}\label{a00158_ac5c301dd153be637d1c50c0025e8cc67} 
+\index{KalmanPred@{KalmanPred}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!KalmanPred@{KalmanPred}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily \+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{white = {\ttfamily False} }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00009\ \ \ \ \ \textcolor{keyword}{def\ }\_\_init\_\_(self,\ white=False): }
+\DoxyCodeLine{00010\ \ \ \ \ \ \ \ \ self.reset(white) }
+\DoxyCodeLine{00011\  }
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{a00158_a43fa9170cbdc861d963795aedb267864}\label{a00158_a43fa9170cbdc861d963795aedb267864} 
+\index{KalmanPred@{KalmanPred}!predict@{predict}}
+\index{predict@{predict}!KalmanPred@{KalmanPred}}
+\doxysubsubsection{\texorpdfstring{predict()}{predict()}}
+{\footnotesize\ttfamily predict (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{location = {\ttfamily None} }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keyword}{def\ }predict(self,\ location=None): }
+\DoxyCodeLine{00056\  }
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Indicates\ user\ set\ a\ new\ location\ or\ starting\ a\ new\ tracker }}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ self.previous\_location[0]\ ==\ float(\textcolor{stringliteral}{'inf'}): }
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ self.previous\_location\ =\ np.array(location) }
+\DoxyCodeLine{00061\  }
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ self.k\_filter.x\ =\ np.array([[location[0]],[location[1]], }
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [0],[0]])\ \ \ \ \ \textcolor{comment}{\#\ state\ transition\ matrix }}
+\DoxyCodeLine{00064\  }
+\DoxyCodeLine{00065\  }
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ We\ are\ predicting\ new\ data\ and\ updating\ the\ model }}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{elif}\ location\ \textcolor{keywordflow}{is}\ \textcolor{keywordflow}{not}\ \textcolor{keywordtype}{None}: }
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ self.previous\_location\ =\ np.array(location) }
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ velocity\_x\ =\ self.previous\_location[0]\ -\/\ location[0] }
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ velocity\_y\ =\ self.previous\_location[1]\ -\/\ location[1] }
+\DoxyCodeLine{00071\  }
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ self.k\_filter.predict() }
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ self.k\_filter.update(np.array([[location[0]],[location[1]], }
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [velocity\_x],[velocity\_y]])) }
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#We\ are\ further\ predicting\ future\ steps }}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}: }
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ self.k\_filter.predict() }
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ self.k\_filter.x }
+\DoxyCodeLine{00081\ \ \ \ \  }
+\DoxyCodeLine{00082\ \textcolor{comment}{\#\ class\ KalmanPredBox(): }}
+\DoxyCodeLine{00083\ \textcolor{comment}{\#\ \ \ \ \ def\ \_\_init\_\_(self): }}
+\DoxyCodeLine{00084\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ \#\ np.array([ }}
+\DoxyCodeLine{00085\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ \#\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [1,\ \ 0,\ \ \ \ 0,\ \ \ 0,\ \ \ \ 0,\ \ 0,\ \ 0,\ \ 0], }}
+\DoxyCodeLine{00086\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ \#\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [0,\ \ 1,\ \ \ \ 0,\ \ \ 0,\ \ \ \ 0,\ \ 0,\ \ 0,\ \ 0], }}
+\DoxyCodeLine{00087\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ \#\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [0,\ \ 0,\ \ \ \ 1,\ \ \ 0,\ \ \ \ 0,\ \ 0,\ \ 0,\ \ 0], }}
+\DoxyCodeLine{00088\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ \#\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [0,\ \ 0,\ \ \ \ 0,\ \ \ 1,\ \ \ \ 0,\ \ 0,\ \ 0,\ \ 0], }}
+\DoxyCodeLine{00089\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ \#\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [0,\ \ 0,\ \ \ \ 0,\ \ \ 0,\ \ \ \ 1,\ \ 0,\ \ 0,\ \ 0], }}
+\DoxyCodeLine{00090\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ \#\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [0,\ \ 0,\ \ \ \ 0,\ \ \ 0,\ \ \ \ 0,\ \ 1,\ \ 0,\ \ 0], }}
+\DoxyCodeLine{00091\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ \#\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [0,\ \ 0,\ \ \ \ 0,\ \ \ 0,\ \ \ \ 0,\ \ 0,\ \ 1,\ \ 0], }}
+\DoxyCodeLine{00092\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ \#\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [0,\ \ 0,\ \ \ \ 0,\ \ \ 0,\ \ \ \ 0,\ \ 0,\ \ 0,\ \ 1] }}
+\DoxyCodeLine{00093\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ \#\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ])\ \ \ \ \#\ state\ transition\ matrix }}
+\DoxyCodeLine{00094\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ \#\ \#\ Measurement\ function }}
+\DoxyCodeLine{00095\  }
+\DoxyCodeLine{00096\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ previous\_location\ =\ np.array((0,0,0,0)) }}
+\DoxyCodeLine{00097\  }
+\DoxyCodeLine{00098\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ self.k\_filter\ =\ KalmanFilter(dim\_x=8,\ dim\_z=8) }}
+\DoxyCodeLine{00099\  }
+\DoxyCodeLine{00100\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ \#\ initial\ state }}
+\DoxyCodeLine{00101\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ self.k\_filter.F\ =\ np.array([ }}
+\DoxyCodeLine{00102\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [1,\ \ 0,\ \ \ \ 0.3,\ \ \ \ \ 0,\ \ \ \ \ \ 0,\ \ \ \ \ \ 0,\ \ \ \ \ \ 0,\ \ \ \ \ \ 0\ \ ], }}
+\DoxyCodeLine{00103\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [0,\ \ 1,\ \ \ \ 0,\ \ \ \ \ \ \ 0.3,\ \ \ \ 0,\ \ \ \ \ \ 0,\ \ \ \ \ \ 0,\ \ \ \ \ \ 0\ \ ], }}
+\DoxyCodeLine{00104\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [0,\ \ 0,\ \ \ \ 1,\ \ \ \ \ \ \ 0,\ \ \ \ \ \ 0.3,\ \ \ \ 0,\ \ \ \ \ \ 0,\ \ \ \ \ \ 0\ \ ], }}
+\DoxyCodeLine{00105\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [0,\ \ 0,\ \ \ \ 0,\ \ \ \ \ \ \ 1,\ \ \ \ \ \ 0,\ \ \ \ \ \ 0.3,\ \ \ \ 0,\ \ \ \ \ \ 0\ \ ], }}
+\DoxyCodeLine{00106\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [0,\ \ 0,\ \ \ \ 0,\ \ \ \ \ \ \ 0,\ \ \ \ \ \ 1,\ \ \ \ \ \ 0,\ \ \ \ \ \ 0.3,\ \ \ \ 0\ \ ], }}
+\DoxyCodeLine{00107\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [0,\ \ 0,\ \ \ \ 0,\ \ \ \ \ \ \ 0,\ \ \ \ \ \ 0,\ \ \ \ \ \ 1,\ \ \ \ \ \ 0,\ \ \ \ \ \ 0.3], }}
+\DoxyCodeLine{00108\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [0,\ \ 0,\ \ \ \ 0,\ \ \ \ \ \ \ 0,\ \ \ \ \ \ 0,\ \ \ \ \ \ 0,\ \ \ \ \ \ 1,\ \ \ \ \ \ 0\ \ ], }}
+\DoxyCodeLine{00109\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [0,\ \ 0,\ \ \ \ 0,\ \ \ \ \ \ \ 0,\ \ \ \ \ \ 0,\ \ \ \ \ \ 0,\ \ \ \ \ \ 0,\ \ \ \ \ \ 1\ \ ] }}
+\DoxyCodeLine{00110\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ])\ \ \ \ \#\ state\ transition\ matrix }}
+\DoxyCodeLine{00111\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ \#\ Measurement\ function }}
+\DoxyCodeLine{00112\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ self.k\_filter.H\ =\ np.array([ }}
+\DoxyCodeLine{00113\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [1,\ \ 0,\ \ \ \ 1,\ \ \ 0,\ \ \ \ 1,\ \ 0,\ \ 1,\ \ 0], }}
+\DoxyCodeLine{00114\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [0,\ \ 1,\ \ \ \ 0,\ \ \ 1,\ \ \ \ 0,\ \ 1,\ \ 0,\ \ 1], }}
+\DoxyCodeLine{00115\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [0,\ \ 0,\ \ \ \ 0,\ \ \ 0,\ \ \ \ 0,\ \ 0,\ \ 0,\ \ 0], }}
+\DoxyCodeLine{00116\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [0,\ \ 0,\ \ \ \ 0,\ \ \ 0,\ \ \ \ 0,\ \ 0,\ \ 0,\ \ 0], }}
+\DoxyCodeLine{00117\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [0,\ \ 0,\ \ \ \ 0,\ \ \ 0,\ \ \ \ 0,\ \ 0,\ \ 0,\ \ 0], }}
+\DoxyCodeLine{00118\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [0,\ \ 0,\ \ \ \ 0,\ \ \ 0,\ \ \ \ 0,\ \ 0,\ \ 0,\ \ 0], }}
+\DoxyCodeLine{00119\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [0,\ \ 0,\ \ \ \ 0,\ \ \ 0,\ \ \ \ 0,\ \ 0,\ \ 0,\ \ 0], }}
+\DoxyCodeLine{00120\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [0,\ \ 0,\ \ \ \ 0,\ \ \ 0,\ \ \ \ 0,\ \ 0,\ \ 0,\ \ 0] }}
+\DoxyCodeLine{00121\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ]) }}
+\DoxyCodeLine{00122\ \ \ \ \  }
+\DoxyCodeLine{00123\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ \#\ state\ transition\ matrix\ \ \ \  }}
+\DoxyCodeLine{00124\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ self.k\_filter.P\ *=\ 1000.\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#\ covariance\ matrix }}
+\DoxyCodeLine{00125\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ self.k\_filter.R\ =\ 0.1\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#\ state\ uncertainty }}
+\DoxyCodeLine{00126\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ self.k\_filter.R\ =\ np.array([ }}
+\DoxyCodeLine{00127\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [0.1,\ \ 0,\ \ \ \ 0,\ \ \ 0,\ \ \ \ 0,\ \ 0,\ \ 0,\ \ 0], }}
+\DoxyCodeLine{00128\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [0,\ \ 0.1,\ \ \ \ 0,\ \ \ 0,\ \ \ \ 0,\ \ 0,\ \ 0,\ \ 0], }}
+\DoxyCodeLine{00129\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [0,\ \ 0,\ \ \ \ 0.1,\ \ \ 0,\ \ \ \ 0,\ \ 0,\ \ 0,\ \ 0], }}
+\DoxyCodeLine{00130\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [0,\ \ 0,\ \ \ \ 0,\ \ \ 0.1,\ \ \ \ 0,\ \ 0,\ \ 0,\ \ 0], }}
+\DoxyCodeLine{00131\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [0,\ \ 0,\ \ \ \ 0,\ \ \ 0,\ \ \ \ 0.1,\ \ 0,\ \ 0,\ \ 0], }}
+\DoxyCodeLine{00132\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [0,\ \ 0,\ \ \ \ 0,\ \ \ 0,\ \ \ \ 0,\ \ 0.1,\ \ 0,\ \ 0], }}
+\DoxyCodeLine{00133\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [0,\ \ 0,\ \ \ \ 0,\ \ \ 0,\ \ \ \ 0,\ \ 0,\ \ 0.1,\ \ 0], }}
+\DoxyCodeLine{00134\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [0,\ \ 0,\ \ \ \ 0,\ \ \ 0,\ \ \ \ 0,\ \ 0,\ \ 0,\ \ 0.1] }}
+\DoxyCodeLine{00135\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ]) }}
+\DoxyCodeLine{00136\  }
+\DoxyCodeLine{00137\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ self.k\_filter.Q\ =\ [[\ \ 0,\ \ 0,\ \ 0,\ \ 0], }}
+\DoxyCodeLine{00138\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [\ 0,\ \ 0,\ \ 0,\ \ 0], }}
+\DoxyCodeLine{00139\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [\ 0,\ \ 0,\ \ 0.1,0], }}
+\DoxyCodeLine{00140\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [\ 0,\ \ 0,\ \ 0,\ 0.1]] }}
+\DoxyCodeLine{00141\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ \#\ self.k\_filter.Q\ =\ Q\_discrete\_white\_noise(4,\ dt=1,\ var=100)\ \#\ process\ uncertainty }}
+\DoxyCodeLine{00142\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ print(self.k\_filter.Q) }}
+\DoxyCodeLine{00143\  }
+\DoxyCodeLine{00144\  }
+
+\end{DoxyCode}
+\Hypertarget{a00158_a191136ec5ac829d87bd8c4ee7a4bb47e}\label{a00158_a191136ec5ac829d87bd8c4ee7a4bb47e} 
+\index{KalmanPred@{KalmanPred}!reset@{reset}}
+\index{reset@{reset}!KalmanPred@{KalmanPred}}
+\doxysubsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily reset (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{white = {\ttfamily False} }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keyword}{def\ }reset(self,\ white=False): }
+\DoxyCodeLine{00013\  }
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ self.previous\_location\ =\ np.array((float(\textcolor{stringliteral}{'inf'}),float(\textcolor{stringliteral}{'inf'}))) }
+\DoxyCodeLine{00015\  }
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ self.k\_filter\ =\ KalmanFilter(dim\_x=4,\ dim\_z=4) }
+\DoxyCodeLine{00017\  }
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ initial\ state }}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ self.k\_filter.F\ =\ np.array([[1.,\ \ \ \ 0.,\ \ \ \ \ 0.3,\ \ \ \ 0\ ], }
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [0.,\ \ \ \ 1.,\ \ \ \ \ 0,\ \ \ \ \ \ 0.3], }
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [0,\ \ \ \ \ 0,\ \ \ \ \ \ 1,\ \ \ \ \ \ 0], }
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [0,\ \ \ \ \ 0,\ \ \ \ \ \ 0,\ \ \ \ \ \ 1] }
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ])\ \ \ \ \textcolor{comment}{\#\ state\ transition\ matrix }}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Measurement\ function }}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ self.k\_filter.H\ =\ np.array([ }
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [1.,\ \ \ \ 0.,\ \ \ \ \ 1,\ \ \ \ 0\ ], }
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [0.,\ \ \ \ 1.,\ \ \ \ \ 0,\ \ \ \ \ \ 1], }
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [0,\ \ \ \ \ 0,\ \ \ \ \ \ 0,\ \ \ \ \ \ 0], }
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [0,\ \ \ \ \ 0,\ \ \ \ \ \ 0,\ \ \ \ \ \ 0] }
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ]) }
+\DoxyCodeLine{00031\ \ \ \ \  }
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ state\ transition\ matrix\ \ \ \  }}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ self.k\_filter.P\ *=\ 1000.\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ covariance\ matrix }}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ self.k\_filter.R\ =\ 0.1\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#\ state\ uncertainty }}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ self.k\_filter.R\ =\ np.array([ }
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [0.1,\ \ \ 0.,\ \ \ \ \ 0,\ \ \ \ \ \ \ \ 0], }
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [0.,\ \ \ \ 0.1,\ \ \ \ 0,\ \ \ \ \ \ \ \ 0], }
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [0,\ \ \ \ \ 0,\ \ \ \ \ \ 0.1,\ \ \ \ \ \ 0], }
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [0,\ \ \ \ \ 0,\ \ \ \ \ \ 0,\ \ \ \ \ \ 0.1] }
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ]) }
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ white: }
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ self.k\_filter.R\ =\ np.array([ }
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [0.1,\ \ \ 0.,\ \ \ \ \ 0,\ \ \ \ \ \ \ \ 0], }
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [0.,\ \ \ \ 0.1,\ \ \ \ 0,\ \ \ \ \ \ \ \ 0], }
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [0,\ \ \ \ \ 0,\ \ \ \ \ \ 10,\ \ \ \ \ \ 0], }
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [0,\ \ \ \ \ 0,\ \ \ \ \ \ 0,\ \ \ \ \ \ 10] }
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ]) }
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}: }
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ self.k\_filter.Q\ =\ [[\ \ 0,\ \ 0,\ \ 0,\ \ 0], }
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [\ 0,\ \ 0,\ \ 0,\ \ 0], }
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [\ 0,\ \ 0,\ \ 0.1,0], }
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [\ 0,\ \ 0,\ \ 0,\ 0.1]] }
+\DoxyCodeLine{00053\  }
+\DoxyCodeLine{00054\  }
+
+\end{DoxyCode}
+
+
+Referenced by \mbox{\hyperlink{a00170_a04b3bf097ca43c583401eb0c5e143722}{Multi\+Tracker.\+assign()}}.
+
+Here is the caller graph for this function\+:
+% FIG 0
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+K\+:/\+Github/\+People\+Tracker/src/filters.\+py\end{DoxyCompactItemize}

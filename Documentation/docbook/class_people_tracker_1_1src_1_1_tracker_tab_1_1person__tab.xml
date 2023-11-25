@@ -1,0 +1,97 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_people_tracker_1_1src_1_1_tracker_tab_1_1person__tab" xml:lang="en-US">
+<title>PeopleTracker.src.TrackerTab.person_tab Class Reference</title>
+<indexterm><primary>PeopleTracker.src.TrackerTab.person_tab</primary></indexterm>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1_tracker_tab_1_1person__tab_1a039604062450d0af814d6d4fe33304e1"/><emphasis role="strong">__init__</emphasis> (self, window)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1_tracker_tab_1_1person__tab_1a764c11fb4c83c8a3f1d67b2d19027326"/><emphasis role="strong">init_tab</emphasis> (self, parent_window)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1_tracker_tab_1_1person__tab_1a6c931f591b3de4cf3622fe57afcfc15d"/><emphasis role="strong">getInteger</emphasis> (self)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1_tracker_tab_1_1person__tab_1a09a2b93eccae4b0040bcece66624685f"/><emphasis role="strong">getChoice</emphasis> (self)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1_tracker_tab_1_1person__tab_1a105b37f95f81064be251d7203da4dc9d"/><emphasis role="strong">getText</emphasis> (self, input_name, line)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1_tracker_tab_1_1person__tab_1ae64cadd0998f219dae38d8a661736fb8"/><emphasis role="strong">get_uuid</emphasis> (self)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1_tracker_tab_1_1person__tab_1a645e61316ae2e54d53d2778f7a0a6727"/><emphasis role="strong">get_beginning</emphasis> (self)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1_tracker_tab_1_1person__tab_1a5bf8f6737d04654be75a2fa3a5ce8c99"/><emphasis role="strong">get_is_region</emphasis> (self)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1_tracker_tab_1_1person__tab_1ac2d028932604a8bb6e493321583b0cbb"/><emphasis role="strong">get_is_chair</emphasis> (self)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1_tracker_tab_1_1person__tab_1a2aef72d2afb4849f0cf88077051535fb"/><emphasis role="strong">get_read_only</emphasis> (self)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1_tracker_tab_1_1person__tab_1a97c223049ea05eb5e72adf0d75babdcc"/><emphasis role="strong">get_other_room</emphasis> (self)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1_tracker_tab_1_1person__tab_1ade1f314635c0ef42466ebbf6898dc469"/><emphasis role="strong">toggle_active</emphasis> (self)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1_tracker_tab_1_1person__tab_1a1cfd891af8f896d6262fd3906dbdb6ba"/><emphasis role="strong">toggle_read</emphasis> (self)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1_tracker_tab_1_1person__tab_1adf620060824407a3a73695ed4829b165"/><emphasis role="strong">toggle_beginning</emphasis> (self)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1_tracker_tab_1_1person__tab_1a777019bccee925e54833d6993d5b1c05"/><emphasis role="strong">toggle_region</emphasis> (self)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1_tracker_tab_1_1person__tab_1a4ae8b7e7f11e2a5229f25afbbf49d10e"/><emphasis role="strong">toggle_other_room</emphasis> (self)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1_tracker_tab_1_1person__tab_1abcf3343c0f433e188ea36012a3115187"/><emphasis role="strong">toggle_chair</emphasis> (self)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1_tracker_tab_1_1person__tab_1a9de9125144c6346017f76240a9da7bf6"/><emphasis role="strong">update_length_tracked</emphasis> (self, time)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1_tracker_tab_1_1person__tab_1abeea839ee553d0c9efd63865ba628c57"/><emphasis role="strong">id</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1_tracker_tab_1_1person__tab_1a5b2cc426d45ddad7389ab59ede79da06"/><emphasis role="strong">parent</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1_tracker_tab_1_1person__tab_1a1ba820a0fd60da709e6735570182e450"/><emphasis role="strong">tab</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1_tracker_tab_1_1person__tab_1afdd2af38383f4d6e2186ecd8a5183a11"/><emphasis role="strong">name_line</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1_tracker_tab_1_1person__tab_1a51e9bf75007451c0f0ca99d7c1c62fd3"/><emphasis role="strong">id_line</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1_tracker_tab_1_1person__tab_1ab70dcbc1599ac6a24dd9ac0729078a71"/><emphasis role="strong">group_line</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1_tracker_tab_1_1person__tab_1ab23fa79bc9abf7f7ad86cac50f5ad4db"/><emphasis role="strong">sex_line</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1_tracker_tab_1_1person__tab_1af7d790f36a29f6b56ef20f181d79bbc7"/><emphasis role="strong">desc_line</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1_tracker_tab_1_1person__tab_1a83363d90df9983e5df78330997306627"/><emphasis role="strong">length_tracked</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1_tracker_tab_1_1person__tab_1a37ce2dc86f588c5ab692d60bb10926e0"/><emphasis role="strong">active</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1_tracker_tab_1_1person__tab_1afd13ab0a69775e6680b46168cb2e18db"/><emphasis role="strong">read_only</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1_tracker_tab_1_1person__tab_1a71c15fcb2d549baa105a86bd3e07f9e1"/><emphasis role="strong">other_room</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1_tracker_tab_1_1person__tab_1ad50980e83c6114b1675ccbb7708e692d"/><emphasis role="strong">beginning</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1_tracker_tab_1_1person__tab_1a436b84abe9a330cdbbc6ea826e7e08aa"/><emphasis role="strong">is_region</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1_tracker_tab_1_1person__tab_1af31194c3850ad025a6799656ad14020e"/><emphasis role="strong">is_chair</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1_tracker_tab_1_1person__tab_1a9ae27292ed4c95f88e678d0507eb4ea4"/><emphasis role="strong">getChoice</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1_tracker_tab_1_1person__tab_1a218d811a41cfb8e402a10d5c35477672"/><emphasis role="strong">image</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1_tracker_tab_1_1person__tab_1a52b88820d26f2e9284132cc39a3c9478"/><emphasis role="strong">read_only_button</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1_tracker_tab_1_1person__tab_1a8318fbf3d7d0efff5c6f244284724a01"/><emphasis role="strong">other_room_button</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1_tracker_tab_1_1person__tab_1a7d7c2ceba9bb726d78ba653e73fa5933"/><emphasis role="strong">beginning_button</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1_tracker_tab_1_1person__tab_1ab30de484ab85c029382d5ef219298432"/><emphasis role="strong">is_region_button</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1_tracker_tab_1_1person__tab_1a2e8bbbb29dd822614115b6b3f0521c80"/><emphasis role="strong">is_chair_button</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<para>
+The documentation for this class was generated from the following file:</para>
+K:/Github/PeopleTracker/src/TrackerTab.py</section>

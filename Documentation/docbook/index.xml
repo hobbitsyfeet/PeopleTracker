@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<book xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_index" xml:lang="en-US">
+    <info>
+    <title>Peopletracker</title>
+    </info>
+<chapter>
+    <title>Namespace Documentation</title>
+<xi:include href="namespace_people_tracker_1_1src_1_1evaluate.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+<xi:include href="namespace_people_tracker_1_1src_1_1maskrcnn.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+<xi:include href="namespace_people_tracker_1_1src_1_1utils.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+</chapter>
+<chapter>
+    <title>Class Documentation</title>
+    <xi:include href="class_people_tracker_1_1src_1_1qt__dialog_1_1_app.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="class_people_tracker_1_1src_1_1camera__position_1_1_camera_position.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="class_people_tracker_1_1src_1_1centroidtracker_1_1_centroid_tracker.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="class_people_tracker_1_1src_1_1tracker__to___d_l_c_1_1_converter.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="class_people_tracker_1_1src_1_1datalogger_1_1_data_logger.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="class_people_tracker_1_1src_1_1utils_1_1_dataset.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="class_people_tracker_1_1src_1_1_video_1_1_file_video_stream.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="class_people_tracker_1_1src_1_1fps_1_1_f_p_s.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="class_people_tracker_1_1src_1_1qt__dialog_1_1_image___enhancement.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="class_people_tracker_1_1src_1_1multiple__inputs_1_1_input_dialog.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="class_people_tracker_1_1src_1_1filters_1_1_kalman_pred.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="class_people_tracker_1_1src_1_1prank_1_1_main_window.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="class_people_tracker_1_1src_1_1qt__dialog_1_1_mask_r_c_n_n___i_o_u___options.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="class_people_tracker_1_1src_1_1new__centroidtracker_1_1_new_centroid_tracker.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="class_people_tracker_1_1src_1_1_tracker_tab_1_1person__tab.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="class_people_tracker_1_1src_1_1qt__dialog_1_1_predictor___options.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="class_people_tracker_1_1src_1_1_regions_1_1_regions.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="class_people_tracker_1_1src_1_1regression_1_1rolling__regression.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="class_people_tracker_1_1src_1_1_video_1_1_s_t_file_video_stream.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="class_people_tracker_1_1src_1_1test___multitracker_1_1_test_multitracker.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="class_people_tracker_1_1src_1_1test___regions_1_1_test_regions.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+</chapter>
+<index/>
+</book>

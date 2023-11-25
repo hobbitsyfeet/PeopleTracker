@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_people_tracker_1_1src_1_1filters_1_1_kalman_pred" xml:lang="en-US">
+<title>PeopleTracker.src.filters.KalmanPred Class Reference</title>
+<indexterm><primary>PeopleTracker.src.filters.KalmanPred</primary></indexterm>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1filters_1_1_kalman_pred_1afbfa04042fe58491dfa655c71ce10006"/><emphasis role="strong">__init__</emphasis> (self, white=False)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1filters_1_1_kalman_pred_1adee46ef6605a0a5a490d7085bfdac204"/><emphasis role="strong">reset</emphasis> (self, white=False)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1filters_1_1_kalman_pred_1a461a3821001be913a06d5e7b3a8571fc"/><emphasis role="strong">predict</emphasis> (self, location=None)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1filters_1_1_kalman_pred_1ad9195b172525fe89b4a0397f32f8052d"/><emphasis role="strong">previous_location</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1filters_1_1_kalman_pred_1aef029abe08bc73ac16f155ee2b3641d0"/><emphasis role="strong">k_filter</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<para>
+The documentation for this class was generated from the following file:</para>
+K:/Github/PeopleTracker/src/filters.py</section>

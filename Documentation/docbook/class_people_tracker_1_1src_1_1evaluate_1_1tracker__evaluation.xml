@@ -1,0 +1,544 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation" xml:lang="en-US">
+<title>PeopleTracker.src.evaluate.tracker_evaluation Class Reference</title>
+<indexterm><primary>PeopleTracker.src.evaluate.tracker_evaluation</primary></indexterm>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1a74f0530b3e4ca3a279ae43bff48de10b"/><emphasis role="strong">__init__</emphasis> (self, tracker_file=None, ground_thruth_folder=None, fps=None)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1ae04638029265068b5e87f864d56f8558"/><emphasis role="strong">load_json</emphasis> (self, folder, fps=None)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1a80264116e0450a5f2adb715fc73a1a99">load_tracker_data</link> (self, tracker_file)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1acddab1cf2551a4ed254ea618993a0462">plot_score</link> (self)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1a972ed1b922be4a595d53175e737d12bb">plot_scene</link> (self)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1a405498a7353c86b04677bf2a61f79de6"/><emphasis role="strong">identification_graph</emphasis> (self)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1a330f1cec92df7269af643f6e0cc7c4b3">false_positive</link> (self, es_config)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1ace1f9b051c10c259d1d4d6bfdcb9fd45">false_negative</link> (self, gt_config)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1a0d60139762d67521318a73e373322acb">multiple_trackers</link> (self, gt_config, frame_number)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1a1dc6776ecfc166dff5837808ef1530ef">multiple_objects</link> (self, es_config, frame_number)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1ae8f39ab53268fcc5ea02a51e3c248a67">configuration_distance</link> (self, frame_number)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1ac3d981e4fb2093de4879b5557e39435d"/><emphasis role="strong">ground_truth_exists</emphasis> (self, frame_num)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1aa94cfb04dda9e81ea38ab33c403cbeb0">get_ground_truth_difference</link> (self, frame_num_1, frame_num_2)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1af3a4d7ed715fb4a72e5ee1bcaf77804b"/><emphasis role="strong">check_occlusion</emphasis> (self, gt, frame_num)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1a321778b6c1680b22b4a2936588f9e156"/><emphasis role="strong">get_occlusion_count</emphasis> (self, frame_num)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1a12297e12d2409431f09055118a3a4af5">precision</link> (self, estimate, ground_truth, correct_estimate=False)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1a97d4bfd6ab46f148bca236a3c957290c">recall</link> (self, estimate, ground_truth, correct_estimate=False)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1a117e5bd299cd8bd0ba80b1b1f32cda95">fmeasure</link> (self, estimate, ground_truth, correct_estimate=False)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1a6de8c5df433746e6b61258fda2d62da0"/><emphasis role="strong">configuration_map</emphasis> (self, frame_number)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1aa1f35588a820c0cf52d9bc20b11fc813">calculate_identification_map</link> (self, manual_gtmap=None, manual_emap=None)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1acc1672843da008e9d6ae726252d8f367">identification_map</link> (self, frame_number)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1ab5116608ae5db791ffb20aa1190f04e7">falsly_identified_object</link> (self, frame_number)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1ab5d011ecfb14eaa633dd70c29a457a9f">falsly_identified_tracker</link> (self, frame_number)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1a5058cbdd42e7b90dffd04cbafb9c1a17">calculate_tracker_purity</link> (self)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1a5aa31ad4b89720c1d21a95060225cc4f">calculate_object_purity</link> (self)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1aa85bff158458d1bf22f9e1e67fb3aef8">calculate_frame_errors</link> (self, frame_number, ratios=(1, 1), y_offset=720)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1ae9e3d28208e49a4b8b05c7ba45f3cd5e"/><emphasis role="strong">calculate_identification_errors</emphasis> (self, frame_number)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1ae61895b65ecb63e90399bb07fe301096">calculate_errors</link> (self, printout=False, gt_maps_itself=True)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1a186f3dba6530cafb296e1b707e230290">compute_iou</link> (self, box, boxes, ratios=None, frame=None)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1a0224202ce267d49f1d4da7a314ed7a48"/><emphasis role="strong">get_frame_count</emphasis> (self)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1abe300c6db16cded18eb5980ab820ec71"/><emphasis role="strong">get_area</emphasis> (self, box)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1af2da903eaeddb412e348f13ee575ef0b"/><emphasis role="strong">get_height</emphasis> (self, box)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1add7c1d4c25188ab2ab2d77947431ef0d"/><emphasis role="strong">get_width</emphasis> (self, box)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1acbae3379c06167775d62f7578f6b8dfb"/><emphasis role="strong">get_ground_truths</emphasis> (self, frame_number, id=None)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1a813c317ec864ee02406db59383f416af">get_estimates</link> (self, frame_number, id=None)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1afef3ab5ff8104e373483ca4c1634c5a5">estimate_to_point</link> (self, estimate, ratios=None, invert_y=None)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1a49d269b711128808359b5d2dbcd8ee23"/><emphasis role="strong">get_number_estimates</emphasis> (self, frame_number)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1a78a313a113ba948c5452064e3d92731a"/><emphasis role="strong">get_ground_truth_count</emphasis> (self, frame_number)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1af2638d0e136da77e0850cc628b6e6204">list_labels</link> (self)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1a250ef65952a1399a126de7b166da27e8">list_estimates</link> (self)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1acfcaa346f06ffadb9d4e6ce29e382d46"/><emphasis role="strong">get_estimate_count</emphasis> (self)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1a622e1e90934e84249be3f4389e1a8547"/><emphasis role="strong">get_groundtruth_count</emphasis> (self)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1ac6e4d54d25654e795b6149226d82caa4">validate_and_correct_ground_tuths</link> (self)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1a626f975a47c3089b720623a6d14a96d2">generate_manual_id_map</link> (self)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1add1574256257dc1cc6e409c37679cdb7"/><emphasis role="strong">score</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1abec64c91293c47b83d7b8f3c050f0aef"/><emphasis role="strong">colour</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1a430a4166e04be72a5679cb7de76eeed5"/><emphasis role="strong">ground_truth_dict</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1a51212bf23e647c06486caff5cce93a50"/><emphasis role="strong">total_images</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1ada749acd15907c5e8a9121df2756864f"/><emphasis role="strong">estimate_dict</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1a17ac88ec29ccae0e76451b6f0f774672"/><emphasis role="strong">fps</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1a5edbfcf021a3306a227b8bfc4b201096"/><emphasis role="strong">threshold_to</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1a9f2e1ab8d6033133c67c07bd5002389b"/><emphasis role="strong">threshold_tc</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1a7e9102ce5b1bcad27c59b4d89d6f26c0"/><emphasis role="strong">id_map</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1a58334965e31b7c0318d6643da7a3175e"/><emphasis role="strong">invert_y</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1a4a199a3ba03fde6426e2e2dc2917d2e8"/><emphasis role="strong">correction_ratio_x</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1a05b15d80480a1e92803895d8007b9a66"/><emphasis role="strong">correction_ratio_y</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1a10332a83d6db2962a4f808f177917b5c"/><emphasis role="strong">labels</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1abbdf6d4ae6555337ced55639a559627d"/><emphasis role="strong">estimates</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1a21404f8a91f639ff33ce64c3a6e86c36"/><emphasis role="strong">gt_map</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1ab753d4480ec8ff9818346db0e1a9ca06"/><emphasis role="strong">es_map</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1a43de6315fd1a9fe49b0064eb181149ba"/><emphasis role="strong">calulate</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1ae61895b65ecb63e90399bb07fe301096"/><section>
+    <title>calculate_errors()</title>
+<indexterm><primary>calculate_errors</primary><secondary>PeopleTracker.src.evaluate.tracker_evaluation</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.evaluate.tracker_evaluation</primary><secondary>calculate_errors</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.evaluate.tracker_evaluation.calculate_errors ( self,  printout = <computeroutput>False</computeroutput>
+,  gt_maps_itself = <computeroutput>True</computeroutput>
+)</computeroutput></para>
+<para><literallayout><computeroutput>Iterates through every ground truth frame and compares a list of estimates. 
+
+Returns final video score, as well as normalized results through the video.
+Normalized results are results where the number of errors on a frame is normalized by the number of ground truths.
+
+We define GT maps itself to override majority voting to determine what the correct labels are. This accounts for the problem where
+an estimate incorrectly labels a ground truth forthe majority of the time
+</computeroutput></literallayout> </para>
+<para>
+References <link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1aa85bff158458d1bf22f9e1e67fb3aef8">PeopleTracker.src.evaluate.tracker_evaluation.calculate_frame_errors()</link>, <link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1aa1f35588a820c0cf52d9bc20b11fc813">PeopleTracker.src.evaluate.tracker_evaluation.calculate_identification_map()</link>, <link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1a5aa31ad4b89720c1d21a95060225cc4f">PeopleTracker.src.evaluate.tracker_evaluation.calculate_object_purity()</link>, <link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1a5058cbdd42e7b90dffd04cbafb9c1a17">PeopleTracker.src.evaluate.tracker_evaluation.calculate_tracker_purity()</link>, <link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1ae8f39ab53268fcc5ea02a51e3c248a67">PeopleTracker.src.evaluate.tracker_evaluation.configuration_distance()</link>, PeopleTracker.src.evaluate.tracker_evaluation.es_map, <link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1ab5116608ae5db791ffb20aa1190f04e7">PeopleTracker.src.evaluate.tracker_evaluation.falsly_identified_object()</link>, <link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1ab5d011ecfb14eaa633dd70c29a457a9f">PeopleTracker.src.evaluate.tracker_evaluation.falsly_identified_tracker()</link>, <link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1a626f975a47c3089b720623a6d14a96d2">PeopleTracker.src.evaluate.tracker_evaluation.generate_manual_id_map()</link>, PeopleTracker.src.evaluate.tracker_evaluation.get_ground_truths(), PeopleTracker.src.evaluate.tracker_evaluation.ground_truth_dict, PeopleTracker.src.evaluate.tracker_evaluation.gt_map, and PeopleTracker.src.evaluate.tracker_evaluation.total_images.</para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1aa85bff158458d1bf22f9e1e67fb3aef8"/><section>
+    <title>calculate_frame_errors()</title>
+<indexterm><primary>calculate_frame_errors</primary><secondary>PeopleTracker.src.evaluate.tracker_evaluation</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.evaluate.tracker_evaluation</primary><secondary>calculate_frame_errors</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.evaluate.tracker_evaluation.calculate_frame_errors ( self,  frame_number,  ratios = <computeroutput>(1,1)</computeroutput>
+,  y_offset = <computeroutput>720</computeroutput>
+)</computeroutput></para>
+<para><literallayout><computeroutput></computeroutput></literallayout> </para>
+<para>
+References <link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1a5058cbdd42e7b90dffd04cbafb9c1a17">PeopleTracker.src.evaluate.tracker_evaluation.calculate_tracker_purity()</link>, PeopleTracker.src.evaluate.tracker_evaluation.calulate, <link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1ae8f39ab53268fcc5ea02a51e3c248a67">PeopleTracker.src.evaluate.tracker_evaluation.configuration_distance()</link>, PeopleTracker.src.evaluate.tracker_evaluation.configuration_map(), <link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1ace1f9b051c10c259d1d4d6bfdcb9fd45">PeopleTracker.src.evaluate.tracker_evaluation.false_negative()</link>, <link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1a330f1cec92df7269af643f6e0cc7c4b3">PeopleTracker.src.evaluate.tracker_evaluation.false_positive()</link>, <link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1ab5116608ae5db791ffb20aa1190f04e7">PeopleTracker.src.evaluate.tracker_evaluation.falsly_identified_object()</link>, <link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1ab5d011ecfb14eaa633dd70c29a457a9f">PeopleTracker.src.evaluate.tracker_evaluation.falsly_identified_tracker()</link>, <link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1a1dc6776ecfc166dff5837808ef1530ef">PeopleTracker.src.evaluate.tracker_evaluation.multiple_objects()</link>, and <link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1a0d60139762d67521318a73e373322acb">PeopleTracker.src.evaluate.tracker_evaluation.multiple_trackers()</link>.</para>
+<para>
+Referenced by <link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1ae61895b65ecb63e90399bb07fe301096">PeopleTracker.src.evaluate.tracker_evaluation.calculate_errors()</link>.</para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1aa1f35588a820c0cf52d9bc20b11fc813"/><section>
+    <title>calculate_identification_map()</title>
+<indexterm><primary>calculate_identification_map</primary><secondary>PeopleTracker.src.evaluate.tracker_evaluation</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.evaluate.tracker_evaluation</primary><secondary>calculate_identification_map</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.evaluate.tracker_evaluation.calculate_identification_map ( self,  manual_gtmap = <computeroutput>None</computeroutput>
+,  manual_emap = <computeroutput>None</computeroutput>
+)</computeroutput></para>
+<para><literallayout><computeroutput> Calculates Identification map for an entire video
+
+Calculate_identification_map calculates the id map of every frame based on how one fits onto another. 
+Next is majority voting which counts the occurances of maps and grabs the ones which have the most.
+
+NOTE: manual_gtmap and manual_emap is used when the identifications map 1:1 with eachother.
+For example, if Ground Truth is P1, then it&apos;s corresponding estimate is also P1, as well as Estimate P1 maps to Ground Truth P1.
+IMPORTANT! Required to use this when using labeled tracks (Not MaskRCNN) and it is required you DO NOT use this while using MaskRCNN predictions.
+
+     manual_gtmap input should be the set of ground truth label names
+
+     manual_emap input should be the set of estimate label names</computeroutput></literallayout> </para>
+<para>
+References PeopleTracker.src.evaluate.tracker_evaluation.ground_truth_dict, <link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1acc1672843da008e9d6ae726252d8f367">PeopleTracker.src.evaluate.tracker_evaluation.identification_map()</link>, PeopleTracker.src.evaluate.tracker_evaluation.labels, and <link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1a250ef65952a1399a126de7b166da27e8">PeopleTracker.src.evaluate.tracker_evaluation.list_estimates()</link>.</para>
+<para>
+Referenced by <link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1ae61895b65ecb63e90399bb07fe301096">PeopleTracker.src.evaluate.tracker_evaluation.calculate_errors()</link>.</para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1a5aa31ad4b89720c1d21a95060225cc4f"/><section>
+    <title>calculate_object_purity()</title>
+<indexterm><primary>calculate_object_purity</primary><secondary>PeopleTracker.src.evaluate.tracker_evaluation</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.evaluate.tracker_evaluation</primary><secondary>calculate_object_purity</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.evaluate.tracker_evaluation.calculate_object_purity ( self)</computeroutput></para>
+<para><literallayout><computeroutput>Measure I-4: (OP) - Object Purity. If the identity map
+w.r.t. GT indicates GTj is identified by Ei, the ratio of
+frames that GT j is correctly identified by Ei ( njˆij ) to
+the total number of frames GT j exists (nj ) 
+</computeroutput></literallayout> </para>
+<para>
+References PeopleTracker.src.evaluate.tracker_evaluation.get_ground_truths(), PeopleTracker.src.evaluate.tracker_evaluation.get_groundtruth_count(), PeopleTracker.src.evaluate.tracker_evaluation.ground_truth_dict, PeopleTracker.src.evaluate.tracker_evaluation.gt_map, and <link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1acc1672843da008e9d6ae726252d8f367">PeopleTracker.src.evaluate.tracker_evaluation.identification_map()</link>.</para>
+<para>
+Referenced by <link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1ae61895b65ecb63e90399bb07fe301096">PeopleTracker.src.evaluate.tracker_evaluation.calculate_errors()</link>.</para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1a5058cbdd42e7b90dffd04cbafb9c1a17"/><section>
+    <title>calculate_tracker_purity()</title>
+<indexterm><primary>calculate_tracker_purity</primary><secondary>PeopleTracker.src.evaluate.tracker_evaluation</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.evaluate.tracker_evaluation</primary><secondary>calculate_tracker_purity</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.evaluate.tracker_evaluation.calculate_tracker_purity ( self)</computeroutput></para>
+<para><literallayout><computeroutput>Measure I-3: (TP) Tracker Purity. If the identity map
+w.r.t. E indicates Ei identifies GT j , the ratio of frames
+that Ei correctly identifies GT j ( niˆji ) to the total num-
+ber of frames Ei exists (ni) 
+</computeroutput></literallayout> </para>
+<para>
+References PeopleTracker.src.evaluate.tracker_evaluation.es_map, PeopleTracker.src.evaluate.tracker_evaluation.get_estimate_count(), <link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1a813c317ec864ee02406db59383f416af">PeopleTracker.src.evaluate.tracker_evaluation.get_estimates()</link>, PeopleTracker.src.evaluate.tracker_evaluation.ground_truth_dict, and <link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1acc1672843da008e9d6ae726252d8f367">PeopleTracker.src.evaluate.tracker_evaluation.identification_map()</link>.</para>
+<para>
+Referenced by <link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1ae61895b65ecb63e90399bb07fe301096">PeopleTracker.src.evaluate.tracker_evaluation.calculate_errors()</link>, and <link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1aa85bff158458d1bf22f9e1e67fb3aef8">PeopleTracker.src.evaluate.tracker_evaluation.calculate_frame_errors()</link>.</para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1a186f3dba6530cafb296e1b707e230290"/><section>
+    <title>compute_iou()</title>
+<indexterm><primary>compute_iou</primary><secondary>PeopleTracker.src.evaluate.tracker_evaluation</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.evaluate.tracker_evaluation</primary><secondary>compute_iou</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.evaluate.tracker_evaluation.compute_iou ( self,  box,  boxes,  ratios = <computeroutput>None</computeroutput>
+,  frame = <computeroutput>None</computeroutput>
+)</computeroutput></para>
+<para><literallayout><computeroutput>Calculates IoU of the given box with the array of the given boxes.
+box: 1D vector [x1, y1, x2, y2]
+boxes: [boxes_count, (x1, y1, x2, y2)]
+box_area: float. the area of &apos;box&apos;
+boxes_area: array of length boxes_count.
+ratio: ratio (width, height) to scale boxes from video resolution to analysis resolution
+
+Note: the areas are passed in rather than calculated here for
+efficiency. Calculate once in the caller to avoid duplicate work.
+</computeroutput></literallayout> </para>
+<para>
+References PeopleTracker.src.evaluate.tracker_evaluation.correction_ratio_x, PeopleTracker.src.evaluate.tracker_evaluation.correction_ratio_y, and PeopleTracker.src.evaluate.tracker_evaluation.ground_truth_dict.</para>
+<para>
+Referenced by <link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1a12297e12d2409431f09055118a3a4af5">PeopleTracker.src.evaluate.tracker_evaluation.precision()</link>, and <link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1a97d4bfd6ab46f148bca236a3c957290c">PeopleTracker.src.evaluate.tracker_evaluation.recall()</link>.</para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1ae8f39ab53268fcc5ea02a51e3c248a67"/><section>
+    <title>configuration_distance()</title>
+<indexterm><primary>configuration_distance</primary><secondary>PeopleTracker.src.evaluate.tracker_evaluation</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.evaluate.tracker_evaluation</primary><secondary>configuration_distance</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.evaluate.tracker_evaluation.configuration_distance ( self,  frame_number)</computeroutput></para>
+<para><literallayout><computeroutput>Checks the difference between the number of ground truths and the number of estimates of a given frame
+CD = #Estiamtes - #Ground Truths / max(#Ground Truths, 1)
+</computeroutput></literallayout> </para>
+<para>
+References <link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1a813c317ec864ee02406db59383f416af">PeopleTracker.src.evaluate.tracker_evaluation.get_estimates()</link>, PeopleTracker.src.evaluate.tracker_evaluation.get_ground_truths(), and PeopleTracker.src.evaluate.tracker_evaluation.ground_truth_dict.</para>
+<para>
+Referenced by <link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1ae61895b65ecb63e90399bb07fe301096">PeopleTracker.src.evaluate.tracker_evaluation.calculate_errors()</link>, and <link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1aa85bff158458d1bf22f9e1e67fb3aef8">PeopleTracker.src.evaluate.tracker_evaluation.calculate_frame_errors()</link>.</para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1afef3ab5ff8104e373483ca4c1634c5a5"/><section>
+    <title>estimate_to_point()</title>
+<indexterm><primary>estimate_to_point</primary><secondary>PeopleTracker.src.evaluate.tracker_evaluation</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.evaluate.tracker_evaluation</primary><secondary>estimate_to_point</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.evaluate.tracker_evaluation.estimate_to_point ( self,  estimate,  ratios = <computeroutput>None</computeroutput>
+,  invert_y = <computeroutput>None</computeroutput>
+)</computeroutput></para>
+<para><literallayout><computeroutput>compute_iou
+ratios is the x,y|width,height ratios of the estimate to the ground truth.compute_iou
+Example: Estimates are recorded at 480x720 while ground truths are recorded at 720x1280. The ratio inputed would be (720/480, 1280/720) or (1.5, 1.777778)
+
+
+invert_y is the height of the video. We record the data as if the origin is in the bottom left, but in other applications the origin is the top left.
+This means we subtract the height of the video to inverse this effect.
+If the height of the video is 720, invert_y=720. If the data being tested IS NOT inverted, leave it as 0 
+</computeroutput></literallayout> </para>
+<para>
+References PeopleTracker.src.evaluate.tracker_evaluation.correction_ratio_x, PeopleTracker.src.evaluate.tracker_evaluation.correction_ratio_y, <link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1a813c317ec864ee02406db59383f416af">PeopleTracker.src.evaluate.tracker_evaluation.get_estimates()</link>, PeopleTracker.src.evaluate.tracker_evaluation.get_ground_truths(), PeopleTracker.src.evaluate.tracker_evaluation.invert_y, and PeopleTracker.src.room_estimation.room_estimation.invert_y.</para>
+<para>
+Referenced by <link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1a117e5bd299cd8bd0ba80b1b1f32cda95">PeopleTracker.src.evaluate.tracker_evaluation.fmeasure()</link>, and <link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1acc1672843da008e9d6ae726252d8f367">PeopleTracker.src.evaluate.tracker_evaluation.identification_map()</link>.</para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1ace1f9b051c10c259d1d4d6bfdcb9fd45"/><section>
+    <title>false_negative()</title>
+<indexterm><primary>false_negative</primary><secondary>PeopleTracker.src.evaluate.tracker_evaluation</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.evaluate.tracker_evaluation</primary><secondary>false_negative</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.evaluate.tracker_evaluation.false_negative ( self,  gt_config)</computeroutput></para>
+<para><literallayout><computeroutput>False Negative checks all estimates in a given list (of a given frame) and 
+checks if any of them exist on a ground truth within the f-measure threshold.
+
+Config map assigns a None for a value to a ground truth when no estimate exists 
+within it&apos;s threhsold
+estimate E
+
+     ground truth GT
+    |a |b  | c |d |e |
+____|__|___|___|__|__|__
+E   |1 |2,3| - |5 |5 | 
+         ↑   ↑
+         MT  FN
+</computeroutput></literallayout> </para>
+<para>
+Referenced by <link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1aa85bff158458d1bf22f9e1e67fb3aef8">PeopleTracker.src.evaluate.tracker_evaluation.calculate_frame_errors()</link>.</para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1a330f1cec92df7269af643f6e0cc7c4b3"/><section>
+    <title>false_positive()</title>
+<indexterm><primary>false_positive</primary><secondary>PeopleTracker.src.evaluate.tracker_evaluation</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.evaluate.tracker_evaluation</primary><secondary>false_positive</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.evaluate.tracker_evaluation.false_positive ( self,  es_config)</computeroutput></para>
+<para><literallayout><computeroutput>    |1 |2 |3 |4 |5  |
+____|__|__|__|__|___|___
+GT  |a |b |b |- |d,e| 
+              ↑   ↑
+              FP  MO
+</computeroutput></literallayout> </para>
+<para>
+Referenced by <link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1aa85bff158458d1bf22f9e1e67fb3aef8">PeopleTracker.src.evaluate.tracker_evaluation.calculate_frame_errors()</link>.</para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1ab5116608ae5db791ffb20aa1190f04e7"/><section>
+    <title>falsly_identified_object()</title>
+<indexterm><primary>falsly_identified_object</primary><secondary>PeopleTracker.src.evaluate.tracker_evaluation</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.evaluate.tracker_evaluation</primary><secondary>falsly_identified_object</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.evaluate.tracker_evaluation.falsly_identified_object ( self,  frame_number)</computeroutput></para>
+<para><literallayout><computeroutput>Calculates FIO for a single frame normalized by the number of estimates in that frame
+</computeroutput></literallayout> </para>
+<para>
+References PeopleTracker.src.evaluate.tracker_evaluation.es_map, and <link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1acc1672843da008e9d6ae726252d8f367">PeopleTracker.src.evaluate.tracker_evaluation.identification_map()</link>.</para>
+<para>
+Referenced by <link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1ae61895b65ecb63e90399bb07fe301096">PeopleTracker.src.evaluate.tracker_evaluation.calculate_errors()</link>, and <link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1aa85bff158458d1bf22f9e1e67fb3aef8">PeopleTracker.src.evaluate.tracker_evaluation.calculate_frame_errors()</link>.</para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1ab5d011ecfb14eaa633dd70c29a457a9f"/><section>
+    <title>falsly_identified_tracker()</title>
+<indexterm><primary>falsly_identified_tracker</primary><secondary>PeopleTracker.src.evaluate.tracker_evaluation</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.evaluate.tracker_evaluation</primary><secondary>falsly_identified_tracker</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.evaluate.tracker_evaluation.falsly_identified_tracker ( self,  frame_number)</computeroutput></para>
+<para><literallayout><computeroutput>Falsely Identified Object. A
+GT segment which passes the coverage test for E but
+is not the identified GT.
+
+Assign FIT and FIO errors for each frame by checking if E
+and GT segments which pass the coverage test match Es and 
+GTs indicated by the identity maps. Label segments as FIT,
+FIO, or correct
+</computeroutput></literallayout> </para>
+<para>
+References PeopleTracker.src.evaluate.tracker_evaluation.gt_map, and <link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1acc1672843da008e9d6ae726252d8f367">PeopleTracker.src.evaluate.tracker_evaluation.identification_map()</link>.</para>
+<para>
+Referenced by <link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1ae61895b65ecb63e90399bb07fe301096">PeopleTracker.src.evaluate.tracker_evaluation.calculate_errors()</link>, and <link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1aa85bff158458d1bf22f9e1e67fb3aef8">PeopleTracker.src.evaluate.tracker_evaluation.calculate_frame_errors()</link>.</para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1a117e5bd299cd8bd0ba80b1b1f32cda95"/><section>
+    <title>fmeasure()</title>
+<indexterm><primary>fmeasure</primary><secondary>PeopleTracker.src.evaluate.tracker_evaluation</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.evaluate.tracker_evaluation</primary><secondary>fmeasure</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.evaluate.tracker_evaluation.fmeasure ( self,  estimate,  ground_truth,  correct_estimate = <computeroutput>False</computeroutput>
+)</computeroutput></para>
+<para><literallayout><computeroutput>The F-measure(F = 2νρ/ν+ρ ) is suited to this task, as F is only high when both recall and precision are high
+</computeroutput></literallayout> </para>
+<para>
+References <link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1afef3ab5ff8104e373483ca4c1634c5a5">PeopleTracker.src.evaluate.tracker_evaluation.estimate_to_point()</link>, <link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1a117e5bd299cd8bd0ba80b1b1f32cda95">PeopleTracker.src.evaluate.tracker_evaluation.fmeasure()</link>, <link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1a813c317ec864ee02406db59383f416af">PeopleTracker.src.evaluate.tracker_evaluation.get_estimates()</link>, PeopleTracker.src.evaluate.tracker_evaluation.get_ground_truths(), <link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1a12297e12d2409431f09055118a3a4af5">PeopleTracker.src.evaluate.tracker_evaluation.precision()</link>, <link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1a97d4bfd6ab46f148bca236a3c957290c">PeopleTracker.src.evaluate.tracker_evaluation.recall()</link>, and PeopleTracker.src.evaluate.tracker_evaluation.threshold_tc.</para>
+<para>
+Referenced by <link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1a117e5bd299cd8bd0ba80b1b1f32cda95">PeopleTracker.src.evaluate.tracker_evaluation.fmeasure()</link>, and <link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1acc1672843da008e9d6ae726252d8f367">PeopleTracker.src.evaluate.tracker_evaluation.identification_map()</link>.</para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1a626f975a47c3089b720623a6d14a96d2"/><section>
+    <title>generate_manual_id_map()</title>
+<indexterm><primary>generate_manual_id_map</primary><secondary>PeopleTracker.src.evaluate.tracker_evaluation</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.evaluate.tracker_evaluation</primary><secondary>generate_manual_id_map</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.evaluate.tracker_evaluation.generate_manual_id_map ( self)</computeroutput></para>
+<para><literallayout><computeroutput>Creates a manual mapping where every estimate maps to the same id as it&apos;s labelled (as well as ground truths)
+
+This is used in the case where ground truths and estimates are designed to have the same IDs
+</computeroutput></literallayout> </para>
+<para>
+References <link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1a250ef65952a1399a126de7b166da27e8">PeopleTracker.src.evaluate.tracker_evaluation.list_estimates()</link>, and <link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1af2638d0e136da77e0850cc628b6e6204">PeopleTracker.src.evaluate.tracker_evaluation.list_labels()</link>.</para>
+<para>
+Referenced by <link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1ae61895b65ecb63e90399bb07fe301096">PeopleTracker.src.evaluate.tracker_evaluation.calculate_errors()</link>.</para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1a813c317ec864ee02406db59383f416af"/><section>
+    <title>get_estimates()</title>
+<indexterm><primary>get_estimates</primary><secondary>PeopleTracker.src.evaluate.tracker_evaluation</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.evaluate.tracker_evaluation</primary><secondary>get_estimates</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.evaluate.tracker_evaluation.get_estimates ( self,  frame_number,  id = <computeroutput>None</computeroutput>
+)</computeroutput></para>
+<para><literallayout><computeroutput>Returns all estimates by frame number
+</computeroutput></literallayout> </para>
+<para>
+References PeopleTracker.src.evaluate.tracker_evaluation.estimate_dict.</para>
+<para>
+Referenced by <link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1a5058cbdd42e7b90dffd04cbafb9c1a17">PeopleTracker.src.evaluate.tracker_evaluation.calculate_tracker_purity()</link>, <link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1ae8f39ab53268fcc5ea02a51e3c248a67">PeopleTracker.src.evaluate.tracker_evaluation.configuration_distance()</link>, <link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1afef3ab5ff8104e373483ca4c1634c5a5">PeopleTracker.src.evaluate.tracker_evaluation.estimate_to_point()</link>, <link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1a117e5bd299cd8bd0ba80b1b1f32cda95">PeopleTracker.src.evaluate.tracker_evaluation.fmeasure()</link>, <link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1acc1672843da008e9d6ae726252d8f367">PeopleTracker.src.evaluate.tracker_evaluation.identification_map()</link>, and <link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1a250ef65952a1399a126de7b166da27e8">PeopleTracker.src.evaluate.tracker_evaluation.list_estimates()</link>.</para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1aa94cfb04dda9e81ea38ab33c403cbeb0"/><section>
+    <title>get_ground_truth_difference()</title>
+<indexterm><primary>get_ground_truth_difference</primary><secondary>PeopleTracker.src.evaluate.tracker_evaluation</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.evaluate.tracker_evaluation</primary><secondary>get_ground_truth_difference</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.evaluate.tracker_evaluation.get_ground_truth_difference ( self,  frame_num_1,  frame_num_2)</computeroutput></para>
+<para><literallayout><computeroutput>Returns the sets of ground truths where ids are new, or leaving.
+</computeroutput></literallayout> </para>
+<para>
+References PeopleTracker.src.evaluate.tracker_evaluation.check_occlusion(), PeopleTracker.src.evaluate.tracker_evaluation.get_ground_truths(), PeopleTracker.src.evaluate.tracker_evaluation.ground_truth_exists(), <link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1a12297e12d2409431f09055118a3a4af5">PeopleTracker.src.evaluate.tracker_evaluation.precision()</link>, and PeopleTracker.src.evaluate.tracker_evaluation.threshold_to.</para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1acc1672843da008e9d6ae726252d8f367"/><section>
+    <title>identification_map()</title>
+<indexterm><primary>identification_map</primary><secondary>PeopleTracker.src.evaluate.tracker_evaluation</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.evaluate.tracker_evaluation</primary><secondary>identification_map</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.evaluate.tracker_evaluation.identification_map ( self,  frame_number)</computeroutput></para>
+<para><literallayout><computeroutput>Identification map produces a map for a specific frame number
+</computeroutput></literallayout> </para>
+<para>
+References <link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1afef3ab5ff8104e373483ca4c1634c5a5">PeopleTracker.src.evaluate.tracker_evaluation.estimate_to_point()</link>, <link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1a117e5bd299cd8bd0ba80b1b1f32cda95">PeopleTracker.src.evaluate.tracker_evaluation.fmeasure()</link>, <link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1a813c317ec864ee02406db59383f416af">PeopleTracker.src.evaluate.tracker_evaluation.get_estimates()</link>, and PeopleTracker.src.evaluate.tracker_evaluation.get_ground_truths().</para>
+<para>
+Referenced by <link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1aa1f35588a820c0cf52d9bc20b11fc813">PeopleTracker.src.evaluate.tracker_evaluation.calculate_identification_map()</link>, <link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1a5aa31ad4b89720c1d21a95060225cc4f">PeopleTracker.src.evaluate.tracker_evaluation.calculate_object_purity()</link>, <link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1a5058cbdd42e7b90dffd04cbafb9c1a17">PeopleTracker.src.evaluate.tracker_evaluation.calculate_tracker_purity()</link>, <link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1ab5116608ae5db791ffb20aa1190f04e7">PeopleTracker.src.evaluate.tracker_evaluation.falsly_identified_object()</link>, and <link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1ab5d011ecfb14eaa633dd70c29a457a9f">PeopleTracker.src.evaluate.tracker_evaluation.falsly_identified_tracker()</link>.</para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1a250ef65952a1399a126de7b166da27e8"/><section>
+    <title>list_estimates()</title>
+<indexterm><primary>list_estimates</primary><secondary>PeopleTracker.src.evaluate.tracker_evaluation</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.evaluate.tracker_evaluation</primary><secondary>list_estimates</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.evaluate.tracker_evaluation.list_estimates ( self)</computeroutput></para>
+<para><literallayout><computeroutput>Returns a list of unique estimate names
+</computeroutput></literallayout> </para>
+<para>
+References <link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1a813c317ec864ee02406db59383f416af">PeopleTracker.src.evaluate.tracker_evaluation.get_estimates()</link>, and PeopleTracker.src.evaluate.tracker_evaluation.ground_truth_dict.</para>
+<para>
+Referenced by <link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1aa1f35588a820c0cf52d9bc20b11fc813">PeopleTracker.src.evaluate.tracker_evaluation.calculate_identification_map()</link>, <link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1a626f975a47c3089b720623a6d14a96d2">PeopleTracker.src.evaluate.tracker_evaluation.generate_manual_id_map()</link>, and <link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1a80264116e0450a5f2adb715fc73a1a99">PeopleTracker.src.evaluate.tracker_evaluation.load_tracker_data()</link>.</para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1af2638d0e136da77e0850cc628b6e6204"/><section>
+    <title>list_labels()</title>
+<indexterm><primary>list_labels</primary><secondary>PeopleTracker.src.evaluate.tracker_evaluation</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.evaluate.tracker_evaluation</primary><secondary>list_labels</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.evaluate.tracker_evaluation.list_labels ( self)</computeroutput></para>
+<para><literallayout><computeroutput>Returns a list of unique label names
+</computeroutput></literallayout> </para>
+<para>
+References PeopleTracker.src.evaluate.tracker_evaluation.ground_truth_dict.</para>
+<para>
+Referenced by <link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1a626f975a47c3089b720623a6d14a96d2">PeopleTracker.src.evaluate.tracker_evaluation.generate_manual_id_map()</link>.</para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1a80264116e0450a5f2adb715fc73a1a99"/><section>
+    <title>load_tracker_data()</title>
+<indexterm><primary>load_tracker_data</primary><secondary>PeopleTracker.src.evaluate.tracker_evaluation</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.evaluate.tracker_evaluation</primary><secondary>load_tracker_data</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.evaluate.tracker_evaluation.load_tracker_data ( self,  tracker_file)</computeroutput></para>
+<para><literallayout><computeroutput>Loads estimates from people tracker exported data.
+
+It loads private variables estimate_dict and estimates (a list of all estimate names)
+
+Returns a dataframe of tracker data</computeroutput></literallayout> </para>
+<para>
+References PeopleTracker.src.evaluate.tracker_evaluation.correction_ratio_x, PeopleTracker.src.evaluate.tracker_evaluation.correction_ratio_y, PeopleTracker.src.evaluate.tracker_evaluation.estimate_dict, PeopleTracker.src.evaluate.tracker_evaluation.estimates, PeopleTracker.src.evaluate.tracker_evaluation.fps, PeopleTracker.src.fps.FPS.fps(), PeopleTracker.src.evaluate.tracker_evaluation.invert_y, PeopleTracker.src.room_estimation.room_estimation.invert_y, and <link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1a250ef65952a1399a126de7b166da27e8">PeopleTracker.src.evaluate.tracker_evaluation.list_estimates()</link>.</para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1a1dc6776ecfc166dff5837808ef1530ef"/><section>
+    <title>multiple_objects()</title>
+<indexterm><primary>multiple_objects</primary><secondary>PeopleTracker.src.evaluate.tracker_evaluation</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.evaluate.tracker_evaluation</primary><secondary>multiple_objects</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.evaluate.tracker_evaluation.multiple_objects ( self,  es_config,  frame_number)</computeroutput></para>
+<para><literallayout><computeroutput>        estimate E
+    |1 |2 |3 |4 |5  |
+____|__|__|__|__|___|___
+GT  |a |b |b |- |d,e| 
+              ↑   ↑
+              FP  MO
+</computeroutput></literallayout> </para>
+<para>
+References PeopleTracker.src.evaluate.tracker_evaluation.check_occlusion(), and PeopleTracker.src.evaluate.tracker_evaluation.get_ground_truths().</para>
+<para>
+Referenced by <link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1aa85bff158458d1bf22f9e1e67fb3aef8">PeopleTracker.src.evaluate.tracker_evaluation.calculate_frame_errors()</link>.</para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1a0d60139762d67521318a73e373322acb"/><section>
+    <title>multiple_trackers()</title>
+<indexterm><primary>multiple_trackers</primary><secondary>PeopleTracker.src.evaluate.tracker_evaluation</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.evaluate.tracker_evaluation</primary><secondary>multiple_trackers</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.evaluate.tracker_evaluation.multiple_trackers ( self,  gt_config,  frame_number)</computeroutput></para>
+<para><literallayout><computeroutput>Two or more estimates are associated with the same ground truth. A MT error is assigned for each excess estimate.
+Multiple trackers track a ground truth
+
+Look for more than one estimate for each ground truth
+
+     ground truth GT
+    |a |b  | c |d |e |
+____|__|___|___|__|__|__
+E   |1 |2,3| - |5 |5 | 
+         ↑   ↑
+         MT  FN
+</computeroutput></literallayout> </para>
+<para>
+References PeopleTracker.src.evaluate.tracker_evaluation.check_occlusion(), and PeopleTracker.src.evaluate.tracker_evaluation.get_ground_truths().</para>
+<para>
+Referenced by <link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1aa85bff158458d1bf22f9e1e67fb3aef8">PeopleTracker.src.evaluate.tracker_evaluation.calculate_frame_errors()</link>.</para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1a972ed1b922be4a595d53175e737d12bb"/><section>
+    <title>plot_scene()</title>
+<indexterm><primary>plot_scene</primary><secondary>PeopleTracker.src.evaluate.tracker_evaluation</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.evaluate.tracker_evaluation</primary><secondary>plot_scene</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.evaluate.tracker_evaluation.plot_scene ( self)</computeroutput></para>
+<para><literallayout><computeroutput>Not Implemented
+</computeroutput></literallayout> </para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1acddab1cf2551a4ed254ea618993a0462"/><section>
+    <title>plot_score()</title>
+<indexterm><primary>plot_score</primary><secondary>PeopleTracker.src.evaluate.tracker_evaluation</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.evaluate.tracker_evaluation</primary><secondary>plot_score</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.evaluate.tracker_evaluation.plot_score ( self)</computeroutput></para>
+<para><literallayout><computeroutput>Not implemented
+</computeroutput></literallayout> </para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1a12297e12d2409431f09055118a3a4af5"/><section>
+    <title>precision()</title>
+<indexterm><primary>precision</primary><secondary>PeopleTracker.src.evaluate.tracker_evaluation</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.evaluate.tracker_evaluation</primary><secondary>precision</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.evaluate.tracker_evaluation.precision ( self,  estimate,  ground_truth,  correct_estimate = <computeroutput>False</computeroutput>
+)</computeroutput></para>
+<para><literallayout><computeroutput>Precision measures how much of the E covers the GT and
+can take values between 0 (no overlap) and 1 (fully overlapped)
+</computeroutput></literallayout> </para>
+<para>
+References <link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1a186f3dba6530cafb296e1b707e230290">PeopleTracker.src.evaluate.tracker_evaluation.compute_iou()</link>, PeopleTracker.src.evaluate.tracker_evaluation.correction_ratio_x, PeopleTracker.src.evaluate.tracker_evaluation.correction_ratio_y, and PeopleTracker.src.evaluate.tracker_evaluation.get_area().</para>
+<para>
+Referenced by <link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1a117e5bd299cd8bd0ba80b1b1f32cda95">PeopleTracker.src.evaluate.tracker_evaluation.fmeasure()</link>, and <link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1aa94cfb04dda9e81ea38ab33c403cbeb0">PeopleTracker.src.evaluate.tracker_evaluation.get_ground_truth_difference()</link>.</para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1a97d4bfd6ab46f148bca236a3c957290c"/><section>
+    <title>recall()</title>
+<indexterm><primary>recall</primary><secondary>PeopleTracker.src.evaluate.tracker_evaluation</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.evaluate.tracker_evaluation</primary><secondary>recall</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.evaluate.tracker_evaluation.recall ( self,  estimate,  ground_truth,  correct_estimate = <computeroutput>False</computeroutput>
+)</computeroutput></para>
+<para><literallayout><computeroutput>Recall measures how much of the GT covered by the
+E and can take values between 0 (no overlap) and 1 (fully overlapped)
+</computeroutput></literallayout> </para>
+<para>
+References <link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1a186f3dba6530cafb296e1b707e230290">PeopleTracker.src.evaluate.tracker_evaluation.compute_iou()</link>, PeopleTracker.src.evaluate.tracker_evaluation.correction_ratio_x, PeopleTracker.src.evaluate.tracker_evaluation.correction_ratio_y, and PeopleTracker.src.evaluate.tracker_evaluation.get_area().</para>
+<para>
+Referenced by <link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1a117e5bd299cd8bd0ba80b1b1f32cda95">PeopleTracker.src.evaluate.tracker_evaluation.fmeasure()</link>.</para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation_1ac6e4d54d25654e795b6149226d82caa4"/><section>
+    <title>validate_and_correct_ground_tuths()</title>
+<indexterm><primary>validate_and_correct_ground_tuths</primary><secondary>PeopleTracker.src.evaluate.tracker_evaluation</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.evaluate.tracker_evaluation</primary><secondary>validate_and_correct_ground_tuths</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.evaluate.tracker_evaluation.validate_and_correct_ground_tuths ( self)</computeroutput></para>
+<para><literallayout><computeroutput>This function removes ground truths where files imported are faulty.
+
+1: Labelme file is created but no ground truths are assigned.
+</computeroutput></literallayout> </para>
+<para>
+References PeopleTracker.src.evaluate.tracker_evaluation.ground_truth_dict.</para>
+</section>
+<para>
+The documentation for this class was generated from the following file:</para>
+K:/Github/PeopleTracker/src/evaluate.py</section>
+</section>

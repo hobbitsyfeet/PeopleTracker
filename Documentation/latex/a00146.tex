@@ -1,0 +1,259 @@
+\doxysection{Centroid\+Tracker}
+\hypertarget{a00146}{}\label{a00146}\index{CentroidTracker@{CentroidTracker}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{a00146_add2a4d8c95de65e6f89776c6ae551278}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, max\+Disappeared=50)
+\item 
+\mbox{\hyperlink{a00146_a5fc5e9ec10f08a04847d1429f08fc1f7}{register}} (self, centroid, corners, filter=None)
+\item 
+\mbox{\hyperlink{a00146_ae240954edd19fbad2b64392c6c2d6cb3}{deregister}} (self, object\+ID)
+\item 
+\mbox{\hyperlink{a00146_abbeb8ed6e4d2f79dc75643285e9b5eb1}{update}} (self, rects, are\+\_\+centroids=False)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{a00146_a4fb934cd568f5f58b1a54e60afee6589}\label{a00146_a4fb934cd568f5f58b1a54e60afee6589} 
+{\bfseries next\+Object\+ID}
+\item 
+\Hypertarget{a00146_a68a28c9ed35f4a725b22cbf60728cb23}\label{a00146_a68a28c9ed35f4a725b22cbf60728cb23} 
+{\bfseries objects}
+\item 
+\Hypertarget{a00146_a3c27ca26285883dcb01c5073bc790a96}\label{a00146_a3c27ca26285883dcb01c5073bc790a96} 
+{\bfseries disappeared}
+\item 
+\Hypertarget{a00146_ad268f8672c706f6492e684c02b6e3d6e}\label{a00146_ad268f8672c706f6492e684c02b6e3d6e} 
+{\bfseries filters}
+\item 
+\Hypertarget{a00146_a963400902142de2f58fad87f935d9035}\label{a00146_a963400902142de2f58fad87f935d9035} 
+{\bfseries max\+Disappeared}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{a00146_add2a4d8c95de65e6f89776c6ae551278}\label{a00146_add2a4d8c95de65e6f89776c6ae551278} 
+\index{CentroidTracker@{CentroidTracker}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!CentroidTracker@{CentroidTracker}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily \+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{max\+Disappeared = {\ttfamily 50} }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00009\ \ \ \ \ \textcolor{keyword}{def\ }\_\_init\_\_(self,\ maxDisappeared=50): }
+\DoxyCodeLine{00010\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ initialize\ the\ next\ unique\ object\ ID\ along\ with\ two\ ordered }}
+\DoxyCodeLine{00011\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ dictionaries\ used\ to\ keep\ track\ of\ mapping\ a\ given\ object }}
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ ID\ to\ its\ centroid\ and\ number\ of\ consecutive\ frames\ it\ has }}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ been\ marked\ as\ "{}disappeared"{},\ respectively }}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ self.nextObjectID\ =\ 0 }
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ self.objects\ =\ OrderedDict() }
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ self.disappeared\ =\ OrderedDict() }
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ self.filters\ =\ OrderedDict() }
+\DoxyCodeLine{00018\  }
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ store\ the\ number\ of\ maximum\ consecutive\ frames\ a\ given }}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ object\ is\ allowed\ to\ be\ marked\ as\ "{}disappeared"{}\ until\ we }}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ need\ to\ deregister\ the\ object\ from\ tracking }}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ self.maxDisappeared\ =\ maxDisappeared }
+\DoxyCodeLine{00023\  }
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{a00146_ae240954edd19fbad2b64392c6c2d6cb3}\label{a00146_ae240954edd19fbad2b64392c6c2d6cb3} 
+\index{CentroidTracker@{CentroidTracker}!deregister@{deregister}}
+\index{deregister@{deregister}!CentroidTracker@{CentroidTracker}}
+\doxysubsubsection{\texorpdfstring{deregister()}{deregister()}}
+{\footnotesize\ttfamily deregister (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{object\+ID }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{def\ }deregister(self,\ objectID): }
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ to\ deregister\ an\ object\ ID\ we\ delete\ the\ object\ ID\ from }}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ both\ of\ our\ respective\ dictionaries }}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{"{}Deleting:"{}},\ objectID) }
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ del\ self.objects[objectID] }
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ del\ self.disappeared[objectID] }
+\DoxyCodeLine{00040\  }
+
+\end{DoxyCode}
+\Hypertarget{a00146_a5fc5e9ec10f08a04847d1429f08fc1f7}\label{a00146_a5fc5e9ec10f08a04847d1429f08fc1f7} 
+\index{CentroidTracker@{CentroidTracker}!register@{register}}
+\index{register@{register}!CentroidTracker@{CentroidTracker}}
+\doxysubsubsection{\texorpdfstring{register()}{register()}}
+{\footnotesize\ttfamily register (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{centroid,  }\item[{}]{corners,  }\item[{}]{filter = {\ttfamily None} }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{def\ }register(self,\ centroid,\ corners,\ \ filter=None): }
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ when\ registering\ an\ object\ we\ use\ the\ next\ available\ object }}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ ID\ to\ store\ the\ centroid }}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ self.objects[self.nextObjectID]\ =\ (centroid,\ corners) }
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ self.disappeared[self.nextObjectID]\ =\ 0 }
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ filter\ \textcolor{keywordflow}{is}\ \textcolor{keywordflow}{not}\ \textcolor{keywordtype}{None}: }
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ self.filters[self.nextObjectID]\ =\ filter }
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ self.nextObjectID\ +=\ 1 }
+\DoxyCodeLine{00032\ \ \ \ \  }
+\DoxyCodeLine{00033\  }
+
+\end{DoxyCode}
+\Hypertarget{a00146_abbeb8ed6e4d2f79dc75643285e9b5eb1}\label{a00146_abbeb8ed6e4d2f79dc75643285e9b5eb1} 
+\index{CentroidTracker@{CentroidTracker}!update@{update}}
+\index{update@{update}!CentroidTracker@{CentroidTracker}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily update (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{rects,  }\item[{}]{are\+\_\+centroids = {\ttfamily False} }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keyword}{def\ }update(self,\ rects,\ are\_centroids=False): }
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ check\ to\ see\ if\ the\ list\ of\ input\ bounding\ box\ rectangles }}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ is\ empty }}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ box\_corners\ =\ [] }
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ len(rects)\ ==\ 0: }
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ loop\ over\ any\ existing\ tracked\ objects\ and\ mark\ them }}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ as\ disappeared }}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ objectID\ \textcolor{keywordflow}{in}\ self.disappeared.keys(): }
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.disappeared[objectID]\ +=\ 1 }
+\DoxyCodeLine{00050\  }
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ if\ we\ have\ reached\ a\ maximum\ number\ of\ consecutive }}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ frames\ where\ a\ given\ object\ has\ been\ marked\ as }}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ missing,\ deregister\ it }}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ self.disappeared[objectID]\ >\ self.maxDisappeared: }
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.deregister(objectID) }
+\DoxyCodeLine{00056\  }
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ return\ early\ as\ there\ are\ no\ centroids\ or\ tracking\ info }}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ to\ update }}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ self.objects }
+\DoxyCodeLine{00060\  }
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ are\_centroids\ \textcolor{keywordflow}{is}\ \textcolor{keyword}{False}: }
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ initialize\ an\ array\ of\ input\ centroids\ for\ the\ current\ frame }}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ inputCentroids\ =\ np.zeros((len(rects),\ 2),\ dtype=\textcolor{stringliteral}{"{}int"{}}) }
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ box\_corners\ =\ np.zeros((len(rects),\ 4),\ dtype=\textcolor{stringliteral}{"{}int"{}}) }
+\DoxyCodeLine{00065\  }
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ loop\ over\ the\ bounding\ box\ rectangles }}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (i,\ (startX,\ startY,\ endX,\ endY))\ \textcolor{keywordflow}{in}\ enumerate(rects): }
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ use\ the\ bounding\ box\ coordinates\ to\ derive\ the\ centroid }}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cX\ =\ int((startX\ +\ endX)\ /\ 2.0) }
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cY\ =\ int((startY\ +\ endY)\ /\ 2.0) }
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ box\_corners.append((startX,\ startY,\ endX,\ endY)) }}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ box\_corners[i]\ =\ (startX,\ startY,\ endX,\ endY) }
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ inputCentroids[i]\ =\ (cX,\ cY) }
+\DoxyCodeLine{00074\  }
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}: }
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ initialize\ an\ array\ of\ input\ centroids\ for\ the\ current\ frame }}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ inputCentroids\ =\ np.zeros((len(rects),\ 2),\ dtype=\textcolor{stringliteral}{"{}int"{}}) }
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ i,\ rect\ \textcolor{keywordflow}{in}\ enumerate(rects): }
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ inputCentroids[i]\ =\ rect }
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ box\_corners[i]\ =\ (startX,\ startY,\ endX,\ endY) }
+\DoxyCodeLine{00081\  }
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ if\ we\ are\ currently\ not\ tracking\ any\ objects\ take\ the\ input }}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ centroids\ and\ register\ each\ of\ them }}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ len(self.objects)\ ==\ 0: }
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ i\ \textcolor{keywordflow}{in}\ range(0,\ len(inputCentroids)): }
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.register(inputCentroids[i],\ box\_corners[i]) }
+\DoxyCodeLine{00087\  }
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ otherwise,\ are\ are\ currently\ tracking\ objects\ so\ we\ need\ to }}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ try\ to\ match\ the\ input\ centroids\ to\ existing\ object }}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ centroids }}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}: }
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ grab\ the\ set\ of\ object\ IDs\ and\ corresponding\ centroids }}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ objectIDs\ =\ list(self.objects.keys()) }
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ values\ =\ list(self.objects.values()) }
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ centroid\_array\ =\ np.zeros((len(objectIDs),\ 2),\ dtype=\textcolor{stringliteral}{"{}int"{}}) }
+\DoxyCodeLine{00096\  }
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ i,\ val\ \textcolor{keywordflow}{in}\ enumerate(values): }
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ centroid\ =\ val[0] }
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ centroid\_array[i][0]\ =\ centroid[0] }
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ centroid\_array[i][1]\ =\ centroid[1] }
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ objectCentroids\ =\ centroid\_array }
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ objectCentroids\ =\  }}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ print(objectCentroids.shape) }
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ objectCentroids\ =\ np.array([objectCentroids]) }}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ objectFilters\ =\ list(self.filters.values()) }
+\DoxyCodeLine{00106\  }
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ compute\ the\ distance\ between\ each\ pair\ of\ object }}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ centroids\ and\ input\ centroids,\ respectively\ -\/-\/\ our }}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ goal\ will\ be\ to\ match\ an\ input\ centroid\ to\ an\ existing }}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ object\ centroid }}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ D\ =\ dist.cdist(objectCentroids,\ inputCentroids) }
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ print(D) }
+\DoxyCodeLine{00113\  }
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ in\ order\ to\ perform\ this\ matching\ we\ must\ (1)\ find\ the }}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ smallest\ value\ in\ each\ row\ and\ then\ (2)\ sort\ the\ row }}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ indexes\ based\ on\ their\ minimum\ values\ so\ that\ the\ row }}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ with\ the\ smallest\ value\ as\ at\ the\ *front*\ of\ the\ index }}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ list }}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ rows\ =\ D.min(axis=1).argsort() }
+\DoxyCodeLine{00120\  }
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ next,\ we\ perform\ a\ similar\ process\ on\ the\ columns\ by }}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ finding\ the\ smallest\ value\ in\ each\ column\ and\ then }}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ sorting\ using\ the\ previously\ computed\ row\ index\ list }}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ cols\ =\ D.argmin(axis=1)[rows] }
+\DoxyCodeLine{00125\  }
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ in\ order\ to\ determine\ if\ we\ need\ to\ update,\ register, }}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ or\ deregister\ an\ object\ we\ need\ to\ keep\ track\ of\ which }}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ of\ the\ rows\ and\ column\ indexes\ we\ have\ already\ examined }}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ usedRows\ =\ set() }
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ usedCols\ =\ set() }
+\DoxyCodeLine{00131\  }
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ loop\ over\ the\ combination\ of\ the\ (row,\ column)\ index }}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ tuples }}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (row,\ col)\ \textcolor{keywordflow}{in}\ zip(rows,\ cols): }
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ if\ we\ have\ already\ examined\ either\ the\ row\ or }}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ column\ value\ before,\ ignore\ it }}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ val }}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ row\ \textcolor{keywordflow}{in}\ usedRows\ \textcolor{keywordflow}{or}\ col\ \textcolor{keywordflow}{in}\ usedCols: }
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue} }
+\DoxyCodeLine{00140\  }
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ otherwise,\ grab\ the\ object\ ID\ for\ the\ current\ row, }}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ set\ its\ new\ centroid,\ and\ reset\ the\ disappeared }}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ counter }}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ objectID\ =\ objectIDs[row] }
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.objects[objectID]\ =\ (inputCentroids[col],\ box\_corners[col]) }
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print(self.objects[objectID]) }}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.disappeared[objectID]\ =\ 0 }
+\DoxyCodeLine{00148\  }
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ indicate\ that\ we\ have\ examined\ each\ of\ the\ row\ and }}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ column\ indexes,\ respectively }}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ usedRows.add(row) }
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ usedCols.add(col) }
+\DoxyCodeLine{00153\  }
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ compute\ both\ the\ row\ and\ column\ index\ we\ have\ NOT\ yet }}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ examined }}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \ \ \ \ unusedRows\ =\ set(range(0,\ D.shape[0])).difference(usedRows) }
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \ \ \ \ unusedCols\ =\ set(range(0,\ D.shape[1])).difference(usedCols) }
+\DoxyCodeLine{00158\  }
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ in\ the\ event\ that\ the\ number\ of\ object\ centroids\ is }}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ equal\ or\ greater\ than\ the\ number\ of\ input\ centroids }}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ we\ need\ to\ check\ and\ see\ if\ some\ of\ these\ objects\ have }}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ potentially\ disappeared }}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ D.shape[0]\ >=\ D.shape[1]: }
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ loop\ over\ the\ unused\ row\ indexes }}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ row\ \textcolor{keywordflow}{in}\ unusedRows: }
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ grab\ the\ object\ ID\ for\ the\ corresponding\ row }}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ index\ and\ increment\ the\ disappeared\ counter }}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ objectID\ =\ objectIDs[row] }
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.disappeared[objectID]\ +=\ 1 }
+\DoxyCodeLine{00170\  }
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ check\ to\ see\ if\ the\ number\ of\ consecutive }}
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ frames\ the\ object\ has\ been\ marked\ "{}disappeared"{} }}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ for\ warrants\ deregistering\ the\ object }}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ self.disappeared[objectID]\ >\ self.maxDisappeared: }
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.deregister(objectID) }
+\DoxyCodeLine{00176\  }
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ otherwise,\ if\ the\ number\ of\ input\ centroids\ is\ greater }}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ than\ the\ number\ of\ existing\ object\ centroids\ we\ need\ to }}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ register\ each\ new\ input\ centroid\ as\ a\ trackable\ object }}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}: }
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ col\ \textcolor{keywordflow}{in}\ unusedCols: }
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.register(inputCentroids[col],\ box\_corners[col]) }
+\DoxyCodeLine{00183\  }
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ return\ the\ set\ of\ trackable\ objects }}
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ self.objects}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+K\+:/\+Github/\+People\+Tracker/src/centroidtracker.\+py\end{DoxyCompactItemize}

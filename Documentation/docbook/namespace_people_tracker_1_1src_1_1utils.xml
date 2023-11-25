@@ -1,0 +1,494 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_namespace_people_tracker_1_1src_1_1utils" xml:lang="en-US">
+<title>PeopleTracker.src.utils Namespace Reference</title>
+<indexterm><primary>PeopleTracker.src.utils</primary></indexterm>
+<simplesect>
+    <title>Classes    </title>
+        <itemizedlist>
+            <listitem><para>class <link linkend="_class_people_tracker_1_1src_1_1utils_1_1_dataset">Dataset</link></para>
+
+<para>Dataset. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_namespace_people_tracker_1_1src_1_1utils_1a8eba5ad34d8ed243d2f54c87de3e1779">extract_bboxes</link> (mask)</para>
+
+<para>Bounding Boxes. </para>
+</listitem>
+            <listitem><para><link linkend="_namespace_people_tracker_1_1src_1_1utils_1ae47c2790d1cc2bdc63e675be6fc2972a">compute_iou</link> (box1, box2)</para>
+</listitem>
+            <listitem><para><link linkend="_namespace_people_tracker_1_1src_1_1utils_1a2551407a625776442548c7971e642dde">compute_overlaps_masks</link> (masks1, masks2)</para>
+</listitem>
+            <listitem><para><link linkend="_namespace_people_tracker_1_1src_1_1utils_1aadbcb07ebc8c9951b0de49ed0f81a1ed">non_max_suppression</link> (boxes, scores, threshold)</para>
+</listitem>
+            <listitem><para><link linkend="_namespace_people_tracker_1_1src_1_1utils_1a9fe484b13e97baa6b830cd1681916978">apply_box_deltas</link> (boxes, deltas)</para>
+</listitem>
+            <listitem><para><link linkend="_namespace_people_tracker_1_1src_1_1utils_1a0e63dad6846b1efe31c65bc9e95d733d">box_refinement_graph</link> (box, gt_box)</para>
+</listitem>
+            <listitem><para><link linkend="_namespace_people_tracker_1_1src_1_1utils_1a114023c92ca18508298105f27f21cb30">box_refinement</link> (box, gt_box)</para>
+</listitem>
+            <listitem><para><link linkend="_namespace_people_tracker_1_1src_1_1utils_1ab1d8b2bbfbec1907de01e049c4a3b2dd">resize_image</link> (image, min_dim=None, max_dim=None, min_scale=None, mode=&quot;square&quot;)</para>
+</listitem>
+            <listitem><para><link linkend="_namespace_people_tracker_1_1src_1_1utils_1a3cd8117d0f497a958a72fbfcd502a133">resize_mask</link> (mask, scale, padding, crop=None)</para>
+</listitem>
+            <listitem><para><link linkend="_namespace_people_tracker_1_1src_1_1utils_1a6eab5a6ba5b317bff5880e5506747cea">minimize_mask</link> (bbox, mask, mini_shape)</para>
+</listitem>
+            <listitem><para><link linkend="_namespace_people_tracker_1_1src_1_1utils_1a8fdc96636e70f9037627ec507aa1ac78">expand_mask</link> (bbox, mini_mask, image_shape)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespace_people_tracker_1_1src_1_1utils_1a5774bd6d46296da70c4ac685f34888bc"/><emphasis role="strong">mold_mask</emphasis> (mask, config)</para>
+</listitem>
+            <listitem><para><link linkend="_namespace_people_tracker_1_1src_1_1utils_1ab8a95184c4d98874c1a79cbf340e1e90">unmold_mask</link> (mask, bbox, image_shape)</para>
+</listitem>
+            <listitem><para><link linkend="_namespace_people_tracker_1_1src_1_1utils_1a8b6d427ae1ecf5f2bce7eeb5911141e0">generate_anchors</link> (scales, ratios, shape, feature_stride, anchor_stride)</para>
+
+<para>Anchors. </para>
+</listitem>
+            <listitem><para><link linkend="_namespace_people_tracker_1_1src_1_1utils_1a09d91c39a51b214ab6ecd6611148c2f7">generate_pyramid_anchors</link> (scales, ratios, feature_shapes, feature_strides, anchor_stride)</para>
+</listitem>
+            <listitem><para><link linkend="_namespace_people_tracker_1_1src_1_1utils_1a81c4c048a974e85cc4c101349800a84e">trim_zeros</link> (x)</para>
+
+<para>Miscellaneous. </para>
+</listitem>
+            <listitem><para><link linkend="_namespace_people_tracker_1_1src_1_1utils_1a02df2b956643c6599066d3a21fc56082">compute_matches</link> (gt_boxes, gt_class_ids, gt_masks, pred_boxes, pred_class_ids, pred_scores, pred_masks, iou_threshold=0.5, score_threshold=0.0)</para>
+</listitem>
+            <listitem><para><link linkend="_namespace_people_tracker_1_1src_1_1utils_1a3115ddeb80776f3c67229818838e0b71">compute_ap</link> (gt_boxes, gt_class_ids, gt_masks, pred_boxes, pred_class_ids, pred_scores, pred_masks, iou_threshold=0.5)</para>
+</listitem>
+            <listitem><para><link linkend="_namespace_people_tracker_1_1src_1_1utils_1a36c4e492fd06c835127389c5c398c1db">compute_ap_range</link> (gt_box, gt_class_id, gt_mask, pred_box, pred_class_id, pred_score, pred_mask, iou_thresholds=None, verbose=1)</para>
+</listitem>
+            <listitem><para><link linkend="_namespace_people_tracker_1_1src_1_1utils_1af00737dbb6c4bf50c01d662eef455c5a">compute_recall</link> (pred_boxes, gt_boxes, iou)</para>
+</listitem>
+            <listitem><para><link linkend="_namespace_people_tracker_1_1src_1_1utils_1a1b95a88e7c70f02696e2f281c823d1d7">batch_slice</link> (inputs, graph_fn, batch_size, names=None)</para>
+</listitem>
+            <listitem><para><link linkend="_namespace_people_tracker_1_1src_1_1utils_1a4de19f9cb8483c5a7cc37b2fcab5711a">download_trained_weights</link> (coco_model_path, verbose=1)</para>
+</listitem>
+            <listitem><para><link linkend="_namespace_people_tracker_1_1src_1_1utils_1a3ebe79c88bd799148e56005d7145780d">norm_boxes</link> (boxes, shape)</para>
+</listitem>
+            <listitem><para><link linkend="_namespace_people_tracker_1_1src_1_1utils_1a1e4404dec832d5fa87b7063c6b7854ad">denorm_boxes</link> (boxes, shape)</para>
+</listitem>
+            <listitem><para><link linkend="_namespace_people_tracker_1_1src_1_1utils_1aa4e69f6d3d44f2c01f423cfa8271d308">resize</link> (image, output_shape, order=1, mode=&apos;constant&apos;, cval=0, clip=True, preserve_range=False, anti_aliasing=False, anti_aliasing_sigma=None)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespace_people_tracker_1_1src_1_1utils_1adc0e69a6fbd3e238013dd47a6f0ffb5e"/><emphasis role="strong">distance_2d</emphasis> (p1, p2)</para>
+</listitem>
+            <listitem><para><link linkend="_namespace_people_tracker_1_1src_1_1utils_1af758ab0136d403ff0853a3d3b49b9126">get_centroid</link> (box)</para>
+</listitem>
+            <listitem><para><link linkend="_namespace_people_tracker_1_1src_1_1utils_1aa7a1ac7e8b6ac05de2fef44e459e688d">get_corners</link> (box)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Variables    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_namespace_people_tracker_1_1src_1_1utils_1a58d47e879ac7034fccabe32ac89964be"/>str <emphasis role="strong">COCO_MODEL_URL</emphasis> = &quot;https://github.com/matterport/Mask_RCNN/releases/download/v2.0/mask_rcnn_coco.h5&quot;</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para><literallayout><computeroutput>Mask R-CNN
+Common utility functions and classes.
+
+Copyright (c) 2017 Matterport, Inc.
+Licensed under the MIT License (see LICENSE for details)
+Written by Waleed Abdulla
+</computeroutput></literallayout> </para>
+</section>
+<section>
+<title>Function Documentation</title>
+<anchor xml:id="_namespace_people_tracker_1_1src_1_1utils_1a9fe484b13e97baa6b830cd1681916978"/><section>
+    <title>apply_box_deltas()</title>
+<indexterm><primary>apply_box_deltas</primary><secondary>PeopleTracker.src.utils</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.utils</primary><secondary>apply_box_deltas</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.utils.apply_box_deltas ( boxes,  deltas)</computeroutput></para>
+<para><literallayout><computeroutput>Applies the given deltas to the given boxes.
+boxes: [N, (y1, x1, y2, x2)]. Note that (y2, x2) is outside the box.
+deltas: [N, (dy, dx, log(dh), log(dw))]
+</computeroutput></literallayout> </para>
+</section>
+<anchor xml:id="_namespace_people_tracker_1_1src_1_1utils_1a1b95a88e7c70f02696e2f281c823d1d7"/><section>
+    <title>batch_slice()</title>
+<indexterm><primary>batch_slice</primary><secondary>PeopleTracker.src.utils</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.utils</primary><secondary>batch_slice</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.utils.batch_slice ( inputs,  graph_fn,  batch_size,  names = <computeroutput>None</computeroutput>
+)</computeroutput></para>
+<para><literallayout><computeroutput>Splits inputs into slices and feeds each slice to a copy of the given
+computation graph and then combines the results. It allows you to run a
+graph on a batch of inputs even if the graph is written to support one
+instance only.
+
+inputs: list of tensors. All must have the same first dimension length
+graph_fn: A function that returns a TF tensor that&apos;s part of a graph.
+batch_size: number of slices to divide the data into.
+names: If provided, assigns names to the resulting tensors.
+</computeroutput></literallayout> </para>
+</section>
+<anchor xml:id="_namespace_people_tracker_1_1src_1_1utils_1a114023c92ca18508298105f27f21cb30"/><section>
+    <title>box_refinement()</title>
+<indexterm><primary>box_refinement</primary><secondary>PeopleTracker.src.utils</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.utils</primary><secondary>box_refinement</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.utils.box_refinement ( box,  gt_box)</computeroutput></para>
+<para><literallayout><computeroutput>Compute refinement needed to transform box to gt_box.
+box and gt_box are [N, (y1, x1, y2, x2)]. (y2, x2) is
+assumed to be outside the box.
+</computeroutput></literallayout> </para>
+</section>
+<anchor xml:id="_namespace_people_tracker_1_1src_1_1utils_1a0e63dad6846b1efe31c65bc9e95d733d"/><section>
+    <title>box_refinement_graph()</title>
+<indexterm><primary>box_refinement_graph</primary><secondary>PeopleTracker.src.utils</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.utils</primary><secondary>box_refinement_graph</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.utils.box_refinement_graph ( box,  gt_box)</computeroutput></para>
+<para><literallayout><computeroutput>Compute refinement needed to transform box to gt_box.
+box and gt_box are [N, (y1, x1, y2, x2)]
+</computeroutput></literallayout> </para>
+</section>
+<anchor xml:id="_namespace_people_tracker_1_1src_1_1utils_1a3115ddeb80776f3c67229818838e0b71"/><section>
+    <title>compute_ap()</title>
+<indexterm><primary>compute_ap</primary><secondary>PeopleTracker.src.utils</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.utils</primary><secondary>compute_ap</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.utils.compute_ap ( gt_boxes,  gt_class_ids,  gt_masks,  pred_boxes,  pred_class_ids,  pred_scores,  pred_masks,  iou_threshold = <computeroutput>0.5</computeroutput>
+)</computeroutput></para>
+<para><literallayout><computeroutput>Compute Average Precision at a set IoU threshold (default 0.5).
+
+Returns:
+mAP: Mean Average Precision
+precisions: List of precisions at different class score thresholds.
+recalls: List of recall values at different class score thresholds.
+overlaps: [pred_boxes, gt_boxes] IoU overlaps.
+</computeroutput></literallayout> </para>
+<para>
+References <link linkend="_namespace_people_tracker_1_1src_1_1utils_1a02df2b956643c6599066d3a21fc56082">PeopleTracker.src.utils.compute_matches()</link>.</para>
+<para>
+Referenced by <link linkend="_namespace_people_tracker_1_1src_1_1utils_1a36c4e492fd06c835127389c5c398c1db">PeopleTracker.src.utils.compute_ap_range()</link>.</para>
+</section>
+<anchor xml:id="_namespace_people_tracker_1_1src_1_1utils_1a36c4e492fd06c835127389c5c398c1db"/><section>
+    <title>compute_ap_range()</title>
+<indexterm><primary>compute_ap_range</primary><secondary>PeopleTracker.src.utils</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.utils</primary><secondary>compute_ap_range</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.utils.compute_ap_range ( gt_box,  gt_class_id,  gt_mask,  pred_box,  pred_class_id,  pred_score,  pred_mask,  iou_thresholds = <computeroutput>None</computeroutput>
+,  verbose = <computeroutput>1</computeroutput>
+)</computeroutput></para>
+<para><literallayout><computeroutput>Compute AP over a range or IoU thresholds. Default range is 0.5-0.95.</computeroutput></literallayout> </para>
+<para>
+References <link linkend="_namespace_people_tracker_1_1src_1_1utils_1a3115ddeb80776f3c67229818838e0b71">PeopleTracker.src.utils.compute_ap()</link>.</para>
+</section>
+<anchor xml:id="_namespace_people_tracker_1_1src_1_1utils_1ae47c2790d1cc2bdc63e675be6fc2972a"/><section>
+    <title>compute_iou()</title>
+<indexterm><primary>compute_iou</primary><secondary>PeopleTracker.src.utils</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.utils</primary><secondary>compute_iou</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.utils.compute_iou ( box1,  box2)</computeroutput></para>
+<para><literallayout><computeroutput>Computes IOU of the two bounding boxes.
+</computeroutput></literallayout> </para>
+<para>
+Referenced by <link linkend="_namespace_people_tracker_1_1src_1_1utils_1aadbcb07ebc8c9951b0de49ed0f81a1ed">PeopleTracker.src.utils.non_max_suppression()</link>.</para>
+</section>
+<anchor xml:id="_namespace_people_tracker_1_1src_1_1utils_1a02df2b956643c6599066d3a21fc56082"/><section>
+    <title>compute_matches()</title>
+<indexterm><primary>compute_matches</primary><secondary>PeopleTracker.src.utils</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.utils</primary><secondary>compute_matches</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.utils.compute_matches ( gt_boxes,  gt_class_ids,  gt_masks,  pred_boxes,  pred_class_ids,  pred_scores,  pred_masks,  iou_threshold = <computeroutput>0.5</computeroutput>
+,  score_threshold = <computeroutput>0.0</computeroutput>
+)</computeroutput></para>
+<para><literallayout><computeroutput>Finds matches between prediction and ground truth instances.
+
+Returns:
+    gt_match: 1-D array. For each GT box it has the index of the matched
+              predicted box.
+    pred_match: 1-D array. For each predicted box, it has the index of
+                the matched ground truth box.
+    overlaps: [pred_boxes, gt_boxes] IoU overlaps.
+</computeroutput></literallayout> </para>
+<para>
+References <link linkend="_namespace_people_tracker_1_1src_1_1utils_1a2551407a625776442548c7971e642dde">PeopleTracker.src.utils.compute_overlaps_masks()</link>, and <link linkend="_namespace_people_tracker_1_1src_1_1utils_1a81c4c048a974e85cc4c101349800a84e">PeopleTracker.src.utils.trim_zeros()</link>.</para>
+<para>
+Referenced by <link linkend="_namespace_people_tracker_1_1src_1_1utils_1a3115ddeb80776f3c67229818838e0b71">PeopleTracker.src.utils.compute_ap()</link>.</para>
+</section>
+<anchor xml:id="_namespace_people_tracker_1_1src_1_1utils_1a2551407a625776442548c7971e642dde"/><section>
+    <title>compute_overlaps_masks()</title>
+<indexterm><primary>compute_overlaps_masks</primary><secondary>PeopleTracker.src.utils</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.utils</primary><secondary>compute_overlaps_masks</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.utils.compute_overlaps_masks ( masks1,  masks2)</computeroutput></para>
+<para><literallayout><computeroutput>Computes IoU overlaps between two sets of masks.
+masks1, masks2: [Height, Width, instances]
+</computeroutput></literallayout> </para>
+<para>
+Referenced by <link linkend="_namespace_people_tracker_1_1src_1_1utils_1a02df2b956643c6599066d3a21fc56082">PeopleTracker.src.utils.compute_matches()</link>, and <link linkend="_namespace_people_tracker_1_1src_1_1utils_1af00737dbb6c4bf50c01d662eef455c5a">PeopleTracker.src.utils.compute_recall()</link>.</para>
+</section>
+<anchor xml:id="_namespace_people_tracker_1_1src_1_1utils_1af00737dbb6c4bf50c01d662eef455c5a"/><section>
+    <title>compute_recall()</title>
+<indexterm><primary>compute_recall</primary><secondary>PeopleTracker.src.utils</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.utils</primary><secondary>compute_recall</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.utils.compute_recall ( pred_boxes,  gt_boxes,  iou)</computeroutput></para>
+<para><literallayout><computeroutput>Compute the recall at the given IoU threshold. It&apos;s an indication
+of how many GT boxes were found by the given prediction boxes.
+
+pred_boxes: [N, (y1, x1, y2, x2)] in image coordinates
+gt_boxes: [N, (y1, x1, y2, x2)] in image coordinates
+</computeroutput></literallayout> </para>
+<para>
+References <link linkend="_namespace_people_tracker_1_1src_1_1utils_1a2551407a625776442548c7971e642dde">PeopleTracker.src.utils.compute_overlaps_masks()</link>.</para>
+</section>
+<anchor xml:id="_namespace_people_tracker_1_1src_1_1utils_1a1e4404dec832d5fa87b7063c6b7854ad"/><section>
+    <title>denorm_boxes()</title>
+<indexterm><primary>denorm_boxes</primary><secondary>PeopleTracker.src.utils</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.utils</primary><secondary>denorm_boxes</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.utils.denorm_boxes ( boxes,  shape)</computeroutput></para>
+<para><literallayout><computeroutput>Converts boxes from normalized coordinates to pixel coordinates.
+boxes: [N, (y1, x1, y2, x2)] in normalized coordinates
+shape: [..., (height, width)] in pixels
+
+Note: In pixel coordinates (y2, x2) is outside the box. But in normalized
+coordinates it&apos;s inside the box.
+
+Returns:
+    [N, (y1, x1, y2, x2)] in pixel coordinates
+</computeroutput></literallayout> </para>
+</section>
+<anchor xml:id="_namespace_people_tracker_1_1src_1_1utils_1a4de19f9cb8483c5a7cc37b2fcab5711a"/><section>
+    <title>download_trained_weights()</title>
+<indexterm><primary>download_trained_weights</primary><secondary>PeopleTracker.src.utils</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.utils</primary><secondary>download_trained_weights</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.utils.download_trained_weights ( coco_model_path,  verbose = <computeroutput>1</computeroutput>
+)</computeroutput></para>
+<para><literallayout><computeroutput>Download COCO trained weights from Releases.
+
+coco_model_path: local path of COCO trained weights
+</computeroutput></literallayout> </para>
+</section>
+<anchor xml:id="_namespace_people_tracker_1_1src_1_1utils_1a8fdc96636e70f9037627ec507aa1ac78"/><section>
+    <title>expand_mask()</title>
+<indexterm><primary>expand_mask</primary><secondary>PeopleTracker.src.utils</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.utils</primary><secondary>expand_mask</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.utils.expand_mask ( bbox,  mini_mask,  image_shape)</computeroutput></para>
+<para><literallayout><computeroutput>Resizes mini masks back to image size. Reverses the change
+of minimize_mask().
+
+See inspect_data.ipynb notebook for more details.
+</computeroutput></literallayout> </para>
+<para>
+References <link linkend="_namespace_people_tracker_1_1src_1_1utils_1aa4e69f6d3d44f2c01f423cfa8271d308">PeopleTracker.src.utils.resize()</link>.</para>
+</section>
+<anchor xml:id="_namespace_people_tracker_1_1src_1_1utils_1a8eba5ad34d8ed243d2f54c87de3e1779"/><section>
+    <title>extract_bboxes()</title>
+<indexterm><primary>extract_bboxes</primary><secondary>PeopleTracker.src.utils</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.utils</primary><secondary>extract_bboxes</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.utils.extract_bboxes ( mask)</computeroutput></para><para>
+
+<para>Bounding Boxes. </para>
+</para>
+
+<para><literallayout><computeroutput>Compute bounding boxes from masks.
+mask: [height, width, num_instances]. Mask pixels are either 1 or 0.
+
+Returns: bbox array [num_instances, (y1, x1, y2, x2)].
+</computeroutput></literallayout> </para>
+</section>
+<anchor xml:id="_namespace_people_tracker_1_1src_1_1utils_1a8b6d427ae1ecf5f2bce7eeb5911141e0"/><section>
+    <title>generate_anchors()</title>
+<indexterm><primary>generate_anchors</primary><secondary>PeopleTracker.src.utils</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.utils</primary><secondary>generate_anchors</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.utils.generate_anchors ( scales,  ratios,  shape,  feature_stride,  anchor_stride)</computeroutput></para><para>
+
+<para>Anchors. </para>
+</para>
+
+<para><literallayout><computeroutput>scales: 1D array of anchor sizes in pixels. Example: [32, 64, 128]
+ratios: 1D array of anchor ratios of width/height. Example: [0.5, 1, 2]
+shape: [height, width] spatial shape of the feature map over which
+        to generate anchors.
+feature_stride: Stride of the feature map relative to the image in pixels.
+anchor_stride: Stride of anchors on the feature map. For example, if the
+    value is 2 then generate anchors for every other feature map pixel.
+</computeroutput></literallayout> </para>
+<para>
+Referenced by <link linkend="_namespace_people_tracker_1_1src_1_1utils_1a09d91c39a51b214ab6ecd6611148c2f7">PeopleTracker.src.utils.generate_pyramid_anchors()</link>.</para>
+</section>
+<anchor xml:id="_namespace_people_tracker_1_1src_1_1utils_1a09d91c39a51b214ab6ecd6611148c2f7"/><section>
+    <title>generate_pyramid_anchors()</title>
+<indexterm><primary>generate_pyramid_anchors</primary><secondary>PeopleTracker.src.utils</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.utils</primary><secondary>generate_pyramid_anchors</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.utils.generate_pyramid_anchors ( scales,  ratios,  feature_shapes,  feature_strides,  anchor_stride)</computeroutput></para>
+<para><literallayout><computeroutput>Generate anchors at different levels of a feature pyramid. Each scale
+is associated with a level of the pyramid, but each ratio is used in
+all levels of the pyramid.
+
+Returns:
+anchors: [N, (y1, x1, y2, x2)]. All generated anchors in one array. Sorted
+    with the same order of the given scales. So, anchors of scale[0] come
+    first, then anchors of scale[1], and so on.
+</computeroutput></literallayout> </para>
+<para>
+References <link linkend="_namespace_people_tracker_1_1src_1_1utils_1a8b6d427ae1ecf5f2bce7eeb5911141e0">PeopleTracker.src.utils.generate_anchors()</link>.</para>
+</section>
+<anchor xml:id="_namespace_people_tracker_1_1src_1_1utils_1af758ab0136d403ff0853a3d3b49b9126"/><section>
+    <title>get_centroid()</title>
+<indexterm><primary>get_centroid</primary><secondary>PeopleTracker.src.utils</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.utils</primary><secondary>get_centroid</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.utils.get_centroid ( box)</computeroutput></para>
+<para><literallayout><computeroutput>returns centroid of a box, given the box is in format (x1, y1, x2, y2)
+</computeroutput></literallayout> </para>
+</section>
+<anchor xml:id="_namespace_people_tracker_1_1src_1_1utils_1aa7a1ac7e8b6ac05de2fef44e459e688d"/><section>
+    <title>get_corners()</title>
+<indexterm><primary>get_corners</primary><secondary>PeopleTracker.src.utils</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.utils</primary><secondary>get_corners</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.utils.get_corners ( box)</computeroutput></para>
+<para><literallayout><computeroutput>returns 2 point pairs describing the corners of the box
+</computeroutput></literallayout> </para>
+</section>
+<anchor xml:id="_namespace_people_tracker_1_1src_1_1utils_1a6eab5a6ba5b317bff5880e5506747cea"/><section>
+    <title>minimize_mask()</title>
+<indexterm><primary>minimize_mask</primary><secondary>PeopleTracker.src.utils</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.utils</primary><secondary>minimize_mask</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.utils.minimize_mask ( bbox,  mask,  mini_shape)</computeroutput></para>
+<para><literallayout><computeroutput>Resize masks to a smaller version to reduce memory load.
+Mini-masks can be resized back to image scale using expand_masks()
+
+See inspect_data.ipynb notebook for more details.
+</computeroutput></literallayout> </para>
+<para>
+References <link linkend="_namespace_people_tracker_1_1src_1_1utils_1aa4e69f6d3d44f2c01f423cfa8271d308">PeopleTracker.src.utils.resize()</link>.</para>
+</section>
+<anchor xml:id="_namespace_people_tracker_1_1src_1_1utils_1aadbcb07ebc8c9951b0de49ed0f81a1ed"/><section>
+    <title>non_max_suppression()</title>
+<indexterm><primary>non_max_suppression</primary><secondary>PeopleTracker.src.utils</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.utils</primary><secondary>non_max_suppression</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.utils.non_max_suppression ( boxes,  scores,  threshold)</computeroutput></para>
+<para><literallayout><computeroutput>Performs non-maximum suppression and returns indices of kept boxes.
+boxes: [N, (y1, x1, y2, x2)]. Notice that (y2, x2) lays outside the box.
+scores: 1-D array of box scores.
+threshold: Float. IoU threshold to use for filtering.
+</computeroutput></literallayout> </para>
+<para>
+References <link linkend="_namespace_people_tracker_1_1src_1_1utils_1ae47c2790d1cc2bdc63e675be6fc2972a">PeopleTracker.src.utils.compute_iou()</link>.</para>
+</section>
+<anchor xml:id="_namespace_people_tracker_1_1src_1_1utils_1a3ebe79c88bd799148e56005d7145780d"/><section>
+    <title>norm_boxes()</title>
+<indexterm><primary>norm_boxes</primary><secondary>PeopleTracker.src.utils</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.utils</primary><secondary>norm_boxes</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.utils.norm_boxes ( boxes,  shape)</computeroutput></para>
+<para><literallayout><computeroutput>Converts boxes from pixel coordinates to normalized coordinates.
+boxes: [N, (y1, x1, y2, x2)] in pixel coordinates
+shape: [..., (height, width)] in pixels
+
+Note: In pixel coordinates (y2, x2) is outside the box. But in normalized
+coordinates it&apos;s inside the box.
+
+Returns:
+    [N, (y1, x1, y2, x2)] in normalized coordinates
+</computeroutput></literallayout> </para>
+</section>
+<anchor xml:id="_namespace_people_tracker_1_1src_1_1utils_1aa4e69f6d3d44f2c01f423cfa8271d308"/><section>
+    <title>resize()</title>
+<indexterm><primary>resize</primary><secondary>PeopleTracker.src.utils</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.utils</primary><secondary>resize</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.utils.resize ( image,  output_shape,  order = <computeroutput>1</computeroutput>
+,  mode = <computeroutput>&apos;constant&apos;</computeroutput>
+,  cval = <computeroutput>0</computeroutput>
+,  clip = <computeroutput>True</computeroutput>
+,  preserve_range = <computeroutput>False</computeroutput>
+,  anti_aliasing = <computeroutput>False</computeroutput>
+,  anti_aliasing_sigma = <computeroutput>None</computeroutput>
+)</computeroutput></para>
+<para><literallayout><computeroutput>A wrapper for Scikit-Image resize().
+
+Scikit-Image generates warnings on every call to resize() if it doesn&apos;t
+receive the right parameters. The right parameters depend on the version
+of skimage. This solves the problem by using different parameters per
+version. And it provides a central place to control resizing defaults.
+</computeroutput></literallayout> </para>
+<para>
+Referenced by <link linkend="_namespace_people_tracker_1_1src_1_1utils_1a8fdc96636e70f9037627ec507aa1ac78">PeopleTracker.src.utils.expand_mask()</link>, <link linkend="_namespace_people_tracker_1_1src_1_1utils_1a6eab5a6ba5b317bff5880e5506747cea">PeopleTracker.src.utils.minimize_mask()</link>, and <link linkend="_namespace_people_tracker_1_1src_1_1utils_1ab1d8b2bbfbec1907de01e049c4a3b2dd">PeopleTracker.src.utils.resize_image()</link>.</para>
+</section>
+<anchor xml:id="_namespace_people_tracker_1_1src_1_1utils_1ab1d8b2bbfbec1907de01e049c4a3b2dd"/><section>
+    <title>resize_image()</title>
+<indexterm><primary>resize_image</primary><secondary>PeopleTracker.src.utils</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.utils</primary><secondary>resize_image</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.utils.resize_image ( image,  min_dim = <computeroutput>None</computeroutput>
+,  max_dim = <computeroutput>None</computeroutput>
+,  min_scale = <computeroutput>None</computeroutput>
+,  mode = <computeroutput>&quot;square&quot;</computeroutput>
+)</computeroutput></para>
+<para><literallayout><computeroutput>Resizes an image keeping the aspect ratio unchanged.
+
+min_dim: if provided, resizes the image such that it&apos;s smaller
+    dimension == min_dim
+max_dim: if provided, ensures that the image longest side doesn&apos;t
+    exceed this value.
+min_scale: if provided, ensure that the image is scaled up by at least
+    this percent even if min_dim doesn&apos;t require it.
+mode: Resizing mode.
+    none: No resizing. Return the image unchanged.
+    square: Resize and pad with zeros to get a square image
+        of size [max_dim, max_dim].
+    pad64: Pads width and height with zeros to make them multiples of 64.
+           If min_dim or min_scale are provided, it scales the image up
+           before padding. max_dim is ignored in this mode.
+           The multiple of 64 is needed to ensure smooth scaling of feature
+           maps up and down the 6 levels of the FPN pyramid (2**6=64).
+    crop: Picks random crops from the image. First, scales the image based
+          on min_dim and min_scale, then picks a random crop of
+          size min_dim x min_dim. Can be used in training only.
+          max_dim is not used in this mode.
+
+Returns:
+image: the resized image
+window: (y1, x1, y2, x2). If max_dim is provided, padding might
+    be inserted in the returned image. If so, this window is the
+    coordinates of the image part of the full image (excluding
+    the padding). The x2, y2 pixels are not included.
+scale: The scale factor used to resize the image
+padding: Padding added to the image [(top, bottom), (left, right), (0, 0)]
+</computeroutput></literallayout> </para>
+<para>
+References <link linkend="_namespace_people_tracker_1_1src_1_1utils_1aa4e69f6d3d44f2c01f423cfa8271d308">PeopleTracker.src.utils.resize()</link>.</para>
+</section>
+<anchor xml:id="_namespace_people_tracker_1_1src_1_1utils_1a3cd8117d0f497a958a72fbfcd502a133"/><section>
+    <title>resize_mask()</title>
+<indexterm><primary>resize_mask</primary><secondary>PeopleTracker.src.utils</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.utils</primary><secondary>resize_mask</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.utils.resize_mask ( mask,  scale,  padding,  crop = <computeroutput>None</computeroutput>
+)</computeroutput></para>
+<para><literallayout><computeroutput>Resizes a mask using the given scale and padding.
+Typically, you get the scale and padding from resize_image() to
+ensure both, the image and the mask, are resized consistently.
+
+scale: mask scaling factor
+padding: Padding to add to the mask in the form
+        [(top, bottom), (left, right), (0, 0)]
+</computeroutput></literallayout> </para>
+</section>
+<anchor xml:id="_namespace_people_tracker_1_1src_1_1utils_1a81c4c048a974e85cc4c101349800a84e"/><section>
+    <title>trim_zeros()</title>
+<indexterm><primary>trim_zeros</primary><secondary>PeopleTracker.src.utils</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.utils</primary><secondary>trim_zeros</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.utils.trim_zeros ( x)</computeroutput></para><para>
+
+<para>Miscellaneous. </para>
+</para>
+
+<para><literallayout><computeroutput>It&apos;s common to have tensors larger than the available data and
+pad with zeros. This function removes rows that are all zeros.
+
+x: [rows, columns].
+</computeroutput></literallayout> </para>
+<para>
+Referenced by <link linkend="_namespace_people_tracker_1_1src_1_1utils_1a02df2b956643c6599066d3a21fc56082">PeopleTracker.src.utils.compute_matches()</link>.</para>
+</section>
+<anchor xml:id="_namespace_people_tracker_1_1src_1_1utils_1ab8a95184c4d98874c1a79cbf340e1e90"/><section>
+    <title>unmold_mask()</title>
+<indexterm><primary>unmold_mask</primary><secondary>PeopleTracker.src.utils</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.utils</primary><secondary>unmold_mask</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.utils.unmold_mask ( mask,  bbox,  image_shape)</computeroutput></para>
+<para><literallayout><computeroutput>Converts a mask generated by the neural network to a format similar
+to its original shape.
+mask: [height, width] of type float. A small, typically 28x28 mask.
+bbox: [y1, x1, y2, x2]. The box to fit the mask in.
+
+Returns a binary mask with the same size as the original image.
+</computeroutput></literallayout> </para>
+</section>
+</section>
+</section>

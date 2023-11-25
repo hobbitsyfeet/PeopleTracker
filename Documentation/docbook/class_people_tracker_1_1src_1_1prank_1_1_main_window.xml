@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_people_tracker_1_1src_1_1prank_1_1_main_window" xml:lang="en-US">
+<title>PeopleTracker.src.prank.MainWindow Class Reference</title>
+<indexterm><primary>PeopleTracker.src.prank.MainWindow</primary></indexterm>
+<para>Inheritance diagram for PeopleTracker.src.prank.MainWindow:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_people_tracker_1_1src_1_1prank_1_1_main_window.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1prank_1_1_main_window_1a9878bc2328b256778f27385c09850030"/><emphasis role="strong">__init__</emphasis> (self, *args, **kwargs)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<para>
+The documentation for this class was generated from the following file:</para>
+K:/Github/PeopleTracker/src/prank.py</section>

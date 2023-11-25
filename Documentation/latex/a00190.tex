@@ -1,0 +1,182 @@
+\doxysection{Predictor\+\_\+\+Options}
+\hypertarget{a00190}{}\label{a00190}\index{Predictor\_Options@{Predictor\_Options}}
+
+
+Inheritance diagram for Predictor\+\_\+\+Options\+:
+% FIG 0
+
+
+Collaboration diagram for Predictor\+\_\+\+Options\+:
+% FIG 1
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{a00190_abdd362d5f799ad16b5d6700efe590290}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self)
+\item 
+\mbox{\hyperlink{a00190_a46046f4fc58e082f254c7305dc2ebe69}{get\+\_\+min\+\_\+\+IOU}} (self)
+\item 
+\mbox{\hyperlink{a00190_a769c865e5cba7b190863d7f47c237528}{get\+\_\+min\+\_\+distance}} (self)
+\item 
+\mbox{\hyperlink{a00190_ab79c082448c25d2facedc0d03fc473b7}{get\+\_\+active\+\_\+iou}} (self)
+\item 
+\mbox{\hyperlink{a00190_a6a7ce73bc2a4ce0e10f74d70fb61e809}{get\+\_\+active\+\_\+centroid}} (self)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{a00190_a22f45a3cb4f074e609f58ebaeef0ecf9}\label{a00190_a22f45a3cb4f074e609f58ebaeef0ecf9} 
+{\bfseries label}
+\item 
+\Hypertarget{a00190_a0e3f4515c47077cf2f7a48f560eea1f4}\label{a00190_a0e3f4515c47077cf2f7a48f560eea1f4} 
+{\bfseries activate\+\_\+iou}
+\item 
+\Hypertarget{a00190_a2e8f88c421f3904e9406c0d13c3b89a9}\label{a00190_a2e8f88c421f3904e9406c0d13c3b89a9} 
+{\bfseries min\+\_\+value\+\_\+\+IOU}
+\item 
+\Hypertarget{a00190_abd61bdb05e80bf10eb3a42e3bf51e712}\label{a00190_abd61bdb05e80bf10eb3a42e3bf51e712} 
+{\bfseries activate\+\_\+centroid}
+\item 
+\Hypertarget{a00190_a11fde525518b92b699eccd44f9408bb5}\label{a00190_a11fde525518b92b699eccd44f9408bb5} 
+{\bfseries min\+\_\+value\+\_\+distance}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{a00190_a8e3fd4db7856fde5cfdedfa05649fbbc}{\+\_\+toggle\+\_\+checkbox}} (self, checkbox)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{a00190_abdd362d5f799ad16b5d6700efe590290}\label{a00190_abdd362d5f799ad16b5d6700efe590290} 
+\index{Predictor\_Options@{Predictor\_Options}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!Predictor\_Options@{Predictor\_Options}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily \+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00973\ \ \ \ \ \textcolor{keyword}{def\ }\_\_init\_\_(self): }
+\DoxyCodeLine{00974\ \ \ \ \ \ \ \ \ super().\_\_init\_\_() }
+\DoxyCodeLine{00975\ \ \ \ \ \ \ \ \ layout\ =\ PyQt5.QtWidgets.QVBoxLayout() }
+\DoxyCodeLine{00976\ \ \ \ \ \ \ \ \ self.setWindowTitle(\textcolor{stringliteral}{"{}IOU\ Options"{}}) }
+\DoxyCodeLine{00977\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ self.setGeometry(self.left,\ self.top,\ self.width,\ self.height) }}
+\DoxyCodeLine{00978\ \ \ \ \ \ \ \ \ self.label\ =\ PyQt5.QtWidgets.QLabel(\textcolor{stringliteral}{"{}Intersection\ over\ Union\ is\ the\ measure\ comparing\ how\ well\ two\ rectangles\ fit\ over\ eachother.\ \(\backslash\)n\ Like\ a\ percent\ fit\ [0-\/1]\(\backslash\)n\ \(\backslash\)n\ Distance\ is\ line\ distance\ between\ pixels."{}}) }
+\DoxyCodeLine{00979\ \ \ \ \ \ \ \ \ layout.addWidget(self.label) }
+\DoxyCodeLine{00980\ \ \ \ \ \ \ \ \ iou\_form\ =\ PyQt5.QtWidgets.QFormLayout() }
+\DoxyCodeLine{00981\ \ \ \ \ \ \ \ \ layout.addLayout(iou\_form) }
+\DoxyCodeLine{00982\  }
+\DoxyCodeLine{00983\ \ \ \ \ \ \ \ \ self.setLayout(layout) }
+\DoxyCodeLine{00984\  }
+\DoxyCodeLine{00985\ \ \ \ \ \ \ \ \ self.activate\_iou\ =\ PyQt5.QtWidgets.QCheckBox(\textcolor{stringliteral}{"{}Activate\ IOU"{}},self) }
+\DoxyCodeLine{00986\ \ \ \ \ \ \ \ \ self.activate\_iou.setTristate(\textcolor{keyword}{False}) }
+\DoxyCodeLine{00987\ \ \ \ \ \ \ \ \ self.activate\_iou.setCheckState(PyQt5.QtCore.Qt.Checked) }
+\DoxyCodeLine{00988\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ self.activate\_iou.connect(lambda:\ self.\_toggle\_checkbox(self.activate\_iou)) }}
+\DoxyCodeLine{00989\ \ \ \ \ \ \ \ \ iou\_form.addRow(self.activate\_iou) }
+\DoxyCodeLine{00990\  }
+\DoxyCodeLine{00991\ \ \ \ \ \ \ \ \ self.min\_value\_IOU\ =\ PyQt5.QtWidgets.QDoubleSpinBox(self) }
+\DoxyCodeLine{00992\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ self.onlyInt\ =\ PyQt5.QtGui.QIntValidator() }}
+\DoxyCodeLine{00993\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ self.skip\_frames.setValidator(self.onlyInt) }}
+\DoxyCodeLine{00994\ \ \ \ \ \ \ \ \ self.min\_value\_IOU.setValue(0.45) }
+\DoxyCodeLine{00995\ \ \ \ \ \ \ \ \ self.min\_value\_IOU.setFixedWidth(70) }
+\DoxyCodeLine{00996\ \ \ \ \ \ \ \ \ self.min\_value\_IOU.setAlignment(PyQt5.QtCore.Qt.AlignLeft) }
+\DoxyCodeLine{00997\ \ \ \ \ \ \ \ \ self.min\_value\_IOU.setMaximum(1) }
+\DoxyCodeLine{00998\ \ \ \ \ \ \ \ \ self.min\_value\_IOU.setMinimum(0) }
+\DoxyCodeLine{00999\ \ \ \ \ \ \ \ \ self.min\_value\_IOU.setSingleStep(0.05) }
+\DoxyCodeLine{01000\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ self.skip\_frames.setValidator(PyQt5.QtGui.QIntValidator(-\/999,999)) }}
+\DoxyCodeLine{01001\ \ \ \ \ \ \ \ \ self.min\_value\_IOU.setToolTip(\textcolor{stringliteral}{"{}The\ minimum\ IOU\ value\ which\ considers\ to\ be\ 'out\ of\ range'\ (1\ means\ that\ it\ will\ always\ be\ out\ of\ range,\ 0\ means\ it\ will\ never\ be\ out\ of\ range)"{}}) }
+\DoxyCodeLine{01002\ \ \ \ \ \ \ \ \ iou\_form.addRow(\textcolor{stringliteral}{"{}Bounding\ Box\ Out\ of\ Range"{}},\ self.min\_value\_IOU) }
+\DoxyCodeLine{01003\  }
+\DoxyCodeLine{01004\ \ \ \ \ \ \ \ \ self.activate\_centroid\ =\ PyQt5.QtWidgets.QCheckBox(\textcolor{stringliteral}{"{}Activate\ Centroid"{}},self) }
+\DoxyCodeLine{01005\ \ \ \ \ \ \ \ \ self.activate\_centroid.setTristate(\textcolor{keyword}{False}) }
+\DoxyCodeLine{01006\ \ \ \ \ \ \ \ \ self.activate\_centroid.setCheckState(PyQt5.QtCore.Qt.Checked) }
+\DoxyCodeLine{01007\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ self.activate\_centroid.connect(lambda:\ self.\_toggle\_checkbox(self.activate\_centroid)) }}
+\DoxyCodeLine{01008\ \ \ \ \ \ \ \ \ iou\_form.addRow(self.activate\_centroid) }
+\DoxyCodeLine{01009\  }
+\DoxyCodeLine{01010\ \ \ \ \ \ \ \ \ self.min\_value\_distance\ =\ PyQt5.QtWidgets.QDoubleSpinBox(self) }
+\DoxyCodeLine{01011\ \ \ \ \ \ \ \ \ self.min\_value\_distance.setValue(20) }
+\DoxyCodeLine{01012\ \ \ \ \ \ \ \ \ self.min\_value\_distance.setFixedWidth(70) }
+\DoxyCodeLine{01013\ \ \ \ \ \ \ \ \ self.min\_value\_distance.setAlignment(PyQt5.QtCore.Qt.AlignLeft) }
+\DoxyCodeLine{01014\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ self.min\_value\_distance.setMaximum() }}
+\DoxyCodeLine{01015\ \ \ \ \ \ \ \ \ self.min\_value\_distance.setMinimum(0) }
+\DoxyCodeLine{01016\ \ \ \ \ \ \ \ \ self.min\_value\_distance.setSingleStep(10) }
+\DoxyCodeLine{01017\ \ \ \ \ \ \ \ \ self.min\_value\_distance.setToolTip(\textcolor{stringliteral}{"{}The\ minimum\ straight\ line\ (euclidean)\ distance\ (in\ pixels)\ which\ is\ used\ to\ detect\ when\ the\ predicted\ tracker\ is\ too\ different"{}}) }
+\DoxyCodeLine{01018\ \ \ \ \ \ \ \ \ iou\_form.addRow(\textcolor{stringliteral}{"{}Centroid\ Out\ of\ Range"{}},\ self.min\_value\_distance) }
+\DoxyCodeLine{01019\  }
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{a00190_a8e3fd4db7856fde5cfdedfa05649fbbc}\label{a00190_a8e3fd4db7856fde5cfdedfa05649fbbc} 
+\index{Predictor\_Options@{Predictor\_Options}!\_toggle\_checkbox@{\_toggle\_checkbox}}
+\index{\_toggle\_checkbox@{\_toggle\_checkbox}!Predictor\_Options@{Predictor\_Options}}
+\doxysubsubsection{\texorpdfstring{\_toggle\_checkbox()}{\_toggle\_checkbox()}}
+{\footnotesize\ttfamily \+\_\+toggle\+\_\+checkbox (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{checkbox }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{01032\ \ \ \ \ \textcolor{keyword}{def\ }\_toggle\_checkbox(self,\ checkbox): }
+\DoxyCodeLine{01033\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ checkbox.isChecked(): }
+\DoxyCodeLine{01034\ \ \ \ \ \ \ \ \ \ \ \ \ checkbox.setCheckState(PyQt5.QtCore.Qt.Checked) }
+\DoxyCodeLine{01035\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}: }
+\DoxyCodeLine{01036\ \ \ \ \ \ \ \ \ \ \ \ \ checkbox.setCheckState(PyQt5.QtCore.Qt.Unchecked) }
+\DoxyCodeLine{01037\  }
+
+\end{DoxyCode}
+\Hypertarget{a00190_a6a7ce73bc2a4ce0e10f74d70fb61e809}\label{a00190_a6a7ce73bc2a4ce0e10f74d70fb61e809} 
+\index{Predictor\_Options@{Predictor\_Options}!get\_active\_centroid@{get\_active\_centroid}}
+\index{get\_active\_centroid@{get\_active\_centroid}!Predictor\_Options@{Predictor\_Options}}
+\doxysubsubsection{\texorpdfstring{get\_active\_centroid()}{get\_active\_centroid()}}
+{\footnotesize\ttfamily get\+\_\+active\+\_\+centroid (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{01029\ \ \ \ \ \textcolor{keyword}{def\ }get\_active\_centroid(self): }
+\DoxyCodeLine{01030\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ self.activate\_centroid.isChecked() }
+\DoxyCodeLine{01031\  }
+
+\end{DoxyCode}
+\Hypertarget{a00190_ab79c082448c25d2facedc0d03fc473b7}\label{a00190_ab79c082448c25d2facedc0d03fc473b7} 
+\index{Predictor\_Options@{Predictor\_Options}!get\_active\_iou@{get\_active\_iou}}
+\index{get\_active\_iou@{get\_active\_iou}!Predictor\_Options@{Predictor\_Options}}
+\doxysubsubsection{\texorpdfstring{get\_active\_iou()}{get\_active\_iou()}}
+{\footnotesize\ttfamily get\+\_\+active\+\_\+iou (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{01026\ \ \ \ \ \textcolor{keyword}{def\ }get\_active\_iou(self): }
+\DoxyCodeLine{01027\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ self.activate\_iou.isChecked() }
+\DoxyCodeLine{01028\ \ \ \ \  }
+
+\end{DoxyCode}
+\Hypertarget{a00190_a769c865e5cba7b190863d7f47c237528}\label{a00190_a769c865e5cba7b190863d7f47c237528} 
+\index{Predictor\_Options@{Predictor\_Options}!get\_min\_distance@{get\_min\_distance}}
+\index{get\_min\_distance@{get\_min\_distance}!Predictor\_Options@{Predictor\_Options}}
+\doxysubsubsection{\texorpdfstring{get\_min\_distance()}{get\_min\_distance()}}
+{\footnotesize\ttfamily get\+\_\+min\+\_\+distance (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{01023\ \ \ \ \ \textcolor{keyword}{def\ }get\_min\_distance(self): }
+\DoxyCodeLine{01024\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ self.min\_value\_distance.value() }
+\DoxyCodeLine{01025\ \ \ \ \  }
+
+\end{DoxyCode}
+\Hypertarget{a00190_a46046f4fc58e082f254c7305dc2ebe69}\label{a00190_a46046f4fc58e082f254c7305dc2ebe69} 
+\index{Predictor\_Options@{Predictor\_Options}!get\_min\_IOU@{get\_min\_IOU}}
+\index{get\_min\_IOU@{get\_min\_IOU}!Predictor\_Options@{Predictor\_Options}}
+\doxysubsubsection{\texorpdfstring{get\_min\_IOU()}{get\_min\_IOU()}}
+{\footnotesize\ttfamily get\+\_\+min\+\_\+\+IOU (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{01020\ \ \ \ \ \textcolor{keyword}{def\ }get\_min\_IOU(self): }
+\DoxyCodeLine{01021\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ self.min\_value\_IOU.value() }
+\DoxyCodeLine{01022\ \ \ \ \  }
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+K\+:/\+Github/\+People\+Tracker/src/qt\+\_\+dialog.\+py\end{DoxyCompactItemize}

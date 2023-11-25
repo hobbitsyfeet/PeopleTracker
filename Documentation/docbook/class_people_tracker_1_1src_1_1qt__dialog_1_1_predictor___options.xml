@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_predictor___options" xml:lang="en-US">
+<title>PeopleTracker.src.qt_dialog.Predictor_Options Class Reference</title>
+<indexterm><primary>PeopleTracker.src.qt_dialog.Predictor_Options</primary></indexterm>
+<para>Inheritance diagram for PeopleTracker.src.qt_dialog.Predictor_Options:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_people_tracker_1_1src_1_1qt__dialog_1_1_predictor___options.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_predictor___options_1a5f67fa5ef2f182b4222edb474562a309"/><emphasis role="strong">__init__</emphasis> (self)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_predictor___options_1a44168562a96f34a0c3a9368886e28d1a"/><emphasis role="strong">get_min_IOU</emphasis> (self)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_predictor___options_1acea1c63c0a4a758669d7c33b81ba4a80"/><emphasis role="strong">get_min_distance</emphasis> (self)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_predictor___options_1aec486773f0d7b4cca1280d6ab73b3f5e"/><emphasis role="strong">get_active_iou</emphasis> (self)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_predictor___options_1a6983a4d40787bd930d872341ebb6843b"/><emphasis role="strong">get_active_centroid</emphasis> (self)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_predictor___options_1a0c9a5abd7f94cb993b70d2a33358e353"/><emphasis role="strong">label</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_predictor___options_1a71281295e77d4ff0d2004ff9c0182028"/><emphasis role="strong">activate_iou</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_predictor___options_1a28edb6c14c6efd749a901103661abff9"/><emphasis role="strong">min_value_IOU</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_predictor___options_1ac6ecb91120d4a17c837819451abe3eaf"/><emphasis role="strong">activate_centroid</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_predictor___options_1a207716da131c93bb35043feac8e66f15"/><emphasis role="strong">min_value_distance</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Protected Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_predictor___options_1acd31f03c73ebc7c24846cd5263d77d50"/><emphasis role="strong">_toggle_checkbox</emphasis> (self, checkbox)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<para>
+The documentation for this class was generated from the following file:</para>
+K:/Github/PeopleTracker/src/qt_dialog.py</section>

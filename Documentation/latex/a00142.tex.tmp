@@ -1,0 +1,633 @@
+\doxysection{Camera\+Position}
+\hypertarget{a00142}{}\label{a00142}\index{CameraPosition@{CameraPosition}}
+
+
+Inheritance diagram for Camera\+Position\+:
+% FIG 0
+
+
+Collaboration diagram for Camera\+Position\+:
+% FIG 1
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{a00142_a9a44abe9423cef1b2d40c1e55d2ee31b}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, source\+\_\+vid=None, reference\+\_\+vid=None)
+\item 
+\mbox{\hyperlink{a00142_aed9087be55bc8f7b952d55a31926f5b0}{open\+File\+Name\+Dialog}} (self)
+\item 
+\mbox{\hyperlink{a00142_a455beb884551f00985ec755a23bf4f50}{init\+UI}} (self)
+\item 
+\mbox{\hyperlink{a00142_ace0fd98610636070eccd07ac07ff1535}{init\+\_\+menubar}} (self)
+\item 
+\mbox{\hyperlink{a00142_a0c3e027c807cd62496365cbc1f834a74}{set\+\_\+view\+\_\+roomestimation}} (self)
+\item 
+\mbox{\hyperlink{a00142_ac15db786f3c35347e250934b7a10d5f8}{processtrigger}} (self, trigger)
+\item 
+\mbox{\hyperlink{a00142_a7e4c0306db28e5b5283a960f321f171e}{stitch}} (self, image\+\_\+list, out\+\_\+path=None)
+\item 
+\mbox{\hyperlink{a00142_a275f572f3668859a12c81bc8f2af102c}{set\+\_\+source}} (self, video\+\_\+path, frame=0)
+\item 
+\mbox{\hyperlink{a00142_aa054836599153898251f936ec94a75cb}{add\+\_\+reference}} (self, video\+\_\+path, frame\+\_\+start, total\+\_\+frames, step)
+\item 
+\mbox{\hyperlink{a00142_a8d430af3e201d9ded86773f2414d3d8c}{find\+\_\+reference}} (self, query\+\_\+img, train\+\_\+img)
+\item 
+\mbox{\hyperlink{a00142_acd6111030323a0e90c7070360c9a8363}{find\+\_\+features}} (self, img1, img2)
+\item 
+\mbox{\hyperlink{a00142_ad86826ba76e128b822e0fc4e8747832a}{match\+\_\+features}} (self, des1, des2, mode=0)
+\item 
+\mbox{\hyperlink{a00142_aea184576806cc5c93b339299ddf8913d}{find\+\_\+homography}} (self, img1, img2, kp1, kp2, matches)
+\item 
+\mbox{\hyperlink{a00142_a2feface7d3d450593ed60788aafa8e6b}{show\+\_\+estimation}} (self)
+\item 
+\mbox{\hyperlink{a00142_adcab0c33567748a21cfc4a90e663c1d6}{collect\+\_\+frames}} (self, video\+\_\+source, start\+\_\+frame, skip, total\+\_\+frames)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{a00142_a051e403214cb6872ad3fe4e50302a6ee}\label{a00142_a051e403214cb6872ad3fe4e50302a6ee} 
+{\bfseries title}
+\item 
+\Hypertarget{a00142_a58c76f848f15df202254c1daec468567}\label{a00142_a58c76f848f15df202254c1daec468567} 
+{\bfseries left}
+\item 
+\Hypertarget{a00142_a8aab264665f2085687d9eeca4c67a691}\label{a00142_a8aab264665f2085687d9eeca4c67a691} 
+{\bfseries top}
+\item 
+\Hypertarget{a00142_a5558ace5433f9aabbf0a0ec059900d94}\label{a00142_a5558ace5433f9aabbf0a0ec059900d94} 
+{\bfseries width}
+\item 
+\Hypertarget{a00142_a509290c21d570ff479c1b9d9b1fe8810}\label{a00142_a509290c21d570ff479c1b9d9b1fe8810} 
+{\bfseries height}
+\item 
+\Hypertarget{a00142_a40b983e2ffb21dee870f499d94a29e4d}\label{a00142_a40b983e2ffb21dee870f499d94a29e4d} 
+{\bfseries stitched\+\_\+img}
+\item 
+\Hypertarget{a00142_a2292551bf1e5658cb29e65828233987a}\label{a00142_a2292551bf1e5658cb29e65828233987a} 
+{\bfseries reference\+\_\+imgs}
+\item 
+\Hypertarget{a00142_abb80d1561b9d2e7b988009e3d2f5115f}\label{a00142_abb80d1561b9d2e7b988009e3d2f5115f} 
+{\bfseries room\+\_\+estimation}
+\item 
+\Hypertarget{a00142_a5d0e3213855775e27a3c2106dc3c6f23}\label{a00142_a5d0e3213855775e27a3c2106dc3c6f23} 
+{\bfseries source\+\_\+img}
+\item 
+\Hypertarget{a00142_aaf5f6d36c469a3a159d7b2f3eddec970}\label{a00142_aaf5f6d36c469a3a159d7b2f3eddec970} 
+{\bfseries stitch\+\_\+list}
+\item 
+\Hypertarget{a00142_a18ba736185d3b51366b94e8366becce0}\label{a00142_a18ba736185d3b51366b94e8366becce0} 
+{\bfseries layout}
+\item 
+\Hypertarget{a00142_a3604cc76126465cb304da556632fdfb4}\label{a00142_a3604cc76126465cb304da556632fdfb4} 
+{\bfseries processtrigger}
+\item 
+\Hypertarget{a00142_aa20aaca635c279997491058609e09779}\label{a00142_aa20aaca635c279997491058609e09779} 
+{\bfseries room\+\_\+widget}
+\item 
+\Hypertarget{a00142_a3eb7fdffa56e828c5be260a123c334b1}\label{a00142_a3eb7fdffa56e828c5be260a123c334b1} 
+{\bfseries room\+\_\+layout}
+\item 
+\Hypertarget{a00142_ab6334862a1618e3708b5dc8299a6225b}\label{a00142_ab6334862a1618e3708b5dc8299a6225b} 
+{\bfseries bottom\+\_\+left\+\_\+pt\+\_\+x}
+\item 
+\Hypertarget{a00142_a03be863f200e777fdca61fc628403300}\label{a00142_a03be863f200e777fdca61fc628403300} 
+{\bfseries bottom\+\_\+left\+\_\+pt\+\_\+y}
+\item 
+\Hypertarget{a00142_a5bb9ab2957f5f8ed43420aec105566cd}\label{a00142_a5bb9ab2957f5f8ed43420aec105566cd} 
+{\bfseries top\+\_\+left\+\_\+pt\+\_\+x}
+\item 
+\Hypertarget{a00142_ab0507b30f1040766983461cb5ba62c57}\label{a00142_ab0507b30f1040766983461cb5ba62c57} 
+{\bfseries top\+\_\+left\+\_\+pt\+\_\+y}
+\item 
+\Hypertarget{a00142_ac0350498184c9306067e05ca209ede14}\label{a00142_ac0350498184c9306067e05ca209ede14} 
+{\bfseries top\+\_\+right\+\_\+pt\+\_\+x}
+\item 
+\Hypertarget{a00142_a11daf672273b17418ad6bbd0268fed93}\label{a00142_a11daf672273b17418ad6bbd0268fed93} 
+{\bfseries top\+\_\+right\+\_\+pt\+\_\+y}
+\item 
+\Hypertarget{a00142_aa6beb6f6bc570d1e84734afb97e33831}\label{a00142_aa6beb6f6bc570d1e84734afb97e33831} 
+{\bfseries bottom\+\_\+right\+\_\+pt\+\_\+x}
+\item 
+\Hypertarget{a00142_a5e28b3281846019029a61ded5820f8e7}\label{a00142_a5e28b3281846019029a61ded5820f8e7} 
+{\bfseries bottom\+\_\+right\+\_\+pt\+\_\+y}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Steps to stitching the images
+1) Find Keypoints between images (SIFT/SURF/ORB?)
+ - SIFT and SURF are patented and if you want to use it in a real-world application, you need to pay a licensing fee.
+ - ORB is not.
+2) Compute the distances between every descriptor
+3) Select the best matches to align (Knn - 2 best matches for each descriptor {k=2})
+- finds two best matches for each feature and leaves the best one only if the ratio between descriptor distances is greater than the threshold
+4) Estimate Homography (Homography Estimator)
+5) Warp the images (translate and rotate) to align
+    - NOTE this is where we will extract the top left of each frame for reference on the stitched image
+    locations of each frame (hopefully)
+6) Stitch the images (Stitch and blend)
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{a00142_a9a44abe9423cef1b2d40c1e55d2ee31b}\label{a00142_a9a44abe9423cef1b2d40c1e55d2ee31b} 
+\index{CameraPosition@{CameraPosition}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!CameraPosition@{CameraPosition}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily \+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{source\+\_\+vid = {\ttfamily None},  }\item[{}]{reference\+\_\+vid = {\ttfamily None} }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keyword}{def\ }\_\_init\_\_(self,\ source\_vid=None,\ reference\_vid=None): }
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ super().\_\_init\_\_() }
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ self.openFileNameDialog() }}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ self.title\ =\ \textcolor{stringliteral}{'Camera\ Position'} }
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ self.left\ =\ 250 }
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ self.top\ =\ 250 }
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ self.width\ =\ 480 }
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ self.height\ =\ 240 }
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ self.stitched\_img\ =\ \textcolor{keywordtype}{None} }
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ self.initUI() }
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ self.init\_menubar() }
+\DoxyCodeLine{00041\  }
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ self.reference\_imgs\ =\ [] }
+\DoxyCodeLine{00043\  }
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ self.room\_estimation\ =\ \textcolor{keywordtype}{None} }
+\DoxyCodeLine{00045\  }
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ source\_vid\ \textcolor{keywordflow}{is}\ \textcolor{keywordflow}{not}\ \textcolor{keywordtype}{None}: }
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ self.source\_img\ =\ self.collect\_frames(source\_vid,0,1,1)[0] }
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ cv2.imshow(\textcolor{stringliteral}{"{}source"{}},\ self.source\_img) }
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ cv2.waitKey(0) }
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}: }
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ self.source\_img\ =\ \textcolor{keywordtype}{None} }
+\DoxyCodeLine{00052\  }
+\DoxyCodeLine{00053\  }
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ if\ reference\_vid\ is\ not\ None: }}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ \ \ \ \ self.add\_reference(reference\_vid) }}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ else: }}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ self.reference\_imgs\ =\ [] }
+\DoxyCodeLine{00058\  }
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ self.stitch\_list\ =\ [] }
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ self.stitched\_img\ =\ None }}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ self.source\_img\ =\ None }}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ if\ self.source\_img\ is\ not\ None\ and\ self.reference\_imgs: }}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ \ \ \ \ status,\ self.stitched\_img\ =\ self.stitch() }}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ \ \ \ \ cv2.imshow("{}stitched"{},\ self.stitched\_img) }}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ \ \ \ \ cv2.waitKey(0) }}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ else: }}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ \ \ \ \  }}
+\DoxyCodeLine{00068\  }
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ self.show\_estimation() }}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{a00142_aa054836599153898251f936ec94a75cb}\label{a00142_aa054836599153898251f936ec94a75cb} 
+\index{CameraPosition@{CameraPosition}!add\_reference@{add\_reference}}
+\index{add\_reference@{add\_reference}!CameraPosition@{CameraPosition}}
+\doxysubsubsection{\texorpdfstring{add\_reference()}{add\_reference()}}
+{\footnotesize\ttfamily add\+\_\+reference (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{video\+\_\+path,  }\item[{}]{frame\+\_\+start,  }\item[{}]{total\+\_\+frames,  }\item[{}]{step }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00225\ \ \ \ \ \textcolor{keyword}{def\ }add\_reference(self,\ video\_path,\ frame\_start,\ total\_frames,\ step): }
+\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ frames\ =\ self.collect\_frames(video\_path,frame\_start,step,total\_frames) }
+\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ self.reference\_imgs\ =\ frames }
+\DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ if\ self.reference\_imgs: }}
+\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ \ \ \ \ status,\ self.stitched\_img\ =\ self.stitch() }}
+\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ cv2.imshow(video\_path,\ frames) }}
+\DoxyCodeLine{00231\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ cv2.waitKey(0) }}
+\DoxyCodeLine{00232\  }
+
+\end{DoxyCode}
+\Hypertarget{a00142_adcab0c33567748a21cfc4a90e663c1d6}\label{a00142_adcab0c33567748a21cfc4a90e663c1d6} 
+\index{CameraPosition@{CameraPosition}!collect\_frames@{collect\_frames}}
+\index{collect\_frames@{collect\_frames}!CameraPosition@{CameraPosition}}
+\doxysubsubsection{\texorpdfstring{collect\_frames()}{collect\_frames()}}
+{\footnotesize\ttfamily collect\+\_\+frames (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{video\+\_\+source,  }\item[{}]{start\+\_\+frame,  }\item[{}]{skip,  }\item[{}]{total\+\_\+frames }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Collects the images for stitching
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00325\ \ \ \ \ \textcolor{keyword}{def\ }collect\_frames(self,\ video\_source,\ start\_frame,\ skip,\ total\_frames): }
+\DoxyCodeLine{00326\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{} }}
+\DoxyCodeLine{00327\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Collects\ the\ images\ for\ stitching }}
+\DoxyCodeLine{00328\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}} }
+\DoxyCodeLine{00329\ \ \ \ \ \ \ \ \ print(video\_source) }
+\DoxyCodeLine{00330\ \ \ \ \ \ \ \ \ cap\ =\ cv2.VideoCapture(video\_source) }
+\DoxyCodeLine{00331\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keywordflow}{not}\ cap.isOpened(): }
+\DoxyCodeLine{00332\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{raise}\ ValueError(\textcolor{stringliteral}{"{}Unable\ to\ open\ video\ source"{}},\ video\_source) }
+\DoxyCodeLine{00333\ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{"{}Collecting\ Frames..."{}}) }
+\DoxyCodeLine{00334\  }
+\DoxyCodeLine{00335\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#setup\ cv2\ capture\ from\ video }}
+\DoxyCodeLine{00336\ \ \ \ \ \ \ \ \ cap\ =\ cv2.VideoCapture(video\_source) }
+\DoxyCodeLine{00337\ \ \ \ \ \ \ \ \ frames\ =\ [] }
+\DoxyCodeLine{00338\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#set\ the\ starting\ frame }}
+\DoxyCodeLine{00339\ \ \ \ \ \ \ \ \ cap.set(cv2.CAP\_PROP\_POS\_FRAMES,\ start\_frame) }
+\DoxyCodeLine{00340\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print("{}Starting\ at\ frame:\ "{}\ +\ str(cap.get(cv2.CAP\_PROP\_POS\_FRAMES))) }}
+\DoxyCodeLine{00341\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ len(frames)\ <\ total\_frames: }
+\DoxyCodeLine{00342\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print(frames) }}
+\DoxyCodeLine{00343\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#read\ the\ image\ from\ that\ skipped\ frame }}
+\DoxyCodeLine{00344\ \ \ \ \ \ \ \ \ \ \ \ \ ret,\ frame\ =\ cap.read() }
+\DoxyCodeLine{00345\  }
+\DoxyCodeLine{00346\ \ \ \ \ \ \ \ \ \ \ \ \ cap.set(cv2.CAP\_PROP\_POS\_FRAMES,\ cap.get(cv2.CAP\_PROP\_POS\_FRAMES)\ +\ skip-\/1) }
+\DoxyCodeLine{00347\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#set\ current\ frame\ to\ the\ next\ n-\/skipped\ frames }}
+\DoxyCodeLine{00348\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print(cap.get(cv2.CAP\_PROP\_POS\_FRAMES)) }}
+\DoxyCodeLine{00349\  }
+\DoxyCodeLine{00350\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ret: }
+\DoxyCodeLine{00351\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ if\ cv2.waitKey(30)\ \&\ 0xFF\ ==\ ord('q'): }}
+\DoxyCodeLine{00352\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ \ \ \ \ break }}
+\DoxyCodeLine{00353\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ cv2.imshow('frame',\ frame) }}
+\DoxyCodeLine{00354\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#append\ the\ frames\ to\ be\ processed }}
+\DoxyCodeLine{00355\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ frames.append(frame) }
+\DoxyCodeLine{00356\ \ \ \ \ \ \ \ \ cv2.destroyAllWindows() }
+\DoxyCodeLine{00357\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ frames }
+\DoxyCodeLine{00358\  }
+
+\end{DoxyCode}
+
+
+Referenced by \mbox{\hyperlink{a00206_a2a5df656a4b4d07c05b290f8197c316f}{room\+\_\+estimation.\+save\+\_\+room()}}, \mbox{\hyperlink{a00206_adbe2f98b84513775c3106191f2845ed3}{room\+\_\+estimation.\+stitch\+\_\+rooms()}}, and \mbox{\hyperlink{a00206_a75031a34aadd8c7847c479a17524e00e}{room\+\_\+estimation.\+stitch\+\_\+trackers()}}.
+
+\Hypertarget{a00142_acd6111030323a0e90c7070360c9a8363}\label{a00142_acd6111030323a0e90c7070360c9a8363} 
+\index{CameraPosition@{CameraPosition}!find\_features@{find\_features}}
+\index{find\_features@{find\_features}!CameraPosition@{CameraPosition}}
+\doxysubsubsection{\texorpdfstring{find\_features()}{find\_features()}}
+{\footnotesize\ttfamily find\+\_\+features (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{img1,  }\item[{}]{img2 }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}This function finds features between 2 images using ORB
+Desribes keypoints using "steer" BRIEF
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00254\ \ \ \ \ \textcolor{keyword}{def\ }find\_features(self,\ img1,\ img2): }
+\DoxyCodeLine{00255\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{} }}
+\DoxyCodeLine{00256\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ This\ function\ finds\ features\ between\ 2\ images\ using\ ORB }}
+\DoxyCodeLine{00257\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Desribes\ keypoints\ using\ "{}steer"{}\ BRIEF }}
+\DoxyCodeLine{00258\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}} }
+\DoxyCodeLine{00259\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#use\ GPU }}
+\DoxyCodeLine{00260\ \ \ \ \ \ \ \ \ img1,\ img2\ =\ cv2.UMat(img1),\ cv2.UMat(img2) }
+\DoxyCodeLine{00261\ \ \ \ \ \ \ \ \ orb\ =\ cv2.ORB\_create() }
+\DoxyCodeLine{00262\ \ \ \ \ \ \ \ \ kp1,\ des1\ =\ orb.detectAndCompute(img1,\ \textcolor{keywordtype}{None}) }
+\DoxyCodeLine{00263\ \ \ \ \ \ \ \ \ kp2,\ des2\ =\ orb.detectAndCompute(img2,\ \textcolor{keywordtype}{None}) }
+\DoxyCodeLine{00264\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ kp1,\ kp2,\ des1,\ des2 }
+\DoxyCodeLine{00265\  }
+
+\end{DoxyCode}
+
+
+References Camera\+Position.\+find\+\_\+reference(), Camera\+Position.\+reference\+\_\+imgs, Camera\+Position.\+source\+\_\+img, and Camera\+Position.\+stitched\+\_\+img.
+
+\Hypertarget{a00142_aea184576806cc5c93b339299ddf8913d}\label{a00142_aea184576806cc5c93b339299ddf8913d} 
+\index{CameraPosition@{CameraPosition}!find\_homography@{find\_homography}}
+\index{find\_homography@{find\_homography}!CameraPosition@{CameraPosition}}
+\doxysubsubsection{\texorpdfstring{find\_homography()}{find\_homography()}}
+{\footnotesize\ttfamily find\+\_\+homography (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{img1,  }\item[{}]{img2,  }\item[{}]{kp1,  }\item[{}]{kp2,  }\item[{}]{matches }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00292\ \ \ \ \ \textcolor{keyword}{def\ }find\_homography(self,\ img1,\ img2,\ kp1,\ kp2,\ matches): }
+\DoxyCodeLine{00293\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00296\  }
+\DoxyCodeLine{00297\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ plt.imshow(feature\_match,\ 'gray'),plt.show() }}
+\DoxyCodeLine{00298\  }
+\DoxyCodeLine{00299\ \ \ \ \ \ \ \ \ src\_pts\ \ =\ np.array([kp1[m.queryIdx].pt\ \textcolor{keywordflow}{for}\ m\ \textcolor{keywordflow}{in}\ matches],\ dtype=np.float32).reshape(-\/1,\ 1,\ 2) }
+\DoxyCodeLine{00300\ \ \ \ \ \ \ \ \ dst\_pts\ \ =\ np.array([kp2[m.trainIdx].pt\ \textcolor{keywordflow}{for}\ m\ \textcolor{keywordflow}{in}\ matches],\ dtype=np.float32).reshape(-\/1,\ 1,\ 2) }
+\DoxyCodeLine{00301\  }
+\DoxyCodeLine{00302\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00303\ \ \ \ \ \ \ \ \ M,\ mask\ =\ cv2.findHomography(src\_pts,\ dst\_pts,\ cv2.RANSAC,5.0) }
+\DoxyCodeLine{00304\  }
+\DoxyCodeLine{00305\ \ \ \ \ \ \ \ \ h,w\ =\ img1.shape[:2] }
+\DoxyCodeLine{00306\ \ \ \ \ \ \ \ \ pts\ =\ np.array([\ [0,0],[0,h-\/1],[w-\/1,h-\/1],[w-\/1,0]\ ],\ dtype=np.float32).reshape(-\/1,\ 1,\ 2) }
+\DoxyCodeLine{00307\ \ \ \ \ \ \ \ \ dst\ =\ cv2.perspectiveTransform(pts,\ M) }
+\DoxyCodeLine{00308\  }
+\DoxyCodeLine{00309\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ dst\ =\ cv2.getAffineTransform(pts,\ M) }}
+\DoxyCodeLine{00310\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ dst,\ M }
+\DoxyCodeLine{00311\  }
+
+\end{DoxyCode}
+\Hypertarget{a00142_a8d430af3e201d9ded86773f2414d3d8c}\label{a00142_a8d430af3e201d9ded86773f2414d3d8c} 
+\index{CameraPosition@{CameraPosition}!find\_reference@{find\_reference}}
+\index{find\_reference@{find\_reference}!CameraPosition@{CameraPosition}}
+\doxysubsubsection{\texorpdfstring{find\_reference()}{find\_reference()}}
+{\footnotesize\ttfamily find\+\_\+reference (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{query\+\_\+img,  }\item[{}]{train\+\_\+img }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00233\ \ \ \ \ \textcolor{keyword}{def\ }find\_reference(self,\ query\_img,\ train\_img): }
+\DoxyCodeLine{00234\  }
+\DoxyCodeLine{00235\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#find\ the\ common\ features\ between\ the\ two\ images }}
+\DoxyCodeLine{00236\ \ \ \ \ \ \ \ \ kp1,\ kp2,\ des1\_umat,\ des2\_umat\ =\ self.find\_features(query\_img,\ train\_img) }
+\DoxyCodeLine{00237\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00238\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#match\ the\ features }}
+\DoxyCodeLine{00239\ \ \ \ \ \ \ \ \ matches\ =\ self.match\_features(des1\_umat,\ des2\_umat,\ mode=1) }
+\DoxyCodeLine{00240\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{''' }}
+\DoxyCodeLine{00241\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \#draw\ matches }}
+\DoxyCodeLine{00242\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ try: }}
+\DoxyCodeLine{00243\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ match\_img\ =\ cv2.drawMatchesKnn(query\_img,\ kp1,\ train\_img,\ kp2,\ matches,\ None,\ flags=2) }}
+\DoxyCodeLine{00244\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ except: }}
+\DoxyCodeLine{00245\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ print("{}draw\ matches\ (non-\/knn)"{}) }}
+\DoxyCodeLine{00246\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ match\_img\ =\ cv2.drawMatches(query\_img,\ kp1,\ train\_img,\ kp2,\ matches,\ None,\ flags=2) }}
+\DoxyCodeLine{00247\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ '''} }
+\DoxyCodeLine{00248\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#find\ the\ homography\ matrix }}
+\DoxyCodeLine{00249\ \ \ \ \ \ \ \ \ dst,\ M\ =\ self.find\_homography(query\_img,\ train\_img,\ kp1,\ kp2,\ matches) }
+\DoxyCodeLine{00250\  }
+\DoxyCodeLine{00251\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#return\ the\ pixel\ values\ of\ the\ lines }}
+\DoxyCodeLine{00252\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ [np.int32(dst)],\ M }
+\DoxyCodeLine{00253\  }
+
+\end{DoxyCode}
+
+
+Referenced by \mbox{\hyperlink{a00142_acd6111030323a0e90c7070360c9a8363}{Camera\+Position.\+find\+\_\+features()}}.
+
+\Hypertarget{a00142_ace0fd98610636070eccd07ac07ff1535}\label{a00142_ace0fd98610636070eccd07ac07ff1535} 
+\index{CameraPosition@{CameraPosition}!init\_menubar@{init\_menubar}}
+\index{init\_menubar@{init\_menubar}!CameraPosition@{CameraPosition}}
+\doxysubsubsection{\texorpdfstring{init\_menubar()}{init\_menubar()}}
+{\footnotesize\ttfamily init\+\_\+menubar (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{keyword}{def\ }init\_menubar(self): }
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ bar\ =\ QMenuBar(self) }
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ file\ =\ bar.addMenu(\textcolor{stringliteral}{"{}File"{}}) }
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ file.addAction(\textcolor{stringliteral}{"{}New\ Source"{}}) }
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ file.addAction(\textcolor{stringliteral}{"{}New\ Reference"{}}) }
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ file.addAction(\textcolor{stringliteral}{"{}Save\ Stitched\ Image"{}}) }
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ file.addAction(\textcolor{stringliteral}{"{}Stitch\ Images"{}}) }
+\DoxyCodeLine{00095\  }
+\DoxyCodeLine{00096\  }
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ edit\ =\ bar.addMenu(\textcolor{stringliteral}{"{}Edit"{}}) }
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ edit.addAction(\textcolor{stringliteral}{"{}Estimate\ Room\ in\ 3D"{}}) }
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00100\  }
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ view\ =\ bar.addMenu(\textcolor{stringliteral}{"{}View"{}}) }
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ view.addAction(\textcolor{stringliteral}{"{}View\ Camera\ Estimation"{}}) }
+\DoxyCodeLine{00103\  }
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ file.triggered[QAction].connect(self.processtrigger) }
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ edit.triggered[QAction].connect(self.processtrigger) }
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ view.triggered[QAction].connect(self.processtrigger) }
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ self.layout.addWidget(bar) }
+\DoxyCodeLine{00108\  }
+
+\end{DoxyCode}
+\Hypertarget{a00142_a455beb884551f00985ec755a23bf4f50}\label{a00142_a455beb884551f00985ec755a23bf4f50} 
+\index{CameraPosition@{CameraPosition}!initUI@{initUI}}
+\index{initUI@{initUI}!CameraPosition@{CameraPosition}}
+\doxysubsubsection{\texorpdfstring{initUI()}{initUI()}}
+{\footnotesize\ttfamily init\+UI (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keyword}{def\ }initUI(self): }
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ self.setWindowTitle(self.title) }
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ self.setGeometry(self.left,\ self.top,\ self.width,\ self.height) }
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ self.layout\ =\ QVBoxLayout(self) }
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ self.setLayout(self.layout) }
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ self.show() }
+\DoxyCodeLine{00086\  }
+\DoxyCodeLine{00087\  }
+
+\end{DoxyCode}
+\Hypertarget{a00142_ad86826ba76e128b822e0fc4e8747832a}\label{a00142_ad86826ba76e128b822e0fc4e8747832a} 
+\index{CameraPosition@{CameraPosition}!match\_features@{match\_features}}
+\index{match\_features@{match\_features}!CameraPosition@{CameraPosition}}
+\doxysubsubsection{\texorpdfstring{match\_features()}{match\_features()}}
+{\footnotesize\ttfamily match\+\_\+features (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{des1,  }\item[{}]{des2,  }\item[{}]{mode = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00266\ \ \ \ \ \textcolor{keyword}{def\ }match\_features(self,\ des1,\ des2,\ mode=0): }
+\DoxyCodeLine{00267\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ 0\ =\ BRUTE\ FORCE }}
+\DoxyCodeLine{00268\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ 1\ =\ BRUTE\ FORCE\ HAMMING }}
+\DoxyCodeLine{00269\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ mode\ ==\ 0: }
+\DoxyCodeLine{00270\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ BFMatcher\ with\ default\ params }}
+\DoxyCodeLine{00271\ \ \ \ \ \ \ \ \ \ \ \ \ bf\ =\ cv2.BFMatcher() }
+\DoxyCodeLine{00272\ \ \ \ \ \ \ \ \ \ \ \ \ matches\ =\ bf.knnMatch(des1,\ des2,\ k=2) }
+\DoxyCodeLine{00273\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Apply\ ratio\ test }}
+\DoxyCodeLine{00274\ \ \ \ \ \ \ \ \ \ \ \ \ good\ =\ [] }
+\DoxyCodeLine{00275\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ m,n\ \textcolor{keywordflow}{in}\ matches: }
+\DoxyCodeLine{00276\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ m.distance\ <\ 0.75*n.distance: }
+\DoxyCodeLine{00277\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ good.append([m]) }
+\DoxyCodeLine{00278\ \ \ \ \ \ \ \ \ \ \ \ \ matches\ =\ good }
+\DoxyCodeLine{00279\  }
+\DoxyCodeLine{00280\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{elif}\ mode\ ==\ 1: }
+\DoxyCodeLine{00281\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ create\ BFMatcher\ object\ with\ NORM\_HAMMING }}
+\DoxyCodeLine{00282\ \ \ \ \ \ \ \ \ \ \ \ \ bf\ =\ cv2.BFMatcher(cv2.NORM\_HAMMING,\ crossCheck=\textcolor{keyword}{True}) }
+\DoxyCodeLine{00283\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Match\ descriptors. }}
+\DoxyCodeLine{00284\ \ \ \ \ \ \ \ \ \ \ \ \ matches\ =\ bf.match(des1,\ des2) }
+\DoxyCodeLine{00285\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Sort\ them\ in\ the\ order\ of\ their\ distance. }}
+\DoxyCodeLine{00286\ \ \ \ \ \ \ \ \ \ \ \ \ matches\ =\ sorted(matches,\ key=\textcolor{keyword}{lambda}\ x:x.distance) }
+\DoxyCodeLine{00287\ \ \ \ \ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00288\ \ \ \ \ \ \ \ \ \ \ \ \ matches\ =\ matches[:20] }
+\DoxyCodeLine{00289\ \ \ \ \ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00290\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ matches }
+\DoxyCodeLine{00291\  }
+
+\end{DoxyCode}
+\Hypertarget{a00142_aed9087be55bc8f7b952d55a31926f5b0}\label{a00142_aed9087be55bc8f7b952d55a31926f5b0} 
+\index{CameraPosition@{CameraPosition}!openFileNameDialog@{openFileNameDialog}}
+\index{openFileNameDialog@{openFileNameDialog}!CameraPosition@{CameraPosition}}
+\doxysubsubsection{\texorpdfstring{openFileNameDialog()}{openFileNameDialog()}}
+{\footnotesize\ttfamily open\+File\+Name\+Dialog (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keyword}{def\ }openFileNameDialog(self): }
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ options\ =\ QFileDialog.Options() }}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ options\ |=\ QFileDialog.DontUseNativeDialog }}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ fileName,\ \_\ =\ QFileDialog.getOpenFileName(self,\textcolor{stringliteral}{"{}QFileDialog.getOpenFileName()"{}},\ \textcolor{stringliteral}{"{}"{}},\textcolor{stringliteral}{"{}MP4\ (*.mp4)"{}}) }
+\DoxyCodeLine{00075\ \ \ \ \  }
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ fileName }
+\DoxyCodeLine{00077\  }
+\DoxyCodeLine{00078\  }
+\DoxyCodeLine{00079\  }
+
+\end{DoxyCode}
+\Hypertarget{a00142_ac15db786f3c35347e250934b7a10d5f8}\label{a00142_ac15db786f3c35347e250934b7a10d5f8} 
+\index{CameraPosition@{CameraPosition}!processtrigger@{processtrigger}}
+\index{processtrigger@{processtrigger}!CameraPosition@{CameraPosition}}
+\doxysubsubsection{\texorpdfstring{processtrigger()}{processtrigger()}}
+{\footnotesize\ttfamily processtrigger (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{trigger }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00145\ \ \ \ \ \textcolor{keyword}{def\ }processtrigger(self,\ trigger): }
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ text\ =\ trigger.text() }
+\DoxyCodeLine{00147\  }
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ text\ ==\ \textcolor{stringliteral}{"{}New\ Source"{}}: }
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \ \ \ \ fileName,\ \_\ =\ QFileDialog.getOpenFileName(self,\textcolor{stringliteral}{"{}QFileDialog.getOpenFileName()"{}},\ \textcolor{stringliteral}{"{}"{}},\textcolor{stringliteral}{"{}MP4\ (*.mp4)"{}}) }
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ fileName: }
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.set\_source(fileName) }
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{elif}\ text\ ==\ \textcolor{stringliteral}{"{}New\ Reference"{}}: }
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \ \ \ \ fileName,\ \_\ =\ QFileDialog.getOpenFileName(self,\textcolor{stringliteral}{"{}QFileDialog.getOpenFileName()"{}},\ \textcolor{stringliteral}{"{}"{}},\textcolor{stringliteral}{"{}MP4\ (*.mp4)"{}}) }
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ fileName: }
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.add\_reference(fileName,\ 10,\ 5,\ 100) }
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{elif}\ text\ ==\ \textcolor{stringliteral}{"{}Stitch\ Images"{}}: }
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \ \ \ \ success,\ stitched\ =\ self.stitch(self.reference\_imgs) }
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ success: }
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ print(stitched) }
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cv2.imshow(\textcolor{stringliteral}{"{}Stitched\ image"{}},\ stitched) }
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{elif}\ text\ ==\ \textcolor{stringliteral}{"{}Save\ Stitched\ Image"{}}: }
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \ \ \ \ options\ =\ QFileDialog.Options() }
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \ \ \ \ options\ |=\ QFileDialog.DontUseNativeDialog }
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \ \ \ \ fileName,\ \_\ =\ QFileDialog.getSaveFileName(self,\textcolor{stringliteral}{"{}QFileDialog.getSaveFileName()"{}},\textcolor{stringliteral}{"{}"{}},\textcolor{stringliteral}{"{}JPEG\ (*.jpg);;All\ Files\ (*);;Text\ Files\ (*.txt)"{}},\ options=options) }
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ fileName: }
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cv2.imwrite(fileName,\ self.stitched\_img) }
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{elif}\ text\ ==\ \textcolor{stringliteral}{"{}Estimate\ Room\ in\ 3D"{}}: }
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \ \ \ \ img\ =\ \textcolor{keywordtype}{None} }
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ room\ =\ None }}
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \ \ \ \ self.room\_estimation\ =\ re.room\_estimation() }
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ self.stitched\_img\ \textcolor{keywordflow}{is}\ \textcolor{keywordflow}{not}\ \textcolor{keywordtype}{None}: }
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{"{}Setting\ estimation\ to\ stitched\ image"{}}) }
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.room\_estimation.set\_image(self.stitched\_img) }
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{elif}\ self.source\_img\ \textcolor{keywordflow}{is}\ \textcolor{keywordflow}{not}\ \textcolor{keywordtype}{None}: }
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{"{}Setting\ estimation\ to\ stitched\ image"{}}) }
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.room\_estimation.set\_image(self.source\_img) }
+\DoxyCodeLine{00178\  }
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \ \ \ \ limits,\ \_\ =\ self.room\_estimation.find\_3d\_limits() }
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \ \ \ \ self.room\_estimation.get\_room\_3d(limits,\ height=1000,\ step=2) }
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \ \ \ \ self.set\_view\_roomestimation() }
+\DoxyCodeLine{00183\  }
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{elif}\ text\ ==\ \textcolor{stringliteral}{"{}View\ Camera\ Estimation"{}}: }
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \ \ \ \ self.show\_estimation() }
+\DoxyCodeLine{00186\  }
+
+\end{DoxyCode}
+\Hypertarget{a00142_a275f572f3668859a12c81bc8f2af102c}\label{a00142_a275f572f3668859a12c81bc8f2af102c} 
+\index{CameraPosition@{CameraPosition}!set\_source@{set\_source}}
+\index{set\_source@{set\_source}!CameraPosition@{CameraPosition}}
+\doxysubsubsection{\texorpdfstring{set\_source()}{set\_source()}}
+{\footnotesize\ttfamily set\+\_\+source (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{video\+\_\+path,  }\item[{}]{frame = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00217\ \ \ \ \ \textcolor{keyword}{def\ }set\_source(self,\ video\_path,\ frame=0): }
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ self.source\_img\ =\ self.collect\_frames(video\_path,\ frame,1,1)[0] }
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ self.room\_estimation\ =\ re.room\_estimation(self.source\_img) }
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ if\ self.reference\_imgs\ and\ self.source\_img\ is\ not\ None: }}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ \ \ \ \ status,\ self.stitched\_img\ =\ self.stitch() }}
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ cv2.imshow(video\_path,\ self.source\_img) }
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ cv2.waitKey(0) }
+\DoxyCodeLine{00224\  }
+
+\end{DoxyCode}
+\Hypertarget{a00142_a0c3e027c807cd62496365cbc1f834a74}\label{a00142_a0c3e027c807cd62496365cbc1f834a74} 
+\index{CameraPosition@{CameraPosition}!set\_view\_roomestimation@{set\_view\_roomestimation}}
+\index{set\_view\_roomestimation@{set\_view\_roomestimation}!CameraPosition@{CameraPosition}}
+\doxysubsubsection{\texorpdfstring{set\_view\_roomestimation()}{set\_view\_roomestimation()}}
+{\footnotesize\ttfamily set\+\_\+view\+\_\+roomestimation (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00109\ \ \ \ \ \textcolor{keyword}{def\ }set\_view\_roomestimation(self): }
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ self.room\_widget\ =\ QWidget() }
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ self.layout.addWidget(self.room\_widget) }
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ self.room\_layout\ =\ QVBoxLayout() }
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ self.room\_widget.setLayout(self.room\_layout) }
+\DoxyCodeLine{00114\  }
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ self.bottom\_left\_pt\_x\ =\ QSpinBox() }
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ self.bottom\_left\_pt\_y\ =\ QSpinBox() }
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ self.bottom\_left\_pt\_x.valueChanged.connect(\textcolor{keyword}{lambda}:self.room\_estimation.set\_corners(self.bottom\_left\_pt\_x.value())) }
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ self.bottom\_left\_pt\_y.valueChanged.connect(\textcolor{keyword}{lambda}:self.room\_estimation.set\_corners(self.bottom\_left\_pt\_x.value())) }
+\DoxyCodeLine{00119\  }
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ self.top\_left\_pt\_x\ =\ QSpinBox() }
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ self.top\_left\_pt\_y\ =\ QSpinBox() }
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ self.top\_left\_pt\_x.valueChanged.connect(\textcolor{keyword}{lambda}:self.room\_estimation.set\_corners(self.top\_left\_pt\_x.value())) }
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ self.top\_left\_pt\_y.valueChanged.connect(\textcolor{keyword}{lambda}:self.room\_estimation.set\_corners(self.top\_left\_pt\_y.value())) }
+\DoxyCodeLine{00124\  }
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ self.top\_right\_pt\_x\ =\ QSpinBox() }
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ self.top\_right\_pt\_y\ =\ QSpinBox() }
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ self.top\_right\_pt\_x.valueChanged.connect(\textcolor{keyword}{lambda}:self.room\_estimation.set\_corners(self.top\_right\_pt\_x.value())) }
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ self.top\_right\_pt\_y.valueChanged.connect(\textcolor{keyword}{lambda}:self.room\_estimation.set\_corners(self.top\_right\_pt\_y.value())) }
+\DoxyCodeLine{00129\  }
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ self.bottom\_right\_pt\_x\ =\ QSpinBox() }
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ self.bottom\_right\_pt\_y\ =\ QSpinBox() }
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ self.bottom\_right\_pt\_x.valueChanged.connect(\textcolor{keyword}{lambda}:self.room\_estimation.set\_corners(self.bottom\_right\_pt\_x.value())) }
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ self.bottom\_right\_pt\_y.valueChanged.connect(\textcolor{keyword}{lambda}:self.room\_estimation.set\_corners(self.bottom\_right\_pt\_x.value())) }
+\DoxyCodeLine{00134\  }
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ self.room\_layout.addWidget(self.bottom\_left\_pt\_x)\ \ \  }
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ self.room\_layout.addWidget(self.bottom\_left\_pt\_y) }
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ self.room\_layout.addWidget(self.top\_left\_pt\_x)\  }
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ self.room\_layout.addWidget(self.top\_left\_pt\_y) }
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ self.room\_layout.addWidget(self.top\_right\_pt\_x)\  }
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ self.room\_layout.addWidget(self.top\_right\_pt\_y) }
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ self.room\_layout.addWidget(self.bottom\_right\_pt\_x) }
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ self.room\_layout.addWidget(self.bottom\_right\_pt\_y) }
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ self.room\_estimation.set\_corners() }}
+\DoxyCodeLine{00144\  }
+
+\end{DoxyCode}
+\Hypertarget{a00142_a2feface7d3d450593ed60788aafa8e6b}\label{a00142_a2feface7d3d450593ed60788aafa8e6b} 
+\index{CameraPosition@{CameraPosition}!show\_estimation@{show\_estimation}}
+\index{show\_estimation@{show\_estimation}!CameraPosition@{CameraPosition}}
+\doxysubsubsection{\texorpdfstring{show\_estimation()}{show\_estimation()}}
+{\footnotesize\ttfamily show\+\_\+estimation (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00312\ \ \ \ \ \textcolor{keyword}{def\ }show\_estimation(self): }
+\DoxyCodeLine{00313\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00314\ \ \ \ \ \ \ \ \ src\_points,\ matrix\ =\ self.find\_reference(self.source\_img,\ self.stitched\_img) }
+\DoxyCodeLine{00315\ \ \ \ \ \ \ \ \ cover\_img\ =\ cv2.polylines(self.stitched\_img,\ src\_points,\ \textcolor{keyword}{True},\ (255,\ 0,\ 0),5,\ cv2.LINE\_AA) }
+\DoxyCodeLine{00316\  }
+\DoxyCodeLine{00317\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ ref\ \textcolor{keywordflow}{in}\ self.reference\_imgs: }
+\DoxyCodeLine{00318\ \ \ \ \ \ \ \ \ \ \ \ \ ref\_points,\ matrix\ =\ self.find\_reference(ref,\ self.stitched\_img) }
+\DoxyCodeLine{00319\ \ \ \ \ \ \ \ \ \ \ \ \ cover\_img\ =\ cv2.polylines(self.stitched\_img,\ ref\_points,\ \textcolor{keyword}{True},\ (0,\ 0,\ 255),5,\ cv2.LINE\_AA) }
+\DoxyCodeLine{00320\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00321\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00322\ \ \ \ \ \ \ \ \ cv2.imshow(\textcolor{stringliteral}{"{}Camera\ Estimation"{}},\ cover\_img) }
+\DoxyCodeLine{00323\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ cover\_img }
+\DoxyCodeLine{00324\  }
+
+\end{DoxyCode}
+\Hypertarget{a00142_a7e4c0306db28e5b5283a960f321f171e}\label{a00142_a7e4c0306db28e5b5283a960f321f171e} 
+\index{CameraPosition@{CameraPosition}!stitch@{stitch}}
+\index{stitch@{stitch}!CameraPosition@{CameraPosition}}
+\doxysubsubsection{\texorpdfstring{stitch()}{stitch()}}
+{\footnotesize\ttfamily stitch (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{image\+\_\+list,  }\item[{}]{out\+\_\+path = {\ttfamily None} }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00187\ \ \ \ \ \textcolor{keyword}{def\ }stitch(self,\ image\_list,\ out\_path=None): }
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{"{}Stitching"{}}) }
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Test\ images }}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Initiate\ ORB\ detector }}
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ image\_dict\ =\ \{\} }
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ orb\ =\ cv2.ORB\_create() }
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ index,\ img\ \textcolor{keywordflow}{in}\ enumerate(image\_list): }
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \ \ \ \ kp,\ des\ =\ orb.detectAndCompute(img,\textcolor{keywordtype}{None}) }
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \ \ \ \ image\_dict[index]\ =\ (kp,\ des) }
+\DoxyCodeLine{00196\  }
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ bf\ =\ cv2.BFMatcher() }
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ img\_key\_1\ \textcolor{keywordflow}{in}\ image\_dict.keys(): }
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ img\_key\_2\ \textcolor{keywordflow}{in}\ image\_dict.keys(): }
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ matches\ =\ bf.knnMatch(image\_dict[img\_key\_1][1],image\_dict[img\_key\_2][1],\ k=10) }
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ m\ \textcolor{keywordflow}{in}\ matches: }
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ print(m[0].distance) }
+\DoxyCodeLine{00203\  }
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print("{}Stitching\ images"{}) }}
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ stitcher\ =\ cv2.Stitcher\_create(cv2.Stitcher\_SCANS) }
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ img\_list\ =\ [self.source\_img]\ +\ self.reference\_imgs }}
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ status,\ self.stitched\_img\ =\ stitcher.stitch(image\_list) }
+\DoxyCodeLine{00208\  }
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ status\ ==\ cv2.Stitcher\_OK: }
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{"{}Stitching\ Successful."{}}) }
+\DoxyCodeLine{00211\  }
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ out\_path\ \textcolor{keywordflow}{is}\ \textcolor{keywordtype}{None}\ \textcolor{keywordflow}{and}\ self.stitched\_img\ \textcolor{keywordflow}{is}\ \textcolor{keywordflow}{not}\ \textcolor{keywordtype}{None}: }
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \ \ \ \ cv2.imwrite(\textcolor{stringliteral}{"{}./stitched.jpg"{}},\ self.stitched\_img) }
+\DoxyCodeLine{00214\  }
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ status,\ self.stitched\_img }
+\DoxyCodeLine{00216\  }
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+K\+:/\+Github/\+People\+Tracker/src/camera\+\_\+position.\+py\end{DoxyCompactItemize}

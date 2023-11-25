@@ -1,0 +1,493 @@
+\doxysection{People\+Tracker.\+src.\+utils Namespace Reference}
+\hypertarget{namespace_people_tracker_1_1src_1_1utils}{}\label{namespace_people_tracker_1_1src_1_1utils}\index{PeopleTracker.src.utils@{PeopleTracker.src.utils}}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_people_tracker_1_1src_1_1utils_1_1_dataset}{Dataset}}
+\begin{DoxyCompactList}\small\item\em Dataset. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespace_people_tracker_1_1src_1_1utils_a1a51d5a5a3fe1f6844bee72b28df0942}{extract\+\_\+bboxes}} (mask)
+\begin{DoxyCompactList}\small\item\em Bounding Boxes. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespace_people_tracker_1_1src_1_1utils_a54175253a17d081ebc1bcd813cab91f7}{compute\+\_\+iou}} (box1, box2)
+\item 
+\mbox{\hyperlink{namespace_people_tracker_1_1src_1_1utils_af9c400799ddffca56340bb6b5fa4d7f6}{compute\+\_\+overlaps\+\_\+masks}} (masks1, masks2)
+\item 
+\mbox{\hyperlink{namespace_people_tracker_1_1src_1_1utils_ac003690af3dada90fdaf9269da467d27}{non\+\_\+max\+\_\+suppression}} (boxes, scores, threshold)
+\item 
+\mbox{\hyperlink{namespace_people_tracker_1_1src_1_1utils_acc07676c38e2f8b94e9fe6b92b43edf8}{apply\+\_\+box\+\_\+deltas}} (boxes, deltas)
+\item 
+\mbox{\hyperlink{namespace_people_tracker_1_1src_1_1utils_a02d5a032da1926059b55a8c91cbc2610}{box\+\_\+refinement\+\_\+graph}} (box, gt\+\_\+box)
+\item 
+\mbox{\hyperlink{namespace_people_tracker_1_1src_1_1utils_a91902236d996fed61ce52c46259ac538}{box\+\_\+refinement}} (box, gt\+\_\+box)
+\item 
+\mbox{\hyperlink{namespace_people_tracker_1_1src_1_1utils_a22a2b3a4d83a5030b8b521c5624e6df1}{resize\+\_\+image}} (image, min\+\_\+dim=None, max\+\_\+dim=None, min\+\_\+scale=None, mode="{}square"{})
+\item 
+\mbox{\hyperlink{namespace_people_tracker_1_1src_1_1utils_acfc6cc89f95c11ed3cd05bf706320e25}{resize\+\_\+mask}} (mask, scale, padding, crop=None)
+\item 
+\mbox{\hyperlink{namespace_people_tracker_1_1src_1_1utils_aa4f6abff284ec7b73a0ff0aa8b7d34b3}{minimize\+\_\+mask}} (bbox, mask, mini\+\_\+shape)
+\item 
+\mbox{\hyperlink{namespace_people_tracker_1_1src_1_1utils_a22aaf6d13a2e17305eb6ee8265c9cf78}{expand\+\_\+mask}} (bbox, mini\+\_\+mask, image\+\_\+shape)
+\item 
+\Hypertarget{namespace_people_tracker_1_1src_1_1utils_a651da7d3000d528a604b59f8c783976f}\label{namespace_people_tracker_1_1src_1_1utils_a651da7d3000d528a604b59f8c783976f} 
+{\bfseries mold\+\_\+mask} (mask, config)
+\item 
+\mbox{\hyperlink{namespace_people_tracker_1_1src_1_1utils_a7c1e401d91ffe4fb86ec6c1265f3e524}{unmold\+\_\+mask}} (mask, bbox, image\+\_\+shape)
+\item 
+\mbox{\hyperlink{namespace_people_tracker_1_1src_1_1utils_a973741449cda9c868338d356e40b0513}{generate\+\_\+anchors}} (scales, ratios, shape, feature\+\_\+stride, anchor\+\_\+stride)
+\begin{DoxyCompactList}\small\item\em Anchors. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespace_people_tracker_1_1src_1_1utils_a4108c4037ef4ec36d97596e8cc91fd27}{generate\+\_\+pyramid\+\_\+anchors}} (scales, ratios, feature\+\_\+shapes, feature\+\_\+strides, anchor\+\_\+stride)
+\item 
+\mbox{\hyperlink{namespace_people_tracker_1_1src_1_1utils_a41cc5ed08039f095ef85d066b5ac5736}{trim\+\_\+zeros}} (x)
+\begin{DoxyCompactList}\small\item\em Miscellaneous. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespace_people_tracker_1_1src_1_1utils_af5f7f7aa33fdb94ed802f23199ad0d56}{compute\+\_\+matches}} (gt\+\_\+boxes, gt\+\_\+class\+\_\+ids, gt\+\_\+masks, pred\+\_\+boxes, pred\+\_\+class\+\_\+ids, pred\+\_\+scores, pred\+\_\+masks, iou\+\_\+threshold=0.\+5, score\+\_\+threshold=0.\+0)
+\item 
+\mbox{\hyperlink{namespace_people_tracker_1_1src_1_1utils_aa2a69305337265325ecceb7631d94f5d}{compute\+\_\+ap}} (gt\+\_\+boxes, gt\+\_\+class\+\_\+ids, gt\+\_\+masks, pred\+\_\+boxes, pred\+\_\+class\+\_\+ids, pred\+\_\+scores, pred\+\_\+masks, iou\+\_\+threshold=0.\+5)
+\item 
+\mbox{\hyperlink{namespace_people_tracker_1_1src_1_1utils_a629c576d5b82079e1236348613463e95}{compute\+\_\+ap\+\_\+range}} (gt\+\_\+box, gt\+\_\+class\+\_\+id, gt\+\_\+mask, pred\+\_\+box, pred\+\_\+class\+\_\+id, pred\+\_\+score, pred\+\_\+mask, iou\+\_\+thresholds=None, verbose=1)
+\item 
+\mbox{\hyperlink{namespace_people_tracker_1_1src_1_1utils_a5f05888211cf7c5a974ca4596fdb3718}{compute\+\_\+recall}} (pred\+\_\+boxes, gt\+\_\+boxes, iou)
+\item 
+\mbox{\hyperlink{namespace_people_tracker_1_1src_1_1utils_afa0874686dd08355e2d30e5ab1059e3e}{batch\+\_\+slice}} (inputs, graph\+\_\+fn, batch\+\_\+size, names=None)
+\item 
+\mbox{\hyperlink{namespace_people_tracker_1_1src_1_1utils_aee772bddb501c4c61cff61c57e32d93b}{download\+\_\+trained\+\_\+weights}} (coco\+\_\+model\+\_\+path, verbose=1)
+\item 
+\mbox{\hyperlink{namespace_people_tracker_1_1src_1_1utils_ad07b294d2354bd0f176739c10d4abc2b}{norm\+\_\+boxes}} (boxes, shape)
+\item 
+\mbox{\hyperlink{namespace_people_tracker_1_1src_1_1utils_a2a452eed5467a833e48d52bc25949a94}{denorm\+\_\+boxes}} (boxes, shape)
+\item 
+\mbox{\hyperlink{namespace_people_tracker_1_1src_1_1utils_ad8268f50c6823c07e975ec0c64cba6b2}{resize}} (image, output\+\_\+shape, order=1, mode=\textquotesingle{}constant\textquotesingle{}, cval=0, clip=True, preserve\+\_\+range=False, anti\+\_\+aliasing=False, anti\+\_\+aliasing\+\_\+sigma=None)
+\item 
+\Hypertarget{namespace_people_tracker_1_1src_1_1utils_ae198d56e2e3251f0d31a2a3bfbc17f8b}\label{namespace_people_tracker_1_1src_1_1utils_ae198d56e2e3251f0d31a2a3bfbc17f8b} 
+{\bfseries distance\+\_\+2d} (p1, p2)
+\item 
+\mbox{\hyperlink{namespace_people_tracker_1_1src_1_1utils_a620244aa4f32f617b201abe47dbb8c1b}{get\+\_\+centroid}} (box)
+\item 
+\mbox{\hyperlink{namespace_people_tracker_1_1src_1_1utils_a4510da153c804121f91e79645ff14f15}{get\+\_\+corners}} (box)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{namespace_people_tracker_1_1src_1_1utils_aa0468abca41ad91bea42de1d0b01a9d8}\label{namespace_people_tracker_1_1src_1_1utils_aa0468abca41ad91bea42de1d0b01a9d8} 
+str {\bfseries COCO\+\_\+\+MODEL\+\_\+\+URL} = "{}https\+://github.\+com/matterport/Mask\+\_\+\+RCNN/releases/download/v2.\+0/mask\+\_\+rcnn\+\_\+coco.\+h5"{}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Mask R-CNN
+Common utility functions and classes.
+
+Copyright (c) 2017 Matterport, Inc.
+Licensed under the MIT License (see LICENSE for details)
+Written by Waleed Abdulla
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespace_people_tracker_1_1src_1_1utils_acc07676c38e2f8b94e9fe6b92b43edf8}\label{namespace_people_tracker_1_1src_1_1utils_acc07676c38e2f8b94e9fe6b92b43edf8} 
+\index{PeopleTracker.src.utils@{PeopleTracker.src.utils}!apply\_box\_deltas@{apply\_box\_deltas}}
+\index{apply\_box\_deltas@{apply\_box\_deltas}!PeopleTracker.src.utils@{PeopleTracker.src.utils}}
+\doxysubsubsection{\texorpdfstring{apply\_box\_deltas()}{apply\_box\_deltas()}}
+{\footnotesize\ttfamily apply\+\_\+box\+\_\+deltas (\begin{DoxyParamCaption}\item[{}]{boxes,  }\item[{}]{deltas }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Applies the given deltas to the given boxes.
+boxes: [N, (y1, x1, y2, x2)]. Note that (y2, x2) is outside the box.
+deltas: [N, (dy, dx, log(dh), log(dw))]
+\end{DoxyVerb}
+ \Hypertarget{namespace_people_tracker_1_1src_1_1utils_afa0874686dd08355e2d30e5ab1059e3e}\label{namespace_people_tracker_1_1src_1_1utils_afa0874686dd08355e2d30e5ab1059e3e} 
+\index{PeopleTracker.src.utils@{PeopleTracker.src.utils}!batch\_slice@{batch\_slice}}
+\index{batch\_slice@{batch\_slice}!PeopleTracker.src.utils@{PeopleTracker.src.utils}}
+\doxysubsubsection{\texorpdfstring{batch\_slice()}{batch\_slice()}}
+{\footnotesize\ttfamily batch\+\_\+slice (\begin{DoxyParamCaption}\item[{}]{inputs,  }\item[{}]{graph\+\_\+fn,  }\item[{}]{batch\+\_\+size,  }\item[{}]{names = {\ttfamily None} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Splits inputs into slices and feeds each slice to a copy of the given
+computation graph and then combines the results. It allows you to run a
+graph on a batch of inputs even if the graph is written to support one
+instance only.
+
+inputs: list of tensors. All must have the same first dimension length
+graph_fn: A function that returns a TF tensor that's part of a graph.
+batch_size: number of slices to divide the data into.
+names: If provided, assigns names to the resulting tensors.
+\end{DoxyVerb}
+ \Hypertarget{namespace_people_tracker_1_1src_1_1utils_a91902236d996fed61ce52c46259ac538}\label{namespace_people_tracker_1_1src_1_1utils_a91902236d996fed61ce52c46259ac538} 
+\index{PeopleTracker.src.utils@{PeopleTracker.src.utils}!box\_refinement@{box\_refinement}}
+\index{box\_refinement@{box\_refinement}!PeopleTracker.src.utils@{PeopleTracker.src.utils}}
+\doxysubsubsection{\texorpdfstring{box\_refinement()}{box\_refinement()}}
+{\footnotesize\ttfamily box\+\_\+refinement (\begin{DoxyParamCaption}\item[{}]{box,  }\item[{}]{gt\+\_\+box }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Compute refinement needed to transform box to gt_box.
+box and gt_box are [N, (y1, x1, y2, x2)]. (y2, x2) is
+assumed to be outside the box.
+\end{DoxyVerb}
+ \Hypertarget{namespace_people_tracker_1_1src_1_1utils_a02d5a032da1926059b55a8c91cbc2610}\label{namespace_people_tracker_1_1src_1_1utils_a02d5a032da1926059b55a8c91cbc2610} 
+\index{PeopleTracker.src.utils@{PeopleTracker.src.utils}!box\_refinement\_graph@{box\_refinement\_graph}}
+\index{box\_refinement\_graph@{box\_refinement\_graph}!PeopleTracker.src.utils@{PeopleTracker.src.utils}}
+\doxysubsubsection{\texorpdfstring{box\_refinement\_graph()}{box\_refinement\_graph()}}
+{\footnotesize\ttfamily box\+\_\+refinement\+\_\+graph (\begin{DoxyParamCaption}\item[{}]{box,  }\item[{}]{gt\+\_\+box }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Compute refinement needed to transform box to gt_box.
+box and gt_box are [N, (y1, x1, y2, x2)]
+\end{DoxyVerb}
+ \Hypertarget{namespace_people_tracker_1_1src_1_1utils_aa2a69305337265325ecceb7631d94f5d}\label{namespace_people_tracker_1_1src_1_1utils_aa2a69305337265325ecceb7631d94f5d} 
+\index{PeopleTracker.src.utils@{PeopleTracker.src.utils}!compute\_ap@{compute\_ap}}
+\index{compute\_ap@{compute\_ap}!PeopleTracker.src.utils@{PeopleTracker.src.utils}}
+\doxysubsubsection{\texorpdfstring{compute\_ap()}{compute\_ap()}}
+{\footnotesize\ttfamily compute\+\_\+ap (\begin{DoxyParamCaption}\item[{}]{gt\+\_\+boxes,  }\item[{}]{gt\+\_\+class\+\_\+ids,  }\item[{}]{gt\+\_\+masks,  }\item[{}]{pred\+\_\+boxes,  }\item[{}]{pred\+\_\+class\+\_\+ids,  }\item[{}]{pred\+\_\+scores,  }\item[{}]{pred\+\_\+masks,  }\item[{}]{iou\+\_\+threshold = {\ttfamily 0.5} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Compute Average Precision at a set IoU threshold (default 0.5).
+
+Returns:
+mAP: Mean Average Precision
+precisions: List of precisions at different class score thresholds.
+recalls: List of recall values at different class score thresholds.
+overlaps: [pred_boxes, gt_boxes] IoU overlaps.
+\end{DoxyVerb}
+ 
+
+References \mbox{\hyperlink{namespace_people_tracker_1_1src_1_1utils_af5f7f7aa33fdb94ed802f23199ad0d56}{People\+Tracker.\+src.\+utils.\+compute\+\_\+matches()}}.
+
+
+
+Referenced by \mbox{\hyperlink{namespace_people_tracker_1_1src_1_1utils_a629c576d5b82079e1236348613463e95}{People\+Tracker.\+src.\+utils.\+compute\+\_\+ap\+\_\+range()}}.
+
+\Hypertarget{namespace_people_tracker_1_1src_1_1utils_a629c576d5b82079e1236348613463e95}\label{namespace_people_tracker_1_1src_1_1utils_a629c576d5b82079e1236348613463e95} 
+\index{PeopleTracker.src.utils@{PeopleTracker.src.utils}!compute\_ap\_range@{compute\_ap\_range}}
+\index{compute\_ap\_range@{compute\_ap\_range}!PeopleTracker.src.utils@{PeopleTracker.src.utils}}
+\doxysubsubsection{\texorpdfstring{compute\_ap\_range()}{compute\_ap\_range()}}
+{\footnotesize\ttfamily compute\+\_\+ap\+\_\+range (\begin{DoxyParamCaption}\item[{}]{gt\+\_\+box,  }\item[{}]{gt\+\_\+class\+\_\+id,  }\item[{}]{gt\+\_\+mask,  }\item[{}]{pred\+\_\+box,  }\item[{}]{pred\+\_\+class\+\_\+id,  }\item[{}]{pred\+\_\+score,  }\item[{}]{pred\+\_\+mask,  }\item[{}]{iou\+\_\+thresholds = {\ttfamily None},  }\item[{}]{verbose = {\ttfamily 1} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Compute AP over a range or IoU thresholds. Default range is 0.5-0.95.\end{DoxyVerb}
+ 
+
+References \mbox{\hyperlink{namespace_people_tracker_1_1src_1_1utils_aa2a69305337265325ecceb7631d94f5d}{People\+Tracker.\+src.\+utils.\+compute\+\_\+ap()}}.
+
+\Hypertarget{namespace_people_tracker_1_1src_1_1utils_a54175253a17d081ebc1bcd813cab91f7}\label{namespace_people_tracker_1_1src_1_1utils_a54175253a17d081ebc1bcd813cab91f7} 
+\index{PeopleTracker.src.utils@{PeopleTracker.src.utils}!compute\_iou@{compute\_iou}}
+\index{compute\_iou@{compute\_iou}!PeopleTracker.src.utils@{PeopleTracker.src.utils}}
+\doxysubsubsection{\texorpdfstring{compute\_iou()}{compute\_iou()}}
+{\footnotesize\ttfamily compute\+\_\+iou (\begin{DoxyParamCaption}\item[{}]{box1,  }\item[{}]{box2 }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Computes IOU of the two bounding boxes.
+\end{DoxyVerb}
+ 
+
+Referenced by \mbox{\hyperlink{namespace_people_tracker_1_1src_1_1utils_ac003690af3dada90fdaf9269da467d27}{People\+Tracker.\+src.\+utils.\+non\+\_\+max\+\_\+suppression()}}.
+
+\Hypertarget{namespace_people_tracker_1_1src_1_1utils_af5f7f7aa33fdb94ed802f23199ad0d56}\label{namespace_people_tracker_1_1src_1_1utils_af5f7f7aa33fdb94ed802f23199ad0d56} 
+\index{PeopleTracker.src.utils@{PeopleTracker.src.utils}!compute\_matches@{compute\_matches}}
+\index{compute\_matches@{compute\_matches}!PeopleTracker.src.utils@{PeopleTracker.src.utils}}
+\doxysubsubsection{\texorpdfstring{compute\_matches()}{compute\_matches()}}
+{\footnotesize\ttfamily compute\+\_\+matches (\begin{DoxyParamCaption}\item[{}]{gt\+\_\+boxes,  }\item[{}]{gt\+\_\+class\+\_\+ids,  }\item[{}]{gt\+\_\+masks,  }\item[{}]{pred\+\_\+boxes,  }\item[{}]{pred\+\_\+class\+\_\+ids,  }\item[{}]{pred\+\_\+scores,  }\item[{}]{pred\+\_\+masks,  }\item[{}]{iou\+\_\+threshold = {\ttfamily 0.5},  }\item[{}]{score\+\_\+threshold = {\ttfamily 0.0} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Finds matches between prediction and ground truth instances.
+
+Returns:
+    gt_match: 1-D array. For each GT box it has the index of the matched
+              predicted box.
+    pred_match: 1-D array. For each predicted box, it has the index of
+                the matched ground truth box.
+    overlaps: [pred_boxes, gt_boxes] IoU overlaps.
+\end{DoxyVerb}
+ 
+
+References \mbox{\hyperlink{namespace_people_tracker_1_1src_1_1utils_af9c400799ddffca56340bb6b5fa4d7f6}{People\+Tracker.\+src.\+utils.\+compute\+\_\+overlaps\+\_\+masks()}}, and \mbox{\hyperlink{namespace_people_tracker_1_1src_1_1utils_a41cc5ed08039f095ef85d066b5ac5736}{People\+Tracker.\+src.\+utils.\+trim\+\_\+zeros()}}.
+
+
+
+Referenced by \mbox{\hyperlink{namespace_people_tracker_1_1src_1_1utils_aa2a69305337265325ecceb7631d94f5d}{People\+Tracker.\+src.\+utils.\+compute\+\_\+ap()}}.
+
+\Hypertarget{namespace_people_tracker_1_1src_1_1utils_af9c400799ddffca56340bb6b5fa4d7f6}\label{namespace_people_tracker_1_1src_1_1utils_af9c400799ddffca56340bb6b5fa4d7f6} 
+\index{PeopleTracker.src.utils@{PeopleTracker.src.utils}!compute\_overlaps\_masks@{compute\_overlaps\_masks}}
+\index{compute\_overlaps\_masks@{compute\_overlaps\_masks}!PeopleTracker.src.utils@{PeopleTracker.src.utils}}
+\doxysubsubsection{\texorpdfstring{compute\_overlaps\_masks()}{compute\_overlaps\_masks()}}
+{\footnotesize\ttfamily compute\+\_\+overlaps\+\_\+masks (\begin{DoxyParamCaption}\item[{}]{masks1,  }\item[{}]{masks2 }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Computes IoU overlaps between two sets of masks.
+masks1, masks2: [Height, Width, instances]
+\end{DoxyVerb}
+ 
+
+Referenced by \mbox{\hyperlink{namespace_people_tracker_1_1src_1_1utils_af5f7f7aa33fdb94ed802f23199ad0d56}{People\+Tracker.\+src.\+utils.\+compute\+\_\+matches()}}, and \mbox{\hyperlink{namespace_people_tracker_1_1src_1_1utils_a5f05888211cf7c5a974ca4596fdb3718}{People\+Tracker.\+src.\+utils.\+compute\+\_\+recall()}}.
+
+\Hypertarget{namespace_people_tracker_1_1src_1_1utils_a5f05888211cf7c5a974ca4596fdb3718}\label{namespace_people_tracker_1_1src_1_1utils_a5f05888211cf7c5a974ca4596fdb3718} 
+\index{PeopleTracker.src.utils@{PeopleTracker.src.utils}!compute\_recall@{compute\_recall}}
+\index{compute\_recall@{compute\_recall}!PeopleTracker.src.utils@{PeopleTracker.src.utils}}
+\doxysubsubsection{\texorpdfstring{compute\_recall()}{compute\_recall()}}
+{\footnotesize\ttfamily compute\+\_\+recall (\begin{DoxyParamCaption}\item[{}]{pred\+\_\+boxes,  }\item[{}]{gt\+\_\+boxes,  }\item[{}]{iou }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Compute the recall at the given IoU threshold. It's an indication
+of how many GT boxes were found by the given prediction boxes.
+
+pred_boxes: [N, (y1, x1, y2, x2)] in image coordinates
+gt_boxes: [N, (y1, x1, y2, x2)] in image coordinates
+\end{DoxyVerb}
+ 
+
+References \mbox{\hyperlink{namespace_people_tracker_1_1src_1_1utils_af9c400799ddffca56340bb6b5fa4d7f6}{People\+Tracker.\+src.\+utils.\+compute\+\_\+overlaps\+\_\+masks()}}.
+
+\Hypertarget{namespace_people_tracker_1_1src_1_1utils_a2a452eed5467a833e48d52bc25949a94}\label{namespace_people_tracker_1_1src_1_1utils_a2a452eed5467a833e48d52bc25949a94} 
+\index{PeopleTracker.src.utils@{PeopleTracker.src.utils}!denorm\_boxes@{denorm\_boxes}}
+\index{denorm\_boxes@{denorm\_boxes}!PeopleTracker.src.utils@{PeopleTracker.src.utils}}
+\doxysubsubsection{\texorpdfstring{denorm\_boxes()}{denorm\_boxes()}}
+{\footnotesize\ttfamily denorm\+\_\+boxes (\begin{DoxyParamCaption}\item[{}]{boxes,  }\item[{}]{shape }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Converts boxes from normalized coordinates to pixel coordinates.
+boxes: [N, (y1, x1, y2, x2)] in normalized coordinates
+shape: [..., (height, width)] in pixels
+
+Note: In pixel coordinates (y2, x2) is outside the box. But in normalized
+coordinates it's inside the box.
+
+Returns:
+    [N, (y1, x1, y2, x2)] in pixel coordinates
+\end{DoxyVerb}
+ \Hypertarget{namespace_people_tracker_1_1src_1_1utils_aee772bddb501c4c61cff61c57e32d93b}\label{namespace_people_tracker_1_1src_1_1utils_aee772bddb501c4c61cff61c57e32d93b} 
+\index{PeopleTracker.src.utils@{PeopleTracker.src.utils}!download\_trained\_weights@{download\_trained\_weights}}
+\index{download\_trained\_weights@{download\_trained\_weights}!PeopleTracker.src.utils@{PeopleTracker.src.utils}}
+\doxysubsubsection{\texorpdfstring{download\_trained\_weights()}{download\_trained\_weights()}}
+{\footnotesize\ttfamily download\+\_\+trained\+\_\+weights (\begin{DoxyParamCaption}\item[{}]{coco\+\_\+model\+\_\+path,  }\item[{}]{verbose = {\ttfamily 1} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Download COCO trained weights from Releases.
+
+coco_model_path: local path of COCO trained weights
+\end{DoxyVerb}
+ \Hypertarget{namespace_people_tracker_1_1src_1_1utils_a22aaf6d13a2e17305eb6ee8265c9cf78}\label{namespace_people_tracker_1_1src_1_1utils_a22aaf6d13a2e17305eb6ee8265c9cf78} 
+\index{PeopleTracker.src.utils@{PeopleTracker.src.utils}!expand\_mask@{expand\_mask}}
+\index{expand\_mask@{expand\_mask}!PeopleTracker.src.utils@{PeopleTracker.src.utils}}
+\doxysubsubsection{\texorpdfstring{expand\_mask()}{expand\_mask()}}
+{\footnotesize\ttfamily expand\+\_\+mask (\begin{DoxyParamCaption}\item[{}]{bbox,  }\item[{}]{mini\+\_\+mask,  }\item[{}]{image\+\_\+shape }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Resizes mini masks back to image size. Reverses the change
+of minimize_mask().
+
+See inspect_data.ipynb notebook for more details.
+\end{DoxyVerb}
+ 
+
+References \mbox{\hyperlink{namespace_people_tracker_1_1src_1_1utils_ad8268f50c6823c07e975ec0c64cba6b2}{People\+Tracker.\+src.\+utils.\+resize()}}.
+
+\Hypertarget{namespace_people_tracker_1_1src_1_1utils_a1a51d5a5a3fe1f6844bee72b28df0942}\label{namespace_people_tracker_1_1src_1_1utils_a1a51d5a5a3fe1f6844bee72b28df0942} 
+\index{PeopleTracker.src.utils@{PeopleTracker.src.utils}!extract\_bboxes@{extract\_bboxes}}
+\index{extract\_bboxes@{extract\_bboxes}!PeopleTracker.src.utils@{PeopleTracker.src.utils}}
+\doxysubsubsection{\texorpdfstring{extract\_bboxes()}{extract\_bboxes()}}
+{\footnotesize\ttfamily extract\+\_\+bboxes (\begin{DoxyParamCaption}\item[{}]{mask }\end{DoxyParamCaption})}
+
+
+
+Bounding Boxes. 
+
+\begin{DoxyVerb}Compute bounding boxes from masks.
+mask: [height, width, num_instances]. Mask pixels are either 1 or 0.
+
+Returns: bbox array [num_instances, (y1, x1, y2, x2)].
+\end{DoxyVerb}
+ \Hypertarget{namespace_people_tracker_1_1src_1_1utils_a973741449cda9c868338d356e40b0513}\label{namespace_people_tracker_1_1src_1_1utils_a973741449cda9c868338d356e40b0513} 
+\index{PeopleTracker.src.utils@{PeopleTracker.src.utils}!generate\_anchors@{generate\_anchors}}
+\index{generate\_anchors@{generate\_anchors}!PeopleTracker.src.utils@{PeopleTracker.src.utils}}
+\doxysubsubsection{\texorpdfstring{generate\_anchors()}{generate\_anchors()}}
+{\footnotesize\ttfamily generate\+\_\+anchors (\begin{DoxyParamCaption}\item[{}]{scales,  }\item[{}]{ratios,  }\item[{}]{shape,  }\item[{}]{feature\+\_\+stride,  }\item[{}]{anchor\+\_\+stride }\end{DoxyParamCaption})}
+
+
+
+Anchors. 
+
+\begin{DoxyVerb}scales: 1D array of anchor sizes in pixels. Example: [32, 64, 128]
+ratios: 1D array of anchor ratios of width/height. Example: [0.5, 1, 2]
+shape: [height, width] spatial shape of the feature map over which
+        to generate anchors.
+feature_stride: Stride of the feature map relative to the image in pixels.
+anchor_stride: Stride of anchors on the feature map. For example, if the
+    value is 2 then generate anchors for every other feature map pixel.
+\end{DoxyVerb}
+ 
+
+Referenced by \mbox{\hyperlink{namespace_people_tracker_1_1src_1_1utils_a4108c4037ef4ec36d97596e8cc91fd27}{People\+Tracker.\+src.\+utils.\+generate\+\_\+pyramid\+\_\+anchors()}}.
+
+\Hypertarget{namespace_people_tracker_1_1src_1_1utils_a4108c4037ef4ec36d97596e8cc91fd27}\label{namespace_people_tracker_1_1src_1_1utils_a4108c4037ef4ec36d97596e8cc91fd27} 
+\index{PeopleTracker.src.utils@{PeopleTracker.src.utils}!generate\_pyramid\_anchors@{generate\_pyramid\_anchors}}
+\index{generate\_pyramid\_anchors@{generate\_pyramid\_anchors}!PeopleTracker.src.utils@{PeopleTracker.src.utils}}
+\doxysubsubsection{\texorpdfstring{generate\_pyramid\_anchors()}{generate\_pyramid\_anchors()}}
+{\footnotesize\ttfamily generate\+\_\+pyramid\+\_\+anchors (\begin{DoxyParamCaption}\item[{}]{scales,  }\item[{}]{ratios,  }\item[{}]{feature\+\_\+shapes,  }\item[{}]{feature\+\_\+strides,  }\item[{}]{anchor\+\_\+stride }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Generate anchors at different levels of a feature pyramid. Each scale
+is associated with a level of the pyramid, but each ratio is used in
+all levels of the pyramid.
+
+Returns:
+anchors: [N, (y1, x1, y2, x2)]. All generated anchors in one array. Sorted
+    with the same order of the given scales. So, anchors of scale[0] come
+    first, then anchors of scale[1], and so on.
+\end{DoxyVerb}
+ 
+
+References \mbox{\hyperlink{namespace_people_tracker_1_1src_1_1utils_a973741449cda9c868338d356e40b0513}{People\+Tracker.\+src.\+utils.\+generate\+\_\+anchors()}}.
+
+\Hypertarget{namespace_people_tracker_1_1src_1_1utils_a620244aa4f32f617b201abe47dbb8c1b}\label{namespace_people_tracker_1_1src_1_1utils_a620244aa4f32f617b201abe47dbb8c1b} 
+\index{PeopleTracker.src.utils@{PeopleTracker.src.utils}!get\_centroid@{get\_centroid}}
+\index{get\_centroid@{get\_centroid}!PeopleTracker.src.utils@{PeopleTracker.src.utils}}
+\doxysubsubsection{\texorpdfstring{get\_centroid()}{get\_centroid()}}
+{\footnotesize\ttfamily get\+\_\+centroid (\begin{DoxyParamCaption}\item[{}]{box }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}returns centroid of a box, given the box is in format (x1, y1, x2, y2)
+\end{DoxyVerb}
+ \Hypertarget{namespace_people_tracker_1_1src_1_1utils_a4510da153c804121f91e79645ff14f15}\label{namespace_people_tracker_1_1src_1_1utils_a4510da153c804121f91e79645ff14f15} 
+\index{PeopleTracker.src.utils@{PeopleTracker.src.utils}!get\_corners@{get\_corners}}
+\index{get\_corners@{get\_corners}!PeopleTracker.src.utils@{PeopleTracker.src.utils}}
+\doxysubsubsection{\texorpdfstring{get\_corners()}{get\_corners()}}
+{\footnotesize\ttfamily get\+\_\+corners (\begin{DoxyParamCaption}\item[{}]{box }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}returns 2 point pairs describing the corners of the box
+\end{DoxyVerb}
+ \Hypertarget{namespace_people_tracker_1_1src_1_1utils_aa4f6abff284ec7b73a0ff0aa8b7d34b3}\label{namespace_people_tracker_1_1src_1_1utils_aa4f6abff284ec7b73a0ff0aa8b7d34b3} 
+\index{PeopleTracker.src.utils@{PeopleTracker.src.utils}!minimize\_mask@{minimize\_mask}}
+\index{minimize\_mask@{minimize\_mask}!PeopleTracker.src.utils@{PeopleTracker.src.utils}}
+\doxysubsubsection{\texorpdfstring{minimize\_mask()}{minimize\_mask()}}
+{\footnotesize\ttfamily minimize\+\_\+mask (\begin{DoxyParamCaption}\item[{}]{bbox,  }\item[{}]{mask,  }\item[{}]{mini\+\_\+shape }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Resize masks to a smaller version to reduce memory load.
+Mini-masks can be resized back to image scale using expand_masks()
+
+See inspect_data.ipynb notebook for more details.
+\end{DoxyVerb}
+ 
+
+References \mbox{\hyperlink{namespace_people_tracker_1_1src_1_1utils_ad8268f50c6823c07e975ec0c64cba6b2}{People\+Tracker.\+src.\+utils.\+resize()}}.
+
+\Hypertarget{namespace_people_tracker_1_1src_1_1utils_ac003690af3dada90fdaf9269da467d27}\label{namespace_people_tracker_1_1src_1_1utils_ac003690af3dada90fdaf9269da467d27} 
+\index{PeopleTracker.src.utils@{PeopleTracker.src.utils}!non\_max\_suppression@{non\_max\_suppression}}
+\index{non\_max\_suppression@{non\_max\_suppression}!PeopleTracker.src.utils@{PeopleTracker.src.utils}}
+\doxysubsubsection{\texorpdfstring{non\_max\_suppression()}{non\_max\_suppression()}}
+{\footnotesize\ttfamily non\+\_\+max\+\_\+suppression (\begin{DoxyParamCaption}\item[{}]{boxes,  }\item[{}]{scores,  }\item[{}]{threshold }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Performs non-maximum suppression and returns indices of kept boxes.
+boxes: [N, (y1, x1, y2, x2)]. Notice that (y2, x2) lays outside the box.
+scores: 1-D array of box scores.
+threshold: Float. IoU threshold to use for filtering.
+\end{DoxyVerb}
+ 
+
+References \mbox{\hyperlink{namespace_people_tracker_1_1src_1_1utils_a54175253a17d081ebc1bcd813cab91f7}{People\+Tracker.\+src.\+utils.\+compute\+\_\+iou()}}.
+
+\Hypertarget{namespace_people_tracker_1_1src_1_1utils_ad07b294d2354bd0f176739c10d4abc2b}\label{namespace_people_tracker_1_1src_1_1utils_ad07b294d2354bd0f176739c10d4abc2b} 
+\index{PeopleTracker.src.utils@{PeopleTracker.src.utils}!norm\_boxes@{norm\_boxes}}
+\index{norm\_boxes@{norm\_boxes}!PeopleTracker.src.utils@{PeopleTracker.src.utils}}
+\doxysubsubsection{\texorpdfstring{norm\_boxes()}{norm\_boxes()}}
+{\footnotesize\ttfamily norm\+\_\+boxes (\begin{DoxyParamCaption}\item[{}]{boxes,  }\item[{}]{shape }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Converts boxes from pixel coordinates to normalized coordinates.
+boxes: [N, (y1, x1, y2, x2)] in pixel coordinates
+shape: [..., (height, width)] in pixels
+
+Note: In pixel coordinates (y2, x2) is outside the box. But in normalized
+coordinates it's inside the box.
+
+Returns:
+    [N, (y1, x1, y2, x2)] in normalized coordinates
+\end{DoxyVerb}
+ \Hypertarget{namespace_people_tracker_1_1src_1_1utils_ad8268f50c6823c07e975ec0c64cba6b2}\label{namespace_people_tracker_1_1src_1_1utils_ad8268f50c6823c07e975ec0c64cba6b2} 
+\index{PeopleTracker.src.utils@{PeopleTracker.src.utils}!resize@{resize}}
+\index{resize@{resize}!PeopleTracker.src.utils@{PeopleTracker.src.utils}}
+\doxysubsubsection{\texorpdfstring{resize()}{resize()}}
+{\footnotesize\ttfamily resize (\begin{DoxyParamCaption}\item[{}]{image,  }\item[{}]{output\+\_\+shape,  }\item[{}]{order = {\ttfamily 1},  }\item[{}]{mode = {\ttfamily \textquotesingle{}constant\textquotesingle{}},  }\item[{}]{cval = {\ttfamily 0},  }\item[{}]{clip = {\ttfamily True},  }\item[{}]{preserve\+\_\+range = {\ttfamily False},  }\item[{}]{anti\+\_\+aliasing = {\ttfamily False},  }\item[{}]{anti\+\_\+aliasing\+\_\+sigma = {\ttfamily None} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}A wrapper for Scikit-Image resize().
+
+Scikit-Image generates warnings on every call to resize() if it doesn't
+receive the right parameters. The right parameters depend on the version
+of skimage. This solves the problem by using different parameters per
+version. And it provides a central place to control resizing defaults.
+\end{DoxyVerb}
+ 
+
+Referenced by \mbox{\hyperlink{namespace_people_tracker_1_1src_1_1utils_a22aaf6d13a2e17305eb6ee8265c9cf78}{People\+Tracker.\+src.\+utils.\+expand\+\_\+mask()}}, \mbox{\hyperlink{namespace_people_tracker_1_1src_1_1utils_aa4f6abff284ec7b73a0ff0aa8b7d34b3}{People\+Tracker.\+src.\+utils.\+minimize\+\_\+mask()}}, and \mbox{\hyperlink{namespace_people_tracker_1_1src_1_1utils_a22a2b3a4d83a5030b8b521c5624e6df1}{People\+Tracker.\+src.\+utils.\+resize\+\_\+image()}}.
+
+\Hypertarget{namespace_people_tracker_1_1src_1_1utils_a22a2b3a4d83a5030b8b521c5624e6df1}\label{namespace_people_tracker_1_1src_1_1utils_a22a2b3a4d83a5030b8b521c5624e6df1} 
+\index{PeopleTracker.src.utils@{PeopleTracker.src.utils}!resize\_image@{resize\_image}}
+\index{resize\_image@{resize\_image}!PeopleTracker.src.utils@{PeopleTracker.src.utils}}
+\doxysubsubsection{\texorpdfstring{resize\_image()}{resize\_image()}}
+{\footnotesize\ttfamily resize\+\_\+image (\begin{DoxyParamCaption}\item[{}]{image,  }\item[{}]{min\+\_\+dim = {\ttfamily None},  }\item[{}]{max\+\_\+dim = {\ttfamily None},  }\item[{}]{min\+\_\+scale = {\ttfamily None},  }\item[{}]{mode = {\ttfamily "{}square"{}} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Resizes an image keeping the aspect ratio unchanged.
+
+min_dim: if provided, resizes the image such that it's smaller
+    dimension == min_dim
+max_dim: if provided, ensures that the image longest side doesn't
+    exceed this value.
+min_scale: if provided, ensure that the image is scaled up by at least
+    this percent even if min_dim doesn't require it.
+mode: Resizing mode.
+    none: No resizing. Return the image unchanged.
+    square: Resize and pad with zeros to get a square image
+        of size [max_dim, max_dim].
+    pad64: Pads width and height with zeros to make them multiples of 64.
+           If min_dim or min_scale are provided, it scales the image up
+           before padding. max_dim is ignored in this mode.
+           The multiple of 64 is needed to ensure smooth scaling of feature
+           maps up and down the 6 levels of the FPN pyramid (2**6=64).
+    crop: Picks random crops from the image. First, scales the image based
+          on min_dim and min_scale, then picks a random crop of
+          size min_dim x min_dim. Can be used in training only.
+          max_dim is not used in this mode.
+
+Returns:
+image: the resized image
+window: (y1, x1, y2, x2). If max_dim is provided, padding might
+    be inserted in the returned image. If so, this window is the
+    coordinates of the image part of the full image (excluding
+    the padding). The x2, y2 pixels are not included.
+scale: The scale factor used to resize the image
+padding: Padding added to the image [(top, bottom), (left, right), (0, 0)]
+\end{DoxyVerb}
+ 
+
+References \mbox{\hyperlink{namespace_people_tracker_1_1src_1_1utils_ad8268f50c6823c07e975ec0c64cba6b2}{People\+Tracker.\+src.\+utils.\+resize()}}.
+
+\Hypertarget{namespace_people_tracker_1_1src_1_1utils_acfc6cc89f95c11ed3cd05bf706320e25}\label{namespace_people_tracker_1_1src_1_1utils_acfc6cc89f95c11ed3cd05bf706320e25} 
+\index{PeopleTracker.src.utils@{PeopleTracker.src.utils}!resize\_mask@{resize\_mask}}
+\index{resize\_mask@{resize\_mask}!PeopleTracker.src.utils@{PeopleTracker.src.utils}}
+\doxysubsubsection{\texorpdfstring{resize\_mask()}{resize\_mask()}}
+{\footnotesize\ttfamily resize\+\_\+mask (\begin{DoxyParamCaption}\item[{}]{mask,  }\item[{}]{scale,  }\item[{}]{padding,  }\item[{}]{crop = {\ttfamily None} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Resizes a mask using the given scale and padding.
+Typically, you get the scale and padding from resize_image() to
+ensure both, the image and the mask, are resized consistently.
+
+scale: mask scaling factor
+padding: Padding to add to the mask in the form
+        [(top, bottom), (left, right), (0, 0)]
+\end{DoxyVerb}
+ \Hypertarget{namespace_people_tracker_1_1src_1_1utils_a41cc5ed08039f095ef85d066b5ac5736}\label{namespace_people_tracker_1_1src_1_1utils_a41cc5ed08039f095ef85d066b5ac5736} 
+\index{PeopleTracker.src.utils@{PeopleTracker.src.utils}!trim\_zeros@{trim\_zeros}}
+\index{trim\_zeros@{trim\_zeros}!PeopleTracker.src.utils@{PeopleTracker.src.utils}}
+\doxysubsubsection{\texorpdfstring{trim\_zeros()}{trim\_zeros()}}
+{\footnotesize\ttfamily trim\+\_\+zeros (\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})}
+
+
+
+Miscellaneous. 
+
+\begin{DoxyVerb}It's common to have tensors larger than the available data and
+pad with zeros. This function removes rows that are all zeros.
+
+x: [rows, columns].
+\end{DoxyVerb}
+ 
+
+Referenced by \mbox{\hyperlink{namespace_people_tracker_1_1src_1_1utils_af5f7f7aa33fdb94ed802f23199ad0d56}{People\+Tracker.\+src.\+utils.\+compute\+\_\+matches()}}.
+
+\Hypertarget{namespace_people_tracker_1_1src_1_1utils_a7c1e401d91ffe4fb86ec6c1265f3e524}\label{namespace_people_tracker_1_1src_1_1utils_a7c1e401d91ffe4fb86ec6c1265f3e524} 
+\index{PeopleTracker.src.utils@{PeopleTracker.src.utils}!unmold\_mask@{unmold\_mask}}
+\index{unmold\_mask@{unmold\_mask}!PeopleTracker.src.utils@{PeopleTracker.src.utils}}
+\doxysubsubsection{\texorpdfstring{unmold\_mask()}{unmold\_mask()}}
+{\footnotesize\ttfamily unmold\+\_\+mask (\begin{DoxyParamCaption}\item[{}]{mask,  }\item[{}]{bbox,  }\item[{}]{image\+\_\+shape }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Converts a mask generated by the neural network to a format similar
+to its original shape.
+mask: [height, width] of type float. A small, typically 28x28 mask.
+bbox: [y1, x1, y2, x2]. The box to fit the mask in.
+
+Returns a binary mask with the same size as the original image.
+\end{DoxyVerb}
+ 

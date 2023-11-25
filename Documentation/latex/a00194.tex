@@ -1,0 +1,581 @@
+\doxysection{Image\+\_\+\+Enhancement}
+\hypertarget{a00194}{}\label{a00194}\index{Image\_Enhancement@{Image\_Enhancement}}
+
+
+Inheritance diagram for Image\+\_\+\+Enhancement\+:
+% FIG 0
+
+
+Collaboration diagram for Image\+\_\+\+Enhancement\+:
+% FIG 1
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{a00194_abdd362d5f799ad16b5d6700efe590290}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self)
+\item 
+\mbox{\hyperlink{a00194_a1330cb492c0189d408139be8f6ae4e32}{reset\+\_\+default}} (self)
+\item 
+\mbox{\hyperlink{a00194_ae09b437c4416f2443d3959bce7043a5e}{update\+\_\+brightness}} (self)
+\item 
+\mbox{\hyperlink{a00194_ac7ac6a1fda489e79b5865db6954d2bcd}{update\+\_\+gamma}} (self)
+\item 
+\mbox{\hyperlink{a00194_ab70c1e94c6a84bd1458e5de004cf32a9}{update\+\_\+alpha}} (self)
+\item 
+\mbox{\hyperlink{a00194_a48a65879da1c34c9549d03e35d61ecd1}{update\+\_\+beta}} (self)
+\item 
+\mbox{\hyperlink{a00194_aab59cc46b8c23e8bec3376bc75b95fb5}{toggle\+\_\+equalize\+\_\+hist}} (self)
+\item 
+\mbox{\hyperlink{a00194_a0da06a10bc3e6195bf81e8ee5cdbb944}{toggle\+\_\+chahe\+\_\+hist}} (self)
+\item 
+\mbox{\hyperlink{a00194_a4482bf48f65833441f00bc81a0861801}{get\+\_\+equalize\+\_\+hist}} (self)
+\item 
+\mbox{\hyperlink{a00194_a242af150737623d45026c11498711f33}{get\+\_\+equalize\+\_\+clahe\+\_\+hist}} (self)
+\item 
+\mbox{\hyperlink{a00194_a474dcc3ea2a28ddafc225792af59437e}{get\+\_\+alpha}} (self)
+\item 
+\mbox{\hyperlink{a00194_ad5196be901cfdedfbb69ec0879ec727f}{get\+\_\+beta}} (self)
+\item 
+\mbox{\hyperlink{a00194_ad72ded4bf965a9048b2dead0c0349900}{get\+\_\+gamma}} (self)
+\item 
+\mbox{\hyperlink{a00194_a6748ef27108420f42a282a1f50159c67}{set\+\_\+normalized\+\_\+region}} (self, image)
+\item 
+\mbox{\hyperlink{a00194_ac45930acafa3b3429da918cec06dba83}{clear\+\_\+normalized\+\_\+region}} (self)
+\item 
+\mbox{\hyperlink{a00194_a9f9030eb7d81a5a1cf0cb4701a22e691}{set\+\_\+normalize\+\_\+flag}} (self)
+\item 
+\mbox{\hyperlink{a00194_af1f7d034fa043ac226cf922face8e483}{enhance\+\_\+normalized\+\_\+roi}} (self, image)
+\item 
+\mbox{\hyperlink{a00194_ad64aedb2cde976ec3d8e29161914bce8}{add\+\_\+brightness}} (self, image)
+\item 
+\mbox{\hyperlink{a00194_afc430057cbbe8b1a7a8b7e951a7145a3}{enhance\+\_\+brightness\+\_\+contrast}} (self, image)
+\item 
+\mbox{\hyperlink{a00194_a8ac5ce6636a0e16d8bac386ca6864783}{enhance\+\_\+gamma}} (self, image)
+\item 
+\mbox{\hyperlink{a00194_aebb148ab3b94d0e8de9ad190798f9828}{equalize\+\_\+hist}} (self, image)
+\item 
+\mbox{\hyperlink{a00194_a553ecb3f3c94e037b4cc4bb2c7a87996}{equalize\+\_\+clahe\+\_\+hist}} (self, image)
+\item 
+\mbox{\hyperlink{a00194_a3f3fc8bf3769eacea7a2a2f39b67f130}{auto\+\_\+enhance}} (self, image)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{a00194_a22f45a3cb4f074e609f58ebaeef0ecf9}\label{a00194_a22f45a3cb4f074e609f58ebaeef0ecf9} 
+{\bfseries label}
+\item 
+\Hypertarget{a00194_a62197192f0fbf4e0675eb37be1c4c175}\label{a00194_a62197192f0fbf4e0675eb37be1c4c175} 
+{\bfseries alpha}
+\item 
+\Hypertarget{a00194_a40ce10701e459f21d2834325158ff870}\label{a00194_a40ce10701e459f21d2834325158ff870} 
+{\bfseries alpha\+\_\+label}
+\item 
+\Hypertarget{a00194_ab146b9cbab6e73e7588b240dc709fe01}\label{a00194_ab146b9cbab6e73e7588b240dc709fe01} 
+{\bfseries beta}
+\item 
+\Hypertarget{a00194_a6d05459de448dd3ea5b63ceaab4525c3}\label{a00194_a6d05459de448dd3ea5b63ceaab4525c3} 
+{\bfseries beta\+\_\+label}
+\item 
+\Hypertarget{a00194_a8d00631c9622112f1877fdb1222c242e}\label{a00194_a8d00631c9622112f1877fdb1222c242e} 
+{\bfseries gamma}
+\item 
+\Hypertarget{a00194_a2e84acf94519514a0fce8bece65dede7}\label{a00194_a2e84acf94519514a0fce8bece65dede7} 
+{\bfseries gamma\+\_\+label}
+\item 
+\Hypertarget{a00194_a7a8a7bf7c5b4f515e7ccfeb9b4e46ecb}\label{a00194_a7a8a7bf7c5b4f515e7ccfeb9b4e46ecb} 
+{\bfseries roi\+\_\+normalize}
+\item 
+\Hypertarget{a00194_ada7399dc3145105c7bbb7a3d562b33a3}\label{a00194_ada7399dc3145105c7bbb7a3d562b33a3} 
+{\bfseries roi\+\_\+normalize\+\_\+region}
+\item 
+\Hypertarget{a00194_ac98d016b4f73d20396b8e0b5b135ae20}\label{a00194_ac98d016b4f73d20396b8e0b5b135ae20} 
+{\bfseries roi\+\_\+normalize\+\_\+flag}
+\item 
+\Hypertarget{a00194_a2f7f5eb1c21f000e94a53e512bbc059a}\label{a00194_a2f7f5eb1c21f000e94a53e512bbc059a} 
+{\bfseries reset\+\_\+button}
+\item 
+\Hypertarget{a00194_ab6fe262ecd3e788e135a9b0cbbf1f06a}\label{a00194_ab6fe262ecd3e788e135a9b0cbbf1f06a} 
+{\bfseries equalize\+\_\+hist\+\_\+button}
+\item 
+\Hypertarget{a00194_ad4106f0d1688a060116f1159172d5fe4}\label{a00194_ad4106f0d1688a060116f1159172d5fe4} 
+{\bfseries equalize\+\_\+chahe\+\_\+hist\+\_\+button}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}UI for setting Mask-RCNN IOU options
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{a00194_abdd362d5f799ad16b5d6700efe590290}\label{a00194_abdd362d5f799ad16b5d6700efe590290} 
+\index{Image\_Enhancement@{Image\_Enhancement}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!Image\_Enhancement@{Image\_Enhancement}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily \+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{01042\ \ \ \ \ \textcolor{keyword}{def\ }\_\_init\_\_(self): }
+\DoxyCodeLine{01043\ \ \ \ \ \ \ \ \ super().\_\_init\_\_() }
+\DoxyCodeLine{01044\ \ \ \ \ \ \ \ \ layout\ =\ PyQt5.QtWidgets.QVBoxLayout() }
+\DoxyCodeLine{01045\ \ \ \ \ \ \ \ \ self.setWindowTitle(\textcolor{stringliteral}{"{}Image\ Options"{}}) }
+\DoxyCodeLine{01046\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ self.setGeometry(self.left,\ self.top,\ self.width,\ self.height) }}
+\DoxyCodeLine{01047\ \ \ \ \ \ \ \ \ self.label\ =\ PyQt5.QtWidgets.QLabel(\textcolor{stringliteral}{"{}Image\ options\ for\ brightness\ and\ contrast."{}}) }
+\DoxyCodeLine{01048\ \ \ \ \ \ \ \ \ layout.addWidget(self.label) }
+\DoxyCodeLine{01049\ \ \ \ \ \ \ \ \ bar\_form\ =\ PyQt5.QtWidgets.QFormLayout() }
+\DoxyCodeLine{01050\ \ \ \ \ \ \ \ \ layout.addLayout(bar\_form) }
+\DoxyCodeLine{01051\ \ \ \ \ \ \ \ \ self.setLayout(layout) }
+\DoxyCodeLine{01052\  }
+\DoxyCodeLine{01053\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ self.brightness\ =\ PyQt5.QtWidgets.QSlider(PyQt5.QtCore.Qt.Horizontal) }}
+\DoxyCodeLine{01054\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ self.brightness.setMaximum(255) }}
+\DoxyCodeLine{01055\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ self.brightness.setMinimum(-\/255) }}
+\DoxyCodeLine{01056\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ self.brightness.setValue(0) }}
+\DoxyCodeLine{01057\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{01058\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{01059\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ self.brightness\_label\ =\ PyQt5.QtWidgets.QLabel("{}brightness:\ "{}\ +\ str(self.brightness.value())) }}
+\DoxyCodeLine{01060\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ self.brightness.valueChanged.connect(lambda:\ self.update\_brightness()) }}
+\DoxyCodeLine{01061\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ bar\_form.addRow(self.brightness\_label\ ,\ self.brightness) }}
+\DoxyCodeLine{01062\  }
+\DoxyCodeLine{01063\  }
+\DoxyCodeLine{01064\  }
+\DoxyCodeLine{01065\ \ \ \ \ \ \ \ \ self.alpha\ =\ PyQt5.QtWidgets.QSlider(PyQt5.QtCore.Qt.Horizontal) }
+\DoxyCodeLine{01066\ \ \ \ \ \ \ \ \ self.alpha.setValue(10) }
+\DoxyCodeLine{01067\ \ \ \ \ \ \ \ \ self.alpha.setMinimum(0) }
+\DoxyCodeLine{01068\ \ \ \ \ \ \ \ \ self.alpha.setMaximum(100) }
+\DoxyCodeLine{01069\ \ \ \ \ \ \ \ \ self.alpha\_label\ =\ PyQt5.QtWidgets.QLabel(\textcolor{stringliteral}{"{}Contrast:\ "{}}\ +\ str(self.alpha.value())) }
+\DoxyCodeLine{01070\ \ \ \ \ \ \ \ \ self.alpha.valueChanged.connect(\textcolor{keyword}{lambda}:\ self.update\_alpha()) }
+\DoxyCodeLine{01071\ \ \ \ \ \ \ \ \ bar\_form.addRow(self.alpha\_label\ ,\ self.alpha) }
+\DoxyCodeLine{01072\  }
+\DoxyCodeLine{01073\ \ \ \ \ \ \ \ \ self.beta\ =\ PyQt5.QtWidgets.QSlider(PyQt5.QtCore.Qt.Horizontal) }
+\DoxyCodeLine{01074\ \ \ \ \ \ \ \ \ self.beta.setValue(10) }
+\DoxyCodeLine{01075\ \ \ \ \ \ \ \ \ self.beta.setMinimum(-\/200) }
+\DoxyCodeLine{01076\ \ \ \ \ \ \ \ \ self.beta.setMaximum(2000) }
+\DoxyCodeLine{01077\ \ \ \ \ \ \ \ \ self.beta\_label\ =\ PyQt5.QtWidgets.QLabel(\textcolor{stringliteral}{"{}Brightness:\ "{}}+\ str(self.beta.value())) }
+\DoxyCodeLine{01078\ \ \ \ \ \ \ \ \ self.beta.valueChanged.connect(\textcolor{keyword}{lambda}:\ self.update\_beta()) }
+\DoxyCodeLine{01079\ \ \ \ \ \ \ \ \ bar\_form.addRow(self.beta\_label,\ self.beta) }
+\DoxyCodeLine{01080\  }
+\DoxyCodeLine{01081\ \ \ \ \ \ \ \ \ self.gamma\ =\ PyQt5.QtWidgets.QSlider(PyQt5.QtCore.Qt.Horizontal) }
+\DoxyCodeLine{01082\ \ \ \ \ \ \ \ \ self.gamma.setValue(10) }
+\DoxyCodeLine{01083\ \ \ \ \ \ \ \ \ self.gamma.setMinimum(0) }
+\DoxyCodeLine{01084\ \ \ \ \ \ \ \ \ self.gamma.setMaximum(250) }
+\DoxyCodeLine{01085\ \ \ \ \ \ \ \ \ self.gamma.setSingleStep(0.1) }
+\DoxyCodeLine{01086\ \ \ \ \ \ \ \ \ self.gamma\_label\ =\ PyQt5.QtWidgets.QLabel(\textcolor{stringliteral}{"{}gamma:\ "{}}+\ str(self.gamma.value()/10)) }
+\DoxyCodeLine{01087\ \ \ \ \ \ \ \ \ self.gamma.valueChanged.connect(\textcolor{keyword}{lambda}:\ self.update\_gamma()) }
+\DoxyCodeLine{01088\ \ \ \ \ \ \ \ \ bar\_form.addRow(self.gamma\_label,\ self.gamma) }
+\DoxyCodeLine{01089\  }
+\DoxyCodeLine{01090\ \ \ \ \ \ \ \ \ self.roi\_normalize\ =\ PyQt5.QtWidgets.QPushButton(\textcolor{stringliteral}{"{}Normalize\ Region"{}}) }
+\DoxyCodeLine{01091\ \ \ \ \ \ \ \ \ self.roi\_normalize.clicked.connect(\textcolor{keyword}{lambda}:\ self.set\_normalize\_flag()) }
+\DoxyCodeLine{01092\ \ \ \ \ \ \ \ \ self.roi\_normalize\_region\ =\ \textcolor{keywordtype}{None} }
+\DoxyCodeLine{01093\ \ \ \ \ \ \ \ \ self.roi\_normalize\_flag\ =\ \textcolor{keyword}{False} }
+\DoxyCodeLine{01094\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ self.roi\_clear\_button\ =\ PyQt5.QtWidgets.QPushButton("{}Clear\ Region"{}) }}
+\DoxyCodeLine{01095\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ self.roi\_clear\_button.clicked.connect(lambda:\ self.clear\_normalized\_region()) }}
+\DoxyCodeLine{01096\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ bar\_form.addWidget(self.roi\_normalize) }}
+\DoxyCodeLine{01097\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ bar\_form.addWidget(self.roi\_clear\_button) }}
+\DoxyCodeLine{01098\ \ \ \ \ \ \ \ \ self.reset\_button\ =\ PyQt5.QtWidgets.QPushButton(\textcolor{stringliteral}{"{}Default"{}}) }
+\DoxyCodeLine{01099\ \ \ \ \ \ \ \ \ self.reset\_button.clicked.connect(\textcolor{keyword}{lambda}:\ self.reset\_default()) }
+\DoxyCodeLine{01100\ \ \ \ \ \ \ \ \ bar\_form.addWidget(self.reset\_button) }
+\DoxyCodeLine{01101\  }
+\DoxyCodeLine{01102\ \ \ \ \ \ \ \ \ self.equalize\_hist\_button\ =\ PyQt5.QtWidgets.QCheckBox(\textcolor{stringliteral}{"{}Equalize\ Histogram"{}}) }
+\DoxyCodeLine{01103\ \ \ \ \ \ \ \ \ self.equalize\_hist\_button.setChecked(\textcolor{keyword}{False}) }
+\DoxyCodeLine{01104\ \ \ \ \ \ \ \ \ self.equalize\_hist\_button.clicked.connect(\textcolor{keyword}{lambda}:\ self.toggle\_equalize\_hist()) }
+\DoxyCodeLine{01105\ \ \ \ \ \ \ \ \ self.equalize\_hist\_button.setToolTip(\textcolor{stringliteral}{"{}Uses\ OpenCV's\ Equalize\ Histogram\ method.\ 'Improves\ the\ contrast\ in\ an\ image'"{}}) }
+\DoxyCodeLine{01106\ \ \ \ \ \ \ \ \ bar\_form.addWidget(self.equalize\_hist\_button) }
+\DoxyCodeLine{01107\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{01108\  }
+\DoxyCodeLine{01109\ \ \ \ \ \ \ \ \ self.equalize\_chahe\_hist\_button\ =\ PyQt5.QtWidgets.QCheckBox(\textcolor{stringliteral}{"{}CLAHE\ Equalize\ Histogram"{}}) }
+\DoxyCodeLine{01110\ \ \ \ \ \ \ \ \ self.equalize\_chahe\_hist\_button.setChecked(\textcolor{keyword}{False}) }
+\DoxyCodeLine{01111\ \ \ \ \ \ \ \ \ self.equalize\_chahe\_hist\_button.clicked.connect(\textcolor{keyword}{lambda}:\ self.toggle\_chahe\_hist()) }
+\DoxyCodeLine{01112\ \ \ \ \ \ \ \ \ self.equalize\_chahe\_hist\_button.setToolTip(\textcolor{stringliteral}{"{}Uses\ OpenCV's\ Equalize\ Histogram\ method.\ 'Improves\ the\ contrast\ in\ an\ image'"{}}) }
+\DoxyCodeLine{01113\ \ \ \ \ \ \ \ \ bar\_form.addWidget(self.equalize\_chahe\_hist\_button) }
+\DoxyCodeLine{01114\  }
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{a00194_ad64aedb2cde976ec3d8e29161914bce8}\label{a00194_ad64aedb2cde976ec3d8e29161914bce8} 
+\index{Image\_Enhancement@{Image\_Enhancement}!add\_brightness@{add\_brightness}}
+\index{add\_brightness@{add\_brightness}!Image\_Enhancement@{Image\_Enhancement}}
+\doxysubsubsection{\texorpdfstring{add\_brightness()}{add\_brightness()}}
+{\footnotesize\ttfamily add\+\_\+brightness (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{image }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{01208\ \ \ \ \ \textcolor{keyword}{def\ }add\_brightness(self,\ image): }
+\DoxyCodeLine{01209\ \ \ \ \ \ \ \ \ bright\ =\ image\ +\ self.brightness.value() }
+\DoxyCodeLine{01210\ \ \ \ \ \ \ \ \ bright\ =\ np.clip(bright,0,255) }
+\DoxyCodeLine{01211\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ bright.astype(\textcolor{stringliteral}{'uint8'}) }
+\DoxyCodeLine{01212\  }
+
+\end{DoxyCode}
+\Hypertarget{a00194_a3f3fc8bf3769eacea7a2a2f39b67f130}\label{a00194_a3f3fc8bf3769eacea7a2a2f39b67f130} 
+\index{Image\_Enhancement@{Image\_Enhancement}!auto\_enhance@{auto\_enhance}}
+\index{auto\_enhance@{auto\_enhance}!Image\_Enhancement@{Image\_Enhancement}}
+\doxysubsubsection{\texorpdfstring{auto\_enhance()}{auto\_enhance()}}
+{\footnotesize\ttfamily auto\+\_\+enhance (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{image }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{01240\ \ \ \ \ \textcolor{keyword}{def\ }auto\_enhance(self,\ image): }
+\DoxyCodeLine{01241\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ METHOD\ 1:\ RGB }}
+\DoxyCodeLine{01242\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ convert\ img\ to\ gray }}
+\DoxyCodeLine{01243\ \ \ \ \ \ \ \ \ gray\ =\ cv2.cvtColor(image,\ cv2.COLOR\_BGR2GRAY) }
+\DoxyCodeLine{01244\  }
+\DoxyCodeLine{01245\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ compute\ gamma\ =\ log(mid*255)/log(mean) }}
+\DoxyCodeLine{01246\ \ \ \ \ \ \ \ \ mid\ =\ 0.5 }
+\DoxyCodeLine{01247\ \ \ \ \ \ \ \ \ mean\ =\ np.mean(gray) }
+\DoxyCodeLine{01248\ \ \ \ \ \ \ \ \ gamma\ =\ math.log(mid*255)/math.log(mean) }
+\DoxyCodeLine{01249\ \ \ \ \ \ \ \ \ print(gamma) }
+\DoxyCodeLine{01250\  }
+\DoxyCodeLine{01251\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ do\ gamma\ correction }}
+\DoxyCodeLine{01252\ \ \ \ \ \ \ \ \ img\_gamma1\ =\ np.power(image,\ gamma).clip(0,255).astype(np.uint8) }
+\DoxyCodeLine{01253\  }
+\DoxyCodeLine{01254\  }
+\DoxyCodeLine{01255\  }
+\DoxyCodeLine{01256\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ METHOD\ 2:\ HSV\ (or\ other\ color\ spaces) }}
+\DoxyCodeLine{01257\  }
+\DoxyCodeLine{01258\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ convert\ img\ to\ HSV }}
+\DoxyCodeLine{01259\ \ \ \ \ \ \ \ \ hsv\ =\ cv2.cvtColor(image,\ cv2.COLOR\_BGR2HSV) }
+\DoxyCodeLine{01260\ \ \ \ \ \ \ \ \ hue,\ sat,\ val\ =\ cv2.split(hsv) }
+\DoxyCodeLine{01261\  }
+\DoxyCodeLine{01262\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ compute\ gamma\ =\ log(mid*255)/log(mean) }}
+\DoxyCodeLine{01263\ \ \ \ \ \ \ \ \ mid\ =\ 0.5 }
+\DoxyCodeLine{01264\ \ \ \ \ \ \ \ \ mean\ =\ np.mean(val) }
+\DoxyCodeLine{01265\ \ \ \ \ \ \ \ \ gamma\ =\ math.log(mid*255)/math.log(mean) }
+\DoxyCodeLine{01266\ \ \ \ \ \ \ \ \ print(gamma) }
+\DoxyCodeLine{01267\  }
+\DoxyCodeLine{01268\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ do\ gamma\ correction\ on\ value\ channel }}
+\DoxyCodeLine{01269\ \ \ \ \ \ \ \ \ val\_gamma\ =\ np.power(val,\ gamma).clip(0,255).astype(np.uint8) }
+\DoxyCodeLine{01270\  }
+\DoxyCodeLine{01271\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ combine\ new\ value\ channel\ with\ original\ hue\ and\ sat\ channels }}
+\DoxyCodeLine{01272\ \ \ \ \ \ \ \ \ hsv\_gamma\ =\ cv2.merge([hue,\ sat,\ val\_gamma]) }
+\DoxyCodeLine{01273\ \ \ \ \ \ \ \ \ img\_gamma2\ =\ cv2.cvtColor(hsv\_gamma,\ cv2.COLOR\_HSV2BGR) }
+\DoxyCodeLine{01274\  }
+\DoxyCodeLine{01275\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ img\_gamma1,\ img\_gamma2 }
+\DoxyCodeLine{01276\  }
+\DoxyCodeLine{01277\  }
+
+\end{DoxyCode}
+\Hypertarget{a00194_ac45930acafa3b3429da918cec06dba83}\label{a00194_ac45930acafa3b3429da918cec06dba83} 
+\index{Image\_Enhancement@{Image\_Enhancement}!clear\_normalized\_region@{clear\_normalized\_region}}
+\index{clear\_normalized\_region@{clear\_normalized\_region}!Image\_Enhancement@{Image\_Enhancement}}
+\doxysubsubsection{\texorpdfstring{clear\_normalized\_region()}{clear\_normalized\_region()}}
+{\footnotesize\ttfamily clear\+\_\+normalized\+\_\+region (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{01163\ \ \ \ \ \textcolor{keyword}{def\ }clear\_normalized\_region(self): }
+\DoxyCodeLine{01164\ \ \ \ \ \ \ \ \ self.roi\_normalize\_region\ =\ \textcolor{keywordtype}{None} }
+\DoxyCodeLine{01165\  }
+
+\end{DoxyCode}
+\Hypertarget{a00194_afc430057cbbe8b1a7a8b7e951a7145a3}\label{a00194_afc430057cbbe8b1a7a8b7e951a7145a3} 
+\index{Image\_Enhancement@{Image\_Enhancement}!enhance\_brightness\_contrast@{enhance\_brightness\_contrast}}
+\index{enhance\_brightness\_contrast@{enhance\_brightness\_contrast}!Image\_Enhancement@{Image\_Enhancement}}
+\doxysubsubsection{\texorpdfstring{enhance\_brightness\_contrast()}{enhance\_brightness\_contrast()}}
+{\footnotesize\ttfamily enhance\+\_\+brightness\+\_\+contrast (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{image }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{01213\ \ \ \ \ \textcolor{keyword}{def\ }enhance\_brightness\_contrast(self,\ image): }
+\DoxyCodeLine{01214\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ cv2.convertScaleAbs(image,\ alpha=self.alpha.value()/10,\ beta=self.beta.value()/10) }
+\DoxyCodeLine{01215\ \ \ \ \  }
+
+\end{DoxyCode}
+\Hypertarget{a00194_a8ac5ce6636a0e16d8bac386ca6864783}\label{a00194_a8ac5ce6636a0e16d8bac386ca6864783} 
+\index{Image\_Enhancement@{Image\_Enhancement}!enhance\_gamma@{enhance\_gamma}}
+\index{enhance\_gamma@{enhance\_gamma}!Image\_Enhancement@{Image\_Enhancement}}
+\doxysubsubsection{\texorpdfstring{enhance\_gamma()}{enhance\_gamma()}}
+{\footnotesize\ttfamily enhance\+\_\+gamma (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{image }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{01216\ \ \ \ \ \textcolor{keyword}{def\ }enhance\_gamma(self,\ image): }
+\DoxyCodeLine{01217\ \ \ \ \ \ \ \ \ lookUpTable\ =\ np.empty((1,256),\ np.uint8) }
+\DoxyCodeLine{01218\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ i\ \textcolor{keywordflow}{in}\ range(256): }
+\DoxyCodeLine{01219\ \ \ \ \ \ \ \ \ \ \ \ \ lookUpTable[0,i]\ =\ np.clip(pow(i\ /\ 255.0,\ self.gamma.value()/10)\ *\ 255.0,\ 0,\ 255) }
+\DoxyCodeLine{01220\ \ \ \ \ \ \ \ \ new\_image\ =\ cv2.LUT(image,\ lookUpTable) }
+\DoxyCodeLine{01221\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ new\_image }
+\DoxyCodeLine{01222\ \ \ \ \ \ \ \ \  }
+
+\end{DoxyCode}
+\Hypertarget{a00194_af1f7d034fa043ac226cf922face8e483}\label{a00194_af1f7d034fa043ac226cf922face8e483} 
+\index{Image\_Enhancement@{Image\_Enhancement}!enhance\_normalized\_roi@{enhance\_normalized\_roi}}
+\index{enhance\_normalized\_roi@{enhance\_normalized\_roi}!Image\_Enhancement@{Image\_Enhancement}}
+\doxysubsubsection{\texorpdfstring{enhance\_normalized\_roi()}{enhance\_normalized\_roi()}}
+{\footnotesize\ttfamily enhance\+\_\+normalized\+\_\+roi (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{image }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{01169\ \ \ \ \ \textcolor{keyword}{def\ }enhance\_normalized\_roi(self,\ image): }
+\DoxyCodeLine{01170\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ self.roi\_normalize\_region\ \textcolor{keywordflow}{is}\ \textcolor{keywordflow}{not}\ \textcolor{keywordtype}{None}: }
+\DoxyCodeLine{01171\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Calculate\ mean\ and\ STD }}
+\DoxyCodeLine{01172\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ norm\_crop\ =\ image.crop(self.roi\_normalize\_region) }}
+\DoxyCodeLine{01173\ \ \ \ \ \ \ \ \ \ \ \ \ x\ =\ self.roi\_normalize\_region[0] }
+\DoxyCodeLine{01174\ \ \ \ \ \ \ \ \ \ \ \ \ y\ =\ self.roi\_normalize\_region[1] }
+\DoxyCodeLine{01175\ \ \ \ \ \ \ \ \ \ \ \ \ w\ =\ self.roi\_normalize\_region[2] }
+\DoxyCodeLine{01176\ \ \ \ \ \ \ \ \ \ \ \ \ h\ =\ self.roi\_normalize\_region[3] }
+\DoxyCodeLine{01177\ \ \ \ \ \ \ \ \ \ \ \ \ norm\_crop\ =\ image[y:y+h,x:x+w] }
+\DoxyCodeLine{01178\  }
+\DoxyCodeLine{01179\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{01180\ \ \ \ \ \ \ \ \ \ \ \ \ gray\_crop\ =\ cv2.cvtColor(norm\_crop,\ cv2.COLOR\_BGR2GRAY) }
+\DoxyCodeLine{01181\ \ \ \ \ \ \ \ \ \ \ \ \ avg\ =\ np.average(gray\_crop) }
+\DoxyCodeLine{01182\ \ \ \ \ \ \ \ \ \ \ \ \ increase\ =\ 255\ -\/\ avg }
+\DoxyCodeLine{01183\ \ \ \ \ \ \ \ \ \ \ \ \ normalized\ =\ (increase-\/0)/(255-\/0) }
+\DoxyCodeLine{01184\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print("{}normalized"{},\ normalized) }}
+\DoxyCodeLine{01185\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}: }
+\DoxyCodeLine{01186\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ normalized\ =\ ((normalized\ +\ 1)/(10\ +\ 1))\ \ *100 }
+\DoxyCodeLine{01187\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print("{}-\/1\ to\ 10"{}\ ,\ normalized) }}
+\DoxyCodeLine{01188\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.alpha.setValue(normalized) }
+\DoxyCodeLine{01189\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{except}\ Exception\ \textcolor{keyword}{as}\ e: }
+\DoxyCodeLine{01190\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ print(e) }
+\DoxyCodeLine{01191\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{01192\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print(image) }}
+\DoxyCodeLine{01193\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ mean,\ STD\ \ =\ cv2.meanStdDev(self.roi\_normalize\_region) }}
+\DoxyCodeLine{01194\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print(mean,STD) }}
+\DoxyCodeLine{01195\  }
+\DoxyCodeLine{01196\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ \#\ Clip\ frame\ to\ lower\ and\ upper\ STD }}
+\DoxyCodeLine{01197\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ offset\ =\ 0.2 }}
+\DoxyCodeLine{01198\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ clipped\ =\ np.clip(image,\ mean\ -\/\ offset*STD,\ mean\ +\ offset*STD).astype(np.uint8) }}
+\DoxyCodeLine{01199\  }
+\DoxyCodeLine{01200\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ res\ =\ cv.convertScaleAbs(img,\ alpha\ =\ alpha,\ beta\ =\ beta) }}
+\DoxyCodeLine{01201\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ self.alpha.setValue(255/mean) }}
+\DoxyCodeLine{01202\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ self.beta.setValue() }}
+\DoxyCodeLine{01203\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print(clipped) }}
+\DoxyCodeLine{01204\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ \#\ Normalize\ to\ range }}
+\DoxyCodeLine{01205\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ return\ cv2.normalize(clipped,\ clipped,\ 0,\ 255,\ norm\_type=cv2.NORM\_MINMAX) }}
+\DoxyCodeLine{01206\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ image }
+\DoxyCodeLine{01207\  }
+
+\end{DoxyCode}
+\Hypertarget{a00194_a553ecb3f3c94e037b4cc4bb2c7a87996}\label{a00194_a553ecb3f3c94e037b4cc4bb2c7a87996} 
+\index{Image\_Enhancement@{Image\_Enhancement}!equalize\_clahe\_hist@{equalize\_clahe\_hist}}
+\index{equalize\_clahe\_hist@{equalize\_clahe\_hist}!Image\_Enhancement@{Image\_Enhancement}}
+\doxysubsubsection{\texorpdfstring{equalize\_clahe\_hist()}{equalize\_clahe\_hist()}}
+{\footnotesize\ttfamily equalize\+\_\+clahe\+\_\+hist (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{image }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{01231\ \ \ \ \ \textcolor{keyword}{def\ }equalize\_clahe\_hist(self,\ image): }
+\DoxyCodeLine{01232\ \ \ \ \ \ \ \ \ lab\ =\ cv2.cvtColor(image,\ cv2.COLOR\_BGR2LAB) }
+\DoxyCodeLine{01233\ \ \ \ \ \ \ \ \ lab\_planes\ =\ cv2.split(lab) }
+\DoxyCodeLine{01234\ \ \ \ \ \ \ \ \ clahe\ =\ cv2.createCLAHE(clipLimit=2.0,tileGridSize=(4,4)) }
+\DoxyCodeLine{01235\ \ \ \ \ \ \ \ \ lab\_planes[0]\ =\ clahe.apply(lab\_planes[0]) }
+\DoxyCodeLine{01236\ \ \ \ \ \ \ \ \ lab\ =\ cv2.merge(lab\_planes) }
+\DoxyCodeLine{01237\ \ \ \ \ \ \ \ \ bgr\ =\ cv2.cvtColor(lab,\ cv2.COLOR\_LAB2BGR) }
+\DoxyCodeLine{01238\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ bgr }
+\DoxyCodeLine{01239\  }
+
+\end{DoxyCode}
+\Hypertarget{a00194_aebb148ab3b94d0e8de9ad190798f9828}\label{a00194_aebb148ab3b94d0e8de9ad190798f9828} 
+\index{Image\_Enhancement@{Image\_Enhancement}!equalize\_hist@{equalize\_hist}}
+\index{equalize\_hist@{equalize\_hist}!Image\_Enhancement@{Image\_Enhancement}}
+\doxysubsubsection{\texorpdfstring{equalize\_hist()}{equalize\_hist()}}
+{\footnotesize\ttfamily equalize\+\_\+hist (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{image }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{01223\ \ \ \ \ \textcolor{keyword}{def\ }equalize\_hist(self,\ image): }
+\DoxyCodeLine{01224\ \ \ \ \ \ \ \ \ R,\ G,\ B\ =\ cv2.split(image) }
+\DoxyCodeLine{01225\ \ \ \ \ \ \ \ \ output1\_R\ =\ cv2.equalizeHist(R) }
+\DoxyCodeLine{01226\ \ \ \ \ \ \ \ \ output1\_G\ =\ cv2.equalizeHist(G) }
+\DoxyCodeLine{01227\ \ \ \ \ \ \ \ \ output1\_B\ =\ cv2.equalizeHist(B) }
+\DoxyCodeLine{01228\  }
+\DoxyCodeLine{01229\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ cv2.merge((output1\_R,\ output1\_G,\ output1\_B)) }
+\DoxyCodeLine{01230\  }
+
+\end{DoxyCode}
+\Hypertarget{a00194_a474dcc3ea2a28ddafc225792af59437e}\label{a00194_a474dcc3ea2a28ddafc225792af59437e} 
+\index{Image\_Enhancement@{Image\_Enhancement}!get\_alpha@{get\_alpha}}
+\index{get\_alpha@{get\_alpha}!Image\_Enhancement@{Image\_Enhancement}}
+\doxysubsubsection{\texorpdfstring{get\_alpha()}{get\_alpha()}}
+{\footnotesize\ttfamily get\+\_\+alpha (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{01147\ \ \ \ \ \textcolor{keyword}{def\ }get\_alpha(self): }
+\DoxyCodeLine{01148\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ self.alpha.value() }
+\DoxyCodeLine{01149\  }
+
+\end{DoxyCode}
+\Hypertarget{a00194_ad5196be901cfdedfbb69ec0879ec727f}\label{a00194_ad5196be901cfdedfbb69ec0879ec727f} 
+\index{Image\_Enhancement@{Image\_Enhancement}!get\_beta@{get\_beta}}
+\index{get\_beta@{get\_beta}!Image\_Enhancement@{Image\_Enhancement}}
+\doxysubsubsection{\texorpdfstring{get\_beta()}{get\_beta()}}
+{\footnotesize\ttfamily get\+\_\+beta (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{01150\ \ \ \ \ \textcolor{keyword}{def\ }get\_beta(self): }
+\DoxyCodeLine{01151\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ self.beta.value() }
+\DoxyCodeLine{01152\ \ \ \ \  }
+
+\end{DoxyCode}
+\Hypertarget{a00194_a242af150737623d45026c11498711f33}\label{a00194_a242af150737623d45026c11498711f33} 
+\index{Image\_Enhancement@{Image\_Enhancement}!get\_equalize\_clahe\_hist@{get\_equalize\_clahe\_hist}}
+\index{get\_equalize\_clahe\_hist@{get\_equalize\_clahe\_hist}!Image\_Enhancement@{Image\_Enhancement}}
+\doxysubsubsection{\texorpdfstring{get\_equalize\_clahe\_hist()}{get\_equalize\_clahe\_hist()}}
+{\footnotesize\ttfamily get\+\_\+equalize\+\_\+clahe\+\_\+hist (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{01144\ \ \ \ \ \textcolor{keyword}{def\ }get\_equalize\_clahe\_hist(self): }
+\DoxyCodeLine{01145\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ self.equalize\_chahe\_hist\_button.isChecked() }
+\DoxyCodeLine{01146\  }
+
+\end{DoxyCode}
+\Hypertarget{a00194_a4482bf48f65833441f00bc81a0861801}\label{a00194_a4482bf48f65833441f00bc81a0861801} 
+\index{Image\_Enhancement@{Image\_Enhancement}!get\_equalize\_hist@{get\_equalize\_hist}}
+\index{get\_equalize\_hist@{get\_equalize\_hist}!Image\_Enhancement@{Image\_Enhancement}}
+\doxysubsubsection{\texorpdfstring{get\_equalize\_hist()}{get\_equalize\_hist()}}
+{\footnotesize\ttfamily get\+\_\+equalize\+\_\+hist (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{01141\ \ \ \ \ \textcolor{keyword}{def\ }get\_equalize\_hist(self): }
+\DoxyCodeLine{01142\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ self.equalize\_hist\_button.isChecked() }
+\DoxyCodeLine{01143\  }
+
+\end{DoxyCode}
+\Hypertarget{a00194_ad72ded4bf965a9048b2dead0c0349900}\label{a00194_ad72ded4bf965a9048b2dead0c0349900} 
+\index{Image\_Enhancement@{Image\_Enhancement}!get\_gamma@{get\_gamma}}
+\index{get\_gamma@{get\_gamma}!Image\_Enhancement@{Image\_Enhancement}}
+\doxysubsubsection{\texorpdfstring{get\_gamma()}{get\_gamma()}}
+{\footnotesize\ttfamily get\+\_\+gamma (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{01153\ \ \ \ \ \textcolor{keyword}{def\ }get\_gamma(self): }
+\DoxyCodeLine{01154\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ self.gamma.value() }
+\DoxyCodeLine{01155\  }
+\DoxyCodeLine{01156\ \ \ \ \  }
+\DoxyCodeLine{01157\  }
+
+\end{DoxyCode}
+\Hypertarget{a00194_a1330cb492c0189d408139be8f6ae4e32}\label{a00194_a1330cb492c0189d408139be8f6ae4e32} 
+\index{Image\_Enhancement@{Image\_Enhancement}!reset\_default@{reset\_default}}
+\index{reset\_default@{reset\_default}!Image\_Enhancement@{Image\_Enhancement}}
+\doxysubsubsection{\texorpdfstring{reset\_default()}{reset\_default()}}
+{\footnotesize\ttfamily reset\+\_\+default (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{01115\ \ \ \ \ \textcolor{keyword}{def\ }reset\_default(self): }
+\DoxyCodeLine{01116\ \ \ \ \ \ \ \ \ self.gamma.setValue(10) }
+\DoxyCodeLine{01117\ \ \ \ \ \ \ \ \ self.beta.setValue(10) }
+\DoxyCodeLine{01118\ \ \ \ \ \ \ \ \ self.alpha.setValue(10) }
+\DoxyCodeLine{01119\ \ \ \ \ \ \ \ \ self.roi\_normalize\_region\ =\ \textcolor{keywordtype}{None} }
+\DoxyCodeLine{01120\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ self.brightness.setValue(0) }}
+\DoxyCodeLine{01121\  }
+
+\end{DoxyCode}
+\Hypertarget{a00194_a9f9030eb7d81a5a1cf0cb4701a22e691}\label{a00194_a9f9030eb7d81a5a1cf0cb4701a22e691} 
+\index{Image\_Enhancement@{Image\_Enhancement}!set\_normalize\_flag@{set\_normalize\_flag}}
+\index{set\_normalize\_flag@{set\_normalize\_flag}!Image\_Enhancement@{Image\_Enhancement}}
+\doxysubsubsection{\texorpdfstring{set\_normalize\_flag()}{set\_normalize\_flag()}}
+{\footnotesize\ttfamily set\+\_\+normalize\+\_\+flag (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{01166\ \ \ \ \ \textcolor{keyword}{def\ }set\_normalize\_flag(self): }
+\DoxyCodeLine{01167\ \ \ \ \ \ \ \ \ self.roi\_normalize\_flag\ =\ \textcolor{keyword}{True} }
+\DoxyCodeLine{01168\  }
+
+\end{DoxyCode}
+\Hypertarget{a00194_a6748ef27108420f42a282a1f50159c67}\label{a00194_a6748ef27108420f42a282a1f50159c67} 
+\index{Image\_Enhancement@{Image\_Enhancement}!set\_normalized\_region@{set\_normalized\_region}}
+\index{set\_normalized\_region@{set\_normalized\_region}!Image\_Enhancement@{Image\_Enhancement}}
+\doxysubsubsection{\texorpdfstring{set\_normalized\_region()}{set\_normalized\_region()}}
+{\footnotesize\ttfamily set\+\_\+normalized\+\_\+region (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{image }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{01160\ \ \ \ \ \textcolor{keyword}{def\ }set\_normalized\_region(self,\ image): }
+\DoxyCodeLine{01161\ \ \ \ \ \ \ \ \ self.roi\_normalize\_region\ =\ cv2.selectROI(\textcolor{stringliteral}{"{}Frame"{}},\ image) }
+\DoxyCodeLine{01162\ \ \ \ \  }
+
+\end{DoxyCode}
+\Hypertarget{a00194_a0da06a10bc3e6195bf81e8ee5cdbb944}\label{a00194_a0da06a10bc3e6195bf81e8ee5cdbb944} 
+\index{Image\_Enhancement@{Image\_Enhancement}!toggle\_chahe\_hist@{toggle\_chahe\_hist}}
+\index{toggle\_chahe\_hist@{toggle\_chahe\_hist}!Image\_Enhancement@{Image\_Enhancement}}
+\doxysubsubsection{\texorpdfstring{toggle\_chahe\_hist()}{toggle\_chahe\_hist()}}
+{\footnotesize\ttfamily toggle\+\_\+chahe\+\_\+hist (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{01138\ \ \ \ \ \textcolor{keyword}{def\ }toggle\_chahe\_hist(self): }
+\DoxyCodeLine{01139\ \ \ \ \ \ \ \ \ self.equalize\_chahe\_hist\_button.setChecked(self.equalize\_chahe\_hist\_button.isChecked()) }
+\DoxyCodeLine{01140\  }
+
+\end{DoxyCode}
+\Hypertarget{a00194_aab59cc46b8c23e8bec3376bc75b95fb5}\label{a00194_aab59cc46b8c23e8bec3376bc75b95fb5} 
+\index{Image\_Enhancement@{Image\_Enhancement}!toggle\_equalize\_hist@{toggle\_equalize\_hist}}
+\index{toggle\_equalize\_hist@{toggle\_equalize\_hist}!Image\_Enhancement@{Image\_Enhancement}}
+\doxysubsubsection{\texorpdfstring{toggle\_equalize\_hist()}{toggle\_equalize\_hist()}}
+{\footnotesize\ttfamily toggle\+\_\+equalize\+\_\+hist (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{01135\ \ \ \ \ \textcolor{keyword}{def\ }toggle\_equalize\_hist(self): }
+\DoxyCodeLine{01136\ \ \ \ \ \ \ \ \ self.equalize\_hist\_button.setChecked(self.equalize\_hist\_button.isChecked()) }
+\DoxyCodeLine{01137\  }
+
+\end{DoxyCode}
+\Hypertarget{a00194_ab70c1e94c6a84bd1458e5de004cf32a9}\label{a00194_ab70c1e94c6a84bd1458e5de004cf32a9} 
+\index{Image\_Enhancement@{Image\_Enhancement}!update\_alpha@{update\_alpha}}
+\index{update\_alpha@{update\_alpha}!Image\_Enhancement@{Image\_Enhancement}}
+\doxysubsubsection{\texorpdfstring{update\_alpha()}{update\_alpha()}}
+{\footnotesize\ttfamily update\+\_\+alpha (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{01128\ \ \ \ \ \textcolor{keyword}{def\ }update\_alpha(self): }
+\DoxyCodeLine{01129\ \ \ \ \ \ \ \ \ self.roi\_normalize\_region\ =\ \textcolor{keywordtype}{None} }
+\DoxyCodeLine{01130\ \ \ \ \ \ \ \ \ self.alpha\_label.setText(\textcolor{stringliteral}{"{}Alpha:\ "{}}\ +\ str(self.alpha.value()/10)) }
+\DoxyCodeLine{01131\  }
+
+\end{DoxyCode}
+\Hypertarget{a00194_a48a65879da1c34c9549d03e35d61ecd1}\label{a00194_a48a65879da1c34c9549d03e35d61ecd1} 
+\index{Image\_Enhancement@{Image\_Enhancement}!update\_beta@{update\_beta}}
+\index{update\_beta@{update\_beta}!Image\_Enhancement@{Image\_Enhancement}}
+\doxysubsubsection{\texorpdfstring{update\_beta()}{update\_beta()}}
+{\footnotesize\ttfamily update\+\_\+beta (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{01132\ \ \ \ \ \textcolor{keyword}{def\ }update\_beta(self): }
+\DoxyCodeLine{01133\ \ \ \ \ \ \ \ \ self.beta\_label.setText(\textcolor{stringliteral}{"{}Beta:\ "{}}+\ str(self.beta.value()/10)) }
+\DoxyCodeLine{01134\ \ \ \ \  }
+
+\end{DoxyCode}
+\Hypertarget{a00194_ae09b437c4416f2443d3959bce7043a5e}\label{a00194_ae09b437c4416f2443d3959bce7043a5e} 
+\index{Image\_Enhancement@{Image\_Enhancement}!update\_brightness@{update\_brightness}}
+\index{update\_brightness@{update\_brightness}!Image\_Enhancement@{Image\_Enhancement}}
+\doxysubsubsection{\texorpdfstring{update\_brightness()}{update\_brightness()}}
+{\footnotesize\ttfamily update\+\_\+brightness (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{01122\ \ \ \ \ \textcolor{keyword}{def\ }update\_brightness(self): }
+\DoxyCodeLine{01123\ \ \ \ \ \ \ \ \ self.brightness\_label.setText(\textcolor{stringliteral}{"{}brightness:\ "{}}+\ str(self.brightness.value())) }
+\DoxyCodeLine{01124\  }
+
+\end{DoxyCode}
+\Hypertarget{a00194_ac7ac6a1fda489e79b5865db6954d2bcd}\label{a00194_ac7ac6a1fda489e79b5865db6954d2bcd} 
+\index{Image\_Enhancement@{Image\_Enhancement}!update\_gamma@{update\_gamma}}
+\index{update\_gamma@{update\_gamma}!Image\_Enhancement@{Image\_Enhancement}}
+\doxysubsubsection{\texorpdfstring{update\_gamma()}{update\_gamma()}}
+{\footnotesize\ttfamily update\+\_\+gamma (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{01125\ \ \ \ \ \textcolor{keyword}{def\ }update\_gamma(self): }
+\DoxyCodeLine{01126\ \ \ \ \ \ \ \ \ self.gamma\_label.setText(\textcolor{stringliteral}{"{}gamma:\ "{}}+\ str(self.gamma.value()/10)) }
+\DoxyCodeLine{01127\  }
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+K\+:/\+Github/\+People\+Tracker/src/qt\+\_\+dialog.\+py\end{DoxyCompactItemize}

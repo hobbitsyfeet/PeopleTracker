@@ -1,0 +1,30 @@
+\doxysection{People\+Tracker.\+src.\+evaluate Namespace Reference}
+\hypertarget{namespace_people_tracker_1_1src_1_1evaluate}{}\label{namespace_people_tracker_1_1src_1_1evaluate}\index{PeopleTracker.src.evaluate@{PeopleTracker.src.evaluate}}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation}{tracker\+\_\+evaluation}}
+\begin{DoxyCompactList}\small\item\em Implementation by Justin Petluk \cite{evaluation} \href{https://www.idiap.ch/~odobez/publications/SmithGaticaOdobezBa-cvpr-eemcv05.pdf}{\texttt{ https\+://www.\+idiap.\+ch/\texorpdfstring{$\sim$}{\string~}odobez/publications/\+Smith\+Gatica\+Odobez\+Ba-\/cvpr-\/eemcv05.\+pdf }} \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{namespace_people_tracker_1_1src_1_1evaluate_a2db313fabca57504d9dc776e46b304f6}\label{namespace_people_tracker_1_1src_1_1evaluate_a2db313fabca57504d9dc776e46b304f6} 
+{\bfseries te} = \mbox{\hyperlink{class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation}{tracker\+\_\+evaluation}}()
+\item 
+\Hypertarget{namespace_people_tracker_1_1src_1_1evaluate_a681bb2c58cd55763494a71a1935b6de4}\label{namespace_people_tracker_1_1src_1_1evaluate_a681bb2c58cd55763494a71a1935b6de4} 
+{\bfseries fps}
+\item 
+\Hypertarget{namespace_people_tracker_1_1src_1_1evaluate_acc42076253600be964e110149b458971}\label{namespace_people_tracker_1_1src_1_1evaluate_acc42076253600be964e110149b458971} 
+{\bfseries errors}
+\item 
+\Hypertarget{namespace_people_tracker_1_1src_1_1evaluate_a170c7681d0e33b928812efda9e06242d}\label{namespace_people_tracker_1_1src_1_1evaluate_a170c7681d0e33b928812efda9e06242d} 
+{\bfseries errors\+\_\+dict}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}NOTE: Add additional evaluation methods to help plot data
+
+- Centroid point distance. This is an additional measure of accuracy. This is because that's how we collect data for our study.
+- region change rate (or shape over time) - this is important to measure alongside performance. This allows us to see where measures go wrong. When ground truths change drastically, how can we expect a tracker to adapt? (Ours has a hard time when objects scale or change shape a lot)\end{DoxyVerb}
+ 

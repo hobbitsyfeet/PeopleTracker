@@ -1,0 +1,2365 @@
+\doxysection{tracker\+\_\+evaluation}
+\hypertarget{a00154}{}\label{a00154}\index{tracker\_evaluation@{tracker\_evaluation}}
+
+
+Based on \cite{evaluation} \href{https://www.idiap.ch/~odobez/publications/SmithGaticaOdobezBa-cvpr-eemcv05.pdf}{\texttt{ https\+://www.\+idiap.\+ch/\texorpdfstring{$\sim$}{\string~}odobez/publications/\+Smith\+Gatica\+Odobez\+Ba-\/cvpr-\/eemcv05.\+pdf }}  
+
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{a00154_a44156c7a1b52b45402849d05832c990a}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, tracker\+\_\+file=None, ground\+\_\+thruth\+\_\+folder=None, fps=None)
+\item 
+\mbox{\hyperlink{a00154_a64bfd27c55021f0970aa44942ee4c7e9}{load\+\_\+json}} (self, folder, fps=None)
+\begin{DoxyCompactList}\small\item\em Loads annotation created with \cite{labelme} labelme. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{a00154_ad4605f802eb54b9eae17e159f064e9d7}{load\+\_\+tracker\+\_\+data}} (self, tracker\+\_\+file)
+\begin{DoxyCompactList}\small\item\em Loads estimates from people tracker exported data. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{a00154_a6b66d4b6ba4a83024bf9778f10b06b89}{plot\+\_\+score}} (self)
+\item 
+\mbox{\hyperlink{a00154_a5256e9f0068a25f74f8afbeb8cf39a9d}{plot\+\_\+scene}} (self)
+\item 
+\mbox{\hyperlink{a00154_a429aa56c6f9c3137d6648172a9fd8ef5}{identification\+\_\+graph}} (self)
+\item 
+\mbox{\hyperlink{a00154_a28cab66ecf2005ae882c6bc2672fa461}{false\+\_\+positive}} (self, es\+\_\+config)
+\item 
+\mbox{\hyperlink{a00154_a7145367645f6f72dce430c8f61faf76a}{false\+\_\+negative}} (self, gt\+\_\+config)
+\item 
+\mbox{\hyperlink{a00154_ae7a2ff900f60fe15be7946b972d55ce1}{multiple\+\_\+trackers}} (self, gt\+\_\+config, frame\+\_\+number)
+\item 
+\mbox{\hyperlink{a00154_a24713f50b19ca4cf8b48421328fffcf4}{multiple\+\_\+objects}} (self, es\+\_\+config, frame\+\_\+number)
+\item 
+\mbox{\hyperlink{a00154_abc6ee42a85d6b9fc7311c44da0e25133}{configuration\+\_\+distance}} (self, frame\+\_\+number)
+\item 
+\mbox{\hyperlink{a00154_aacabed97a5e0387eeac8206ec1ab821d}{ground\+\_\+truth\+\_\+exists}} (self, frame\+\_\+num)
+\item 
+\mbox{\hyperlink{a00154_a58a26e1fd6895f166141fd27674eb262}{get\+\_\+ground\+\_\+truth\+\_\+difference}} (self, frame\+\_\+num\+\_\+1, frame\+\_\+num\+\_\+2)
+\item 
+\mbox{\hyperlink{a00154_a756c92b090c4b99e7afe65dd1a08cd38}{check\+\_\+occlusion}} (self, gt, frame\+\_\+num)
+\begin{DoxyCompactList}\small\item\em Checks if a ground truth is occluded. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{a00154_af23940c18d935e51e2445a917d091dd4}{get\+\_\+occlusion\+\_\+count}} (self, frame\+\_\+num)
+\begin{DoxyCompactList}\small\item\em Returns a number of occluded ground truths occur at a frame. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{a00154_aae33341ee61c7a874af86b59d4f81d84}{precision}} (self, estimate, ground\+\_\+truth, correct\+\_\+estimate=False)
+\item 
+\mbox{\hyperlink{a00154_a6fffa1ba921b56906be56b8ef88fead5}{recall}} (self, estimate, ground\+\_\+truth, correct\+\_\+estimate=False)
+\item 
+\mbox{\hyperlink{a00154_a1990a7819cacf1d4c1d72db40e19d7a9}{fmeasure}} (self, estimate, ground\+\_\+truth, correct\+\_\+estimate=False)
+\item 
+\mbox{\hyperlink{a00154_a4b46b30998262a37e07fbebba285ac79}{configuration\+\_\+map}} (self, frame\+\_\+number)
+\item 
+\mbox{\hyperlink{a00154_a3639a941793f544ac8da43787caf0e79}{calculate\+\_\+identification\+\_\+map}} (self, manual\+\_\+gtmap=None, manual\+\_\+emap=None)
+\begin{DoxyCompactList}\small\item\em Calculates Identification map for an entire video. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{a00154_aaaad9fe0f151923410425485f2f4c4ed}{identification\+\_\+map}} (self, frame\+\_\+number)
+\item 
+\mbox{\hyperlink{a00154_a2a0bf799d0e7ebe787ced89e43d09bb5}{falsly\+\_\+identified\+\_\+object}} (self, frame\+\_\+number)
+\item 
+\mbox{\hyperlink{a00154_a86b2c6d7d6195d366eca3c999f3219a2}{falsly\+\_\+identified\+\_\+tracker}} (self, frame\+\_\+number)
+\item 
+\mbox{\hyperlink{a00154_abe18d5f6b249e1dde980ff17aabf9e8f}{calculate\+\_\+tracker\+\_\+purity}} (self)
+\item 
+\mbox{\hyperlink{a00154_afa5e4bd548b6ad8817feade0a06a04f2}{calculate\+\_\+object\+\_\+purity}} (self)
+\item 
+\mbox{\hyperlink{a00154_afb84b7efc3d1670971c3a96f2289ac5a}{calculate\+\_\+frame\+\_\+errors}} (self, frame\+\_\+number, ratios=(1, 1), y\+\_\+offset=720)
+\item 
+\mbox{\hyperlink{a00154_ac7580a4b2b507bf081643b0c6c91dbd8}{calculate\+\_\+identification\+\_\+errors}} (self, frame\+\_\+number)
+\item 
+\mbox{\hyperlink{a00154_a2cc5036fce7e6fbf3fb8e999bcf5ae25}{calculate\+\_\+errors}} (self, printout=False, gt\+\_\+maps\+\_\+itself=True)
+\item 
+\mbox{\hyperlink{a00154_a2c362f5906289f957819905482b51948}{compute\+\_\+iou}} (self, box, boxes, ratios=None, frame=None)
+\begin{DoxyCompactList}\small\item\em Calculates IoU of the given box with the array of the given boxes. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{a00154_a8e81671f8238b7c2ebd6246649b1b6e8}{get\+\_\+frame\+\_\+count}} (self)
+\item 
+\mbox{\hyperlink{a00154_ad5cec8c10881d8efa8a4da5e7fccf5fe}{get\+\_\+area}} (self, box)
+\item 
+\mbox{\hyperlink{a00154_a4f49c8ff16bbe7b0a2dba1416f7824c8}{get\+\_\+height}} (self, box)
+\item 
+\mbox{\hyperlink{a00154_a38b21ca378cece6effcab060696bbacb}{get\+\_\+width}} (self, box)
+\item 
+\mbox{\hyperlink{a00154_aa0d2040d32ada937d1c5290044985240}{get\+\_\+ground\+\_\+truths}} (self, frame\+\_\+number, id=None)
+\item 
+\mbox{\hyperlink{a00154_a8f5619c019f49f35f2c470e7c40af013}{get\+\_\+estimates}} (self, frame\+\_\+number, id=None)
+\item 
+\mbox{\hyperlink{a00154_a46be521dd2fd28c23d9ba49f160b3e7f}{estimate\+\_\+to\+\_\+point}} (self, estimate, ratios=None, invert\+\_\+y=None)
+\item 
+\mbox{\hyperlink{a00154_a39e1f96456bbb6d82c2eb3130b86ea07}{get\+\_\+number\+\_\+estimates}} (self, frame\+\_\+number)
+\item 
+\mbox{\hyperlink{a00154_a02900e25262b92e35488de135ea6e154}{get\+\_\+ground\+\_\+truth\+\_\+count}} (self, frame\+\_\+number)
+\item 
+\mbox{\hyperlink{a00154_a4bcbbfc33a744742f75d12148bb18ca2}{list\+\_\+labels}} (self)
+\item 
+\mbox{\hyperlink{a00154_a3d137dc16b12468a6cecc09a1a0909b4}{list\+\_\+estimates}} (self)
+\item 
+\mbox{\hyperlink{a00154_a62ba47250b3068ffa27bc8cc7f809daf}{get\+\_\+estimate\+\_\+count}} (self)
+\item 
+\mbox{\hyperlink{a00154_a6143443ad8d54a84a686949a085cef69}{get\+\_\+groundtruth\+\_\+count}} (self)
+\item 
+\mbox{\hyperlink{a00154_a354aefc364c482f0fff6b59f59dd4f22}{validate\+\_\+and\+\_\+correct\+\_\+ground\+\_\+tuths}} (self)
+\item 
+\mbox{\hyperlink{a00154_a807e2d387bd46390c13ac4a7ab669f65}{generate\+\_\+manual\+\_\+id\+\_\+map}} (self)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{a00154_a9fa1482cd696e2f0c104e04a9d46a29d}\label{a00154_a9fa1482cd696e2f0c104e04a9d46a29d} 
+{\bfseries score}
+\item 
+\Hypertarget{a00154_aa68e842dd7ce4ebaf9792928e4a990f0}\label{a00154_aa68e842dd7ce4ebaf9792928e4a990f0} 
+{\bfseries colour}
+\item 
+\Hypertarget{a00154_a6f32c540796a5572757f3332943e344d}\label{a00154_a6f32c540796a5572757f3332943e344d} 
+{\bfseries ground\+\_\+truth\+\_\+dict}
+\item 
+\Hypertarget{a00154_a2f70df9fc1e24da2e363c951e7b00163}\label{a00154_a2f70df9fc1e24da2e363c951e7b00163} 
+{\bfseries total\+\_\+images}
+\item 
+\Hypertarget{a00154_a4e45fa7b295ed49c3f86753b890ae9f5}\label{a00154_a4e45fa7b295ed49c3f86753b890ae9f5} 
+{\bfseries estimate\+\_\+dict}
+\item 
+\Hypertarget{a00154_a681bb2c58cd55763494a71a1935b6de4}\label{a00154_a681bb2c58cd55763494a71a1935b6de4} 
+{\bfseries fps}
+\item 
+\mbox{\hyperlink{a00154_ae0fcc23159a737ce3e8e583ff82e2f84}{threshold\+\_\+to}}
+\begin{DoxyCompactList}\small\item\em ! Threshold of Precision allowed in agreement or overlap. \end{DoxyCompactList}\item 
+\Hypertarget{a00154_ac1a5cb9fc8e07c5113cd44cffc343bd5}\label{a00154_ac1a5cb9fc8e07c5113cd44cffc343bd5} 
+{\bfseries threshold\+\_\+tc}
+\begin{DoxyCompactList}\small\item\em Used for evaluating F-\/\+Measure, Higher F-\/value, the higher allowed error. \end{DoxyCompactList}\item 
+\Hypertarget{a00154_a9a6bed84bfaa4340ba28419702e6aeaf}\label{a00154_a9a6bed84bfaa4340ba28419702e6aeaf} 
+{\bfseries id\+\_\+map}
+\begin{DoxyCompactList}\small\item\em ! A map of IDs given on a single frame of data and used to save the output of identification\+\_\+map \end{DoxyCompactList}\item 
+\Hypertarget{a00154_a087ba3f393340dc3e98e2f4b0717bf90}\label{a00154_a087ba3f393340dc3e98e2f4b0717bf90} 
+{\bfseries invert\+\_\+y}
+\item 
+\Hypertarget{a00154_acd0eb889a6b9d5c375b9da9a120525f8}\label{a00154_acd0eb889a6b9d5c375b9da9a120525f8} 
+{\bfseries correction\+\_\+ratio\+\_\+x}
+\item 
+\Hypertarget{a00154_a81915c82c7194b11d17c42c43aaaa868}\label{a00154_a81915c82c7194b11d17c42c43aaaa868} 
+{\bfseries correction\+\_\+ratio\+\_\+y}
+\item 
+\Hypertarget{a00154_abc325fc13d4194905c1786e24ee447f0}\label{a00154_abc325fc13d4194905c1786e24ee447f0} 
+{\bfseries labels}
+\item 
+\Hypertarget{a00154_a68f7def6ec584f223f982c97d8f8900a}\label{a00154_a68f7def6ec584f223f982c97d8f8900a} 
+{\bfseries estimates}
+\item 
+\Hypertarget{a00154_a84e8870e47e9ebfc8dac3e8ba975be54}\label{a00154_a84e8870e47e9ebfc8dac3e8ba975be54} 
+{\bfseries gt\+\_\+map}
+\item 
+\Hypertarget{a00154_a202c7b509e687b83ac81743df1551330}\label{a00154_a202c7b509e687b83ac81743df1551330} 
+{\bfseries es\+\_\+map}
+\item 
+\Hypertarget{a00154_aeaae803d0bdcf16ebcb0e7b49ccf1018}\label{a00154_aeaae803d0bdcf16ebcb0e7b49ccf1018} 
+{\bfseries calulate}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Based on \cite{evaluation} \href{https://www.idiap.ch/~odobez/publications/SmithGaticaOdobezBa-cvpr-eemcv05.pdf}{\texttt{ https\+://www.\+idiap.\+ch/\texorpdfstring{$\sim$}{\string~}odobez/publications/\+Smith\+Gatica\+Odobez\+Ba-\/cvpr-\/eemcv05.\+pdf }} 
+
+Implementation by Justin Petluk \cite{evaluation} \href{https://www.idiap.ch/~odobez/publications/SmithGaticaOdobezBa-cvpr-eemcv05.pdf}{\texttt{ https\+://www.\+idiap.\+ch/\texorpdfstring{$\sim$}{\string~}odobez/publications/\+Smith\+Gatica\+Odobez\+Ba-\/cvpr-\/eemcv05.\+pdf }} 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{a00154_a44156c7a1b52b45402849d05832c990a}\label{a00154_a44156c7a1b52b45402849d05832c990a} 
+\index{tracker\_evaluation@{tracker\_evaluation}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!tracker\_evaluation@{tracker\_evaluation}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily \+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{tracker\+\_\+file = {\ttfamily None},  }\item[{}]{ground\+\_\+thruth\+\_\+folder = {\ttfamily None},  }\item[{}]{fps = {\ttfamily None} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Assigns default values
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keyword}{def\ }\_\_init\_\_(self,\ tracker\_file\ =\ None,\ ground\_thruth\_folder\ =\ None,\ fps=None): }
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{''' }}
+\DoxyCodeLine{00037\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Assigns\ default\ values }}
+\DoxyCodeLine{00038\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ '''} }
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ self.score\ =\ 0 }
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ self.colour\ =\ \textcolor{keywordtype}{None} }
+\DoxyCodeLine{00041\  }
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ground\_thruth\_folder\ \textcolor{keywordflow}{is}\ \textcolor{keywordtype}{None}: }
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ self.ground\_truth\_dict\ =\ \{\} }
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}: }
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ self.load\_json(ground\_thruth\_folder,\ fps) }
+\DoxyCodeLine{00046\  }
+\DoxyCodeLine{00047\  }
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ self.total\_images\ =\ \textcolor{keywordtype}{None} }
+\DoxyCodeLine{00049\  }
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ tracker\_file\ \textcolor{keywordflow}{is}\ \textcolor{keywordflow}{not}\ \textcolor{keywordtype}{None}: }
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ self.estimate\_dict\ =\ self.load\_tracker\_data(tracker\_file) }
+\DoxyCodeLine{00052\  }
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ fps\ \textcolor{keywordflow}{is}\ \textcolor{keywordtype}{None}: }
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ self.fps\ =\ 30 }
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}: }
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ self.fps\ =\ fps }
+\DoxyCodeLine{00057\  }
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ self.threshold\_to\ =\ 0.8 }
+\DoxyCodeLine{00060\  }
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ self.threshold\_tc\ =\ 0.5\  }
+\DoxyCodeLine{00063\  }
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ self.id\_map\ =\ \{\} }
+\DoxyCodeLine{00066\  }
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ self.invert\_y\ =\ 0 }
+\DoxyCodeLine{00068\  }
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ self.correction\_ratio\_x\ =\ \textcolor{keywordtype}{None} }
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ self.correction\_ratio\_y\ =\ \textcolor{keywordtype}{None} }
+\DoxyCodeLine{00071\  }
+
+\end{DoxyCode}
+
+
+References tracker\+\_\+evaluation.\+colour, \mbox{\hyperlink{a00170_aa68e842dd7ce4ebaf9792928e4a990f0}{Multi\+Tracker.\+colour}}, tracker\+\_\+evaluation.\+estimate\+\_\+dict, tracker\+\_\+evaluation.\+fps, FPS.\+fps(), tracker\+\_\+evaluation.\+ground\+\_\+truth\+\_\+dict, \mbox{\hyperlink{a00154_a64bfd27c55021f0970aa44942ee4c7e9}{tracker\+\_\+evaluation.\+load\+\_\+json()}}, \mbox{\hyperlink{a00154_ad4605f802eb54b9eae17e159f064e9d7}{tracker\+\_\+evaluation.\+load\+\_\+tracker\+\_\+data()}}, tracker\+\_\+evaluation.\+score, and tracker\+\_\+evaluation.\+total\+\_\+images.
+
+Here is the call graph for this function\+:
+% FIG 0
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{a00154_a2cc5036fce7e6fbf3fb8e999bcf5ae25}\label{a00154_a2cc5036fce7e6fbf3fb8e999bcf5ae25} 
+\index{tracker\_evaluation@{tracker\_evaluation}!calculate\_errors@{calculate\_errors}}
+\index{calculate\_errors@{calculate\_errors}!tracker\_evaluation@{tracker\_evaluation}}
+\doxysubsubsection{\texorpdfstring{calculate\_errors()}{calculate\_errors()}}
+{\footnotesize\ttfamily calculate\+\_\+errors (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{printout = {\ttfamily False},  }\item[{}]{gt\+\_\+maps\+\_\+itself = {\ttfamily True} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Iterates through every ground truth frame and compares a list of estimates. 
+
+Returns final video score, as well as normalized results through the video.
+Normalized results are results where the number of errors on a frame is normalized by the number of ground truths.
+
+We define GT maps itself to override majority voting to determine what the correct labels are. This accounts for the problem where
+an estimate incorrectly labels a ground truth forthe majority of the time
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00883\ \ \ \ \ \textcolor{keyword}{def\ }calculate\_errors(self,\ printout=False,\ gt\_maps\_itself=True): }
+\DoxyCodeLine{00884\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{} }}
+\DoxyCodeLine{00885\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Iterates\ through\ every\ ground\ truth\ frame\ and\ compares\ a\ list\ of\ estimates.\  }}
+\DoxyCodeLine{00886\ \textcolor{stringliteral}{ }}
+\DoxyCodeLine{00887\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns\ final\ video\ score,\ as\ well\ as\ normalized\ results\ through\ the\ video. }}
+\DoxyCodeLine{00888\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Normalized\ results\ are\ results\ where\ the\ number\ of\ errors\ on\ a\ frame\ is\ normalized\ by\ the\ number\ of\ ground\ truths. }}
+\DoxyCodeLine{00889\ \textcolor{stringliteral}{ }}
+\DoxyCodeLine{00890\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ We\ define\ GT\ maps\ itself\ to\ override\ majority\ voting\ to\ determine\ what\ the\ correct\ labels\ are.\ This\ accounts\ for\ the\ problem\ where }}
+\DoxyCodeLine{00891\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ an\ estimate\ incorrectly\ labels\ a\ ground\ truth\ forthe\ majority\ of\ the\ time }}
+\DoxyCodeLine{00892\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}} }
+\DoxyCodeLine{00893\ \ \ \ \ \ \ \ \ errors\_dict\ =\ \{\} }
+\DoxyCodeLine{00894\  }
+\DoxyCodeLine{00895\ \ \ \ \ \ \ \ \ total\_fp\ =\ 0 }
+\DoxyCodeLine{00896\ \ \ \ \ \ \ \ \ total\_fn\ =\ 0 }
+\DoxyCodeLine{00897\ \ \ \ \ \ \ \ \ total\_mt\ =\ 0 }
+\DoxyCodeLine{00898\ \ \ \ \ \ \ \ \ total\_mo\ =\ 0 }
+\DoxyCodeLine{00899\ \ \ \ \ \ \ \ \ total\_cd\ =\ 0 }
+\DoxyCodeLine{00900\  }
+\DoxyCodeLine{00901\ \ \ \ \ \ \ \ \ total\_fit\ =\ 0 }
+\DoxyCodeLine{00902\ \ \ \ \ \ \ \ \ total\_fio\ =\ 0 }
+\DoxyCodeLine{00903\  }
+\DoxyCodeLine{00904\ \ \ \ \ \ \ \ \ self.gt\_map,\ self.es\_map\ =\ self.calculate\_identification\_map() }
+\DoxyCodeLine{00905\  }
+\DoxyCodeLine{00906\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ gt\_maps\_itself: }
+\DoxyCodeLine{00907\ \ \ \ \ \ \ \ \ \ \ \ \ self.gt\_map,\ self.es\_map\ =\ self.generate\_manual\_id\_map() }
+\DoxyCodeLine{00908\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ self.es\_map\ =\ self.gt\_map }}
+\DoxyCodeLine{00909\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print("{}GT\ MAPPING\ ITSELF"{},\ self.gt\_map,\ self.es\_map) }}
+\DoxyCodeLine{00910\  }
+\DoxyCodeLine{00911\ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{"{}MAPS"{}},\ self.gt\_map,\ self.es\_map) }
+\DoxyCodeLine{00912\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ input() }}
+\DoxyCodeLine{00913\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00914\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ self.gt\_map,\ self.es\_map\ =\ self.calculate\_identification\_map() }}
+\DoxyCodeLine{00915\ \ \ \ \ \ \ \ \ tp,\ total\_tp,\ purity\ \ =\ self.calculate\_tracker\_purity() }
+\DoxyCodeLine{00916\ \ \ \ \ \ \ \ \ op,\ total\_op,\ o\_purity\ =\ self.calculate\_object\_purity() }
+\DoxyCodeLine{00917\  }
+\DoxyCodeLine{00918\ \ \ \ \ \ \ \ \ count\_fp\ =\ 0 }
+\DoxyCodeLine{00919\ \ \ \ \ \ \ \ \ count\_fn\ =\ 0 }
+\DoxyCodeLine{00920\ \ \ \ \ \ \ \ \ count\_mt\ =\ 0 }
+\DoxyCodeLine{00921\ \ \ \ \ \ \ \ \ count\_mo\ =\ 0 }
+\DoxyCodeLine{00922\ \ \ \ \ \ \ \ \ count\_cd\ =\ 0 }
+\DoxyCodeLine{00923\ \ \ \ \ \ \ \ \ count\_fit\ =\ 0 }
+\DoxyCodeLine{00924\ \ \ \ \ \ \ \ \ count\_fio\ =\ 0 }
+\DoxyCodeLine{00925\  }
+\DoxyCodeLine{00926\ \ \ \ \ \ \ \ \ record\_frames\ =\ [] }
+\DoxyCodeLine{00927\ \ \ \ \ \ \ \ \ record\_fp\ =\ [] }
+\DoxyCodeLine{00928\ \ \ \ \ \ \ \ \ record\_fn\ =\ [] }
+\DoxyCodeLine{00929\ \ \ \ \ \ \ \ \ record\_mt\ =\ [] }
+\DoxyCodeLine{00930\ \ \ \ \ \ \ \ \ record\_mo\ =\ [] }
+\DoxyCodeLine{00931\ \ \ \ \ \ \ \ \ record\_cd\ =\ [] }
+\DoxyCodeLine{00932\ \ \ \ \ \ \ \ \ record\_fit\ =\ [] }
+\DoxyCodeLine{00933\ \ \ \ \ \ \ \ \ record\_fio\ =\ [] }
+\DoxyCodeLine{00934\  }
+\DoxyCodeLine{00935\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ frame\ \textcolor{keywordflow}{in}\ self.ground\_truth\_dict: }
+\DoxyCodeLine{00936\ \ \ \ \ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00937\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print("{}\(\backslash\)nFRAME"{},\ frame) }}
+\DoxyCodeLine{00938\ \ \ \ \ \ \ \ \ \ \ \ \ ngt\ =\ max(len(self.get\_ground\_truths(frame)),1) }
+\DoxyCodeLine{00939\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ nes\ =\ len(self.list\_estimates()) }}
+\DoxyCodeLine{00940\ \ \ \ \ \ \ \ \ \ \ \ \ errors\ =\ self.calculate\_frame\_errors(frame) }
+\DoxyCodeLine{00941\ \ \ \ \ \ \ \ \ \ \ \ \ cd,\ cd\_t\ =\ self.configuration\_distance(frame) }
+\DoxyCodeLine{00942\  }
+\DoxyCodeLine{00943\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print(errors) }}
+\DoxyCodeLine{00944\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print(count\_cd) }}
+\DoxyCodeLine{00945\ \ \ \ \ \ \ \ \ \ \ \ \ count\_fp\ +=\ errors[\textcolor{stringliteral}{'FP'}] }
+\DoxyCodeLine{00946\ \ \ \ \ \ \ \ \ \ \ \ \ count\_fn\ +=\ errors[\textcolor{stringliteral}{'FN'}] }
+\DoxyCodeLine{00947\ \ \ \ \ \ \ \ \ \ \ \ \ count\_mt\ +=\ errors[\textcolor{stringliteral}{'MT'}] }
+\DoxyCodeLine{00948\ \ \ \ \ \ \ \ \ \ \ \ \ count\_mo\ +=\ errors[\textcolor{stringliteral}{'MO'}] }
+\DoxyCodeLine{00949\ \ \ \ \ \ \ \ \ \ \ \ \ count\_cd\ +=\ cd\_t }
+\DoxyCodeLine{00950\ \ \ \ \ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00951\  }
+\DoxyCodeLine{00952\ \ \ \ \ \ \ \ \ \ \ \ \ total\_fp\ +=\ errors[\textcolor{stringliteral}{'FP'}]/ngt }
+\DoxyCodeLine{00953\ \ \ \ \ \ \ \ \ \ \ \ \ total\_fn\ +=\ errors[\textcolor{stringliteral}{'FN'}]/ngt }
+\DoxyCodeLine{00954\ \ \ \ \ \ \ \ \ \ \ \ \ total\_mt\ +=\ errors[\textcolor{stringliteral}{'MT'}]/ngt }
+\DoxyCodeLine{00955\ \ \ \ \ \ \ \ \ \ \ \ \ total\_mo\ +=\ errors[\textcolor{stringliteral}{'MO'}]/ngt }
+\DoxyCodeLine{00956\ \ \ \ \ \ \ \ \ \ \ \ \ total\_cd\ +=\ abs(cd) }
+\DoxyCodeLine{00957\  }
+\DoxyCodeLine{00958\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print("{}Normalized\ CD"{},\ errors['CD']) }}
+\DoxyCodeLine{00959\ \ \ \ \ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00960\ \ \ \ \ \ \ \ \ \ \ \ \ fit,\ c\_fit,\ fit\_scores\ =\ self.falsly\_identified\_tracker(frame) }
+\DoxyCodeLine{00961\ \ \ \ \ \ \ \ \ \ \ \ \ fio,\ c\_fio,\ fio\_scores\ =\ self.falsly\_identified\_object(frame) }
+\DoxyCodeLine{00962\  }
+\DoxyCodeLine{00963\ \ \ \ \ \ \ \ \ \ \ \ \ total\_fio\ +=\ fio }
+\DoxyCodeLine{00964\ \ \ \ \ \ \ \ \ \ \ \ \ total\_fit\ +=\ fit }
+\DoxyCodeLine{00965\ \ \ \ \ \ \ \ \ \ \ \ \ count\_fit\ +=\ c\_fit }
+\DoxyCodeLine{00966\ \ \ \ \ \ \ \ \ \ \ \ \ count\_fio\ +=\ c\_fio\  }
+\DoxyCodeLine{00967\  }
+\DoxyCodeLine{00968\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Records\ normalized\ results\ per\ frame }}
+\DoxyCodeLine{00969\ \ \ \ \ \ \ \ \ \ \ \ \ record\_frames.append(frame) }
+\DoxyCodeLine{00970\ \ \ \ \ \ \ \ \ \ \ \ \ record\_fp.append(errors[\textcolor{stringliteral}{'FP'}]/ngt) }
+\DoxyCodeLine{00971\ \ \ \ \ \ \ \ \ \ \ \ \ record\_fn.append(errors[\textcolor{stringliteral}{'FN'}]/ngt) }
+\DoxyCodeLine{00972\ \ \ \ \ \ \ \ \ \ \ \ \ record\_mt.append(errors[\textcolor{stringliteral}{'MT'}]/ngt) }
+\DoxyCodeLine{00973\ \ \ \ \ \ \ \ \ \ \ \ \ record\_mo.append(errors[\textcolor{stringliteral}{'MO'}]/ngt) }
+\DoxyCodeLine{00974\ \ \ \ \ \ \ \ \ \ \ \ \ record\_cd.append(abs(cd)) }
+\DoxyCodeLine{00975\ \ \ \ \ \ \ \ \ \ \ \ \ record\_fit.append(fit) }
+\DoxyCodeLine{00976\ \ \ \ \ \ \ \ \ \ \ \ \ record\_fio.append(fio) }
+\DoxyCodeLine{00977\ \ \ \ \ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00978\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ id\_errors\ =\ self.calculate\_identification\_errors(frame) }}
+\DoxyCodeLine{00979\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ total\_tp\ +=\ id\_errors['TP'] }}
+\DoxyCodeLine{00980\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ total\_op\ +=\ id\_errors['OP'] }}
+\DoxyCodeLine{00981\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ total\_fit\ +=\ id\_errors['FIT'] }}
+\DoxyCodeLine{00982\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ total\_fio\ +=\ id\_errors['FIO'] }}
+\DoxyCodeLine{00983\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print(id\_errors) }}
+\DoxyCodeLine{00984\  }
+\DoxyCodeLine{00985\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ counts\ =\ \{"{}FP"{}:\ count\_fp,\  }}
+\DoxyCodeLine{00986\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ \ \ \ \ "{}FN"{}:\ count\_fn, }}
+\DoxyCodeLine{00987\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ \ \ \ \ "{}MT"{}:\ count\_mt, }}
+\DoxyCodeLine{00988\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ \ \ \ \ "{}MO"{}:\ count\_mo, }}
+\DoxyCodeLine{00989\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ \ \ \ \ "{}CD"{}:\ count\_cd, }}
+\DoxyCodeLine{00990\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ \ \ \ \ "{}TP"{}:\ total\_tp, }}
+\DoxyCodeLine{00991\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ \ \ \ \ "{}OP"{}:\ total\_op, }}
+\DoxyCodeLine{00992\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ \ \ \ \ "{}FIT"{}:\ count\_fit, }}
+\DoxyCodeLine{00993\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ \ \ \ \ "{}FIO"{}:\ count\_fio }}
+\DoxyCodeLine{00994\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ \ \ \ \ \}\  }}
+\DoxyCodeLine{00995\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print("{}\(\backslash\)nCOUNTS"{},\ counts) }}
+\DoxyCodeLine{00996\  }
+\DoxyCodeLine{00997\  }
+\DoxyCodeLine{00998\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ results\ =\ \{"{}FP"{}:\ total\_fp,\  }}
+\DoxyCodeLine{00999\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ \ \ \ \ "{}FN"{}:\ total\_fn, }}
+\DoxyCodeLine{01000\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ \ \ \ \ "{}MT"{}:\ total\_mt, }}
+\DoxyCodeLine{01001\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ \ \ \ \ "{}MO"{}:\ total\_mo, }}
+\DoxyCodeLine{01002\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ \ \ \ \ "{}CD"{}:\ total\_cd, }}
+\DoxyCodeLine{01003\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ \ \ \ \ "{}TP"{}:\ total\_tp, }}
+\DoxyCodeLine{01004\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ \ \ \ \ "{}OP"{}:\ total\_op, }}
+\DoxyCodeLine{01005\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ \ \ \ \ "{}FIT"{}:\ total\_fit, }}
+\DoxyCodeLine{01006\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ \ \ \ \ "{}FIO"{}:\ total\_fio }}
+\DoxyCodeLine{01007\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ test }}
+\DoxyCodeLine{01008\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{01009\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print(normalization) }}
+\DoxyCodeLine{01010\ \ \ \ \ \ \ \ \ total\_frames\ =\ self.total\_images }
+\DoxyCodeLine{01011\ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{"{}Total\ FP:"{}},\ total\_fp) }
+\DoxyCodeLine{01012\ \ \ \ \ \ \ \ \ print(self.total\_images) }
+\DoxyCodeLine{01013\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Normalization }}
+\DoxyCodeLine{01014\ \ \ \ \ \ \ \ \ normalized\_results\ =\ \{ }
+\DoxyCodeLine{01015\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}FP"{}}:\ round((1/(total\_frames))\ *\ (total\_fp),3),\ \ \ \ \textcolor{comment}{\#Good }}
+\DoxyCodeLine{01016\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}FN"{}}:\ round((1/(total\_frames))\ *\ (total\_fn),3),\ \ \ \ \textcolor{comment}{\#Good\  }}
+\DoxyCodeLine{01017\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}MT"{}}:\ round((1/(total\_frames))\ *\ (total\_mt),3),\ \ \ \ \textcolor{comment}{\#Good }}
+\DoxyCodeLine{01018\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}MO"{}}:\ round((1/(total\_frames))\ *\ (total\_mo),3),\ \ \ \ \textcolor{comment}{\#Good }}
+\DoxyCodeLine{01019\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}CD"{}}:\ round((1/(total\_frames))\ *\ total\_cd,3),\ \ \ \ \ \ \textcolor{comment}{\#Good }}
+\DoxyCodeLine{01020\  }
+\DoxyCodeLine{01021\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}FIT"{}}:\ round((1/total\_frames)\ *\ (total\_fit),3),\ \ \ \ \textcolor{comment}{\#Good }}
+\DoxyCodeLine{01022\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}FIO"{}}:\ round((1/total\_frames)\ *\ (total\_fio),3),\ \ \ \ \ \textcolor{comment}{\#Good }}
+\DoxyCodeLine{01023\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}TP"{}}:\ round((tp),\ 3),\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#Good }}
+\DoxyCodeLine{01024\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}OP"{}}:\ round((op),3)\ \ \ \ \ \textcolor{comment}{\#Untested }}
+\DoxyCodeLine{01025\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \} }
+\DoxyCodeLine{01026\  }
+\DoxyCodeLine{01027\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Runs\ through\ history\ of\ the\ errors,\ normalized\ to\ compare\ errors\ over\ time,\ between\ videos\  }}
+\DoxyCodeLine{01028\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#NOTE\ tp\ and\ op\ are\ not\ recorded\ because\ those\ are\ performance\ across\ the\ entire\ video }}
+\DoxyCodeLine{01029\ \ \ \ \ \ \ \ \ recorded\_results\ =\ \{ }
+\DoxyCodeLine{01030\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Frames"{}}:record\_frames, }
+\DoxyCodeLine{01031\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}FP"{}}:record\_fp, }
+\DoxyCodeLine{01032\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}FN"{}}:record\_fn, }
+\DoxyCodeLine{01033\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}MT"{}}:record\_mt, }
+\DoxyCodeLine{01034\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}MO"{}}:record\_mo, }
+\DoxyCodeLine{01035\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}CD"{}}:record\_cd, }
+\DoxyCodeLine{01036\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}FIT"{}}:record\_fit, }
+\DoxyCodeLine{01037\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}FIO"{}}:record\_fio }
+\DoxyCodeLine{01038\ \ \ \ \ \ \ \ \ \} }
+\DoxyCodeLine{01039\  }
+\DoxyCodeLine{01040\ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{"{}\(\backslash\)nNORMALIZED"{}},\ normalized\_results) }
+\DoxyCodeLine{01041\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ normalized\_results,\ recorded\_results }
+\DoxyCodeLine{01042\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ return\ results,\ normalized\_results }}
+\DoxyCodeLine{01043\  }
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{a00154_afb84b7efc3d1670971c3a96f2289ac5a}{tracker\+\_\+evaluation.\+calculate\+\_\+frame\+\_\+errors()}}, \mbox{\hyperlink{a00154_a3639a941793f544ac8da43787caf0e79}{tracker\+\_\+evaluation.\+calculate\+\_\+identification\+\_\+map()}}, \mbox{\hyperlink{a00154_afa5e4bd548b6ad8817feade0a06a04f2}{tracker\+\_\+evaluation.\+calculate\+\_\+object\+\_\+purity()}}, \mbox{\hyperlink{a00154_abe18d5f6b249e1dde980ff17aabf9e8f}{tracker\+\_\+evaluation.\+calculate\+\_\+tracker\+\_\+purity()}}, \mbox{\hyperlink{a00154_abc6ee42a85d6b9fc7311c44da0e25133}{tracker\+\_\+evaluation.\+configuration\+\_\+distance()}}, tracker\+\_\+evaluation.\+es\+\_\+map, \mbox{\hyperlink{a00154_a2a0bf799d0e7ebe787ced89e43d09bb5}{tracker\+\_\+evaluation.\+falsly\+\_\+identified\+\_\+object()}}, \mbox{\hyperlink{a00154_a86b2c6d7d6195d366eca3c999f3219a2}{tracker\+\_\+evaluation.\+falsly\+\_\+identified\+\_\+tracker()}}, \mbox{\hyperlink{a00154_a807e2d387bd46390c13ac4a7ab669f65}{tracker\+\_\+evaluation.\+generate\+\_\+manual\+\_\+id\+\_\+map()}}, tracker\+\_\+evaluation.\+get\+\_\+ground\+\_\+truths(), tracker\+\_\+evaluation.\+ground\+\_\+truth\+\_\+dict, tracker\+\_\+evaluation.\+gt\+\_\+map, and tracker\+\_\+evaluation.\+total\+\_\+images.
+
+Here is the call graph for this function\+:
+% FIG 1
+\Hypertarget{a00154_afb84b7efc3d1670971c3a96f2289ac5a}\label{a00154_afb84b7efc3d1670971c3a96f2289ac5a} 
+\index{tracker\_evaluation@{tracker\_evaluation}!calculate\_frame\_errors@{calculate\_frame\_errors}}
+\index{calculate\_frame\_errors@{calculate\_frame\_errors}!tracker\_evaluation@{tracker\_evaluation}}
+\doxysubsubsection{\texorpdfstring{calculate\_frame\_errors()}{calculate\_frame\_errors()}}
+{\footnotesize\ttfamily calculate\+\_\+frame\+\_\+errors (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{frame\+\_\+number,  }\item[{}]{ratios = {\ttfamily (1,1)},  }\item[{}]{y\+\_\+offset = {\ttfamily 720} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00858\ \ \ \ \ \textcolor{keyword}{def\ }calculate\_frame\_errors(self,\ frame\_number,\ ratios=(1,1),\ y\_offset=720): }
+\DoxyCodeLine{00859\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{''' }}
+\DoxyCodeLine{00860\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ '''} }
+\DoxyCodeLine{00861\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print("{}Getting\ map..."{},\ end='/n') }}
+\DoxyCodeLine{00862\ \ \ \ \ \ \ \ \ gt\_map,\ es\_map\ =\ self.configuration\_map(frame\_number) }
+\DoxyCodeLine{00863\ \ \ \ \ \ \ \ \ print(gt\_map,\ es\_map) }
+\DoxyCodeLine{00864\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print("{}Getting\ CD..."{},\ end='/n') }}
+\DoxyCodeLine{00865\ \ \ \ \ \ \ \ \ cd,\ total\_cd\ =\ self.configuration\_distance(frame\_number) }
+\DoxyCodeLine{00866\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print("{}Calculating\ Results"{}) }}
+\DoxyCodeLine{00867\ \ \ \ \ \ \ \ \ results\ =\ \{\ \textcolor{stringliteral}{"{}FP"{}}:\ self.false\_positive(es\_map),\  }
+\DoxyCodeLine{00868\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}FN"{}}:\ self.false\_negative(gt\_map), }
+\DoxyCodeLine{00869\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}MT"{}}:\ self.multiple\_trackers(gt\_map,\ frame\_number), }
+\DoxyCodeLine{00870\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}MO"{}}:\ self.multiple\_objects(es\_map,\ frame\_number), }
+\DoxyCodeLine{00871\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}CD"{}}:\ cd, }
+\DoxyCodeLine{00872\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}FIT"{}}:self.falsly\_identified\_tracker(frame\_number),\  }
+\DoxyCodeLine{00873\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}FIO"{}}:self.falsly\_identified\_object(frame\_number) }
+\DoxyCodeLine{00874\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \} }
+\DoxyCodeLine{00875\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print("{}Results:"{},\ results) }}
+\DoxyCodeLine{00876\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ results }
+\DoxyCodeLine{00877\  }
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{a00154_abe18d5f6b249e1dde980ff17aabf9e8f}{tracker\+\_\+evaluation.\+calculate\+\_\+tracker\+\_\+purity()}}, tracker\+\_\+evaluation.\+calulate, \mbox{\hyperlink{a00154_abc6ee42a85d6b9fc7311c44da0e25133}{tracker\+\_\+evaluation.\+configuration\+\_\+distance()}}, tracker\+\_\+evaluation.\+configuration\+\_\+map(), \mbox{\hyperlink{a00154_a7145367645f6f72dce430c8f61faf76a}{tracker\+\_\+evaluation.\+false\+\_\+negative()}}, \mbox{\hyperlink{a00154_a28cab66ecf2005ae882c6bc2672fa461}{tracker\+\_\+evaluation.\+false\+\_\+positive()}}, \mbox{\hyperlink{a00154_a2a0bf799d0e7ebe787ced89e43d09bb5}{tracker\+\_\+evaluation.\+falsly\+\_\+identified\+\_\+object()}}, \mbox{\hyperlink{a00154_a86b2c6d7d6195d366eca3c999f3219a2}{tracker\+\_\+evaluation.\+falsly\+\_\+identified\+\_\+tracker()}}, \mbox{\hyperlink{a00154_a24713f50b19ca4cf8b48421328fffcf4}{tracker\+\_\+evaluation.\+multiple\+\_\+objects()}}, and \mbox{\hyperlink{a00154_ae7a2ff900f60fe15be7946b972d55ce1}{tracker\+\_\+evaluation.\+multiple\+\_\+trackers()}}.
+
+
+
+Referenced by \mbox{\hyperlink{a00154_a2cc5036fce7e6fbf3fb8e999bcf5ae25}{tracker\+\_\+evaluation.\+calculate\+\_\+errors()}}.
+
+Here is the call graph for this function\+:
+% FIG 2
+Here is the caller graph for this function\+:
+% FIG 3
+\Hypertarget{a00154_ac7580a4b2b507bf081643b0c6c91dbd8}\label{a00154_ac7580a4b2b507bf081643b0c6c91dbd8} 
+\index{tracker\_evaluation@{tracker\_evaluation}!calculate\_identification\_errors@{calculate\_identification\_errors}}
+\index{calculate\_identification\_errors@{calculate\_identification\_errors}!tracker\_evaluation@{tracker\_evaluation}}
+\doxysubsubsection{\texorpdfstring{calculate\_identification\_errors()}{calculate\_identification\_errors()}}
+{\footnotesize\ttfamily calculate\+\_\+identification\+\_\+errors (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{frame\+\_\+number }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00878\ \ \ \ \ \textcolor{keyword}{def\ }calculate\_identification\_errors(self,\ frame\_number): }
+\DoxyCodeLine{00879\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{\textcolor{stringliteral}{"{}TP"{}}:self.calculate\_tracker\_purity()[0],\ \textcolor{stringliteral}{"{}OP"{}}:self.calulate,\ \textcolor{stringliteral}{"{}FIT"{}}:self.falsly\_identified\_tracker(frame\_number)[0],\ \textcolor{stringliteral}{"{}FIO"{}}:self.falsly\_identified\_object(frame\_number)[0]\} }
+\DoxyCodeLine{00880\ \ \ \ \ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00881\  }
+\DoxyCodeLine{00882\  }
+
+\end{DoxyCode}
+\Hypertarget{a00154_a3639a941793f544ac8da43787caf0e79}\label{a00154_a3639a941793f544ac8da43787caf0e79} 
+\index{tracker\_evaluation@{tracker\_evaluation}!calculate\_identification\_map@{calculate\_identification\_map}}
+\index{calculate\_identification\_map@{calculate\_identification\_map}!tracker\_evaluation@{tracker\_evaluation}}
+\doxysubsubsection{\texorpdfstring{calculate\_identification\_map()}{calculate\_identification\_map()}}
+{\footnotesize\ttfamily calculate\+\_\+identification\+\_\+map (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{manual\+\_\+gtmap = {\ttfamily None},  }\item[{}]{manual\+\_\+emap = {\ttfamily None} }\end{DoxyParamCaption})}
+
+
+
+Calculates Identification map for an entire video. 
+
+Calculate\+\_\+identification\+\_\+map calculates the id map of every frame based on how one fits onto another. Next is majority voting which counts the occurances of maps and grabs the ones which have the most.
+
+\begin{DoxyNote}{Note}
+manual\+\_\+gtmap and manual\+\_\+emap is used when the identifications map 1\+:1 with eachother. For example, if Ground Truth is P1, then it\textquotesingle{}s corresponding estimate is also P1, as well as Estimate P1 maps to Ground Truth P1.
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em manual\+\_\+gtmap} & input should be the unique set of ground truth label names \\
+\hline
+{\em manual\+\_\+emap} & input should be the unique set of estimate label names\\
+\hline
+\end{DoxyParams}
+\begin{DoxyWarning}{Warning}
+Required to use this when using labeled tracks (Not Mask\+RCNN) and it is required you DO NOT use this while using Mask\+RCNN predictions. 
+\end{DoxyWarning}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00535\ \ \ \ \ \textcolor{keyword}{def\ }calculate\_identification\_map(self,\ manual\_gtmap=None,\ manual\_emap=None): }
+\DoxyCodeLine{00536\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}!\  }}
+\DoxyCodeLine{00537\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @brief\ Calculates\ Identification\ map\ for\ an\ entire\ video }}
+\DoxyCodeLine{00538\ \textcolor{stringliteral}{ }}
+\DoxyCodeLine{00539\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Calculate\_identification\_map\ calculates\ the\ id\ map\ of\ every\ frame\ based\ on\ how\ one\ fits\ onto\ another.\  }}
+\DoxyCodeLine{00540\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Next\ is\ majority\ voting\ which\ counts\ the\ occurances\ of\ maps\ and\ grabs\ the\ ones\ which\ have\ the\ most. }}
+\DoxyCodeLine{00541\ \textcolor{stringliteral}{ }}
+\DoxyCodeLine{00542\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @note\ manual\_gtmap\ and\ manual\_emap\ is\ used\ when\ the\ identifications\ map\ 1:1\ with\ eachother. }}
+\DoxyCodeLine{00543\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ For\ example,\ if\ Ground\ Truth\ is\ P1,\ then\ it's\ corresponding\ estimate\ is\ also\ P1,\ as\ well\ as\ Estimate\ P1\ maps\ to\ Ground\ Truth\ P1. }}
+\DoxyCodeLine{00544\ \textcolor{stringliteral}{ }}
+\DoxyCodeLine{00545\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @param\ manual\_gtmap\ input\ should\ be\ the\ unique\ set\ of\ ground\ truth\ label\ names }}
+\DoxyCodeLine{00546\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @param\ manual\_emap\ input\ should\ be\ the\ unique\ set\ of\ estimate\ label\ names }}
+\DoxyCodeLine{00547\ \textcolor{stringliteral}{ }}
+\DoxyCodeLine{00548\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @warning\ Required\ to\ use\ this\ when\ using\ labeled\ tracks\ (Not\ MaskRCNN)\ and\ it\ is\ required\ you\ DO\ NOT\ use\ this\ while\ using\ MaskRCNN\ predictions. }}
+\DoxyCodeLine{00549\ \textcolor{stringliteral}{ }}
+\DoxyCodeLine{00550\ \textcolor{stringliteral}{ }}
+\DoxyCodeLine{00551\ \textcolor{stringliteral}{ }}
+\DoxyCodeLine{00552\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}} }
+\DoxyCodeLine{00553\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ if\ manual\_gtmap\ is\ not\ None\ and\ manual\_emap\ is\ not\ None: }}
+\DoxyCodeLine{00554\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ \ \ \ \ return\ self.list\_labels(),\ self.list\_estimates() }}
+\DoxyCodeLine{00555\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ return\ manual\_gtmap,\ manual\_emap }}
+\DoxyCodeLine{00556\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00557\  }
+\DoxyCodeLine{00558\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#Calculates\ ID\ Map\ for\ every\ frame.\ One\ frame\ can\ have\ multiple\ maps }}
+\DoxyCodeLine{00559\ \ \ \ \ \ \ \ \ e\_map\ =\ [] }
+\DoxyCodeLine{00560\ \ \ \ \ \ \ \ \ g\_map\ =\ [] }
+\DoxyCodeLine{00561\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ frame\ \textcolor{keywordflow}{in}\ self.ground\_truth\_dict: }
+\DoxyCodeLine{00562\ \ \ \ \ \ \ \ \ \ \ \ \ maps\ =\ self.identification\_map(frame) }
+\DoxyCodeLine{00563\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00564\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ maps\ \textcolor{keywordflow}{is}\ \textcolor{keywordflow}{not}\ \textcolor{keywordtype}{None}: }
+\DoxyCodeLine{00565\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ e\ =\ maps[\textcolor{stringliteral}{"{}Estimate"{}}] }
+\DoxyCodeLine{00566\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ g\ =\ maps[\textcolor{stringliteral}{"{}Ground\_Truth"{}}] }
+\DoxyCodeLine{00567\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00568\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ key\ \textcolor{keywordflow}{in}\ e.keys(): }
+\DoxyCodeLine{00569\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ e\_map.append((key,\ e[key])) }
+\DoxyCodeLine{00570\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00571\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ key\ \textcolor{keywordflow}{in}\ g.keys(): }
+\DoxyCodeLine{00572\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ g\_map.append((key,\ g[key])) }
+\DoxyCodeLine{00573\ \ \ \ \ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00574\ \ \ \ \ \ \ \ \ e\_map\ =\ dict((x,e\_map.count(x))\ \textcolor{keywordflow}{for}\ x\ \textcolor{keywordflow}{in}\ set(e\_map)) }
+\DoxyCodeLine{00575\ \ \ \ \ \ \ \ \ g\_map\ =\ dict((x,g\_map.count(x))\ \textcolor{keywordflow}{for}\ x\ \textcolor{keywordflow}{in}\ set(g\_map))\ \ \  }
+\DoxyCodeLine{00576\  }
+\DoxyCodeLine{00577\ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{"{}EMAP"{}},e\_map) }
+\DoxyCodeLine{00578\ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{"{}GMAP"{}},g\_map) }
+\DoxyCodeLine{00579\  }
+\DoxyCodeLine{00580\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print("{}E\_MAP"{},e\_map,\ "{}\(\backslash\)nG\_MAP"{},\ g\_map) }}
+\DoxyCodeLine{00581\  }
+\DoxyCodeLine{00582\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#Majority\ voting }}
+\DoxyCodeLine{00583\  }
+\DoxyCodeLine{00584\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Iterate\ through\ labels\ and\ grab\ the\ label\ with\ the\ majority\ votes }}
+\DoxyCodeLine{00585\ \ \ \ \ \ \ \ \ majority\_vote\_labels\ =\ \{\} }
+\DoxyCodeLine{00586\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ label\ \textcolor{keywordflow}{in}\ self.labels: }
+\DoxyCodeLine{00587\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Majority\ =\ ((label,estimate),\ count) }}
+\DoxyCodeLine{00588\ \ \ \ \ \ \ \ \ \ \ \ \ majority\ =\ \textcolor{keywordtype}{None} }
+\DoxyCodeLine{00589\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print(label) }}
+\DoxyCodeLine{00590\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ pair\ \textcolor{keywordflow}{in}\ g\_map.keys(): }
+\DoxyCodeLine{00591\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Assign\ the\ majority\ to\ the\ first }}
+\DoxyCodeLine{00592\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00593\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ label\ ==\ pair[0]: }
+\DoxyCodeLine{00594\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ majority\ \textcolor{keywordflow}{is}\ \textcolor{keywordtype}{None}: }
+\DoxyCodeLine{00595\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ majority\ =\ (pair,\ g\_map[pair]) }
+\DoxyCodeLine{00596\  }
+\DoxyCodeLine{00597\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#Get\ the\ count\ and\ replace\ the\ majority\ if\ the\ count\ is\  }}
+\DoxyCodeLine{00598\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{elif}\ g\_map[pair]\ >\ majority[1]: }
+\DoxyCodeLine{00599\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ majority\ =\ (pair,\ g\_map[pair]) }
+\DoxyCodeLine{00600\  }
+\DoxyCodeLine{00601\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print(majority) }}
+\DoxyCodeLine{00602\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Majority\_Vote\_Labels\ =\ \{label:\ estiamte\} }}
+\DoxyCodeLine{00603\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print(majority) }}
+\DoxyCodeLine{00604\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ majority\ \textcolor{keywordflow}{is}\ \textcolor{keywordflow}{not}\ \textcolor{keywordtype}{None}: }
+\DoxyCodeLine{00605\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ majority\_vote\_labels[majority[0][0]]\ =\ majority[0][1] }
+\DoxyCodeLine{00606\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ else: }}
+\DoxyCodeLine{00607\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ \ \ \ \ \#\ majority\_vote\_labels[] }}
+\DoxyCodeLine{00608\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00609\ \ \ \ \ \ \ \ \ majority\_vote\_estimates\ =\ \{\} }
+\DoxyCodeLine{00610\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ es\ \textcolor{keywordflow}{in}\ self.list\_estimates(): }
+\DoxyCodeLine{00611\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Majority\ =\ ((label,estimate),\ count) }}
+\DoxyCodeLine{00612\ \ \ \ \ \ \ \ \ \ \ \ \ majority\ =\ \textcolor{keywordtype}{None} }
+\DoxyCodeLine{00613\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ pair\ \textcolor{keywordflow}{in}\ e\_map.keys(): }
+\DoxyCodeLine{00614\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Assign\ the\ majority\ to\ the\ first }}
+\DoxyCodeLine{00615\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ es\ ==\ pair[0]: }
+\DoxyCodeLine{00616\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00617\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ majority\ \textcolor{keywordflow}{is}\ \textcolor{keywordtype}{None}: }
+\DoxyCodeLine{00618\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ majority\ =\ (pair,\ e\_map[pair]) }
+\DoxyCodeLine{00619\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ es\ ==\ \textcolor{stringliteral}{"{}L2"{}}: }
+\DoxyCodeLine{00620\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{"{}P2\ MAjority!"{}},\ majority) }
+\DoxyCodeLine{00621\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#Get\ the\ count\ and\ replace\ the\ majority\ if\ the\ count\ is\  }}
+\DoxyCodeLine{00622\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{elif}\ e\_map[pair]\ >\ majority[1]: }
+\DoxyCodeLine{00623\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ majority\ =\ (pair,\ e\_map[pair]) }
+\DoxyCodeLine{00624\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Majority\_Vote\_Labels\ =\ \{label:\ estiamte\} }}
+\DoxyCodeLine{00625\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ majority\ \textcolor{keywordflow}{is}\ \textcolor{keywordflow}{not}\ \textcolor{keywordtype}{None}: }
+\DoxyCodeLine{00626\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ majority\_vote\_estimates[majority[0][0]]\ =\ majority[0][1] }
+\DoxyCodeLine{00627\  }
+\DoxyCodeLine{00628\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00629\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ majority\_vote\_labels,\ majority\_vote\_estimates }
+\DoxyCodeLine{00630\  }
+\DoxyCodeLine{00631\  }
+\DoxyCodeLine{00632\  }
+
+\end{DoxyCode}
+
+
+References tracker\+\_\+evaluation.\+ground\+\_\+truth\+\_\+dict, \mbox{\hyperlink{a00154_aaaad9fe0f151923410425485f2f4c4ed}{tracker\+\_\+evaluation.\+identification\+\_\+map()}}, tracker\+\_\+evaluation.\+labels, and \mbox{\hyperlink{a00154_a3d137dc16b12468a6cecc09a1a0909b4}{tracker\+\_\+evaluation.\+list\+\_\+estimates()}}.
+
+
+
+Referenced by \mbox{\hyperlink{a00154_a2cc5036fce7e6fbf3fb8e999bcf5ae25}{tracker\+\_\+evaluation.\+calculate\+\_\+errors()}}.
+
+Here is the call graph for this function\+:
+% FIG 4
+Here is the caller graph for this function\+:
+% FIG 5
+\Hypertarget{a00154_afa5e4bd548b6ad8817feade0a06a04f2}\label{a00154_afa5e4bd548b6ad8817feade0a06a04f2} 
+\index{tracker\_evaluation@{tracker\_evaluation}!calculate\_object\_purity@{calculate\_object\_purity}}
+\index{calculate\_object\_purity@{calculate\_object\_purity}!tracker\_evaluation@{tracker\_evaluation}}
+\doxysubsubsection{\texorpdfstring{calculate\_object\_purity()}{calculate\_object\_purity()}}
+{\footnotesize\ttfamily calculate\+\_\+object\+\_\+purity (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Measure I-4: (OP) - Object Purity. If the identity map
+w.r.t. GT indicates GTj is identified by Ei, the ratio of
+frames that GT j is correctly identified by Ei ( njˆij ) to
+the total number of frames GT j exists (nj ) 
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00798\ \ \ \ \ \textcolor{keyword}{def\ }calculate\_object\_purity(self): }
+\DoxyCodeLine{00799\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{''' }}
+\DoxyCodeLine{00800\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Measure\ I-\/4:\ (OP)\ -\/\ Object\ Purity.\ If\ the\ identity\ map }}
+\DoxyCodeLine{00801\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ w.r.t.\ GT\ indicates\ GTj\ is\ identified\ by\ Ei,\ the\ ratio\ of }}
+\DoxyCodeLine{00802\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ frames\ that\ GT\ j\ is\ correctly\ identified\ by\ Ei\ (\ njˆij\ )\ to }}
+\DoxyCodeLine{00803\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ the\ total\ number\ of\ frames\ GT\ j\ exists\ (nj\ )\  }}
+\DoxyCodeLine{00804\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ '''} }
+\DoxyCodeLine{00805\ \ \ \ \ \ \ \ \ g\_count\ =\ self.get\_groundtruth\_count()\ \textcolor{comment}{\#total\ number\ of\ frames\ Ei\ exists\ (ni) }}
+\DoxyCodeLine{00806\ \ \ \ \ \ \ \ \ correct\_dict\ =\ \{\} }
+\DoxyCodeLine{00807\  }
+\DoxyCodeLine{00808\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Frames\ that\ Ei\ correctly\ identifies\ GTj\ (\ niˆji\ ) }}
+\DoxyCodeLine{00809\  }
+\DoxyCodeLine{00810\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#Iterate\ over\ the\ entire\ video's\ frames }}
+\DoxyCodeLine{00811\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ frame\ \textcolor{keywordflow}{in}\ self.ground\_truth\_dict: }
+\DoxyCodeLine{00812\ \ \ \ \ \ \ \ \ \ \ \ \ id\_map\ =\ self.identification\_map(frame) }
+\DoxyCodeLine{00813\  }
+\DoxyCodeLine{00814\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#Check\ if\ ID\ map\ is\ valid }}
+\DoxyCodeLine{00815\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ id\_map\ \textcolor{keywordflow}{is}\ \textcolor{keywordflow}{not}\ \textcolor{keywordtype}{None}: }
+\DoxyCodeLine{00816\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00817\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#Grab\ ground\ truths\ and\ what\ the\ ground\ truths\ map\ to }}
+\DoxyCodeLine{00818\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ gt\_map\ =\ id\_map[\textcolor{stringliteral}{'Ground\_Truth'}] }
+\DoxyCodeLine{00819\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ground\_truths\ =\ self.get\_ground\_truths(frame) }
+\DoxyCodeLine{00820\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ estimates\ =\ self.get\_estimates(frame) }}
+\DoxyCodeLine{00821\  }
+\DoxyCodeLine{00822\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#Go\ through\ each\ ground\ truh\ and\ check\ if\ the\ current\ frame\ matches\ the\ id\_map\ key }}
+\DoxyCodeLine{00823\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ gt\ \textcolor{keywordflow}{in}\ ground\_truths: }
+\DoxyCodeLine{00824\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ name\ =\ gt[\textcolor{stringliteral}{'label'}] }
+\DoxyCodeLine{00825\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ if\ name\ not\ in\ list(correct\_dict.keys()): }}
+\DoxyCodeLine{00826\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ \ \ \ \ print("{}NOT\ IN,\ assigning"{},\ name) }}
+\DoxyCodeLine{00827\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ \ \ \ \ correct\_dict[name]\ =\ int(0) }}
+\DoxyCodeLine{00828\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ \ \ \ \ print(correct\_dict[name]) }}
+\DoxyCodeLine{00829\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ self.gt\_map[name]\ ==\ gt\_map[name]: }
+\DoxyCodeLine{00830\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print(self.gt\_map[name],\ [name]) }}
+\DoxyCodeLine{00831\  }
+\DoxyCodeLine{00832\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#If\ it\ does,\ we\ add\ to\ the\ number\ of\ times\ each\ id\ is\ correct }}
+\DoxyCodeLine{00833\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ name\ \textcolor{keywordflow}{in}\ correct\_dict.keys(): }
+\DoxyCodeLine{00834\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ correct\_dict[name]\ +=\ 1 }
+\DoxyCodeLine{00835\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}: }
+\DoxyCodeLine{00836\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ correct\_dict[name]\ =\ 1 }
+\DoxyCodeLine{00837\  }
+\DoxyCodeLine{00838\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00839\  }
+\DoxyCodeLine{00840\ \ \ \ \ \ \ \ \ purity\ =\ \{\} }
+\DoxyCodeLine{00841\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ name\ \textcolor{keywordflow}{in}\ g\_count.keys(): }
+\DoxyCodeLine{00842\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ name\ \textcolor{keywordflow}{not}\ \textcolor{keywordflow}{in}\ correct\_dict.keys(): }
+\DoxyCodeLine{00843\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ purity[name]\ =\ 1 }
+\DoxyCodeLine{00844\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}: }
+\DoxyCodeLine{00845\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ purity[name]\ =\ correct\_dict[name]/g\_count[name] }
+\DoxyCodeLine{00846\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00847\ \ \ \ \ \ \ \ \ op\ =\ 0 }
+\DoxyCodeLine{00848\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ value\ \textcolor{keywordflow}{in}\ purity.values(): }
+\DoxyCodeLine{00849\ \ \ \ \ \ \ \ \ \ \ \ \ op\ +=\ value }
+\DoxyCodeLine{00850\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00851\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00852\ \ \ \ \ \ \ \ \ total\_correct\ =\ op }
+\DoxyCodeLine{00853\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00854\ \ \ \ \ \ \ \ \ op\ =\ op/len(purity.values()) }
+\DoxyCodeLine{00855\ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{"{}Purity"{}},\ purity) }
+\DoxyCodeLine{00856\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ op,\ total\_correct,\ purity }
+\DoxyCodeLine{00857\  }
+
+\end{DoxyCode}
+
+
+References tracker\+\_\+evaluation.\+get\+\_\+ground\+\_\+truths(), tracker\+\_\+evaluation.\+get\+\_\+groundtruth\+\_\+count(), tracker\+\_\+evaluation.\+ground\+\_\+truth\+\_\+dict, tracker\+\_\+evaluation.\+gt\+\_\+map, and \mbox{\hyperlink{a00154_aaaad9fe0f151923410425485f2f4c4ed}{tracker\+\_\+evaluation.\+identification\+\_\+map()}}.
+
+
+
+Referenced by \mbox{\hyperlink{a00154_a2cc5036fce7e6fbf3fb8e999bcf5ae25}{tracker\+\_\+evaluation.\+calculate\+\_\+errors()}}.
+
+Here is the call graph for this function\+:
+% FIG 6
+Here is the caller graph for this function\+:
+% FIG 7
+\Hypertarget{a00154_abe18d5f6b249e1dde980ff17aabf9e8f}\label{a00154_abe18d5f6b249e1dde980ff17aabf9e8f} 
+\index{tracker\_evaluation@{tracker\_evaluation}!calculate\_tracker\_purity@{calculate\_tracker\_purity}}
+\index{calculate\_tracker\_purity@{calculate\_tracker\_purity}!tracker\_evaluation@{tracker\_evaluation}}
+\doxysubsubsection{\texorpdfstring{calculate\_tracker\_purity()}{calculate\_tracker\_purity()}}
+{\footnotesize\ttfamily calculate\+\_\+tracker\+\_\+purity (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Measure I-3: (TP) Tracker Purity. If the identity map
+w.r.t. E indicates Ei identifies GT j , the ratio of frames
+that Ei correctly identifies GT j ( niˆji ) to the total num-
+ber of frames Ei exists (ni) 
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00758\ \ \ \ \ \textcolor{keyword}{def\ }calculate\_tracker\_purity(self): }
+\DoxyCodeLine{00759\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{''' }}
+\DoxyCodeLine{00760\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Measure\ I-\/3:\ (TP)\ Tracker\ Purity.\ If\ the\ identity\ map }}
+\DoxyCodeLine{00761\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ w.r.t.\ E\ indicates\ Ei\ identifies\ GT\ j\ ,\ the\ ratio\ of\ frames }}
+\DoxyCodeLine{00762\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ that\ Ei\ correctly\ identifies\ GT\ j\ (\ niˆji\ )\ to\ the\ total\ num-\/ }}
+\DoxyCodeLine{00763\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ ber\ of\ frames\ Ei\ exists\ (ni)\  }}
+\DoxyCodeLine{00764\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ '''} }
+\DoxyCodeLine{00765\ \ \ \ \ \ \ \ \ e\_count\ =\ self.get\_estimate\_count()\ \textcolor{comment}{\#total\ number\ of\ frames\ Ei\ exists\ (ni) }}
+\DoxyCodeLine{00766\ \ \ \ \ \ \ \ \ correct\_dict\ =\ \{\} }
+\DoxyCodeLine{00767\  }
+\DoxyCodeLine{00768\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Frames\ that\ Ei\ correctly\ identifies\ GTj\ (\ niˆji\ ) }}
+\DoxyCodeLine{00769\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ frame\ \textcolor{keywordflow}{in}\ self.ground\_truth\_dict: }
+\DoxyCodeLine{00770\ \ \ \ \ \ \ \ \ \ \ \ \ id\_map\ =\ self.identification\_map(frame) }
+\DoxyCodeLine{00771\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print(id\_map) }}
+\DoxyCodeLine{00772\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ id\_map\ \textcolor{keywordflow}{is}\ \textcolor{keywordflow}{not}\ \textcolor{keywordtype}{None}: }
+\DoxyCodeLine{00773\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ estimate\_map\ =\ id\_map[\textcolor{stringliteral}{'Estimate'}] }
+\DoxyCodeLine{00774\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ estimates\ =\ self.get\_estimates(frame) }
+\DoxyCodeLine{00775\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ name\ \textcolor{keywordflow}{in}\ estimates[\textcolor{stringliteral}{'name'}]: }
+\DoxyCodeLine{00776\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ self.es\_map[name]\ ==\ estimate\_map[name]: }
+\DoxyCodeLine{00777\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ name\ \textcolor{keywordflow}{in}\ correct\_dict.keys(): }
+\DoxyCodeLine{00778\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ correct\_dict[name]\ +=\ 1 }
+\DoxyCodeLine{00779\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}: }
+\DoxyCodeLine{00780\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ correct\_dict[name]\ =\ 1 }
+\DoxyCodeLine{00781\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}: }
+\DoxyCodeLine{00782\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{"{}TRACKER\ PURITY\ FALSE"{}},\ name,\ estimates[\textcolor{stringliteral}{'name'}]) }
+\DoxyCodeLine{00783\ \ \ \ \ \ \ \ \ purity\ =\ \{\} }
+\DoxyCodeLine{00784\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00785\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ name\ \textcolor{keywordflow}{in}\ e\_count.keys(): }
+\DoxyCodeLine{00786\ \ \ \ \ \ \ \ \ \ \ \ \ purity[name]\ =\ correct\_dict[name]/e\_count[name] }
+\DoxyCodeLine{00787\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00788\ \ \ \ \ \ \ \ \ tp\ =\ 0 }
+\DoxyCodeLine{00789\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ value\ \textcolor{keywordflow}{in}\ purity.values(): }
+\DoxyCodeLine{00790\ \ \ \ \ \ \ \ \ \ \ \ \ tp\ +=\ value }
+\DoxyCodeLine{00791\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print(value) }}
+\DoxyCodeLine{00792\ \ \ \ \ \ \ \ \ total\_correct\ =\ tp }
+\DoxyCodeLine{00793\  }
+\DoxyCodeLine{00794\ \ \ \ \ \ \ \ \ tp\ =\ tp/len(purity.values()) }
+\DoxyCodeLine{00795\ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{"{}TRACKER\ PURITY"{}},\ tp,\ purity) }
+\DoxyCodeLine{00796\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ tp,\ total\_correct,\ purity }
+\DoxyCodeLine{00797\  }
+
+\end{DoxyCode}
+
+
+References tracker\+\_\+evaluation.\+es\+\_\+map, tracker\+\_\+evaluation.\+get\+\_\+estimate\+\_\+count(), \mbox{\hyperlink{a00154_a8f5619c019f49f35f2c470e7c40af013}{tracker\+\_\+evaluation.\+get\+\_\+estimates()}}, tracker\+\_\+evaluation.\+ground\+\_\+truth\+\_\+dict, and \mbox{\hyperlink{a00154_aaaad9fe0f151923410425485f2f4c4ed}{tracker\+\_\+evaluation.\+identification\+\_\+map()}}.
+
+
+
+Referenced by \mbox{\hyperlink{a00154_a2cc5036fce7e6fbf3fb8e999bcf5ae25}{tracker\+\_\+evaluation.\+calculate\+\_\+errors()}}, and \mbox{\hyperlink{a00154_afb84b7efc3d1670971c3a96f2289ac5a}{tracker\+\_\+evaluation.\+calculate\+\_\+frame\+\_\+errors()}}.
+
+Here is the call graph for this function\+:
+% FIG 8
+Here is the caller graph for this function\+:
+% FIG 9
+\Hypertarget{a00154_a756c92b090c4b99e7afe65dd1a08cd38}\label{a00154_a756c92b090c4b99e7afe65dd1a08cd38} 
+\index{tracker\_evaluation@{tracker\_evaluation}!check\_occlusion@{check\_occlusion}}
+\index{check\_occlusion@{check\_occlusion}!tracker\_evaluation@{tracker\_evaluation}}
+\doxysubsubsection{\texorpdfstring{check\_occlusion()}{check\_occlusion()}}
+{\footnotesize\ttfamily check\+\_\+occlusion (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{gt,  }\item[{}]{frame\+\_\+num }\end{DoxyParamCaption})}
+
+
+
+Checks if a ground truth is occluded. 
+
+Checks if a ground truth is occluded at a certain frame.
+
+
+\begin{DoxyParams}{Parameters}
+{\em gt} & {\bfseries{(int, int, int, int)}} a bounding box of the specified gt to check if they are occluded \\
+\hline
+{\em frame\+\_\+num} & {\bfseries{int}}\\
+\hline
+\end{DoxyParams}
+precision is calculated to generate percent covered. threshold\+\_\+to is used to determine occlusion theshold.
+
+\begin{DoxyReturn}{Returns}
+{\bfseries{True}} if anyother ground truth is occluding the ground truth passed in 
+
+{\bfseries{False}} if there exists no other ground truth that occludes 
+
+{\bfseries{float}} a percent covered (Precision) 
+\end{DoxyReturn}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00400\ \ \ \ \ \textcolor{keyword}{def\ }check\_occlusion(self,\ gt,\ \ frame\_num): }
+\DoxyCodeLine{00401\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{'''! }}
+\DoxyCodeLine{00402\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Checks\ if\ a\ ground\ truth\ is\ occluded\ at\ a\ certain\ frame.\  }}
+\DoxyCodeLine{00403\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \  }}
+\DoxyCodeLine{00404\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @param\ gt\ <b>(int,\ int,\ int,\ int)</b>\ a\ bounding\ box\ of\ the\ specified\ gt\ to\ check\ if\ they\ are\ occluded }}
+\DoxyCodeLine{00405\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @param\ frame\_num\ <b>int</b> }}
+\DoxyCodeLine{00406\ \textcolor{stringliteral}{ }}
+\DoxyCodeLine{00407\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @ref\ precision\ is\ calculated\ to\ generate\ percent\ covered. }}
+\DoxyCodeLine{00408\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @ref\ threshold\_to\ is\ used\ to\ determine\ occlusion\ theshold. }}
+\DoxyCodeLine{00409\ \textcolor{stringliteral}{ }}
+\DoxyCodeLine{00410\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @returns\ <b>True</b>\ if\ anyother\ ground\ truth\ is\ occluding\ the\ ground\ truth\ passed\ in }}
+\DoxyCodeLine{00411\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @returns\ <b>False</b>\ if\ there\ exists\ no\ other\ ground\ truth\ that\ occludes\  }}
+\DoxyCodeLine{00412\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @returns\ <b>float</b>\ a\ percent\ covered\ (Precision) }}
+\DoxyCodeLine{00413\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ '''} }
+\DoxyCodeLine{00414\ \ \ \ \ \ \ \ \ all\_gt\ =\ self.get\_ground\_truths(frame\_num) }
+\DoxyCodeLine{00415\ \ \ \ \ \ \ \ \ percent\_covered\ =\ 0 }
+\DoxyCodeLine{00416\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Remove\ current\ shape\ from\ list\ so\ all\ other\ shapes\ are\ compared }}
+\DoxyCodeLine{00417\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Calculate\ intersection\ of\ other\ points\ onto\ ground\ truth }}
+\DoxyCodeLine{00418\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ test\ \textcolor{keywordflow}{in}\ all\_gt: }
+\DoxyCodeLine{00419\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ gt[\textcolor{stringliteral}{'label'}]\ ==\ test[\textcolor{stringliteral}{'label'}]: }
+\DoxyCodeLine{00420\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue} }
+\DoxyCodeLine{00421\ \ \ \ \ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00422\ \ \ \ \ \ \ \ \ \ \ \ \ percent\_covered\ =\ self.precision(gt[\textcolor{stringliteral}{'points'}],\ test[\textcolor{stringliteral}{'points'}]) }
+\DoxyCodeLine{00423\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#Iterate\ through\ all\ other\ ground\ truths,\ returning\ true\ if\ any\ intersection\ exceeds\ threshold\_to }}
+\DoxyCodeLine{00424\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ percent\_covered\ >\ self.threshold\_to: }
+\DoxyCodeLine{00425\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{True},\ percent\_covered }
+\DoxyCodeLine{00426\  }
+\DoxyCodeLine{00427\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ No\ occlusion\ if\ no\ value\ exceeds }}
+\DoxyCodeLine{00428\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{False},\ percent\_covered }
+\DoxyCodeLine{00429\  }
+
+\end{DoxyCode}
+
+
+References tracker\+\_\+evaluation.\+get\+\_\+ground\+\_\+truths(), \mbox{\hyperlink{a00154_aae33341ee61c7a874af86b59d4f81d84}{tracker\+\_\+evaluation.\+precision()}}, and \mbox{\hyperlink{a00154_ae0fcc23159a737ce3e8e583ff82e2f84}{tracker\+\_\+evaluation.\+threshold\+\_\+to}}.
+
+
+
+Referenced by \mbox{\hyperlink{a00154_af23940c18d935e51e2445a917d091dd4}{tracker\+\_\+evaluation.\+get\+\_\+occlusion\+\_\+count()}}, \mbox{\hyperlink{a00154_a24713f50b19ca4cf8b48421328fffcf4}{tracker\+\_\+evaluation.\+multiple\+\_\+objects()}}, and \mbox{\hyperlink{a00154_ae7a2ff900f60fe15be7946b972d55ce1}{tracker\+\_\+evaluation.\+multiple\+\_\+trackers()}}.
+
+Here is the call graph for this function\+:
+% FIG 10
+Here is the caller graph for this function\+:
+% FIG 11
+\Hypertarget{a00154_a2c362f5906289f957819905482b51948}\label{a00154_a2c362f5906289f957819905482b51948} 
+\index{tracker\_evaluation@{tracker\_evaluation}!compute\_iou@{compute\_iou}}
+\index{compute\_iou@{compute\_iou}!tracker\_evaluation@{tracker\_evaluation}}
+\doxysubsubsection{\texorpdfstring{compute\_iou()}{compute\_iou()}}
+{\footnotesize\ttfamily compute\+\_\+iou (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{box,  }\item[{}]{boxes,  }\item[{}]{ratios = {\ttfamily None},  }\item[{}]{frame = {\ttfamily None} }\end{DoxyParamCaption})}
+
+
+
+Calculates IoU of the given box with the array of the given boxes. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em box} & 1D vector \mbox{[}x1, y1, x2, y2\mbox{]} \\
+\hline
+{\em boxes} & \mbox{[}boxes\+\_\+count, (x1, y1, x2, y2)\mbox{]} \\
+\hline
+{\em box\+\_\+area} & float. the area of \textquotesingle{}box\textquotesingle{} \\
+\hline
+{\em boxes\+\_\+area} & array of length boxes\+\_\+count. \\
+\hline
+{\em ratio} & ratio (width, height) to scale boxes from video resolution to analysis resolution\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+\+: The areas are passed in rather than calculated here for efficiency. Calculate once in the caller to avoid duplicate work. 
+\end{DoxyNote}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{01044\ \ \ \ \ \textcolor{keyword}{def\ }compute\_iou(self,\ box,\ boxes,\ ratios=None,\ frame=None): }
+\DoxyCodeLine{01045\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}! }}
+\DoxyCodeLine{01046\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Calculates\ IoU\ of\ the\ given\ box\ with\ the\ array\ of\ the\ given\ boxes. }}
+\DoxyCodeLine{01047\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \  }}
+\DoxyCodeLine{01048\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @param\ box:\ 1D\ vector\ [x1,\ y1,\ x2,\ y2] }}
+\DoxyCodeLine{01049\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @param\ boxes:\ [boxes\_count,\ (x1,\ y1,\ x2,\ y2)] }}
+\DoxyCodeLine{01050\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @param\ box\_area:\ float.\ the\ area\ of\ 'box' }}
+\DoxyCodeLine{01051\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @param\ boxes\_area:\ array\ of\ length\ boxes\_count. }}
+\DoxyCodeLine{01052\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @param\ ratio:\ ratio\ (width,\ height)\ to\ scale\ boxes\ from\ video\ resolution\ to\ analysis\ resolution }}
+\DoxyCodeLine{01053\ \textcolor{stringliteral}{ }}
+\DoxyCodeLine{01054\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @note:\ The\ areas\ are\ passed\ in\ rather\ than\ calculated\ here\ for\ efficiency.\ Calculate\ once\ in\ the\ caller\ to\ avoid\ duplicate\ work. }}
+\DoxyCodeLine{01055\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}} }
+\DoxyCodeLine{01056\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ratios\ \textcolor{keywordflow}{is}\ \textcolor{keywordtype}{None}: }
+\DoxyCodeLine{01057\ \ \ \ \ \ \ \ \ \ \ \ \ ratios\ =\ self.correction\_ratio\_x,\ self.correction\_ratio\_y }
+\DoxyCodeLine{01058\  }
+\DoxyCodeLine{01059\ \ \ \ \ \ \ \ \ area\ =\ (box[0]\ -\/\ box[2])\ *\ (box[1]\ -\/\ box[3])\ \textcolor{comment}{\#\ SOMETHING\ IS\ WRONG\ WITH\ BOX.\ GOOD\ NIGHT! }}
+\DoxyCodeLine{01060\ \ \ \ \ \ \ \ \ ious\ =\ [] }
+\DoxyCodeLine{01061\ \ \ \ \ \ \ \ \ intersections\ =\ [] }
+\DoxyCodeLine{01062\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ index,\ preds\ \textcolor{keywordflow}{in}\ enumerate(boxes): }
+\DoxyCodeLine{01063\ \ \ \ \ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{01064\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ x1\ =\ int(preds[0]*ratios[0]) }}
+\DoxyCodeLine{01065\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ y1\ =\ int(preds[1]*ratios[1]) }}
+\DoxyCodeLine{01066\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ x2\ =\ int(preds[2]*ratios[0]) }}
+\DoxyCodeLine{01067\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ y2\ =\ int(preds[3]*ratios[1]) }}
+\DoxyCodeLine{01068\  }
+\DoxyCodeLine{01069\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ get\ the\ box\ coordinates\ (x1,\ y1,\ x2,\ y2) }}
+\DoxyCodeLine{01070\ \ \ \ \ \ \ \ \ \ \ \ \ x1\ =\ int(preds[0]) }
+\DoxyCodeLine{01071\ \ \ \ \ \ \ \ \ \ \ \ \ y1\ =\ int(preds[1]) }
+\DoxyCodeLine{01072\ \ \ \ \ \ \ \ \ \ \ \ \ x2\ =\ int(preds[2]) }
+\DoxyCodeLine{01073\ \ \ \ \ \ \ \ \ \ \ \ \ y2\ =\ int(preds[3]) }
+\DoxyCodeLine{01074\  }
+\DoxyCodeLine{01075\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ if\ frame\ is\ not\ None: }}
+\DoxyCodeLine{01076\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ \ \ \ \ cv2.rectangle(frame,\ (x1,y1),\ (x2,y2),\ (150,150,0),\ 1) }}
+\DoxyCodeLine{01077\  }
+\DoxyCodeLine{01078\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ calculating\ IOU }}
+\DoxyCodeLine{01079\ \ \ \ \ \ \ \ \ \ \ \ \ xA\ =\ max(box[0],\ x1) }
+\DoxyCodeLine{01080\ \ \ \ \ \ \ \ \ \ \ \ \ yA\ =\ max(box[1],\ y1) }
+\DoxyCodeLine{01081\ \ \ \ \ \ \ \ \ \ \ \ \ xB\ =\ min(box[2],\ x2) }
+\DoxyCodeLine{01082\ \ \ \ \ \ \ \ \ \ \ \ \ yB\ =\ min(box[3],\ y2) }
+\DoxyCodeLine{01083\  }
+\DoxyCodeLine{01084\ \ \ \ \ \ \ \ \ \ \ \ \ interArea\ =\ max(0,\ xB\ -\/\ xA\ +\ 1)\ *\ max(0,\ yB\ -\/\ yA\ +\ 1) }
+\DoxyCodeLine{01085\ \ \ \ \ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{01086\ \ \ \ \ \ \ \ \ \ \ \ \ boxBArea\ =\ (x2\ -\/\ x1\ +\ 1)\ *\ (y2\ -\/\ y1\ +\ 1) }
+\DoxyCodeLine{01087\  }
+\DoxyCodeLine{01088\ \ \ \ \ \ \ \ \ \ \ \ \ iou\ =\ interArea\ /\ float(area\ +\ boxBArea\ -\/\ interArea) }
+\DoxyCodeLine{01089\ \ \ \ \ \ \ \ \ \ \ \ \ ious.append(iou) }
+\DoxyCodeLine{01090\ \ \ \ \ \ \ \ \ \ \ \ \ intersections.append(interArea) }
+\DoxyCodeLine{01091\  }
+\DoxyCodeLine{01092\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ ious,\ intersections,\ frame }
+\DoxyCodeLine{01093\ \ \ \ \  }
+
+\end{DoxyCode}
+
+
+References tracker\+\_\+evaluation.\+correction\+\_\+ratio\+\_\+x, tracker\+\_\+evaluation.\+correction\+\_\+ratio\+\_\+y, and tracker\+\_\+evaluation.\+ground\+\_\+truth\+\_\+dict.
+
+
+
+Referenced by \mbox{\hyperlink{a00154_aae33341ee61c7a874af86b59d4f81d84}{tracker\+\_\+evaluation.\+precision()}}, and \mbox{\hyperlink{a00154_a6fffa1ba921b56906be56b8ef88fead5}{tracker\+\_\+evaluation.\+recall()}}.
+
+Here is the caller graph for this function\+:
+% FIG 12
+\Hypertarget{a00154_abc6ee42a85d6b9fc7311c44da0e25133}\label{a00154_abc6ee42a85d6b9fc7311c44da0e25133} 
+\index{tracker\_evaluation@{tracker\_evaluation}!configuration\_distance@{configuration\_distance}}
+\index{configuration\_distance@{configuration\_distance}!tracker\_evaluation@{tracker\_evaluation}}
+\doxysubsubsection{\texorpdfstring{configuration\_distance()}{configuration\_distance()}}
+{\footnotesize\ttfamily configuration\+\_\+distance (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{frame\+\_\+number }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Checks the difference between the number of ground truths and the number of estimates of a given frame
+CD = #Estiamtes - #Ground Truths / max(#Ground Truths, 1)
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00339\ \ \ \ \ \textcolor{keyword}{def\ }configuration\_distance(self,\ frame\_number): }
+\DoxyCodeLine{00340\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{''' }}
+\DoxyCodeLine{00341\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Checks\ the\ difference\ between\ the\ number\ of\ ground\ truths\ and\ the\ number\ of\ estimates\ of\ a\ given\ frame }}
+\DoxyCodeLine{00342\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ CD\ =\ \#Estiamtes\ -\/\ \#Ground\ Truths\ /\ max(\#Ground\ Truths,\ 1) }}
+\DoxyCodeLine{00343\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ '''} }
+\DoxyCodeLine{00344\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ collect\ all\ the\ data\ on\ given\ frame }}
+\DoxyCodeLine{00345\ \ \ \ \ \ \ \ \ estimates\ =\ self.get\_estimates(frame\_number) }
+\DoxyCodeLine{00346\  }
+\DoxyCodeLine{00347\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ estimates\ \textcolor{keywordflow}{is}\ \textcolor{keywordtype}{None}: }
+\DoxyCodeLine{00348\ \ \ \ \ \ \ \ \ \ \ \ \ total\_es\ =\ 0 }
+\DoxyCodeLine{00349\ \ \ \ \ \ \ \ \ ground\_truths\ =\ self.get\_ground\_truths(frame\_number) }
+\DoxyCodeLine{00350\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print(ground\_truths) }}
+\DoxyCodeLine{00351\  }
+\DoxyCodeLine{00352\  }
+\DoxyCodeLine{00353\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Total\ ground\ truths\ and\ estimates }}
+\DoxyCodeLine{00354\ \ \ \ \ \ \ \ \ total\_es\ =\ estimates.shape[0] }
+\DoxyCodeLine{00355\ \ \ \ \ \ \ \ \ total\_gt\ =\ len(ground\_truths) }
+\DoxyCodeLine{00356\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print("{}Total\_GT"{},\ total\_gt) }}
+\DoxyCodeLine{00357\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print("{}Total\ ES:"{},\ total\_es,\ "{}Total\ GT:"{},\ total\_gt) }}
+\DoxyCodeLine{00358\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Find\ the\ difference\ and\ set\ and\ normalization\ is\ non-\/zero\ total\ ground\_truths. }}
+\DoxyCodeLine{00359\ \ \ \ \ \ \ \ \ difference\ =\ total\_es\ -\/\ total\_gt }
+\DoxyCodeLine{00360\ \ \ \ \ \ \ \ \ normalization\ =\ max(total\_gt,1) }
+\DoxyCodeLine{00361\  }
+\DoxyCodeLine{00362\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ CD\ is\ the\ difference\ over\ the\ total\ ground\ truths.\ 0\ when\ es\ =\ gt.\ Negative\ gt\ >\ es,\ positive\ gt\ <\ es }}
+\DoxyCodeLine{00363\ \ \ \ \ \ \ \ \ cd\ =\ difference/normalization }
+\DoxyCodeLine{00364\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print("{}NormalizedCD"{},\ cd,\ "{}CD"{},\ difference) }}
+\DoxyCodeLine{00365\ \ \ \ \ \ \ \ \ total\_cd\ =\ difference }
+\DoxyCodeLine{00366\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00367\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print("{}CD\ Normalization"{},\ normalization) }}
+\DoxyCodeLine{00368\  }
+\DoxyCodeLine{00369\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Don't\ normalize }}
+\DoxyCodeLine{00370\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print("{}Es:"{},\ total\_es,\ "{}\ |\ GTs:"{},\ \ total\_gt,\ end="{}\ -\/\ "{}) }}
+\DoxyCodeLine{00371\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ cd,\ total\_cd }
+\DoxyCodeLine{00372\  }
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{a00154_a8f5619c019f49f35f2c470e7c40af013}{tracker\+\_\+evaluation.\+get\+\_\+estimates()}}, tracker\+\_\+evaluation.\+get\+\_\+ground\+\_\+truths(), and tracker\+\_\+evaluation.\+ground\+\_\+truth\+\_\+dict.
+
+
+
+Referenced by \mbox{\hyperlink{a00154_a2cc5036fce7e6fbf3fb8e999bcf5ae25}{tracker\+\_\+evaluation.\+calculate\+\_\+errors()}}, and \mbox{\hyperlink{a00154_afb84b7efc3d1670971c3a96f2289ac5a}{tracker\+\_\+evaluation.\+calculate\+\_\+frame\+\_\+errors()}}.
+
+Here is the call graph for this function\+:
+% FIG 13
+Here is the caller graph for this function\+:
+% FIG 14
+\Hypertarget{a00154_a4b46b30998262a37e07fbebba285ac79}\label{a00154_a4b46b30998262a37e07fbebba285ac79} 
+\index{tracker\_evaluation@{tracker\_evaluation}!configuration\_map@{configuration\_map}}
+\index{configuration\_map@{configuration\_map}!tracker\_evaluation@{tracker\_evaluation}}
+\doxysubsubsection{\texorpdfstring{configuration\_map()}{configuration\_map()}}
+{\footnotesize\ttfamily configuration\+\_\+map (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{frame\+\_\+number }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00499\ \ \ \ \ \textcolor{keyword}{def\ }configuration\_map(self,\ frame\_number): }
+\DoxyCodeLine{00500\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00501\ \ \ \ \ \ \ \ \ ground\_truths\ =\ self.get\_ground\_truths(frame\_number) }
+\DoxyCodeLine{00502\ \ \ \ \ \ \ \ \ estimates\ =\ self.get\_estimates(frame\_number) }
+\DoxyCodeLine{00503\  }
+\DoxyCodeLine{00504\ \ \ \ \ \ \ \ \ gt\_config\ =\ \{\} }
+\DoxyCodeLine{00505\ \ \ \ \ \ \ \ \ es\_config\ =\ \{\} }
+\DoxyCodeLine{00506\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ index,\ estimate\ \textcolor{keywordflow}{in}\ estimates.iterrows(): }
+\DoxyCodeLine{00507\ \ \ \ \ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00508\ \ \ \ \ \ \ \ \ \ \ \ \ es\ =\ self.estimate\_to\_point(estimate) }
+\DoxyCodeLine{00509\ \ \ \ \ \ \ \ \ \ \ \ \ name\ =\ estimate[\textcolor{stringliteral}{'name'}] }
+\DoxyCodeLine{00510\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ gt\ \textcolor{keywordflow}{in}\ ground\_truths: }
+\DoxyCodeLine{00511\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ f\ =\ self.fmeasure(es,\ gt[\textcolor{stringliteral}{'points'}],\ correct\_estimate=\textcolor{keyword}{False}) }
+\DoxyCodeLine{00512\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ f\ >\ self.threshold\_tc: }
+\DoxyCodeLine{00513\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ name\ \textcolor{keywordflow}{not}\ \textcolor{keywordflow}{in}\ es\_config.keys(): }
+\DoxyCodeLine{00514\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ es\_config[name]\ =\ [gt[\textcolor{stringliteral}{'label'}]] }
+\DoxyCodeLine{00515\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}: }
+\DoxyCodeLine{00516\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ es\_config[name].append(gt[\textcolor{stringliteral}{'label'}]) }
+\DoxyCodeLine{00517\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ gt[\textcolor{stringliteral}{'label'}]\ \textcolor{keywordflow}{not}\ \textcolor{keywordflow}{in}\ gt\_config.keys(): }
+\DoxyCodeLine{00518\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ gt\_config[gt[\textcolor{stringliteral}{'label'}]]\ =\ [name] }
+\DoxyCodeLine{00519\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}: }
+\DoxyCodeLine{00520\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ gt\_config[gt[\textcolor{stringliteral}{'label'}]].append(name) }
+\DoxyCodeLine{00521\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00522\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00523\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ gt\ \textcolor{keywordflow}{in}\ ground\_truths: }
+\DoxyCodeLine{00524\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ gt[\textcolor{stringliteral}{'label'}]\ \textcolor{keywordflow}{not}\ \textcolor{keywordflow}{in}\ gt\_config.keys(): }
+\DoxyCodeLine{00525\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ gt\_config[gt[\textcolor{stringliteral}{'label'}]]\ =\ [\textcolor{keywordtype}{None}] }
+\DoxyCodeLine{00526\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00527\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ index,\ estimate\ \textcolor{keywordflow}{in}\ estimates.iterrows(): }
+\DoxyCodeLine{00528\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ estimate[\textcolor{stringliteral}{'name'}]\ \textcolor{keywordflow}{not}\ \textcolor{keywordflow}{in}\ es\_config.keys(): }
+\DoxyCodeLine{00529\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ es\_config[estimate[\textcolor{stringliteral}{'name'}]]\ =\ [\textcolor{keywordtype}{None}] }
+\DoxyCodeLine{00530\  }
+\DoxyCodeLine{00531\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print("{}GT\_CONFIG"{},\ gt\_config,\ "{}ESCONFIG"{},\ es\_config) }}
+\DoxyCodeLine{00532\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00533\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ gt\_config,\ es\_config }
+\DoxyCodeLine{00534\  }
+
+\end{DoxyCode}
+
+
+Referenced by \mbox{\hyperlink{a00154_afb84b7efc3d1670971c3a96f2289ac5a}{tracker\+\_\+evaluation.\+calculate\+\_\+frame\+\_\+errors()}}.
+
+Here is the caller graph for this function\+:
+% FIG 15
+\Hypertarget{a00154_a46be521dd2fd28c23d9ba49f160b3e7f}\label{a00154_a46be521dd2fd28c23d9ba49f160b3e7f} 
+\index{tracker\_evaluation@{tracker\_evaluation}!estimate\_to\_point@{estimate\_to\_point}}
+\index{estimate\_to\_point@{estimate\_to\_point}!tracker\_evaluation@{tracker\_evaluation}}
+\doxysubsubsection{\texorpdfstring{estimate\_to\_point()}{estimate\_to\_point()}}
+{\footnotesize\ttfamily estimate\+\_\+to\+\_\+point (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{estimate,  }\item[{}]{ratios = {\ttfamily None},  }\item[{}]{invert\+\_\+y = {\ttfamily None} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}compute_iou
+ratios is the x,y|width,height ratios of the estimate to the ground truth.compute_iou
+Example: Estimates are recorded at 480x720 while ground truths are recorded at 720x1280. The ratio inputed would be (720/480, 1280/720) or (1.5, 1.777778)
+
+
+invert_y is the height of the video. We record the data as if the origin is in the bottom left, but in other applications the origin is the top left.
+This means we subtract the height of the video to inverse this effect.
+If the height of the video is 720, invert_y=720. If the data being tested IS NOT inverted, leave it as 0 
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{01129\ \ \ \ \ \textcolor{keyword}{def\ }estimate\_to\_point(self,\ estimate,\ ratios\ =\ None\ ,\ invert\_y=None): }
+\DoxyCodeLine{01130\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{} }}
+\DoxyCodeLine{01131\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ compute\_iou }}
+\DoxyCodeLine{01132\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ ratios\ is\ the\ x,y|width,height\ ratios\ of\ the\ estimate\ to\ the\ ground\ truth.compute\_iou }}
+\DoxyCodeLine{01133\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Example:\ Estimates\ are\ recorded\ at\ 480x720\ while\ ground\ truths\ are\ recorded\ at\ 720x1280.\ The\ ratio\ inputed\ would\ be\ (720/480,\ 1280/720)\ or\ (1.5,\ 1.777778) }}
+\DoxyCodeLine{01134\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \  }}
+\DoxyCodeLine{01135\ \textcolor{stringliteral}{ }}
+\DoxyCodeLine{01136\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ invert\_y\ is\ the\ height\ of\ the\ video.\ We\ record\ the\ data\ as\ if\ the\ origin\ is\ in\ the\ bottom\ left,\ but\ in\ other\ applications\ the\ origin\ is\ the\ top\ left. }}
+\DoxyCodeLine{01137\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ This\ means\ we\ subtract\ the\ height\ of\ the\ video\ to\ inverse\ this\ effect. }}
+\DoxyCodeLine{01138\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ If\ the\ height\ of\ the\ video\ is\ 720,\ invert\_y=720.\ If\ the\ data\ being\ tested\ IS\ NOT\ inverted,\ leave\ it\ as\ 0\  }}
+\DoxyCodeLine{01139\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}} }
+\DoxyCodeLine{01140\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ratios\ \textcolor{keywordflow}{is}\ \textcolor{keywordtype}{None}: }
+\DoxyCodeLine{01141\ \ \ \ \ \ \ \ \ \ \ \ \ ratios\ =\ (self.correction\_ratio\_x,\ self.correction\_ratio\_y) }
+\DoxyCodeLine{01142\  }
+\DoxyCodeLine{01143\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ invert\_y\ \textcolor{keywordflow}{is}\ \textcolor{keywordtype}{None}: }
+\DoxyCodeLine{01144\ \ \ \ \ \ \ \ \ \ \ \ \ invert\_y\ =\ self.invert\_y }
+\DoxyCodeLine{01145\  }
+\DoxyCodeLine{01146\ \ \ \ \ \ \ \ \ point\ =\ (float(estimate[\textcolor{stringliteral}{'x1'}])*ratios[0], }
+\DoxyCodeLine{01147\ \ \ \ \ \ \ \ \ (invert\_y-\/float(estimate[\textcolor{stringliteral}{'y2'}]))*ratios[1], }
+\DoxyCodeLine{01148\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ float(estimate[\textcolor{stringliteral}{'x2'}])*ratios[0], }
+\DoxyCodeLine{01149\ \ \ \ \ \ \ \ \ (invert\_y-\/float(estimate[\textcolor{stringliteral}{'y1'}]))*ratios[1] }
+\DoxyCodeLine{01150\ \ \ \ \ \ \ \ \ ) }
+\DoxyCodeLine{01151\  }
+\DoxyCodeLine{01152\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ point }
+\DoxyCodeLine{01153\  }
+
+\end{DoxyCode}
+
+
+References tracker\+\_\+evaluation.\+correction\+\_\+ratio\+\_\+x, tracker\+\_\+evaluation.\+correction\+\_\+ratio\+\_\+y, \mbox{\hyperlink{a00154_a8f5619c019f49f35f2c470e7c40af013}{tracker\+\_\+evaluation.\+get\+\_\+estimates()}}, tracker\+\_\+evaluation.\+get\+\_\+ground\+\_\+truths(), tracker\+\_\+evaluation.\+invert\+\_\+y, and room\+\_\+estimation.\+invert\+\_\+y.
+
+
+
+Referenced by \mbox{\hyperlink{a00154_a1990a7819cacf1d4c1d72db40e19d7a9}{tracker\+\_\+evaluation.\+fmeasure()}}, and \mbox{\hyperlink{a00154_aaaad9fe0f151923410425485f2f4c4ed}{tracker\+\_\+evaluation.\+identification\+\_\+map()}}.
+
+Here is the call graph for this function\+:
+% FIG 16
+Here is the caller graph for this function\+:
+% FIG 17
+\Hypertarget{a00154_a7145367645f6f72dce430c8f61faf76a}\label{a00154_a7145367645f6f72dce430c8f61faf76a} 
+\index{tracker\_evaluation@{tracker\_evaluation}!false\_negative@{false\_negative}}
+\index{false\_negative@{false\_negative}!tracker\_evaluation@{tracker\_evaluation}}
+\doxysubsubsection{\texorpdfstring{false\_negative()}{false\_negative()}}
+{\footnotesize\ttfamily false\+\_\+negative (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{gt\+\_\+config }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}False Negative checks all estimates in a given list (of a given frame) and 
+checks if any of them exist on a ground truth within the f-measure threshold.
+
+Config map assigns a None for a value to a ground truth when no estimate exists 
+within it's threhsold
+estimate E
+
+     ground truth GT
+    |a |b  | c |d |e |
+____|__|___|___|__|__|__
+E   |1 |2,3| - |5 |5 | 
+         ↑   ↑
+         MT  FN
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00252\ \ \ \ \ \textcolor{keyword}{def\ }false\_negative(self,\ gt\_config): }
+\DoxyCodeLine{00253\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{''' }}
+\DoxyCodeLine{00254\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ False\ Negative\ checks\ all\ estimates\ in\ a\ given\ list\ (of\ a\ given\ frame)\ and\  }}
+\DoxyCodeLine{00255\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ checks\ if\ any\ of\ them\ exist\ on\ a\ ground\ truth\ within\ the\ f-\/measure\ threshold. }}
+\DoxyCodeLine{00256\ \textcolor{stringliteral}{ }}
+\DoxyCodeLine{00257\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Config\ map\ assigns\ a\ None\ for\ a\ value\ to\ a\ ground\ truth\ when\ no\ estimate\ exists\  }}
+\DoxyCodeLine{00258\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ within\ it's\ threhsold }}
+\DoxyCodeLine{00259\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ estimate\ E }}
+\DoxyCodeLine{00260\ \textcolor{stringliteral}{ }}
+\DoxyCodeLine{00261\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ ground\ truth\ GT }}
+\DoxyCodeLine{00262\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ |a\ |b\ \ |\ c\ |d\ |e\ | }}
+\DoxyCodeLine{00263\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \_\_\_\_|\_\_|\_\_\_|\_\_\_|\_\_|\_\_|\_\_ }}
+\DoxyCodeLine{00264\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ E\ \ \ |1\ |2,3|\ -\/\ |5\ |5\ |\  }}
+\DoxyCodeLine{00265\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ↑\ \ \ ↑ }}
+\DoxyCodeLine{00266\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ MT\ \ FN }}
+\DoxyCodeLine{00267\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ '''} }
+\DoxyCodeLine{00268\  }
+\DoxyCodeLine{00269\  }
+\DoxyCodeLine{00270\  }
+\DoxyCodeLine{00271\ \ \ \ \ \ \ \ \ fn\_count\ =\ 0 }
+\DoxyCodeLine{00272\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ gt\ \textcolor{keywordflow}{in}\ gt\_config.values(): }
+\DoxyCodeLine{00273\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keywordtype}{None}\ \textcolor{keywordflow}{in}\ gt: }
+\DoxyCodeLine{00274\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ fn\_count\ +=\ 1 }
+\DoxyCodeLine{00275\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ fn\_count }
+\DoxyCodeLine{00276\  }
+
+\end{DoxyCode}
+
+
+Referenced by \mbox{\hyperlink{a00154_afb84b7efc3d1670971c3a96f2289ac5a}{tracker\+\_\+evaluation.\+calculate\+\_\+frame\+\_\+errors()}}.
+
+Here is the caller graph for this function\+:
+% FIG 18
+\Hypertarget{a00154_a28cab66ecf2005ae882c6bc2672fa461}\label{a00154_a28cab66ecf2005ae882c6bc2672fa461} 
+\index{tracker\_evaluation@{tracker\_evaluation}!false\_positive@{false\_positive}}
+\index{false\_positive@{false\_positive}!tracker\_evaluation@{tracker\_evaluation}}
+\doxysubsubsection{\texorpdfstring{false\_positive()}{false\_positive()}}
+{\footnotesize\ttfamily false\+\_\+positive (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{es\+\_\+config }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}    |1 |2 |3 |4 |5  |
+____|__|__|__|__|___|___
+GT  |a |b |b |- |d,e| 
+              ↑   ↑
+              FP  MO
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00236\ \ \ \ \ \textcolor{keyword}{def\ }false\_positive(self,\ es\_config): }
+\DoxyCodeLine{00237\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{''' }}
+\DoxyCodeLine{00238\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ |1\ |2\ |3\ |4\ |5\ \ | }}
+\DoxyCodeLine{00239\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \_\_\_\_|\_\_|\_\_|\_\_|\_\_|\_\_\_|\_\_\_ }}
+\DoxyCodeLine{00240\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ GT\ \ |a\ |b\ |b\ |-\/\ |d,e|\  }}
+\DoxyCodeLine{00241\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ↑\ \ \ ↑ }}
+\DoxyCodeLine{00242\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ FP\ \ MO }}
+\DoxyCodeLine{00243\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ '''} }
+\DoxyCodeLine{00244\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ An\ estimate\ exists\ that\ is\ not\ associated\ with\ a\ ground\ truth\ object }}
+\DoxyCodeLine{00245\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Tracker\ is\ on\ but\ not\ on\ a\ ground\ truth }}
+\DoxyCodeLine{00246\ \ \ \ \ \ \ \ \ fp\_count\ =\ 0 }
+\DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ estimate\ \textcolor{keywordflow}{in}\ es\_config.values(): }
+\DoxyCodeLine{00248\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keywordtype}{None}\ \textcolor{keywordflow}{in}\ estimate: }
+\DoxyCodeLine{00249\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ fp\_count\ +=\ 1 }
+\DoxyCodeLine{00250\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ fp\_count }
+\DoxyCodeLine{00251\  }
+
+\end{DoxyCode}
+
+
+Referenced by \mbox{\hyperlink{a00154_afb84b7efc3d1670971c3a96f2289ac5a}{tracker\+\_\+evaluation.\+calculate\+\_\+frame\+\_\+errors()}}.
+
+Here is the caller graph for this function\+:
+% FIG 19
+\Hypertarget{a00154_a2a0bf799d0e7ebe787ced89e43d09bb5}\label{a00154_a2a0bf799d0e7ebe787ced89e43d09bb5} 
+\index{tracker\_evaluation@{tracker\_evaluation}!falsly\_identified\_object@{falsly\_identified\_object}}
+\index{falsly\_identified\_object@{falsly\_identified\_object}!tracker\_evaluation@{tracker\_evaluation}}
+\doxysubsubsection{\texorpdfstring{falsly\_identified\_object()}{falsly\_identified\_object()}}
+{\footnotesize\ttfamily falsly\+\_\+identified\+\_\+object (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{frame\+\_\+number }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Calculates FIO for a single frame normalized by the number of estimates in that frame
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00678\ \ \ \ \ \textcolor{keyword}{def\ }falsly\_identified\_object(self,\ frame\_number): }
+\DoxyCodeLine{00679\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{} }}
+\DoxyCodeLine{00680\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Calculates\ FIO\ for\ a\ single\ frame\ normalized\ by\ the\ number\ of\ estimates\ in\ that\ frame }}
+\DoxyCodeLine{00681\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}} }
+\DoxyCodeLine{00682\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#Calculates\ the\ id\_map\ for\ the\ frame,\ both\ estimates\ and\ ground\_truths }}
+\DoxyCodeLine{00683\ \ \ \ \ \ \ \ \ id\_map\ =\ self.identification\_map(frame\_number) }
+\DoxyCodeLine{00684\  }
+\DoxyCodeLine{00685\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ id\_map\ \textcolor{keywordflow}{is}\ \textcolor{keywordflow}{not}\ \textcolor{keywordtype}{None}: }
+\DoxyCodeLine{00686\ \ \ \ \ \ \ \ \ \ \ \ \ es\_map\ =\ id\_map[\textcolor{stringliteral}{"{}Estimate"{}}] }
+\DoxyCodeLine{00687\ \ \ \ \ \ \ \ \ \ \ \ \ gt\_map\ =\ id\_map[\textcolor{stringliteral}{"{}Ground\_Truth"{}}] }
+\DoxyCodeLine{00688\  }
+\DoxyCodeLine{00689\  }
+\DoxyCodeLine{00690\ \ \ \ \ \ \ \ \ \ \ \ \ scores\ =\ \{\} }
+\DoxyCodeLine{00691\  }
+\DoxyCodeLine{00692\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Go\ through\ all\ the\ estimates\ in\ the\ frame }}
+\DoxyCodeLine{00693\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ estimate\ \textcolor{keywordflow}{in}\ es\_map.keys(): }
+\DoxyCodeLine{00694\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ if\ the\ estimate\ matches\ the\ correct\ map,\ set\ that\ to\ true,\ otherwise\ that\ estimate\ is\ false. }}
+\DoxyCodeLine{00695\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ es\_map[estimate]\ ==\ self.es\_map[estimate]: }
+\DoxyCodeLine{00696\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ scores[estimate]\ =\ \textcolor{keyword}{True} }
+\DoxyCodeLine{00697\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{elif}\ es\_map[estimate]\ ==\ \textcolor{keywordtype}{None}: }
+\DoxyCodeLine{00698\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ scores[estimate]\ =\ \textcolor{keywordtype}{None} }
+\DoxyCodeLine{00699\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}: }
+\DoxyCodeLine{00700\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ scores[estimate]\ =\ \textcolor{keyword}{False} }
+\DoxyCodeLine{00701\  }
+\DoxyCodeLine{00702\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#Count\ the\ errors\ for\ that\ frame }}
+\DoxyCodeLine{00703\ \ \ \ \ \ \ \ \ \ \ \ \ total\_errors\ =\ 0 }
+\DoxyCodeLine{00704\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ score\ \textcolor{keywordflow}{in}\ scores.values(): }
+\DoxyCodeLine{00705\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ score\ \textcolor{keywordflow}{is}\ \textcolor{keyword}{False}: }
+\DoxyCodeLine{00706\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ total\_errors\ +=\ 1 }
+\DoxyCodeLine{00707\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}: }
+\DoxyCodeLine{00708\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0,\ 0,\ \{\} }
+\DoxyCodeLine{00709\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00710\ \ \ \ \ \ \ \ \ normalized\_error\ =\ total\_errors/len(gt\_map.keys()) }
+\DoxyCodeLine{00711\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print(normalized\_error) }}
+\DoxyCodeLine{00712\  }
+\DoxyCodeLine{00713\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ normalized\_error,\ total\_errors,\ scores }
+\DoxyCodeLine{00714\  }
+\DoxyCodeLine{00715\  }
+
+\end{DoxyCode}
+
+
+References tracker\+\_\+evaluation.\+es\+\_\+map, and \mbox{\hyperlink{a00154_aaaad9fe0f151923410425485f2f4c4ed}{tracker\+\_\+evaluation.\+identification\+\_\+map()}}.
+
+
+
+Referenced by \mbox{\hyperlink{a00154_a2cc5036fce7e6fbf3fb8e999bcf5ae25}{tracker\+\_\+evaluation.\+calculate\+\_\+errors()}}, and \mbox{\hyperlink{a00154_afb84b7efc3d1670971c3a96f2289ac5a}{tracker\+\_\+evaluation.\+calculate\+\_\+frame\+\_\+errors()}}.
+
+Here is the call graph for this function\+:
+% FIG 20
+Here is the caller graph for this function\+:
+% FIG 21
+\Hypertarget{a00154_a86b2c6d7d6195d366eca3c999f3219a2}\label{a00154_a86b2c6d7d6195d366eca3c999f3219a2} 
+\index{tracker\_evaluation@{tracker\_evaluation}!falsly\_identified\_tracker@{falsly\_identified\_tracker}}
+\index{falsly\_identified\_tracker@{falsly\_identified\_tracker}!tracker\_evaluation@{tracker\_evaluation}}
+\doxysubsubsection{\texorpdfstring{falsly\_identified\_tracker()}{falsly\_identified\_tracker()}}
+{\footnotesize\ttfamily falsly\+\_\+identified\+\_\+tracker (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{frame\+\_\+number }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Falsely Identified Object. A
+GT segment which passes the coverage test for E but
+is not the identified GT.
+
+Assign FIT and FIO errors for each frame by checking if E
+and GT segments which pass the coverage test match Es and 
+GTs indicated by the identity maps. Label segments as FIT,
+FIO, or correct
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00716\ \ \ \ \ \textcolor{keyword}{def\ }falsly\_identified\_tracker(self,\ frame\_number): }
+\DoxyCodeLine{00717\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{} }}
+\DoxyCodeLine{00718\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Falsely\ Identified\ Object.\ A }}
+\DoxyCodeLine{00719\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ GT\ segment\ which\ passes\ the\ coverage\ test\ for\ E\ but }}
+\DoxyCodeLine{00720\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ is\ not\ the\ identified\ GT. }}
+\DoxyCodeLine{00721\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \  }}
+\DoxyCodeLine{00722\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Assign\ FIT\ and\ FIO\ errors\ for\ each\ frame\ by\ checking\ if\ E }}
+\DoxyCodeLine{00723\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ and\ GT\ segments\ which\ pass\ the\ coverage\ test\ match\ Es\ and\  }}
+\DoxyCodeLine{00724\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ GTs\ indicated\ by\ the\ identity\ maps.\ Label\ segments\ as\ FIT, }}
+\DoxyCodeLine{00725\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ FIO,\ or\ correct }}
+\DoxyCodeLine{00726\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}\ \ \ \ \ \  }
+\DoxyCodeLine{00727\ \ \ \ \ \ \ \ \ id\_map\ =\ self.identification\_map(frame\_number) }
+\DoxyCodeLine{00728\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00729\  }
+\DoxyCodeLine{00730\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ id\_map\ \textcolor{keywordflow}{is}\ \textcolor{keywordflow}{not}\ \textcolor{keywordtype}{None}: }
+\DoxyCodeLine{00731\ \ \ \ \ \ \ \ \ \ \ \ \ es\_map\ =\ id\_map[\textcolor{stringliteral}{"{}Estimate"{}}] }
+\DoxyCodeLine{00732\ \ \ \ \ \ \ \ \ \ \ \ \ gt\_map\ =\ id\_map[\textcolor{stringliteral}{"{}Ground\_Truth"{}}] }
+\DoxyCodeLine{00733\ \ \ \ \ \ \ \ \ \ \ \ \ scores\ =\ \{\} }
+\DoxyCodeLine{00734\  }
+\DoxyCodeLine{00735\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Go\ through\ all\ the\ estimates\ in\ the\ frame }}
+\DoxyCodeLine{00736\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ estimate\ \textcolor{keywordflow}{in}\ es\_map.keys(): }
+\DoxyCodeLine{00737\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ if\ the\ estimate\ matches\ the\ correct\ map,\ set\ that\ to\ true,\ otherwise\ that\ estimate\ is\ false. }}
+\DoxyCodeLine{00738\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ gt\ =\ es\_map[estimate] }
+\DoxyCodeLine{00739\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ gt\ \textcolor{keywordflow}{is}\ \textcolor{keywordflow}{not}\ \textcolor{keywordtype}{None}: }
+\DoxyCodeLine{00740\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ estimate\ ==\ self.gt\_map[gt]: }
+\DoxyCodeLine{00741\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ scores[estimate]\ =\ \textcolor{keyword}{True} }
+\DoxyCodeLine{00742\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}: }
+\DoxyCodeLine{00743\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ scores[estimate]\ =\ \textcolor{keyword}{False} }
+\DoxyCodeLine{00744\  }
+\DoxyCodeLine{00745\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#Count\ the\ errors\ for\ that\ frame }}
+\DoxyCodeLine{00746\ \ \ \ \ \ \ \ \ \ \ \ \ total\_errors\ =\ 0 }
+\DoxyCodeLine{00747\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ score\ \textcolor{keywordflow}{in}\ scores.values(): }
+\DoxyCodeLine{00748\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ score\ \textcolor{keywordflow}{is}\ \textcolor{keyword}{False}: }
+\DoxyCodeLine{00749\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ total\_errors\ +=\ 1 }
+\DoxyCodeLine{00750\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}: }
+\DoxyCodeLine{00751\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0,\ 0,\ \{\} }
+\DoxyCodeLine{00752\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00753\ \ \ \ \ \ \ \ \ normalized\_error\ =\ total\_errors/len(gt\_map.keys()) }
+\DoxyCodeLine{00754\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print(normalized\_error) }}
+\DoxyCodeLine{00755\  }
+\DoxyCodeLine{00756\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ normalized\_error,\ total\_errors,\ scores }
+\DoxyCodeLine{00757\  }
+
+\end{DoxyCode}
+
+
+References tracker\+\_\+evaluation.\+gt\+\_\+map, and \mbox{\hyperlink{a00154_aaaad9fe0f151923410425485f2f4c4ed}{tracker\+\_\+evaluation.\+identification\+\_\+map()}}.
+
+
+
+Referenced by \mbox{\hyperlink{a00154_a2cc5036fce7e6fbf3fb8e999bcf5ae25}{tracker\+\_\+evaluation.\+calculate\+\_\+errors()}}, and \mbox{\hyperlink{a00154_afb84b7efc3d1670971c3a96f2289ac5a}{tracker\+\_\+evaluation.\+calculate\+\_\+frame\+\_\+errors()}}.
+
+Here is the call graph for this function\+:
+% FIG 22
+Here is the caller graph for this function\+:
+% FIG 23
+\Hypertarget{a00154_a1990a7819cacf1d4c1d72db40e19d7a9}\label{a00154_a1990a7819cacf1d4c1d72db40e19d7a9} 
+\index{tracker\_evaluation@{tracker\_evaluation}!fmeasure@{fmeasure}}
+\index{fmeasure@{fmeasure}!tracker\_evaluation@{tracker\_evaluation}}
+\doxysubsubsection{\texorpdfstring{fmeasure()}{fmeasure()}}
+{\footnotesize\ttfamily fmeasure (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{estimate,  }\item[{}]{ground\+\_\+truth,  }\item[{}]{correct\+\_\+estimate = {\ttfamily False} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}The F-measure(F = 2νρ/ν+ρ ) is suited to this task, as F is only high when both recall and precision are high
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00482\ \ \ \ \ \textcolor{keyword}{def\ }fmeasure(self,\ estimate,\ ground\_truth,\ correct\_estimate=False): }
+\DoxyCodeLine{00483\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{''' }}
+\DoxyCodeLine{00484\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ The\ F-\/measure(F\ =\ 2νρ/ν+ρ\ )\ is\ suited\ to\ this\ task,\ as\ F\ is\ only\ high\ when\ both\ recall\ and\ precision\ are\ high }}
+\DoxyCodeLine{00485\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ '''} }
+\DoxyCodeLine{00486\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print("{}FMEASURE\ COMPARE\ ESTIMATE:"{},\ estimate,\ "{}\ |\ GT:"{},\ ground\_truth) }}
+\DoxyCodeLine{00487\  }
+\DoxyCodeLine{00488\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ correct\_estimate\ \textcolor{keywordflow}{is}\ \textcolor{keyword}{False}: }
+\DoxyCodeLine{00489\ \ \ \ \ \ \ \ \ \ \ \ \ p\ =\ self.precision(estimate,\ ground\_truth) }
+\DoxyCodeLine{00490\ \ \ \ \ \ \ \ \ \ \ \ \ r\ =\ self.recall(estimate,\ ground\_truth) }
+\DoxyCodeLine{00491\  }
+\DoxyCodeLine{00492\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Avoids\ division\ by\ zero }}
+\DoxyCodeLine{00493\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ p\ ==\ 0\ \textcolor{keywordflow}{and}\ r\ ==\ 0: }
+\DoxyCodeLine{00494\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0 }
+\DoxyCodeLine{00495\  }
+\DoxyCodeLine{00496\ \ \ \ \ \ \ \ \ f\ =\ (2\ *\ p\ *\ r)\ /\ (p\ +\ r) }
+\DoxyCodeLine{00497\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ f }
+\DoxyCodeLine{00498\  }
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{a00154_a46be521dd2fd28c23d9ba49f160b3e7f}{tracker\+\_\+evaluation.\+estimate\+\_\+to\+\_\+point()}}, \mbox{\hyperlink{a00154_a1990a7819cacf1d4c1d72db40e19d7a9}{tracker\+\_\+evaluation.\+fmeasure()}}, \mbox{\hyperlink{a00154_a8f5619c019f49f35f2c470e7c40af013}{tracker\+\_\+evaluation.\+get\+\_\+estimates()}}, tracker\+\_\+evaluation.\+get\+\_\+ground\+\_\+truths(), \mbox{\hyperlink{a00154_aae33341ee61c7a874af86b59d4f81d84}{tracker\+\_\+evaluation.\+precision()}}, \mbox{\hyperlink{a00154_a6fffa1ba921b56906be56b8ef88fead5}{tracker\+\_\+evaluation.\+recall()}}, and \mbox{\hyperlink{a00154_ac1a5cb9fc8e07c5113cd44cffc343bd5}{tracker\+\_\+evaluation.\+threshold\+\_\+tc}}.
+
+
+
+Referenced by \mbox{\hyperlink{a00154_a1990a7819cacf1d4c1d72db40e19d7a9}{tracker\+\_\+evaluation.\+fmeasure()}}, and \mbox{\hyperlink{a00154_aaaad9fe0f151923410425485f2f4c4ed}{tracker\+\_\+evaluation.\+identification\+\_\+map()}}.
+
+Here is the call graph for this function\+:
+% FIG 24
+Here is the caller graph for this function\+:
+% FIG 25
+\Hypertarget{a00154_a807e2d387bd46390c13ac4a7ab669f65}\label{a00154_a807e2d387bd46390c13ac4a7ab669f65} 
+\index{tracker\_evaluation@{tracker\_evaluation}!generate\_manual\_id\_map@{generate\_manual\_id\_map}}
+\index{generate\_manual\_id\_map@{generate\_manual\_id\_map}!tracker\_evaluation@{tracker\_evaluation}}
+\doxysubsubsection{\texorpdfstring{generate\_manual\_id\_map()}{generate\_manual\_id\_map()}}
+{\footnotesize\ttfamily generate\+\_\+manual\+\_\+id\+\_\+map (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Creates a manual mapping where every estimate maps to the same id as it's labelled (as well as ground truths)
+
+This is used in the case where ground truths and estimates are designed to have the same IDs
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{01236\ \ \ \ \ \textcolor{keyword}{def\ }generate\_manual\_id\_map(self): }
+\DoxyCodeLine{01237\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{''' }}
+\DoxyCodeLine{01238\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Creates\ a\ manual\ mapping\ where\ every\ estimate\ maps\ to\ the\ same\ id\ as\ it's\ labelled\ (as\ well\ as\ ground\ truths) }}
+\DoxyCodeLine{01239\ \textcolor{stringliteral}{ }}
+\DoxyCodeLine{01240\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ This\ is\ used\ in\ the\ case\ where\ ground\ truths\ and\ estimates\ are\ designed\ to\ have\ the\ same\ IDs }}
+\DoxyCodeLine{01241\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ '''} }
+\DoxyCodeLine{01242\ \ \ \ \ \ \ \ \ manual\_gt\_map\ =\ \{\} }
+\DoxyCodeLine{01243\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ gt\ \textcolor{keywordflow}{in}\ self.list\_labels(): }
+\DoxyCodeLine{01244\ \ \ \ \ \ \ \ \ \ \ \ \ manual\_gt\_map[gt]\ =\ gt }
+\DoxyCodeLine{01245\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{01246\ \ \ \ \ \ \ \ \ manual\_es\_map\ =\ \{\} }
+\DoxyCodeLine{01247\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ es\ \textcolor{keywordflow}{in}\ self.list\_estimates(): }
+\DoxyCodeLine{01248\ \ \ \ \ \ \ \ \ \ \ \ \ manual\_es\_map[es]\ =\ es }
+\DoxyCodeLine{01249\  }
+\DoxyCodeLine{01250\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ manual\_gt\_map,\ manual\_gt\_map }
+\DoxyCodeLine{01251\  }
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{a00154_a3d137dc16b12468a6cecc09a1a0909b4}{tracker\+\_\+evaluation.\+list\+\_\+estimates()}}, and \mbox{\hyperlink{a00154_a4bcbbfc33a744742f75d12148bb18ca2}{tracker\+\_\+evaluation.\+list\+\_\+labels()}}.
+
+
+
+Referenced by \mbox{\hyperlink{a00154_a2cc5036fce7e6fbf3fb8e999bcf5ae25}{tracker\+\_\+evaluation.\+calculate\+\_\+errors()}}.
+
+Here is the call graph for this function\+:
+% FIG 26
+Here is the caller graph for this function\+:
+% FIG 27
+\Hypertarget{a00154_ad5cec8c10881d8efa8a4da5e7fccf5fe}\label{a00154_ad5cec8c10881d8efa8a4da5e7fccf5fe} 
+\index{tracker\_evaluation@{tracker\_evaluation}!get\_area@{get\_area}}
+\index{get\_area@{get\_area}!tracker\_evaluation@{tracker\_evaluation}}
+\doxysubsubsection{\texorpdfstring{get\_area()}{get\_area()}}
+{\footnotesize\ttfamily get\+\_\+area (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{box }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{01097\ \ \ \ \ \textcolor{keyword}{def\ }get\_area(self,\ box): }
+\DoxyCodeLine{01098\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (box[0]\ -\/\ box[2])\ *\ (box[1]\ -\/\ box[3]) }
+\DoxyCodeLine{01099\  }
+
+\end{DoxyCode}
+
+
+Referenced by \mbox{\hyperlink{a00154_aae33341ee61c7a874af86b59d4f81d84}{tracker\+\_\+evaluation.\+precision()}}, and \mbox{\hyperlink{a00154_a6fffa1ba921b56906be56b8ef88fead5}{tracker\+\_\+evaluation.\+recall()}}.
+
+Here is the caller graph for this function\+:
+% FIG 28
+\Hypertarget{a00154_a62ba47250b3068ffa27bc8cc7f809daf}\label{a00154_a62ba47250b3068ffa27bc8cc7f809daf} 
+\index{tracker\_evaluation@{tracker\_evaluation}!get\_estimate\_count@{get\_estimate\_count}}
+\index{get\_estimate\_count@{get\_estimate\_count}!tracker\_evaluation@{tracker\_evaluation}}
+\doxysubsubsection{\texorpdfstring{get\_estimate\_count()}{get\_estimate\_count()}}
+{\footnotesize\ttfamily get\+\_\+estimate\+\_\+count (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{01193\ \ \ \ \ \textcolor{keyword}{def\ }get\_estimate\_count(self): }
+\DoxyCodeLine{01194\ \ \ \ \ \ \ \ \ estimate\_count\ =\ \{\} }
+\DoxyCodeLine{01195\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ frame\ \textcolor{keywordflow}{in}\ self.ground\_truth\_dict: }
+\DoxyCodeLine{01196\ \ \ \ \ \ \ \ \ \ \ \ \ estimates\ =\ self.get\_estimates(frame) }
+\DoxyCodeLine{01197\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ estimates.empty\ \textcolor{keywordflow}{is}\ \textcolor{keyword}{False}: }
+\DoxyCodeLine{01198\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ name\ \textcolor{keywordflow}{in}\ estimates[\textcolor{stringliteral}{'name'}]: }
+\DoxyCodeLine{01199\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ name\ \textcolor{keywordflow}{in}\ estimate\_count.keys(): }
+\DoxyCodeLine{01200\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ estimate\_count[name]\ +=\ 1 }
+\DoxyCodeLine{01201\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}: }
+\DoxyCodeLine{01202\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ estimate\_count[name]\ =\ 1 }
+\DoxyCodeLine{01203\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ estimate\_count }
+\DoxyCodeLine{01204\  }
+
+\end{DoxyCode}
+
+
+Referenced by \mbox{\hyperlink{a00154_abe18d5f6b249e1dde980ff17aabf9e8f}{tracker\+\_\+evaluation.\+calculate\+\_\+tracker\+\_\+purity()}}.
+
+Here is the caller graph for this function\+:
+% FIG 29
+\Hypertarget{a00154_a8f5619c019f49f35f2c470e7c40af013}\label{a00154_a8f5619c019f49f35f2c470e7c40af013} 
+\index{tracker\_evaluation@{tracker\_evaluation}!get\_estimates@{get\_estimates}}
+\index{get\_estimates@{get\_estimates}!tracker\_evaluation@{tracker\_evaluation}}
+\doxysubsubsection{\texorpdfstring{get\_estimates()}{get\_estimates()}}
+{\footnotesize\ttfamily get\+\_\+estimates (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{frame\+\_\+number,  }\item[{}]{id = {\ttfamily None} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Returns all estimates by frame number
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{01118\ \ \ \ \ \textcolor{keyword}{def\ }get\_estimates(self,\ frame\_number,\ id=None): }
+\DoxyCodeLine{01119\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{''' }}
+\DoxyCodeLine{01120\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns\ all\ estimates\ by\ frame\ number }}
+\DoxyCodeLine{01121\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ '''} }
+\DoxyCodeLine{01122\ \ \ \ \ \ \ \ \ estimates\ =\ self.estimate\_dict }
+\DoxyCodeLine{01123\ \ \ \ \ \ \ \ \ estimates\ =\ estimates.loc[estimates[\textcolor{stringliteral}{'frame'}].astype(int)\ ==\ frame\_number] }
+\DoxyCodeLine{01124\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ id: }
+\DoxyCodeLine{01125\ \ \ \ \ \ \ \ \ \ \ \ \ estimates\ =\ estimates.loc[estimates[\textcolor{stringliteral}{'name'}]\ ==\ id] }
+\DoxyCodeLine{01126\  }
+\DoxyCodeLine{01127\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ estimates }
+\DoxyCodeLine{01128\  }
+
+\end{DoxyCode}
+
+
+References tracker\+\_\+evaluation.\+estimate\+\_\+dict.
+
+
+
+Referenced by \mbox{\hyperlink{a00154_abe18d5f6b249e1dde980ff17aabf9e8f}{tracker\+\_\+evaluation.\+calculate\+\_\+tracker\+\_\+purity()}}, \mbox{\hyperlink{a00154_abc6ee42a85d6b9fc7311c44da0e25133}{tracker\+\_\+evaluation.\+configuration\+\_\+distance()}}, \mbox{\hyperlink{a00154_a46be521dd2fd28c23d9ba49f160b3e7f}{tracker\+\_\+evaluation.\+estimate\+\_\+to\+\_\+point()}}, \mbox{\hyperlink{a00154_a1990a7819cacf1d4c1d72db40e19d7a9}{tracker\+\_\+evaluation.\+fmeasure()}}, \mbox{\hyperlink{a00154_aaaad9fe0f151923410425485f2f4c4ed}{tracker\+\_\+evaluation.\+identification\+\_\+map()}}, and \mbox{\hyperlink{a00154_a3d137dc16b12468a6cecc09a1a0909b4}{tracker\+\_\+evaluation.\+list\+\_\+estimates()}}.
+
+Here is the caller graph for this function\+:
+% FIG 30
+\Hypertarget{a00154_a8e81671f8238b7c2ebd6246649b1b6e8}\label{a00154_a8e81671f8238b7c2ebd6246649b1b6e8} 
+\index{tracker\_evaluation@{tracker\_evaluation}!get\_frame\_count@{get\_frame\_count}}
+\index{get\_frame\_count@{get\_frame\_count}!tracker\_evaluation@{tracker\_evaluation}}
+\doxysubsubsection{\texorpdfstring{get\_frame\_count()}{get\_frame\_count()}}
+{\footnotesize\ttfamily get\+\_\+frame\+\_\+count (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{01094\ \ \ \ \ \textcolor{keyword}{def\ }get\_frame\_count(self): }
+\DoxyCodeLine{01095\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ self.ground\_truth\_dict.keys()\  }
+\DoxyCodeLine{01096\  }
+
+\end{DoxyCode}
+\Hypertarget{a00154_a02900e25262b92e35488de135ea6e154}\label{a00154_a02900e25262b92e35488de135ea6e154} 
+\index{tracker\_evaluation@{tracker\_evaluation}!get\_ground\_truth\_count@{get\_ground\_truth\_count}}
+\index{get\_ground\_truth\_count@{get\_ground\_truth\_count}!tracker\_evaluation@{tracker\_evaluation}}
+\doxysubsubsection{\texorpdfstring{get\_ground\_truth\_count()}{get\_ground\_truth\_count()}}
+{\footnotesize\ttfamily get\+\_\+ground\+\_\+truth\+\_\+count (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{frame\+\_\+number }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{01158\ \ \ \ \ \textcolor{keyword}{def\ }get\_ground\_truth\_count(self,\ frame\_number): }
+\DoxyCodeLine{01159\ \ \ \ \ \ \ \ \ gts\ =\ self.get\_ground\_truths(frame\_number) }
+\DoxyCodeLine{01160\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print(gts,\ frame\_number) }}
+\DoxyCodeLine{01161\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ gts\ ==\ \textcolor{keywordtype}{None}: }
+\DoxyCodeLine{01162\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keywordtype}{None} }
+\DoxyCodeLine{01163\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ len(gts) }
+\DoxyCodeLine{01164\  }
+
+\end{DoxyCode}
+\Hypertarget{a00154_a58a26e1fd6895f166141fd27674eb262}\label{a00154_a58a26e1fd6895f166141fd27674eb262} 
+\index{tracker\_evaluation@{tracker\_evaluation}!get\_ground\_truth\_difference@{get\_ground\_truth\_difference}}
+\index{get\_ground\_truth\_difference@{get\_ground\_truth\_difference}!tracker\_evaluation@{tracker\_evaluation}}
+\doxysubsubsection{\texorpdfstring{get\_ground\_truth\_difference()}{get\_ground\_truth\_difference()}}
+{\footnotesize\ttfamily get\+\_\+ground\+\_\+truth\+\_\+difference (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{frame\+\_\+num\+\_\+1,  }\item[{}]{frame\+\_\+num\+\_\+2 }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Returns the sets of ground truths where ids are new, or leaving.
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00378\ \ \ \ \ \textcolor{keyword}{def\ }get\_ground\_truth\_difference(self,\ frame\_num\_1,\ frame\_num\_2): }
+\DoxyCodeLine{00379\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{''' }}
+\DoxyCodeLine{00380\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns\ the\ sets\ of\ ground\ truths\ where\ ids\ are\ new,\ or\ leaving. }}
+\DoxyCodeLine{00381\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ '''} }
+\DoxyCodeLine{00382\ \ \ \ \ \ \ \ \ gt\_1\ =\ self.get\_ground\_truths(frame\_num\_1) }
+\DoxyCodeLine{00383\ \ \ \ \ \ \ \ \ gt\_2\ =\ self.get\_ground\_truths(frame\_num\_2) }
+\DoxyCodeLine{00384\  }
+\DoxyCodeLine{00385\ \ \ \ \ \ \ \ \ set\_1\ =\ set() }
+\DoxyCodeLine{00386\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ gt\_1: }
+\DoxyCodeLine{00387\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ gt\ \textcolor{keywordflow}{in}\ gt\_1: }
+\DoxyCodeLine{00388\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ set\_1.add(gt[\textcolor{stringliteral}{'label'}]) }
+\DoxyCodeLine{00389\ \ \ \ \ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00390\ \ \ \ \ \ \ \ \ set\_2\ =\ set() }
+\DoxyCodeLine{00391\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ gt\_2: }
+\DoxyCodeLine{00392\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ gt\ \textcolor{keywordflow}{in}\ gt\_2: }
+\DoxyCodeLine{00393\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ set\_2.add(gt[\textcolor{stringliteral}{'label'}]) }
+\DoxyCodeLine{00394\ \ \ \ \ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00395\ \ \ \ \ \ \ \ \ new\ =\ set\_2\ -\/\ set\_1 }
+\DoxyCodeLine{00396\ \ \ \ \ \ \ \ \ leaving\ =\ set\_1\ -\/\ set\_2 }
+\DoxyCodeLine{00397\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ new,\ leaving }
+\DoxyCodeLine{00398\  }
+
+\end{DoxyCode}
+
+
+References tracker\+\_\+evaluation.\+get\+\_\+ground\+\_\+truths().
+
+Here is the call graph for this function\+:
+% FIG 31
+\Hypertarget{a00154_aa0d2040d32ada937d1c5290044985240}\label{a00154_aa0d2040d32ada937d1c5290044985240} 
+\index{tracker\_evaluation@{tracker\_evaluation}!get\_ground\_truths@{get\_ground\_truths}}
+\index{get\_ground\_truths@{get\_ground\_truths}!tracker\_evaluation@{tracker\_evaluation}}
+\doxysubsubsection{\texorpdfstring{get\_ground\_truths()}{get\_ground\_truths()}}
+{\footnotesize\ttfamily get\+\_\+ground\+\_\+truths (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{frame\+\_\+number,  }\item[{}]{id = {\ttfamily None} }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{01106\ \ \ \ \ \textcolor{keyword}{def\ }get\_ground\_truths(self,\ frame\_number,\ id=None): }
+\DoxyCodeLine{01107\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ frame\_number\ \textcolor{keywordflow}{in}\ self.ground\_truth\_dict.keys(): }
+\DoxyCodeLine{01108\ \ \ \ \ \ \ \ \ \ \ \ \ ground\_truths\ =\ self.ground\_truth\_dict[frame\_number] }
+\DoxyCodeLine{01109\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ id: }
+\DoxyCodeLine{01110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ ground\_truth\ \textcolor{keywordflow}{in}\ ground\_truths: }
+\DoxyCodeLine{01111\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ id\ \textcolor{keywordflow}{in}\ ground\_truth[\textcolor{stringliteral}{'label'}]: }
+\DoxyCodeLine{01112\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ [ground\_truth] }
+\DoxyCodeLine{01113\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ ground\_truths }
+\DoxyCodeLine{01114\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}: }
+\DoxyCodeLine{01115\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print("{}frame\ out\ of\ range"{}) }}
+\DoxyCodeLine{01116\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keywordtype}{None} }
+\DoxyCodeLine{01117\ \ \ \ \  }
+
+\end{DoxyCode}
+
+
+Referenced by \mbox{\hyperlink{a00154_a2cc5036fce7e6fbf3fb8e999bcf5ae25}{tracker\+\_\+evaluation.\+calculate\+\_\+errors()}}, \mbox{\hyperlink{a00154_afa5e4bd548b6ad8817feade0a06a04f2}{tracker\+\_\+evaluation.\+calculate\+\_\+object\+\_\+purity()}}, \mbox{\hyperlink{a00154_a756c92b090c4b99e7afe65dd1a08cd38}{tracker\+\_\+evaluation.\+check\+\_\+occlusion()}}, \mbox{\hyperlink{a00154_abc6ee42a85d6b9fc7311c44da0e25133}{tracker\+\_\+evaluation.\+configuration\+\_\+distance()}}, \mbox{\hyperlink{a00154_a46be521dd2fd28c23d9ba49f160b3e7f}{tracker\+\_\+evaluation.\+estimate\+\_\+to\+\_\+point()}}, \mbox{\hyperlink{a00154_a1990a7819cacf1d4c1d72db40e19d7a9}{tracker\+\_\+evaluation.\+fmeasure()}}, \mbox{\hyperlink{a00154_a58a26e1fd6895f166141fd27674eb262}{tracker\+\_\+evaluation.\+get\+\_\+ground\+\_\+truth\+\_\+difference()}}, \mbox{\hyperlink{a00154_af23940c18d935e51e2445a917d091dd4}{tracker\+\_\+evaluation.\+get\+\_\+occlusion\+\_\+count()}}, \mbox{\hyperlink{a00154_aaaad9fe0f151923410425485f2f4c4ed}{tracker\+\_\+evaluation.\+identification\+\_\+map()}}, \mbox{\hyperlink{a00154_a24713f50b19ca4cf8b48421328fffcf4}{tracker\+\_\+evaluation.\+multiple\+\_\+objects()}}, and \mbox{\hyperlink{a00154_ae7a2ff900f60fe15be7946b972d55ce1}{tracker\+\_\+evaluation.\+multiple\+\_\+trackers()}}.
+
+Here is the caller graph for this function\+:
+% FIG 32
+\Hypertarget{a00154_a6143443ad8d54a84a686949a085cef69}\label{a00154_a6143443ad8d54a84a686949a085cef69} 
+\index{tracker\_evaluation@{tracker\_evaluation}!get\_groundtruth\_count@{get\_groundtruth\_count}}
+\index{get\_groundtruth\_count@{get\_groundtruth\_count}!tracker\_evaluation@{tracker\_evaluation}}
+\doxysubsubsection{\texorpdfstring{get\_groundtruth\_count()}{get\_groundtruth\_count()}}
+{\footnotesize\ttfamily get\+\_\+groundtruth\+\_\+count (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{01205\ \ \ \ \ \textcolor{keyword}{def\ }get\_groundtruth\_count(self): }
+\DoxyCodeLine{01206\ \ \ \ \ \ \ \ \ gt\_count\ =\ \{\} }
+\DoxyCodeLine{01207\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ frame\ \textcolor{keywordflow}{in}\ self.ground\_truth\_dict: }
+\DoxyCodeLine{01208\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ gt\ \textcolor{keywordflow}{in}\ self.ground\_truth\_dict[frame]: }
+\DoxyCodeLine{01209\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ gt[\textcolor{stringliteral}{'label'}]\ \textcolor{keywordflow}{in}\ gt\_count.keys(): }
+\DoxyCodeLine{01210\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ gt\_count[gt[\textcolor{stringliteral}{'label'}]]\ +=\ 1 }
+\DoxyCodeLine{01211\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}: }
+\DoxyCodeLine{01212\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ gt\_count[gt[\textcolor{stringliteral}{'label'}]]\ =\ 1 }
+\DoxyCodeLine{01213\  }
+\DoxyCodeLine{01214\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ gt\_count }
+\DoxyCodeLine{01215\ \ \ \ \  }
+
+\end{DoxyCode}
+
+
+Referenced by \mbox{\hyperlink{a00154_afa5e4bd548b6ad8817feade0a06a04f2}{tracker\+\_\+evaluation.\+calculate\+\_\+object\+\_\+purity()}}.
+
+Here is the caller graph for this function\+:
+% FIG 33
+\Hypertarget{a00154_a4f49c8ff16bbe7b0a2dba1416f7824c8}\label{a00154_a4f49c8ff16bbe7b0a2dba1416f7824c8} 
+\index{tracker\_evaluation@{tracker\_evaluation}!get\_height@{get\_height}}
+\index{get\_height@{get\_height}!tracker\_evaluation@{tracker\_evaluation}}
+\doxysubsubsection{\texorpdfstring{get\_height()}{get\_height()}}
+{\footnotesize\ttfamily get\+\_\+height (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{box }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{01100\ \ \ \ \ \textcolor{keyword}{def\ }get\_height(self,\ box): }
+\DoxyCodeLine{01101\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (box[1]\ -\/\ box[3]) }
+\DoxyCodeLine{01102\ \ \ \ \  }
+
+\end{DoxyCode}
+\Hypertarget{a00154_a39e1f96456bbb6d82c2eb3130b86ea07}\label{a00154_a39e1f96456bbb6d82c2eb3130b86ea07} 
+\index{tracker\_evaluation@{tracker\_evaluation}!get\_number\_estimates@{get\_number\_estimates}}
+\index{get\_number\_estimates@{get\_number\_estimates}!tracker\_evaluation@{tracker\_evaluation}}
+\doxysubsubsection{\texorpdfstring{get\_number\_estimates()}{get\_number\_estimates()}}
+{\footnotesize\ttfamily get\+\_\+number\+\_\+estimates (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{frame\+\_\+number }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{01154\ \ \ \ \ \textcolor{keyword}{def\ }get\_number\_estimates(self,\ frame\_number): }
+\DoxyCodeLine{01155\ \ \ \ \ \ \ \ \ es\ =\ self.get\_estimates(frame\_number) }
+\DoxyCodeLine{01156\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ es.shape[0] }
+\DoxyCodeLine{01157\  }
+
+\end{DoxyCode}
+\Hypertarget{a00154_af23940c18d935e51e2445a917d091dd4}\label{a00154_af23940c18d935e51e2445a917d091dd4} 
+\index{tracker\_evaluation@{tracker\_evaluation}!get\_occlusion\_count@{get\_occlusion\_count}}
+\index{get\_occlusion\_count@{get\_occlusion\_count}!tracker\_evaluation@{tracker\_evaluation}}
+\doxysubsubsection{\texorpdfstring{get\_occlusion\_count()}{get\_occlusion\_count()}}
+{\footnotesize\ttfamily get\+\_\+occlusion\+\_\+count (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{frame\+\_\+num }\end{DoxyParamCaption})}
+
+
+
+Returns a number of occluded ground truths occur at a frame. 
+
+Counts the number of True occurances of check\+\_\+occlusion happens on a frame.
+
+\begin{DoxyReturn}{Returns}
+int Count of number of occluded ground truths 
+\end{DoxyReturn}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00431\ \ \ \ \ \textcolor{keyword}{def\ }get\_occlusion\_count(self,\ frame\_num): }
+\DoxyCodeLine{00432\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{'''! }}
+\DoxyCodeLine{00433\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Counts\ the\ number\ of\ True\ occurances\ of\ @ref\ check\_occlusion\ happens\ on\ a\ frame. }}
+\DoxyCodeLine{00434\ \textcolor{stringliteral}{ }}
+\DoxyCodeLine{00435\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @returns\ int\ Count\ of\ number\ of\ occluded\ ground\ truths }}
+\DoxyCodeLine{00436\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ '''} }
+\DoxyCodeLine{00437\ \ \ \ \ \ \ \ \ all\_gt\ =\ self.get\_ground\_truths(frame\_num) }
+\DoxyCodeLine{00438\  }
+\DoxyCodeLine{00439\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keywordflow}{not}\ self.ground\_truth\_exists(frame\_num): }
+\DoxyCodeLine{00440\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keywordtype}{None} }
+\DoxyCodeLine{00441\ \ \ \ \ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00442\ \ \ \ \ \ \ \ \ count\ =\ 0 }
+\DoxyCodeLine{00443\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Iterate\ over\ all\ ground\ truths\ and\ record\ how\ many\ others\ overlap\ with\ excess\ threshold\_to }}
+\DoxyCodeLine{00444\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ gt\ \textcolor{keywordflow}{in}\ all\_gt: }
+\DoxyCodeLine{00445\ \ \ \ \ \ \ \ \ \ \ \ \ occluded,\ \_\ =\ self.check\_occlusion(gt,\ frame\_num) }
+\DoxyCodeLine{00446\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ occluded: }
+\DoxyCodeLine{00447\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ count\ +=\ 1 }
+\DoxyCodeLine{00448\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00449\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ count }
+\DoxyCodeLine{00450\  }
+\DoxyCodeLine{00451\ \ \ \ \  }
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{a00154_a756c92b090c4b99e7afe65dd1a08cd38}{tracker\+\_\+evaluation.\+check\+\_\+occlusion()}}, tracker\+\_\+evaluation.\+get\+\_\+ground\+\_\+truths(), and tracker\+\_\+evaluation.\+ground\+\_\+truth\+\_\+exists().
+
+Here is the call graph for this function\+:
+% FIG 34
+\Hypertarget{a00154_a38b21ca378cece6effcab060696bbacb}\label{a00154_a38b21ca378cece6effcab060696bbacb} 
+\index{tracker\_evaluation@{tracker\_evaluation}!get\_width@{get\_width}}
+\index{get\_width@{get\_width}!tracker\_evaluation@{tracker\_evaluation}}
+\doxysubsubsection{\texorpdfstring{get\_width()}{get\_width()}}
+{\footnotesize\ttfamily get\+\_\+width (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{box }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{01103\ \ \ \ \ \textcolor{keyword}{def\ }get\_width(self,\ box): }
+\DoxyCodeLine{01104\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (box[0]\ -\/\ box[2]) }
+\DoxyCodeLine{01105\  }
+
+\end{DoxyCode}
+\Hypertarget{a00154_aacabed97a5e0387eeac8206ec1ab821d}\label{a00154_aacabed97a5e0387eeac8206ec1ab821d} 
+\index{tracker\_evaluation@{tracker\_evaluation}!ground\_truth\_exists@{ground\_truth\_exists}}
+\index{ground\_truth\_exists@{ground\_truth\_exists}!tracker\_evaluation@{tracker\_evaluation}}
+\doxysubsubsection{\texorpdfstring{ground\_truth\_exists()}{ground\_truth\_exists()}}
+{\footnotesize\ttfamily ground\+\_\+truth\+\_\+exists (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{frame\+\_\+num }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00373\ \ \ \ \ \textcolor{keyword}{def\ }ground\_truth\_exists(self,\ frame\_num): }
+\DoxyCodeLine{00374\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ frame\_num\ \textcolor{keywordflow}{in}\ self.ground\_truth\_dict.keys(): }
+\DoxyCodeLine{00375\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{True} }
+\DoxyCodeLine{00376\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{False} }
+\DoxyCodeLine{00377\  }
+
+\end{DoxyCode}
+
+
+Referenced by \mbox{\hyperlink{a00154_af23940c18d935e51e2445a917d091dd4}{tracker\+\_\+evaluation.\+get\+\_\+occlusion\+\_\+count()}}.
+
+Here is the caller graph for this function\+:
+% FIG 35
+\Hypertarget{a00154_a429aa56c6f9c3137d6648172a9fd8ef5}\label{a00154_a429aa56c6f9c3137d6648172a9fd8ef5} 
+\index{tracker\_evaluation@{tracker\_evaluation}!identification\_graph@{identification\_graph}}
+\index{identification\_graph@{identification\_graph}!tracker\_evaluation@{tracker\_evaluation}}
+\doxysubsubsection{\texorpdfstring{identification\_graph()}{identification\_graph()}}
+{\footnotesize\ttfamily identification\+\_\+graph (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00173\ \ \ \ \ \textcolor{keyword}{def\ }identification\_graph(self): }
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ fig,\ ax\ =\ plt.subplots()\ \ \textcolor{comment}{\#\ Create\ a\ figure\ containing\ a\ single\ axes. }}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ start\_frame\ =\ 0 }
+\DoxyCodeLine{00176\  }
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ data\ =\ [] }
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ frame\_number\ =\ [] }
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ data\ =\ [] }
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ gt\_count\ =\ self.get\_groundtruth\_count() }
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ es\_count\ =\ self.get\_estimate\_count() }
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{"{}ES\_COUNT"{}},\ es\_count) }
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ colors\ =\ \{\} }
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ es\_colors\ =\ \{\} }
+\DoxyCodeLine{00187\  }
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#Create\ Colour\ maps }}
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ index,\ gt\ \textcolor{keywordflow}{in}\ enumerate(gt\_count.keys()): }
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \ \ \ \ colors[gt]\ =\ index+1 }
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ index,\ es\ \textcolor{keywordflow}{in}\ enumerate(es\_count.keys()): }
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \ \ \ \ es\_colors[es]\ =\ index+1 }
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ cmaps\ =\ \{\} }}
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ self.gt\_map,\ self.es\_map\ =\ self.calculate\_identification\_map() }
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{"{}Loading\ data\ to\ plot"{}}) }
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ figs\ =[] }
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ cmap\ =\ [] }
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ id\_map\_colors\ =\ [] }
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ frame\ \textcolor{keywordflow}{in}\ self.ground\_truth\_dict: }
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print(frame) }}
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \ \ \ \ ground\_truths\ =\ self.get\_ground\_truths(frame) }
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \ \ \ \ id\_map\ =\ self.identification\_map(frame) }
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ gt\ \textcolor{keywordflow}{in}\ ground\_truths: }
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ ax.plot(gt['label'],\ frame) }}
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ data.append(gt[\textcolor{stringliteral}{'label'}]) }
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cmap.append(colors[gt[\textcolor{stringliteral}{'label'}]]) }
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ frame\_number.append(frame) }
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ id\_map\ \textcolor{keywordflow}{is}\ \textcolor{keywordflow}{not}\ \textcolor{keywordtype}{None}: }
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ es\_map\ =\ id\_map[\textcolor{stringliteral}{'Estimate'}] }
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ gt\_map\ =\ id\_map[\textcolor{stringliteral}{'Ground\_Truth'}] }
+\DoxyCodeLine{00215\  }
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ keys\ =\ [k\ \textcolor{keywordflow}{for}\ k,\ v\ \textcolor{keywordflow}{in}\ es\_map.items()\ \textcolor{keywordflow}{if}\ v\ ==\ gt[\textcolor{stringliteral}{'label'}]] }
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ added\ =\ \textcolor{keyword}{False} }
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ key\ \textcolor{keywordflow}{in}\ keys: }
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ key\ ==\ gt\_map[gt[\textcolor{stringliteral}{'label'}]]: }
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ id\_map\_colors.append(es\_colors[gt\_map[gt[\textcolor{stringliteral}{'label'}]]]) }
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ added\ =\ \textcolor{keyword}{True} }
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break} }
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keywordflow}{not}\ added: }
+\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ id\_map\_colors.append(-\/20)\  }
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}: }
+\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ id\_map\_colors.append(-\/20) }
+\DoxyCodeLine{00228\  }
+\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ self.gt\_map,\ self.es\_map\ =\ self.calculate\_identification\_map() }
+\DoxyCodeLine{00230\ \ \ \ \  }
+\DoxyCodeLine{00231\ \ \ \ \ \ \ \ \ ax.scatter(frame\_number,\ data,\ c=id\_map\_colors,\ \ cmap=\textcolor{stringliteral}{"{}Spectral"{}},\ marker=\textcolor{stringliteral}{"{}s"{}},\ s=80) }
+\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ ax.scatter(frame\_number,\ data,\ c=cmap,\ \ cmap=\textcolor{stringliteral}{"{}inferno"{}},\ marker=\textcolor{stringliteral}{"{}."{}},\ s=50)\ \ \textcolor{comment}{\#\ Plot\ some\ data\ on\ the\ axes. }}
+\DoxyCodeLine{00233\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ plt.show(block\ =\ \textcolor{keyword}{False}) }
+\DoxyCodeLine{00235\  }
+
+\end{DoxyCode}
+\Hypertarget{a00154_aaaad9fe0f151923410425485f2f4c4ed}\label{a00154_aaaad9fe0f151923410425485f2f4c4ed} 
+\index{tracker\_evaluation@{tracker\_evaluation}!identification\_map@{identification\_map}}
+\index{identification\_map@{identification\_map}!tracker\_evaluation@{tracker\_evaluation}}
+\doxysubsubsection{\texorpdfstring{identification\_map()}{identification\_map()}}
+{\footnotesize\ttfamily identification\+\_\+map (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{frame\+\_\+number }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Identification map produces a map for a specific frame number
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00633\ \ \ \ \ \textcolor{keyword}{def\ }identification\_map(self,\ frame\_number): }
+\DoxyCodeLine{00634\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{} }}
+\DoxyCodeLine{00635\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Identification\ map\ produces\ a\ map\ for\ a\ specific\ frame\ number }}
+\DoxyCodeLine{00636\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}} }
+\DoxyCodeLine{00637\ \ \ \ \ \ \ \ \ ground\_truths\ =\ self.get\_ground\_truths(frame\_number) }
+\DoxyCodeLine{00638\ \ \ \ \ \ \ \ \ estimates\ =\ self.get\_estimates(frame\_number) }
+\DoxyCodeLine{00639\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ estimates.empty: }
+\DoxyCodeLine{00640\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keywordtype}{None} }
+\DoxyCodeLine{00641\  }
+\DoxyCodeLine{00642\ \ \ \ \ \ \ \ \ estimate\_map\ =\ \{\} }
+\DoxyCodeLine{00643\ \ \ \ \ \ \ \ \ ground\_truth\_map\ =\ \{\} }
+\DoxyCodeLine{00644\  }
+\DoxyCodeLine{00645\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ index,\ estimate\ \textcolor{keywordflow}{in}\ estimates.iterrows(): }
+\DoxyCodeLine{00646\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print(estimate) }}
+\DoxyCodeLine{00647\ \ \ \ \ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00648\ \ \ \ \ \ \ \ \ \ \ \ \ es\ =\ self.estimate\_to\_point(estimate) }
+\DoxyCodeLine{00649\ \ \ \ \ \ \ \ \ \ \ \ \ fmeasures\ =\ [] }
+\DoxyCodeLine{00650\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ gt\ \textcolor{keywordflow}{in}\ ground\_truths: }
+\DoxyCodeLine{00651\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ f\ =\ self.fmeasure(es,\ gt[\textcolor{stringliteral}{'points'}],\ correct\_estimate=\textcolor{keyword}{False}) }
+\DoxyCodeLine{00652\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print("{}F"{},\ f) }}
+\DoxyCodeLine{00653\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ fmeasures.append(f) }
+\DoxyCodeLine{00654\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Use\ the\ best\ estimate }}
+\DoxyCodeLine{00655\ \ \ \ \ \ \ \ \ \ \ \ \ max\_index\ =\ fmeasures.index(max(fmeasures)) }
+\DoxyCodeLine{00656\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ fmeasures[max\_index]\ ==\ 0: }
+\DoxyCodeLine{00657\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ estimate\_map[estimate[\textcolor{stringliteral}{'name'}]]\ =\ \textcolor{keywordtype}{None} }
+\DoxyCodeLine{00658\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}: }
+\DoxyCodeLine{00659\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ estimate\_map[estimate[\textcolor{stringliteral}{'name'}]]\ =\ ground\_truths[max\_index][\textcolor{stringliteral}{'label'}] }
+\DoxyCodeLine{00660\  }
+\DoxyCodeLine{00661\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ gt\ \textcolor{keywordflow}{in}\ ground\_truths: }
+\DoxyCodeLine{00662\ \ \ \ \ \ \ \ \ \ \ \ \ fmeasures\ =\ [] }
+\DoxyCodeLine{00663\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ index,\ estimate\ \textcolor{keywordflow}{in}\ estimates.iterrows(): }
+\DoxyCodeLine{00664\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ es\ =\ self.estimate\_to\_point(estimate) }
+\DoxyCodeLine{00665\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ f\ =\ self.fmeasure(es,\ gt[\textcolor{stringliteral}{'points'}],\ correct\_estimate=\textcolor{keyword}{False}) }
+\DoxyCodeLine{00666\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ fmeasures.append(f) }
+\DoxyCodeLine{00667\ \ \ \ \ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00668\ \ \ \ \ \ \ \ \ \ \ \ \ max\_index\ =\ fmeasures.index(max(fmeasures)) }
+\DoxyCodeLine{00669\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ fmeasures[max\_index]\ ==\ 0: }
+\DoxyCodeLine{00670\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ground\_truth\_map[gt[\textcolor{stringliteral}{'label'}]]\ =\ \textcolor{keywordtype}{None} }
+\DoxyCodeLine{00671\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}: }
+\DoxyCodeLine{00672\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ground\_truth\_map[gt[\textcolor{stringliteral}{'label'}]]\ =\ estimates.iloc[max\_index][\textcolor{stringliteral}{'name'}] }
+\DoxyCodeLine{00673\  }
+\DoxyCodeLine{00674\ \ \ \ \ \ \ \ \ maps\ =\ \{\textcolor{stringliteral}{"{}Estimate"{}}:\ estimate\_map,\ \textcolor{stringliteral}{"{}Ground\_Truth"{}}:\ ground\_truth\_map\} }
+\DoxyCodeLine{00675\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print(maps) }}
+\DoxyCodeLine{00676\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ maps }
+\DoxyCodeLine{00677\  }
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{a00154_a46be521dd2fd28c23d9ba49f160b3e7f}{tracker\+\_\+evaluation.\+estimate\+\_\+to\+\_\+point()}}, \mbox{\hyperlink{a00154_a1990a7819cacf1d4c1d72db40e19d7a9}{tracker\+\_\+evaluation.\+fmeasure()}}, \mbox{\hyperlink{a00154_a8f5619c019f49f35f2c470e7c40af013}{tracker\+\_\+evaluation.\+get\+\_\+estimates()}}, and tracker\+\_\+evaluation.\+get\+\_\+ground\+\_\+truths().
+
+
+
+Referenced by \mbox{\hyperlink{a00154_a3639a941793f544ac8da43787caf0e79}{tracker\+\_\+evaluation.\+calculate\+\_\+identification\+\_\+map()}}, \mbox{\hyperlink{a00154_afa5e4bd548b6ad8817feade0a06a04f2}{tracker\+\_\+evaluation.\+calculate\+\_\+object\+\_\+purity()}}, \mbox{\hyperlink{a00154_abe18d5f6b249e1dde980ff17aabf9e8f}{tracker\+\_\+evaluation.\+calculate\+\_\+tracker\+\_\+purity()}}, \mbox{\hyperlink{a00154_a2a0bf799d0e7ebe787ced89e43d09bb5}{tracker\+\_\+evaluation.\+falsly\+\_\+identified\+\_\+object()}}, and \mbox{\hyperlink{a00154_a86b2c6d7d6195d366eca3c999f3219a2}{tracker\+\_\+evaluation.\+falsly\+\_\+identified\+\_\+tracker()}}.
+
+Here is the call graph for this function\+:
+% FIG 36
+Here is the caller graph for this function\+:
+% FIG 37
+\Hypertarget{a00154_a3d137dc16b12468a6cecc09a1a0909b4}\label{a00154_a3d137dc16b12468a6cecc09a1a0909b4} 
+\index{tracker\_evaluation@{tracker\_evaluation}!list\_estimates@{list\_estimates}}
+\index{list\_estimates@{list\_estimates}!tracker\_evaluation@{tracker\_evaluation}}
+\doxysubsubsection{\texorpdfstring{list\_estimates()}{list\_estimates()}}
+{\footnotesize\ttfamily list\+\_\+estimates (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Returns a list of unique estimate names
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{01176\ \ \ \ \ \textcolor{keyword}{def\ }list\_estimates(self): }
+\DoxyCodeLine{01177\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{''' }}
+\DoxyCodeLine{01178\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns\ a\ list\ of\ unique\ estimate\ names }}
+\DoxyCodeLine{01179\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ '''} }
+\DoxyCodeLine{01180\ \ \ \ \ \ \ \ \ estimate\_set\ =\ set() }
+\DoxyCodeLine{01181\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print(self.ground\_truth\_dict) }}
+\DoxyCodeLine{01182\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ frame\ \textcolor{keywordflow}{in}\ self.ground\_truth\_dict: }
+\DoxyCodeLine{01183\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print(frame) }}
+\DoxyCodeLine{01184\ \ \ \ \ \ \ \ \ \ \ \ \ estimates\ =\ self.get\_estimates(frame) }
+\DoxyCodeLine{01185\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print(estimates) }}
+\DoxyCodeLine{01186\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ estimates.empty\ \textcolor{keywordflow}{is}\ \textcolor{keyword}{False}: }
+\DoxyCodeLine{01187\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ name\ \textcolor{keywordflow}{in}\ estimates[\textcolor{stringliteral}{'name'}]: }
+\DoxyCodeLine{01188\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ estimate\_set.add(name) }
+\DoxyCodeLine{01189\ \ \ \ \ \ \ \ \ print(estimate\_set) }
+\DoxyCodeLine{01190\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{01191\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ list(sorted(estimate\_set)) }
+\DoxyCodeLine{01192\ \ \ \ \  }
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{a00154_a8f5619c019f49f35f2c470e7c40af013}{tracker\+\_\+evaluation.\+get\+\_\+estimates()}}, and tracker\+\_\+evaluation.\+ground\+\_\+truth\+\_\+dict.
+
+
+
+Referenced by \mbox{\hyperlink{a00154_a3639a941793f544ac8da43787caf0e79}{tracker\+\_\+evaluation.\+calculate\+\_\+identification\+\_\+map()}}, \mbox{\hyperlink{a00154_a807e2d387bd46390c13ac4a7ab669f65}{tracker\+\_\+evaluation.\+generate\+\_\+manual\+\_\+id\+\_\+map()}}, and \mbox{\hyperlink{a00154_ad4605f802eb54b9eae17e159f064e9d7}{tracker\+\_\+evaluation.\+load\+\_\+tracker\+\_\+data()}}.
+
+Here is the call graph for this function\+:
+% FIG 38
+Here is the caller graph for this function\+:
+% FIG 39
+\Hypertarget{a00154_a4bcbbfc33a744742f75d12148bb18ca2}\label{a00154_a4bcbbfc33a744742f75d12148bb18ca2} 
+\index{tracker\_evaluation@{tracker\_evaluation}!list\_labels@{list\_labels}}
+\index{list\_labels@{list\_labels}!tracker\_evaluation@{tracker\_evaluation}}
+\doxysubsubsection{\texorpdfstring{list\_labels()}{list\_labels()}}
+{\footnotesize\ttfamily list\+\_\+labels (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Returns a list of unique label names
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{01165\ \ \ \ \ \textcolor{keyword}{def\ }list\_labels(self): }
+\DoxyCodeLine{01166\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{''' }}
+\DoxyCodeLine{01167\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns\ a\ list\ of\ unique\ label\ names }}
+\DoxyCodeLine{01168\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ '''} }
+\DoxyCodeLine{01169\ \ \ \ \ \ \ \ \ label\_set\ =\ set() }
+\DoxyCodeLine{01170\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ frame\ \textcolor{keywordflow}{in}\ self.ground\_truth\_dict: }
+\DoxyCodeLine{01171\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ gt\ \textcolor{keywordflow}{in}\ self.ground\_truth\_dict[frame]: }
+\DoxyCodeLine{01172\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ gt[\textcolor{stringliteral}{'label'}]\ \textcolor{keywordflow}{not}\ \textcolor{keywordflow}{in}\ label\_set: }
+\DoxyCodeLine{01173\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ label\_set.add(gt[\textcolor{stringliteral}{'label'}]) }
+\DoxyCodeLine{01174\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ list(label\_set) }
+\DoxyCodeLine{01175\  }
+
+\end{DoxyCode}
+
+
+References tracker\+\_\+evaluation.\+ground\+\_\+truth\+\_\+dict.
+
+
+
+Referenced by \mbox{\hyperlink{a00154_a807e2d387bd46390c13ac4a7ab669f65}{tracker\+\_\+evaluation.\+generate\+\_\+manual\+\_\+id\+\_\+map()}}, and \mbox{\hyperlink{a00154_a64bfd27c55021f0970aa44942ee4c7e9}{tracker\+\_\+evaluation.\+load\+\_\+json()}}.
+
+Here is the caller graph for this function\+:
+% FIG 40
+\Hypertarget{a00154_a64bfd27c55021f0970aa44942ee4c7e9}\label{a00154_a64bfd27c55021f0970aa44942ee4c7e9} 
+\index{tracker\_evaluation@{tracker\_evaluation}!load\_json@{load\_json}}
+\index{load\_json@{load\_json}!tracker\_evaluation@{tracker\_evaluation}}
+\doxysubsubsection{\texorpdfstring{load\_json()}{load\_json()}}
+{\footnotesize\ttfamily load\+\_\+json (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{folder,  }\item[{}]{fps = {\ttfamily None} }\end{DoxyParamCaption})}
+
+
+
+Loads annotation created with \cite{labelme} labelme. 
+
+Loads all json files in a folder. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keyword}{def\ }load\_json(self,\ folder,\ fps=None): }
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{'''! }}
+\DoxyCodeLine{00075\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Loads\ all\ json\ files\ in\ a\ folder. }}
+\DoxyCodeLine{00076\ \textcolor{stringliteral}{ }}
+\DoxyCodeLine{00077\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ '''} }
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Load\ all\ json\ files }}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Points\ exist\ in\ [x,y]\ pairs.\ Labelling\ determines\ order\ of\ points\ but\ it\ should\ be\ top\ left\ to\ bottom\ right.\ Make\ sure\ this\ is\ the\ order.\ (If\ not,\ flip\ order\ of\ points) }}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ fps: }
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ self.fps\ =\ fps }
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{"{}Loading\ JSON"{}}) }
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ files\ =\ glob.glob(folder+\textcolor{stringliteral}{"{}*.json"{}}) }
+\DoxyCodeLine{00084\  }
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ self.total\_images\ =\ len(files) }
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ file\ \textcolor{keywordflow}{in}\ files: }
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Parse\ the\ filename\ and\ get\ the\ image\ number }}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ json\_image\_number\ =\ int(file.split(\textcolor{stringliteral}{"{}."{}})[0].split(\textcolor{stringliteral}{"{}\_"{}})[-\/1]) }
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ frame\_number\ =\ json\_image\_number\ *\ self.fps }
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{with}\ open(file)\ \textcolor{keyword}{as}\ f: }
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ data\ =\ json.load(f) }
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ shape\ \textcolor{keywordflow}{in}\ data[\textcolor{stringliteral}{'shapes'}]: }
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ shape[\textcolor{stringliteral}{'points'}]\ =\ (shape[\textcolor{stringliteral}{'points'}][0][0],shape[\textcolor{stringliteral}{'points'}][0][1],\ shape[\textcolor{stringliteral}{'points'}][1][0],\ shape[\textcolor{stringliteral}{'points'}][1][1]) }
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.ground\_truth\_dict[frame\_number]\ =\ data[\textcolor{stringliteral}{'shapes'}] }
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00096\  }
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Sort\ the\ dictionary }}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ self.ground\_truth\_dict\ =\ \{k:\ self.ground\_truth\_dict[k]\ \textcolor{keywordflow}{for}\ k\ \textcolor{keywordflow}{in}\ sorted(self.ground\_truth\_dict)\} }
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ self.labels\ =\ self.list\_labels() }
+\DoxyCodeLine{00100\  }
+
+\end{DoxyCode}
+
+
+References tracker\+\_\+evaluation.\+fps, FPS.\+fps(), tracker\+\_\+evaluation.\+ground\+\_\+truth\+\_\+dict, tracker\+\_\+evaluation.\+labels, \mbox{\hyperlink{a00154_a4bcbbfc33a744742f75d12148bb18ca2}{tracker\+\_\+evaluation.\+list\+\_\+labels()}}, and tracker\+\_\+evaluation.\+total\+\_\+images.
+
+
+
+Referenced by \mbox{\hyperlink{a00154_a44156c7a1b52b45402849d05832c990a}{tracker\+\_\+evaluation.\+\_\+\+\_\+init\+\_\+\+\_\+()}}.
+
+Here is the call graph for this function\+:
+% FIG 41
+Here is the caller graph for this function\+:
+% FIG 42
+\Hypertarget{a00154_ad4605f802eb54b9eae17e159f064e9d7}\label{a00154_ad4605f802eb54b9eae17e159f064e9d7} 
+\index{tracker\_evaluation@{tracker\_evaluation}!load\_tracker\_data@{load\_tracker\_data}}
+\index{load\_tracker\_data@{load\_tracker\_data}!tracker\_evaluation@{tracker\_evaluation}}
+\doxysubsubsection{\texorpdfstring{load\_tracker\_data()}{load\_tracker\_data()}}
+{\footnotesize\ttfamily load\+\_\+tracker\+\_\+data (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{tracker\+\_\+file }\end{DoxyParamCaption})}
+
+
+
+Loads estimates from people tracker exported data. 
+
+It loads private variables estimate\+\_\+dict and estimates (a list of all estimate names)
+
+Returns a dataframe of tracker data 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{keyword}{def\ }load\_tracker\_data(self,\ tracker\_file): }
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{'''! }}
+\DoxyCodeLine{00103\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Loads\ estimates\ from\ people\ tracker\ exported\ data. }}
+\DoxyCodeLine{00104\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \  }}
+\DoxyCodeLine{00105\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ It\ loads\ private\ variables\ estimate\_dict\ and\ estimates\ (a\ list\ of\ all\ estimate\ names) }}
+\DoxyCodeLine{00106\ \textcolor{stringliteral}{ }}
+\DoxyCodeLine{00107\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns\ a\ dataframe\ of\ tracker\ data }}
+\DoxyCodeLine{00108\ \textcolor{stringliteral}{ }}
+\DoxyCodeLine{00109\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ '''} }
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{"{}Loading\ Tracker\ Data"{}}) }
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ df\ =\ pd.read\_csv(tracker\_file) }
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ self.fps\ =\ int(round(df.iloc[0][\textcolor{stringliteral}{'FrameRate'}])) }
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print(df) }}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ self.invert\_y\ =\ int(df.iloc[1][\textcolor{stringliteral}{'Max\_Pixel\_y'}]) }
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ self.invert\_y\ =\ 0 }}
+\DoxyCodeLine{00116\  }
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ try: }}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}: }
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ video\_width\ =\ int(df.iloc[0][\textcolor{stringliteral}{'Width(px)'}]) }
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ video\_height\ =\ int(df.iloc[0][\textcolor{stringliteral}{'Height(px)'}]) }
+\DoxyCodeLine{00121\  }
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ recorded\_width\ =\ int(df.iloc[1][\textcolor{stringliteral}{'Max\_Pixel\_x'}]) }
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ recorded\_height\ =\ int(df.iloc[1][\textcolor{stringliteral}{'Max\_Pixel\_y'}]) }
+\DoxyCodeLine{00124\  }
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Example:\ Estimates\ are\ recorded\ at\ 480x720\ while\ ground\ truths\ are\ recorded\ at\ 720x1280.\ The\ ratio\ inputed\ would\ be\ (720/480,\ 1280/720)\ or\ (1.5,\ 1.777778) }}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ self.correction\_ratio\_x\ =\ video\_width/recorded\_width }
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ self.correction\_ratio\_y\ =\ video\_height/recorded\_height }
+\DoxyCodeLine{00128\  }
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{except}: }
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{"{}It's\ likely\ that\ this\ data\ is\ MaskRCNN\ Predicted\ and\ recorded\ at\ full\ resolution:\ Setting\ scale\ ratio\ to\ 1:1"{}}) }
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Example:\ Estimates\ are\ recorded\ at\ 480x720\ while\ ground\ truths\ are\ recorded\ at\ 720x1280.\ The\ ratio\ inputed\ would\ be\ (720/480,\ 1280/720)\ or\ (1.5,\ 1.777778) }}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ self.correction\_ratio\_x\ =\ 1 }
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ self.correction\_ratio\_y\ =\ 1 }
+\DoxyCodeLine{00134\  }
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ except: }}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ self.correction\_ratio\_x\ =\ 1 }}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ self.correction\_ratio\_y\ =\ 1 }}
+\DoxyCodeLine{00138\  }
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ df\ =\ df.iloc[1:\ ,\ :]\ \textcolor{comment}{\#\ Drop\ first\ row }}
+\DoxyCodeLine{00140\  }
+\DoxyCodeLine{00141\  }
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{"{}FRAME\ RATE"{}},\ self.fps) }
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ tracker\_data\ =\ df[[\textcolor{stringliteral}{"{}Frame\_Num"{}},\ \textcolor{stringliteral}{"{}Name"{}},\ \textcolor{stringliteral}{"{}ID"{}},\ \textcolor{stringliteral}{"{}BBox\_TopLeft\_x"{}},\ \textcolor{stringliteral}{"{}BBox\_TopLeft\_y"{}},\ \textcolor{stringliteral}{"{}BBox\_BottomRight\_x"{}},\ \textcolor{stringliteral}{"{}BBox\_BottomRight\_y"{}}]] }
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ tracker\_data\ =\ tracker\_data.rename(columns=\{\textcolor{stringliteral}{'Frame\_Num'}:\ \textcolor{stringliteral}{'frame'},\  }
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{'Name'}:\ \textcolor{stringliteral}{'name'}, }
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{'ID'}:\ \textcolor{stringliteral}{'id'}, }
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{'BBox\_TopLeft\_x'}:\ \textcolor{stringliteral}{'x1'}, }
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{'BBox\_TopLeft\_y'}:\ \textcolor{stringliteral}{'y2'}, }
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{'BBox\_BottomRight\_x'}:\ \textcolor{stringliteral}{'x2'}, }
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{'BBox\_BottomRight\_y'}:\ \textcolor{stringliteral}{'y1'}\}) }
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print(tracker\_data) }}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ self.estimate\_dict\ =\ tracker\_data }
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ self.estimates\ =\ self.list\_estimates() }
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{"{}Done\ loading\ Data"{}}) }
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ self.estimate\_dict }
+\DoxyCodeLine{00157\  }
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \  }
+
+\end{DoxyCode}
+
+
+References tracker\+\_\+evaluation.\+correction\+\_\+ratio\+\_\+x, tracker\+\_\+evaluation.\+correction\+\_\+ratio\+\_\+y, tracker\+\_\+evaluation.\+estimate\+\_\+dict, tracker\+\_\+evaluation.\+estimates, tracker\+\_\+evaluation.\+fps, FPS.\+fps(), tracker\+\_\+evaluation.\+invert\+\_\+y, room\+\_\+estimation.\+invert\+\_\+y, and \mbox{\hyperlink{a00154_a3d137dc16b12468a6cecc09a1a0909b4}{tracker\+\_\+evaluation.\+list\+\_\+estimates()}}.
+
+
+
+Referenced by \mbox{\hyperlink{a00154_a44156c7a1b52b45402849d05832c990a}{tracker\+\_\+evaluation.\+\_\+\+\_\+init\+\_\+\+\_\+()}}.
+
+Here is the call graph for this function\+:
+% FIG 43
+Here is the caller graph for this function\+:
+% FIG 44
+\Hypertarget{a00154_a24713f50b19ca4cf8b48421328fffcf4}\label{a00154_a24713f50b19ca4cf8b48421328fffcf4} 
+\index{tracker\_evaluation@{tracker\_evaluation}!multiple\_objects@{multiple\_objects}}
+\index{multiple\_objects@{multiple\_objects}!tracker\_evaluation@{tracker\_evaluation}}
+\doxysubsubsection{\texorpdfstring{multiple\_objects()}{multiple\_objects()}}
+{\footnotesize\ttfamily multiple\+\_\+objects (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{es\+\_\+config,  }\item[{}]{frame\+\_\+number }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}        estimate E
+    |1 |2 |3 |4 |5  |
+____|__|__|__|__|___|___
+GT  |a |b |b |- |d,e| 
+              ↑   ↑
+              FP  MO
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00304\ \ \ \ \ \textcolor{keyword}{def\ }multiple\_objects(self,\ es\_config,\ frame\_number): }
+\DoxyCodeLine{00305\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{''' }}
+\DoxyCodeLine{00306\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ estimate\ E }}
+\DoxyCodeLine{00307\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ |1\ |2\ |3\ |4\ |5\ \ | }}
+\DoxyCodeLine{00308\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \_\_\_\_|\_\_|\_\_|\_\_|\_\_|\_\_\_|\_\_\_ }}
+\DoxyCodeLine{00309\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ GT\ \ |a\ |b\ |b\ |-\/\ |d,e|\  }}
+\DoxyCodeLine{00310\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ↑\ \ \ ↑ }}
+\DoxyCodeLine{00311\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ FP\ \ MO }}
+\DoxyCodeLine{00312\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ '''} }
+\DoxyCodeLine{00313\ \ \ \ \ \ \ \ \ mo\ =\ 0 }
+\DoxyCodeLine{00314\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ counts\ excess\ count\ of\ a\ 1:1\ ground\_truth:estimate }}
+\DoxyCodeLine{00315\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ gt\ \textcolor{keywordflow}{in}\ es\_config.values(): }
+\DoxyCodeLine{00316\ \ \ \ \ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00317\ \ \ \ \ \ \ \ \ \ \ \ \ occluded\ =\ \textcolor{keyword}{False} }
+\DoxyCodeLine{00318\  }
+\DoxyCodeLine{00319\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#Iterate\ through\ all\ the\ ground\ truths\ and\ check\ for\ occlusion. }}
+\DoxyCodeLine{00320\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ ground\_truth\ \textcolor{keywordflow}{in}\ gt: }
+\DoxyCodeLine{00321\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ gts\ =\ self.get\_ground\_truths(frame\_number,\ ground\_truth) }
+\DoxyCodeLine{00322\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ occluded,\ \_\ =\ self.check\_occlusion(gts[0],\ frame\_number) }
+\DoxyCodeLine{00323\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#If\ it\ is\ occluded\ we\ don't\ need\ to\ keep\ checking\ if\ it\ is }}
+\DoxyCodeLine{00324\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ occluded: }
+\DoxyCodeLine{00325\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break} }
+\DoxyCodeLine{00326\ \ \ \ \ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00327\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ \#\ NOTE:\ This\ case\ represents\ the\ 'less\ correct'\ case\ mentioned\ in\ figure\ 3 }}
+\DoxyCodeLine{00328\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ \#If\ it's\ not\ occluded,\ we\ count\ all\ excess\ objects }}
+\DoxyCodeLine{00329\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ if\ not\ occluded: }}
+\DoxyCodeLine{00330\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ \ \ \ \ mo\ +=\ len(gt)\ -\/\ 1 }}
+\DoxyCodeLine{00331\ \ \ \ \ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00332\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ \#This\ represents\ the\ 'more\ correct'\ case\ in\ figure\ 3 }}
+\DoxyCodeLine{00333\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keywordflow}{not}\ occluded\ \textcolor{keywordflow}{and}\ len(gt)\ >\ 1: }
+\DoxyCodeLine{00334\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mo\ +=\ len(gt) }
+\DoxyCodeLine{00335\  }
+\DoxyCodeLine{00336\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ mo }
+\DoxyCodeLine{00337\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00338\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Still\ need\ to\ eliminate\ each\ excess\ ground\ truth }}
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{a00154_a756c92b090c4b99e7afe65dd1a08cd38}{tracker\+\_\+evaluation.\+check\+\_\+occlusion()}}, and tracker\+\_\+evaluation.\+get\+\_\+ground\+\_\+truths().
+
+
+
+Referenced by \mbox{\hyperlink{a00154_afb84b7efc3d1670971c3a96f2289ac5a}{tracker\+\_\+evaluation.\+calculate\+\_\+frame\+\_\+errors()}}.
+
+Here is the call graph for this function\+:
+% FIG 45
+Here is the caller graph for this function\+:
+% FIG 46
+\Hypertarget{a00154_ae7a2ff900f60fe15be7946b972d55ce1}\label{a00154_ae7a2ff900f60fe15be7946b972d55ce1} 
+\index{tracker\_evaluation@{tracker\_evaluation}!multiple\_trackers@{multiple\_trackers}}
+\index{multiple\_trackers@{multiple\_trackers}!tracker\_evaluation@{tracker\_evaluation}}
+\doxysubsubsection{\texorpdfstring{multiple\_trackers()}{multiple\_trackers()}}
+{\footnotesize\ttfamily multiple\+\_\+trackers (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{gt\+\_\+config,  }\item[{}]{frame\+\_\+number }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Two or more estimates are associated with the same ground truth. A MT error is assigned for each excess estimate.
+Multiple trackers track a ground truth
+
+Look for more than one estimate for each ground truth
+
+     ground truth GT
+    |a |b  | c |d |e |
+____|__|___|___|__|__|__
+E   |1 |2,3| - |5 |5 | 
+         ↑   ↑
+         MT  FN
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00277\ \ \ \ \ \textcolor{keyword}{def\ }multiple\_trackers(self,\ gt\_config,\ frame\_number): }
+\DoxyCodeLine{00278\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{''' }}
+\DoxyCodeLine{00279\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Two\ or\ more\ estimates\ are\ associated\ with\ the\ same\ ground\ truth.\ A\ MT\ error\ is\ assigned\ for\ each\ excess\ estimate. }}
+\DoxyCodeLine{00280\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Multiple\ trackers\ track\ a\ ground\ truth }}
+\DoxyCodeLine{00281\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \  }}
+\DoxyCodeLine{00282\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Look\ for\ more\ than\ one\ estimate\ for\ each\ ground\ truth }}
+\DoxyCodeLine{00283\ \textcolor{stringliteral}{ }}
+\DoxyCodeLine{00284\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ ground\ truth\ GT }}
+\DoxyCodeLine{00285\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ |a\ |b\ \ |\ c\ |d\ |e\ | }}
+\DoxyCodeLine{00286\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \_\_\_\_|\_\_|\_\_\_|\_\_\_|\_\_|\_\_|\_\_ }}
+\DoxyCodeLine{00287\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ E\ \ \ |1\ |2,3|\ -\/\ |5\ |5\ |\  }}
+\DoxyCodeLine{00288\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ↑\ \ \ ↑ }}
+\DoxyCodeLine{00289\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ MT\ \ FN }}
+\DoxyCodeLine{00290\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ '''} }
+\DoxyCodeLine{00291\  }
+\DoxyCodeLine{00292\ \ \ \ \ \ \ \ \ mt\ =\ 0 }
+\DoxyCodeLine{00293\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ gt\ \textcolor{keywordflow}{in}\ gt\_config: }
+\DoxyCodeLine{00294\ \ \ \ \ \ \ \ \ \ \ \ \ gts\ =\ self.get\_ground\_truths(frame\_number,\ gt) }
+\DoxyCodeLine{00295\ \ \ \ \ \ \ \ \ \ \ \ \ occluded,\ \_\ =\ self.check\_occlusion(gts[0],\ frame\_number) }
+\DoxyCodeLine{00296\  }
+\DoxyCodeLine{00297\ \ \ \ \ \ \ \ \ \ \ \ \ es\ =\ gt\_config[gt] }
+\DoxyCodeLine{00298\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keywordflow}{not}\ occluded: }
+\DoxyCodeLine{00299\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mt\ +=\ len(es)\ -\/\ 1 }
+\DoxyCodeLine{00300\  }
+\DoxyCodeLine{00301\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ mt }
+\DoxyCodeLine{00302\  }
+\DoxyCodeLine{00303\  }
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{a00154_a756c92b090c4b99e7afe65dd1a08cd38}{tracker\+\_\+evaluation.\+check\+\_\+occlusion()}}, and tracker\+\_\+evaluation.\+get\+\_\+ground\+\_\+truths().
+
+
+
+Referenced by \mbox{\hyperlink{a00154_afb84b7efc3d1670971c3a96f2289ac5a}{tracker\+\_\+evaluation.\+calculate\+\_\+frame\+\_\+errors()}}.
+
+Here is the call graph for this function\+:
+% FIG 47
+Here is the caller graph for this function\+:
+% FIG 48
+\Hypertarget{a00154_a5256e9f0068a25f74f8afbeb8cf39a9d}\label{a00154_a5256e9f0068a25f74f8afbeb8cf39a9d} 
+\index{tracker\_evaluation@{tracker\_evaluation}!plot\_scene@{plot\_scene}}
+\index{plot\_scene@{plot\_scene}!tracker\_evaluation@{tracker\_evaluation}}
+\doxysubsubsection{\texorpdfstring{plot\_scene()}{plot\_scene()}}
+{\footnotesize\ttfamily plot\+\_\+scene (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Not Implemented
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00166\ \ \ \ \ \textcolor{keyword}{def\ }plot\_scene(self): }
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{''' }}
+\DoxyCodeLine{00168\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Not\ Implemented }}
+\DoxyCodeLine{00169\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ '''} }
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Plots\ a\ colour\ coded\ point\ over\ the\ scene.\ additionally\ plots\ id\ and\ errors\ spatially. }}
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{pass} }
+\DoxyCodeLine{00172\  }
+
+\end{DoxyCode}
+\Hypertarget{a00154_a6b66d4b6ba4a83024bf9778f10b06b89}\label{a00154_a6b66d4b6ba4a83024bf9778f10b06b89} 
+\index{tracker\_evaluation@{tracker\_evaluation}!plot\_score@{plot\_score}}
+\index{plot\_score@{plot\_score}!tracker\_evaluation@{tracker\_evaluation}}
+\doxysubsubsection{\texorpdfstring{plot\_score()}{plot\_score()}}
+{\footnotesize\ttfamily plot\+\_\+score (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Not implemented
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00159\ \ \ \ \ \textcolor{keyword}{def\ }plot\_score(self): }
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{''' }}
+\DoxyCodeLine{00161\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Not\ implemented }}
+\DoxyCodeLine{00162\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ '''} }
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Plots\ timeline\ (in\ frames)\ according\ to\ ground\ truth.\ Additionally,\ plots\ id\ and\ errors. }}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{pass} }
+\DoxyCodeLine{00165\  }
+
+\end{DoxyCode}
+\Hypertarget{a00154_aae33341ee61c7a874af86b59d4f81d84}\label{a00154_aae33341ee61c7a874af86b59d4f81d84} 
+\index{tracker\_evaluation@{tracker\_evaluation}!precision@{precision}}
+\index{precision@{precision}!tracker\_evaluation@{tracker\_evaluation}}
+\doxysubsubsection{\texorpdfstring{precision()}{precision()}}
+{\footnotesize\ttfamily precision (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{estimate,  }\item[{}]{ground\+\_\+truth,  }\item[{}]{correct\+\_\+estimate = {\ttfamily False} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Precision measures how much of the E covers the GT and
+can take values between 0 (no overlap) and 1 (fully overlapped)
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00452\ \ \ \ \ \textcolor{keyword}{def\ }precision(self,\ estimate,\ ground\_truth,\ correct\_estimate=False): }
+\DoxyCodeLine{00453\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{''' }}
+\DoxyCodeLine{00454\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Precision\ measures\ how\ much\ of\ the\ E\ covers\ the\ GT\ and }}
+\DoxyCodeLine{00455\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ can\ take\ values\ between\ 0\ (no\ overlap)\ and\ 1\ (fully\ overlapped) }}
+\DoxyCodeLine{00456\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ '''} }
+\DoxyCodeLine{00457\  }
+\DoxyCodeLine{00458\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ correct\_estimate: }
+\DoxyCodeLine{00459\ \ \ \ \ \ \ \ \ \ \ \ \ measures\ =\ self.compute\_iou(estimate,\ [ground\_truth],\ ratios=(self.correction\_ratio\_x,\ self.correction\_ratio\_y)) }
+\DoxyCodeLine{00460\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}: }
+\DoxyCodeLine{00461\ \ \ \ \ \ \ \ \ \ \ \ \ measures\ =\ self.compute\_iou(estimate,\ [ground\_truth]) }
+\DoxyCodeLine{00462\  }
+\DoxyCodeLine{00463\ \ \ \ \ \ \ \ \ intersection\ =\ measures[1] }
+\DoxyCodeLine{00464\  }
+\DoxyCodeLine{00465\ \ \ \ \ \ \ \ \ gt\ =\ self.get\_area(ground\_truth) }
+\DoxyCodeLine{00466\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ abs(intersection[0])/abs(gt) }
+\DoxyCodeLine{00467\ \ \ \ \  }
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{a00154_a2c362f5906289f957819905482b51948}{tracker\+\_\+evaluation.\+compute\+\_\+iou()}}, tracker\+\_\+evaluation.\+correction\+\_\+ratio\+\_\+x, tracker\+\_\+evaluation.\+correction\+\_\+ratio\+\_\+y, and tracker\+\_\+evaluation.\+get\+\_\+area().
+
+
+
+Referenced by \mbox{\hyperlink{a00154_a756c92b090c4b99e7afe65dd1a08cd38}{tracker\+\_\+evaluation.\+check\+\_\+occlusion()}}, and \mbox{\hyperlink{a00154_a1990a7819cacf1d4c1d72db40e19d7a9}{tracker\+\_\+evaluation.\+fmeasure()}}.
+
+Here is the call graph for this function\+:
+% FIG 49
+Here is the caller graph for this function\+:
+% FIG 50
+\Hypertarget{a00154_a6fffa1ba921b56906be56b8ef88fead5}\label{a00154_a6fffa1ba921b56906be56b8ef88fead5} 
+\index{tracker\_evaluation@{tracker\_evaluation}!recall@{recall}}
+\index{recall@{recall}!tracker\_evaluation@{tracker\_evaluation}}
+\doxysubsubsection{\texorpdfstring{recall()}{recall()}}
+{\footnotesize\ttfamily recall (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{estimate,  }\item[{}]{ground\+\_\+truth,  }\item[{}]{correct\+\_\+estimate = {\ttfamily False} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Recall measures how much of the GT covered by the
+E and can take values between 0 (no overlap) and 1 (fully overlapped)
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00468\ \ \ \ \ \textcolor{keyword}{def\ }recall(self,\ estimate,\ ground\_truth,\ correct\_estimate=False): }
+\DoxyCodeLine{00469\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{''' }}
+\DoxyCodeLine{00470\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Recall\ measures\ how\ much\ of\ the\ GT\ covered\ by\ the }}
+\DoxyCodeLine{00471\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ E\ and\ can\ take\ values\ between\ 0\ (no\ overlap)\ and\ 1\ (fully\ overlapped) }}
+\DoxyCodeLine{00472\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ '''} }
+\DoxyCodeLine{00473\  }
+\DoxyCodeLine{00474\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ correct\_estimate: }
+\DoxyCodeLine{00475\ \ \ \ \ \ \ \ \ \ \ \ \ measures\ =\ self.compute\_iou(estimate,\ [ground\_truth],\ ratios=(self.correction\_ratio\_x,\ self.correction\_ratio\_y)) }
+\DoxyCodeLine{00476\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}: }
+\DoxyCodeLine{00477\ \ \ \ \ \ \ \ \ \ \ \ \ measures\ =\ self.compute\_iou(estimate,\ [ground\_truth]) }
+\DoxyCodeLine{00478\ \ \ \ \ \ \ \ \ intersection\ =\ measures[1] }
+\DoxyCodeLine{00479\ \ \ \ \ \ \ \ \ es\ =\ self.get\_area(estimate) }
+\DoxyCodeLine{00480\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ abs(intersection[0])/abs(es) }
+\DoxyCodeLine{00481\  }
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{a00154_a2c362f5906289f957819905482b51948}{tracker\+\_\+evaluation.\+compute\+\_\+iou()}}, tracker\+\_\+evaluation.\+correction\+\_\+ratio\+\_\+x, tracker\+\_\+evaluation.\+correction\+\_\+ratio\+\_\+y, and tracker\+\_\+evaluation.\+get\+\_\+area().
+
+
+
+Referenced by \mbox{\hyperlink{a00154_a1990a7819cacf1d4c1d72db40e19d7a9}{tracker\+\_\+evaluation.\+fmeasure()}}.
+
+Here is the call graph for this function\+:
+% FIG 51
+Here is the caller graph for this function\+:
+% FIG 52
+\Hypertarget{a00154_a354aefc364c482f0fff6b59f59dd4f22}\label{a00154_a354aefc364c482f0fff6b59f59dd4f22} 
+\index{tracker\_evaluation@{tracker\_evaluation}!validate\_and\_correct\_ground\_tuths@{validate\_and\_correct\_ground\_tuths}}
+\index{validate\_and\_correct\_ground\_tuths@{validate\_and\_correct\_ground\_tuths}!tracker\_evaluation@{tracker\_evaluation}}
+\doxysubsubsection{\texorpdfstring{validate\_and\_correct\_ground\_tuths()}{validate\_and\_correct\_ground\_tuths()}}
+{\footnotesize\ttfamily validate\+\_\+and\+\_\+correct\+\_\+ground\+\_\+tuths (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}This function removes ground truths where files imported are faulty.
+
+1: Labelme file is created but no ground truths are assigned.
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{01216\ \ \ \ \ \textcolor{keyword}{def\ }validate\_and\_correct\_ground\_tuths(self): }
+\DoxyCodeLine{01217\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{''' }}
+\DoxyCodeLine{01218\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ This\ function\ removes\ ground\ truths\ where\ files\ imported\ are\ faulty. }}
+\DoxyCodeLine{01219\ \textcolor{stringliteral}{ }}
+\DoxyCodeLine{01220\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ 1:\ Labelme\ file\ is\ created\ but\ no\ ground\ truths\ are\ assigned. }}
+\DoxyCodeLine{01221\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ '''} }
+\DoxyCodeLine{01222\ \ \ \ \ \ \ \ \ frames\_removed\ =\ [] }
+\DoxyCodeLine{01223\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ frame\ \textcolor{keywordflow}{in}\ self.ground\_truth\_dict: }
+\DoxyCodeLine{01224\ \ \ \ \ \ \ \ \ \ \ \ \ gt\ =\ self.ground\_truth\_dict[frame] }
+\DoxyCodeLine{01225\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ removes\ the\ frame\ from\ the\ dictionary }}
+\DoxyCodeLine{01226\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ gt\ ==\ []: }
+\DoxyCodeLine{01227\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ frames\_removed.append(frame) }
+\DoxyCodeLine{01228\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{"{}Removing\ frame\ "{}},\ frame,\ \textcolor{stringliteral}{"{}\ because\ no\ ground\ truths\ found:"{}},\ gt) }
+\DoxyCodeLine{01229\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ del\ self.ground\_truth\_dict[frame] }}
+\DoxyCodeLine{01230\  }
+\DoxyCodeLine{01231\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ del\_key\ \textcolor{keywordflow}{in}\ frames\_removed: }
+\DoxyCodeLine{01232\ \ \ \ \ \ \ \ \ \ \ \ \ del\ self.ground\_truth\_dict[del\_key] }
+\DoxyCodeLine{01233\  }
+\DoxyCodeLine{01234\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ frames\_removed }
+\DoxyCodeLine{01235\ \ \ \ \ \ \ \ \  }
+
+\end{DoxyCode}
+
+
+References tracker\+\_\+evaluation.\+ground\+\_\+truth\+\_\+dict.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{a00154_ae0fcc23159a737ce3e8e583ff82e2f84}\label{a00154_ae0fcc23159a737ce3e8e583ff82e2f84} 
+\index{tracker\_evaluation@{tracker\_evaluation}!threshold\_to@{threshold\_to}}
+\index{threshold\_to@{threshold\_to}!tracker\_evaluation@{tracker\_evaluation}}
+\doxysubsubsection{\texorpdfstring{threshold\_to}{threshold\_to}}
+{\footnotesize\ttfamily threshold\+\_\+to}
+
+
+
+! Threshold of Precision allowed in agreement or overlap. 
+
+If above threshold, an occlusion flag is noted. check\+\_\+occlusion 
+
+Referenced by \mbox{\hyperlink{a00154_a756c92b090c4b99e7afe65dd1a08cd38}{tracker\+\_\+evaluation.\+check\+\_\+occlusion()}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+K\+:/\+Github/\+People\+Tracker/src/evaluate.\+py\end{DoxyCompactItemize}

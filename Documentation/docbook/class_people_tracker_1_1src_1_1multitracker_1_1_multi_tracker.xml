@@ -1,0 +1,350 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker" xml:lang="en-US">
+<title>PeopleTracker.src.multitracker.MultiTracker Class Reference</title>
+<indexterm><primary>PeopleTracker.src.multitracker.MultiTracker</primary></indexterm>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1aed64a7c0e532974e33400375692ceee2"/><emphasis role="strong">__init__</emphasis> (self, tab, colour=(255, 255, 255))</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1ab02fd8c7c721b554da2762720b970ebe"/><emphasis role="strong">grab_cut</emphasis> (self, frame, rect, export_path=None)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1a5ade8a95a06e2e59d9f82d2f3e9c7d89">get_name</link> (self)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1a6d6815ec782e07934b75b2637b04cb18">get_id</link> (self)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1a536cd71412de97f972b68b5cce0d8688">get_sex</link> (self)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1a89eb2646731a1eea9cefa2280804900f"/><emphasis role="strong">get_description</emphasis> (self)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1ae939772d2dddd50a2241406fc52c5bb2"/><emphasis role="strong">get_group</emphasis> (self)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1a8b780f861414568533fce20fbb6afc84">get_time_tracked</link> (self, framerate)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1ac6e6cca7dee4d4d1d8fc2976eb1324c3">create</link> (self, tracker_type=&apos;CSRT&apos;)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1a798bcd0cfb659a608c40d79ea59e3045">rename</link> (self, name)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1a6ae7c57f60c2f547f23993263416df2f"/><emphasis role="strong">set_colour</emphasis> (self, color=(255, 255, 255))</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1a02722c3cded357ed14615b3a3f9b46c0">assign</link> (self, frame, tracker_type=&quot;CSRT&quot;)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1aab072dff057c97c64303f36acd4494b1"/><emphasis role="strong">auto_assign</emphasis> (self, frame, bounding_box=None, xywh=None, tracker_type=&quot;CSRT&quot;)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1a6fd992a7dbe9523bee0751d3fc47655b">update_tracker</link> (self, frame)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1a10d11e230a09b52c09454fa86325ffa8"/><emphasis role="strong">draw_tracker</emphasis> (self, frame, box, opacity=0.5, name=True)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1ae54dd8b3805689c9e4ab5436b24ff8a3">remove</link> (self)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1acc3261b569fec0f90a26df009b0925c1">predict</link> (self)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1a3ee5742c09d6dc589a7bf6069c14df38">record_data</link> (self, frame, total_people, x=-1, y=-1, w=-1, h=-1, regions=[], other_room=False, image_frame=None)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1aec3cdb13dacefae44912f7572d684fc1"/><emphasis role="strong">run_bayes_model</emphasis> (self, new_img, whole_image)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1afde99ef2f33b7798157e06b05699e5e7">append_data</link> (self, dataframe)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1a33a4d9b5c8fd916c134bc913e5c6b0d6">export_data</link> (self, vid_width, vid_height, vid_name, fps, new_version=None)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1a46beccd0098828ea7883243564e179cd"/><emphasis role="strong">evaluate_data</emphasis> (self)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1af652b6d13505a9cd3e4d3d5c87f7ce16">merge_intervals</link> (self, total_segments)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1a7bacf5811931e0d9d38f9bc940589c5c">part_time_to_segments</link> (self, time_data, segment_size=300)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1afb81def2f1cbdc152c82156783b76cbd"/><emphasis role="strong">estimate_distance</emphasis> (self, size)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1a0960c0ee961c5f7624f1135b3df1cb0e">calculate_time</link> (self, frame_start, frame_end, fps=30)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1a4a0915feed4b55be407bfcca8130ad76">calculate_total_time</link> (self, total_frames, fps=30, segmented=True)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1a4f8cf66f457f8d1f4fe60678b5451ad9"/><emphasis role="strong">name</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1a25b6ad873f4c65d28f07298408a84c7e"/><emphasis role="strong">pid</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1a0fd2eaeeb716f3217ae06b511279e707"/><emphasis role="strong">colour</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1a5e8f1cbcd7d85efef95724566c1152c2"/><emphasis role="strong">distance_data</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1ac9de223f65b3af5cb129b846b0e3ff9f"/><emphasis role="strong">time_data</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1aae46759f1d9fc8efaa0d0249c26e6fa1"/><emphasis role="strong">data_dict</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1a40982764f25037a16802b63d19673fdb"/><emphasis role="strong">previous_time</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1a92b24b795223c9ad8384d33f8357e9ae"/><emphasis role="strong">sex</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1a72bf78e5685498711342b4891e74a970"/><emphasis role="strong">group</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1a2c0309bcf70d2354db7114a0d4d99085"/><emphasis role="strong">description</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1a224ddc77a5336fe60a85667f9486d909"/><emphasis role="strong">beginning</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1a59b911453ced09fbbd968afca0c419bd"/><emphasis role="strong">is_region</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1a61fb133abf160fc119c842ecb875a5c7"/><emphasis role="strong">is_chair</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1aef6dd28864296ee3d5b2ef66de280588"/><emphasis role="strong">read_only</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1aa4df551c4a26f9392e1b21b21567682a"/><emphasis role="strong">id</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1a3cb731a247986db26d909138fb3097dd"/><emphasis role="strong">record_state</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1ae6b340e471d6d3df501152de79638c07"/><emphasis role="strong">tracker</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1a957659c4c9166ad3310a75e42a8b7722"/><emphasis role="strong">init_bounding_box</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1a960685c419078f6879ec3daa2840fe30"/><emphasis role="strong">reset</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1ab64c212239d5cbaf9f675fee2c454bb3"/><emphasis role="strong">auto_assign_state</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1ab116e837f3c543de4034ebef2550e547"/><emphasis role="strong">box</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1a6823ded706c7e48c7460092edc087ec5"/><emphasis role="strong">predictor</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1abc69d6bf1946a8e657726a5c1f1f715b"/><emphasis role="strong">box_predictor</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1a24e1ff2d30848dfb7635d45a09ac672a"/><emphasis role="strong">regression</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1a99bfaac03dffc1d0104f0f6363acf9bd"/><emphasis role="strong">predicted_bbox</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1a36a1ef33446113cac73de996295e27b8"/><emphasis role="strong">predicted_centroid</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1a8dcc830104d555aaa09a1434a6229b91"/><emphasis role="strong">recording_video</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1a4e86cbab8bcafb16118804bb78d58bde"/><emphasis role="strong">svm_model</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1aba1b760e5b8c2518d8ad79d4932ab6fc"/><emphasis role="strong">bayes_model</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1a403cfbb85013d6411318196386c03462"/><emphasis role="strong">self_aware_gallery</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1a3c4886c0a5c31054a4e63fa7c344fb94"/><emphasis role="strong">normalized_gallery</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para><literallayout><computeroutput>    The `MultiTracker` class is a Python class that represents a multi-object tracker and contains
+    various attributes and methods for tracking objects.
+    
+    @param tab is a designated tab in the UI which will populate provided values.
+    @param colour is a 255/255/255 RGB value that defines a tracking colour for easy distinction.
+
+    Many values are retrieved from `tab` defined in TrackerTab.py</computeroutput></literallayout> </para>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1afde99ef2f33b7798157e06b05699e5e7"/><section>
+    <title>append_data()</title>
+<indexterm><primary>append_data</primary><secondary>PeopleTracker.src.multitracker.MultiTracker</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.multitracker.MultiTracker</primary><secondary>append_data</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.multitracker.MultiTracker.append_data ( self,  dataframe)</computeroutput></para>
+<para><literallayout><computeroutput>Appends the data into a given dataframe categoriezed with the name given
+</computeroutput></literallayout> </para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1a02722c3cded357ed14615b3a3f9b46c0"/><section>
+    <title>assign()</title>
+<indexterm><primary>assign</primary><secondary>PeopleTracker.src.multitracker.MultiTracker</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.multitracker.MultiTracker</primary><secondary>assign</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.multitracker.MultiTracker.assign ( self,  frame,  tracker_type = <computeroutput>&quot;CSRT&quot;</computeroutput>
+)</computeroutput></para>
+<para><literallayout><computeroutput>Assigns the box, name and sex of a tracked person.
+Takes care of reassigning as well.
+</computeroutput></literallayout> </para>
+<para>
+References PeopleTracker.src.multitracker.MultiTracker.box, PeopleTracker.src.multitracker.MultiTracker.box_predictor, <link linkend="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1ac6e6cca7dee4d4d1d8fc2976eb1324c3">PeopleTracker.src.multitracker.MultiTracker.create()</link>, PeopleTracker.src.multitracker.MultiTracker.init_bounding_box, PeopleTracker.src.multitracker.MultiTracker.predictor, PeopleTracker.src.filters.KalmanPred.reset(), PeopleTracker.src.multitracker.MultiTracker.reset, PeopleTracker.src.Video.STFileVideoStream.reset, PeopleTracker.src.Video.FileVideoStream.reset, and PeopleTracker.src.multitracker.MultiTracker.tracker.</para>
+<para>
+Referenced by <link linkend="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1a4a0915feed4b55be407bfcca8130ad76">PeopleTracker.src.multitracker.MultiTracker.calculate_total_time()</link>.</para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1a0960c0ee961c5f7624f1135b3df1cb0e"/><section>
+    <title>calculate_time()</title>
+<indexterm><primary>calculate_time</primary><secondary>PeopleTracker.src.multitracker.MultiTracker</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.multitracker.MultiTracker</primary><secondary>calculate_time</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.multitracker.MultiTracker.calculate_time ( self,  frame_start,  frame_end,  fps = <computeroutput>30</computeroutput>
+)</computeroutput></para>
+<para><literallayout><computeroutput>Calculates time between two given frames and the FPS rate
+</computeroutput></literallayout> </para>
+<para>
+Referenced by <link linkend="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1a4a0915feed4b55be407bfcca8130ad76">PeopleTracker.src.multitracker.MultiTracker.calculate_total_time()</link>.</para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1a4a0915feed4b55be407bfcca8130ad76"/><section>
+    <title>calculate_total_time()</title>
+<indexterm><primary>calculate_total_time</primary><secondary>PeopleTracker.src.multitracker.MultiTracker</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.multitracker.MultiTracker</primary><secondary>calculate_total_time</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.multitracker.MultiTracker.calculate_total_time ( self,  total_frames,  fps = <computeroutput>30</computeroutput>
+,  segmented = <computeroutput>True</computeroutput>
+)</computeroutput></para>
+<para><literallayout><computeroutput>Calculates total time tracked. This takes into consideration segmented time
+</computeroutput></literallayout> </para>
+<para>
+References <link linkend="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1a02722c3cded357ed14615b3a3f9b46c0">PeopleTracker.src.multitracker.MultiTracker.assign()</link>, <link linkend="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1a0960c0ee961c5f7624f1135b3df1cb0e">PeopleTracker.src.multitracker.MultiTracker.calculate_time()</link>, <link linkend="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1ac6e6cca7dee4d4d1d8fc2976eb1324c3">PeopleTracker.src.multitracker.MultiTracker.create()</link>, <link linkend="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1a33a4d9b5c8fd916c134bc913e5c6b0d6">PeopleTracker.src.multitracker.MultiTracker.export_data()</link>, <link linkend="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1a5ade8a95a06e2e59d9f82d2f3e9c7d89">PeopleTracker.src.multitracker.MultiTracker.get_name()</link>, <link linkend="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1a8b780f861414568533fce20fbb6afc84">PeopleTracker.src.multitracker.MultiTracker.get_time_tracked()</link>, <link linkend="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1a7bacf5811931e0d9d38f9bc940589c5c">PeopleTracker.src.multitracker.MultiTracker.part_time_to_segments()</link>, and <link linkend="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1acc3261b569fec0f90a26df009b0925c1">PeopleTracker.src.multitracker.MultiTracker.predict()</link>.</para>
+<para>
+Referenced by <link linkend="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1a8b780f861414568533fce20fbb6afc84">PeopleTracker.src.multitracker.MultiTracker.get_time_tracked()</link>.</para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1ac6e6cca7dee4d4d1d8fc2976eb1324c3"/><section>
+    <title>create()</title>
+<indexterm><primary>create</primary><secondary>PeopleTracker.src.multitracker.MultiTracker</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.multitracker.MultiTracker</primary><secondary>create</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.multitracker.MultiTracker.create ( self,  tracker_type = <computeroutput>&apos;CSRT&apos;</computeroutput>
+)</computeroutput></para>
+<para><literallayout><computeroutput>The creation of the Opencvs Tracking mechanism.
+
+tracker_type = [&quot;BOOSTING&quot;, &quot;MIL&quot;,&quot;KCF&quot;, &quot;TLD&quot;, &quot;MEDIANFLOW&quot;, &quot;GOTURN&quot;, &quot;MOSSE&quot;, &quot;CSRT&quot;]
+
+https://docs.opencv.org/3.4/d9/df8/group__tracking.html
+</computeroutput></literallayout> </para>
+<para>
+References PeopleTracker.src.multitracker.MultiTracker.tracker.</para>
+<para>
+Referenced by <link linkend="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1a02722c3cded357ed14615b3a3f9b46c0">PeopleTracker.src.multitracker.MultiTracker.assign()</link>, and <link linkend="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1a4a0915feed4b55be407bfcca8130ad76">PeopleTracker.src.multitracker.MultiTracker.calculate_total_time()</link>.</para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1a33a4d9b5c8fd916c134bc913e5c6b0d6"/><section>
+    <title>export_data()</title>
+<indexterm><primary>export_data</primary><secondary>PeopleTracker.src.multitracker.MultiTracker</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.multitracker.MultiTracker</primary><secondary>export_data</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.multitracker.MultiTracker.export_data ( self,  vid_width,  vid_height,  vid_name,  fps,  new_version = <computeroutput>None</computeroutput>
+)</computeroutput></para>
+<para><literallayout><computeroutput>Exports the recorded data and appends constants such as name, total time recorded, and pixel percent Loc
+</computeroutput></literallayout> </para>
+<para>
+Referenced by <link linkend="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1a4a0915feed4b55be407bfcca8130ad76">PeopleTracker.src.multitracker.MultiTracker.calculate_total_time()</link>.</para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1a6d6815ec782e07934b75b2637b04cb18"/><section>
+    <title>get_id()</title>
+<indexterm><primary>get_id</primary><secondary>PeopleTracker.src.multitracker.MultiTracker</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.multitracker.MultiTracker</primary><secondary>get_id</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.multitracker.MultiTracker.get_id ( self)</computeroutput></para>
+<para><literallayout><computeroutput> Returns ID of person tracked: returns string </computeroutput></literallayout> </para>
+<para>
+References PeopleTracker.src.multitracker.MultiTracker.pid.</para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1a5ade8a95a06e2e59d9f82d2f3e9c7d89"/><section>
+    <title>get_name()</title>
+<indexterm><primary>get_name</primary><secondary>PeopleTracker.src.multitracker.MultiTracker</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.multitracker.MultiTracker</primary><secondary>get_name</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.multitracker.MultiTracker.get_name ( self)</computeroutput></para>
+<para><literallayout><computeroutput> Returns name of person tracked: returns string </computeroutput></literallayout> </para>
+<para>
+References PeopleTracker.src.multitracker.MultiTracker.name.</para>
+<para>
+Referenced by <link linkend="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1a4a0915feed4b55be407bfcca8130ad76">PeopleTracker.src.multitracker.MultiTracker.calculate_total_time()</link>, and <link linkend="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1a6fd992a7dbe9523bee0751d3fc47655b">PeopleTracker.src.multitracker.MultiTracker.update_tracker()</link>.</para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1a536cd71412de97f972b68b5cce0d8688"/><section>
+    <title>get_sex()</title>
+<indexterm><primary>get_sex</primary><secondary>PeopleTracker.src.multitracker.MultiTracker</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.multitracker.MultiTracker</primary><secondary>get_sex</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.multitracker.MultiTracker.get_sex ( self)</computeroutput></para>
+<para><literallayout><computeroutput> Returns sex of person being tracked: returns string </computeroutput></literallayout> </para>
+<para>
+References PeopleTracker.src.multitracker.MultiTracker.description, PeopleTracker.src.multitracker.MultiTracker.group, and PeopleTracker.src.multitracker.MultiTracker.sex.</para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1a8b780f861414568533fce20fbb6afc84"/><section>
+    <title>get_time_tracked()</title>
+<indexterm><primary>get_time_tracked</primary><secondary>PeopleTracker.src.multitracker.MultiTracker</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.multitracker.MultiTracker</primary><secondary>get_time_tracked</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.multitracker.MultiTracker.get_time_tracked ( self,  framerate)</computeroutput></para>
+<para><literallayout><computeroutput> Returns total time being tracked in video: returns  </computeroutput></literallayout> </para>
+<para>
+References <link linkend="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1a4a0915feed4b55be407bfcca8130ad76">PeopleTracker.src.multitracker.MultiTracker.calculate_total_time()</link>, PeopleTracker.src.multitracker.MultiTracker.data_dict, and <link linkend="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1a7bacf5811931e0d9d38f9bc940589c5c">PeopleTracker.src.multitracker.MultiTracker.part_time_to_segments()</link>.</para>
+<para>
+Referenced by <link linkend="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1a4a0915feed4b55be407bfcca8130ad76">PeopleTracker.src.multitracker.MultiTracker.calculate_total_time()</link>.</para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1af652b6d13505a9cd3e4d3d5c87f7ce16"/><section>
+    <title>merge_intervals()</title>
+<indexterm><primary>merge_intervals</primary><secondary>PeopleTracker.src.multitracker.MultiTracker</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.multitracker.MultiTracker</primary><secondary>merge_intervals</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.multitracker.MultiTracker.merge_intervals ( self,  total_segments)</computeroutput></para>
+<para><literallayout><computeroutput>On a continous set of intervals, merges them such that intersecting inervals will become a new interval with new limits. 
+Example: [[0, 20], [10, 50]] becomes [[0,50]]
+[[0, 500]] stays the same
+</computeroutput></literallayout> </para>
+<para>
+Referenced by <link linkend="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1a7bacf5811931e0d9d38f9bc940589c5c">PeopleTracker.src.multitracker.MultiTracker.part_time_to_segments()</link>.</para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1a7bacf5811931e0d9d38f9bc940589c5c"/><section>
+    <title>part_time_to_segments()</title>
+<indexterm><primary>part_time_to_segments</primary><secondary>PeopleTracker.src.multitracker.MultiTracker</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.multitracker.MultiTracker</primary><secondary>part_time_to_segments</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.multitracker.MultiTracker.part_time_to_segments ( self,  time_data,  segment_size = <computeroutput>300</computeroutput>
+)</computeroutput></para>
+<para><literallayout><computeroutput>Parts the times into segments based on the distance between tracked frames.
+    time_data is the entire time of the object tracked.
+    segment_size is the distance between frames that should be considered as one segment. Default is 10 seconds at 30fps.
+    min_segment is the minimum size of segment allowed. If it is too small, it will be ignored. Defualt is 1 second (30 frames).
+
+Example with default segment size of 300:
+    [0, 10, 20, 30, 100, 200, 300, 400, 1000, 1010, 1020] results in [[0, 400], [1000, 1020]]
+</computeroutput></literallayout> </para>
+<para>
+References <link linkend="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1af652b6d13505a9cd3e4d3d5c87f7ce16">PeopleTracker.src.multitracker.MultiTracker.merge_intervals()</link>.</para>
+<para>
+Referenced by <link linkend="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1a4a0915feed4b55be407bfcca8130ad76">PeopleTracker.src.multitracker.MultiTracker.calculate_total_time()</link>, and <link linkend="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1a8b780f861414568533fce20fbb6afc84">PeopleTracker.src.multitracker.MultiTracker.get_time_tracked()</link>.</para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1acc3261b569fec0f90a26df009b0925c1"/><section>
+    <title>predict()</title>
+<indexterm><primary>predict</primary><secondary>PeopleTracker.src.multitracker.MultiTracker</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.multitracker.MultiTracker</primary><secondary>predict</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.multitracker.MultiTracker.predict ( self)</computeroutput></para>
+<para><literallayout><computeroutput>Applies KNN taking into consideration a Hidden Markov Model
+</computeroutput></literallayout> </para>
+<para>
+Referenced by <link linkend="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1a4a0915feed4b55be407bfcca8130ad76">PeopleTracker.src.multitracker.MultiTracker.calculate_total_time()</link>.</para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1a3ee5742c09d6dc589a7bf6069c14df38"/><section>
+    <title>record_data()</title>
+<indexterm><primary>record_data</primary><secondary>PeopleTracker.src.multitracker.MultiTracker</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.multitracker.MultiTracker</primary><secondary>record_data</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.multitracker.MultiTracker.record_data ( self,  frame,  total_people,  x = <computeroutput>-1</computeroutput>
+,  y = <computeroutput>-1</computeroutput>
+,  w = <computeroutput>-1</computeroutput>
+,  h = <computeroutput>-1</computeroutput>
+,  regions = <computeroutput>[]</computeroutput>
+,  other_room = <computeroutput>False</computeroutput>
+,  image_frame = <computeroutput>None</computeroutput>
+)</computeroutput></para>
+<para><literallayout><computeroutput>Appends location and time to a list of data
+
+X,Y,W,H No Data are described as -1, and regions is described as []
+</computeroutput></literallayout> </para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1ae54dd8b3805689c9e4ab5436b24ff8a3"/><section>
+    <title>remove()</title>
+<indexterm><primary>remove</primary><secondary>PeopleTracker.src.multitracker.MultiTracker</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.multitracker.MultiTracker</primary><secondary>remove</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.multitracker.MultiTracker.remove ( self)</computeroutput></para>
+<para><literallayout><computeroutput>Removes the tracker from being recorded. DOES NOT YET DELETE INFO
+</computeroutput></literallayout> </para>
+<para>
+References PeopleTracker.src.multitracker.MultiTracker.init_bounding_box, and PeopleTracker.src.multitracker.MultiTracker.tracker.</para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1a798bcd0cfb659a608c40d79ea59e3045"/><section>
+    <title>rename()</title>
+<indexterm><primary>rename</primary><secondary>PeopleTracker.src.multitracker.MultiTracker</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.multitracker.MultiTracker</primary><secondary>rename</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.multitracker.MultiTracker.rename ( self,  name)</computeroutput></para>
+<para><literallayout><computeroutput>Renames the tracking object
+</computeroutput></literallayout> </para>
+<para>
+References PeopleTracker.src.evaluate.tracker_evaluation.colour, PeopleTracker.src.multitracker.MultiTracker.colour, and PeopleTracker.src.multitracker.MultiTracker.name.</para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1a6fd992a7dbe9523bee0751d3fc47655b"/><section>
+    <title>update_tracker()</title>
+<indexterm><primary>update_tracker</primary><secondary>PeopleTracker.src.multitracker.MultiTracker</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.multitracker.MultiTracker</primary><secondary>update_tracker</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.multitracker.MultiTracker.update_tracker ( self,  frame)</computeroutput></para>
+<para><literallayout><computeroutput>track and draw box on the frame
+</computeroutput></literallayout> </para>
+<para>
+References PeopleTracker.src.multitracker.MultiTracker.box, PeopleTracker.src.evaluate.tracker_evaluation.colour, PeopleTracker.src.multitracker.MultiTracker.colour, PeopleTracker.src.multitracker.MultiTracker.draw_tracker(), <link linkend="_class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_1a5ade8a95a06e2e59d9f82d2f3e9c7d89">PeopleTracker.src.multitracker.MultiTracker.get_name()</link>, PeopleTracker.src.multitracker.MultiTracker.init_bounding_box, and PeopleTracker.src.multitracker.MultiTracker.tracker.</para>
+</section>
+<para>
+The documentation for this class was generated from the following file:</para>
+K:/Github/PeopleTracker/src/multitracker.py</section>
+</section>

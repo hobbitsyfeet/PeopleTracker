@@ -1,0 +1,99 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_people_tracker_1_1src_1_1_regions_1_1_regions" xml:lang="en-US">
+<title>PeopleTracker.src.Regions.Regions Class Reference</title>
+<indexterm><primary>PeopleTracker.src.Regions.Regions</primary></indexterm>
+<para>Inheritance diagram for PeopleTracker.src.Regions.Regions:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_people_tracker_1_1src_1_1_regions_1_1_regions.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1_regions_1_1_regions_1a7b431da72093726f6137779aed503664"/><emphasis role="strong">__init__</emphasis> (self, log=None)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1_regions_1_1_regions_1ace20c4b8468ea06088fdcd8a1fdceccc">add_region</link> (self, frame)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1_regions_1_1_regions_1a397a2c3a30ce20ab4b7e37874b7bfc82"/><emphasis role="strong">add_moving_region</emphasis> (self, name, point, dimensions, id=None)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1_regions_1_1_regions_1a1f077cfd3487de8817650185647318d0">set_moving_region</link> (self, name, point, dimensions, id)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1_regions_1_1_regions_1a2684885ceb096d045771071198f56065"/><emphasis role="strong">del_region</emphasis> (self)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1_regions_1_1_regions_1a3a8059b633f4441aa2d3d139ae4a7ae6"/><emphasis role="strong">del_moving_region</emphasis> (self, name, id=None)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1_regions_1_1_regions_1a8b3a37364c8350b6bf650346fb50678e">display_region</link> (self, frame)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1_regions_1_1_regions_1a0aeb7aaf11384e4244abe2f160efc281">test_region</link> (self, test_point)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1_regions_1_1_regions_1a100f8388ceb073e1e4bf24dbe26726ac"/><emphasis role="strong">handle_inputs</emphasis> ()</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1_regions_1_1_regions_1a7cd5f0b4993a040bd10554cd8125a5ce"/><emphasis role="strong">region_dict</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1_regions_1_1_regions_1a362cc4385e1ebfd086b3c1726a879e8a"/><emphasis role="strong">log</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_class_people_tracker_1_1src_1_1_regions_1_1_regions_1ace20c4b8468ea06088fdcd8a1fdceccc"/><section>
+    <title>add_region()</title>
+<indexterm><primary>add_region</primary><secondary>PeopleTracker.src.Regions.Regions</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.Regions.Regions</primary><secondary>add_region</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.Regions.Regions.add_region ( self,  frame)</computeroutput></para>
+<para><literallayout><computeroutput>Creates an ellipse given a rectangle ROI.
+</computeroutput></literallayout> </para>
+<para>
+References PeopleTracker.src.qt_dialog.App.log(), PeopleTracker.src.Regions.Regions.log, and PeopleTracker.src.Regions.Regions.region_dict.</para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1_regions_1_1_regions_1a8b3a37364c8350b6bf650346fb50678e"/><section>
+    <title>display_region()</title>
+<indexterm><primary>display_region</primary><secondary>PeopleTracker.src.Regions.Regions</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.Regions.Regions</primary><secondary>display_region</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.Regions.Regions.display_region ( self,  frame)</computeroutput></para>
+<para><literallayout><computeroutput>Displays all region created Radius on given frame
+</computeroutput></literallayout> </para>
+<para>
+References PeopleTracker.src.Regions.Regions.region_dict.</para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1_regions_1_1_regions_1a1f077cfd3487de8817650185647318d0"/><section>
+    <title>set_moving_region()</title>
+<indexterm><primary>set_moving_region</primary><secondary>PeopleTracker.src.Regions.Regions</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.Regions.Regions</primary><secondary>set_moving_region</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.Regions.Regions.set_moving_region ( self,  name,  point,  dimensions,  id)</computeroutput></para>
+<para><literallayout><computeroutput> Creates and sets a region with a given name, and given dimensions
+ Point (x, y) : (int, int)
+ Dimensions (width, height), (int, int)
+</computeroutput></literallayout> </para>
+<para>
+References PeopleTracker.src.qt_dialog.App.log(), PeopleTracker.src.Regions.Regions.log, and PeopleTracker.src.Regions.Regions.region_dict.</para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1_regions_1_1_regions_1a0aeb7aaf11384e4244abe2f160efc281"/><section>
+    <title>test_region()</title>
+<indexterm><primary>test_region</primary><secondary>PeopleTracker.src.Regions.Regions</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.Regions.Regions</primary><secondary>test_region</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.Regions.Regions.test_region ( self,  test_point)</computeroutput></para>
+<para><literallayout><computeroutput>Tests weather a point value exists within an eclipse
+ p &lt;= 1 exists in or on eclipse
+
+Equation: Given p = (x-h)^2/a^2 + (y-k)^2/b^2
+    Where test_point is (x,y) and ellipse_center is (h,k), 
+    radius_width, radius_height as a,b respectivly
+
+Returns list(regions), p
+</computeroutput></literallayout> </para>
+<para>
+References PeopleTracker.src.Regions.Regions.region_dict.</para>
+</section>
+<para>
+The documentation for this class was generated from the following file:</para>
+K:/Github/PeopleTracker/src/Regions.py</section>
+</section>

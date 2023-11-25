@@ -1,0 +1,193 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_people_tracker_1_1src_1_1utils_1_1_dataset" xml:lang="en-US">
+<title>PeopleTracker.src.utils.Dataset Class Reference</title>
+<indexterm><primary>PeopleTracker.src.utils.Dataset</primary></indexterm>
+<para>
+
+<para>Dataset. </para>
+ 
+</para>
+<para>Inheritance diagram for PeopleTracker.src.utils.Dataset:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_people_tracker_1_1src_1_1utils_1_1_dataset.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1utils_1_1_dataset_1aad8baee2937751a8ed4dd83188899bc2"/><emphasis role="strong">__init__</emphasis> (self, class_map=None)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1utils_1_1_dataset_1afb79fd82cbf0ef6770618201e205defb"/><emphasis role="strong">add_class</emphasis> (self, source, class_id, class_name)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1utils_1_1_dataset_1aaed0761e295bf4c28cddc3a026a443c1"/><emphasis role="strong">add_image</emphasis> (self, source, image_id, path, **kwargs)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1utils_1_1_dataset_1a1dfba4fd86a21fdab01cad56e19737bc">image_reference</link> (self, image_id)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1utils_1_1_dataset_1a0f041956b4172f91e141de1c827ac0eb">prepare</link> (self, class_map=None)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1utils_1_1_dataset_1a4360e3f47ec46594aa3978630e566b11">map_source_class_id</link> (self, source_class_id)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1utils_1_1_dataset_1a18b84b3973249e1fd9a7261ae29e1f1f">get_source_class_id</link> (self, class_id, source)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1utils_1_1_dataset_1a77ca0522221dd2a88650138be3969d5d"/><emphasis role="strong">image_ids</emphasis> (self)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1utils_1_1_dataset_1a928ec00cc5a547fb1b29981aa07391f5">source_image_link</link> (self, image_id)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1utils_1_1_dataset_1aa94ff7b933217431f826a7866dd00b00">load_image</link> (self, image_id)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1utils_1_1_dataset_1a05d190639d3b558f7950cdd2a3374f3c">load_mask</link> (self, image_id)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1utils_1_1_dataset_1aa6d43ea6d52fa92de5a01967e771c9b4"/><emphasis role="strong">image_info</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1utils_1_1_dataset_1a248a953d9f3d05804decfc655d8a120f"/><emphasis role="strong">class_info</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1utils_1_1_dataset_1a256655da228e9f200200f0b986ecbb10"/><emphasis role="strong">source_class_ids</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1utils_1_1_dataset_1a0134396b5b55c5dfd20c49c4ff9a56f0"/><emphasis role="strong">num_classes</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1utils_1_1_dataset_1a18ac400a9140c2f2688fc6173ef07e37"/><emphasis role="strong">class_ids</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1utils_1_1_dataset_1a3d53f3950ad760b9bb0f0de102a2b5bb"/><emphasis role="strong">class_names</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1utils_1_1_dataset_1a908d6ff853238239588b08996c9a7ee0"/><emphasis role="strong">num_images</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1utils_1_1_dataset_1a04387f7ba6eeb098a86d3d61bbfc4a3b"/><emphasis role="strong">class_from_source_map</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1utils_1_1_dataset_1a9c21b03bc48425084ac383b4ec9af6fe"/><emphasis role="strong">image_from_source_map</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1utils_1_1_dataset_1a9bfe856efde7726eb96d8bc829a17d73"/><emphasis role="strong">image_ids</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1utils_1_1_dataset_1a33d5b64c837d403c3b6b6d23c61c43fa"/><emphasis role="strong">sources</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Protected Attributes    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1utils_1_1_dataset_1ad863f21b994896807be4d2c7c609b311"/><emphasis role="strong">_image_ids</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>Dataset. </para>
+
+
+
+<para><literallayout><computeroutput>The base class for dataset classes.
+To use it, create a new class that adds functions specific to the dataset
+you want to use. For example:
+
+class CatsAndDogsDataset(Dataset):
+    def load_cats_and_dogs(self):
+        ...
+    def load_mask(self, image_id):
+        ...
+    def image_reference(self, image_id):
+        ...
+
+See COCODataset and ShapesDataset as examples.
+</computeroutput></literallayout> </para>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_class_people_tracker_1_1src_1_1utils_1_1_dataset_1a18b84b3973249e1fd9a7261ae29e1f1f"/><section>
+    <title>get_source_class_id()</title>
+<indexterm><primary>get_source_class_id</primary><secondary>PeopleTracker.src.utils.Dataset</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.utils.Dataset</primary><secondary>get_source_class_id</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.utils.Dataset.get_source_class_id ( self,  class_id,  source)</computeroutput></para>
+<para><literallayout><computeroutput>Map an internal class ID to the corresponding class ID in the source dataset.</computeroutput></literallayout> </para>
+<para>
+References PeopleTracker.src.utils.Dataset._image_ids, and PeopleTracker.src.utils.Dataset.class_info.</para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1utils_1_1_dataset_1a1dfba4fd86a21fdab01cad56e19737bc"/><section>
+    <title>image_reference()</title>
+<indexterm><primary>image_reference</primary><secondary>PeopleTracker.src.utils.Dataset</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.utils.Dataset</primary><secondary>image_reference</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.utils.Dataset.image_reference ( self,  image_id)</computeroutput></para>
+<para><literallayout><computeroutput>Return a link to the image in its source Website or details about
+the image that help looking it up or debugging it.
+
+Override for your dataset, but pass to this function
+if you encounter images not in your dataset.
+</computeroutput></literallayout> </para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1utils_1_1_dataset_1aa94ff7b933217431f826a7866dd00b00"/><section>
+    <title>load_image()</title>
+<indexterm><primary>load_image</primary><secondary>PeopleTracker.src.utils.Dataset</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.utils.Dataset</primary><secondary>load_image</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.utils.Dataset.load_image ( self,  image_id)</computeroutput></para>
+<para><literallayout><computeroutput>Load the specified image and return a [H,W,3] Numpy array.
+</computeroutput></literallayout> </para>
+<para>
+References PeopleTracker.src.utils.Dataset.image_info.</para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1utils_1_1_dataset_1a05d190639d3b558f7950cdd2a3374f3c"/><section>
+    <title>load_mask()</title>
+<indexterm><primary>load_mask</primary><secondary>PeopleTracker.src.utils.Dataset</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.utils.Dataset</primary><secondary>load_mask</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.utils.Dataset.load_mask ( self,  image_id)</computeroutput></para>
+<para><literallayout><computeroutput>Load instance masks for the given image.
+
+Different datasets use different ways to store masks. Override this
+method to load instance masks and return them in the form of am
+array of binary masks of shape [height, width, instances].
+
+Returns:
+    masks: A bool array of shape [height, width, instance count] with
+        a binary mask per instance.
+    class_ids: a 1D array of class IDs of the instance masks.
+</computeroutput></literallayout> </para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1utils_1_1_dataset_1a4360e3f47ec46594aa3978630e566b11"/><section>
+    <title>map_source_class_id()</title>
+<indexterm><primary>map_source_class_id</primary><secondary>PeopleTracker.src.utils.Dataset</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.utils.Dataset</primary><secondary>map_source_class_id</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.utils.Dataset.map_source_class_id ( self,  source_class_id)</computeroutput></para>
+<para><literallayout><computeroutput>Takes a source class ID and returns the int class ID assigned to it.
+
+For example:
+dataset.map_source_class_id(&quot;coco.12&quot;) -&gt; 23
+</computeroutput></literallayout> </para>
+<para>
+References PeopleTracker.src.utils.Dataset.class_from_source_map.</para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1utils_1_1_dataset_1a0f041956b4172f91e141de1c827ac0eb"/><section>
+    <title>prepare()</title>
+<indexterm><primary>prepare</primary><secondary>PeopleTracker.src.utils.Dataset</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.utils.Dataset</primary><secondary>prepare</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.utils.Dataset.prepare ( self,  class_map = <computeroutput>None</computeroutput>
+)</computeroutput></para>
+<para><literallayout><computeroutput>Prepares the Dataset class for use.
+
+TODO: class map is not supported yet. When done, it should handle mapping
+      classes from different datasets to the same class ID.
+</computeroutput></literallayout> </para>
+<para>
+References PeopleTracker.src.utils.Dataset._image_ids, PeopleTracker.src.utils.Dataset.class_from_source_map, PeopleTracker.src.utils.Dataset.class_ids, PeopleTracker.src.utils.Dataset.class_info, PeopleTracker.src.utils.Dataset.class_names, PeopleTracker.src.utils.Dataset.image_from_source_map, PeopleTracker.src.utils.Dataset.image_ids, PeopleTracker.src.utils.Dataset.image_ids(), PeopleTracker.src.utils.Dataset.image_info, PeopleTracker.src.utils.Dataset.num_classes, PeopleTracker.src.utils.Dataset.num_images, PeopleTracker.src.utils.Dataset.source_class_ids, and PeopleTracker.src.utils.Dataset.sources.</para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1utils_1_1_dataset_1a928ec00cc5a547fb1b29981aa07391f5"/><section>
+    <title>source_image_link()</title>
+<indexterm><primary>source_image_link</primary><secondary>PeopleTracker.src.utils.Dataset</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.utils.Dataset</primary><secondary>source_image_link</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.utils.Dataset.source_image_link ( self,  image_id)</computeroutput></para>
+<para><literallayout><computeroutput>Returns the path or URL to the image.
+Override this to return a URL to the image if it&apos;s available online for easy
+debugging.
+</computeroutput></literallayout> </para>
+<para>
+References PeopleTracker.src.utils.Dataset.image_info.</para>
+</section>
+<para>
+The documentation for this class was generated from the following file:</para>
+K:/Github/PeopleTracker/src/utils.py</section>
+</section>

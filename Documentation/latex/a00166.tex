@@ -1,0 +1,81 @@
+\doxysection{Input\+Dialog}
+\hypertarget{a00166}{}\label{a00166}\index{InputDialog@{InputDialog}}
+
+
+Inheritance diagram for Input\+Dialog\+:
+% FIG 0
+
+
+Collaboration diagram for Input\+Dialog\+:
+% FIG 1
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{a00166_a211a30db661b8619e0c8bd09e5674a63}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, List\mbox{[}str\mbox{]} labels, List\mbox{[}str\mbox{]} defaults, parent=None)
+\item 
+\mbox{\hyperlink{a00166_a5310883121d24aa4f48dd8ef8e43531b}{get\+Inputs}} (self)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{a00166_afde3b66b6b41bd008469f366fa756e54}\label{a00166_afde3b66b6b41bd008469f366fa756e54} 
+{\bfseries inputs}
+\item 
+\Hypertarget{a00166_a5fcafbe6736e87811ae88403e1f5810b}\label{a00166_a5fcafbe6736e87811ae88403e1f5810b} 
+{\bfseries accept}
+\item 
+\Hypertarget{a00166_a213bd322a1240cf8f55dba15ce868ba9}\label{a00166_a213bd322a1240cf8f55dba15ce868ba9} 
+{\bfseries reject}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{a00166_a211a30db661b8619e0c8bd09e5674a63}\label{a00166_a211a30db661b8619e0c8bd09e5674a63} 
+\index{InputDialog@{InputDialog}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!InputDialog@{InputDialog}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily \+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{List\mbox{[}str\mbox{]}}]{labels,  }\item[{List\mbox{[}str\mbox{]}}]{defaults,  }\item[{}]{parent = {\ttfamily None} }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00008\ \ \ \ \ \textcolor{keyword}{def\ }\_\_init\_\_(self,\ labels:List[str],\ defaults:List[str],\ parent=\textcolor{keywordtype}{None}): }
+\DoxyCodeLine{00009\ \ \ \ \ \ \ \ \ super().\_\_init\_\_(parent) }
+\DoxyCodeLine{00010\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00011\ \ \ \ \ \ \ \ \ buttonBox\ =\ PyQt5.QtWidgets.QDialogButtonBox(PyQt5.QtWidgets.QDialogButtonBox.Ok\ |\ PyQt5.QtWidgets.QDialogButtonBox.Cancel,\ self) }
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ layout\ =\ PyQt5.QtWidgets.QFormLayout(self) }
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ self.inputs\ =\ [] }
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ index,\ lab\ \textcolor{keywordflow}{in}\ enumerate(labels): }
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \ \ \ \ line\ =\ PyQt5.QtWidgets.QLineEdit(self) }
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \ \ \ \ line.setText(defaults[index]) }
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \ \ \ \ self.inputs.append(line) }
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \ \ \ \ layout.addRow(lab,\ self.inputs[-\/1]) }
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ layout.addWidget(buttonBox) }
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ buttonBox.accepted.connect(self.accept) }
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ buttonBox.rejected.connect(self.reject) }
+\DoxyCodeLine{00025\ \ \ \ \  }
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{a00166_a5310883121d24aa4f48dd8ef8e43531b}\label{a00166_a5310883121d24aa4f48dd8ef8e43531b} 
+\index{InputDialog@{InputDialog}!getInputs@{getInputs}}
+\index{getInputs@{getInputs}!InputDialog@{InputDialog}}
+\doxysubsubsection{\texorpdfstring{getInputs()}{getInputs()}}
+{\footnotesize\ttfamily get\+Inputs (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{def\ }getInputs(self): }
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ tuple(input.text()\ \textcolor{keywordflow}{for}\ input\ \textcolor{keywordflow}{in}\ self.inputs) }
+\DoxyCodeLine{00028\  }
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+K\+:/\+Github/\+People\+Tracker/src/multiple\+\_\+inputs.\+py\end{DoxyCompactItemize}

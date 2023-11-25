@@ -1,0 +1,220 @@
+\doxysection{Converter}
+\hypertarget{a00218}{}\label{a00218}\index{Converter@{Converter}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{a00218_a39cc177c6ad39323b18b951b3e042616}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, author="{}Justin"{})
+\item 
+\mbox{\hyperlink{a00218_aacd32340c59ff2bebee884a5a2ea671f}{extract\+\_\+frames\+\_\+from\+\_\+video}} (self, frame\+\_\+numbers, video\+\_\+path)
+\item 
+\mbox{\hyperlink{a00218_a8502812639d8b1a85f9e841788b8aa49}{create\+\_\+h5}} (self, file\+\_\+path)
+\item 
+\mbox{\hyperlink{a00218_a23fea6f95be33c24391a2d90a621332a}{read\+\_\+tracker\+\_\+csv}} (self, file\+\_\+path)
+\item 
+\mbox{\hyperlink{a00218_a114e63f61769d02b41b1458e4ac521e8}{extract\+\_\+tracker\+\_\+info}} (self, tracker\+\_\+dataframe)
+\item 
+\mbox{\hyperlink{a00218_a46c5347bf80f28e00204b93d98f1923e}{create\+\_\+dataframe}} (author, frames, individuals, parts)
+\item 
+\mbox{\hyperlink{a00218_ac3a3e7a056055adac30bd9093f7b876c}{read\+\_\+dlc\+\_\+csv}} (self, file\+\_\+path)
+\item 
+\mbox{\hyperlink{a00218_ade526427417df0ee5b8f800009b66092}{convert\+\_\+tracker\+\_\+to\+\_\+dlc}} (self, tracker\+\_\+dataframe)
+\item 
+\mbox{\hyperlink{a00218_a46be02ec844dabe8c4a5fc757463e535}{convert\+\_\+dlc\+\_\+to\+\_\+tracker}} (self, dataframe)
+\item 
+\mbox{\hyperlink{a00218_a91dd6720f84978e8c564557b789ed683}{export\+\_\+dlc}} (self, dataframe)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{a00218_a39cc177c6ad39323b18b951b3e042616}\label{a00218_a39cc177c6ad39323b18b951b3e042616} 
+\index{Converter@{Converter}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!Converter@{Converter}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily \+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{author = {\ttfamily "{}Justin"{}} }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keyword}{def\ }\_\_init\_\_(self,\ author="{}Justin"{}): }
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ author\ =\ \textcolor{stringliteral}{"{}"{}} }
+\DoxyCodeLine{00031\  }
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{a00218_a46be02ec844dabe8c4a5fc757463e535}\label{a00218_a46be02ec844dabe8c4a5fc757463e535} 
+\index{Converter@{Converter}!convert\_dlc\_to\_tracker@{convert\_dlc\_to\_tracker}}
+\index{convert\_dlc\_to\_tracker@{convert\_dlc\_to\_tracker}!Converter@{Converter}}
+\doxysubsubsection{\texorpdfstring{convert\_dlc\_to\_tracker()}{convert\_dlc\_to\_tracker()}}
+{\footnotesize\ttfamily convert\+\_\+dlc\+\_\+to\+\_\+tracker (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{dataframe }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{keyword}{def\ }convert\_dlc\_to\_tracker(self,\ dataframe): }
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{pass} }
+\DoxyCodeLine{00101\  }
+
+\end{DoxyCode}
+\Hypertarget{a00218_ade526427417df0ee5b8f800009b66092}\label{a00218_ade526427417df0ee5b8f800009b66092} 
+\index{Converter@{Converter}!convert\_tracker\_to\_dlc@{convert\_tracker\_to\_dlc}}
+\index{convert\_tracker\_to\_dlc@{convert\_tracker\_to\_dlc}!Converter@{Converter}}
+\doxysubsubsection{\texorpdfstring{convert\_tracker\_to\_dlc()}{convert\_tracker\_to\_dlc()}}
+{\footnotesize\ttfamily convert\+\_\+tracker\+\_\+to\+\_\+dlc (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{tracker\+\_\+dataframe }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keyword}{def\ }convert\_tracker\_to\_dlc(self,\ tracker\_dataframe): }
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#write\ first\ column }}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ df\ =\ pd.DataFrame() }
+\DoxyCodeLine{00095\  }
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ df.iat[1,\ 0]\ =\ 100 }}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00098\  }
+
+\end{DoxyCode}
+\Hypertarget{a00218_a46c5347bf80f28e00204b93d98f1923e}\label{a00218_a46c5347bf80f28e00204b93d98f1923e} 
+\index{Converter@{Converter}!create\_dataframe@{create\_dataframe}}
+\index{create\_dataframe@{create\_dataframe}!Converter@{Converter}}
+\doxysubsubsection{\texorpdfstring{create\_dataframe()}{create\_dataframe()}}
+{\footnotesize\ttfamily create\+\_\+dataframe (\begin{DoxyParamCaption}\item[{}]{author,  }\item[{}]{frames,  }\item[{}]{individuals,  }\item[{}]{parts }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keyword}{def\ }create\_dataframe(author,\ frames,\ individuals,\ parts): }
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ print(len(parts)) }
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ coord\_row\ =\ [\textcolor{stringliteral}{"{}x"{}},\ \textcolor{stringliteral}{"{}y"{}}]*len(parts) }
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ part\_row\ =\ parts*len(coord\_row) }
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ ind\_row\ =\ individuals*len(part\_row) }
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ author\_row\ =\ [author]*len(ind\_row) }
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ print(part\_row) }
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ print(ind\_row) }
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ print(author\_row) }
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ start\_df\ =\ pd.DataFrame() }}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ start\_df.iat[0,0]\ =\ "{}scorer"{} }}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ start\_df.iat[1,0]\ =\ "{}individuals"{} }}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ start\_df.iat[2,0]\ =\ "{}bodyparts"{} }}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ start\_df.iat[3,0]\ =\ "{}coords"{} }}
+\DoxyCodeLine{00073\  }
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ start\_df.iloc[0]\ =\ author\_row }}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ start\_df.iloc[1]\ =\ ind\_row }}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ start\_df.iloc[2]\ =\ part\_row }}
+\DoxyCodeLine{00077\  }
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00079\  }
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (author\_row,\ ind\_row,\ part\_row) }
+\DoxyCodeLine{00081\  }
+\DoxyCodeLine{00082\  }
+\DoxyCodeLine{00083\  }
+\DoxyCodeLine{00084\  }
+
+\end{DoxyCode}
+\Hypertarget{a00218_a8502812639d8b1a85f9e841788b8aa49}\label{a00218_a8502812639d8b1a85f9e841788b8aa49} 
+\index{Converter@{Converter}!create\_h5@{create\_h5}}
+\index{create\_h5@{create\_h5}!Converter@{Converter}}
+\doxysubsubsection{\texorpdfstring{create\_h5()}{create\_h5()}}
+{\footnotesize\ttfamily create\+\_\+h5 (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{file\+\_\+path }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keyword}{def\ }create\_h5(self,\ file\_path): }
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{pass} }
+\DoxyCodeLine{00037\  }
+
+\end{DoxyCode}
+\Hypertarget{a00218_a91dd6720f84978e8c564557b789ed683}\label{a00218_a91dd6720f84978e8c564557b789ed683} 
+\index{Converter@{Converter}!export\_dlc@{export\_dlc}}
+\index{export\_dlc@{export\_dlc}!Converter@{Converter}}
+\doxysubsubsection{\texorpdfstring{export\_dlc()}{export\_dlc()}}
+{\footnotesize\ttfamily export\+\_\+dlc (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{dataframe }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00102\ \ \ \ \ \textcolor{keyword}{def\ }export\_dlc(self,\ dataframe): }
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{pass} }
+\DoxyCodeLine{00104\  }
+\DoxyCodeLine{00105\  }
+\DoxyCodeLine{00106\ \textcolor{comment}{\#\ Data\ format:\  }}
+\DoxyCodeLine{00107\ \textcolor{comment}{\#\ Part\ =\ \{\{x:VAL,\ y:VAL,\ Liklihood:VAL\} }}
+\DoxyCodeLine{00108\ \textcolor{comment}{\#\ Monkey\ =\ [Part1,\ Part2,\ ...\ PartN] }}
+\DoxyCodeLine{00109\  }
+\DoxyCodeLine{00110\  }
+\DoxyCodeLine{00111\  }
+\DoxyCodeLine{00112\  }
+
+\end{DoxyCode}
+\Hypertarget{a00218_aacd32340c59ff2bebee884a5a2ea671f}\label{a00218_aacd32340c59ff2bebee884a5a2ea671f} 
+\index{Converter@{Converter}!extract\_frames\_from\_video@{extract\_frames\_from\_video}}
+\index{extract\_frames\_from\_video@{extract\_frames\_from\_video}!Converter@{Converter}}
+\doxysubsubsection{\texorpdfstring{extract\_frames\_from\_video()}{extract\_frames\_from\_video()}}
+{\footnotesize\ttfamily extract\+\_\+frames\+\_\+from\+\_\+video (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{frame\+\_\+numbers,  }\item[{}]{video\+\_\+path }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{def\ }extract\_frames\_from\_video(self,\ frame\_numbers,\ video\_path): }
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{pass} }
+\DoxyCodeLine{00034\  }
+
+\end{DoxyCode}
+\Hypertarget{a00218_a114e63f61769d02b41b1458e4ac521e8}\label{a00218_a114e63f61769d02b41b1458e4ac521e8} 
+\index{Converter@{Converter}!extract\_tracker\_info@{extract\_tracker\_info}}
+\index{extract\_tracker\_info@{extract\_tracker\_info}!Converter@{Converter}}
+\doxysubsubsection{\texorpdfstring{extract\_tracker\_info()}{extract\_tracker\_info()}}
+{\footnotesize\ttfamily extract\+\_\+tracker\+\_\+info (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{tracker\+\_\+dataframe }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keyword}{def\ }extract\_tracker\_info(self,\ tracker\_dataframe): }
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ frame\_numbers\ =\ sorted(set(tracker\_dataframe[\textcolor{stringliteral}{"{}Frame\_Num"{}}]))[1:]\ \textcolor{comment}{\#starting\ from\ 1\ ignores\ the\ -\/\ value }}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ individuals\ =\ list(set(tracker\_dataframe[\textcolor{stringliteral}{"{}Name"{}}])) }
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ individuals\ =\ individuals.remove('-\/') }}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{stringliteral}{"{}-\/"{}}\ \textcolor{keywordflow}{in}\ individuals: }
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ individuals.remove(\textcolor{stringliteral}{"{}-\/"{}}) }
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ np.nan\ \textcolor{keywordflow}{in}\ individuals: }
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ individuals.remove(np.nan) }
+\DoxyCodeLine{00050\  }
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ parts\ =\ list(set(tracker\_dataframe[\textcolor{stringliteral}{"{}ID"{}}])) }
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{stringliteral}{"{}-\/"{}}\ \textcolor{keywordflow}{in}\ parts: }
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ parts.remove(\textcolor{stringliteral}{"{}-\/"{}}) }
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ np.nan\ \textcolor{keywordflow}{in}\ parts: }
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ parts.remove(np.nan) }
+\DoxyCodeLine{00056\  }
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (frame\_numbers,\ individuals,\ parts) }
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \  }
+
+\end{DoxyCode}
+\Hypertarget{a00218_ac3a3e7a056055adac30bd9093f7b876c}\label{a00218_ac3a3e7a056055adac30bd9093f7b876c} 
+\index{Converter@{Converter}!read\_dlc\_csv@{read\_dlc\_csv}}
+\index{read\_dlc\_csv@{read\_dlc\_csv}!Converter@{Converter}}
+\doxysubsubsection{\texorpdfstring{read\_dlc\_csv()}{read\_dlc\_csv()}}
+{\footnotesize\ttfamily read\+\_\+dlc\+\_\+csv (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{file\+\_\+path }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keyword}{def\ }read\_dlc\_csv(self,\ file\_path): }
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ dlc\_df\ =\ pd.read\_csv(file\_path,\ sep=\textcolor{stringliteral}{"{},"{}},\ header=1) }
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ dlc\_df }
+\DoxyCodeLine{00088\ \ \ \ \  }
+\DoxyCodeLine{00089\  }
+\DoxyCodeLine{00090\  }
+\DoxyCodeLine{00091\  }
+
+\end{DoxyCode}
+\Hypertarget{a00218_a23fea6f95be33c24391a2d90a621332a}\label{a00218_a23fea6f95be33c24391a2d90a621332a} 
+\index{Converter@{Converter}!read\_tracker\_csv@{read\_tracker\_csv}}
+\index{read\_tracker\_csv@{read\_tracker\_csv}!Converter@{Converter}}
+\doxysubsubsection{\texorpdfstring{read\_tracker\_csv()}{read\_tracker\_csv()}}
+{\footnotesize\ttfamily read\+\_\+tracker\+\_\+csv (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{file\+\_\+path }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keyword}{def\ }read\_tracker\_csv(self,\ file\_path): }
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ tracker\_df\ =\ pd.read\_csv(file\_path,\ sep=\textcolor{stringliteral}{"{},"{}}) }
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ tracker\_df }
+\DoxyCodeLine{00041\  }
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+K\+:/\+Github/\+People\+Tracker/src/tracker\+\_\+to\+\_\+\+DLC.\+py\end{DoxyCompactItemize}

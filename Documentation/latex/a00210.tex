@@ -1,0 +1,282 @@
+\doxysection{Test\+Multitracker}
+\hypertarget{a00210}{}\label{a00210}\index{TestMultitracker@{TestMultitracker}}
+
+
+Inheritance diagram for Test\+Multitracker\+:
+% FIG 0
+
+
+Collaboration diagram for Test\+Multitracker\+:
+% FIG 1
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{a00210_a3c8689fcd9fdf3848bc1d79d8836b863}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, \texorpdfstring{$\ast$}{*}args, \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}kwargs)
+\item 
+\mbox{\hyperlink{a00210_a6c8758a85a7709790b440ea4cd52256d}{new\+\_\+tracker}} (self)
+\item 
+\mbox{\hyperlink{a00210_a97df94c5a8387b43f0223d92a7edb56e}{test\+\_\+merge\+\_\+intervals}} (self)
+\item 
+\mbox{\hyperlink{a00210_aacadd98e5257988ec7ad02732d16721d}{test\+\_\+part\+\_\+time\+\_\+into\+\_\+segments\+\_\+\+Empty}} (self)
+\item 
+\mbox{\hyperlink{a00210_a6fdea31def1401b36a59e4df222b3bf2}{test\+\_\+part\+\_\+time\+\_\+into\+\_\+segments\+\_\+single}} (self)
+\item 
+\mbox{\hyperlink{a00210_ae382719630a741897edfedf7bb4b4371}{test\+\_\+part\+\_\+time\+\_\+into\+\_\+segments\+\_\+multiple}} (self)
+\item 
+\mbox{\hyperlink{a00210_a1ceddec8aea801f7023d3e9a3525eed6}{test\+\_\+part\+\_\+into\+\_\+segments\+\_\+complex}} (self)
+\item 
+\mbox{\hyperlink{a00210_aba3952fb6802af6e987a8fdf4389fa6d}{test\+\_\+calculate\+\_\+time}} (self)
+\item 
+\mbox{\hyperlink{a00210_a69adc8213c78546e22a6604f45854d0b}{test\+\_\+calculate\+\_\+total\+\_\+time}} (self)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{a00210_a50d033f3079818116fd82e853c0f291d}\label{a00210_a50d033f3079818116fd82e853c0f291d} 
+{\bfseries long\+Message}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{a00210_a3c8689fcd9fdf3848bc1d79d8836b863}\label{a00210_a3c8689fcd9fdf3848bc1d79d8836b863} 
+\index{TestMultitracker@{TestMultitracker}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!TestMultitracker@{TestMultitracker}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily \+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{\texorpdfstring{$\ast$}{*}}]{args,  }\item[{\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{kwargs }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00010\ \ \ \ \ \textcolor{keyword}{def\ }\_\_init\_\_(self,\ *args,\ **kwargs): }
+\DoxyCodeLine{00011\ \ \ \ \ \ \ \ \ super(TestMultitracker,\ self).\_\_init\_\_(*args,\ **kwargs) }
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ self.longMessage\ =\ \textcolor{keyword}{True} }
+\DoxyCodeLine{00013\  }
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{a00210_a6c8758a85a7709790b440ea4cd52256d}\label{a00210_a6c8758a85a7709790b440ea4cd52256d} 
+\index{TestMultitracker@{TestMultitracker}!new\_tracker@{new\_tracker}}
+\index{new\_tracker@{new\_tracker}!TestMultitracker@{TestMultitracker}}
+\doxysubsubsection{\texorpdfstring{new\_tracker()}{new\_tracker()}}
+{\footnotesize\ttfamily new\+\_\+tracker (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keyword}{def\ }new\_tracker(self): }
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ app\ =\ QtWidgets.QApplication(sys.argv) }
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ tracker\ =\ MultiTracker(person\_tab(QtWidgets.QWidget())) }
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ self.assertNotEqual(tracker,\ \textcolor{keywordtype}{None},\ \textcolor{stringliteral}{"{}Should\ not\ be\ None"{}}) }
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ tracker }
+\DoxyCodeLine{00019\ \ \ \ \  }
+
+\end{DoxyCode}
+\Hypertarget{a00210_aba3952fb6802af6e987a8fdf4389fa6d}\label{a00210_aba3952fb6802af6e987a8fdf4389fa6d} 
+\index{TestMultitracker@{TestMultitracker}!test\_calculate\_time@{test\_calculate\_time}}
+\index{test\_calculate\_time@{test\_calculate\_time}!TestMultitracker@{TestMultitracker}}
+\doxysubsubsection{\texorpdfstring{test\_calculate\_time()}{test\_calculate\_time()}}
+{\footnotesize\ttfamily test\+\_\+calculate\+\_\+time (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00106\ \ \ \ \ \textcolor{keyword}{def\ }test\_calculate\_time(self): }
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ tracker\ =\ self.new\_tracker() }
+\DoxyCodeLine{00108\  }
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ calculated\_time\ =\ tracker.calculate\_time(0,0,fps=30) }
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ answer\ =\ 0 }
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ self.assertEqual(calculated\_time,\ answer) }
+\DoxyCodeLine{00112\  }
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ calculated\_time\ =\ tracker.calculate\_time(0,30,fps=30) }
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ answer\ =\ 1 }
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ self.assertEqual(calculated\_time,\ answer) }
+\DoxyCodeLine{00116\  }
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ calculated\_time\ =\ tracker.calculate\_time(0,60,fps=30) }
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ answer\ =\ 2 }
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ self.assertEqual(calculated\_time,\ answer) }
+\DoxyCodeLine{00120\  }
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ calculated\_time\ =\ tracker.calculate\_time(0,15,fps=30) }
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ answer\ =\ 0.5 }
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ self.assertEqual(calculated\_time,\ answer) }
+\DoxyCodeLine{00124\  }
+
+\end{DoxyCode}
+\Hypertarget{a00210_a69adc8213c78546e22a6604f45854d0b}\label{a00210_a69adc8213c78546e22a6604f45854d0b} 
+\index{TestMultitracker@{TestMultitracker}!test\_calculate\_total\_time@{test\_calculate\_total\_time}}
+\index{test\_calculate\_total\_time@{test\_calculate\_total\_time}!TestMultitracker@{TestMultitracker}}
+\doxysubsubsection{\texorpdfstring{test\_calculate\_total\_time()}{test\_calculate\_total\_time()}}
+{\footnotesize\ttfamily test\+\_\+calculate\+\_\+total\+\_\+time (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00125\ \ \ \ \ \textcolor{keyword}{def\ }test\_calculate\_total\_time(self): }
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ tracker\ =\ self.new\_tracker() }
+\DoxyCodeLine{00127\ \ \ \  }
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ self.assertRaises(Exception,\ tracker.calculate\_time,\ \textcolor{keywordtype}{None},\ \textcolor{keywordtype}{None}) }
+\DoxyCodeLine{00129\  }
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ calculated\_time\ =\ tracker.calculate\_time(0,\ 30,\ fps=30) }
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ answer\ =\ 1 }
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ self.assertEqual(calculated\_time,\ answer) }
+\DoxyCodeLine{00133\  }
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ calculated\_time\ =\ tracker.calculate\_time(1000,\ 1030,\ fps=30) }
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ answer\ =\ 1 }
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ self.assertEqual(calculated\_time,\ answer) }
+\DoxyCodeLine{00137\  }
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ calculated\_time\ =\ tracker.calculate\_time(0,\ 300,\ fps=300) }
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ answer\ =\ 1 }
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ self.assertEqual(calculated\_time,\ answer) }
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ tracker.calculate\_total\_time(tracker.part\_time\_to\_segments([0,\ 30]),\ fps=30) }
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ answer\ =\ 1 }
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ self.assertEqual(calculated\_time,\ answer) }
+\DoxyCodeLine{00145\  }
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ calculated\_time\ =\ tracker.calculate\_total\_time(tracker.part\_time\_to\_segments([0,\ 300]),\ fps=30) }
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ answer\ =\ 10 }
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ self.assertEqual(calculated\_time,\ answer) }
+\DoxyCodeLine{00149\  }
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ calculated\_time\ =\ tracker.calculate\_total\_time(tracker.part\_time\_to\_segments([]),\ fps=30) }
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ answer\ =\ 0 }
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ self.assertEqual(calculated\_time,\ answer) }
+\DoxyCodeLine{00153\  }
+
+\end{DoxyCode}
+\Hypertarget{a00210_a97df94c5a8387b43f0223d92a7edb56e}\label{a00210_a97df94c5a8387b43f0223d92a7edb56e} 
+\index{TestMultitracker@{TestMultitracker}!test\_merge\_intervals@{test\_merge\_intervals}}
+\index{test\_merge\_intervals@{test\_merge\_intervals}!TestMultitracker@{TestMultitracker}}
+\doxysubsubsection{\texorpdfstring{test\_merge\_intervals()}{test\_merge\_intervals()}}
+{\footnotesize\ttfamily test\+\_\+merge\+\_\+intervals (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keyword}{def\ }test\_merge\_intervals(self): }
+\DoxyCodeLine{00021\  }
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ logging.info(\textcolor{stringliteral}{"{}Testing\ Multitracker.merge\_intervals"{}}) }
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ tracker\ =\ self.new\_tracker() }
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ interval\ =\ [[0,20],\ [10,50]] }
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ merge\_result\ =\ tracker.merge\_intervals(interval) }
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ answer\ =\ \ [[0,50]] }
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ string\ =\ (str(interval)\ +\ \textcolor{stringliteral}{"{}And"{}},\ str(answer)\ +\ \textcolor{stringliteral}{"{}Should\ be\ equal"{}}) }
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ self.assertEqual(merge\_result,\ answer,\ msg=string) }
+\DoxyCodeLine{00030\  }
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ interval\ =\ tracker.merge\_intervals([[0,\ 500]]) }
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ answer\ =\ [[0,\ 500]] }
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ string\ =\ (str(interval)\ +\ \textcolor{stringliteral}{"{}And"{}},\ str(answer)\ +\ \textcolor{stringliteral}{"{}Should\ be\ equal"{}}) }
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ self.assertEqual(interval,\ answer,\ msg=string) }
+\DoxyCodeLine{00035\  }
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ interval\ =\ tracker.merge\_intervals([[0,\ 0]]) }
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ answer\ =\ [[0,\ 0]] }
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ string\ =\ (str(interval)\ +\ \textcolor{stringliteral}{"{}And"{}},\ str(answer)\ +\ \textcolor{stringliteral}{"{}Should\ be\ equal"{}}) }
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ self.assertEqual(interval,\ answer,\ msg=string) }
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00041\  }
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ interval\ =\ tracker.merge\_intervals([[0]]) }
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ answer\ =\ [[0,\ 0]] }
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ string\ =\ (str(interval)\ +\ \textcolor{stringliteral}{"{}And"{}},\ str(answer)\ +\ \textcolor{stringliteral}{"{}Should\ be\ equal"{}}) }
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ self.assertEqual(interval,\ answer,\ msg=string) }
+\DoxyCodeLine{00046\  }
+\DoxyCodeLine{00047\  }
+
+\end{DoxyCode}
+\Hypertarget{a00210_a1ceddec8aea801f7023d3e9a3525eed6}\label{a00210_a1ceddec8aea801f7023d3e9a3525eed6} 
+\index{TestMultitracker@{TestMultitracker}!test\_part\_into\_segments\_complex@{test\_part\_into\_segments\_complex}}
+\index{test\_part\_into\_segments\_complex@{test\_part\_into\_segments\_complex}!TestMultitracker@{TestMultitracker}}
+\doxysubsubsection{\texorpdfstring{test\_part\_into\_segments\_complex()}{test\_part\_into\_segments\_complex()}}
+{\footnotesize\ttfamily test\+\_\+part\+\_\+into\+\_\+segments\+\_\+complex (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keyword}{def\ }test\_part\_into\_segments\_complex(self): }
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ tracker\ =\ self.new\_tracker() }
+\DoxyCodeLine{00091\  }
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#Test\ complex\ segments }}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ segments\ =\ [0,\ 10,\ 20,\ 30,\ 100,\ 200,\ 300,\ 400,\ 1000,\ 1010,\ 1020] }
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ answer\ =\ [[0,\ 400],\ [1000,\ 1020]] }
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ part\_time\ =\ tracker.part\_time\_to\_segments(segments,\ segment\_size=300) }
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ string\ =\ (str(segments)\ +\ \textcolor{stringliteral}{"{}\ And\ "{}},\ str(answer)\ +\ \textcolor{stringliteral}{"{}\ Should\ be\ equal"{}}) }
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ self.assertEqual(part\_time,\ answer,\ msg=string) }
+\DoxyCodeLine{00098\  }
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Test\ Unsorted\ Segments\ equal\ to\ the\ one\ above }}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ segments\ =\ [200,\ 0,\ 30,\ 1010,\ 10,\ 20,\ 100,\ 300,\ 400,\ 1000,\ 1020] }
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ answer\ =\ [[0,\ 400],\ [1000,\ 1020]] }
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ part\_time\ =\ tracker.part\_time\_to\_segments(segments,\ segment\_size=300) }
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ string\ =\ (str(segments)\ +\ \textcolor{stringliteral}{"{}\ And\ "{}},\ str(answer)\ +\ \textcolor{stringliteral}{"{}\ Should\ be\ equal"{}}) }
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ self.assertEqual(part\_time,\ answer,\ msg=string) }
+\DoxyCodeLine{00105\  }
+
+\end{DoxyCode}
+\Hypertarget{a00210_aacadd98e5257988ec7ad02732d16721d}\label{a00210_aacadd98e5257988ec7ad02732d16721d} 
+\index{TestMultitracker@{TestMultitracker}!test\_part\_time\_into\_segments\_Empty@{test\_part\_time\_into\_segments\_Empty}}
+\index{test\_part\_time\_into\_segments\_Empty@{test\_part\_time\_into\_segments\_Empty}!TestMultitracker@{TestMultitracker}}
+\doxysubsubsection{\texorpdfstring{test\_part\_time\_into\_segments\_Empty()}{test\_part\_time\_into\_segments\_Empty()}}
+{\footnotesize\ttfamily test\+\_\+part\+\_\+time\+\_\+into\+\_\+segments\+\_\+\+Empty (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keyword}{def\ }test\_part\_time\_into\_segments\_Empty(self): }
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ logging.info(\textcolor{stringliteral}{"{}Testing\ Multitracker.part\_time\_into\_segments"{}}) }
+\DoxyCodeLine{00050\  }
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ tracker\ =\ self.new\_tracker() }
+\DoxyCodeLine{00052\  }
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ self.assertIsNot(tracker.part\_time\_to\_segments([10]),\ \textcolor{keywordtype}{None}) }
+\DoxyCodeLine{00054\  }
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ segments\ =\ [] }
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ part\_time\ =\ tracker.part\_time\_to\_segments(segments,\ segment\_size=300) }
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ answer\ =\ [[0]] }
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ self.assertEqual(part\_time,\ answer) }
+\DoxyCodeLine{00059\  }
+
+\end{DoxyCode}
+\Hypertarget{a00210_ae382719630a741897edfedf7bb4b4371}\label{a00210_ae382719630a741897edfedf7bb4b4371} 
+\index{TestMultitracker@{TestMultitracker}!test\_part\_time\_into\_segments\_multiple@{test\_part\_time\_into\_segments\_multiple}}
+\index{test\_part\_time\_into\_segments\_multiple@{test\_part\_time\_into\_segments\_multiple}!TestMultitracker@{TestMultitracker}}
+\doxysubsubsection{\texorpdfstring{test\_part\_time\_into\_segments\_multiple()}{test\_part\_time\_into\_segments\_multiple()}}
+{\footnotesize\ttfamily test\+\_\+part\+\_\+time\+\_\+into\+\_\+segments\+\_\+multiple (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keyword}{def\ }test\_part\_time\_into\_segments\_multiple(self): }
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ tracker\ =\ self.new\_tracker() }
+\DoxyCodeLine{00070\  }
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#Test\ Single\ segment }}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ segments\ =\ [0,\ 200] }
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ answer\ =\ [[0,\ 200]] }
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ part\_time\ =\ tracker.part\_time\_to\_segments(segments,\ segment\_size=300) }
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ string\ =\ (str(segments)\ +\ \textcolor{stringliteral}{"{}\ And\ "{}},\ str(answer)\ +\ \textcolor{stringliteral}{"{}\ Should\ be\ equal"{}}) }
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ self.assertEqual(part\_time,\ answer,\ msg=string) }
+\DoxyCodeLine{00077\  }
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Test\ segment\ out\ of\ range }}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ segments\ =\ [0,500]\ \  }
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ answer\ =\ [[0,0],\ [500,500]] }
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ part\_time\ =\ tracker.part\_time\_to\_segments(segments,\ segment\_size=300) }
+\DoxyCodeLine{00082\  }
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#Test\ multiple\ larger\ segments\ within\ range }}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ segments\ =\ [0,\ 200,\ 300] }
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ part\_time\ =\ tracker.part\_time\_to\_segments(segments,\ segment\_size=300) }
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ answer\ =\ [[0,300]] }
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ self.assertEqual(part\_time,\ answer) }
+\DoxyCodeLine{00088\  }
+
+\end{DoxyCode}
+\Hypertarget{a00210_a6fdea31def1401b36a59e4df222b3bf2}\label{a00210_a6fdea31def1401b36a59e4df222b3bf2} 
+\index{TestMultitracker@{TestMultitracker}!test\_part\_time\_into\_segments\_single@{test\_part\_time\_into\_segments\_single}}
+\index{test\_part\_time\_into\_segments\_single@{test\_part\_time\_into\_segments\_single}!TestMultitracker@{TestMultitracker}}
+\doxysubsubsection{\texorpdfstring{test\_part\_time\_into\_segments\_single()}{test\_part\_time\_into\_segments\_single()}}
+{\footnotesize\ttfamily test\+\_\+part\+\_\+time\+\_\+into\+\_\+segments\+\_\+single (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keyword}{def\ }test\_part\_time\_into\_segments\_single(self): }
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ tracker\ =\ self.new\_tracker() }
+\DoxyCodeLine{00062\  }
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ segments\ =\ [0] }
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ part\_time\ =\ tracker.part\_time\_to\_segments(segments,\ segment\_size=300) }
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ answer\ =\ [[0]] }
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ self.assertEqual(part\_time,\ answer) }
+\DoxyCodeLine{00067\ \ \ \ \  }
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+K\+:/\+Github/\+People\+Tracker/src/test\+\_\+\+Multitracker.\+py\end{DoxyCompactItemize}

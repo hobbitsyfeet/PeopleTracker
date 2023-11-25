@@ -1,0 +1,126 @@
+\doxysection{People\+Tracker.\+src.\+maskrcnn Namespace Reference}
+\hypertarget{a00116}{}\label{a00116}\index{PeopleTracker.src.maskrcnn@{PeopleTracker.src.maskrcnn}}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{a00116_ae32a3727b50b69250039ac78b4caee4a}{load\+\_\+predicted}} (pred\+\_\+file)
+\item 
+\mbox{\hyperlink{a00116_a03f6fe4d9bbee897063978337e9cd9a0}{display\+\_\+preds}} (frame, frame\+\_\+num, pred\+\_\+dict, ratios)
+\item 
+\mbox{\hyperlink{a00116_a4cbb6a9a10db87b4ce62c46b5bffcc0c}{predict}} (filename, model="{}mask\+\_\+rcnn\+\_\+coco\+\_\+person.\+h5"{}, class\+\_\+names=\mbox{[}"{}BG"{}, "{}person"{}\mbox{]}, step=10, display=False, progress=None, logger=None)
+\item 
+\mbox{\hyperlink{a00116_aefe4910f9b13d6dc5aa01aed6fe9ca03}{compute\+\_\+iou}} (box, boxes, boxes\+\_\+area, ratios=(1, 1), frame=None)
+\item 
+\mbox{\hyperlink{a00116_aa0c142fb5afc1ae318dc502af91a540b}{track\+\_\+predictions}} (pred\+\_\+dict, video, method=0, id\+\_\+prefix="{}P"{}, Kalman\+Filter=\mbox{\hyperlink{a00158}{Kalman\+Pred}}(), ratios=(1, 1), buffer=10, preview=True)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{a00116_a30c78ae0b25849d49a056285653ea0e3}\label{a00116_a30c78ae0b25849d49a056285653ea0e3} 
+int {\bfseries NEAREST\+\_\+\+CENTROID} = 0
+\item 
+\Hypertarget{a00116_a0f2cabf6dd4272a8993ea400f5d0d30b}\label{a00116_a0f2cabf6dd4272a8993ea400f5d0d30b} 
+int {\bfseries NEAREST\+\_\+\+CORNERS} = 1
+\item 
+\Hypertarget{a00116_a92f13f78da34ccf9e0d46b7b3912be63}\label{a00116_a92f13f78da34ccf9e0d46b7b3912be63} 
+int {\bfseries NEAREST\+\_\+\+BOX} = 2
+\item 
+\Hypertarget{a00116_ab83feb172000c1b3ec597f1ab94d41dd}\label{a00116_ab83feb172000c1b3ec597f1ab94d41dd} 
+int {\bfseries NEAREST\+\_\+\+KALMAN\+\_\+\+CENTROID} = 3
+\item 
+\Hypertarget{a00116_a98af76c7cd25d1a0c14616e75a018add}\label{a00116_a98af76c7cd25d1a0c14616e75a018add} 
+int {\bfseries NEAREST\+\_\+\+KALMAN\+\_\+\+CORNERS} = 4
+\item 
+\Hypertarget{a00116_ae7d70370796c3d825d9cfd0e827ca3ce}\label{a00116_ae7d70370796c3d825d9cfd0e827ca3ce} 
+int {\bfseries NEAREST\+\_\+\+KALMAN} = 5
+\item 
+\Hypertarget{a00116_a4f0dca78b998ba41b1799a11f1287c87}\label{a00116_a4f0dca78b998ba41b1799a11f1287c87} 
+{\bfseries display}
+\item 
+\Hypertarget{a00116_a643a20c0c59588a0f741a6095e2025fd}\label{a00116_a643a20c0c59588a0f741a6095e2025fd} 
+{\bfseries True}
+\item 
+\Hypertarget{a00116_ae5f3bfeb7e3cb5c8bc769d5504ebeeae}\label{a00116_ae5f3bfeb7e3cb5c8bc769d5504ebeeae} 
+{\bfseries step}
+\item 
+\Hypertarget{a00116_a5d4df015ded6ab94baaedec41c0143d4}\label{a00116_a5d4df015ded6ab94baaedec41c0143d4} 
+{\bfseries pred\+\_\+dict} = \mbox{\hyperlink{a00116_ae32a3727b50b69250039ac78b4caee4a}{load\+\_\+predicted}}("{}K\+:/Github/People\+Tracker/videos/(Simple) GP014125\+\_\+predict.\+csv"{})
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Model from: https://github.com/Superlee506/Mask_RCNN_Humanpose
+
+Cuda Version 10.1
+CUDNN Version
+                         # tensorflow==2.4.0 (Could be wrong??? just use GPU)d
+Tensorflow version 2.3.0 # tensorflow-gpu==2.3.0
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{a00116_aefe4910f9b13d6dc5aa01aed6fe9ca03}\label{a00116_aefe4910f9b13d6dc5aa01aed6fe9ca03} 
+\index{PeopleTracker.src.maskrcnn@{PeopleTracker.src.maskrcnn}!compute\_iou@{compute\_iou}}
+\index{compute\_iou@{compute\_iou}!PeopleTracker.src.maskrcnn@{PeopleTracker.src.maskrcnn}}
+\doxysubsubsection{\texorpdfstring{compute\_iou()}{compute\_iou()}}
+{\footnotesize\ttfamily compute\+\_\+iou (\begin{DoxyParamCaption}\item[{}]{box,  }\item[{}]{boxes,  }\item[{}]{boxes\+\_\+area,  }\item[{}]{ratios = {\ttfamily (1,1)},  }\item[{}]{frame = {\ttfamily None} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Calculates IoU of the given box with the array of the given boxes.
+box: 1D vector [x1, y1, x2, y2]
+boxes: [boxes_count, (x1, y1, x2, y2)]
+box_area: float. the area of 'box'
+boxes_area: array of length boxes_count.
+ratio: ratio (width, height) to scale boxes from video resolution to analysis resolution
+
+Note: the areas are passed in rather than calculated here for
+efficiency. Calculate once in the caller to avoid duplicate work.
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00219\ \textcolor{keyword}{def\ }compute\_iou(box,\ boxes,\ boxes\_area,\ ratios=(1,1),\ frame=\textcolor{keywordtype}{None}): }
+\DoxyCodeLine{00220\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Calculates\ IoU\ of\ the\ given\ box\ with\ the\ array\ of\ the\ given\ boxes. }}
+\DoxyCodeLine{00221\ \textcolor{stringliteral}{\ \ \ \ box:\ 1D\ vector\ [x1,\ y1,\ x2,\ y2] }}
+\DoxyCodeLine{00222\ \textcolor{stringliteral}{\ \ \ \ boxes:\ [boxes\_count,\ (x1,\ y1,\ x2,\ y2)] }}
+\DoxyCodeLine{00223\ \textcolor{stringliteral}{\ \ \ \ box\_area:\ float.\ the\ area\ of\ 'box' }}
+\DoxyCodeLine{00224\ \textcolor{stringliteral}{\ \ \ \ boxes\_area:\ array\ of\ length\ boxes\_count. }}
+\DoxyCodeLine{00225\ \textcolor{stringliteral}{\ \ \ \ ratio:\ ratio\ (width,\ height)\ to\ scale\ boxes\ from\ video\ resolution\ to\ analysis\ resolution }}
+\DoxyCodeLine{00226\ \textcolor{stringliteral}{ }}
+\DoxyCodeLine{00227\ \textcolor{stringliteral}{\ \ \ \ Note:\ the\ areas\ are\ passed\ in\ rather\ than\ calculated\ here\ for }}
+\DoxyCodeLine{00228\ \textcolor{stringliteral}{\ \ \ \ efficiency.\ Calculate\ once\ in\ the\ caller\ to\ avoid\ duplicate\ work. }}
+\DoxyCodeLine{00229\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}} }
+\DoxyCodeLine{00230\  }
+\DoxyCodeLine{00231\ \ \ \ \ area\ =\ (box[0]\ -\/\ box[2])\ *\ (box[1]\ -\/\ box[3])\ \textcolor{comment}{\#\ SOMETHING\ IS\ WRONG\ WITH\ BOX.\ GOOD\ NIGHT! }}
+\DoxyCodeLine{00232\  }
+\DoxyCodeLine{00233\ \ \ \ \ ious\ =\ [] }
+\DoxyCodeLine{00234\ \ \ \ \ \textcolor{keywordflow}{for}\ index,\ preds\ \textcolor{keywordflow}{in}\ enumerate(boxes): }
+\DoxyCodeLine{00235\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00236\  }
+\DoxyCodeLine{00237\ \ \ \ \ \ \ \ \ x1\ =\ int(preds[0]*ratios[0]) }
+\DoxyCodeLine{00238\ \ \ \ \ \ \ \ \ y1\ =\ int(preds[1]*ratios[1]) }
+\DoxyCodeLine{00239\ \ \ \ \ \ \ \ \ x2\ =\ int(preds[2]*ratios[0]) }
+\DoxyCodeLine{00240\ \ \ \ \ \ \ \ \ y2\ =\ int(preds[3]*ratios[1]) }
+\DoxyCodeLine{00241\  }
+\DoxyCodeLine{00242\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ frame\ \textcolor{keywordflow}{is}\ \textcolor{keywordflow}{not}\ \textcolor{keywordtype}{None}: }
+\DoxyCodeLine{00243\ \ \ \ \ \ \ \ \ \ \ \ \ cv2.rectangle(frame,\ (x1,y1),\ (x2,y2),\ (150,150,0),\ 1) }
+\DoxyCodeLine{00244\  }
+\DoxyCodeLine{00245\ \ \ \ \ \ \ \ \ xA\ =\ max(box[0],\ x1) }
+\DoxyCodeLine{00246\ \ \ \ \ \ \ \ \ yA\ =\ max(box[1],\ y1) }
+\DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ xB\ =\ min(box[2],\ x2) }
+\DoxyCodeLine{00248\ \ \ \ \ \ \ \ \ yB\ =\ min(box[3],\ y2) }
+\DoxyCodeLine{00249\  }
+\DoxyCodeLine{00250\ \ \ \ \ \ \ \ \ interArea\ =\ max(0,\ xB\ -\/\ xA\ +\ 1)\ *\ max(0,\ yB\ -\/\ yA\ +\ 1) }
+\DoxyCodeLine{00251\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00252\ \ \ \ \ \ \ \ \ boxBArea\ =\ (x2\ -\/\ x1\ +\ 1)\ *\ (y2\ -\/\ y1\ +\ 1) }
+\DoxyCodeLine{00253\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print(box\_area,\ boxBArea) }}
+\DoxyCodeLine{00254\ \ \ \ \ \ \ \ \ iou\ =\ interArea\ /\ float(area\ +\ boxBArea\ -\/\ interArea) }
+\DoxyCodeLine{00255\ \ \ \ \ \ \ \ \ ious.append(iou) }
+\DoxyCodeLine{00256\  }
+\DoxyCodeLine{00257\ \ \ \ \ \textcolor{keywordflow}{return}\ ious,\ frame }
+\DoxyCodeLine{00258\  }
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{a00116_ae32a3727b50b69250039ac78b4caee4a}{People\+Tracker.\+src.\+maskrcnn.\+load\+\_\+predicted()}}, and \mbox{\hyperlink{a00116_a4cbb6a9a10db87b4ce62c46b5bffcc0c}{People\+Tracker.\+src.\+maskrcnn.\+predict()}}.
+
+Here is the call graph for this function\+:

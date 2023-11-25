@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_people_tracker_1_1src_1_1_video_1_1_file_video_stream" xml:lang="en-US">
+<title>PeopleTracker.src.Video.FileVideoStream Class Reference</title>
+<indexterm><primary>PeopleTracker.src.Video.FileVideoStream</primary></indexterm>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1_video_1_1_file_video_stream_1a7ad1bec55f616e555159aa6602848ab8"/><emphasis role="strong">__init__</emphasis> (self, path, transform=None, queue_size=200)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1_video_1_1_file_video_stream_1aa315b1b5b07e39aa95c19ed3a843834e"/><emphasis role="strong">set_next_frame</emphasis> (self, frame_num)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1_video_1_1_file_video_stream_1aee8a41ec79cbd8b0eb9a8f97041bf663"/><emphasis role="strong">start</emphasis> (self)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1_video_1_1_file_video_stream_1a6d87417b2c0f07f69c592616b1d23b84"/><emphasis role="strong">update</emphasis> (self)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1_video_1_1_file_video_stream_1ac0af089c20decf0ad86ad76f29f79c9e"/><emphasis role="strong">read</emphasis> (self)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1_video_1_1_file_video_stream_1adf76df4e1902b07b6fc01c0e2549bd80"/><emphasis role="strong">running</emphasis> (self)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1_video_1_1_file_video_stream_1ac1fad3eb223b415116c8c5e20c222ec1"/><emphasis role="strong">more</emphasis> (self)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1_video_1_1_file_video_stream_1a3b60bc5d485e7067a5b9ee16e3ef0b0e"/><emphasis role="strong">stop</emphasis> (self)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1_video_1_1_file_video_stream_1aa297db610b73ecc1d20d2303e240f9bc"/><emphasis role="strong">frame_number</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1_video_1_1_file_video_stream_1a33c0ac0b8c4eacce8c4126230616aa76"/><emphasis role="strong">skip_value</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1_video_1_1_file_video_stream_1a4fe0a47e3ae7f362fcd38118b510f2d4"/><emphasis role="strong">next</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1_video_1_1_file_video_stream_1af39ad92f397a539a94733c1b262428ac"/><emphasis role="strong">reset</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1_video_1_1_file_video_stream_1a82db96694516d08319c1d4198bc0afb5"/><emphasis role="strong">stream</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1_video_1_1_file_video_stream_1a471508487988139f2f73220f73dbf536"/><emphasis role="strong">stopped</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1_video_1_1_file_video_stream_1adc6c7985e4c7967ad3531762bb8fb17b"/><emphasis role="strong">grabbed</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1_video_1_1_file_video_stream_1aec9f537bdacb37d473a016c0e2c58081"/><emphasis role="strong">transform</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1_video_1_1_file_video_stream_1ad162588e8397c9ae4fd4faafdc75c1fb"/><emphasis role="strong">record_live</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1_video_1_1_file_video_stream_1a4678593b0aa77bb3ff0ea78cfef530df"/><emphasis role="strong">Q</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1_video_1_1_file_video_stream_1ab722c914475cbc3af1113969b5efb592"/><emphasis role="strong">thread</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<para>
+The documentation for this class was generated from the following file:</para>
+K:/Github/PeopleTracker/src/Video.py</section>

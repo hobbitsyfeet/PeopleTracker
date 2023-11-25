@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_people_tracker_1_1src_1_1tracker__to___d_l_c_1_1_converter" xml:lang="en-US">
+<title>PeopleTracker.src.tracker_to_DLC.Converter Class Reference</title>
+<indexterm><primary>PeopleTracker.src.tracker_to_DLC.Converter</primary></indexterm>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1tracker__to___d_l_c_1_1_converter_1ae1736e771e9a56b248f1a6a614ee5d21"/><emphasis role="strong">__init__</emphasis> (self, author=&quot;Justin&quot;)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1tracker__to___d_l_c_1_1_converter_1ab18ac6d53ad0b98e3fa506a71ef756d3"/><emphasis role="strong">extract_frames_from_video</emphasis> (self, frame_numbers, video_path)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1tracker__to___d_l_c_1_1_converter_1af3a417eecd72a6509ab85f20651e0d4c"/><emphasis role="strong">create_h5</emphasis> (self, file_path)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1tracker__to___d_l_c_1_1_converter_1aadb4796dcc8c15dd56c48889214e2121"/><emphasis role="strong">read_tracker_csv</emphasis> (self, file_path)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1tracker__to___d_l_c_1_1_converter_1a07420d585945908c5c8a0861cbb01854"/><emphasis role="strong">extract_tracker_info</emphasis> (self, tracker_dataframe)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1tracker__to___d_l_c_1_1_converter_1a9b26d9d60f303a58a1f5162642208648"/><emphasis role="strong">create_dataframe</emphasis> (author, frames, individuals, parts)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1tracker__to___d_l_c_1_1_converter_1af32f0320f4cf5897e4b6a7379e3ffda3"/><emphasis role="strong">read_dlc_csv</emphasis> (self, file_path)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1tracker__to___d_l_c_1_1_converter_1a813f99ae6908e01c6fd1909da14d56bb"/><emphasis role="strong">convert_tracker_to_dlc</emphasis> (self, tracker_dataframe)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1tracker__to___d_l_c_1_1_converter_1a7af6ef377038f8c3e0588f0b65f76341"/><emphasis role="strong">convert_dlc_to_tracker</emphasis> (self, dataframe)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1tracker__to___d_l_c_1_1_converter_1a37f3fdabd60ad5a0d2974998cb22b2be"/><emphasis role="strong">export_dlc</emphasis> (self, dataframe)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<para>
+The documentation for this class was generated from the following file:</para>
+K:/Github/PeopleTracker/src/tracker_to_DLC.py</section>

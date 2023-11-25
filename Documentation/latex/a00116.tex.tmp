@@ -1,0 +1,513 @@
+\doxysection{People\+Tracker.\+src.\+maskrcnn Namespace Reference}
+\hypertarget{a00116}{}\label{a00116}\index{PeopleTracker.src.maskrcnn@{PeopleTracker.src.maskrcnn}}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{a00116_ae32a3727b50b69250039ac78b4caee4a}{load\+\_\+predicted}} (pred\+\_\+file)
+\item 
+\mbox{\hyperlink{a00116_a03f6fe4d9bbee897063978337e9cd9a0}{display\+\_\+preds}} (frame, frame\+\_\+num, pred\+\_\+dict, ratios)
+\item 
+\mbox{\hyperlink{a00116_a4cbb6a9a10db87b4ce62c46b5bffcc0c}{predict}} (filename, model="{}mask\+\_\+rcnn\+\_\+coco\+\_\+person.\+h5"{}, class\+\_\+names=\mbox{[}"{}BG"{}, "{}person"{}\mbox{]}, step=10, display=False, progress=None, logger=None)
+\item 
+\mbox{\hyperlink{a00116_aefe4910f9b13d6dc5aa01aed6fe9ca03}{compute\+\_\+iou}} (box, boxes, boxes\+\_\+area, ratios=(1, 1), frame=None)
+\item 
+\mbox{\hyperlink{a00116_aa0c142fb5afc1ae318dc502af91a540b}{track\+\_\+predictions}} (pred\+\_\+dict, video, method=0, id\+\_\+prefix="{}P"{}, Kalman\+Filter=\mbox{\hyperlink{a00158}{Kalman\+Pred}}(), ratios=(1, 1), buffer=10, preview=True)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{a00116_a30c78ae0b25849d49a056285653ea0e3}\label{a00116_a30c78ae0b25849d49a056285653ea0e3} 
+int {\bfseries NEAREST\+\_\+\+CENTROID} = 0
+\item 
+\Hypertarget{a00116_a0f2cabf6dd4272a8993ea400f5d0d30b}\label{a00116_a0f2cabf6dd4272a8993ea400f5d0d30b} 
+int {\bfseries NEAREST\+\_\+\+CORNERS} = 1
+\item 
+\Hypertarget{a00116_a92f13f78da34ccf9e0d46b7b3912be63}\label{a00116_a92f13f78da34ccf9e0d46b7b3912be63} 
+int {\bfseries NEAREST\+\_\+\+BOX} = 2
+\item 
+\Hypertarget{a00116_ab83feb172000c1b3ec597f1ab94d41dd}\label{a00116_ab83feb172000c1b3ec597f1ab94d41dd} 
+int {\bfseries NEAREST\+\_\+\+KALMAN\+\_\+\+CENTROID} = 3
+\item 
+\Hypertarget{a00116_a98af76c7cd25d1a0c14616e75a018add}\label{a00116_a98af76c7cd25d1a0c14616e75a018add} 
+int {\bfseries NEAREST\+\_\+\+KALMAN\+\_\+\+CORNERS} = 4
+\item 
+\Hypertarget{a00116_ae7d70370796c3d825d9cfd0e827ca3ce}\label{a00116_ae7d70370796c3d825d9cfd0e827ca3ce} 
+int {\bfseries NEAREST\+\_\+\+KALMAN} = 5
+\item 
+\Hypertarget{a00116_a4f0dca78b998ba41b1799a11f1287c87}\label{a00116_a4f0dca78b998ba41b1799a11f1287c87} 
+{\bfseries display}
+\item 
+\Hypertarget{a00116_a643a20c0c59588a0f741a6095e2025fd}\label{a00116_a643a20c0c59588a0f741a6095e2025fd} 
+{\bfseries True}
+\item 
+\Hypertarget{a00116_ae5f3bfeb7e3cb5c8bc769d5504ebeeae}\label{a00116_ae5f3bfeb7e3cb5c8bc769d5504ebeeae} 
+{\bfseries step}
+\item 
+\Hypertarget{a00116_a5d4df015ded6ab94baaedec41c0143d4}\label{a00116_a5d4df015ded6ab94baaedec41c0143d4} 
+{\bfseries pred\+\_\+dict} = \mbox{\hyperlink{a00116_ae32a3727b50b69250039ac78b4caee4a}{load\+\_\+predicted}}("{}K\+:/Github/People\+Tracker/videos/(Simple) GP014125\+\_\+predict.\+csv"{})
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Model from: https://github.com/Superlee506/Mask_RCNN_Humanpose
+
+Cuda Version 10.1
+CUDNN Version
+                         # tensorflow==2.4.0 (Could be wrong??? just use GPU)d
+Tensorflow version 2.3.0 # tensorflow-gpu==2.3.0
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{a00116_aefe4910f9b13d6dc5aa01aed6fe9ca03}\label{a00116_aefe4910f9b13d6dc5aa01aed6fe9ca03} 
+\index{PeopleTracker.src.maskrcnn@{PeopleTracker.src.maskrcnn}!compute\_iou@{compute\_iou}}
+\index{compute\_iou@{compute\_iou}!PeopleTracker.src.maskrcnn@{PeopleTracker.src.maskrcnn}}
+\doxysubsubsection{\texorpdfstring{compute\_iou()}{compute\_iou()}}
+{\footnotesize\ttfamily compute\+\_\+iou (\begin{DoxyParamCaption}\item[{}]{box,  }\item[{}]{boxes,  }\item[{}]{boxes\+\_\+area,  }\item[{}]{ratios = {\ttfamily (1,1)},  }\item[{}]{frame = {\ttfamily None} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Calculates IoU of the given box with the array of the given boxes.
+box: 1D vector [x1, y1, x2, y2]
+boxes: [boxes_count, (x1, y1, x2, y2)]
+box_area: float. the area of 'box'
+boxes_area: array of length boxes_count.
+ratio: ratio (width, height) to scale boxes from video resolution to analysis resolution
+
+Note: the areas are passed in rather than calculated here for
+efficiency. Calculate once in the caller to avoid duplicate work.
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00219\ \textcolor{keyword}{def\ }compute\_iou(box,\ boxes,\ boxes\_area,\ ratios=(1,1),\ frame=\textcolor{keywordtype}{None}): }
+\DoxyCodeLine{00220\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Calculates\ IoU\ of\ the\ given\ box\ with\ the\ array\ of\ the\ given\ boxes. }}
+\DoxyCodeLine{00221\ \textcolor{stringliteral}{\ \ \ \ box:\ 1D\ vector\ [x1,\ y1,\ x2,\ y2] }}
+\DoxyCodeLine{00222\ \textcolor{stringliteral}{\ \ \ \ boxes:\ [boxes\_count,\ (x1,\ y1,\ x2,\ y2)] }}
+\DoxyCodeLine{00223\ \textcolor{stringliteral}{\ \ \ \ box\_area:\ float.\ the\ area\ of\ 'box' }}
+\DoxyCodeLine{00224\ \textcolor{stringliteral}{\ \ \ \ boxes\_area:\ array\ of\ length\ boxes\_count. }}
+\DoxyCodeLine{00225\ \textcolor{stringliteral}{\ \ \ \ ratio:\ ratio\ (width,\ height)\ to\ scale\ boxes\ from\ video\ resolution\ to\ analysis\ resolution }}
+\DoxyCodeLine{00226\ \textcolor{stringliteral}{ }}
+\DoxyCodeLine{00227\ \textcolor{stringliteral}{\ \ \ \ Note:\ the\ areas\ are\ passed\ in\ rather\ than\ calculated\ here\ for }}
+\DoxyCodeLine{00228\ \textcolor{stringliteral}{\ \ \ \ efficiency.\ Calculate\ once\ in\ the\ caller\ to\ avoid\ duplicate\ work. }}
+\DoxyCodeLine{00229\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}} }
+\DoxyCodeLine{00230\  }
+\DoxyCodeLine{00231\ \ \ \ \ area\ =\ (box[0]\ -\/\ box[2])\ *\ (box[1]\ -\/\ box[3])\ \textcolor{comment}{\#\ SOMETHING\ IS\ WRONG\ WITH\ BOX.\ GOOD\ NIGHT! }}
+\DoxyCodeLine{00232\  }
+\DoxyCodeLine{00233\ \ \ \ \ ious\ =\ [] }
+\DoxyCodeLine{00234\ \ \ \ \ \textcolor{keywordflow}{for}\ index,\ preds\ \textcolor{keywordflow}{in}\ enumerate(boxes): }
+\DoxyCodeLine{00235\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00236\  }
+\DoxyCodeLine{00237\ \ \ \ \ \ \ \ \ x1\ =\ int(preds[0]*ratios[0]) }
+\DoxyCodeLine{00238\ \ \ \ \ \ \ \ \ y1\ =\ int(preds[1]*ratios[1]) }
+\DoxyCodeLine{00239\ \ \ \ \ \ \ \ \ x2\ =\ int(preds[2]*ratios[0]) }
+\DoxyCodeLine{00240\ \ \ \ \ \ \ \ \ y2\ =\ int(preds[3]*ratios[1]) }
+\DoxyCodeLine{00241\  }
+\DoxyCodeLine{00242\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ frame\ \textcolor{keywordflow}{is}\ \textcolor{keywordflow}{not}\ \textcolor{keywordtype}{None}: }
+\DoxyCodeLine{00243\ \ \ \ \ \ \ \ \ \ \ \ \ cv2.rectangle(frame,\ (x1,y1),\ (x2,y2),\ (150,150,0),\ 1) }
+\DoxyCodeLine{00244\  }
+\DoxyCodeLine{00245\ \ \ \ \ \ \ \ \ xA\ =\ max(box[0],\ x1) }
+\DoxyCodeLine{00246\ \ \ \ \ \ \ \ \ yA\ =\ max(box[1],\ y1) }
+\DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ xB\ =\ min(box[2],\ x2) }
+\DoxyCodeLine{00248\ \ \ \ \ \ \ \ \ yB\ =\ min(box[3],\ y2) }
+\DoxyCodeLine{00249\  }
+\DoxyCodeLine{00250\ \ \ \ \ \ \ \ \ interArea\ =\ max(0,\ xB\ -\/\ xA\ +\ 1)\ *\ max(0,\ yB\ -\/\ yA\ +\ 1) }
+\DoxyCodeLine{00251\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00252\ \ \ \ \ \ \ \ \ boxBArea\ =\ (x2\ -\/\ x1\ +\ 1)\ *\ (y2\ -\/\ y1\ +\ 1) }
+\DoxyCodeLine{00253\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print(box\_area,\ boxBArea) }}
+\DoxyCodeLine{00254\ \ \ \ \ \ \ \ \ iou\ =\ interArea\ /\ float(area\ +\ boxBArea\ -\/\ interArea) }
+\DoxyCodeLine{00255\ \ \ \ \ \ \ \ \ ious.append(iou) }
+\DoxyCodeLine{00256\  }
+\DoxyCodeLine{00257\ \ \ \ \ \textcolor{keywordflow}{return}\ ious,\ frame }
+\DoxyCodeLine{00258\  }
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{a00116_ae32a3727b50b69250039ac78b4caee4a}{People\+Tracker.\+src.\+maskrcnn.\+load\+\_\+predicted()}}, and \mbox{\hyperlink{a00116_a4cbb6a9a10db87b4ce62c46b5bffcc0c}{People\+Tracker.\+src.\+maskrcnn.\+predict()}}.
+
+Here is the call graph for this function\+:
+% FIG 0
+\Hypertarget{a00116_a03f6fe4d9bbee897063978337e9cd9a0}\label{a00116_a03f6fe4d9bbee897063978337e9cd9a0} 
+\index{PeopleTracker.src.maskrcnn@{PeopleTracker.src.maskrcnn}!display\_preds@{display\_preds}}
+\index{display\_preds@{display\_preds}!PeopleTracker.src.maskrcnn@{PeopleTracker.src.maskrcnn}}
+\doxysubsubsection{\texorpdfstring{display\_preds()}{display\_preds()}}
+{\footnotesize\ttfamily display\+\_\+preds (\begin{DoxyParamCaption}\item[{}]{frame,  }\item[{}]{frame\+\_\+num,  }\item[{}]{pred\+\_\+dict,  }\item[{}]{ratios }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Displays the prediction
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00074\ \textcolor{keyword}{def\ }display\_preds(frame,\ frame\_num,\ pred\_dict,\ ratios): }
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{} }}
+\DoxyCodeLine{00076\ \textcolor{stringliteral}{\ \ \ \ Displays\ the\ prediction }}
+\DoxyCodeLine{00077\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}} }
+\DoxyCodeLine{00078\  }
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordflow}{if}\ frame\_num\ \textcolor{keywordflow}{in}\ pred\_dict.keys(): }
+\DoxyCodeLine{00080\ \ \ \ \  }
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ boxes\ =\ pred\_dict[frame\_num][0] }
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print("{}RATIOS"{},\ ratios) }}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ box\ \textcolor{keywordflow}{in}\ boxes: }
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ box: }
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ x1\ =\ box[0] }
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ y1\ =\ box[1] }
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ x2\ =\ box[2] }
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ y2\ =\ box[3] }
+\DoxyCodeLine{00089\  }
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ p1\ =\ (int(x1*ratios[0]),\ int(y1*ratios[1])) }
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ p2\ =\ (int(x2*ratios[0]),\ int(y2*ratios[1])) }
+\DoxyCodeLine{00092\  }
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print(p1,p2) }}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ frame\ =\ cv2.rectangle(frame,\ p1,\ p2,\ (0,\ 255,\ 0),\ 1) }
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ frame\ =\ cv2.putText(frame,(str(int(x1*ratios[0])))\ +\ \textcolor{stringliteral}{"{},"{}}\ +\ str(int(y1*ratios[1]))\ ,\ p1,\ 5,\ 0.5,\ (0,0,0)) }
+\DoxyCodeLine{00096\  }
+\DoxyCodeLine{00097\ \ \ \ \ \textcolor{keywordflow}{return}\ frame }
+\DoxyCodeLine{00098\  }
+
+\end{DoxyCode}
+\Hypertarget{a00116_ae32a3727b50b69250039ac78b4caee4a}\label{a00116_ae32a3727b50b69250039ac78b4caee4a} 
+\index{PeopleTracker.src.maskrcnn@{PeopleTracker.src.maskrcnn}!load\_predicted@{load\_predicted}}
+\index{load\_predicted@{load\_predicted}!PeopleTracker.src.maskrcnn@{PeopleTracker.src.maskrcnn}}
+\doxysubsubsection{\texorpdfstring{load\_predicted()}{load\_predicted()}}
+{\footnotesize\ttfamily load\+\_\+predicted (\begin{DoxyParamCaption}\item[{}]{pred\+\_\+file }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Loads predicted data into a variable for later use.
+Pred_dict[frame_number] = Lost of boxes
+
+A box is described by:
+x = box[0],
+y = box[1],
+width = box[2],
+height = box[3]
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00025\ \textcolor{keyword}{def\ }load\_predicted(pred\_file): }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{} }}
+\DoxyCodeLine{00027\ \textcolor{stringliteral}{\ \ \ \ Loads\ predicted\ data\ into\ a\ variable\ for\ later\ use. }}
+\DoxyCodeLine{00028\ \textcolor{stringliteral}{\ \ \ \ Pred\_dict[frame\_number]\ =\ Lost\ of\ boxes }}
+\DoxyCodeLine{00029\ \textcolor{stringliteral}{ }}
+\DoxyCodeLine{00030\ \textcolor{stringliteral}{\ \ \ \ A\ box\ is\ described\ by: }}
+\DoxyCodeLine{00031\ \textcolor{stringliteral}{\ \ \ \ x\ =\ box[0], }}
+\DoxyCodeLine{00032\ \textcolor{stringliteral}{\ \ \ \ y\ =\ box[1], }}
+\DoxyCodeLine{00033\ \textcolor{stringliteral}{\ \ \ \ width\ =\ box[2], }}
+\DoxyCodeLine{00034\ \textcolor{stringliteral}{\ \ \ \ height\ =\ box[3] }}
+\DoxyCodeLine{00035\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}} }
+\DoxyCodeLine{00036\ \ \ \ \ preds\ =\ pd.read\_csv(pred\_file) }
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{comment}{\#\ print(preds) }}
+\DoxyCodeLine{00038\  }
+\DoxyCodeLine{00039\ \ \ \ \ frames\ =\ preds.iloc[:,0].tolist() }
+\DoxyCodeLine{00040\ \ \ \ \ rois\ =\ preds.iloc[:,1].tolist() }
+\DoxyCodeLine{00041\  }
+\DoxyCodeLine{00042\ \ \ \ \ pred\_dict\ =\ \{\} }
+\DoxyCodeLine{00043\ \ \ \ \ }
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordflow}{for}\ i,\ roi\ \textcolor{keywordflow}{in}\ enumerate(rois): }
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ roi\_list\ =\ roi.split(\textcolor{stringliteral}{"{}\(\backslash\)n"{}}) }
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ box\_list\ =\ [] }
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ box\_areas\ =\ [] }
+\DoxyCodeLine{00048\  }
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#Parse\ the\ string\ saved\ in\ csv\ into\ a\ list }}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ box\ \textcolor{keywordflow}{in}\ roi\_list: }
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ box\ =\ box.replace(\textcolor{stringliteral}{"{}["{}},\ \textcolor{stringliteral}{"{}"{}}) }
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ box\ =\ box.replace(\textcolor{stringliteral}{"{}]"{}},\ \textcolor{stringliteral}{"{}"{}}) }
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ box\ =\ box.split() }
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ box\ =\ tuple(map(int,\ box)) }
+\DoxyCodeLine{00055\  }
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ area\ =\ 0 }
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ box: }
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ y1\ =\ box[0] }
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ x1\ =\ box[1] }
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ y2\ =\ box[2] }
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ x2\ =\ box[3] }
+\DoxyCodeLine{00063\  }
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ box\ =\ (x1,y1,x2,y2) }
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ area\ =\ (box[0]\ -\/\ box[2])\ *\ (box[1]\ -\/\ box[3]) }
+\DoxyCodeLine{00066\  }
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ box\_areas.append(area) }
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ box\_list.append(box) }
+\DoxyCodeLine{00069\  }
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ pred\_dict[frames[i]]\ =\ (box\_list,\ box\_areas) }
+\DoxyCodeLine{00071\  }
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keywordflow}{return}\ pred\_dict }
+\DoxyCodeLine{00073\  }
+
+\end{DoxyCode}
+
+
+Referenced by \mbox{\hyperlink{a00116_aefe4910f9b13d6dc5aa01aed6fe9ca03}{People\+Tracker.\+src.\+maskrcnn.\+compute\+\_\+iou()}}.
+
+Here is the caller graph for this function\+:
+% FIG 1
+\Hypertarget{a00116_a4cbb6a9a10db87b4ce62c46b5bffcc0c}\label{a00116_a4cbb6a9a10db87b4ce62c46b5bffcc0c} 
+\index{PeopleTracker.src.maskrcnn@{PeopleTracker.src.maskrcnn}!predict@{predict}}
+\index{predict@{predict}!PeopleTracker.src.maskrcnn@{PeopleTracker.src.maskrcnn}}
+\doxysubsubsection{\texorpdfstring{predict()}{predict()}}
+{\footnotesize\ttfamily predict (\begin{DoxyParamCaption}\item[{}]{filename,  }\item[{}]{model = {\ttfamily "{}mask\+\_\+rcnn\+\_\+coco\+\_\+person.h5"{}},  }\item[{}]{class\+\_\+names = {\ttfamily \mbox{[}"{}BG"{},~"{}person"{}\mbox{]}},  }\item[{}]{step = {\ttfamily 10},  }\item[{}]{display = {\ttfamily False},  }\item[{}]{progress = {\ttfamily None},  }\item[{}]{logger = {\ttfamily None} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Uses MaskRCNN COCO models and uses them to predict items on the image.
+Steps indicate how frequently the model should predict on the video (default every 10 frames)
+Display shows predictions visually
+Progress is a QProgressDialog for the application
+Logger is a logger which both displays info and records it for crashlogger
+
+Exports results into filename_predict.csv
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00099\ \textcolor{keyword}{def\ }predict(filename,\ model="{}mask\_rcnn\_coco\_person.h5"{},\ class\_names=["{}BG"{},\ "{}person"{}],\ step=10,\ display=False,\ progress=None,\ logger=None): }
+\DoxyCodeLine{00100\ \ \ \ \ \textcolor{stringliteral}{''' }}
+\DoxyCodeLine{00101\ \textcolor{stringliteral}{\ \ \ \ Uses\ MaskRCNN\ COCO\ models\ and\ uses\ them\ to\ predict\ items\ on\ the\ image. }}
+\DoxyCodeLine{00102\ \textcolor{stringliteral}{\ \ \ \ Steps\ indicate\ how\ frequently\ the\ model\ should\ predict\ on\ the\ video\ (default\ every\ 10\ frames) }}
+\DoxyCodeLine{00103\ \textcolor{stringliteral}{\ \ \ \ Display\ shows\ predictions\ visually }}
+\DoxyCodeLine{00104\ \textcolor{stringliteral}{\ \ \ \ Progress\ is\ a\ QProgressDialog\ for\ the\ application }}
+\DoxyCodeLine{00105\ \textcolor{stringliteral}{\ \ \ \ Logger\ is\ a\ logger\ which\ both\ displays\ info\ and\ records\ it\ for\ crashlogger }}
+\DoxyCodeLine{00106\ \textcolor{stringliteral}{ }}
+\DoxyCodeLine{00107\ \textcolor{stringliteral}{\ \ \ \ Exports\ results\ into\ filename\_predict.csv }}
+\DoxyCodeLine{00108\ \textcolor{stringliteral}{\ \ \ \ '''} }
+\DoxyCodeLine{00109\ \ \ \ \ \textcolor{keyword}{from}\ pixellib.instance\ \textcolor{keyword}{import}\ custom\_segmentation }
+\DoxyCodeLine{00110\ \ \ \ \ \textcolor{keyword}{import}\ tensorflow\ \textcolor{keyword}{as}\ tf }
+\DoxyCodeLine{00111\ \ \ \ \ print(\textcolor{stringliteral}{"{}Using\ Tensorflow:\ "{}},\ tf.\ \_\_version\_\_)\  }
+\DoxyCodeLine{00112\  }
+\DoxyCodeLine{00113\ \ \ \ \ gpus\ =\ tf.config.experimental.list\_physical\_devices(\textcolor{stringliteral}{'GPU'}) }
+\DoxyCodeLine{00114\ \ \ \ \ \textcolor{keywordflow}{if}\ gpus: }
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}: }
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ gpu\ \textcolor{keywordflow}{in}\ gpus: }
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ tf.config.experimental.set\_memory\_growth(gpu,\ \textcolor{keyword}{True}) }
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{except}\ RuntimeError\ \textcolor{keyword}{as}\ e: }
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ print(e) }
+\DoxyCodeLine{00120\  }
+\DoxyCodeLine{00121\ \ \ \ \ class\_name\ =\ model.split(\textcolor{stringliteral}{'\_'})[-\/1]\ \textcolor{comment}{\#CLASSNAME.h5 }}
+\DoxyCodeLine{00122\ \ \ \ \ class\_name\ =\ class\_name.split(\textcolor{stringliteral}{'.'})[0]\ \textcolor{comment}{\#CLASSNAME }}
+\DoxyCodeLine{00123\ \ \ \ \ class\_names\ =\ [\textcolor{stringliteral}{"{}BG"{}},\ class\_name] }
+\DoxyCodeLine{00124\ \ \ \ \ print(class\_name) }
+\DoxyCodeLine{00125\ \ \ \ \ \textcolor{comment}{\#loads\ models }}
+\DoxyCodeLine{00126\ \ \ \ \ custom\_model\ =\ custom\_segmentation() }
+\DoxyCodeLine{00127\ \ \ \ \ custom\_model.inferConfig(num\_classes=\ 1,\ class\_names=class\_names) }
+\DoxyCodeLine{00128\ \ \ \ \ custom\_model.load\_model(model) }
+\DoxyCodeLine{00129\  }
+\DoxyCodeLine{00130\ \ \ \ \ \textcolor{comment}{\#loads\ videos }}
+\DoxyCodeLine{00131\ \ \ \ \ cap\ =\ cv2.VideoCapture(filename) }
+\DoxyCodeLine{00132\ \ \ \ \ vid\_length\ =\ int(cap.get(cv2.CAP\_PROP\_FRAME\_COUNT)) }
+\DoxyCodeLine{00133\  }
+\DoxyCodeLine{00134\ \ \ \ \ \textcolor{comment}{\#init\ lists\ for\ temp\ storage }}
+\DoxyCodeLine{00135\ \ \ \ \ roi\_list\ =\ [] }
+\DoxyCodeLine{00136\ \ \ \ \ frame\_list\ =\ [] }
+\DoxyCodeLine{00137\ \ \ \ \ score\_list\ =\ [] }
+\DoxyCodeLine{00138\ \ \ \ \  }
+\DoxyCodeLine{00139\ \ \ \ \ time\_queue\ =\ [] }
+\DoxyCodeLine{00140\ \ \ \ \ fps\_list\ =\ [] }
+\DoxyCodeLine{00141\ \ \ \ \ print(vid\_length) }
+\DoxyCodeLine{00142\ \ \ \ \ \textcolor{comment}{\#iterate\ through\ the\ video\ by\ said\ steps }}
+\DoxyCodeLine{00143\ \ \ \ \ \textcolor{keywordflow}{for}\ frame\_num\ \textcolor{keywordflow}{in}\ range(0,\ vid\_length,\ step): }
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ start\ =\ timeit.default\_timer() }
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#set\ frame\ number\ to\ i }}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ cap.set(cv2.CAP\_PROP\_POS\_FRAMES,\ frame\_num) }
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ ret,\ frame\ =\ cap.read()\  }
+\DoxyCodeLine{00149\  }
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ret: }
+\DoxyCodeLine{00151\  }
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00153\  }
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ progress\ ==\ \textcolor{keyword}{True}: }
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{"{}Progress:"{}}\ +\ str(frame\_num/vid\_length),\ end=\textcolor{stringliteral}{"{}\(\backslash\)r"{}}) }
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{elif}\ progress\ \textcolor{keywordflow}{is}\ \textcolor{keywordflow}{not}\ \textcolor{keywordtype}{None}: }
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ progress.wasCanceled(): }
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keywordtype}{None},\ \textcolor{keywordtype}{None},\ \textcolor{keywordtype}{None} }
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ frame\_num\ ==\ 0: }
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ progress.setLabelText(\textcolor{stringliteral}{"{}Predict\ people\ location\ progress"{}}) }
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ progress.setRange(0,vid\_length) }
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ progress.setValue(frame\_num) }
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ QtCore.QCoreApplication.processEvents() }
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#Segment\ the\ image }}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \ \ \ \ segmask,\ frame\ =\ custom\_model.segmentFrame(frame,\ \textcolor{keyword}{True}) }
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ train\_dataset\_keypoints\ =\ coco.CocoDataset(task\_type="{}person\_keypoints"{}) }}
+\DoxyCodeLine{00169\  }
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#Place\ data\ in\ lists\ for\ easy\ export }}
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \ \ \ \ roi\_list.append(segmask[\textcolor{stringliteral}{'rois'}]) }
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \ \ \ \ score\_list.append(segmask[\textcolor{stringliteral}{'scores'}]) }
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print(segmask['person\_keypoints']) }}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \ \ \ \ frame\_list.append(frame\_num) }
+\DoxyCodeLine{00175\  }
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ display: }
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cv2.imshow(\textcolor{stringliteral}{"{}Predictions"{}},\ frame) }
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ key\ =\ cv2.waitKey(1)\ \&\ 0xFF }
+\DoxyCodeLine{00179\  }
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \ \ \ \ stop\ =\ timeit.default\_timer() }
+\DoxyCodeLine{00181\  }
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ len(time\_queue)\ ==\ 60: }
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ time\_queue.pop() }
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \ \ \ \ fps\ =\ 1/(stop\ -\/\ start) }
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \ \ \ \ fps\_list.append(fps) }
+\DoxyCodeLine{00187\  }
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \ \ \ \ time\_queue.append(fps) }
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{'FPS:'},\ fps) }
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \ \ \ \ fps\ =\ sum(time\_queue)\ /\ len(time\_queue) }
+\DoxyCodeLine{00191\  }
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ logger\ \textcolor{keywordflow}{is}\ \textcolor{keywordflow}{not}\ \textcolor{keywordtype}{None}: }
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ eta\ =\ ((vid\_length-\/frame\_num)/(step*fps)) }
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printstr\ =\ \textcolor{stringliteral}{"{}Predicting\ frame\ "{}}\ +\ str(frame\_num)\ +\ \textcolor{stringliteral}{"{}/"{}}\ +\ str(vid\_length)\ +\ \textcolor{stringliteral}{"{}\ \(\backslash\)npeople:\ "{}}+\ str(len(segmask[\textcolor{stringliteral}{'rois'}]))\ +\ \textcolor{stringliteral}{"{}\ \(\backslash\)nETA:\ "{}}\ +\ time.strftime(\textcolor{stringliteral}{'\%H:\%M:\%S'},\ time.gmtime(eta)) }
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ logger(printstr) }
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ progress.setLabelText(\textcolor{stringliteral}{"{}Predict\ people\ location\ progress\ \(\backslash\)n\(\backslash\)n"{}}\ +\ printstr) }
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ frame\_num\ +\ step\ ==\ vid\_length: }
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ logger(\textcolor{stringliteral}{"{}Predicting\ Complete."{}}) }
+\DoxyCodeLine{00199\ \ \ \ \  }
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}: }
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{"{}Predicting\ frame\ "{}}\ +\ str(frame\_num)\ +\ \textcolor{stringliteral}{"{}/"{}}\ +\ str(vid\_length)\ +\ \textcolor{stringliteral}{"{}\ people:"{}}+\ str(len(segmask[\textcolor{stringliteral}{'rois'}]))) }
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ eta\ =\ ((vid\_length-\/frame\_num)/(step*fps))\  }
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{"{}ETA:"{}},\ time.strftime(\textcolor{stringliteral}{'\%H:\%M:\%S'},\ time.gmtime(eta))) }
+\DoxyCodeLine{00204\  }
+\DoxyCodeLine{00205\ \ \ \ \ end\_time\ =\ time.time() }
+\DoxyCodeLine{00206\ \ \ \ \ \textcolor{comment}{\#create\ dataframe }}
+\DoxyCodeLine{00207\ \ \ \ \ data\ =\ \{ }
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Frame\_Num"{}}:frame\_list, }
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Region\_of\_interest"{}}:roi\_list, }
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Scores"{}}:score\_list, }
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Predict\_Duration"{}}:fps\_list }
+\DoxyCodeLine{00212\ \ \ \ \ \} }
+\DoxyCodeLine{00213\  }
+\DoxyCodeLine{00214\ \ \ \ \ \textcolor{comment}{\#export\ dataframe }}
+\DoxyCodeLine{00215\ \ \ \ \ df\ =\ pd.DataFrame(data) }
+\DoxyCodeLine{00216\ \ \ \ \ export\_csv\ =\ df.to\_csv((filename[:-\/4]\ +\ \textcolor{stringliteral}{"{}\_predict.csv"{}}),\ index\ =\ \textcolor{keywordtype}{None},\ header=\textcolor{keyword}{True})\ \textcolor{comment}{\#Don't\ forget\ to\ add\ '.csv'\ at\ the\ end\ of\ the\ path }}
+\DoxyCodeLine{00217\ \ \ \ \ \textcolor{keywordflow}{return}\ frame\_list,\ roi\_list,\ score\_list }
+\DoxyCodeLine{00218\  }
+
+\end{DoxyCode}
+
+
+Referenced by \mbox{\hyperlink{a00116_aefe4910f9b13d6dc5aa01aed6fe9ca03}{People\+Tracker.\+src.\+maskrcnn.\+compute\+\_\+iou()}}.
+
+Here is the caller graph for this function\+:
+% FIG 2
+\Hypertarget{a00116_aa0c142fb5afc1ae318dc502af91a540b}\label{a00116_aa0c142fb5afc1ae318dc502af91a540b} 
+\index{PeopleTracker.src.maskrcnn@{PeopleTracker.src.maskrcnn}!track\_predictions@{track\_predictions}}
+\index{track\_predictions@{track\_predictions}!PeopleTracker.src.maskrcnn@{PeopleTracker.src.maskrcnn}}
+\doxysubsubsection{\texorpdfstring{track\_predictions()}{track\_predictions()}}
+{\footnotesize\ttfamily track\+\_\+predictions (\begin{DoxyParamCaption}\item[{}]{pred\+\_\+dict,  }\item[{}]{video,  }\item[{}]{method = {\ttfamily 0},  }\item[{}]{id\+\_\+prefix = {\ttfamily "{}P"{}},  }\item[{}]{Kalman\+Filter = {\ttfamily \mbox{\hyperlink{a00158}{Kalman\+Pred}}()},  }\item[{}]{ratios = {\ttfamily (1,1)},  }\item[{}]{buffer = {\ttfamily 10},  }\item[{}]{preview = {\ttfamily True} }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00259\ \textcolor{keyword}{def\ }track\_predictions(pred\_dict,\ video,\ method\ =\ 0,\ id\_prefix="{}P"{},\ KalmanFilter=KalmanPred(),\ ratios=(1,1),\ buffer=10,\ preview=\textcolor{keyword}{True}): }
+\DoxyCodeLine{00260\ \ \ \ \  }
+\DoxyCodeLine{00261\ \ \ \ \ \textcolor{comment}{\#\ pred\_track\_dict\ =\ \{\} }}
+\DoxyCodeLine{00262\  }
+\DoxyCodeLine{00263\ \ \ \ \ Frames\ =\ [] }
+\DoxyCodeLine{00264\ \ \ \ \ Name\ =\ [] }
+\DoxyCodeLine{00265\ \ \ \ \ Id\ =\ [] }
+\DoxyCodeLine{00266\ \ \ \ \ Pixel\_Loc\_x\ =\ [] }
+\DoxyCodeLine{00267\ \ \ \ \ Pixel\_Loc\_y\ =\ [] }
+\DoxyCodeLine{00268\ \ \ \ \ BBox\_TopLeft\_x\ =\ [] }
+\DoxyCodeLine{00269\ \ \ \ \ BBox\_TopLeft\_y\ =\ [] }
+\DoxyCodeLine{00270\ \ \ \ \ BBox\_BottomRight\_x\ =\ [] }
+\DoxyCodeLine{00271\ \ \ \ \ BBox\_BottomRight\_y\ =\ [] }
+\DoxyCodeLine{00272\ \ \ \ \ FrameRate\ =\ [] }
+\DoxyCodeLine{00273\ \ \ \ \ Max\_Pixel\_X\ =\ [] }
+\DoxyCodeLine{00274\ \ \ \ \ Max\_Pixel\_Y\ =\ [] }
+\DoxyCodeLine{00275\ \ \ \ \  }
+\DoxyCodeLine{00276\ \ \ \ \  }
+\DoxyCodeLine{00277\  }
+\DoxyCodeLine{00278\ \ \ \ \ ct\ =\ CentroidTracker(buffer) }
+\DoxyCodeLine{00279\ \ \ \ \ \textcolor{comment}{\#\ ct\ =\ NewCentroidTracker(buffer,\ KalmanFilter) }}
+\DoxyCodeLine{00280\  }
+\DoxyCodeLine{00281\ \ \ \ \ cap\ =\ cv2.VideoCapture(video) }
+\DoxyCodeLine{00282\ \ \ \ \ cv2.startWindowThread() }
+\DoxyCodeLine{00283\ \ \ \ \ export\ =\ video[:-\/3] }
+\DoxyCodeLine{00284\ \ \ \ \ vid\_length\ =\ int(cap.get(cv2.CAP\_PROP\_FRAME\_COUNT)) }
+\DoxyCodeLine{00285\  }
+\DoxyCodeLine{00286\  }
+\DoxyCodeLine{00287\ \ \ \ \ \textcolor{keywordflow}{for}\ frame\_num\ \textcolor{keywordflow}{in}\ pred\_dict.keys(): }
+\DoxyCodeLine{00288\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print(frame\_num) }}
+\DoxyCodeLine{00289\ \ \ \ \ \ \ \ \ cap.set(cv2.CAP\_PROP\_POS\_FRAMES,\ frame\_num) }
+\DoxyCodeLine{00290\ \ \ \ \ \ \ \ \ ret,\ frame\ =\ cap.read()\  }
+\DoxyCodeLine{00291\ \ \ \ \ \ \ \ \ boxes\ =\ pred\_dict[frame\_num][0] }
+\DoxyCodeLine{00292\  }
+\DoxyCodeLine{00293\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ show\ the\ frame\ and\ don't\ do\ anything\ if\ there\ are\ no\ predictions }}
+\DoxyCodeLine{00294\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ boxes\ ==\ [()]: }
+\DoxyCodeLine{00295\ \ \ \ \ \ \ \ \ \ \ \ \ cv2.imshow(\textcolor{stringliteral}{"{}IDs"{}},\ frame) }
+\DoxyCodeLine{00296\ \ \ \ \ \ \ \ \ \ \ \ \ key\ =\ cv2.waitKey(1) }
+\DoxyCodeLine{00297\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ key\ ==\ ord(\textcolor{stringliteral}{'q'}): }
+\DoxyCodeLine{00298\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{"{}QUITTING"{}}) }
+\DoxyCodeLine{00299\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cv2.destroyWindow(\textcolor{stringliteral}{"{}IDs"{}}) }
+\DoxyCodeLine{00300\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break} }
+\DoxyCodeLine{00301\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue} }
+\DoxyCodeLine{00302\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ rects\ =\ [] }}
+\DoxyCodeLine{00303\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00304\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ loop\ over\ the\ detections }}
+\DoxyCodeLine{00305\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ for\ i\ in\ range(0,\ boxes.shape[2]): }}
+\DoxyCodeLine{00306\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ filter\ out\ weak\ detections\ by\ ensuring\ the\ predicted }}
+\DoxyCodeLine{00307\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ probability\ is\ greater\ than\ a\ minimum\ threshold }}
+\DoxyCodeLine{00308\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ if\ boxes[0,\ 0,\ i,\ 2]\ >\ args["{}confidence"{}]: }}
+\DoxyCodeLine{00309\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ \ \ \ \ \#\ compute\ the\ (x,\ y)-\/coordinates\ of\ the\ bounding\ box\ for }}
+\DoxyCodeLine{00310\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ \ \ \ \ \#\ the\ object,\ then\ update\ the\ bounding\ box\ rectangles\ list }}
+\DoxyCodeLine{00311\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ \ \ \ \ box\ =\ boxes[0,\ 0,\ i,\ 3:7]\ *\ np.array([W,\ H,\ W,\ H]) }}
+\DoxyCodeLine{00312\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ \ \ \ \ rects.append(box.astype("{}int"{})) }}
+\DoxyCodeLine{00313\  }
+\DoxyCodeLine{00314\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ \ \ \ \ \#\ draw\ a\ bounding\ box\ surrounding\ the\ object\ so\ we\ can }}
+\DoxyCodeLine{00315\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ \ \ \ \ \#\ visualize\ it }}
+\DoxyCodeLine{00316\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ \ \ \ \ (startX,\ startY,\ endX,\ endY)\ =\ box.astype("{}int"{}) }}
+\DoxyCodeLine{00317\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ \ \ \ \ cv2.rectangle(frame,\ (startX,\ startY),\ (endX,\ endY), }}
+\DoxyCodeLine{00318\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ (0,\ 255,\ 0),\ 2) }}
+\DoxyCodeLine{00319\  }
+\DoxyCodeLine{00320\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ update\ our\ centroid\ tracker\ using\ the\ computed\ set\ of\ bounding }}
+\DoxyCodeLine{00321\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ box\ rectangles }}
+\DoxyCodeLine{00322\ \ \ \ \ \ \ \ \ objects\ =\ ct.update(boxes) }
+\DoxyCodeLine{00323\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print(objects) }}
+\DoxyCodeLine{00324\  }
+\DoxyCodeLine{00325\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ track\_object\ =\ boxe }}
+\DoxyCodeLine{00326\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ if\ preview: }}
+\DoxyCodeLine{00327\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ index\ =\ 0 }}
+\DoxyCodeLine{00328\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print("{}BOXES\ LENGTH"{},\ boxes,\ len(boxes)) }}
+\DoxyCodeLine{00329\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ loop\ over\ the\ tracked\ objects }}
+\DoxyCodeLine{00330\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print(len(objects)) }}
+\DoxyCodeLine{00331\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ ObjectId\ \textcolor{keywordflow}{in}\ objects.keys(): }
+\DoxyCodeLine{00332\ \ \ \ \ \ \ \ \ \ \ \ \ data\ =\ objects[ObjectId] }
+\DoxyCodeLine{00333\ \ \ \ \ \ \ \ \ \ \ \ \ centroid\ =\ data[0] }
+\DoxyCodeLine{00334\ \ \ \ \ \ \ \ \ \ \ \ \ box\ =\ data[1] }
+\DoxyCodeLine{00335\  }
+\DoxyCodeLine{00336\ \ \ \ \ \ \ \ \ \ \ \ \ x1\ =\ int(box[0]*ratios[0]) }
+\DoxyCodeLine{00337\ \ \ \ \ \ \ \ \ \ \ \ \ y1\ =\ int(box[1]*ratios[1]) }
+\DoxyCodeLine{00338\ \ \ \ \ \ \ \ \ \ \ \ \ x2\ =\ int(box[2]*ratios[0]) }
+\DoxyCodeLine{00339\ \ \ \ \ \ \ \ \ \ \ \ \ y2\ =\ int(box[3]*ratios[1]) }
+\DoxyCodeLine{00340\ \ \ \ \ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00341\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ draw\ both\ the\ ID\ of\ the\ object\ and\ the\ centroid\ of\ the }}
+\DoxyCodeLine{00342\ \ \ \ \ \ \ \ \ \ \ \ \ Frames.append(frame\_num) }
+\DoxyCodeLine{00343\ \ \ \ \ \ \ \ \ \ \ \ \ Name.append(ObjectId) }
+\DoxyCodeLine{00344\ \ \ \ \ \ \ \ \ \ \ \ \ Id.append(ObjectId) }
+\DoxyCodeLine{00345\ \ \ \ \ \ \ \ \ \ \ \ \ Pixel\_Loc\_x.append(centroid[0]) }
+\DoxyCodeLine{00346\ \ \ \ \ \ \ \ \ \ \ \ \ Pixel\_Loc\_y.append(centroid[1]) }
+\DoxyCodeLine{00347\ \ \ \ \ \ \ \ \ \ \ \ \ BBox\_TopLeft\_x.append(x1) }
+\DoxyCodeLine{00348\ \ \ \ \ \ \ \ \ \ \ \ \ BBox\_TopLeft\_y.append(cap.get(cv2.CAP\_PROP\_FRAME\_HEIGHT)\ -\/\ y1) }
+\DoxyCodeLine{00349\ \ \ \ \ \ \ \ \ \ \ \ \ BBox\_BottomRight\_x.append(x2) }
+\DoxyCodeLine{00350\ \ \ \ \ \ \ \ \ \ \ \ \ BBox\_BottomRight\_y.append(cap.get(cv2.CAP\_PROP\_FRAME\_HEIGHT)\ -\/\ y2) }
+\DoxyCodeLine{00351\ \ \ \ \ \ \ \ \ \ \ \ \ FrameRate.append(cap.get(cv2.CAP\_PROP\_FPS)) }
+\DoxyCodeLine{00352\ \ \ \ \ \ \ \ \ \ \ \ \ Max\_Pixel\_X.append(cap.get(cv2.CAP\_PROP\_FRAME\_WIDTH)) }
+\DoxyCodeLine{00353\ \ \ \ \ \ \ \ \ \ \ \ \ Max\_Pixel\_Y.append(cap.get(cv2.CAP\_PROP\_FRAME\_HEIGHT)) }
+\DoxyCodeLine{00354\  }
+\DoxyCodeLine{00355\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ preview: }
+\DoxyCodeLine{00356\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ object\ on\ the\ output\ frame }}
+\DoxyCodeLine{00357\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ text\ =\ \textcolor{stringliteral}{"{}ID\ \{\}"{}}.format(ObjectId) }
+\DoxyCodeLine{00358\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cv2.putText(frame,\ text,\ (centroid[0]\ -\/\ 10,\ centroid[1]\ -\/\ 10), }
+\DoxyCodeLine{00359\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cv2.FONT\_HERSHEY\_SIMPLEX,\ 0.5,\ (0,\ 255,\ 0),\ 2) }
+\DoxyCodeLine{00360\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cv2.circle(frame,\ (centroid[0],\ centroid[1]),\ 4,\ (0,\ 255,\ 0),\ -\/1) }
+\DoxyCodeLine{00361\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cv2.rectangle(frame,\ (x1,y1),\ (x2,y2),\ (150,150,0),\ 1) }
+\DoxyCodeLine{00362\  }
+\DoxyCodeLine{00363\ \ \ \ \ \ \ \ \ cv2.imshow(\textcolor{stringliteral}{"{}IDs"{}},\ frame) }
+\DoxyCodeLine{00364\ \ \ \ \ \ \ \ \ key\ =\ cv2.waitKey(1) }
+\DoxyCodeLine{00365\  }
+\DoxyCodeLine{00366\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ key\ ==\ ord(\textcolor{stringliteral}{'q'}): }
+\DoxyCodeLine{00367\ \ \ \ \ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{"{}QUITTING"{}}) }
+\DoxyCodeLine{00368\ \ \ \ \ \ \ \ \ \ \ \ \ cv2.destroyWindow(\textcolor{stringliteral}{"{}IDs"{}}) }
+\DoxyCodeLine{00369\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break} }
+\DoxyCodeLine{00370\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00371\ \ \ \ \ \ \ \ \ predicted\_ids\ =\ \{\textcolor{stringliteral}{"{}Frame\_Num"{}}:\ Frames,\ \textcolor{stringliteral}{"{}Name"{}}:Name,\ \textcolor{stringliteral}{"{}ID"{}}:Id,\ \textcolor{stringliteral}{"{}Pixel\_Loc\_x"{}}:Pixel\_Loc\_x,\ \textcolor{stringliteral}{"{}Pixel\_Loc\_y"{}}:Pixel\_Loc\_y,\  }
+\DoxyCodeLine{00372\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}BBox\_TopLeft\_x"{}}:BBox\_TopLeft\_x,\ \textcolor{stringliteral}{"{}BBox\_TopLeft\_y"{}}:BBox\_TopLeft\_y,\  }
+\DoxyCodeLine{00373\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}BBox\_BottomRight\_x"{}}:BBox\_BottomRight\_x,\textcolor{stringliteral}{"{}BBox\_BottomRight\_y"{}}:BBox\_BottomRight\_y,\  }
+\DoxyCodeLine{00374\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}FrameRate"{}}:FrameRate,\ \textcolor{stringliteral}{"{}Max\_Pixel\_x"{}}:Max\_Pixel\_X,\ \textcolor{stringliteral}{"{}Max\_Pixel\_y"{}}:Max\_Pixel\_Y }
+\DoxyCodeLine{00375\ \ \ \ \ \ \ \ \ \} }
+\DoxyCodeLine{00376\ \ \ \ \ \ \ \ \ output\_dict\ =\ pd.DataFrame(predicted\_ids) }
+\DoxyCodeLine{00377\  }
+\DoxyCodeLine{00378\ \ \ \ \ \textcolor{keywordflow}{return}\ output\_dict }
+\DoxyCodeLine{00379\  }
+
+\end{DoxyCode}

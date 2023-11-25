@@ -1,0 +1,103 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_image___enhancement" xml:lang="en-US">
+<title>PeopleTracker.src.qt_dialog.Image_Enhancement Class Reference</title>
+<indexterm><primary>PeopleTracker.src.qt_dialog.Image_Enhancement</primary></indexterm>
+<para>Inheritance diagram for PeopleTracker.src.qt_dialog.Image_Enhancement:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_people_tracker_1_1src_1_1qt__dialog_1_1_image___enhancement.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_image___enhancement_1ab3e1db590f985223ab230d7d8cbbfc5c"/><emphasis role="strong">__init__</emphasis> (self)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_image___enhancement_1a7dcc962ef4a54c4045b445c4ca691812"/><emphasis role="strong">reset_default</emphasis> (self)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_image___enhancement_1aa0bdde382367aa2dbe860a60f28894f7"/><emphasis role="strong">update_brightness</emphasis> (self)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_image___enhancement_1a0432969aec536368352a83c5cd73043f"/><emphasis role="strong">update_gamma</emphasis> (self)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_image___enhancement_1abae97d6f026b59ac02b81b845f6db015"/><emphasis role="strong">update_alpha</emphasis> (self)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_image___enhancement_1a97822954aa4e6dfa8f7e7d7ab834c840"/><emphasis role="strong">update_beta</emphasis> (self)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_image___enhancement_1ab5b95d7f162a80fea454dc59e5d8a614"/><emphasis role="strong">toggle_equalize_hist</emphasis> (self)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_image___enhancement_1acf5af632c47769e70e6ee2cfb0fd625f"/><emphasis role="strong">toggle_chahe_hist</emphasis> (self)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_image___enhancement_1aa4c7ef5590276afb6f47e7a35490f8ed"/><emphasis role="strong">get_equalize_hist</emphasis> (self)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_image___enhancement_1ae515917f45f3c0336f262d44174b259a"/><emphasis role="strong">get_equalize_clahe_hist</emphasis> (self)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_image___enhancement_1ada118376a583f76fb93a3de291137614"/><emphasis role="strong">get_alpha</emphasis> (self)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_image___enhancement_1adc977579e6083ef81c74c118c90073ad"/><emphasis role="strong">get_beta</emphasis> (self)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_image___enhancement_1aa8933865b6870c5390cac53f80521729"/><emphasis role="strong">get_gamma</emphasis> (self)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_image___enhancement_1ab707aea4ccad124f2a95ee7121bf0917"/><emphasis role="strong">set_normalized_region</emphasis> (self, image)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_image___enhancement_1a4cf18b7e23c09039b7eedbdb18a15790"/><emphasis role="strong">clear_normalized_region</emphasis> (self)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_image___enhancement_1af5b5e18c2f44c44b32db3ceced497782"/><emphasis role="strong">set_normalize_flag</emphasis> (self)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_image___enhancement_1af2b1ac01c05a628459e861d1489b6326"/><emphasis role="strong">enhance_normalized_roi</emphasis> (self, image)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_image___enhancement_1a74f4695d55b5ecbbe53bc67f128dc415"/><emphasis role="strong">add_brightness</emphasis> (self, image)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_image___enhancement_1a3a3616a05ebeca915863a46143be1ea7"/><emphasis role="strong">enhance_brightness_contrast</emphasis> (self, image)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_image___enhancement_1a0c62adc83c89db5fb941af510a3467c0"/><emphasis role="strong">enhance_gamma</emphasis> (self, image)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_image___enhancement_1a4376580bf74c82b8e16a7375108514d9"/><emphasis role="strong">equalize_hist</emphasis> (self, image)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_image___enhancement_1a213e7331208da8f64f7dc6b303d16f60"/><emphasis role="strong">equalize_clahe_hist</emphasis> (self, image)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_image___enhancement_1ae38a3dcdfccebb7c742c53f11d3daeb1"/><emphasis role="strong">auto_enhance</emphasis> (self, image)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_image___enhancement_1acc77f513be00d7ba918ad0f70dc7ec5a"/><emphasis role="strong">label</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_image___enhancement_1a9b17546f917cbfda479fd5a894e004f8"/><emphasis role="strong">alpha</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_image___enhancement_1a2ef41d07bb152717a0812b391904295a"/><emphasis role="strong">alpha_label</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_image___enhancement_1a86236995c686829b9ef8c15e2f6dc5d1"/><emphasis role="strong">beta</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_image___enhancement_1a7546b7705fdfb2350cd373a39670df4e"/><emphasis role="strong">beta_label</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_image___enhancement_1ae5f826e978252719089c05dffb08d2e3"/><emphasis role="strong">gamma</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_image___enhancement_1add2ee22c112ed9c552d155c39c272779"/><emphasis role="strong">gamma_label</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_image___enhancement_1a0e187dd0b601f5278842c52c2073bb7f"/><emphasis role="strong">roi_normalize</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_image___enhancement_1afda22201d66365ed50022f599ab6e0fe"/><emphasis role="strong">roi_normalize_region</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_image___enhancement_1a699ec77f10b6aa208034c4e73d669541"/><emphasis role="strong">roi_normalize_flag</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_image___enhancement_1a4b935d29e8776cecea29a4af6da9f716"/><emphasis role="strong">reset_button</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_image___enhancement_1ab91b1ff57f08c32db63f350b83616a41"/><emphasis role="strong">equalize_hist_button</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_image___enhancement_1afc6c0e3ad26fdf3310cb0a2a244d3fc0"/><emphasis role="strong">equalize_chahe_hist_button</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para><literallayout><computeroutput>UI for setting Mask-RCNN IOU options
+</computeroutput></literallayout> </para>
+<para>
+The documentation for this class was generated from the following file:</para>
+K:/Github/PeopleTracker/src/qt_dialog.py</section>
+</section>

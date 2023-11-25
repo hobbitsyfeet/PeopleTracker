@@ -1,0 +1,1530 @@
+\doxysection{Multi\+Tracker}
+\hypertarget{a00170}{}\label{a00170}\index{MultiTracker@{MultiTracker}}
+
+
+The {\ttfamily Multi\+Tracker} class is a Python class that represents a multi-\/object tracker and contains various attributes and methods for tracking objects.  
+
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{a00170_ac39fc27cf5dca4f121f266ded2703139}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, tab, \mbox{\hyperlink{a00170_aa68e842dd7ce4ebaf9792928e4a990f0}{colour}}=(255, 255, 255))
+\item 
+\mbox{\hyperlink{a00170_a8a92426fb647398a121bd81d0089fdb6}{grab\+\_\+cut}} (self, frame, rect, export\+\_\+path=None)
+\begin{DoxyCompactList}\small\item\em Open\+CV\textquotesingle{}s Grabcut on tracker\textquotesingle{}s position. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{a00170_aabaffb95c249830a116841bf61391260}{get\+\_\+name}} (self)
+\begin{DoxyCompactList}\small\item\em Name of tracker. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{a00170_a7609c3353cf9cae9dc2a8586dd279714}{get\+\_\+id}} (self)
+\begin{DoxyCompactList}\small\item\em Tracker ID. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{a00170_ae2ad7793b357e7cf1d7bc5cbf84e232b}{get\+\_\+sex}} (self)
+\begin{DoxyCompactList}\small\item\em Tacker sex. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{a00170_a7d8d84d2c3fe1d8eb34a746bca6a96a7}{get\+\_\+description}} (self)
+\begin{DoxyCompactList}\small\item\em Tracker description. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{a00170_a8bd0afd34e91523b1ec2ba0d089b6f61}{get\+\_\+group}} (self)
+\begin{DoxyCompactList}\small\item\em Tracker\textquotesingle{}s group size. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{a00170_a6a54b87590251552d1e772115c06e8da}{get\+\_\+time\+\_\+tracked}} (self, framerate)
+\begin{DoxyCompactList}\small\item\em Time tracker has been tracking relative to the video. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{a00170_ac92d67bb1b34c653fee8f01623e43961}{create}} (self, tracker\+\_\+type=\textquotesingle{}CSRT\textquotesingle{})
+\begin{DoxyCompactList}\small\item\em Creates base cv2.\+Tracker. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{a00170_a3d008e6708e5c73dbaa4a10911242c39}{rename}} (self, \mbox{\hyperlink{a00170_ab74e6bf80237ddc4109968cedc58c151}{name}})
+\begin{DoxyCompactList}\small\item\em UNUSED renames tracker. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{a00170_aa68c45271f7626e0ba47085f9986db6f}{set\+\_\+colour}} (self, color=(255, 255, 255))
+\begin{DoxyCompactList}\small\item\em UNUSED sets tracker\textquotesingle{}s box colour. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{a00170_a04b3bf097ca43c583401eb0c5e143722}{assign}} (self, frame, tracker\+\_\+type="{}CSRT"{})
+\begin{DoxyCompactList}\small\item\em Creates bounding box of tracker (user draws the box) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{a00170_aee841491689eb14e8fc68b2e6a2ec1dc}{auto\+\_\+assign}} (self, frame, bounding\+\_\+box=None, xywh=None, tracker\+\_\+type="{}CSRT"{})
+\item 
+\mbox{\hyperlink{a00170_a5fc89aec3f0789c6b4d9c05d84fee19f}{update\+\_\+tracker}} (self, frame)
+\item 
+\mbox{\hyperlink{a00170_ac34c9500441edbf10681a188c7712d5a}{draw\+\_\+tracker}} (self, frame, \mbox{\hyperlink{a00170_a4485d04ca451246b6a81dd2799f83906}{box}}, opacity=0.\+5, \mbox{\hyperlink{a00170_ab74e6bf80237ddc4109968cedc58c151}{name}}=True)
+\item 
+\mbox{\hyperlink{a00170_a4d7cd1c2c34050e73a70d90207ed2a67}{remove}} (self)
+\item 
+\mbox{\hyperlink{a00170_acea06c482b1d7423a17fcdd29e972cf9}{predict}} (self)
+\item 
+\mbox{\hyperlink{a00170_aedf26e27b8737b40f42c9b616187d1fc}{record\+\_\+data}} (self, frame, total\+\_\+people, x=-\/1, y=-\/1, w=-\/1, h=-\/1, regions=\mbox{[}$\,$\mbox{]}, other\+\_\+room=False, image\+\_\+frame=None)
+\item 
+\mbox{\hyperlink{a00170_a760a93329c38cda0044c70388ef7e4c6}{run\+\_\+bayes\+\_\+model}} (self, new\+\_\+img, whole\+\_\+image)
+\begin{DoxyCompactList}\small\item\em Do not use. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{a00170_a87bb6edea4c04d04d566dee8d2b1ccb8}{append\+\_\+data}} (self, dataframe)
+\begin{DoxyCompactList}\small\item\em NOT IMPLEMENTED. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{a00170_aa871b1fc9de77b6f599d27bd2f027335}{export\+\_\+data}} (self, vid\+\_\+width, vid\+\_\+height, vid\+\_\+name, fps, new\+\_\+version=None)
+\begin{DoxyCompactList}\small\item\em Exports tracked data into csv of the given name and directory of the video. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{a00170_a4f8720eb13443ee8e6f9828088f33d8d}{evaluate\+\_\+data}} (self)
+\begin{DoxyCompactList}\small\item\em NOT USED. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{a00170_a895029f64bcc7eae2e6e6ffc466ba368}{merge\+\_\+intervals}} (self, total\+\_\+segments)
+\begin{DoxyCompactList}\small\item\em Merges a list of integer segments of beginning/end time into one interval that contains the first and last values of all segments. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{a00170_aac82437aaf543e6e298cfbdd4eb231ab}{part\+\_\+time\+\_\+to\+\_\+segments}} (self, \mbox{\hyperlink{a00170_ad4ec6605a05cefe926cb451501389828}{time\+\_\+data}}, segment\+\_\+size=300)
+\begin{DoxyCompactList}\small\item\em splits the time into beginning/end intervals given segment size as the largest absent gap \end{DoxyCompactList}\item 
+\mbox{\hyperlink{a00170_aa48ecd689e42ef1a3b068ef0dbde290c}{estimate\+\_\+distance}} (self, size)
+\begin{DoxyCompactList}\small\item\em NOT IMPLEMENTED. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{a00170_a42f8bac5c348259ab3bf3e1255dba41f}{calculate\+\_\+time}} (self, frame\+\_\+start, frame\+\_\+end, fps=30)
+\begin{DoxyCompactList}\small\item\em Calclulates time between two frames at a given framerate. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{a00170_a291e78f1e4bc543e8b599dfa574867ed}{calculate\+\_\+total\+\_\+time}} (self, total\+\_\+frames, fps=30, segmented=True)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{a00170_ab74e6bf80237ddc4109968cedc58c151}\label{a00170_ab74e6bf80237ddc4109968cedc58c151} 
+{\bfseries name}
+\begin{DoxyCompactList}\small\item\em Recorded name is grabbed from tab\textquotesingle{}s name line text box. \end{DoxyCompactList}\item 
+\Hypertarget{a00170_ac47ca0713353d3fc9435a4f208f6b9a3}\label{a00170_ac47ca0713353d3fc9435a4f208f6b9a3} 
+{\bfseries pid}
+\begin{DoxyCompactList}\small\item\em Recorded id is grabbed from tab\textquotesingle{}s id line text box. \end{DoxyCompactList}\item 
+\Hypertarget{a00170_aa68e842dd7ce4ebaf9792928e4a990f0}\label{a00170_aa68e842dd7ce4ebaf9792928e4a990f0} 
+{\bfseries colour}
+\begin{DoxyCompactList}\small\item\em (int, int, int) colour of the tracking box (not used) (rgb) \end{DoxyCompactList}\item 
+\Hypertarget{a00170_ac419529d8eb4ccb715f990951ff0c6a6}\label{a00170_ac419529d8eb4ccb715f990951ff0c6a6} 
+{\bfseries distance\+\_\+data}
+\begin{DoxyCompactList}\small\item\em (CLOSE, MED, FAR) (estimated) \end{DoxyCompactList}\item 
+\Hypertarget{a00170_ad4ec6605a05cefe926cb451501389828}\label{a00170_ad4ec6605a05cefe926cb451501389828} 
+{\bfseries time\+\_\+data}
+\begin{DoxyCompactList}\small\item\em frames tracked, the list structure is used to define the amount of time in the scene. \end{DoxyCompactList}\item 
+\Hypertarget{a00170_ac65effccfc0953d28e2002eb1514588d}\label{a00170_ac65effccfc0953d28e2002eb1514588d} 
+{\bfseries data\+\_\+dict}
+\begin{DoxyCompactList}\small\item\em Recorded data will be stored in this dictionary for every recorded frame for every tracker. \end{DoxyCompactList}\item 
+\Hypertarget{a00170_ad117a7f922403f76104a8c676add0b49}\label{a00170_ad117a7f922403f76104a8c676add0b49} 
+{\bfseries previous\+\_\+time}
+\begin{DoxyCompactList}\small\item\em Initial previous time, used for time\+\_\+data. \end{DoxyCompactList}\item 
+\Hypertarget{a00170_aa4826dcd193b4161365d7457e67da538}\label{a00170_aa4826dcd193b4161365d7457e67da538} 
+{\bfseries sex}
+\begin{DoxyCompactList}\small\item\em STRING\+: gender applied if known, grabbed from tab. \end{DoxyCompactList}\item 
+\Hypertarget{a00170_a0f9123af540f084d1c0421dccc31e1dd}\label{a00170_a0f9123af540f084d1c0421dccc31e1dd} 
+{\bfseries group}
+\begin{DoxyCompactList}\small\item\em INT\+: group is the number of trackers that arrive in the same group. \end{DoxyCompactList}\item 
+\Hypertarget{a00170_a2661f439a4a94ffdcd5e47ae1da0bb1d}\label{a00170_a2661f439a4a94ffdcd5e47ae1da0bb1d} 
+{\bfseries description}
+\begin{DoxyCompactList}\small\item\em STRING description of the individual. \end{DoxyCompactList}\item 
+\Hypertarget{a00170_aacff28242695dbd46d90369a16b897cf}\label{a00170_aacff28242695dbd46d90369a16b897cf} 
+{\bfseries beginning}
+\begin{DoxyCompactList}\small\item\em TRUE/\+FALSE values defining if tracker is there in the beginning of the video. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{a00170_a0686bbc59790c76a5c88fd659f3d41f2}{is\+\_\+region}}
+\begin{DoxyCompactList}\small\item\em A Region is an area that will flag true if other trackers are in it\textquotesingle{}s proximity. \end{DoxyCompactList}\item 
+\Hypertarget{a00170_ad0b00fb012ef6a4b573198952a6d5e94}\label{a00170_ad0b00fb012ef6a4b573198952a6d5e94} 
+{\bfseries is\+\_\+chair}
+\begin{DoxyCompactList}\small\item\em Returns TRUE/\+FALSE if tracker \textquotesingle{}is\textquotesingle{} a chair (or in one?) \end{DoxyCompactList}\item 
+\Hypertarget{a00170_acff347d6af686435d6684270f3c1d6e9}\label{a00170_acff347d6af686435d6684270f3c1d6e9} 
+{\bfseries read\+\_\+only}
+\begin{DoxyCompactList}\small\item\em Read Only is a TRUE/\+FALSE button that turns off new tracking from being recorded and displays already recorded information. \end{DoxyCompactList}\item 
+\Hypertarget{a00170_acf2488b95c97e0378c9bf49de3b50f28}\label{a00170_acf2488b95c97e0378c9bf49de3b50f28} 
+{\bfseries id}
+\begin{DoxyCompactList}\small\item\em ID is a unique id that differentiates trackers even if individuals have the same name. \end{DoxyCompactList}\item 
+\Hypertarget{a00170_a8e621822ca52c49a640cc9210c5d3b22}\label{a00170_a8e621822ca52c49a640cc9210c5d3b22} 
+{\bfseries record\+\_\+state}
+\begin{DoxyCompactList}\small\item\em TRUE/\+FALSE determines if the data should be recorded into data\+\_\+dict or not. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{a00170_abec0b9ee4648af3b77db73e8070f1736}{tracker}}
+\begin{DoxyCompactList}\small\item\em This will be defined as one of Open\+CV\textquotesingle{}s implemented Trackers. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{a00170_a4db43bc1c94282c2cf64b5b64463f386}{init\+\_\+bounding\+\_\+box}}
+\begin{DoxyCompactList}\small\item\em The initial bounding box is where the tracker will start from. \end{DoxyCompactList}\item 
+\Hypertarget{a00170_a48bcfbb87c0af0d5390626d1ab65ab64}\label{a00170_a48bcfbb87c0af0d5390626d1ab65ab64} 
+{\bfseries reset}
+\begin{DoxyCompactList}\small\item\em resets the tracker and asks for a new init\+\_\+bounding\+\_\+box \end{DoxyCompactList}\item 
+\mbox{\hyperlink{a00170_aae02f440702eae77e02a6a9a503393ac}{auto\+\_\+assign\+\_\+state}}
+\begin{DoxyCompactList}\small\item\em Auto\+Assign is a state flagged to allow the tracker to be re-\/assigned to the closest bounding box created by Mask\+RCNN\textquotesingle{}s predictions. \end{DoxyCompactList}\item 
+\Hypertarget{a00170_a4485d04ca451246b6a81dd2799f83906}\label{a00170_a4485d04ca451246b6a81dd2799f83906} 
+{\bfseries box}
+\begin{DoxyCompactList}\small\item\em The value that stores the current state of tracker\textquotesingle{}s box, the successor values of init\+\_\+bounding\+\_\+box (Extract tracking values from this) \end{DoxyCompactList}\item 
+\Hypertarget{a00170_a7cf5a1a9676a06af18656491dbd71f14}\label{a00170_a7cf5a1a9676a06af18656491dbd71f14} 
+{\bfseries predictor}
+\begin{DoxyCompactList}\small\item\em The center predictor created by Kalman\+Filter (Filters.\+py) (center arrow) \end{DoxyCompactList}\item 
+\Hypertarget{a00170_ac27edf896139b80e85b4cf0942fc2765}\label{a00170_ac27edf896139b80e85b4cf0942fc2765} 
+{\bfseries box\+\_\+predictor}
+\begin{DoxyCompactList}\small\item\em One point predictor for two points on box (Top Left, Bottom Right) Creates a prediction box. \end{DoxyCompactList}\item 
+\Hypertarget{a00170_ada2634b8afa1c9b5f65775f0bd02c74c}\label{a00170_ada2634b8afa1c9b5f65775f0bd02c74c} 
+{\bfseries regression}
+\begin{DoxyCompactList}\small\item\em The red line that appears on the screen is a regression prediction of the current path of tracker\textquotesingle{}s center. \end{DoxyCompactList}\item 
+\Hypertarget{a00170_a411436fee77c1b478c7c5a86d5915651}\label{a00170_a411436fee77c1b478c7c5a86d5915651} 
+{\bfseries predicted\+\_\+bbox}
+\begin{DoxyCompactList}\small\item\em Predictions generated by Mask\+RCNN is stored here. \end{DoxyCompactList}\item 
+\Hypertarget{a00170_a61bdb0dbd2fa516a058e74d6d1c5bd83}\label{a00170_a61bdb0dbd2fa516a058e74d6d1c5bd83} 
+{\bfseries predicted\+\_\+centroid}
+\begin{DoxyCompactList}\small\item\em Center of Mask\+RCNN is stored here. \end{DoxyCompactList}\item 
+\Hypertarget{a00170_a28c7eaca506432bf7a7fd5ff59324ada}\label{a00170_a28c7eaca506432bf7a7fd5ff59324ada} 
+{\bfseries bayes\+\_\+model}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The {\ttfamily Multi\+Tracker} class is a Python class that represents a multi-\/object tracker and contains various attributes and methods for tracking objects. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tab} & is a designated tab in the UI which will populate provided values. \\
+\hline
+{\em colour} & is a 255/255/255 RGB value that defines a tracking colour for easy distinction.\\
+\hline
+\end{DoxyParams}
+Many values are retrieved from {\ttfamily tab} defined in Tracker\+Tab.\+py which is generated in qt\+\_\+dialog.\+py\textquotesingle{}s App. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{a00170_ac39fc27cf5dca4f121f266ded2703139}\label{a00170_ac39fc27cf5dca4f121f266ded2703139} 
+\index{MultiTracker@{MultiTracker}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!MultiTracker@{MultiTracker}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily \+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{tab,  }\item[{}]{colour = {\ttfamily (255,255,255)} }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keyword}{def\ }\_\_init\_\_(self,\ tab,\ colour=(255,255,255)):\ \ \ \  }
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ self.name\ =\ tab.name\_line\  }
+\DoxyCodeLine{00064\  }
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ self.pid\ =\ tab.id\_line }
+\DoxyCodeLine{00067\  }
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ self.colour\ =\ colour }
+\DoxyCodeLine{00070\  }
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ self.location\_data\ =\ []\ \#(x,\ y) }}
+\DoxyCodeLine{00072\  }
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ self.distance\_data\ =\ [] }
+\DoxyCodeLine{00075\  }
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ self.time\_data\ =\ [] }
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ self.region\_dict\ =\ dict }}
+\DoxyCodeLine{00079\  }
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ self.data\_dict\ =\ dict()\  }
+\DoxyCodeLine{00082\  }
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ self.previous\_time\ =\ 0\  }
+\DoxyCodeLine{00085\  }
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#Set\ these\ variables\ to\ getter\ functions\ (to\ update\ whenever\ accessed) }}
+\DoxyCodeLine{00087\  }
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ self.sex\ =\ tab.sex\_line\  }
+\DoxyCodeLine{00090\  }
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ self.group\ =\ tab.group\_line\  }
+\DoxyCodeLine{00093\  }
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ self.description\ =\ tab.desc\_line\  }
+\DoxyCodeLine{00096\  }
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ self.beginning\ =\ tab.get\_beginning }
+\DoxyCodeLine{00099\  }
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ self.is\_region\ =\ tab.get\_is\_region\  }
+\DoxyCodeLine{00102\  }
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ self.is\_chair\ =\ tab.get\_is\_chair }
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ self.read\_only\ =\ tab.get\_read\_only\  }
+\DoxyCodeLine{00108\  }
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ self.id\ =\ tab.get\_uuid\  }
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ self.record\_state\ =\ \textcolor{keyword}{False} }
+\DoxyCodeLine{00114\  }
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ self.tracker\ =\ \textcolor{keywordtype}{None}\  }
+\DoxyCodeLine{00117\  }
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ self.init\_bounding\_box\ =\ \textcolor{keywordtype}{None} }
+\DoxyCodeLine{00120\  }
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ self.reset\ =\ \textcolor{keyword}{False}\  }
+\DoxyCodeLine{00123\  }
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ self.state\_tracking\ =\ False\ \#\ UN-\/USED,\ MAYBE\ DELETE }}
+\DoxyCodeLine{00125\  }
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ self.auto\_assign\_state\ =\ \textcolor{keyword}{True}\  }
+\DoxyCodeLine{00128\  }
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ self.box\ =\ \textcolor{keywordtype}{None}\  }
+\DoxyCodeLine{00131\  }
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ self.predictor\ =\ filters.KalmanPred()\  }
+\DoxyCodeLine{00134\  }
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ self.box\_predictor\ =\ (filters.KalmanPred(white=\textcolor{keyword}{True}),\ filters.KalmanPred(white=\textcolor{keyword}{True})) }
+\DoxyCodeLine{00137\  }
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ self.regression\ =\ regression.rolling\_regression(10,\ \textcolor{stringliteral}{"{}Linear"{}})\  }
+\DoxyCodeLine{00140\  }
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ self.predicted\_bbox\ =\ \textcolor{keywordtype}{None} }
+\DoxyCodeLine{00143\  }
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ self.predicted\_centroid\ =\ \textcolor{keywordtype}{None}\  }
+\DoxyCodeLine{00146\  }
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ self.recording\_video\ =\ False\ \#\ Not\ Implemented }}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ self.svm\_model\ =\ None\ \#\ Not\ Implemented }}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ self.bayes\_model\ =\ None\ \#\ Not\ Implemented }}
+\DoxyCodeLine{00151\  }
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ self.self\_aware\_gallery\ =\ []\ \#\ Not\ Implemented }}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ self.normalized\_gallery\ =\ []\ \#\ Not\ Implemented }}
+\DoxyCodeLine{00154\  }
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{a00170_a87bb6edea4c04d04d566dee8d2b1ccb8}\label{a00170_a87bb6edea4c04d04d566dee8d2b1ccb8} 
+\index{MultiTracker@{MultiTracker}!append\_data@{append\_data}}
+\index{append\_data@{append\_data}!MultiTracker@{MultiTracker}}
+\doxysubsubsection{\texorpdfstring{append\_data()}{append\_data()}}
+{\footnotesize\ttfamily append\+\_\+data (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{dataframe }\end{DoxyParamCaption})}
+
+
+
+NOT IMPLEMENTED. 
+
+\begin{DoxyVerb}Appends the data into a given dataframe categoriezed with the name given
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00487\ \ \ \ \ \textcolor{keyword}{def\ }append\_data(self,\ dataframe): }
+\DoxyCodeLine{00488\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{} }}
+\DoxyCodeLine{00489\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Appends\ the\ data\ into\ a\ given\ dataframe\ categoriezed\ with\ the\ name\ given }}
+\DoxyCodeLine{00490\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}} }
+\DoxyCodeLine{00491\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{pass} }
+\DoxyCodeLine{00492\ \ \ \ \  }
+
+\end{DoxyCode}
+\Hypertarget{a00170_a04b3bf097ca43c583401eb0c5e143722}\label{a00170_a04b3bf097ca43c583401eb0c5e143722} 
+\index{MultiTracker@{MultiTracker}!assign@{assign}}
+\index{assign@{assign}!MultiTracker@{MultiTracker}}
+\doxysubsubsection{\texorpdfstring{assign()}{assign()}}
+{\footnotesize\ttfamily assign (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{frame,  }\item[{}]{tracker\+\_\+type = {\ttfamily "{}CSRT"{}} }\end{DoxyParamCaption})}
+
+
+
+Creates bounding box of tracker (user draws the box) 
+
+\begin{DoxyVerb}Assigns the box, name and sex of a tracked person.
+Takes care of reassigning as well.
+
+Leverages cv2.selectROI and creates init_bounding_box value.
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00282\ \ \ \ \ \textcolor{keyword}{def\ }assign(self,\ frame,\ tracker\_type="{}CSRT"{}): }
+\DoxyCodeLine{00283\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{} }}
+\DoxyCodeLine{00284\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Assigns\ the\ box,\ name\ and\ sex\ of\ a\ tracked\ person. }}
+\DoxyCodeLine{00285\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Takes\ care\ of\ reassigning\ as\ well. }}
+\DoxyCodeLine{00286\ \textcolor{stringliteral}{ }}
+\DoxyCodeLine{00287\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Leverages\ cv2.selectROI\ and\ creates\ init\_bounding\_box\ value. }}
+\DoxyCodeLine{00288\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}} }
+\DoxyCodeLine{00289\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ select\ the\ bounding\ box\ of\ the\ object\ we\ want\ to\ track\ (make }}
+\DoxyCodeLine{00290\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ sure\ you\ press\ ENTER\ or\ SPACE\ after\ selecting\ the\ ROI) }}
+\DoxyCodeLine{00291\ \ \ \ \ \ \ \ \ self.init\_bounding\_box\ =\ cv2.selectROI(\textcolor{stringliteral}{"{}Frame"{}},\ frame,\ fromCenter=\textcolor{keyword}{False}, }
+\DoxyCodeLine{00292\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ showCrosshair=\textcolor{keyword}{True}) }
+\DoxyCodeLine{00293\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#if\ not\ selected,\ stop\ until\ it\ is }}
+\DoxyCodeLine{00294\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ while\ self.init\_bounding\_box[0]\ is\ 0\ and\ self.init\_bounding\_box[1]\ is\ 0\ and\ self.init\_bounding\_box[2]\ is\ 0\ and\ self.init\_bounding\_box[3]\ is\ 0: }}
+\DoxyCodeLine{00295\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ while\ self.init\_bounding\_box[2]\ ==\ 0\ or\ self.init\_bounding\_box[3]\ ==\ 0: }}
+\DoxyCodeLine{00296\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ \ \ \ \ input\_dialog.log("{}No\ object\ selected,\ draw\ a\ rectangle\ with\ an\ area\ larger\ than\ 0."{}) }}
+\DoxyCodeLine{00297\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ self.init\_bounding\_box\ =\ cv2.selectROI("{}Frame"{},\ frame,\ fromCenter=False, }}
+\DoxyCodeLine{00298\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ \ \ \ \ showCrosshair=True) }}
+\DoxyCodeLine{00299\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ self.init\_bounding\_box[2]\ ==\ 0\ \textcolor{keywordflow}{or}\ self.init\_bounding\_box[3]\ ==\ 0: }
+\DoxyCodeLine{00300\ \ \ \ \ \ \ \ \ \ \ \ \ input\_dialog.log(\textcolor{stringliteral}{"{}No\ object\ selected,\ draw\ a\ rectangle\ with\ an\ area\ larger\ than\ 0,\ Try\ again"{}}) }
+\DoxyCodeLine{00301\ \ \ \ \ \ \ \ \ \ \ \ \ self.init\_bounding\_box\ =\ \textcolor{keywordtype}{None} }
+\DoxyCodeLine{00302\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return} }
+\DoxyCodeLine{00303\  }
+\DoxyCodeLine{00304\ \ \ \ \ \ \ \ \ input\_dialog.log(\textcolor{stringliteral}{"{}Bounding\ Box\ Coordinates:\ "{}}\ +\ str(self.init\_bounding\_box)) }
+\DoxyCodeLine{00305\ \ \ \ \ \ \ \ \ self.box\ =\ self.init\_bounding\_box }
+\DoxyCodeLine{00306\  }
+\DoxyCodeLine{00307\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ start\ OpenCV\ object\ tracker\ using\ the\ supplied\ bounding\ box }}
+\DoxyCodeLine{00308\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ coordinates,\ then\ start\ the\ FPS\ throughput\ estimator\ as\ well }}
+\DoxyCodeLine{00309\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ self.init\_bounding\_box\ \textcolor{keywordflow}{is}\ \textcolor{keywordflow}{not}\ \textcolor{keywordtype}{None}: }
+\DoxyCodeLine{00310\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ self.tracker.init(frame,\ self.init\_bounding\_box) }}
+\DoxyCodeLine{00311\ \ \ \ \ \ \ \ \ \ \ \ \ input\_dialog.log(\textcolor{stringliteral}{"{}Testing\ bounding\ box\ exists:\ "{}}\ +\ str(self.reset)) }
+\DoxyCodeLine{00312\ \ \ \ \ \ \ \ \ \ \ \ \ self.reset\ =\ \textcolor{keyword}{True} }
+\DoxyCodeLine{00313\  }
+\DoxyCodeLine{00314\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ self.reset\ \textcolor{keywordflow}{is}\ \textcolor{keyword}{True}: }
+\DoxyCodeLine{00315\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ try: }}
+\DoxyCodeLine{00316\ \ \ \ \ \ \ \ \ \ \ \ \ input\_dialog.log(\textcolor{stringliteral}{"{}Setting\ Location"{}}) }
+\DoxyCodeLine{00317\ \ \ \ \ \ \ \ \ \ \ \ \ del\ self.tracker }
+\DoxyCodeLine{00318\ \ \ \ \ \ \ \ \ \ \ \ \ self.create(tracker\_type) }
+\DoxyCodeLine{00319\ \ \ \ \ \ \ \ \ \ \ \ \ self.tracker.init(frame,\ self.init\_bounding\_box) }
+\DoxyCodeLine{00320\ \ \ \ \ \ \ \ \ \ \ \ \ input\_dialog.log((\textcolor{stringliteral}{"{}Setting\ Location\ Successful.\ "{}}\ +\ \textcolor{stringliteral}{"{}Bounding\ Box\ Coordinates:\ "{}}\ +\ str(self.init\_bounding\_box))) }
+\DoxyCodeLine{00321\ \ \ \ \ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00322\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Tell\ the\ predictors\ to\ reset }}
+\DoxyCodeLine{00323\ \ \ \ \ \ \ \ \ \ \ \ \ self.box\_predictor[0].reset() }
+\DoxyCodeLine{00324\ \ \ \ \ \ \ \ \ \ \ \ \ self.box\_predictor[1].reset() }
+\DoxyCodeLine{00325\ \ \ \ \ \ \ \ \ \ \ \ \ self.predictor.reset() }
+\DoxyCodeLine{00326\  }
+\DoxyCodeLine{00327\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ except\ Exception\ as\ e: }}
+\DoxyCodeLine{00328\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ \ \ \ \ crashlogger.log(str(e)) }}
+\DoxyCodeLine{00329\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ \ \ \ \ input\_dialog.log("{}Setting\ Location\ Failed."{}) }}
+\DoxyCodeLine{00330\ \ \ \ \  }
+\DoxyCodeLine{00331\  }
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{a00170_a4485d04ca451246b6a81dd2799f83906}{Multi\+Tracker.\+box}}, \mbox{\hyperlink{a00170_ac27edf896139b80e85b4cf0942fc2765}{Multi\+Tracker.\+box\+\_\+predictor}}, \mbox{\hyperlink{a00170_ac92d67bb1b34c653fee8f01623e43961}{Multi\+Tracker.\+create()}}, \mbox{\hyperlink{a00170_a4db43bc1c94282c2cf64b5b64463f386}{Multi\+Tracker.\+init\+\_\+bounding\+\_\+box}}, \mbox{\hyperlink{a00170_a7cf5a1a9676a06af18656491dbd71f14}{Multi\+Tracker.\+predictor}}, Kalman\+Pred.\+reset(), \mbox{\hyperlink{a00170_a48bcfbb87c0af0d5390626d1ab65ab64}{Multi\+Tracker.\+reset}}, STFile\+Video\+Stream.\+reset, File\+Video\+Stream.\+reset, and \mbox{\hyperlink{a00170_abec0b9ee4648af3b77db73e8070f1736}{Multi\+Tracker.\+tracker}}.
+
+
+
+Referenced by \mbox{\hyperlink{a00170_a291e78f1e4bc543e8b599dfa574867ed}{Multi\+Tracker.\+calculate\+\_\+total\+\_\+time()}}.
+
+Here is the call graph for this function\+:
+% FIG 0
+Here is the caller graph for this function\+:
+% FIG 1
+\Hypertarget{a00170_aee841491689eb14e8fc68b2e6a2ec1dc}\label{a00170_aee841491689eb14e8fc68b2e6a2ec1dc} 
+\index{MultiTracker@{MultiTracker}!auto\_assign@{auto\_assign}}
+\index{auto\_assign@{auto\_assign}!MultiTracker@{MultiTracker}}
+\doxysubsubsection{\texorpdfstring{auto\_assign()}{auto\_assign()}}
+{\footnotesize\ttfamily auto\+\_\+assign (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{frame,  }\item[{}]{bounding\+\_\+box = {\ttfamily None},  }\item[{}]{xywh = {\ttfamily None},  }\item[{}]{tracker\+\_\+type = {\ttfamily "{}CSRT"{}} }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00332\ \ \ \ \ \textcolor{keyword}{def\ }auto\_assign(self,\ frame,\ bounding\_box=None,\ xywh=None,\ tracker\_type="{}CSRT"{}): }
+\DoxyCodeLine{00333\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ try: }}
+\DoxyCodeLine{00334\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print(self.init\_bounding\_box) }}
+\DoxyCodeLine{00335\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print(bounding\_box) }}
+\DoxyCodeLine{00336\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ xywh\ \textcolor{keywordflow}{is}\ \textcolor{keywordtype}{None}: }
+\DoxyCodeLine{00337\ \ \ \ \ \ \ \ \ \ \ \ \ width\ =\ bounding\_box[2]\ -\/\ bounding\_box[0] }
+\DoxyCodeLine{00338\ \ \ \ \ \ \ \ \ \ \ \ \ height\ =\ bounding\_box[3]\ -\/\ bounding\_box[1] }
+\DoxyCodeLine{00339\ \ \ \ \ \ \ \ \ \ \ \ \ bounding\_box\ =\ [bounding\_box[0],\ bounding\_box[1],\ width,\ height] }
+\DoxyCodeLine{00340\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}: }
+\DoxyCodeLine{00341\ \ \ \ \ \ \ \ \ \ \ \ \ bounding\_box\ =\ xywh }
+\DoxyCodeLine{00342\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print(bounding\_box) }}
+\DoxyCodeLine{00343\ \ \ \ \ \ \ \ \ input\_dialog.log(\textcolor{stringliteral}{"{}Setting\ Location"{}}) }
+\DoxyCodeLine{00344\ \ \ \ \ \ \ \ \ del\ self.tracker }
+\DoxyCodeLine{00345\ \ \ \ \ \ \ \ \ self.create(tracker\_type) }
+\DoxyCodeLine{00346\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}: }
+\DoxyCodeLine{00347\ \ \ \ \ \ \ \ \ \ \ \ \ self.tracker.init(frame,\ bounding\_box) }
+\DoxyCodeLine{00348\ \ \ \ \ \ \ \ \ \ \ \ \ input\_dialog.log(\textcolor{stringliteral}{"{}Setting\ Location\ Successful."{}}) }
+\DoxyCodeLine{00349\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{except}\ Exception\ \textcolor{keyword}{as}\ e: }
+\DoxyCodeLine{00350\ \ \ \ \ \ \ \ \ \ \ \ \ crashlogger.log(str(e)) }
+\DoxyCodeLine{00351\ \ \ \ \ \ \ \ \ \ \ \ \ input\_dialog.log(\textcolor{stringliteral}{"{}Setting\ Location\ Failed."{}}) }
+\DoxyCodeLine{00352\  }
+
+\end{DoxyCode}
+\Hypertarget{a00170_a42f8bac5c348259ab3bf3e1255dba41f}\label{a00170_a42f8bac5c348259ab3bf3e1255dba41f} 
+\index{MultiTracker@{MultiTracker}!calculate\_time@{calculate\_time}}
+\index{calculate\_time@{calculate\_time}!MultiTracker@{MultiTracker}}
+\doxysubsubsection{\texorpdfstring{calculate\_time()}{calculate\_time()}}
+{\footnotesize\ttfamily calculate\+\_\+time (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{frame\+\_\+start,  }\item[{}]{frame\+\_\+end,  }\item[{}]{fps = {\ttfamily 30} }\end{DoxyParamCaption})}
+
+
+
+Calclulates time between two frames at a given framerate. 
+
+\begin{DoxyVerb}Calculates time between two given frames and the FPS rate
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00787\ \ \ \ \ \textcolor{keyword}{def\ }calculate\_time(self,\ frame\_start,\ frame\_end,\ fps=30): }
+\DoxyCodeLine{00788\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{} }}
+\DoxyCodeLine{00789\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Calculates\ time\ between\ two\ given\ frames\ and\ the\ FPS\ rate }}
+\DoxyCodeLine{00790\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}} }
+\DoxyCodeLine{00791\ \ \ \ \ \ \ \ \ time\ =\ (frame\_end\ -\/\ frame\_start)/fps }
+\DoxyCodeLine{00792\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ time }
+\DoxyCodeLine{00793\ \ \ \ \  }
+
+\end{DoxyCode}
+
+
+Referenced by \mbox{\hyperlink{a00170_a291e78f1e4bc543e8b599dfa574867ed}{Multi\+Tracker.\+calculate\+\_\+total\+\_\+time()}}.
+
+Here is the caller graph for this function\+:
+% FIG 2
+\Hypertarget{a00170_a291e78f1e4bc543e8b599dfa574867ed}\label{a00170_a291e78f1e4bc543e8b599dfa574867ed} 
+\index{MultiTracker@{MultiTracker}!calculate\_total\_time@{calculate\_total\_time}}
+\index{calculate\_total\_time@{calculate\_total\_time}!MultiTracker@{MultiTracker}}
+\doxysubsubsection{\texorpdfstring{calculate\_total\_time()}{calculate\_total\_time()}}
+{\footnotesize\ttfamily calculate\+\_\+total\+\_\+time (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{total\+\_\+frames,  }\item[{}]{fps = {\ttfamily 30},  }\item[{}]{segmented = {\ttfamily True} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Calculates total time tracked. This takes into consideration segmented time
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00795\ \ \ \ \ \textcolor{keyword}{def\ }calculate\_total\_time(self,\ total\_frames,\ fps=30,\ segmented=True): }
+\DoxyCodeLine{00796\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{} }}
+\DoxyCodeLine{00797\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Calculates\ total\ time\ tracked.\ This\ takes\ into\ consideration\ segmented\ time }}
+\DoxyCodeLine{00798\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}} }
+\DoxyCodeLine{00799\ \ \ \ \ \ \ \ \ total\_time\ =\ 0 }
+\DoxyCodeLine{00800\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ segmented\ \textcolor{keywordflow}{is}\ \textcolor{keyword}{False}: }
+\DoxyCodeLine{00801\ \ \ \ \ \ \ \ \ \ \ \ \ time\_segs\ =\ self.part\_time\_to\_segments(total\_frames) }
+\DoxyCodeLine{00802\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}:\  }
+\DoxyCodeLine{00803\ \ \ \ \ \ \ \ \ \ \ \ \ time\_segs\ =\ total\_frames }
+\DoxyCodeLine{00804\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#sum\ all\ the\ segments\ together }}
+\DoxyCodeLine{00805\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ seg\ \textcolor{keywordflow}{in}\ time\_segs: }
+\DoxyCodeLine{00806\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ len(seg)\ <\ 2: }
+\DoxyCodeLine{00807\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seg\ =\ [seg[0],\ seg[0]] }
+\DoxyCodeLine{00808\ \ \ \ \ \ \ \ \ \ \ \ \ first\ =\ seg[0] }
+\DoxyCodeLine{00809\ \ \ \ \ \ \ \ \ \ \ \ \ last\ =\ seg[1] }
+\DoxyCodeLine{00810\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#each\ seg\ is\ a\ pair\ of\ start\ and\ end\ times }}
+\DoxyCodeLine{00811\ \ \ \ \ \ \ \ \ \ \ \ \ total\_time\ +=\ self.calculate\_time(first,\ last,\ fps) }
+\DoxyCodeLine{00812\  }
+\DoxyCodeLine{00813\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#May\ not\ need,\ no\ negative\ time\ allowed. }}
+\DoxyCodeLine{00814\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ total\_time\ <=\ 0: }
+\DoxyCodeLine{00815\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print("{}Time\ less\ than\ or\ equal\ to\ Zero"{}) }}
+\DoxyCodeLine{00816\ \ \ \ \ \ \ \ \ \ \ \ \ total\_time\ =\ 0 }
+\DoxyCodeLine{00817\  }
+\DoxyCodeLine{00818\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ total\_time }
+\DoxyCodeLine{00819\  }
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{a00170_a04b3bf097ca43c583401eb0c5e143722}{Multi\+Tracker.\+assign()}}, \mbox{\hyperlink{a00170_a42f8bac5c348259ab3bf3e1255dba41f}{Multi\+Tracker.\+calculate\+\_\+time()}}, \mbox{\hyperlink{a00170_ac92d67bb1b34c653fee8f01623e43961}{Multi\+Tracker.\+create()}}, \mbox{\hyperlink{a00170_aa871b1fc9de77b6f599d27bd2f027335}{Multi\+Tracker.\+export\+\_\+data()}}, \mbox{\hyperlink{a00170_aabaffb95c249830a116841bf61391260}{Multi\+Tracker.\+get\+\_\+name()}}, \mbox{\hyperlink{a00170_a6a54b87590251552d1e772115c06e8da}{Multi\+Tracker.\+get\+\_\+time\+\_\+tracked()}}, \mbox{\hyperlink{a00170_aac82437aaf543e6e298cfbdd4eb231ab}{Multi\+Tracker.\+part\+\_\+time\+\_\+to\+\_\+segments()}}, and \mbox{\hyperlink{a00170_acea06c482b1d7423a17fcdd29e972cf9}{Multi\+Tracker.\+predict()}}.
+
+
+
+Referenced by \mbox{\hyperlink{a00170_a6a54b87590251552d1e772115c06e8da}{Multi\+Tracker.\+get\+\_\+time\+\_\+tracked()}}.
+
+Here is the call graph for this function\+:
+% FIG 3
+Here is the caller graph for this function\+:
+% FIG 4
+\Hypertarget{a00170_ac92d67bb1b34c653fee8f01623e43961}\label{a00170_ac92d67bb1b34c653fee8f01623e43961} 
+\index{MultiTracker@{MultiTracker}!create@{create}}
+\index{create@{create}!MultiTracker@{MultiTracker}}
+\doxysubsubsection{\texorpdfstring{create()}{create()}}
+{\footnotesize\ttfamily create (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{tracker\+\_\+type = {\ttfamily \textquotesingle{}CSRT\textquotesingle{}} }\end{DoxyParamCaption})}
+
+
+
+Creates base cv2.\+Tracker. 
+
+\begin{DoxyVerb}The creation of the Opencvs Tracking mechanism.
+
+tracker_type = ["BOOSTING", "MIL","KCF", "TLD", "MEDIANFLOW", "GOTURN", "MOSSE", "CSRT"]
+
+https://docs.opencv.org/3.4/d9/df8/group__tracking.html
+
+@returns CV2.TRACKER
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00224\ \ \ \ \ \textcolor{keyword}{def\ }create(self,\ tracker\_type='CSRT'): }
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}\  }}
+\DoxyCodeLine{00226\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ The\ creation\ of\ the\ Opencvs\ Tracking\ mechanism. }}
+\DoxyCodeLine{00227\ \textcolor{stringliteral}{ }}
+\DoxyCodeLine{00228\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ tracker\_type\ =\ ["{}BOOSTING"{},\ "{}MIL"{},"{}KCF"{},\ "{}TLD"{},\ "{}MEDIANFLOW"{},\ "{}GOTURN"{},\ "{}MOSSE"{},\ "{}CSRT"{}] }}
+\DoxyCodeLine{00229\ \textcolor{stringliteral}{ }}
+\DoxyCodeLine{00230\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ https://docs.opencv.org/3.4/d9/df8/group\_\_tracking.html }}
+\DoxyCodeLine{00231\ \textcolor{stringliteral}{ }}
+\DoxyCodeLine{00232\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @returns\ CV2.TRACKER }}
+\DoxyCodeLine{00233\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}} }
+\DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ tracker\ =\ cv2.Tracker\_create(tracker\_type) }}
+\DoxyCodeLine{00235\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ tracker\_type\ ==\ \textcolor{stringliteral}{'BOOSTING'}: }
+\DoxyCodeLine{00236\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#Based\ on\ the\ same\ algorithm\ used\ to\ power\ the\ machine\ learning\ behind\ Haar\ cascades\ (AdaBoost),\ but\ like\ Haar\ cascades,\ is\ over\ a\ decade\ old.\ This\ tracker\ is\ slow\ and\ doesn’t\ work\ very\ well.\ Interesting\ only\ for\ legacy\ reasons\ and\ comparing\ other\ algorithms. }}
+\DoxyCodeLine{00237\ \ \ \ \ \ \ \ \ \ \ \ \ self.tracker\ =\ cv2.TrackerBoosting\_create() }
+\DoxyCodeLine{00238\  }
+\DoxyCodeLine{00239\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ tracker\_type\ ==\ \textcolor{stringliteral}{'MIL'}: }
+\DoxyCodeLine{00240\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Better\ accuracy\ than\ BOOSTING\ tracker\ but\ does\ a\ poor\ job\ of\ reporting\ failure. }}
+\DoxyCodeLine{00241\ \ \ \ \ \ \ \ \ \ \ \ \ self.tracker\ =\ cv2.TrackerMIL\_create() }
+\DoxyCodeLine{00242\  }
+\DoxyCodeLine{00243\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ tracker\_type\ ==\ \textcolor{stringliteral}{'KCF'}: }
+\DoxyCodeLine{00244\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#Kernelized\ Correlation\ Filters.\ Faster\ than\ BOOSTING\ and\ MIL.\ Similar\ to\ MIL\ and\ KCF,\ does\ not\ handle\ full\ occlusion\ well. }}
+\DoxyCodeLine{00245\ \ \ \ \ \ \ \ \ \ \ \ \ self.tracker\ =\ cv2.TrackerKCF\_create() }
+\DoxyCodeLine{00246\ \ \ \ \ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ tracker\_type\ ==\ \textcolor{stringliteral}{'TLD'}: }
+\DoxyCodeLine{00248\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#prone\ to\ false\ positives.\ I\ do\ not\ recommend\ using\ this\ OpenCV\ object\ tracker. }}
+\DoxyCodeLine{00249\ \ \ \ \ \ \ \ \ \ \ \ \ self.tracker\ =\ cv2.TrackerTLD\_create() }
+\DoxyCodeLine{00250\  }
+\DoxyCodeLine{00251\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ tracker\_type\ ==\ \textcolor{stringliteral}{'MEDIANFLOW'}: }
+\DoxyCodeLine{00252\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Does\ a\ nice\ job\ reporting\ failures;\ however,\ if\ there\ is\ too\ large\ of\ a\ jump\ in\ motion,\ such\ as\ fast\ moving\ objects,\ or\ objects\ that\ change\ quickly\ in\ their\ appearance,\ the\ model\ will\ fail. }}
+\DoxyCodeLine{00253\ \ \ \ \ \ \ \ \ \ \ \ \ self.tracker\ =\ cv2.TrackerMedianFlow\_create() }
+\DoxyCodeLine{00254\  }
+\DoxyCodeLine{00255\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ tracker\_type\ ==\ \textcolor{stringliteral}{'GOTURN'}: }
+\DoxyCodeLine{00256\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#The\ only\ deep\ learning-\/based\ object\ detector\ included\ in\ OpenCV.\ Reportedly\ handles\ viewing\ changes\ well\  }}
+\DoxyCodeLine{00257\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#NOTE\ must\ download\ goturn.protext\ from\ https://github.com/Mogball/goturn-\/files. }}
+\DoxyCodeLine{00258\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#This\ is\ already\ downloaded\ under\ the\ models/\ folder,\ will\ include. }}
+\DoxyCodeLine{00259\ \ \ \ \ \ \ \ \ \ \ \ \ self.tracker\ =\ cv2.TrackerGOTURN\_create() }
+\DoxyCodeLine{00260\  }
+\DoxyCodeLine{00261\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ tracker\_type\ ==\ \textcolor{stringliteral}{'MOSSE'}: }
+\DoxyCodeLine{00262\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#Very,\ very\ fast.\ Not\ as\ accurate\ as\ CSRT\ or\ KCF\ but\ a\ good\ choice\ if\ you\ need\ pure\ speed }}
+\DoxyCodeLine{00263\ \ \ \ \ \ \ \ \ \ \ \ \ self.tracker\ =\ cv2.TrackerMOSSE\_create() }
+\DoxyCodeLine{00264\  }
+\DoxyCodeLine{00265\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ tracker\_type\ ==\ \textcolor{stringliteral}{"{}CSRT"{}}: }
+\DoxyCodeLine{00266\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#Discriminative\ Correlation\ Filter\ (with\ Channel\ and\ Spatial\ Reliability).\ Tends\ to\ be\ more\ accurate\ than\ KCF\ but\ slightly\ slower. }}
+\DoxyCodeLine{00267\ \ \ \ \ \ \ \ \ \ \ \ \ self.tracker\ =\ cv2.TrackerCSRT\_create() }
+\DoxyCodeLine{00268\  }
+\DoxyCodeLine{00269\  }
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{a00170_abec0b9ee4648af3b77db73e8070f1736}{Multi\+Tracker.\+tracker}}.
+
+
+
+Referenced by \mbox{\hyperlink{a00170_a04b3bf097ca43c583401eb0c5e143722}{Multi\+Tracker.\+assign()}}, and \mbox{\hyperlink{a00170_a291e78f1e4bc543e8b599dfa574867ed}{Multi\+Tracker.\+calculate\+\_\+total\+\_\+time()}}.
+
+Here is the caller graph for this function\+:
+% FIG 5
+\Hypertarget{a00170_ac34c9500441edbf10681a188c7712d5a}\label{a00170_ac34c9500441edbf10681a188c7712d5a} 
+\index{MultiTracker@{MultiTracker}!draw\_tracker@{draw\_tracker}}
+\index{draw\_tracker@{draw\_tracker}!MultiTracker@{MultiTracker}}
+\doxysubsubsection{\texorpdfstring{draw\_tracker()}{draw\_tracker()}}
+{\footnotesize\ttfamily draw\+\_\+tracker (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{frame,  }\item[{}]{box,  }\item[{}]{opacity = {\ttfamily 0.5},  }\item[{}]{name = {\ttfamily True} }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00377\ \ \ \ \ \textcolor{keyword}{def\ }draw\_tracker(self,\ frame,\ box,\ opacity=0.5,\ name=True): }
+\DoxyCodeLine{00378\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00379\ \ \ \ \ \ \ \ \ (x,\ y,\ w,\ h)\ =\ [int(v)\ \textcolor{keywordflow}{for}\ v\ \textcolor{keywordflow}{in}\ box] }
+\DoxyCodeLine{00380\  }
+\DoxyCodeLine{00381\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Apply\ translucent\ layer }}
+\DoxyCodeLine{00382\ \ \ \ \ \ \ \ \ alpha\_layer\ =\ np.zeros\_like(frame,\ np.uint8) }
+\DoxyCodeLine{00383\ \ \ \ \ \ \ \ \ cv2.rectangle(alpha\_layer,\ (x\ ,\ y\ -\/\ 1),\ (x\ +\ 10\ *\ (len(self.get\_name()))\ ,\ y\ -\/\ 15),(255,255,255),-\/1) }
+\DoxyCodeLine{00384\ \ \ \ \ \ \ \ \ out\ =\ frame.copy() }
+\DoxyCodeLine{00385\ \ \ \ \ \ \ \ \ alpha\ =\ opacity }
+\DoxyCodeLine{00386\ \ \ \ \ \ \ \ \ mask\ =\ alpha\_layer.astype(bool) }
+\DoxyCodeLine{00387\ \ \ \ \ \ \ \ \ out[mask]\ =\ cv2.addWeighted(frame,\ alpha,\ alpha\_layer,\ 1\ -\/\ alpha,\ 0)[mask] }
+\DoxyCodeLine{00388\  }
+\DoxyCodeLine{00389\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Apply\ opaque\ name\ and\ bounding\ box\ ontop\ of\ translucent\ layer }}
+\DoxyCodeLine{00390\ \ \ \ \ \ \ \ \ cv2.rectangle(out,\ (x,\ y),\ (x\ +\ w,\ y\ +\ h),\ self.colour,\ 2) }
+\DoxyCodeLine{00391\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ name\ \textcolor{keywordflow}{is}\ \textcolor{keyword}{True}: }
+\DoxyCodeLine{00392\ \ \ \ \ \ \ \ \ \ \ \ \ cv2.putText(out,\ self.get\_name(),\ (x\ ,\ y\ -\/\ 1),\ cv2.FONT\_HERSHEY\_PLAIN,\ 1,\ (0,0,0),1) }
+\DoxyCodeLine{00393\  }
+\DoxyCodeLine{00394\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ out }
+\DoxyCodeLine{00395\  }
+
+\end{DoxyCode}
+
+
+Referenced by \mbox{\hyperlink{a00170_a5fc89aec3f0789c6b4d9c05d84fee19f}{Multi\+Tracker.\+update\+\_\+tracker()}}.
+
+Here is the caller graph for this function\+:
+% FIG 6
+\Hypertarget{a00170_aa48ecd689e42ef1a3b068ef0dbde290c}\label{a00170_aa48ecd689e42ef1a3b068ef0dbde290c} 
+\index{MultiTracker@{MultiTracker}!estimate\_distance@{estimate\_distance}}
+\index{estimate\_distance@{estimate\_distance}!MultiTracker@{MultiTracker}}
+\doxysubsubsection{\texorpdfstring{estimate\_distance()}{estimate\_distance()}}
+{\footnotesize\ttfamily estimate\+\_\+distance (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{size }\end{DoxyParamCaption})}
+
+
+
+NOT IMPLEMENTED. 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00783\ \ \ \ \ \textcolor{keyword}{def\ }estimate\_distance(self,\ size): }
+\DoxyCodeLine{00784\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{pass} }
+\DoxyCodeLine{00785\ \ \ \ \  }
+
+\end{DoxyCode}
+\Hypertarget{a00170_a4f8720eb13443ee8e6f9828088f33d8d}\label{a00170_a4f8720eb13443ee8e6f9828088f33d8d} 
+\index{MultiTracker@{MultiTracker}!evaluate\_data@{evaluate\_data}}
+\index{evaluate\_data@{evaluate\_data}!MultiTracker@{MultiTracker}}
+\doxysubsubsection{\texorpdfstring{evaluate\_data()}{evaluate\_data()}}
+{\footnotesize\ttfamily evaluate\+\_\+data (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+NOT USED. 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00690\ \ \ \ \ \textcolor{keyword}{def\ }evaluate\_data(self): }
+\DoxyCodeLine{00691\ \ \ \ \ \ \ \ \ te\ =\ evaluate.tracker\_evaluation() }
+\DoxyCodeLine{00692\ \ \ \ \ \ \ \ \  }
+
+\end{DoxyCode}
+\Hypertarget{a00170_aa871b1fc9de77b6f599d27bd2f027335}\label{a00170_aa871b1fc9de77b6f599d27bd2f027335} 
+\index{MultiTracker@{MultiTracker}!export\_data@{export\_data}}
+\index{export\_data@{export\_data}!MultiTracker@{MultiTracker}}
+\doxysubsubsection{\texorpdfstring{export\_data()}{export\_data()}}
+{\footnotesize\ttfamily export\+\_\+data (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{vid\+\_\+width,  }\item[{}]{vid\+\_\+height,  }\item[{}]{vid\+\_\+name,  }\item[{}]{fps,  }\item[{}]{new\+\_\+version = {\ttfamily None} }\end{DoxyParamCaption})}
+
+
+
+Exports tracked data into csv of the given name and directory of the video. 
+
+\begin{DoxyVerb}Exports the recorded data and appends constants such as name, total time recorded, and pixel percent Loc
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00494\ \ \ \ \ \textcolor{keyword}{def\ }export\_data(self,\ vid\_width,\ vid\_height,\ vid\_name,\ fps,\ new\_version=None): }
+\DoxyCodeLine{00495\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{} }}
+\DoxyCodeLine{00496\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Exports\ the\ recorded\ data\ and\ appends\ constants\ such\ as\ name,\ total\ time\ recorded,\ and\ pixel\ percent\ Loc }}
+\DoxyCodeLine{00497\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}} }
+\DoxyCodeLine{00498\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ if\ not\ os.path.exists(("{}./data/"{}\ +\ vid\_name[:-\/4])): }}
+\DoxyCodeLine{00499\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ \ \ \ \ os.makedirs(("{}./data/"{}\ +\ vid\_name[:-\/4])) }}
+\DoxyCodeLine{00500\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ self.data\_dict[frame]\ =\ (point,\ regions,\ dimensions,\ other\_room,\ total\_people,\ self.is\_chair()) }}
+\DoxyCodeLine{00501\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ input\_dialog.log(self.data\_dict) }}
+\DoxyCodeLine{00502\  }
+\DoxyCodeLine{00503\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#Generate\ the\ base\ dataframe\ to\ fill\ and\ file }}
+\DoxyCodeLine{00504\ \ \ \ \ \ \ \ \ export\_filename\ =\ str(vid\_name[:-\/4])\ +\ \textcolor{stringliteral}{"{}.csv"{}} }
+\DoxyCodeLine{00505\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00506\ \ \ \ \ \ \ \ \ frames\ =\ list(self.data\_dict.keys()) }
+\DoxyCodeLine{00507\ \ \ \ \ \ \ \ \ location\ =\ list(self.data\_dict.values()) }
+\DoxyCodeLine{00508\  }
+\DoxyCodeLine{00509\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#elaborate\ on\ the\ location,\ record\ it\ in\ percent }}
+\DoxyCodeLine{00510\ \ \ \ \ \ \ \ \ perc\_x\_list\ =\ [] }
+\DoxyCodeLine{00511\ \ \ \ \ \ \ \ \ perc\_y\_list\ =\ [] }
+\DoxyCodeLine{00512\ \ \ \ \ \ \ \ \ pixel\_location\_x\ =\ [] }
+\DoxyCodeLine{00513\ \ \ \ \ \ \ \ \ pixel\_location\_y\ =\ [] }
+\DoxyCodeLine{00514\  }
+\DoxyCodeLine{00515\ \ \ \ \ \ \ \ \ bounding\_box\_top\_left\_x\ =\ [] }
+\DoxyCodeLine{00516\ \ \ \ \ \ \ \ \ bounding\_box\_top\_left\_y\ =\ [] }
+\DoxyCodeLine{00517\ \ \ \ \ \ \ \ \ bounding\_box\_bottom\_right\_x\ =\ [] }
+\DoxyCodeLine{00518\ \ \ \ \ \ \ \ \ bounding\_box\_bottom\_right\_y\ =\ [] }
+\DoxyCodeLine{00519\  }
+\DoxyCodeLine{00520\ \ \ \ \ \ \ \ \ region\_list\ =\ [] }
+\DoxyCodeLine{00521\ \ \ \ \ \ \ \ \ other\_room\_list\ =\ [] }
+\DoxyCodeLine{00522\ \ \ \ \ \ \ \ \ total\_people\_list\ =\ [] }
+\DoxyCodeLine{00523\ \ \ \ \ \ \ \ \ is\_chair\_list\ =\ [] }
+\DoxyCodeLine{00524\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00525\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#Iterate\ through\ data\ and\ record }}
+\DoxyCodeLine{00526\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ data\ \textcolor{keywordflow}{in}\ location: }
+\DoxyCodeLine{00527\ \ \ \ \ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00528\ \ \ \ \ \ \ \ \ \ \ \ \ center\ =\ data[0]\ \ \ \ \ \ \ \ \textcolor{comment}{\#\ center\ -\/>\ (x,y) }}
+\DoxyCodeLine{00529\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print("{}Center"{},\ center) }}
+\DoxyCodeLine{00530\  }
+\DoxyCodeLine{00531\  }
+\DoxyCodeLine{00532\ \ \ \ \ \ \ \ \ \ \ \ \ corrected\_center\ =\ (center[0],\ (vid\_height\ -\/\ center[1])) }
+\DoxyCodeLine{00533\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print(corrected\_center) }}
+\DoxyCodeLine{00534\  }
+\DoxyCodeLine{00535\ \ \ \ \ \ \ \ \ \ \ \ \ dimentions\ =\ data[2]\ \ \ \ \textcolor{comment}{\#\ dimentions\ -\/>\ (width,\ height)\ where\ (0,0)\ is\ top\ left }}
+\DoxyCodeLine{00536\  }
+\DoxyCodeLine{00537\ \ \ \ \ \ \ \ \ \ \ \ \ pixel\_location\_x.append(center[0]) }
+\DoxyCodeLine{00538\ \ \ \ \ \ \ \ \ \ \ \ \ pixel\_location\_y.append((vid\_height\ -\/\ center[1])) }
+\DoxyCodeLine{00539\  }
+\DoxyCodeLine{00540\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#Get\ top\ left\ and\ bottom\ right\ corner }}
+\DoxyCodeLine{00541\ \ \ \ \ \ \ \ \ \ \ \ \ bounding\_box\_top\_left\_x.append(\ (center[0]\ -\/\ dimentions[0]/2)\ ) }
+\DoxyCodeLine{00542\ \ \ \ \ \ \ \ \ \ \ \ \ bounding\_box\_top\_left\_y.append(\ (vid\_height\ -\/\ center[1])\ +\ dimentions[1]/2) }
+\DoxyCodeLine{00543\  }
+\DoxyCodeLine{00544\ \ \ \ \ \ \ \ \ \ \ \ \ bounding\_box\_bottom\_right\_x.append(\ (center[0]\ +\ dimentions[0]/2)\ ) }
+\DoxyCodeLine{00545\ \ \ \ \ \ \ \ \ \ \ \ \ bounding\_box\_bottom\_right\_y.append((vid\_height\ -\/\ center[1])\ -\/\ dimentions[1]/2) }
+\DoxyCodeLine{00546\  }
+\DoxyCodeLine{00547\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#Handle\ invalid\ data\ to\ maintain\ consistency }}
+\DoxyCodeLine{00548\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ corrected\_center\ ==\ -\/1: }
+\DoxyCodeLine{00549\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ perc\_x\ =\ -\/1 }
+\DoxyCodeLine{00550\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ perc\_y\ =\ -\/1 }
+\DoxyCodeLine{00551\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ perc\_x\_list.append(round(perc\_x,2)) }
+\DoxyCodeLine{00552\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ perc\_y\_list.append(round(perc\_y,2)) }
+\DoxyCodeLine{00553\  }
+\DoxyCodeLine{00554\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ top\_perc.append(round(-\/1,2)) }}
+\DoxyCodeLine{00555\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ bottom\_perc.append(round(-\/1,2)) }}
+\DoxyCodeLine{00556\  }
+\DoxyCodeLine{00557\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}: }
+\DoxyCodeLine{00558\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ perc\_x\ =\ (corrected\_center[0]/vid\_width)*100 }
+\DoxyCodeLine{00559\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ perc\_y\ =\ (corrected\_center[1]/vid\_height)*100 }
+\DoxyCodeLine{00560\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ perc\_x\_list.append(round(perc\_x,2)) }
+\DoxyCodeLine{00561\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ perc\_y\_list.append(round(perc\_y,2)) }
+\DoxyCodeLine{00562\  }
+\DoxyCodeLine{00563\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ top\_perc.append(round(\ ((top[1]/vid\_height)*100),\ 2)) }}
+\DoxyCodeLine{00564\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ bottom\_perc.append(round(\ ((bottom[1]/vid\_height)*100),\ 2)) }}
+\DoxyCodeLine{00565\  }
+\DoxyCodeLine{00566\  }
+\DoxyCodeLine{00567\  }
+\DoxyCodeLine{00568\ \ \ \ \ \ \ \ \ \ \ \ \ region\_string\ =\ \textcolor{stringliteral}{"{}"{}} }
+\DoxyCodeLine{00569\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ index,\ text\ \textcolor{keywordflow}{in}\ enumerate(data[1]): }
+\DoxyCodeLine{00570\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#If\ there\ is\ no\ item,\ 1\ item\ or\ the\ item\ is\ the\ last\ item\ in\ the\ list,\ do\ not\ append\ comma\ and\ space }}
+\DoxyCodeLine{00571\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ len(data[1])\ <=\ 1\ \textcolor{keywordflow}{or}\ index\ ==\ len(data[1])\ -\/1: }
+\DoxyCodeLine{00572\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ region\_string\ +=\ (text) }
+\DoxyCodeLine{00573\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}: }
+\DoxyCodeLine{00574\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ region\_string\ +=\ (text\ +\ \textcolor{stringliteral}{"{},\ "{}}) }
+\DoxyCodeLine{00575\  }
+\DoxyCodeLine{00576\ \ \ \ \ \ \ \ \ \ \ \ \ region\_list.append(region\_string) }
+\DoxyCodeLine{00577\ \ \ \ \ \ \ \ \ \ \ \ \ other\_room\_list.append(data[3]) }
+\DoxyCodeLine{00578\ \ \ \ \ \ \ \ \ \ \ \ \ total\_people\_list.append(data[4]) }
+\DoxyCodeLine{00579\ \ \ \ \ \ \ \ \ \ \ \ \ is\_chair\_list.append(data[5]) }
+\DoxyCodeLine{00580\  }
+\DoxyCodeLine{00581\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ input\_dialog.log(len(frames)) }}
+\DoxyCodeLine{00582\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ input\_dialog.log(pixel\_location) }}
+\DoxyCodeLine{00583\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ input\_dialog.log(len(pixel\_location)) }}
+\DoxyCodeLine{00584\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ input\_dialog.log(region\_list) }}
+\DoxyCodeLine{00585\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ input\_dialog.log(len(region\_list)) }}
+\DoxyCodeLine{00586\  }
+\DoxyCodeLine{00587\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#extend\ all\ the\ data\ so\ it\ can\ be\ exported.\ All\ data\ should\ be\ of\ the\ same\ length. }}
+\DoxyCodeLine{00588\ \ \ \ \ \ \ \ \ MAX\_LEN\ =\ len(frames) }
+\DoxyCodeLine{00589\ \ \ \ \ \ \ \ \ sex\ =\ [self.get\_sex()] }
+\DoxyCodeLine{00590\ \ \ \ \ \ \ \ \ name\ =\ [self.get\_name()] }
+\DoxyCodeLine{00591\ \ \ \ \ \ \ \ \ pid\ =\ [self.get\_id()] }
+\DoxyCodeLine{00592\ \ \ \ \ \ \ \ \ group\ =\ [self.get\_group()] }
+\DoxyCodeLine{00593\ \ \ \ \ \ \ \ \ description\ =\ [self.get\_description()] }
+\DoxyCodeLine{00594\ \ \ \ \ \ \ \ \ beginning\ =\ [self.beginning()] }
+\DoxyCodeLine{00595\  }
+\DoxyCodeLine{00596\ \ \ \ \ \ \ \ \ max\_width\ =\ [vid\_width] }
+\DoxyCodeLine{00597\ \ \ \ \ \ \ \ \ max\_height\ =\ [vid\_height] }
+\DoxyCodeLine{00598\  }
+\DoxyCodeLine{00599\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ total\_time\ =\ [self.(self.part\_time\_to\_segments(self.time\_data))] }}
+\DoxyCodeLine{00600\ \ \ \ \ \ \ \ \ total\_time\ =\ self.get\_time\_tracked(fps) }
+\DoxyCodeLine{00601\ \ \ \ \ \ \ \ \ total\_time[0]\ +=\ self.previous\_time }
+\DoxyCodeLine{00602\ \ \ \ \ \ \ \ \ self.previous\_time\ =\ total\_time[0] }
+\DoxyCodeLine{00603\ \ \ \ \ \ \ \ \ sex.extend([sex[0]]*(MAX\_LEN-\/1)) }
+\DoxyCodeLine{00604\ \ \ \ \ \ \ \ \ name.extend([name[0]]*(MAX\_LEN-\/1)) }
+\DoxyCodeLine{00605\ \ \ \ \ \ \ \ \ pid.extend([pid[0]]*(MAX\_LEN-\/1)) }
+\DoxyCodeLine{00606\ \ \ \ \ \ \ \ \ group.extend([group[0]]*(MAX\_LEN-\/1)) }
+\DoxyCodeLine{00607\ \ \ \ \ \ \ \ \ description.extend([description[0]]*(MAX\_LEN-\/1)) }
+\DoxyCodeLine{00608\ \ \ \ \ \ \ \ \ beginning.extend([beginning[0]]*(MAX\_LEN-\/1)) }
+\DoxyCodeLine{00609\  }
+\DoxyCodeLine{00610\ \ \ \ \ \ \ \ \ max\_width.extend([max\_width[0]]*(MAX\_LEN-\/1)) }
+\DoxyCodeLine{00611\ \ \ \ \ \ \ \ \ max\_height.extend([max\_height[0]]*(MAX\_LEN-\/1)) }
+\DoxyCodeLine{00612\  }
+\DoxyCodeLine{00613\ \ \ \ \ \ \ \ \ total\_time.extend([total\_time[0]]*(MAX\_LEN-\/1)) }
+\DoxyCodeLine{00614\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ total\_people.extend([total\_people[0]]*(MAX\_LEN-\/1)) }}
+\DoxyCodeLine{00615\  }
+\DoxyCodeLine{00616\ \ \ \ \ \ \ \ \ time\_rec\ =\ total\_time[0] }
+\DoxyCodeLine{00617\ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{"{}Time\ Recorded"{}},\ time\_rec) }
+\DoxyCodeLine{00618\ \ \ \ \ \ \ \ \ seconds\ =\ [round((time\_rec)\%60,2)] }
+\DoxyCodeLine{00619\ \ \ \ \ \ \ \ \ minutes\ =\ [int(((time\_rec)/60)\%60)] }
+\DoxyCodeLine{00620\ \ \ \ \ \ \ \ \ hours\ =\ [int(((minutes[0])/60)\%60)] }
+\DoxyCodeLine{00621\  }
+\DoxyCodeLine{00622\ \ \ \ \ \ \ \ \ seconds.extend([seconds[0]]*(MAX\_LEN-\/1)) }
+\DoxyCodeLine{00623\ \ \ \ \ \ \ \ \ minutes.extend([minutes[0]]*(MAX\_LEN-\/1)) }
+\DoxyCodeLine{00624\ \ \ \ \ \ \ \ \ hours.extend([hours[0]]*(MAX\_LEN-\/1)) }
+\DoxyCodeLine{00625\  }
+\DoxyCodeLine{00626\  }
+\DoxyCodeLine{00627\ \ \ \ \ \ \ \ \ print(hours[0],\ minutes[0],\ seconds[0]) }
+\DoxyCodeLine{00628\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00629\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00630\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#Create\ the\ dataframe }}
+\DoxyCodeLine{00631\ \ \ \ \ \ \ \ \ export\_df\ =\ \{\textcolor{stringliteral}{"{}Frame\_Num"{}}:frames,\textcolor{comment}{\#self.time\_data, }}
+\DoxyCodeLine{00632\  }
+\DoxyCodeLine{00633\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Pixel\_Loc\_x"{}}:\ pixel\_location\_x, }
+\DoxyCodeLine{00634\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Pixel\_Loc\_y"{}}:\ pixel\_location\_y, }
+\DoxyCodeLine{00635\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Perc\_X"{}}:\ perc\_x\_list,\ \textcolor{stringliteral}{"{}Perc\_Y"{}}:\ perc\_y\_list, }
+\DoxyCodeLine{00636\  }
+\DoxyCodeLine{00637\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Max\_Pixel\_x"{}}:max\_width, }
+\DoxyCodeLine{00638\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Max\_Pixel\_y"{}}:max\_height, }
+\DoxyCodeLine{00639\  }
+\DoxyCodeLine{00640\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}BBox\_TopLeft\_x"{}}:bounding\_box\_top\_left\_x, }
+\DoxyCodeLine{00641\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}BBox\_TopLeft\_y"{}}:bounding\_box\_top\_left\_y, }
+\DoxyCodeLine{00642\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}BBox\_BottomRight\_x"{}}:bounding\_box\_bottom\_right\_x, }
+\DoxyCodeLine{00643\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}BBox\_BottomRight\_y"{}}:bounding\_box\_bottom\_right\_y, }
+\DoxyCodeLine{00644\  }
+\DoxyCodeLine{00645\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Region"{}}:\ region\_list, }
+\DoxyCodeLine{00646\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ "{}TimeInRegion"{}:, }}
+\DoxyCodeLine{00647\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Name"{}}:\ name, }
+\DoxyCodeLine{00648\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}ID"{}}:pid,\  }
+\DoxyCodeLine{00649\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Sex"{}}:sex, }
+\DoxyCodeLine{00650\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Group\_Size"{}}:group, }
+\DoxyCodeLine{00651\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Total\_Sec\_Rec"{}}:total\_time, }
+\DoxyCodeLine{00652\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Time\_Rec(Hour)"{}}:hours, }
+\DoxyCodeLine{00653\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Time\_Rec(Min)"{}}:minutes, }
+\DoxyCodeLine{00654\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Time\_Rec(Sec)"{}}:seconds, }
+\DoxyCodeLine{00655\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Description"{}}:description, }
+\DoxyCodeLine{00656\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Beginning"{}}:beginning, }
+\DoxyCodeLine{00657\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Other\_Room"{}}:other\_room\_list, }
+\DoxyCodeLine{00658\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Chair"{}}:is\_chair\_list, }
+\DoxyCodeLine{00659\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Total\_People"{}}:total\_people\_list }
+\DoxyCodeLine{00660\ \ \ \ \ \ \ \ \ \ \ \ \ \} }
+\DoxyCodeLine{00661\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00662\ \ \ \ \ \ \ \ \ df\ =\ pd.DataFrame(export\_df) }
+\DoxyCodeLine{00663\  }
+\DoxyCodeLine{00664\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00665\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ If\ version,\ check\ for\ new\ versions }}
+\DoxyCodeLine{00666\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ new\_version\ \textcolor{keywordflow}{is}\ \textcolor{keywordflow}{not}\ \textcolor{keywordtype}{None}: }
+\DoxyCodeLine{00667\ \ \ \ \ \ \ \ \ \ \ \ \ out\_path,\ old\_filename\ =\ os.path.split(vid\_name) }
+\DoxyCodeLine{00668\ \ \ \ \ \ \ \ \ \ \ \ \ new\_filename\ =\ (out\_path\ +\ \textcolor{stringliteral}{"{}/"{}}\ +\ new\_version[0]) }
+\DoxyCodeLine{00669\  }
+\DoxyCodeLine{00670\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ If\ file\ does\ not\ exist,\ generate\ metadata }}
+\DoxyCodeLine{00671\ \ \ \ \ \ \ \ \ \ \ \ \ files\ =\ glob.glob((out\_path+\textcolor{stringliteral}{"{}/*.csv"{}})) }
+\DoxyCodeLine{00672\ \ \ \ \ \ \ \ \ \ \ \ \ file\_exists\ =\ \textcolor{keyword}{False} }
+\DoxyCodeLine{00673\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ file\ \textcolor{keywordflow}{in}\ files: }
+\DoxyCodeLine{00674\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ new\_version[0]\ \textcolor{keywordflow}{in}\ file: }
+\DoxyCodeLine{00675\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ file\_exists\ =\ \textcolor{keyword}{True} }
+\DoxyCodeLine{00676\ \ \ \ \ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00677\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keywordflow}{not}\ file\_exists: }
+\DoxyCodeLine{00678\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ export\_meta(vid\_name,\ output\_csv=new\_filename) }
+\DoxyCodeLine{00679\  }
+\DoxyCodeLine{00680\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ change\ export\ filename\ to\ the\ new\ version }}
+\DoxyCodeLine{00681\ \ \ \ \ \ \ \ \ \ \ \ \ export\_filename\ =\ new\_filename }
+\DoxyCodeLine{00682\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00683\ \ \ \ \ \ \ \ \ export\_csv\ =\ df.to\_csv\ (export\_filename,\ index\ =\ \textcolor{keywordtype}{None},\ header=\textcolor{keyword}{False},\ mode=\textcolor{stringliteral}{'a'})\ \textcolor{comment}{\#Don't\ forget\ to\ add\ '.csv'\ at\ the\ end\ of\ the\ path }}
+\DoxyCodeLine{00684\  }
+\DoxyCodeLine{00685\ \ \ \ \ \ \ \ \ self.data\_dict\ =\ dict() }
+\DoxyCodeLine{00686\  }
+\DoxyCodeLine{00687\ \ \ \ \ \ \ \ \ input\_dialog.log(\textcolor{stringliteral}{"{}Export\ Data\ Complete!"{}}) }
+\DoxyCodeLine{00688\ \ \ \ \ \ \ \ \  }
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{a00170_aacff28242695dbd46d90369a16b897cf}{Multi\+Tracker.\+beginning}}, person\+\_\+tab.\+beginning, \mbox{\hyperlink{a00170_ac65effccfc0953d28e2002eb1514588d}{Multi\+Tracker.\+data\+\_\+dict}}, \mbox{\hyperlink{a00170_a7d8d84d2c3fe1d8eb34a746bca6a96a7}{Multi\+Tracker.\+get\+\_\+description()}}, \mbox{\hyperlink{a00170_a8bd0afd34e91523b1ec2ba0d089b6f61}{Multi\+Tracker.\+get\+\_\+group()}}, \mbox{\hyperlink{a00170_a7609c3353cf9cae9dc2a8586dd279714}{Multi\+Tracker.\+get\+\_\+id()}}, \mbox{\hyperlink{a00170_aabaffb95c249830a116841bf61391260}{Multi\+Tracker.\+get\+\_\+name()}}, \mbox{\hyperlink{a00170_ae2ad7793b357e7cf1d7bc5cbf84e232b}{Multi\+Tracker.\+get\+\_\+sex()}}, \mbox{\hyperlink{a00170_a6a54b87590251552d1e772115c06e8da}{Multi\+Tracker.\+get\+\_\+time\+\_\+tracked()}}, and \mbox{\hyperlink{a00170_ad117a7f922403f76104a8c676add0b49}{Multi\+Tracker.\+previous\+\_\+time}}.
+
+
+
+Referenced by \mbox{\hyperlink{a00170_a291e78f1e4bc543e8b599dfa574867ed}{Multi\+Tracker.\+calculate\+\_\+total\+\_\+time()}}.
+
+Here is the call graph for this function\+:
+% FIG 7
+Here is the caller graph for this function\+:
+% FIG 8
+\Hypertarget{a00170_a7d8d84d2c3fe1d8eb34a746bca6a96a7}\label{a00170_a7d8d84d2c3fe1d8eb34a746bca6a96a7} 
+\index{MultiTracker@{MultiTracker}!get\_description@{get\_description}}
+\index{get\_description@{get\_description}!MultiTracker@{MultiTracker}}
+\doxysubsubsection{\texorpdfstring{get\_description()}{get\_description()}}
+{\footnotesize\ttfamily get\+\_\+description (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+Tracker description. 
+
+\begin{DoxyVerb} Returns description of tracker STRING\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00201\ \ \ \ \ \textcolor{keyword}{def\ }get\_description(self): }
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}\ Returns\ description\ of\ tracker\ STRING"{}"{}"{}} }
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ self.description.toPlainText() }
+\DoxyCodeLine{00204\  }
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{a00170_a2661f439a4a94ffdcd5e47ae1da0bb1d}{Multi\+Tracker.\+description}}.
+
+
+
+Referenced by \mbox{\hyperlink{a00170_aa871b1fc9de77b6f599d27bd2f027335}{Multi\+Tracker.\+export\+\_\+data()}}.
+
+Here is the caller graph for this function\+:
+% FIG 9
+\Hypertarget{a00170_a8bd0afd34e91523b1ec2ba0d089b6f61}\label{a00170_a8bd0afd34e91523b1ec2ba0d089b6f61} 
+\index{MultiTracker@{MultiTracker}!get\_group@{get\_group}}
+\index{get\_group@{get\_group}!MultiTracker@{MultiTracker}}
+\doxysubsubsection{\texorpdfstring{get\_group()}{get\_group()}}
+{\footnotesize\ttfamily get\+\_\+group (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+Tracker\textquotesingle{}s group size. 
+
+\begin{DoxyVerb}returns group number STRING (can be converted to int)
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00206\ \ \ \ \ \textcolor{keyword}{def\ }get\_group(self): }
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{} }}
+\DoxyCodeLine{00208\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ returns\ group\ number\ STRING\ (can\ be\ converted\ to\ int) }}
+\DoxyCodeLine{00209\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}} }
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ self.group.text() }
+\DoxyCodeLine{00211\  }
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{a00170_a0f9123af540f084d1c0421dccc31e1dd}{Multi\+Tracker.\+group}}.
+
+
+
+Referenced by \mbox{\hyperlink{a00170_aa871b1fc9de77b6f599d27bd2f027335}{Multi\+Tracker.\+export\+\_\+data()}}.
+
+Here is the caller graph for this function\+:
+% FIG 10
+\Hypertarget{a00170_a7609c3353cf9cae9dc2a8586dd279714}\label{a00170_a7609c3353cf9cae9dc2a8586dd279714} 
+\index{MultiTracker@{MultiTracker}!get\_id@{get\_id}}
+\index{get\_id@{get\_id}!MultiTracker@{MultiTracker}}
+\doxysubsubsection{\texorpdfstring{get\_id()}{get\_id()}}
+{\footnotesize\ttfamily get\+\_\+id (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+Tracker ID. 
+
+\begin{DoxyVerb} Returns ID of person tracked STRING \end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00187\ \ \ \ \ \textcolor{keyword}{def\ }get\_id(self): }
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}\ Returns\ ID\ of\ person\ tracked\ STRING\ "{}"{}"{}} }
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ self.pid.text() }
+\DoxyCodeLine{00190\  }
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{a00170_ac47ca0713353d3fc9435a4f208f6b9a3}{Multi\+Tracker.\+pid}}.
+
+
+
+Referenced by \mbox{\hyperlink{a00170_aa871b1fc9de77b6f599d27bd2f027335}{Multi\+Tracker.\+export\+\_\+data()}}.
+
+Here is the caller graph for this function\+:
+% FIG 11
+\Hypertarget{a00170_aabaffb95c249830a116841bf61391260}\label{a00170_aabaffb95c249830a116841bf61391260} 
+\index{MultiTracker@{MultiTracker}!get\_name@{get\_name}}
+\index{get\_name@{get\_name}!MultiTracker@{MultiTracker}}
+\doxysubsubsection{\texorpdfstring{get\_name()}{get\_name()}}
+{\footnotesize\ttfamily get\+\_\+name (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+Name of tracker. 
+
+\begin{DoxyReturn}{Returns}
+string 
+\end{DoxyReturn}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00180\ \ \ \ \ \textcolor{keyword}{def\ }get\_name(self): }
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}! }}
+\DoxyCodeLine{00182\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @returns\ string }}
+\DoxyCodeLine{00183\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}} }
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ self.name.text() }
+\DoxyCodeLine{00185\ \ \ \ \  }
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{a00170_ab74e6bf80237ddc4109968cedc58c151}{Multi\+Tracker.\+name}}.
+
+
+
+Referenced by \mbox{\hyperlink{a00170_a291e78f1e4bc543e8b599dfa574867ed}{Multi\+Tracker.\+calculate\+\_\+total\+\_\+time()}}, \mbox{\hyperlink{a00170_aa871b1fc9de77b6f599d27bd2f027335}{Multi\+Tracker.\+export\+\_\+data()}}, \mbox{\hyperlink{a00170_a760a93329c38cda0044c70388ef7e4c6}{Multi\+Tracker.\+run\+\_\+bayes\+\_\+model()}}, and \mbox{\hyperlink{a00170_a5fc89aec3f0789c6b4d9c05d84fee19f}{Multi\+Tracker.\+update\+\_\+tracker()}}.
+
+Here is the caller graph for this function\+:
+% FIG 12
+\Hypertarget{a00170_ae2ad7793b357e7cf1d7bc5cbf84e232b}\label{a00170_ae2ad7793b357e7cf1d7bc5cbf84e232b} 
+\index{MultiTracker@{MultiTracker}!get\_sex@{get\_sex}}
+\index{get\_sex@{get\_sex}!MultiTracker@{MultiTracker}}
+\doxysubsubsection{\texorpdfstring{get\_sex()}{get\_sex()}}
+{\footnotesize\ttfamily get\+\_\+sex (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+Tacker sex. 
+
+\begin{DoxyVerb} Returns sex of person being tracked STRING\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00196\ \ \ \ \ \textcolor{keyword}{def\ }get\_sex(self): }
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}\ Returns\ sex\ of\ person\ being\ tracked\ STRING"{}"{}"{}} }
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ self.sex.text() }
+\DoxyCodeLine{00199\  }
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{a00170_aa4826dcd193b4161365d7457e67da538}{Multi\+Tracker.\+sex}}.
+
+
+
+Referenced by \mbox{\hyperlink{a00170_aa871b1fc9de77b6f599d27bd2f027335}{Multi\+Tracker.\+export\+\_\+data()}}.
+
+Here is the caller graph for this function\+:
+% FIG 13
+\Hypertarget{a00170_a6a54b87590251552d1e772115c06e8da}\label{a00170_a6a54b87590251552d1e772115c06e8da} 
+\index{MultiTracker@{MultiTracker}!get\_time\_tracked@{get\_time\_tracked}}
+\index{get\_time\_tracked@{get\_time\_tracked}!MultiTracker@{MultiTracker}}
+\doxysubsubsection{\texorpdfstring{get\_time\_tracked()}{get\_time\_tracked()}}
+{\footnotesize\ttfamily get\+\_\+time\+\_\+tracked (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{framerate }\end{DoxyParamCaption})}
+
+
+
+Time tracker has been tracking relative to the video. 
+
+\begin{DoxyVerb}Returns total time being tracked in video: 
+@returns  LIST(FLOAT) 
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00213\ \ \ \ \ \textcolor{keyword}{def\ }get\_time\_tracked(self,\ framerate): }
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}\  }}
+\DoxyCodeLine{00215\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns\ total\ time\ being\ tracked\ in\ video:\  }}
+\DoxyCodeLine{00216\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @returns\ \ LIST(FLOAT)\  }}
+\DoxyCodeLine{00217\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}} }
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ if\ len(self.data\_dict)\ >\ 2: }}
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ total\_time\ =\ [self.calculate\_total\_time(self.part\_time\_to\_segments(self.data\_dict.keys()),\ framerate)] }
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ total\_time }
+\DoxyCodeLine{00222\  }
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{a00170_a291e78f1e4bc543e8b599dfa574867ed}{Multi\+Tracker.\+calculate\+\_\+total\+\_\+time()}}, \mbox{\hyperlink{a00170_ac65effccfc0953d28e2002eb1514588d}{Multi\+Tracker.\+data\+\_\+dict}}, and \mbox{\hyperlink{a00170_aac82437aaf543e6e298cfbdd4eb231ab}{Multi\+Tracker.\+part\+\_\+time\+\_\+to\+\_\+segments()}}.
+
+
+
+Referenced by \mbox{\hyperlink{a00170_a291e78f1e4bc543e8b599dfa574867ed}{Multi\+Tracker.\+calculate\+\_\+total\+\_\+time()}}, and \mbox{\hyperlink{a00170_aa871b1fc9de77b6f599d27bd2f027335}{Multi\+Tracker.\+export\+\_\+data()}}.
+
+Here is the call graph for this function\+:
+% FIG 14
+Here is the caller graph for this function\+:
+% FIG 15
+\Hypertarget{a00170_a8a92426fb647398a121bd81d0089fdb6}\label{a00170_a8a92426fb647398a121bd81d0089fdb6} 
+\index{MultiTracker@{MultiTracker}!grab\_cut@{grab\_cut}}
+\index{grab\_cut@{grab\_cut}!MultiTracker@{MultiTracker}}
+\doxysubsubsection{\texorpdfstring{grab\_cut()}{grab\_cut()}}
+{\footnotesize\ttfamily grab\+\_\+cut (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{frame,  }\item[{}]{rect,  }\item[{}]{export\+\_\+path = {\ttfamily None} }\end{DoxyParamCaption})}
+
+
+
+Open\+CV\textquotesingle{}s Grabcut on tracker\textquotesingle{}s position. 
+
+Performing image segmentation using the Grab\+Cut algorithm in Open\+CV.
+
+
+\begin{DoxyParams}{Parameters}
+{\em frame} & int \\
+\hline
+{\em rect} & (int, int, int, int) \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00161\ \ \ \ \ \textcolor{keyword}{def\ }grab\_cut(self,\ frame,\ rect,\ export\_path=None): }
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}! }}
+\DoxyCodeLine{00163\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Performing\ image\ segmentation\ using\ the\ GrabCut\ algorithm\ in\ OpenCV. }}
+\DoxyCodeLine{00164\ \textcolor{stringliteral}{ }}
+\DoxyCodeLine{00165\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @param\ frame\ int }}
+\DoxyCodeLine{00166\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @param\ rect\ (int,\ int,\ int,\ int) }}
+\DoxyCodeLine{00167\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}} }
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ bgdModel\ =\ np.zeros((1,65),np.float64) }
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ fgdModel\ =\ np.zeros((1,65),np.float64) }
+\DoxyCodeLine{00170\  }
+\DoxyCodeLine{00171\  }
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ mask\ =\ np.zeros(frame.shape[:2],np.uint8) }
+\DoxyCodeLine{00173\  }
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ cv2.grabCut(frame,\ mask,\ rect,\ bgdModel,\ fgdModel,\ iterCount=2,\ mode=cv2.GC\_INIT\_WITH\_RECT) }
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ mask2\ =\ np.where((mask==2)|(mask==0),0,1).astype(\textcolor{stringliteral}{'uint8'}) }
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ img\ =\ frame*mask2[:,:,np.newaxis]\  }
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ cv2.imshow(\textcolor{stringliteral}{"{}Cropped\ Image"{}},\ img) }
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \  }
+
+\end{DoxyCode}
+\Hypertarget{a00170_a895029f64bcc7eae2e6e6ffc466ba368}\label{a00170_a895029f64bcc7eae2e6e6ffc466ba368} 
+\index{MultiTracker@{MultiTracker}!merge\_intervals@{merge\_intervals}}
+\index{merge\_intervals@{merge\_intervals}!MultiTracker@{MultiTracker}}
+\doxysubsubsection{\texorpdfstring{merge\_intervals()}{merge\_intervals()}}
+{\footnotesize\ttfamily merge\+\_\+intervals (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{total\+\_\+segments }\end{DoxyParamCaption})}
+
+
+
+Merges a list of integer segments of beginning/end time into one interval that contains the first and last values of all segments. 
+
+\begin{DoxyVerb}On a continous set of intervals, merges them such that intersecting inervals will become a new interval with new limits. 
+Example: [[0, 20], [10, 50]] becomes [[0,50]]
+[[0, 500]] stays the same
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00694\ \ \ \ \ \textcolor{keyword}{def\ }merge\_intervals(self,\ total\_segments): }
+\DoxyCodeLine{00695\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{} }}
+\DoxyCodeLine{00696\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ On\ a\ continous\ set\ of\ intervals,\ merges\ them\ such\ that\ intersecting\ inervals\ will\ become\ a\ new\ interval\ with\ new\ limits.\  }}
+\DoxyCodeLine{00697\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Example:\ [[0,\ 20],\ [10,\ 50]]\ becomes\ [[0,50]] }}
+\DoxyCodeLine{00698\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ [[0,\ 500]]\ stays\ the\ same }}
+\DoxyCodeLine{00699\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}} }
+\DoxyCodeLine{00700\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print("{}Merge\_Interval"{},\ total\_segments) }}
+\DoxyCodeLine{00701\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00702\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}: }
+\DoxyCodeLine{00703\ \ \ \ \ \ \ \ \ \ \ \ \ assert(len(total\_segments)\ >=\ 1) }
+\DoxyCodeLine{00704\ \ \ \ \ \ \ \ \ \ \ \ \ total\_segments.sort(key=\textcolor{keyword}{lambda}\ interval:\ interval[0]) }
+\DoxyCodeLine{00705\ \ \ \ \ \ \ \ \ \ \ \ \ merged\ =\ [total\_segments[0]] }
+\DoxyCodeLine{00706\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ current\ \textcolor{keywordflow}{in}\ total\_segments: }
+\DoxyCodeLine{00707\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ previous\ =\ merged[-\/1] }
+\DoxyCodeLine{00708\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ current[0]\ <=\ previous[1]: }
+\DoxyCodeLine{00709\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ previous[1]\ =\ max(previous[1],\ current[1]) }
+\DoxyCodeLine{00710\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}: }
+\DoxyCodeLine{00711\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ merged.append(current) }
+\DoxyCodeLine{00712\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{except}\ Exception\ \textcolor{keyword}{as}\ e: }
+\DoxyCodeLine{00713\ \ \ \ \ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{"{}Handling\ single\ element\ in\ merge\_intervals\ by\ duplicating\ single\ value"{}},\ e) }
+\DoxyCodeLine{00714\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ [[total\_segments[0][0],\ total\_segments[0][0]]] }
+\DoxyCodeLine{00715\  }
+\DoxyCodeLine{00716\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ merged }
+\DoxyCodeLine{00717\  }
+
+\end{DoxyCode}
+
+
+Referenced by \mbox{\hyperlink{a00170_aac82437aaf543e6e298cfbdd4eb231ab}{Multi\+Tracker.\+part\+\_\+time\+\_\+to\+\_\+segments()}}.
+
+Here is the caller graph for this function\+:
+% FIG 16
+\Hypertarget{a00170_aac82437aaf543e6e298cfbdd4eb231ab}\label{a00170_aac82437aaf543e6e298cfbdd4eb231ab} 
+\index{MultiTracker@{MultiTracker}!part\_time\_to\_segments@{part\_time\_to\_segments}}
+\index{part\_time\_to\_segments@{part\_time\_to\_segments}!MultiTracker@{MultiTracker}}
+\doxysubsubsection{\texorpdfstring{part\_time\_to\_segments()}{part\_time\_to\_segments()}}
+{\footnotesize\ttfamily part\+\_\+time\+\_\+to\+\_\+segments (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{time\+\_\+data,  }\item[{}]{segment\+\_\+size = {\ttfamily 300} }\end{DoxyParamCaption})}
+
+
+
+splits the time into beginning/end intervals given segment size as the largest absent gap 
+
+\begin{DoxyVerb}Parts the times into segments based on the distance between tracked frames.
+    time_data is the entire time of the object tracked.
+    segment_size is the distance between frames that should be considered as one segment. Default is 10 seconds at 30fps.
+    min_segment is the minimum size of segment allowed. If it is too small, it will be ignored. Defualt is 1 second (30 frames).
+
+Example with default segment size of 300:
+    [0, 10, 20, 30, 100, 200, 300, 400, 1000, 1010, 1020] results in [[0, 400], [1000, 1020]]
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00719\ \ \ \ \ \textcolor{keyword}{def\ }part\_time\_to\_segments(self,\ time\_data,\ segment\_size=300): }
+\DoxyCodeLine{00720\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{} }}
+\DoxyCodeLine{00721\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Parts\ the\ times\ into\ segments\ based\ on\ the\ distance\ between\ tracked\ frames. }}
+\DoxyCodeLine{00722\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ time\_data\ is\ the\ entire\ time\ of\ the\ object\ tracked. }}
+\DoxyCodeLine{00723\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ segment\_size\ is\ the\ distance\ between\ frames\ that\ should\ be\ considered\ as\ one\ segment.\ Default\ is\ 10\ seconds\ at\ 30fps. }}
+\DoxyCodeLine{00724\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ min\_segment\ is\ the\ minimum\ size\ of\ segment\ allowed.\ If\ it\ is\ too\ small,\ it\ will\ be\ ignored.\ Defualt\ is\ 1\ second\ (30\ frames). }}
+\DoxyCodeLine{00725\ \textcolor{stringliteral}{ }}
+\DoxyCodeLine{00726\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Example\ with\ default\ segment\ size\ of\ 300: }}
+\DoxyCodeLine{00727\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ [0,\ 10,\ 20,\ 30,\ 100,\ 200,\ 300,\ 400,\ 1000,\ 1010,\ 1020]\ results\ in\ [[0,\ 400],\ [1000,\ 1020]] }}
+\DoxyCodeLine{00728\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}} }
+\DoxyCodeLine{00729\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ len(time\_data)\ <\ 2: }
+\DoxyCodeLine{00730\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ [[0]] }
+\DoxyCodeLine{00731\  }
+\DoxyCodeLine{00732\ \ \ \ \ \ \ \ \ time\_data\ =\ list(sorted(time\_data)) }
+\DoxyCodeLine{00733\  }
+\DoxyCodeLine{00734\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#three\ segment\ markers,\ starting\ frame,\ current\ frame,\ and\ end\ frame }}
+\DoxyCodeLine{00735\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}: }
+\DoxyCodeLine{00736\ \ \ \ \ \ \ \ \ \ \ \ \ seg\_start\ =\ time\_data[0] }
+\DoxyCodeLine{00737\ \ \ \ \ \ \ \ \ \ \ \ \ seg\_last\ =\ time\_data[0] }
+\DoxyCodeLine{00738\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{except}: }
+\DoxyCodeLine{00739\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ raise\ ValueError }}
+\DoxyCodeLine{00740\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ [[0]] }
+\DoxyCodeLine{00741\ \ \ \ \ \ \ \ \ total\_segments\ =\ []\ \textcolor{comment}{\#\ total\ segments\ placed\ in\ a\ list }}
+\DoxyCodeLine{00742\  }
+\DoxyCodeLine{00743\  }
+\DoxyCodeLine{00744\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ iterate\ through\ all\ the\ times,\ start\ comparing\ time[0]\ with\ time[1] }}
+\DoxyCodeLine{00745\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ time\ \textcolor{keywordflow}{in}\ time\_data: }
+\DoxyCodeLine{00746\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#if\ the\ size\ between\ last\ segment\ time\ and\ current\ time\ is\ less\ than\ segment\ threshold }}
+\DoxyCodeLine{00747\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ((time\ -\/\ seg\_last)\ <=\ segment\_size): }
+\DoxyCodeLine{00748\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ input\_dialog.log("{}Stepping\ from\ "{}\ +\ str(seg\_last)\ +\ "{}\ to\ "{}\ +\ str(time)\ ) }}
+\DoxyCodeLine{00749\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seg\_last\ =\ time }
+\DoxyCodeLine{00750\ \ \ \ \ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00751\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#if\ the\ size\ between\ last\ segment\ time\ is\ greater\ than\ the\ threshold,\ we\ create\ a\ new\ segment\ and\ check\ if\ it\ has\ been\ tracked\ long\ enough }}
+\DoxyCodeLine{00752\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ((time\ -\/\ seg\_last)\ >\ segment\_size): }
+\DoxyCodeLine{00753\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ input\_dialog.log("{}Past\ Threshold,\ segmenting\ time\ from\ "{}\ +\ str(seg\_start)\ +\ "{}\ to\ "{}\ +\ str(seg\_last)) }}
+\DoxyCodeLine{00754\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ seg\_start\ \textcolor{keywordflow}{is}\ \textcolor{keywordflow}{not}\ seg\_last: }
+\DoxyCodeLine{00755\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#add\ the\ start\ and\ end\ of\ current\ segment\ as\ a\ pair }}
+\DoxyCodeLine{00756\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ total\_segments.append([seg\_start,\ seg\_last]) }
+\DoxyCodeLine{00757\ \ \ \ \ \ \  }
+\DoxyCodeLine{00758\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seg\_start\ =\ time }
+\DoxyCodeLine{00759\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seg\_last\ =\ time }
+\DoxyCodeLine{00760\ \ \ \ \ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00761\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#if\ we\ reach\ the\ end\ of\ the\ tracked\ data,\ we\ end\ the\ segments\ and\ close\ the\ loop }}
+\DoxyCodeLine{00762\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (time\ ==\ time\_data[-\/1]): }
+\DoxyCodeLine{00763\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ seg\_start\ ==\ seg\_last\ \textcolor{keywordflow}{or}\ seg\_start\ >=\ seg\_last: }
+\DoxyCodeLine{00764\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break} }
+\DoxyCodeLine{00765\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ total\_segments.append([seg\_start,\ seg\_last]) }
+\DoxyCodeLine{00766\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break} }
+\DoxyCodeLine{00767\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ \ \ \ \ print("{}TOTAL\_SEGMENTS\ EMPTY"{}) }}
+\DoxyCodeLine{00768\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ \ \ \ \ return\ [[time\_data[0],\ time\_data[0]]] }}
+\DoxyCodeLine{00769\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ if\ not\ total\_segments: }}
+\DoxyCodeLine{00770\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#merge\ intervals\ overlapping\ to\ maintain\ efficiency }}
+\DoxyCodeLine{00771\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ len(total\_segments)\ >=\ 2: }
+\DoxyCodeLine{00772\ \ \ \ \ \ \ \ \ \ \ \ \ total\_segments\ =\ self.merge\_intervals(total\_segments) }
+\DoxyCodeLine{00773\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ total\_segments\ ==\ \textcolor{keywordtype}{None}: }
+\DoxyCodeLine{00774\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ [[0]] }
+\DoxyCodeLine{00775\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{elif}\ len(total\_segments)\ ==\ 1: }
+\DoxyCodeLine{00776\ \ \ \ \ \ \ \ \ \ \ \ \ total\_segments\ =\ [total\_segments[0]] }
+\DoxyCodeLine{00777\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}: }
+\DoxyCodeLine{00778\ \ \ \ \ \ \ \ \ \ \ \ \ total\_segments\ =\ [[0]] }
+\DoxyCodeLine{00779\  }
+\DoxyCodeLine{00780\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ total\_segments }
+\DoxyCodeLine{00781\  }
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{a00170_a895029f64bcc7eae2e6e6ffc466ba368}{Multi\+Tracker.\+merge\+\_\+intervals()}}.
+
+
+
+Referenced by \mbox{\hyperlink{a00170_a291e78f1e4bc543e8b599dfa574867ed}{Multi\+Tracker.\+calculate\+\_\+total\+\_\+time()}}, and \mbox{\hyperlink{a00170_a6a54b87590251552d1e772115c06e8da}{Multi\+Tracker.\+get\+\_\+time\+\_\+tracked()}}.
+
+Here is the call graph for this function\+:
+% FIG 17
+Here is the caller graph for this function\+:
+% FIG 18
+\Hypertarget{a00170_acea06c482b1d7423a17fcdd29e972cf9}\label{a00170_acea06c482b1d7423a17fcdd29e972cf9} 
+\index{MultiTracker@{MultiTracker}!predict@{predict}}
+\index{predict@{predict}!MultiTracker@{MultiTracker}}
+\doxysubsubsection{\texorpdfstring{predict()}{predict()}}
+{\footnotesize\ttfamily predict (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Applies KNN taking into consideration a Hidden Markov Model
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00404\ \ \ \ \ \textcolor{keyword}{def\ }predict(self,): }
+\DoxyCodeLine{00405\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{} }}
+\DoxyCodeLine{00406\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Applies\ KNN\ taking\ into\ consideration\ a\ Hidden\ Markov\ Model }}
+\DoxyCodeLine{00407\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}} }
+\DoxyCodeLine{00408\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{pass} }
+\DoxyCodeLine{00409\  }
+
+\end{DoxyCode}
+
+
+Referenced by \mbox{\hyperlink{a00170_a291e78f1e4bc543e8b599dfa574867ed}{Multi\+Tracker.\+calculate\+\_\+total\+\_\+time()}}, and \mbox{\hyperlink{a00170_a760a93329c38cda0044c70388ef7e4c6}{Multi\+Tracker.\+run\+\_\+bayes\+\_\+model()}}.
+
+Here is the caller graph for this function\+:
+% FIG 19
+\Hypertarget{a00170_aedf26e27b8737b40f42c9b616187d1fc}\label{a00170_aedf26e27b8737b40f42c9b616187d1fc} 
+\index{MultiTracker@{MultiTracker}!record\_data@{record\_data}}
+\index{record\_data@{record\_data}!MultiTracker@{MultiTracker}}
+\doxysubsubsection{\texorpdfstring{record\_data()}{record\_data()}}
+{\footnotesize\ttfamily record\+\_\+data (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{frame,  }\item[{}]{total\+\_\+people,  }\item[{}]{x = {\ttfamily -\/1},  }\item[{}]{y = {\ttfamily -\/1},  }\item[{}]{w = {\ttfamily -\/1},  }\item[{}]{h = {\ttfamily -\/1},  }\item[{}]{regions = {\ttfamily \mbox{[}\mbox{]}},  }\item[{}]{other\+\_\+room = {\ttfamily False},  }\item[{}]{image\+\_\+frame = {\ttfamily None} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Appends location and time to a list of data
+
+X,Y,W,H No Data are described as -1, and regions is described as []
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00410\ \ \ \ \ \textcolor{keyword}{def\ }record\_data(self,\ frame,\ total\_people,\ x=-\/1,\ y=-\/1,\ w=-\/1,\ h=-\/1,\ regions=[],\ other\_room=False,\ image\_frame=None): }
+\DoxyCodeLine{00411\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{} }}
+\DoxyCodeLine{00412\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Appends\ location\ and\ time\ to\ a\ list\ of\ data }}
+\DoxyCodeLine{00413\ \textcolor{stringliteral}{ }}
+\DoxyCodeLine{00414\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ X,Y,W,H\ No\ Data\ are\ described\ as\ -\/1,\ and\ regions\ is\ described\ as\ [] }}
+\DoxyCodeLine{00415\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}} }
+\DoxyCodeLine{00416\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ input\_dialog.log("{}recording\ Frame"{}\ +\ str(frame)) }}
+\DoxyCodeLine{00417\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ self.location\_data.append((int(x),int(y)))\ \#(x,\ y) }}
+\DoxyCodeLine{00418\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ self.time\_data.append(frame)\ \#(frames\ tracked) }}
+\DoxyCodeLine{00419\ \ \ \ \ \ \ \ \ point\ =\ (int(x),int(y)) }
+\DoxyCodeLine{00420\ \ \ \ \ \ \ \ \ dimensions\ =\ (int(w),\ int(h)) }
+\DoxyCodeLine{00421\ \ \ \ \ \ \ \ \ self.data\_dict[frame]\ =\ (point,\ regions,\ dimensions,\ other\_room,\ total\_people,\ self.is\_chair()) }
+\DoxyCodeLine{00422\  }
+\DoxyCodeLine{00423\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ image\_frame\ \textcolor{keywordflow}{is}\ \textcolor{keywordflow}{not}\ \textcolor{keywordtype}{None}: }
+\DoxyCodeLine{00424\ \ \ \ \ \ \ \ \ \ \ \ \ x\ =\ int(x) }
+\DoxyCodeLine{00425\ \ \ \ \ \ \ \ \ \ \ \ \ y\ =\ int(y) }
+\DoxyCodeLine{00426\ \ \ \ \ \ \ \ \ \ \ \ \ h\ =\ int(h/2) }
+\DoxyCodeLine{00427\ \ \ \ \ \ \ \ \ \ \ \ \ w\ =\ int(w/2) }
+\DoxyCodeLine{00428\ \ \ \ \ \ \ \ \ \ \ \ \ image\ =\ image\_frame[y-\/h:y+h,\ x-\/w:x+w] }
+\DoxyCodeLine{00429\ \ \ \ \ \ \ \ \ \ \ \ \ cv2.imshow(\textcolor{stringliteral}{"{}SELF\ AWARE"{}},\ image) }
+\DoxyCodeLine{00430\ \ \ \ \ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00431\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ self.self\_aware\_gallery.append() }}
+\DoxyCodeLine{00432\ \ \ \ \ \ \ \ \ \ \ \ \ self.run\_bayes\_model(image,\ image\_frame) }
+\DoxyCodeLine{00433\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ if\ frame: }}
+\DoxyCodeLine{00434\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ \ \ \ \ if\ not\ self.recording\_video: }}
+\DoxyCodeLine{00435\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ video\_name\ =\ self.get\_name()\ +\ "{}mp4"{} }}
+\DoxyCodeLine{00436\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ self.get\_name() }}
+\DoxyCodeLine{00437\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ self.video\_recorder\ =\ cv2.VideoWriter(video\_name,\ -\/1,\ 30,\ (input\_dialog.width,\ input\_dialog.height)) }}
+\DoxyCodeLine{00438\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00439\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ \ \ \ \ if\ self.recording\_video: }}
+\DoxyCodeLine{00440\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ self.video\_recorder.write(image\_frame) }}
+\DoxyCodeLine{00441\  }
+
+\end{DoxyCode}
+\Hypertarget{a00170_a4d7cd1c2c34050e73a70d90207ed2a67}\label{a00170_a4d7cd1c2c34050e73a70d90207ed2a67} 
+\index{MultiTracker@{MultiTracker}!remove@{remove}}
+\index{remove@{remove}!MultiTracker@{MultiTracker}}
+\doxysubsubsection{\texorpdfstring{remove()}{remove()}}
+{\footnotesize\ttfamily remove (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Removes the tracker from being recorded. DOES NOT YET DELETE INFO
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00396\ \ \ \ \ \textcolor{keyword}{def\ }remove(self): }
+\DoxyCodeLine{00397\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{} }}
+\DoxyCodeLine{00398\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Removes\ the\ tracker\ from\ being\ recorded.\ DOES\ NOT\ YET\ DELETE\ INFO }}
+\DoxyCodeLine{00399\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}} }
+\DoxyCodeLine{00400\ \ \ \ \ \ \ \ \ del\ self.tracker }
+\DoxyCodeLine{00401\ \ \ \ \ \ \ \ \ self.init\_bounding\_box\ =\ \textcolor{keywordtype}{None} }
+\DoxyCodeLine{00402\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ del\ self }}
+\DoxyCodeLine{00403\  }
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{a00170_a4db43bc1c94282c2cf64b5b64463f386}{Multi\+Tracker.\+init\+\_\+bounding\+\_\+box}}, and \mbox{\hyperlink{a00170_abec0b9ee4648af3b77db73e8070f1736}{Multi\+Tracker.\+tracker}}.
+
+\Hypertarget{a00170_a3d008e6708e5c73dbaa4a10911242c39}\label{a00170_a3d008e6708e5c73dbaa4a10911242c39} 
+\index{MultiTracker@{MultiTracker}!rename@{rename}}
+\index{rename@{rename}!MultiTracker@{MultiTracker}}
+\doxysubsubsection{\texorpdfstring{rename()}{rename()}}
+{\footnotesize\ttfamily rename (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{name }\end{DoxyParamCaption})}
+
+
+
+UNUSED renames tracker. 
+
+\begin{DoxyVerb}Renames the tracking object
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00271\ \ \ \ \ \textcolor{keyword}{def\ }rename(self,\ name): }
+\DoxyCodeLine{00272\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{} }}
+\DoxyCodeLine{00273\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Renames\ the\ tracking\ object }}
+\DoxyCodeLine{00274\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}} }
+\DoxyCodeLine{00275\ \ \ \ \ \ \ \ \ self.name\ =\ name }
+\DoxyCodeLine{00276\ \ \ \ \ \ \ \ \  }
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{a00170_ab74e6bf80237ddc4109968cedc58c151}{Multi\+Tracker.\+name}}.
+
+\Hypertarget{a00170_a760a93329c38cda0044c70388ef7e4c6}\label{a00170_a760a93329c38cda0044c70388ef7e4c6} 
+\index{MultiTracker@{MultiTracker}!run\_bayes\_model@{run\_bayes\_model}}
+\index{run\_bayes\_model@{run\_bayes\_model}!MultiTracker@{MultiTracker}}
+\doxysubsubsection{\texorpdfstring{run\_bayes\_model()}{run\_bayes\_model()}}
+{\footnotesize\ttfamily run\+\_\+bayes\+\_\+model (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{new\+\_\+img,  }\item[{}]{whole\+\_\+image }\end{DoxyParamCaption})}
+
+
+
+Do not use. 
+
+\begin{DoxyWarning}{Warning}
+DO NOT USE -\/ Experimental naive bayes predictor for the visual similarity of current tracker score 
+\end{DoxyWarning}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00443\ \ \ \ \ \textcolor{keyword}{def\ }run\_bayes\_model(self,\ new\_img,\ whole\_image): }
+\DoxyCodeLine{00444\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{'''! }}
+\DoxyCodeLine{00445\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @warning\ DO\ NOT\ USE\ -\/\ Experimental\ naive\ bayes\ predictor\ for\ the\ visual\ similarity\ of\ current\ tracker\ score }}
+\DoxyCodeLine{00446\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ '''} }
+\DoxyCodeLine{00447\  }
+\DoxyCodeLine{00448\ \ \ \ \ \ \ \ \ cv2.imshow(\textcolor{stringliteral}{"{}WHOLE"{}},\ whole\_image) }
+\DoxyCodeLine{00449\ \ \ \ \ \ \ \ \ new\_img\ =\ cv2.cvtColor(new\_img,\ cv2.COLOR\_BGR2GRAY).reshape(-\/1,1)\  }
+\DoxyCodeLine{00450\ \ \ \ \ \ \ \ \ whole\_image\ =\ cv2.cvtColor(whole\_image,\ cv2.COLOR\_BGR2GRAY).reshape(-\/1,1)\  }
+\DoxyCodeLine{00451\  }
+\DoxyCodeLine{00452\ \ \ \ \ \ \ \ \ joint\_img\ =\ np.append(new\_img,\ whole\_image).reshape(-\/1,1)\  }
+\DoxyCodeLine{00453\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print(joint\_img) }}
+\DoxyCodeLine{00454\  }
+\DoxyCodeLine{00455\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}: }
+\DoxyCodeLine{00456\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ self.bayes\_model\ \textcolor{keywordflow}{is}\ \textcolor{keywordtype}{None}: }
+\DoxyCodeLine{00457\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.bayes\_model\ =\ Perceptron() }
+\DoxyCodeLine{00458\  }
+\DoxyCodeLine{00459\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print(new\_img.shape) }}
+\DoxyCodeLine{00460\ \ \ \ \ \ \ \ \ \ \ \ \ scaler\ =\ StandardScaler().fit(joint\_img) }
+\DoxyCodeLine{00461\ \ \ \ \ \ \ \ \ \ \ \ \ joint\_img\ =\ scaler.transform(joint\_img) }
+\DoxyCodeLine{00462\  }
+\DoxyCodeLine{00463\ \ \ \ \ \ \ \ \ \ \ \ \ name\_array\ =\ np.array([self.get\_name()]*new\_img.shape[0]) }
+\DoxyCodeLine{00464\ \ \ \ \ \ \ \ \ \ \ \ \ other\_array\ =\ np.array([\textcolor{stringliteral}{"{}None"{}}]*whole\_image.shape[0]) }
+\DoxyCodeLine{00465\ \ \ \ \ \ \ \ \ \ \ \ \ joint\_labels\ =\ np.append(name\_array,\ other\_array) }
+\DoxyCodeLine{00466\  }
+\DoxyCodeLine{00467\ \ \ \ \ \ \ \ \ \ \ \ \ self.bayes\_model.partial\_fit(joint\_img,\ joint\_labels,\ classes=np.unique([self.get\_name(),\ \textcolor{stringliteral}{"{}None"{}}])) }
+\DoxyCodeLine{00468\  }
+\DoxyCodeLine{00469\ \ \ \ \ \ \ \ \ \ \ \ \ pred\_2\ =\ self.bayes\_model.predict(new\_img) }
+\DoxyCodeLine{00470\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ probability\ =\ self.bayes\_model.predict\_proba(new\_img) }}
+\DoxyCodeLine{00471\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print(pred\_1,\ pred\_2) }}
+\DoxyCodeLine{00472\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print("{}pred:"{},\ pred\_2) }}
+\DoxyCodeLine{00473\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print(pred\_2) }}
+\DoxyCodeLine{00474\ \ \ \ \ \ \ \ \ \ \ \ \ a\ =\ np.sum(pred\_2\ ==\ \textcolor{stringliteral}{''}) }
+\DoxyCodeLine{00475\ \ \ \ \ \ \ \ \ \ \ \ \ b\ =\ len(pred\_2) }
+\DoxyCodeLine{00476\  }
+\DoxyCodeLine{00477\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ a/b\ \textcolor{keywordflow}{is}\ \textcolor{keywordflow}{not}\ 0\ \textcolor{keywordflow}{or}\ 1: }
+\DoxyCodeLine{00478\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ print(a\ /\ b) }
+\DoxyCodeLine{00479\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print(np.mean(probability)) }}
+\DoxyCodeLine{00480\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print("{}Probability"{},\ np.mean(probability)) }}
+\DoxyCodeLine{00481\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{except}\ Exception\ \textcolor{keyword}{as}\ e: }
+\DoxyCodeLine{00482\ \ \ \ \ \ \ \ \ \ \ \ \ print(e) }
+\DoxyCodeLine{00483\  }
+\DoxyCodeLine{00484\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ self.distance\_data.append(self.estimate\_distance(size))\ \#(CLOSE,\ MED,\ FAR)\ (estimated) }}
+\DoxyCodeLine{00485\  }
+
+\end{DoxyCode}
+
+
+References Multi\+Tracker.\+bayes\+\_\+model, \mbox{\hyperlink{a00170_aabaffb95c249830a116841bf61391260}{Multi\+Tracker.\+get\+\_\+name()}}, and \mbox{\hyperlink{a00170_acea06c482b1d7423a17fcdd29e972cf9}{Multi\+Tracker.\+predict()}}.
+
+Here is the call graph for this function\+:
+% FIG 20
+\Hypertarget{a00170_aa68c45271f7626e0ba47085f9986db6f}\label{a00170_aa68c45271f7626e0ba47085f9986db6f} 
+\index{MultiTracker@{MultiTracker}!set\_colour@{set\_colour}}
+\index{set\_colour@{set\_colour}!MultiTracker@{MultiTracker}}
+\doxysubsubsection{\texorpdfstring{set\_colour()}{set\_colour()}}
+{\footnotesize\ttfamily set\+\_\+colour (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{color = {\ttfamily (255,255,255)} }\end{DoxyParamCaption})}
+
+
+
+UNUSED sets tracker\textquotesingle{}s box colour. 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00278\ \ \ \ \ \textcolor{keyword}{def\ }set\_colour(self,\ color=(255,255,255)): }
+\DoxyCodeLine{00279\ \ \ \ \ \ \ \ \ self.colour\ =\ color }
+\DoxyCodeLine{00280\  }
+
+\end{DoxyCode}
+
+
+References tracker\+\_\+evaluation.\+colour, and \mbox{\hyperlink{a00170_aa68e842dd7ce4ebaf9792928e4a990f0}{Multi\+Tracker.\+colour}}.
+
+\Hypertarget{a00170_a5fc89aec3f0789c6b4d9c05d84fee19f}\label{a00170_a5fc89aec3f0789c6b4d9c05d84fee19f} 
+\index{MultiTracker@{MultiTracker}!update\_tracker@{update\_tracker}}
+\index{update\_tracker@{update\_tracker}!MultiTracker@{MultiTracker}}
+\doxysubsubsection{\texorpdfstring{update\_tracker()}{update\_tracker()}}
+{\footnotesize\ttfamily update\+\_\+tracker (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{frame }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}track and draw box on the frame
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00353\ \ \ \ \ \textcolor{keyword}{def\ }update\_tracker(self,\ frame): }
+\DoxyCodeLine{00354\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{} }}
+\DoxyCodeLine{00355\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ track\ and\ draw\ box\ on\ the\ frame }}
+\DoxyCodeLine{00356\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}} }
+\DoxyCodeLine{00357\ \ \ \ \ \ \ \ \ success\ =\ \textcolor{keyword}{False} }
+\DoxyCodeLine{00358\ \ \ \ \ \ \ \ \ box\ =\ \textcolor{keywordtype}{None} }
+\DoxyCodeLine{00359\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ check\ to\ see\ if\ we\ are\ currently\ tracking\ an\ object }}
+\DoxyCodeLine{00360\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ self.init\_bounding\_box\ \textcolor{keywordflow}{is}\ \textcolor{keywordflow}{not}\ \textcolor{keywordtype}{None}: }
+\DoxyCodeLine{00361\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ grab\ the\ new\ bounding\ box\ coordinates\ of\ the\ object }}
+\DoxyCodeLine{00362\ \ \ \ \ \ \ \ \ \ \ \ \ (success,\ box)\ =\ self.tracker.update(frame) }
+\DoxyCodeLine{00363\ \ \ \ \ \ \ \ \ \ \ \ \ self.box\ =\ box }
+\DoxyCodeLine{00364\ \ \ \ \  }
+\DoxyCodeLine{00365\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ check\ to\ see\ if\ the\ tracking\ was\ a\ success }}
+\DoxyCodeLine{00366\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ success: }
+\DoxyCodeLine{00367\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ frame\ =\ self.draw\_tracker(frame,\ box) }
+\DoxyCodeLine{00368\  }
+\DoxyCodeLine{00369\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ (x,\ y,\ w,\ h)\ =\ [int(v)\ for\ v\ in\ box] }}
+\DoxyCodeLine{00370\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ cv2.rectangle(frame,\ (x,\ y),\ (x\ +\ w,\ y\ +\ h),\ self.colour,\ 2) }}
+\DoxyCodeLine{00371\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ cv2.rectangle(frame,\ (x\ ,\ y\ -\/\ 1),\ (x\ +\ 10\ *\ (len(self.get\_name()))\ ,\ y\ -\/\ 15),(255,255,255),-\/1) }}
+\DoxyCodeLine{00372\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ cv2.putText(frame,self.get\_name(),\ (x\ ,\ y\ -\/\ 1),\ cv2.FONT\_HERSHEY\_PLAIN,\ 1,\ (0,0,0),1) }}
+\DoxyCodeLine{00373\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00374\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ cv2.putText(frame,self.get\_name(),\ (x\ ,\ y\ -\/\ 1),\ cv2.FONT\_HERSHEY\_COMPLEX\_SMALL,\ 0.75,\ (0,0,0),1) }}
+\DoxyCodeLine{00375\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ success,\ box,\ frame }
+\DoxyCodeLine{00376\  }
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{a00170_a4485d04ca451246b6a81dd2799f83906}{Multi\+Tracker.\+box}}, tracker\+\_\+evaluation.\+colour, \mbox{\hyperlink{a00170_aa68e842dd7ce4ebaf9792928e4a990f0}{Multi\+Tracker.\+colour}}, Multi\+Tracker.\+draw\+\_\+tracker(), \mbox{\hyperlink{a00170_aabaffb95c249830a116841bf61391260}{Multi\+Tracker.\+get\+\_\+name()}}, \mbox{\hyperlink{a00170_a4db43bc1c94282c2cf64b5b64463f386}{Multi\+Tracker.\+init\+\_\+bounding\+\_\+box}}, and \mbox{\hyperlink{a00170_abec0b9ee4648af3b77db73e8070f1736}{Multi\+Tracker.\+tracker}}.
+
+Here is the call graph for this function\+:
+% FIG 21
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{a00170_aae02f440702eae77e02a6a9a503393ac}\label{a00170_aae02f440702eae77e02a6a9a503393ac} 
+\index{MultiTracker@{MultiTracker}!auto\_assign\_state@{auto\_assign\_state}}
+\index{auto\_assign\_state@{auto\_assign\_state}!MultiTracker@{MultiTracker}}
+\doxysubsubsection{\texorpdfstring{auto\_assign\_state}{auto\_assign\_state}}
+{\footnotesize\ttfamily auto\+\_\+assign\+\_\+state}
+
+
+
+Auto\+Assign is a state flagged to allow the tracker to be re-\/assigned to the closest bounding box created by Mask\+RCNN\textquotesingle{}s predictions. 
+
+(IOU measure) \Hypertarget{a00170_a4db43bc1c94282c2cf64b5b64463f386}\label{a00170_a4db43bc1c94282c2cf64b5b64463f386} 
+\index{MultiTracker@{MultiTracker}!init\_bounding\_box@{init\_bounding\_box}}
+\index{init\_bounding\_box@{init\_bounding\_box}!MultiTracker@{MultiTracker}}
+\doxysubsubsection{\texorpdfstring{init\_bounding\_box}{init\_bounding\_box}}
+{\footnotesize\ttfamily init\+\_\+bounding\+\_\+box}
+
+
+
+The initial bounding box is where the tracker will start from. 
+
+(User Defined from UI or from Mask\+RCNN\textquotesingle{}s assignment) 
+
+Referenced by \mbox{\hyperlink{a00170_a04b3bf097ca43c583401eb0c5e143722}{Multi\+Tracker.\+assign()}}, \mbox{\hyperlink{a00170_a4d7cd1c2c34050e73a70d90207ed2a67}{Multi\+Tracker.\+remove()}}, and \mbox{\hyperlink{a00170_a5fc89aec3f0789c6b4d9c05d84fee19f}{Multi\+Tracker.\+update\+\_\+tracker()}}.
+
+\Hypertarget{a00170_a0686bbc59790c76a5c88fd659f3d41f2}\label{a00170_a0686bbc59790c76a5c88fd659f3d41f2} 
+\index{MultiTracker@{MultiTracker}!is\_region@{is\_region}}
+\index{is\_region@{is\_region}!MultiTracker@{MultiTracker}}
+\doxysubsubsection{\texorpdfstring{is\_region}{is\_region}}
+{\footnotesize\ttfamily is\+\_\+region}
+
+
+
+A Region is an area that will flag true if other trackers are in it\textquotesingle{}s proximity. 
+
+The region as a tracker will track through a video rather than being stagnant (TRUE/\+FALSE) \Hypertarget{a00170_abec0b9ee4648af3b77db73e8070f1736}\label{a00170_abec0b9ee4648af3b77db73e8070f1736} 
+\index{MultiTracker@{MultiTracker}!tracker@{tracker}}
+\index{tracker@{tracker}!MultiTracker@{MultiTracker}}
+\doxysubsubsection{\texorpdfstring{tracker}{tracker}}
+{\footnotesize\ttfamily tracker}
+
+
+
+This will be defined as one of Open\+CV\textquotesingle{}s implemented Trackers. 
+
+(assign by using create() function) 
+
+Referenced by \mbox{\hyperlink{a00170_a04b3bf097ca43c583401eb0c5e143722}{Multi\+Tracker.\+assign()}}, \mbox{\hyperlink{a00170_ac92d67bb1b34c653fee8f01623e43961}{Multi\+Tracker.\+create()}}, \mbox{\hyperlink{a00170_a4d7cd1c2c34050e73a70d90207ed2a67}{Multi\+Tracker.\+remove()}}, and \mbox{\hyperlink{a00170_a5fc89aec3f0789c6b4d9c05d84fee19f}{Multi\+Tracker.\+update\+\_\+tracker()}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+K\+:/\+Github/\+People\+Tracker/src/multitracker.\+py\end{DoxyCompactItemize}

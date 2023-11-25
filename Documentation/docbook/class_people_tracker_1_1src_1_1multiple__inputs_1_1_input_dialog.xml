@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_people_tracker_1_1src_1_1multiple__inputs_1_1_input_dialog" xml:lang="en-US">
+<title>PeopleTracker.src.multiple_inputs.InputDialog Class Reference</title>
+<indexterm><primary>PeopleTracker.src.multiple_inputs.InputDialog</primary></indexterm>
+<para>Inheritance diagram for PeopleTracker.src.multiple_inputs.InputDialog:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_people_tracker_1_1src_1_1multiple__inputs_1_1_input_dialog.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1multiple__inputs_1_1_input_dialog_1a5b0d97f278e94a36cade8522148293a7"/><emphasis role="strong">__init__</emphasis> (self, List[str] labels, List[str] defaults, parent=None)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1multiple__inputs_1_1_input_dialog_1ab4931ca4d8c0b0f11332fa3def14428a"/><emphasis role="strong">getInputs</emphasis> (self)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1multiple__inputs_1_1_input_dialog_1a34965f59d2e4b7e205bb7e970502af21"/><emphasis role="strong">inputs</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1multiple__inputs_1_1_input_dialog_1afa0a57728d53bf9d3177e0747dac6cb8"/><emphasis role="strong">accept</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1multiple__inputs_1_1_input_dialog_1ac6bdc577d91472f8610edf557cf7f6f7"/><emphasis role="strong">reject</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<para>
+The documentation for this class was generated from the following file:</para>
+K:/Github/PeopleTracker/src/multiple_inputs.py</section>

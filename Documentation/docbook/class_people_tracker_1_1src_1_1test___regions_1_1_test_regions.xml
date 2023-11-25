@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_people_tracker_1_1src_1_1test___regions_1_1_test_regions" xml:lang="en-US">
+<title>PeopleTracker.src.test_Regions.TestRegions Class Reference</title>
+<indexterm><primary>PeopleTracker.src.test_Regions.TestRegions</primary></indexterm>
+<para>Inheritance diagram for PeopleTracker.src.test_Regions.TestRegions:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_people_tracker_1_1src_1_1test___regions_1_1_test_regions.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1test___regions_1_1_test_regions_1a299df8c7555b1ef1d6765248d098d5d3"/><emphasis role="strong">__init__</emphasis> (self, *args, **kwargs)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1test___regions_1_1_test_regions_1ab7901dc104ab60996816e1afed2f2058"/><emphasis role="strong">new_region</emphasis> (self)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1test___regions_1_1_test_regions_1a9317800b2e5b295e8fe4c3839d87f09a"/><emphasis role="strong">test_set_moving_region</emphasis> (self)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1test___regions_1_1_test_regions_1a7f10fd6d9e6497f0e1a5ee486e9ef3c9"/><emphasis role="strong">del_moving_region</emphasis> (self)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1test___regions_1_1_test_regions_1acf188bbf2fc8f934a620b0c74668d678">test_test_region</link> (self)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1test___regions_1_1_test_regions_1a497be30649abbac51abe97c11b6d582e"/><emphasis role="strong">longMessage</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_class_people_tracker_1_1src_1_1test___regions_1_1_test_regions_1acf188bbf2fc8f934a620b0c74668d678"/><section>
+    <title>test_test_region()</title>
+<indexterm><primary>test_test_region</primary><secondary>PeopleTracker.src.test_Regions.TestRegions</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.test_Regions.TestRegions</primary><secondary>test_test_region</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.test_Regions.TestRegions.test_test_region ( self)</computeroutput></para>
+<para><literallayout><computeroutput>    if p &lt;= 1: #point exists in or on ellipse
+    Otherwise the point exists outside of the ellipse
+
+    Note: Eclipse Center = (PointX + 1/2 W, PointY + H/2) because (x,y) describe top left corner of a bounding box, and (x + width, y + height) describe the bottom right
+</computeroutput></literallayout> </para>
+<para>
+References PeopleTracker.src.test_Regions.TestRegions.new_region().</para>
+</section>
+<para>
+The documentation for this class was generated from the following file:</para>
+K:/Github/PeopleTracker/src/test_Regions.py</section>
+</section>

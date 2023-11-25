@@ -1,0 +1,696 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation" xml:lang="en-US">
+<title>PeopleTracker.src.room_estimation.room_estimation Class Reference</title>
+<indexterm><primary>PeopleTracker.src.room_estimation.room_estimation</primary></indexterm>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1aecbdc311c587c23c11a446d00c44a921"/><emphasis role="strong">__init__</emphasis> (self, image=None, camera_matrix=JUSTIN_HERO4_SILVER_720_MEDIUM_FOV_MTX, distortion_matrix=JUSTIN_HERO4_SILVER_720_MEDIUM_FOV_DIST, rvecs=JUSTIN_HERO4_SILVER_720_MEDIUM_FOV_RVEC)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1aaf945900e7f0b299e1ca31110d9913ef"/><emphasis role="strong">set_image</emphasis> (self, image)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1aa60c9b068e75cbf597ae411c4a41d6fd"/><emphasis role="strong">display_room</emphasis> (self, image=None, axis=True, box=True, show_3d_plot=True, with_points=False)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a09d005efaf0329e2535a37e22dbe931d"/><emphasis role="strong">set_axis</emphasis> (self, x, y, z)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1ae88b01fb089e2db3b2c9531a5224b4bf"/><emphasis role="strong">set_corners</emphasis> (self, p1=None, p2=None, p3=None, p4=None)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1ab8df886ad36f0cfb074a5ed841e9c2b4"/><emphasis role="strong">img_copy</emphasis> (self)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1ab9465edd44dd370d99dd3f53013ffd43"/><emphasis role="strong">define_sides</emphasis> (self, sides, lengths)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1aa54fd46e07f628e0628e4ee121a033fb">define_room</link> (self, width=None, length=None, height=None, offset=[0, 0, 0, 0], corners=None, room_points=None, refine_corners=False, image=None, stitch_videos=None, calibration=None, extend=None)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1ad3fcfe7c358b45d486f79293f1c65c48"/><emphasis role="strong">clear_corners</emphasis> (self)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a4d942c42f999d509bb4edc1be31f8ffd">get_room_corners</link> (self, num_points=4)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a356957b01003a86f19355b774861515c"/><emphasis role="strong">edit_room_corner</emphasis> (self, index, new_pixel)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a70eddfebc5b07094f355f1a121beb261"/><emphasis role="strong">connect_points</emphasis> (self, points)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a61e48957e73c6db9ff80c0e2e1721a17"/><emphasis role="strong">get_corners</emphasis> (self, event, x, y, flags, param)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a91acf2403edc10f4a8fcd62803632f1c"/><emphasis role="strong">get_corner_with_definition</emphasis> (self, event, x, y, flags, param)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a574f11acb56bf62dc88b3e89de33a44b">get_cube_side</link> (self, cube, side)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a53a6d31e9b9b42561c90a47e34b1f3dc">crop_plain</link> (self, points, plain_width, plain_length, image=None)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a7c01d87a878cd03ed589f44bb3b5f3c9"/><emphasis role="strong">project_points</emphasis> (self, points=[])</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a07fb93571b8a3605ae4fb6a742ec51d0"/><emphasis role="strong">plot_points</emphasis> (event, x, y, flags, params)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a622577ddc3cf650f601b372bb610c294">get_3d_to_2d</link> (self, point, show=True)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a86895326cbb45f7a65786c051b556298"/><emphasis role="strong">get_3d_point</emphasis> (self, pixel, height=1500, camera_matrix=None, rotation_matrix=None, tvec=None, show_point=True)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a9a2f9a0b655d98b6f463ba7feeb7b346"/><emphasis role="strong">display_3D_Plot</emphasis> (points, shown)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a3153db23b58c77bf2d416b24013f4005"/><emphasis role="strong">draw_axis</emphasis> (self)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a63c90dc1a7e1114a34035279f12c954d">draw_cuboid</link> (self, image=None, distortion=None, rvec=None, tvec=None)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a0b1dcaa227d0412f3db747ef2d31963e"/><emphasis role="strong">draw_box</emphasis> (img, corners, imgpts)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a66a51ff6757e88ea579805f086672f77"/><emphasis role="strong">draw_point</emphasis> (self, img, front_pt, back_pt)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a7d0466cf2a53cf1a9f828d2e72855dcf"/><emphasis role="strong">estimate_plane</emphasis> (img, corners, points, calibration_matrix, distortion_matrix)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1ac79009c6ea29b3936f006e646e7cbb39"/><emphasis role="strong">draw_vector</emphasis> (self, event, x, y, flags, params)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a9b10fb9361fb4724fc9e1b645f2f7fdc"/><emphasis role="strong">get_room_3d</emphasis> (self, limits, height, step, save_filename=None)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a8c55501a8d91c92181643afa7736f9a8"/><emphasis role="strong">save_room_3d</emphasis> (self, path, filename, mapped)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a152af9286ad6667d1dfd2f92f88c500e"/><emphasis role="strong">load_room_3d</emphasis> (self, filename)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a98c2a062dc54bc40b6fa9ed554180f0b"/><emphasis role="strong">get_room_points</emphasis> (self, width, length, height=0)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a1c614dbc400f19b51105ba1eb6973336">get_n_room_points</link> (self, n_locations=None, height=0)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a75bdf789330dac18d865a64a03bec599">assign_non_square_corners</link> (self, num_points=inf)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a7ed7e1452e0d71047e9a7e67ad6c3e41"/><emphasis role="strong">find_3d_limits</emphasis> (self, height=1000)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1ab52653430a8efc06de0573f02ef0d348"/><emphasis role="strong">project_point</emphasis> (self, event, x, y, flags, params)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1ac9b1584772c407fec4c3ea8104255e11">get_depth</link> (self, event, x, y, p1, p2)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a75810c347c1a80ca993c429ea126b232">estimate</link> (self)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a51dde5ff1e4e389b0fb88055055782c5">get_pixel_location</link> (self, pixel)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a2c992eb83169acab2e1d88763a46886f">poly_fit_wall</link> (self, samples, pixels_past_extent=100, horizontal_extent=None, degree=2)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a7e0757772e6e5a37b76270d2d2c3e119">find_intersection</link> (self, line_equation1, line_equation2)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1af5c81cea3c430cd364d71edd3e759636">make_interpolater</link> (left_min, left_max, right_min, right_max)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a1f7492c2be3b52ba201486922417390c">superimpose_checker</link> (self, size=21)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a453e551d7e117e387b470945f90b09ee">define_perspective_grid</link> (self, division=10, extend=500)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a97949fc6610740ef09b53da48c71f7f1">find_wall_intersection</link> (self, number_of_walls=2, samples_per_wall=4, extent=10000, intersection_pairs=[], degree=1)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a30d6927039a41673bee93b71621be179"/><emphasis role="strong">get_checkerboard_shape</emphasis> (self, checkerboard_images)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a9ca778b5f0c906247159abd46e9e2652"/><emphasis role="strong">fisheye_calibrate</emphasis> (self, checkerboard_images, checkerboard_grid=None, out=None)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a4a7b7c2ffd65a994b99d6139bf46b29d"/><emphasis role="strong">checkerboard_calibrate</emphasis> (self, checkerboard_images, checkerboard_grid=None, out=None)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a889f7bf98f252e2530893c0dac3664c4"/><emphasis role="strong">save_calibration</emphasis> (self, file, mtx, distortion, rvecs, tvecs, error_list, resolution)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a320a58e433b23220b5f3f4b0762c329d">load_calibration</link> (self, file)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a9015815c528313e8f1b9c198c58fa6b3">collect_frames</link> (self, video_source, start_frame=1, skip=15, total_frames=None)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1ae84400f2e5d24b9891c760b163b2d80e"/><emphasis role="strong">get_calibration_ratio</emphasis> (self, video_resolution, calibration_resolution)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1ac9da38d20811fa5c582278e4b3760753">undistort_room</link> (self, image=None, points_data=None, camera_matrix=None, distortion=None, show=False, fisheye=False, calibration_resolution=None)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a9fc0aa55839e7827a866dbfc98f8a643"/><emphasis role="strong">undistort_tracker_data</emphasis> (self, data, image=None, camera_matrix=None, distortion=None)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a8402359ec067a1abbc9abb66a009625a">load_tracker</link> (self, csv_file)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1aef15e06a0129157c6a6fff4622bdafcf">correct_tracker_points</link> (self, df)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a0c6e6ba0ba4547ad2b9f32aa0b994f61">update_tracker_3D</link> (self, index, df, mapped_min, mapped_max)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a3eb2729a148912eb83ce4999e184137f"/><emphasis role="strong">show_tracker_3D</emphasis> (self, df, mapped_min, mapped_max)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a7c572564fa41b294e53b786fc685cf53"/><emphasis role="strong">show_tracker_2D</emphasis> (self, df, image, data_columns=[&apos;Pixel_Loc_x&apos;, &apos;Pixel_Loc_y&apos;], window=&quot;Tracker2D&quot;, colour=(255, 255, 0))</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1ad3f49766bdfff2bab5234b5e23daaa45">extend_image_to_corners</link> (self, image, corners)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a890d9b50b6d43c047563177d29bfb042">get_room_dimensions</link> (self, room_points)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a2d7ff75aa4662005b8156eb6c2ee773b"/><emphasis role="strong">evaluate_calibration</emphasis> (self)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a6a394d68d934834db022140184705d99">visualize_distortion</link> (self, camera_matrix, distiortion, image=None)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1ac0d8ca2839f262a0bd63cbd5eafb3eb5">save_room</link> (self, filename)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a1d7e046ef7b360ea61be4479ba59af4d"/><emphasis role="strong">load_room</emphasis> (self, filename)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1abd8e82c95912986d1e8a2091a92ae9f5"/><emphasis role="strong">load_and_undistort_calibration</emphasis> (self, video_path, <link linkend="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a6a394d68d934834db022140184705d99">visualize_distortion</link>=False, points_data=None)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a9f7d4f4d88d0ec8bfedf9d5e615735cf">stitch_rooms</link> (self, video_list, undistort=True, key_index=None, show=False)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1aebc62cf129f00a5c125e3fab00dc8a63">stitch_trackers</link> (self, video_list, homography_list, use_csv=True, offsets=[0, 0, 0, 0])</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a5204b0dd9764986537f2d00e13c9d491"/><emphasis role="strong">draw_grid</emphasis> (self, grid_shape=(20, 20), color=(255, 255, 255), thickness=2)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1aefd680a7c46bc10d0628a94ad4a43e7b"/><emphasis role="strong">get_files_from_folder</emphasis> (self, folder, extension=&quot;MP4&quot;)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a9310f5a22daf1c4855965626bb59616a"/><emphasis role="strong">window_name</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1ad684c435e5a14bad0126412144d3c99c"/><emphasis role="strong">image</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a197506d6743401a79deae3e6a3eadac7"/><emphasis role="strong">show_img</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a3de12c9e80525fa5722ea934611bd650"/><emphasis role="strong">corners</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1afd7dfe30e33b8fa8a4355e4718fc43b3"/><emphasis role="strong">room_points</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1abb1c646967534aa65c9324ace934e8cf"/><emphasis role="strong">real_locations</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1af14a7e23aa96e3f56682ffbfcd82a3be"/><emphasis role="strong">camera_matrix</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a7dda85fcbb18569a40fbe8d6950c55e3"/><emphasis role="strong">distioriton_matrix</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1acabdf2b36666703bf67d4bd80f812667"/><emphasis role="strong">calibration_errors</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a124bd83bd76223f4b492af53d2074ca7"/><emphasis role="strong">calibration_resolution</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a3a334b128f54785a54f1c6ca635094bb"/><emphasis role="strong">rotation_vector</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a6919bf6123b05d011d73faf469a41cb0"/><emphasis role="strong">translation_vector</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a0abf1bf10df6eb8c922d70270f2cce5f"/><emphasis role="strong">room_width</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1afc5a6937715053e542376e9946571f1d"/><emphasis role="strong">room_length</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a213f2be5e40051806c065fcc504576c4"/><emphasis role="strong">room_height</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a1b7a7574d11af08f357098164cc5f9fc"/><emphasis role="strong">sample_rate</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a2e6da969872c22117ce2e765244374e4"/><emphasis role="strong">mapped_dictionary</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a38a3a26452ceb010859f79707c1d2e53"/><emphasis role="strong">mapped</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a4f90f39f4738a620b0c6c9c04891e09b"/><emphasis role="strong">points_data</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1ac9281a2b65440b20d9beed60583e01e3"/><emphasis role="strong">vector_depth</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1afccbd67369e970457067d2c9ca334c42"/><emphasis role="strong">axis</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1aebe8f16d3afb9e4867601e5a5fe14e83"/><emphasis role="strong">fig</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1af75ef39c9e8302a4a25ed0608f1d617f"/><emphasis role="strong">stitch_homographies</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1ad17b7db76164f13f13f1befd0041d6c2"/><emphasis role="strong">show_3D_plot</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a95ec3e4a73ef9b27d98b6b68e6445ac5"/><emphasis role="strong">get_corners</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a49645c725a5b495cdf39c7151796f984"/><emphasis role="strong">ax</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1aba9d1119ec7a2d9a4613aebe607d633c"/><emphasis role="strong">front_plt</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a5dfb23fe5a53e2f2edf3d11325523d67"/><emphasis role="strong">back_plt</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1ae91457dbcd9afaee22183e132aa8811d"/><emphasis role="strong">float_plt</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a1f83600bb22ddfa017fcb3ecb3509115"/><emphasis role="strong">line_plt</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a7304c85d470aee2aba80baf7b4d710dc"/><emphasis role="strong">points_plt</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1ac59e3c084d1ad4206d5bffe8970f5e47"/><emphasis role="strong">quiver</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a2bf61a11577e99a92565a5bb74f86967"/><emphasis role="strong">get_corner_with_definition</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a7cc227eb529f446c4f49c7cb42f314ab"/><emphasis role="strong">get_depth</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1aed8dabb7672def905263ce54b389c16a"/><emphasis role="strong">error_list</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1ac31ee1ef48138ee748317e2a72197b44"/><emphasis role="strong">invert_y</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a75bdf789330dac18d865a64a03bec599"/><section>
+    <title>assign_non_square_corners()</title>
+<indexterm><primary>assign_non_square_corners</primary><secondary>PeopleTracker.src.room_estimation.room_estimation</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.room_estimation.room_estimation</primary><secondary>assign_non_square_corners</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.room_estimation.room_estimation.assign_non_square_corners ( self,  num_points = <computeroutput>inf</computeroutput>
+)</computeroutput></para>
+<para><literallayout><computeroutput>Assigns points around the room with any number of known coordinates.
+
+Assign point
+Set width and length of known coordinate.
+Origin should be 0,0
+Sets the dimentions of the room to the largest dimensions
+</computeroutput></literallayout> </para>
+<para>
+References PeopleTracker.src.room_estimation.room_estimation.camera_matrix, PeopleTracker.src.room_estimation.room_estimation.connect_points(), PeopleTracker.src.room_estimation.room_estimation.corners, PeopleTracker.src.room_estimation.room_estimation.distioriton_matrix, PeopleTracker.src.room_estimation.room_estimation.get_corner_with_definition(), PeopleTracker.src.room_estimation.room_estimation.get_corner_with_definition, PeopleTracker.src.room_estimation.room_estimation.get_corners, PeopleTracker.src.room_estimation.room_estimation.get_corners(), <link linkend="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a1c614dbc400f19b51105ba1eb6973336">PeopleTracker.src.room_estimation.room_estimation.get_n_room_points()</link>, PeopleTracker.src.room_estimation.room_estimation.room_length, PeopleTracker.src.room_estimation.room_estimation.room_points, PeopleTracker.src.room_estimation.room_estimation.room_width, PeopleTracker.src.room_estimation.room_estimation.rotation_vector, PeopleTracker.src.room_estimation.room_estimation.show_img, and PeopleTracker.src.room_estimation.room_estimation.translation_vector.</para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a9015815c528313e8f1b9c198c58fa6b3"/><section>
+    <title>collect_frames()</title>
+<indexterm><primary>collect_frames</primary><secondary>PeopleTracker.src.room_estimation.room_estimation</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.room_estimation.room_estimation</primary><secondary>collect_frames</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.room_estimation.room_estimation.collect_frames ( self,  video_source,  start_frame = <computeroutput>1</computeroutput>
+,  skip = <computeroutput>15</computeroutput>
+,  total_frames = <computeroutput>None</computeroutput>
+)</computeroutput></para>
+<para><literallayout><computeroutput>Collects the images for stitching
+</computeroutput></literallayout> </para>
+<para>
+Referenced by <link linkend="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1ac0d8ca2839f262a0bd63cbd5eafb3eb5">PeopleTracker.src.room_estimation.room_estimation.save_room()</link>, <link linkend="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a9f7d4f4d88d0ec8bfedf9d5e615735cf">PeopleTracker.src.room_estimation.room_estimation.stitch_rooms()</link>, and <link linkend="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1aebc62cf129f00a5c125e3fab00dc8a63">PeopleTracker.src.room_estimation.room_estimation.stitch_trackers()</link>.</para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1aef15e06a0129157c6a6fff4622bdafcf"/><section>
+    <title>correct_tracker_points()</title>
+<indexterm><primary>correct_tracker_points</primary><secondary>PeopleTracker.src.room_estimation.room_estimation</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.room_estimation.room_estimation</primary><secondary>correct_tracker_points</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.room_estimation.room_estimation.correct_tracker_points ( self,  df)</computeroutput></para>
+<para><literallayout><computeroutput>ratios is the x,y|width,height ratios of the estimate to the ground truth.
+Example: Estimates are recorded at 480x720 while ground truths are recorded at 720x1280. The ratio inputed would be (720/480, 1280/720) or (1.5, 1.777778)
+
+
+invert_y is the height of the video. We record the data as if the origin is in the bottom left, but in other applications the origin is the top left.
+This means we subtract the height of the video to inverse this effect.
+If the height of the video is 720, invert_y=720. If the data being tested IS NOT inverted, leave it as 0 
+</computeroutput></literallayout> </para>
+<para>
+Referenced by <link linkend="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a8402359ec067a1abbc9abb66a009625a">PeopleTracker.src.room_estimation.room_estimation.load_tracker()</link>.</para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a53a6d31e9b9b42561c90a47e34b1f3dc"/><section>
+    <title>crop_plain()</title>
+<indexterm><primary>crop_plain</primary><secondary>PeopleTracker.src.room_estimation.room_estimation</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.room_estimation.room_estimation</primary><secondary>crop_plain</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.room_estimation.room_estimation.crop_plain ( self,  points,  plain_width,  plain_length,  image = <computeroutput>None</computeroutput>
+)</computeroutput></para>
+<para><literallayout><computeroutput>Given 4 points the image will be cropped and reprojected as a rectangle.
+
+NOTE: Use length and height synonymously
+
+points = [(x1,y1), (x2,y2) ... (x4,y4)]
+</computeroutput></literallayout> </para>
+<para>
+References PeopleTracker.src.qt_dialog.App.image, PeopleTracker.src.room_estimation.room_estimation.image, and PeopleTracker.src.TrackerTab.person_tab.image.</para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a453e551d7e117e387b470945f90b09ee"/><section>
+    <title>define_perspective_grid()</title>
+<indexterm><primary>define_perspective_grid</primary><secondary>PeopleTracker.src.room_estimation.room_estimation</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.room_estimation.room_estimation</primary><secondary>define_perspective_grid</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.room_estimation.room_estimation.define_perspective_grid ( self,  division = <computeroutput>10</computeroutput>
+,  extend = <computeroutput>500</computeroutput>
+)</computeroutput></para>
+<para><literallayout><computeroutput>Assign 4 corners on an image where a grid will be projected into that space. This only selects the points and draws the edges. This should be called before superimpose_checker.
+
+See superimpose_checker for definition of the grid and how it works.
+</computeroutput></literallayout> </para>
+<para>
+References PeopleTracker.src.room_estimation.room_estimation.clear_corners(), <link linkend="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a7e0757772e6e5a37b76270d2d2c3e119">PeopleTracker.src.room_estimation.room_estimation.find_intersection()</link>, <link linkend="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a4d942c42f999d509bb4edc1be31f8ffd">PeopleTracker.src.room_estimation.room_estimation.get_room_corners()</link>, <link linkend="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a2c992eb83169acab2e1d88763a46886f">PeopleTracker.src.room_estimation.room_estimation.poly_fit_wall()</link>, and PeopleTracker.src.room_estimation.room_estimation.show_img.</para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1aa54fd46e07f628e0628e4ee121a033fb"/><section>
+    <title>define_room()</title>
+<indexterm><primary>define_room</primary><secondary>PeopleTracker.src.room_estimation.room_estimation</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.room_estimation.room_estimation</primary><secondary>define_room</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.room_estimation.room_estimation.define_room ( self,  width = <computeroutput>None</computeroutput>
+,  length = <computeroutput>None</computeroutput>
+,  height = <computeroutput>None</computeroutput>
+,  offset = <computeroutput>[0,0,0,0]</computeroutput>
+,  corners = <computeroutput>None</computeroutput>
+,  room_points = <computeroutput>None</computeroutput>
+,  refine_corners = <computeroutput>False</computeroutput>
+,  image = <computeroutput>None</computeroutput>
+,  stitch_videos = <computeroutput>None</computeroutput>
+,  calibration = <computeroutput>None</computeroutput>
+,  extend = <computeroutput>None</computeroutput>
+)</computeroutput></para>
+<para><literallayout><computeroutput>Takes variables and defines a room
+
+- width: and length are in mm
+
+- height: is the assumed height of all objects in the room
+
+- offset: is used when we extend the image to get all of the corners.
+NOTE: If arrows do not line up with lines you drew, the camera matrix or the distortion matrix are off
+
+- room_points: are the real-world defined points in mm (if not defined points are the height and width of the room)
+
+- refine_corners: is opencv&apos;s sub-pixel optimizer to better estimate corner locations. This is mostly used in checkerboard calibration but may be useful when manually selecting corners.
+
+- calibration: is the calibration saved from a video (enter a video to calibrate, if calibration has been done save results in a pickle file)</computeroutput></literallayout> </para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a63c90dc1a7e1114a34035279f12c954d"/><section>
+    <title>draw_cuboid()</title>
+<indexterm><primary>draw_cuboid</primary><secondary>PeopleTracker.src.room_estimation.room_estimation</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.room_estimation.room_estimation</primary><secondary>draw_cuboid</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.room_estimation.room_estimation.draw_cuboid ( self,  image = <computeroutput>None</computeroutput>
+,  distortion = <computeroutput>None</computeroutput>
+,  rvec = <computeroutput>None</computeroutput>
+,  tvec = <computeroutput>None</computeroutput>
+)</computeroutput></para>
+<para><literallayout><computeroutput>    Distortion is removed if image is undistorted.
+    Rvec and Tvec are transformation vectors calculated by previous SolvePNP, so we use that if we have alerady done so.
+    6        7
+   *--------*
+ / |       /|
+2 *---------*3|
+|  * 5    | *8
+| /       |/
+1 *---------*4</computeroutput></literallayout> </para>
+<para>
+References PeopleTracker.src.room_estimation.room_estimation.ax, PeopleTracker.src.room_estimation.room_estimation.back_plt, PeopleTracker.src.room_estimation.room_estimation.camera_matrix, PeopleTracker.src.room_estimation.room_estimation.distioriton_matrix, PeopleTracker.src.room_estimation.room_estimation.fig, PeopleTracker.src.room_estimation.room_estimation.float_plt, PeopleTracker.src.room_estimation.room_estimation.front_plt, PeopleTracker.src.room_estimation.room_estimation.line_plt, PeopleTracker.src.room_estimation.room_estimation.mapped, PeopleTracker.src.room_estimation.room_estimation.mapped_dictionary, PeopleTracker.src.room_estimation.room_estimation.points_plt, PeopleTracker.src.room_estimation.room_estimation.quiver, PeopleTracker.src.room_estimation.room_estimation.room_height, PeopleTracker.src.room_estimation.room_estimation.room_length, PeopleTracker.src.room_estimation.room_estimation.room_width, PeopleTracker.src.room_estimation.room_estimation.rotation_vector, PeopleTracker.src.room_estimation.room_estimation.show_3D_plot, PeopleTracker.src.room_estimation.room_estimation.show_img, PeopleTracker.src.room_estimation.room_estimation.translation_vector, PeopleTracker.src.room_estimation.room_estimation.vector_depth, and PeopleTracker.src.room_estimation.room_estimation.window_name.</para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a75810c347c1a80ca993c429ea126b232"/><section>
+    <title>estimate()</title>
+<indexterm><primary>estimate</primary><secondary>PeopleTracker.src.room_estimation.room_estimation</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.room_estimation.room_estimation</primary><secondary>estimate</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.room_estimation.room_estimation.estimate ( self)</computeroutput></para>
+<para><literallayout><computeroutput>Depreciated...
+
+NOTE: define room first
+
+This defines room limits and projects 3D points onto the screen
+</computeroutput></literallayout> </para>
+<para>
+References PeopleTracker.src.room_estimation.room_estimation.find_3d_limits(), <link linkend="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1ac9b1584772c407fec4c3ea8104255e11">PeopleTracker.src.room_estimation.room_estimation.get_depth()</link>, PeopleTracker.src.room_estimation.room_estimation.get_depth, PeopleTracker.src.room_estimation.room_estimation.get_room_3d(), PeopleTracker.src.room_estimation.room_estimation.room_height, and PeopleTracker.src.room_estimation.room_estimation.show_img.</para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1ad3f49766bdfff2bab5234b5e23daaa45"/><section>
+    <title>extend_image_to_corners()</title>
+<indexterm><primary>extend_image_to_corners</primary><secondary>PeopleTracker.src.room_estimation.room_estimation</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.room_estimation.room_estimation</primary><secondary>extend_image_to_corners</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.room_estimation.room_estimation.extend_image_to_corners ( self,  image,  corners)</computeroutput></para>
+<para><literallayout><computeroutput>extends the image with black until corners are visible.
+
+Returns new image as well as the amount extended and on which sides. This is useful for transforming datapoints.
+
+offset = [top, left, bottom, right] in pixels
+</computeroutput></literallayout> </para>
+<para>
+References PeopleTracker.src.room_estimation.room_estimation.clear_corners().</para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a7e0757772e6e5a37b76270d2d2c3e119"/><section>
+    <title>find_intersection()</title>
+<indexterm><primary>find_intersection</primary><secondary>PeopleTracker.src.room_estimation.room_estimation</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.room_estimation.room_estimation</primary><secondary>find_intersection</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.room_estimation.room_estimation.find_intersection ( self,  line_equation1,  line_equation2)</computeroutput></para>
+<para><literallayout><computeroutput>Returns the (x,y) location of the intersection of 2 lines given m and b of both lines from slope intercept form (m*x + b)
+</computeroutput></literallayout> </para>
+<para>
+Referenced by <link linkend="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a453e551d7e117e387b470945f90b09ee">PeopleTracker.src.room_estimation.room_estimation.define_perspective_grid()</link>, and <link linkend="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a97949fc6610740ef09b53da48c71f7f1">PeopleTracker.src.room_estimation.room_estimation.find_wall_intersection()</link>.</para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a97949fc6610740ef09b53da48c71f7f1"/><section>
+    <title>find_wall_intersection()</title>
+<indexterm><primary>find_wall_intersection</primary><secondary>PeopleTracker.src.room_estimation.room_estimation</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.room_estimation.room_estimation</primary><secondary>find_wall_intersection</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.room_estimation.room_estimation.find_wall_intersection ( self,  number_of_walls = <computeroutput>2</computeroutput>
+,  samples_per_wall = <computeroutput>4</computeroutput>
+,  extent = <computeroutput>10000</computeroutput>
+,  intersection_pairs = <computeroutput>[]</computeroutput>
+,  degree = <computeroutput>1</computeroutput>
+)</computeroutput></para>
+<para><literallayout><computeroutput>Using samples along visible parts of walls, it is possible to fit the curve and extend the visible location of the wall
+
+
+intersection_pairs is a list of pairs of lines which are to be checked for intersections
+Because we only check the current, previous and beginning and last, we leave out all other instances so a specification of which pairs are desired is optional
+[(0,3), (1,3)] 
+</computeroutput></literallayout> </para>
+<para>
+References PeopleTracker.src.room_estimation.room_estimation.calibration_resolution, PeopleTracker.src.room_estimation.room_estimation.camera_matrix, PeopleTracker.src.room_estimation.room_estimation.clear_corners(), PeopleTracker.src.room_estimation.room_estimation.connect_points(), PeopleTracker.src.room_estimation.room_estimation.distioriton_matrix, PeopleTracker.src.room_estimation.room_estimation.error_list, <link linkend="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a7e0757772e6e5a37b76270d2d2c3e119">PeopleTracker.src.room_estimation.room_estimation.find_intersection()</link>, PeopleTracker.src.room_estimation.room_estimation.get_checkerboard_shape(), <link linkend="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a4d942c42f999d509bb4edc1be31f8ffd">PeopleTracker.src.room_estimation.room_estimation.get_room_corners()</link>, <link linkend="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a2c992eb83169acab2e1d88763a46886f">PeopleTracker.src.room_estimation.room_estimation.poly_fit_wall()</link>, PeopleTracker.src.room_estimation.room_estimation.rotation_vector, PeopleTracker.src.room_estimation.room_estimation.save_calibration(), PeopleTracker.src.room_estimation.room_estimation.show_img, and PeopleTracker.src.room_estimation.room_estimation.translation_vector.</para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a622577ddc3cf650f601b372bb610c294"/><section>
+    <title>get_3d_to_2d()</title>
+<indexterm><primary>get_3d_to_2d</primary><secondary>PeopleTracker.src.room_estimation.room_estimation</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.room_estimation.room_estimation</primary><secondary>get_3d_to_2d</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.room_estimation.room_estimation.get_3d_to_2d ( self,  point,  show = <computeroutput>True</computeroutput>
+)</computeroutput></para>
+<para><literallayout><computeroutput>Point = (X, Z, Y) in mm (NOT PIXELS)
+</computeroutput></literallayout> </para>
+<para>
+References PeopleTracker.src.room_estimation.room_estimation.axis, PeopleTracker.src.room_estimation.room_estimation.camera_matrix, PeopleTracker.src.room_estimation.room_estimation.corners, PeopleTracker.src.room_estimation.room_estimation.distioriton_matrix, PeopleTracker.src.room_estimation.room_estimation.draw_axis(), PeopleTracker.src.room_estimation.room_estimation.rotation_vector, PeopleTracker.src.room_estimation.room_estimation.show_img, PeopleTracker.src.room_estimation.room_estimation.translation_vector, and PeopleTracker.src.room_estimation.room_estimation.window_name.</para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a574f11acb56bf62dc88b3e89de33a44b"/><section>
+    <title>get_cube_side()</title>
+<indexterm><primary>get_cube_side</primary><secondary>PeopleTracker.src.room_estimation.room_estimation</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.room_estimation.room_estimation</primary><secondary>get_cube_side</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.room_estimation.room_estimation.get_cube_side ( self,  cube,  side)</computeroutput></para>
+<para><literallayout><computeroutput>Returns the point set of each side of the cube in 
+Start at bottom left of the plane on the opened cube displayed, in clockwise order  (or, the perspective from the center)
+This function is to be paired before crop_plain() and the points returned from requested side should be passed on
+Example: Side 1 contains points 1,2,6,5
+
+                                    |   5   |   
+   5        6                       |_______|
+   *--------*                       |       |
+ / |       /|                       |   4   |
+1 *---------*2|                _______|_______|_______
+|  * 4    | *7              |       |       |       |
+| /       |/                |   1   |   2   |   3   |
+0 *---------*3                |_______|_______|_______|
+</computeroutput></literallayout> </para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1ac9b1584772c407fec4c3ea8104255e11"/><section>
+    <title>get_depth()</title>
+<indexterm><primary>get_depth</primary><secondary>PeopleTracker.src.room_estimation.room_estimation</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.room_estimation.room_estimation</primary><secondary>get_depth</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.room_estimation.room_estimation.get_depth ( self,  event,  x,  y,  p1,  p2)</computeroutput></para>
+<para><literallayout><computeroutput>get z position given x and y.
+</computeroutput></literallayout> </para>
+<para>
+Referenced by <link linkend="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a75810c347c1a80ca993c429ea126b232">PeopleTracker.src.room_estimation.room_estimation.estimate()</link>.</para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a1c614dbc400f19b51105ba1eb6973336"/><section>
+    <title>get_n_room_points()</title>
+<indexterm><primary>get_n_room_points</primary><secondary>PeopleTracker.src.room_estimation.room_estimation</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.room_estimation.room_estimation</primary><secondary>get_n_room_points</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.room_estimation.room_estimation.get_n_room_points ( self,  n_locations = <computeroutput>None</computeroutput>
+,  height = <computeroutput>0</computeroutput>
+)</computeroutput></para>
+<para><literallayout><computeroutput>N_locations are known locations along the floor (Non-square rooms)
+    5000mm
+--------------  
+       3-----4  
+       |     |
+       |     |
+1------2     | 5000mm  (Length)
+|            |
+|            |
+0------------5
+    (Width)
+Where (width,length) in mm
+0 = (0,0)
+1 = (0, 2500)
+2 = (2500, 2500)
+3 = (2500, 5000)
+4 = (5000, 5000)
+5 = (5000, 0)
+</computeroutput></literallayout> </para>
+<para>
+References PeopleTracker.src.room_estimation.room_estimation.room_points.</para>
+<para>
+Referenced by <link linkend="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a75bdf789330dac18d865a64a03bec599">PeopleTracker.src.room_estimation.room_estimation.assign_non_square_corners()</link>.</para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a51dde5ff1e4e389b0fb88055055782c5"/><section>
+    <title>get_pixel_location()</title>
+<indexterm><primary>get_pixel_location</primary><secondary>PeopleTracker.src.room_estimation.room_estimation</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.room_estimation.room_estimation</primary><secondary>get_pixel_location</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.room_estimation.room_estimation.get_pixel_location ( self,  pixel)</computeroutput></para>
+<para><literallayout><computeroutput>Returns the pixel location in 3D
+</computeroutput></literallayout> </para>
+<para>
+References PeopleTracker.src.room_estimation.room_estimation.mapped.</para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a4d942c42f999d509bb4edc1be31f8ffd"/><section>
+    <title>get_room_corners()</title>
+<indexterm><primary>get_room_corners</primary><secondary>PeopleTracker.src.room_estimation.room_estimation</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.room_estimation.room_estimation</primary><secondary>get_room_corners</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.room_estimation.room_estimation.get_room_corners ( self,  num_points = <computeroutput>4</computeroutput>
+)</computeroutput></para>
+<para><literallayout><computeroutput>Assigns 2D Room corners which will map to the real world 3D.
+
+This function is a loop for the number of room points (real world) and lets you select the location they should exist in the video.
+
+Each point should be respective to the order that room points exist. For example, consistently clockwise starting from the bottom left.
+</computeroutput></literallayout> </para>
+<para>
+References PeopleTracker.src.room_estimation.room_estimation.clear_corners(), PeopleTracker.src.room_estimation.room_estimation.connect_points(), PeopleTracker.src.room_estimation.room_estimation.corners, PeopleTracker.src.room_estimation.room_estimation.get_corners, PeopleTracker.src.room_estimation.room_estimation.get_corners(), PeopleTracker.src.room_estimation.room_estimation.room_points, PeopleTracker.src.room_estimation.room_estimation.show_img, and PeopleTracker.src.room_estimation.room_estimation.window_name.</para>
+<para>
+Referenced by <link linkend="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a453e551d7e117e387b470945f90b09ee">PeopleTracker.src.room_estimation.room_estimation.define_perspective_grid()</link>, <link linkend="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a97949fc6610740ef09b53da48c71f7f1">PeopleTracker.src.room_estimation.room_estimation.find_wall_intersection()</link>, and <link linkend="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a1f7492c2be3b52ba201486922417390c">PeopleTracker.src.room_estimation.room_estimation.superimpose_checker()</link>.</para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a890d9b50b6d43c047563177d29bfb042"/><section>
+    <title>get_room_dimensions()</title>
+<indexterm><primary>get_room_dimensions</primary><secondary>PeopleTracker.src.room_estimation.room_estimation</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.room_estimation.room_estimation</primary><secondary>get_room_dimensions</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.room_estimation.room_estimation.get_room_dimensions ( self,  room_points)</computeroutput></para>
+<para><literallayout><computeroutput>Given room points returns the width and length of the room given the farthest points.
+</computeroutput></literallayout> </para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a320a58e433b23220b5f3f4b0762c329d"/><section>
+    <title>load_calibration()</title>
+<indexterm><primary>load_calibration</primary><secondary>PeopleTracker.src.room_estimation.room_estimation</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.room_estimation.room_estimation</primary><secondary>load_calibration</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.room_estimation.room_estimation.load_calibration ( self,  file)</computeroutput></para>
+<para><literallayout><computeroutput>Loads in order
+1 Camera matrix
+2 Distortion Matrix
+3 Rvecs
+4 Tvecs
+</computeroutput></literallayout> </para>
+<para>
+References PeopleTracker.src.room_estimation.room_estimation.calibration_resolution, PeopleTracker.src.room_estimation.room_estimation.camera_matrix, PeopleTracker.src.room_estimation.room_estimation.distioriton_matrix, PeopleTracker.src.room_estimation.room_estimation.error_list, PeopleTracker.src.room_estimation.room_estimation.rotation_vector, and PeopleTracker.src.room_estimation.room_estimation.translation_vector.</para>
+<para>
+Referenced by <link linkend="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1ac0d8ca2839f262a0bd63cbd5eafb3eb5">PeopleTracker.src.room_estimation.room_estimation.save_room()</link>.</para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a8402359ec067a1abbc9abb66a009625a"/><section>
+    <title>load_tracker()</title>
+<indexterm><primary>load_tracker</primary><secondary>PeopleTracker.src.room_estimation.room_estimation</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.room_estimation.room_estimation</primary><secondary>load_tracker</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.room_estimation.room_estimation.load_tracker ( self,  csv_file)</computeroutput></para>
+<para><literallayout><computeroutput>Loads the tracker data of a csv file
+</computeroutput></literallayout> </para>
+<para>
+References <link linkend="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1aef15e06a0129157c6a6fff4622bdafcf">PeopleTracker.src.room_estimation.room_estimation.correct_tracker_points()</link>, PeopleTracker.src.evaluate.tracker_evaluation.invert_y, and PeopleTracker.src.room_estimation.room_estimation.invert_y.</para>
+<para>
+Referenced by <link linkend="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1aebc62cf129f00a5c125e3fab00dc8a63">PeopleTracker.src.room_estimation.room_estimation.stitch_trackers()</link>.</para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1af5c81cea3c430cd364d71edd3e759636"/><section>
+    <title>make_interpolater()</title>
+<indexterm><primary>make_interpolater</primary><secondary>PeopleTracker.src.room_estimation.room_estimation</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.room_estimation.room_estimation</primary><secondary>make_interpolater</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.room_estimation.room_estimation.make_interpolater ( left_min,  left_max,  right_min,  right_max)</computeroutput></para>
+<para><literallayout><computeroutput>Depreciated.
+Supposed to be used to divide a grid space given pixels.
+Interpolates values in between min and max.
+</computeroutput></literallayout> </para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a2c992eb83169acab2e1d88763a46886f"/><section>
+    <title>poly_fit_wall()</title>
+<indexterm><primary>poly_fit_wall</primary><secondary>PeopleTracker.src.room_estimation.room_estimation</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.room_estimation.room_estimation</primary><secondary>poly_fit_wall</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.room_estimation.room_estimation.poly_fit_wall ( self,  samples,  pixels_past_extent = <computeroutput>100</computeroutput>
+,  horizontal_extent = <computeroutput>None</computeroutput>
+,  degree = <computeroutput>2</computeroutput>
+)</computeroutput></para>
+<para><literallayout><computeroutput>Samples exist in format np.array([x,y,z], [x,y,z])
+
+Used to find intersection points.
+
+Utilized to define points in the grid.
+</computeroutput></literallayout> </para>
+<para>
+Referenced by <link linkend="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a453e551d7e117e387b470945f90b09ee">PeopleTracker.src.room_estimation.room_estimation.define_perspective_grid()</link>, and <link linkend="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a97949fc6610740ef09b53da48c71f7f1">PeopleTracker.src.room_estimation.room_estimation.find_wall_intersection()</link>.</para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1ac0d8ca2839f262a0bd63cbd5eafb3eb5"/><section>
+    <title>save_room()</title>
+<indexterm><primary>save_room</primary><secondary>PeopleTracker.src.room_estimation.room_estimation</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.room_estimation.room_estimation</primary><secondary>save_room</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.room_estimation.room_estimation.save_room ( self,  filename)</computeroutput></para>
+<para><literallayout><computeroutput>Saves all values which define a room.
+</computeroutput></literallayout> </para>
+<para>
+References PeopleTracker.src.room_estimation.room_estimation.calibration_resolution, PeopleTracker.src.room_estimation.room_estimation.camera_matrix, <link linkend="_class_people_tracker_1_1src_1_1camera__position_1_1_camera_position_1a0d29334b56c037a7fdbf1eabff7965ec">PeopleTracker.src.camera_position.CameraPosition.collect_frames()</link>, <link linkend="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a9015815c528313e8f1b9c198c58fa6b3">PeopleTracker.src.room_estimation.room_estimation.collect_frames()</link>, PeopleTracker.src.room_estimation.room_estimation.corners, PeopleTracker.src.room_estimation.room_estimation.distioriton_matrix, <link linkend="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a320a58e433b23220b5f3f4b0762c329d">PeopleTracker.src.room_estimation.room_estimation.load_calibration()</link>, PeopleTracker.src.room_estimation.room_estimation.mapped, PeopleTracker.src.room_estimation.room_estimation.room_height, PeopleTracker.src.room_estimation.room_estimation.room_length, PeopleTracker.src.room_estimation.room_estimation.room_points, PeopleTracker.src.room_estimation.room_estimation.room_width, PeopleTracker.src.room_estimation.room_estimation.rotation_vector, PeopleTracker.src.room_estimation.room_estimation.translation_vector, <link linkend="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1ac9da38d20811fa5c582278e4b3760753">PeopleTracker.src.room_estimation.room_estimation.undistort_room()</link>, and <link linkend="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a6a394d68d934834db022140184705d99">PeopleTracker.src.room_estimation.room_estimation.visualize_distortion()</link>.</para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a9f7d4f4d88d0ec8bfedf9d5e615735cf"/><section>
+    <title>stitch_rooms()</title>
+<indexterm><primary>stitch_rooms</primary><secondary>PeopleTracker.src.room_estimation.room_estimation</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.room_estimation.room_estimation</primary><secondary>stitch_rooms</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.room_estimation.room_estimation.stitch_rooms ( self,  video_list,  undistort = <computeroutput>True</computeroutput>
+,  key_index = <computeroutput>None</computeroutput>
+,  show = <computeroutput>False</computeroutput>
+)</computeroutput></para>
+<para><literallayout><computeroutput>Stitches rooms with custom keypoints with SIFT descriptors
+
+undistort uses current room undistortion parameters to undistort all the videos in video_list
+
+key_index is the index for which video is the source that all others will use as alignment reference.
+
+returns a stitched image that is overlapped by all videos and a list of homography transformation matrices for every video index
+</computeroutput></literallayout> </para>
+<para>
+References <link linkend="_class_people_tracker_1_1src_1_1camera__position_1_1_camera_position_1a0d29334b56c037a7fdbf1eabff7965ec">PeopleTracker.src.camera_position.CameraPosition.collect_frames()</link>, <link linkend="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a9015815c528313e8f1b9c198c58fa6b3">PeopleTracker.src.room_estimation.room_estimation.collect_frames()</link>, and <link linkend="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1ac9da38d20811fa5c582278e4b3760753">PeopleTracker.src.room_estimation.room_estimation.undistort_room()</link>.</para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1aebc62cf129f00a5c125e3fab00dc8a63"/><section>
+    <title>stitch_trackers()</title>
+<indexterm><primary>stitch_trackers</primary><secondary>PeopleTracker.src.room_estimation.room_estimation</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.room_estimation.room_estimation</primary><secondary>stitch_trackers</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.room_estimation.room_estimation.stitch_trackers ( self,  video_list,  homography_list,  use_csv = <computeroutput>True</computeroutput>
+,  offsets = <computeroutput>[0,0,0,0]</computeroutput>
+)</computeroutput></para>
+<para><literallayout><computeroutput>returns a list of trackers
+# offset = [top, left, bottom, right] in pixels
+
+We correct offsets if top and left edges are extended
+</computeroutput></literallayout> </para>
+<para>
+References <link linkend="_class_people_tracker_1_1src_1_1camera__position_1_1_camera_position_1a0d29334b56c037a7fdbf1eabff7965ec">PeopleTracker.src.camera_position.CameraPosition.collect_frames()</link>, <link linkend="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a9015815c528313e8f1b9c198c58fa6b3">PeopleTracker.src.room_estimation.room_estimation.collect_frames()</link>, <link linkend="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a8402359ec067a1abbc9abb66a009625a">PeopleTracker.src.room_estimation.room_estimation.load_tracker()</link>, and PeopleTracker.src.room_estimation.room_estimation.undistort_tracker_data().</para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a1f7492c2be3b52ba201486922417390c"/><section>
+    <title>superimpose_checker()</title>
+<indexterm><primary>superimpose_checker</primary><secondary>PeopleTracker.src.room_estimation.room_estimation</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.room_estimation.room_estimation</primary><secondary>superimpose_checker</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.room_estimation.room_estimation.superimpose_checker ( self,  size = <computeroutput>21</computeroutput>
+)</computeroutput></para>
+<para><literallayout><computeroutput>This draws the grid from &quot;define_perspective_grid&quot; onto an image. 
+
+This grid is given a &quot;size&quot; that is the number of lines present. 
+This function utilizes draw_grid which is a 1080x1080 resolution image with cv2.lines drawn on it.
+
+This grid image is then registered onto defined points from &quot;define_perspective_grid&quot; given the homograpy.
+</computeroutput></literallayout> </para>
+<para>
+References PeopleTracker.src.room_estimation.room_estimation.clear_corners(), PeopleTracker.src.room_estimation.room_estimation.draw_grid(), <link linkend="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a4d942c42f999d509bb4edc1be31f8ffd">PeopleTracker.src.room_estimation.room_estimation.get_room_corners()</link>, PeopleTracker.src.qt_dialog.App.image, PeopleTracker.src.room_estimation.room_estimation.image, and PeopleTracker.src.TrackerTab.person_tab.image.</para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1ac9da38d20811fa5c582278e4b3760753"/><section>
+    <title>undistort_room()</title>
+<indexterm><primary>undistort_room</primary><secondary>PeopleTracker.src.room_estimation.room_estimation</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.room_estimation.room_estimation</primary><secondary>undistort_room</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.room_estimation.room_estimation.undistort_room ( self,  image = <computeroutput>None</computeroutput>
+,  points_data = <computeroutput>None</computeroutput>
+,  camera_matrix = <computeroutput>None</computeroutput>
+,  distortion = <computeroutput>None</computeroutput>
+,  show = <computeroutput>False</computeroutput>
+,  fisheye = <computeroutput>False</computeroutput>
+,  calibration_resolution = <computeroutput>None</computeroutput>
+)</computeroutput></para>
+<para><literallayout><computeroutput></computeroutput></literallayout> </para>
+<para>
+References PeopleTracker.src.room_estimation.room_estimation.calibration_resolution, PeopleTracker.src.room_estimation.room_estimation.camera_matrix, PeopleTracker.src.room_estimation.room_estimation.distioriton_matrix, PeopleTracker.src.qt_dialog.App.image, PeopleTracker.src.room_estimation.room_estimation.image, PeopleTracker.src.TrackerTab.person_tab.image, and PeopleTracker.src.room_estimation.room_estimation.points_data.</para>
+<para>
+Referenced by <link linkend="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1ac0d8ca2839f262a0bd63cbd5eafb3eb5">PeopleTracker.src.room_estimation.room_estimation.save_room()</link>, and <link linkend="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a9f7d4f4d88d0ec8bfedf9d5e615735cf">PeopleTracker.src.room_estimation.room_estimation.stitch_rooms()</link>.</para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a0c6e6ba0ba4547ad2b9f32aa0b994f61"/><section>
+    <title>update_tracker_3D()</title>
+<indexterm><primary>update_tracker_3D</primary><secondary>PeopleTracker.src.room_estimation.room_estimation</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.room_estimation.room_estimation</primary><secondary>update_tracker_3D</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.room_estimation.room_estimation.update_tracker_3D ( self,  index,  df,  mapped_min,  mapped_max)</computeroutput></para>
+<para><literallayout><computeroutput>Updates the already created plot with new data
+</computeroutput></literallayout> </para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a6a394d68d934834db022140184705d99"/><section>
+    <title>visualize_distortion()</title>
+<indexterm><primary>visualize_distortion</primary><secondary>PeopleTracker.src.room_estimation.room_estimation</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.room_estimation.room_estimation</primary><secondary>visualize_distortion</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.room_estimation.room_estimation.visualize_distortion ( self,  camera_matrix,  distiortion,  image = <computeroutput>None</computeroutput>
+)</computeroutput></para>
+<para><literallayout><computeroutput>https://docs.opencv.org/2.4/modules/calib3d/doc/camera_calibration_and_3d_reconstruction.html#void%20projectPoints(InputArray%20objectPoints,%20InputArray%20rvec,%20InputArray%20tvec,%20InputArray%20cameraMatrix,%20InputArray%20distCoeffs,%20OutputArray%20imagePoints,%20OutputArray%20jacobian,%20double%20aspectRatio)
+
+opencv 3 here: 
+https://docs.opencv.org/4.x/dc/dbb/tutorial_py_calibration.html
+
+[x] =  [X]
+[y] = R[Y] + t
+[z] =  [Z]
+
+x&apos; = x/z
+y&apos; = y/z
+
+NOTE: k1-6 are radial distortion coefficients, p1 and p2 are tangential distortion
+        if any 
+
+x&apos;&apos; = x&apos; (1 + k1 * r^2+k2 + k3*r^4 + k3*r^6)/ + 2*p1*x&apos;*y&apos; + p2(r^2 + (2x&apos;)^2)
+         (1 + k4 * r^2+k5 + k3*r^4 + k6*r^6)
+
+y&apos;&apos; = y&apos; (1 + k1 * r^2+k2 + k3*r^4 + k3*r^6)/ + p1(r^2 + (2y&apos;)^2) + 2*p2 * x&apos; * y&apos;
+         (1 + k4 * r^2+k5 + k3*r^4 + k6*r^6)
+
+r^2 = x&apos;^2 + y&apos;^2
+u = fx * x&apos;&apos; + cx
+v = fy * y&apos;&apos; + cy
+</computeroutput></literallayout> </para>
+<para>
+Referenced by <link linkend="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1ac0d8ca2839f262a0bd63cbd5eafb3eb5">PeopleTracker.src.room_estimation.room_estimation.save_room()</link>.</para>
+</section>
+<para>
+The documentation for this class was generated from the following file:</para>
+K:/Github/PeopleTracker/src/room_estimation.py</section>
+</section>

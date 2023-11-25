@@ -1,0 +1,140 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_people_tracker_1_1src_1_1camera__position_1_1_camera_position" xml:lang="en-US">
+<title>PeopleTracker.src.camera_position.CameraPosition Class Reference</title>
+<indexterm><primary>PeopleTracker.src.camera_position.CameraPosition</primary></indexterm>
+<para>Inheritance diagram for PeopleTracker.src.camera_position.CameraPosition:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_people_tracker_1_1src_1_1camera__position_1_1_camera_position.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1camera__position_1_1_camera_position_1a0840aa6b45322dc8073970373b9b938c"/><emphasis role="strong">__init__</emphasis> (self, source_vid=None, reference_vid=None)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1camera__position_1_1_camera_position_1a71cea1888ec4c1374009ca861186fb10"/><emphasis role="strong">openFileNameDialog</emphasis> (self)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1camera__position_1_1_camera_position_1ab9a91ae90557da389a5cbdbe93abdd4f"/><emphasis role="strong">initUI</emphasis> (self)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1camera__position_1_1_camera_position_1a0952e03554ddd7bee50341109ca4d91a"/><emphasis role="strong">init_menubar</emphasis> (self)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1camera__position_1_1_camera_position_1ac0350050092e7c9dd59080fb9602ad36"/><emphasis role="strong">set_view_roomestimation</emphasis> (self)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1camera__position_1_1_camera_position_1a0b5d07b7e402eec67baf01d927aaa7e5"/><emphasis role="strong">processtrigger</emphasis> (self, trigger)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1camera__position_1_1_camera_position_1ad17e7dcbeec2d309f8ca15149e3e7750"/><emphasis role="strong">stitch</emphasis> (self, image_list, out_path=None)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1camera__position_1_1_camera_position_1ad50964974bf34f96bd26c011469f3f4c"/><emphasis role="strong">set_source</emphasis> (self, video_path, frame=0)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1camera__position_1_1_camera_position_1aa1766dbcecae0d910c6d40d0d46a843d"/><emphasis role="strong">add_reference</emphasis> (self, video_path, frame_start, total_frames, step)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1camera__position_1_1_camera_position_1ac17ad3d6c030f2e867f189a364b4e1c5"/><emphasis role="strong">find_reference</emphasis> (self, query_img, train_img)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1camera__position_1_1_camera_position_1a5c77588850a339e4203bee7016633867">find_features</link> (self, img1, img2)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1camera__position_1_1_camera_position_1acdc2616a511a03925dfd9bb7fdec0c87"/><emphasis role="strong">match_features</emphasis> (self, des1, des2, mode=0)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1camera__position_1_1_camera_position_1a716525a44470270f5f2a9eb4455c1307"/><emphasis role="strong">find_homography</emphasis> (self, img1, img2, kp1, kp2, matches)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1camera__position_1_1_camera_position_1a79a3d6d09e9002ad4eaaff9f52f8a755"/><emphasis role="strong">show_estimation</emphasis> (self)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1camera__position_1_1_camera_position_1a0d29334b56c037a7fdbf1eabff7965ec">collect_frames</link> (self, video_source, start_frame, skip, total_frames)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1camera__position_1_1_camera_position_1a4edc65a92cd742c271e66f85364e90fd"/><emphasis role="strong">title</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1camera__position_1_1_camera_position_1a68b7d53f5e142b68c4eda98ebd462caa"/><emphasis role="strong">left</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1camera__position_1_1_camera_position_1aac89a9f591da69f9aebfa9d6c9db2d84"/><emphasis role="strong">top</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1camera__position_1_1_camera_position_1a22b6220a08e1f4f74a265f3efabb6363"/><emphasis role="strong">width</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1camera__position_1_1_camera_position_1ad1b1578ed96aad73a94973ffbb33ea32"/><emphasis role="strong">height</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1camera__position_1_1_camera_position_1a2e733ccecee418308dedbe73d0802958"/><emphasis role="strong">stitched_img</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1camera__position_1_1_camera_position_1a508fcc01f38b189bef00814412c6ce2c"/><emphasis role="strong">reference_imgs</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1camera__position_1_1_camera_position_1a4edc225c010ada5b5b189964bb9f3546"/><emphasis role="strong">room_estimation</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1camera__position_1_1_camera_position_1a94d57db7dbb68768a0acda3260ddb908"/><emphasis role="strong">source_img</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1camera__position_1_1_camera_position_1aa1374100d5c4314f382fb78d95d9ce92"/><emphasis role="strong">stitch_list</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1camera__position_1_1_camera_position_1a87cf6ac548b7cb93e93df35fa8fd87e8"/><emphasis role="strong">layout</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1camera__position_1_1_camera_position_1a1015cde1eec0495866b2315b093d1cf6"/><emphasis role="strong">processtrigger</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1camera__position_1_1_camera_position_1a2f2a6600c091a3870ae3ab791b2727a8"/><emphasis role="strong">room_widget</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1camera__position_1_1_camera_position_1a803f72510e284ad173df35b254490e08"/><emphasis role="strong">room_layout</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1camera__position_1_1_camera_position_1ac385478892d45c133fd7ae2d9ea79fde"/><emphasis role="strong">bottom_left_pt_x</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1camera__position_1_1_camera_position_1a27bde26f1939c946149d37128e764b20"/><emphasis role="strong">bottom_left_pt_y</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1camera__position_1_1_camera_position_1a1c6987632090f1f3fac3548edaac267f"/><emphasis role="strong">top_left_pt_x</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1camera__position_1_1_camera_position_1a790688ec4114f470c578d55412f64dd2"/><emphasis role="strong">top_left_pt_y</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1camera__position_1_1_camera_position_1a07a911513e69d3270ad470570f29d5a6"/><emphasis role="strong">top_right_pt_x</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1camera__position_1_1_camera_position_1aef88b6c2c3458c1712fc5f529cfce589"/><emphasis role="strong">top_right_pt_y</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1camera__position_1_1_camera_position_1a979a972a95d4ae4ae04801e7ffd67003"/><emphasis role="strong">bottom_right_pt_x</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1camera__position_1_1_camera_position_1aac4b00fbf2399b91c761c1de437b695a"/><emphasis role="strong">bottom_right_pt_y</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para><literallayout><computeroutput>Steps to stitching the images
+1) Find Keypoints between images (SIFT/SURF/ORB?)
+ - SIFT and SURF are patented and if you want to use it in a real-world application, you need to pay a licensing fee.
+ - ORB is not.
+2) Compute the distances between every descriptor
+3) Select the best matches to align (Knn - 2 best matches for each descriptor {k=2})
+- finds two best matches for each feature and leaves the best one only if the ratio between descriptor distances is greater than the threshold
+4) Estimate Homography (Homography Estimator)
+5) Warp the images (translate and rotate) to align
+    - NOTE this is where we will extract the top left of each frame for reference on the stitched image
+    locations of each frame (hopefully)
+6) Stitch the images (Stitch and blend)
+</computeroutput></literallayout> </para>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_class_people_tracker_1_1src_1_1camera__position_1_1_camera_position_1a0d29334b56c037a7fdbf1eabff7965ec"/><section>
+    <title>collect_frames()</title>
+<indexterm><primary>collect_frames</primary><secondary>PeopleTracker.src.camera_position.CameraPosition</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.camera_position.CameraPosition</primary><secondary>collect_frames</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.camera_position.CameraPosition.collect_frames ( self,  video_source,  start_frame,  skip,  total_frames)</computeroutput></para>
+<para><literallayout><computeroutput>Collects the images for stitching
+</computeroutput></literallayout> </para>
+<para>
+Referenced by <link linkend="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1ac0d8ca2839f262a0bd63cbd5eafb3eb5">PeopleTracker.src.room_estimation.room_estimation.save_room()</link>, <link linkend="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1a9f7d4f4d88d0ec8bfedf9d5e615735cf">PeopleTracker.src.room_estimation.room_estimation.stitch_rooms()</link>, and <link linkend="_class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_1aebc62cf129f00a5c125e3fab00dc8a63">PeopleTracker.src.room_estimation.room_estimation.stitch_trackers()</link>.</para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1camera__position_1_1_camera_position_1a5c77588850a339e4203bee7016633867"/><section>
+    <title>find_features()</title>
+<indexterm><primary>find_features</primary><secondary>PeopleTracker.src.camera_position.CameraPosition</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.camera_position.CameraPosition</primary><secondary>find_features</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.camera_position.CameraPosition.find_features ( self,  img1,  img2)</computeroutput></para>
+<para><literallayout><computeroutput>This function finds features between 2 images using ORB
+Desribes keypoints using &quot;steer&quot; BRIEF
+</computeroutput></literallayout> </para>
+<para>
+References PeopleTracker.src.camera_position.CameraPosition.find_reference(), PeopleTracker.src.camera_position.CameraPosition.reference_imgs, PeopleTracker.src.camera_position.CameraPosition.source_img, and PeopleTracker.src.camera_position.CameraPosition.stitched_img.</para>
+</section>
+<para>
+The documentation for this class was generated from the following file:</para>
+K:/Github/PeopleTracker/src/camera_position.py</section>
+</section>

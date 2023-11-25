@@ -1,0 +1,462 @@
+\doxysection{Data\+Logger}
+\hypertarget{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger}{}\label{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger}\index{DataLogger@{DataLogger}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_ac811b5e12ce6cb6fc4e7b4dfde282132}\label{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_ac811b5e12ce6cb6fc4e7b4dfde282132} 
+{\bfseries \+\_\+\+\_\+init\+\_\+\+\_\+} (self, video, video\+\_\+location=None, video\+\_\+metadata=None, \mbox{\hyperlink{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_a10d41eee6e85dbc18db528607f7641be}{intervention\+\_\+level}}=NO\+\_\+\+INTVERVENTION\+\_\+\+TRACKER, ground\+\_\+truth\+\_\+folder=None)
+\item 
+\mbox{\hyperlink{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_af1d3c1fa3e44db6ab404e162bd264d00}{start\+\_\+recording}} (self)
+\begin{DoxyCompactList}\small\item\em User input logging starts here \#. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_aa664a0547aaaf3562a55bc58a1fbc09f}{end\+\_\+recording}} (self)
+\begin{DoxyCompactList}\small\item\em ends recording timer \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_a18b9423164131f6a5cb5cb80069e0d2f}{start\+\_\+timer}} (self, timer\+\_\+id)
+\item 
+\mbox{\hyperlink{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_a23bef5dbc59c116cc9a20754f9ee8f33}{get\+\_\+time\+\_\+elapsed}} (self, timer\+\_\+id)
+\item 
+\mbox{\hyperlink{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_a8b88ea2fc7ce49ef394dbdc6d40c8cf1}{end\+\_\+timer}} (self, timer\+\_\+id)
+\item 
+\mbox{\hyperlink{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_a2df6891576c591b86e3bf2e6a86e380e}{adjustment}} (self, frame\+\_\+number, from\+\_\+box, timer\+\_\+id, tracker\+\_\+id, intervention\+\_\+type="{}USER"{}, to\+\_\+box=None)
+\item 
+\mbox{\hyperlink{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_a640807eb3a47f21d60f4901383f9ab7e}{end\+\_\+adjustment}} (self, to\+\_\+box, timer\+\_\+id)
+\item 
+\mbox{\hyperlink{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_a147ee854723ad7ce299aca8f95599f2c}{paused}} (self, frame\+\_\+number, pause\+\_\+type, timer\+\_\+id, tracker\+\_\+id)
+\item 
+\mbox{\hyperlink{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_af8bf41368400983fc278bfa3b0fa9500}{end\+\_\+pause}} (self)
+\item 
+\mbox{\hyperlink{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_a286d618835528c9cf90218dd6cd8e546}{slider\+\_\+moved}} (self, frame\+\_\+from, timer\+\_\+id, tracker\+\_\+id)
+\item 
+\mbox{\hyperlink{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_ae8fb478549eb82488a7f1029b1f2e74c}{end\+\_\+slider}} (self, frame\+\_\+to, timer\+\_\+id)
+\item 
+\mbox{\hyperlink{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_a5f192965f59bcadd25871fc878cd1962}{record\+\_\+errors}} (self, frame)
+\item 
+\mbox{\hyperlink{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_a1f7f6db786512a4f60a0bf40f3dfb414}{get\+\_\+tracker\+\_\+score}} (self)
+\item 
+\mbox{\hyperlink{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_a2c83fe18962be0a9264b914a3810a30e}{get\+\_\+video\+\_\+characteristics}} (self, video=None)
+\begin{DoxyCompactList}\small\item\em VIDEO COMPLEXITY STARTS HERE \#. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_ad63c3dc24a49baaad8a67403006f0241}{illumination}} (self, frame)
+\item 
+\mbox{\hyperlink{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_af0a6b39e1a4c8ba3a00d790253aab15c}{optical\+\_\+flow}} (self, frame)
+\item 
+\mbox{\hyperlink{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_ae735fff941e047218ea858337e007484}{optical\+\_\+flow\+\_\+pan}} (self, flow, dominance\+\_\+threshold=0.\+4, magnitude\+\_\+threshold=0.\+5)
+\item 
+\mbox{\hyperlink{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_a3cff34c024334cefe903de3058e3a991}{optical\+\_\+flow\+\_\+zoom}} (self, flow, dominance\+\_\+threshold=0.\+7, magnitude\+\_\+threshold=1)
+\item 
+\mbox{\hyperlink{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_a7e1305e3e399383a4b749ba2244f5943}{ground\+\_\+truth\+\_\+characteristics}} (self, frame\+\_\+num)
+\item 
+\mbox{\hyperlink{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_af7dc8315b04b8b19f07ef5b7dab34782}{objects\+\_\+occluded}} (self, folder\+\_\+path, fps)
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_a94f679a64f572ad08936323f8cb85b5b}\label{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_a94f679a64f572ad08936323f8cb85b5b} 
+{\bfseries check\+\_\+intervention\+\_\+level} (self)
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_a141cad1e6d50d6c15b02caa0458ac193}\label{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_a141cad1e6d50d6c15b02caa0458ac193} 
+{\bfseries export\+\_\+charactoristics} (self, file\+\_\+path)
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_a346584b03fbdc533d0a329c2aed67605}\label{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_a346584b03fbdc533d0a329c2aed67605} 
+{\bfseries export\+\_\+activity} (self, file\+\_\+path)
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_ac17ffb0fb99926c99dcaab63b5335243}\label{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_ac17ffb0fb99926c99dcaab63b5335243} 
+{\bfseries plot\+\_\+chars\+\_\+df} (self)
+\item 
+\mbox{\hyperlink{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_a8662a7e19ab5209fd49a46a6d600885b}{occuding\+\_\+objects}} (self, occluding\+\_\+tracks\+\_\+csv, occluding\+\_\+threshold=0.\+8)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_a10d41eee6e85dbc18db528607f7641be}\label{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_a10d41eee6e85dbc18db528607f7641be} 
+{\bfseries intervention\+\_\+level}
+\begin{DoxyCompactList}\small\item\em String representing constants. \end{DoxyCompactList}\item 
+\Hypertarget{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_a9c7ab704a0e99c8f10dd2be7211ef18a}\label{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_a9c7ab704a0e99c8f10dd2be7211ef18a} 
+{\bfseries ground\+\_\+truth\+\_\+folder}
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_a2db313fabca57504d9dc776e46b304f6}\label{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_a2db313fabca57504d9dc776e46b304f6} 
+{\bfseries te}
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_a9cfcb724bbf4bae5f97bc17cf58cf522}\label{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_a9cfcb724bbf4bae5f97bc17cf58cf522} 
+{\bfseries metadata}
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_abb2fd43e6da5bee9edb1e75519db7a3d}\label{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_abb2fd43e6da5bee9edb1e75519db7a3d} 
+{\bfseries video}
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_a3197c2b2aa49f8dfcf7df21494fb9a3a}\label{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_a3197c2b2aa49f8dfcf7df21494fb9a3a} 
+{\bfseries video\+\_\+id}
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_a9a6a7b2fcdc9047119bb00f6bb2a2b99}\label{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_a9a6a7b2fcdc9047119bb00f6bb2a2b99} 
+{\bfseries video\+\_\+location}
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_af1379a970f9829fbb1ab49d135d1e484}\label{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_af1379a970f9829fbb1ab49d135d1e484} 
+{\bfseries start\+\_\+time\+\_\+id}
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_a09ecb172e1edc06d1724fd4deb21977a}\label{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_a09ecb172e1edc06d1724fd4deb21977a} 
+{\bfseries previous\+\_\+frame}
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_a5da338488b54f4aaf26d9ddad6001c60}\label{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_a5da338488b54f4aaf26d9ddad6001c60} 
+{\bfseries logging\+\_\+dict}
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_a8ae661c9fde21bfa7519d2fae6edf0bb}\label{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_a8ae661c9fde21bfa7519d2fae6edf0bb} 
+{\bfseries timer\+\_\+dict}
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_a89e28442ff2c5633d3dc7c69ed77d11e}\label{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_a89e28442ff2c5633d3dc7c69ed77d11e} 
+{\bfseries paused\+\_\+data}
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_ad0e8ba2bf35f2c5313ee1283690a9a5a}\label{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_ad0e8ba2bf35f2c5313ee1283690a9a5a} 
+{\bfseries slider\+\_\+data}
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_a1b9ffb1083895c281197dbf7d72dc285}\label{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_a1b9ffb1083895c281197dbf7d72dc285} 
+{\bfseries adjust\+\_\+data}
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_afae84ae851c5cb3f6bea8d07dae48838}\label{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_afae84ae851c5cb3f6bea8d07dae48838} 
+{\bfseries logger\+\_\+df}
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_aed5fc6f05a53f1d31ee01d2e3f39e23d}\label{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_aed5fc6f05a53f1d31ee01d2e3f39e23d} 
+{\bfseries video\+\_\+info\+\_\+df}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_a2df6891576c591b86e3bf2e6a86e380e}\label{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_a2df6891576c591b86e3bf2e6a86e380e} 
+\index{DataLogger@{DataLogger}!adjustment@{adjustment}}
+\index{adjustment@{adjustment}!DataLogger@{DataLogger}}
+\doxysubsubsection{\texorpdfstring{adjustment()}{adjustment()}}
+{\footnotesize\ttfamily adjustment (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{frame\+\_\+number,  }\item[{}]{from\+\_\+box,  }\item[{}]{timer\+\_\+id,  }\item[{}]{tracker\+\_\+id,  }\item[{}]{intervention\+\_\+type = {\ttfamily "{}USER"{}},  }\item[{}]{to\+\_\+box = {\ttfamily None} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Records the frame number and locations where the tracker is moved from and to.
+
+Records what made the adjustment.
+    
+    Human - If the user made the adjustment
+    
+    Model - If the MaskRCNN model made the automatic adjustment
+\end{DoxyVerb}
+ 
+
+References Data\+Logger.\+adjust\+\_\+data, \mbox{\hyperlink{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_a640807eb3a47f21d60f4901383f9ab7e}{Data\+Logger.\+end\+\_\+adjustment()}}, \mbox{\hyperlink{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_a10d41eee6e85dbc18db528607f7641be}{Data\+Logger.\+intervention\+\_\+level}}, and \mbox{\hyperlink{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_a18b9423164131f6a5cb5cb80069e0d2f}{Data\+Logger.\+start\+\_\+timer()}}.
+
+\Hypertarget{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_a640807eb3a47f21d60f4901383f9ab7e}\label{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_a640807eb3a47f21d60f4901383f9ab7e} 
+\index{DataLogger@{DataLogger}!end\_adjustment@{end\_adjustment}}
+\index{end\_adjustment@{end\_adjustment}!DataLogger@{DataLogger}}
+\doxysubsubsection{\texorpdfstring{end\_adjustment()}{end\_adjustment()}}
+{\footnotesize\ttfamily end\+\_\+adjustment (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{to\+\_\+box,  }\item[{}]{timer\+\_\+id }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Records the adjustment when final changes are made. This contributes final location and duration.
+\end{DoxyVerb}
+ 
+
+References Data\+Logger.\+adjust\+\_\+data, \mbox{\hyperlink{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_a23bef5dbc59c116cc9a20754f9ee8f33}{Data\+Logger.\+get\+\_\+time\+\_\+elapsed()}}, and Data\+Logger.\+logger\+\_\+df.
+
+
+
+Referenced by \mbox{\hyperlink{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_a2df6891576c591b86e3bf2e6a86e380e}{Data\+Logger.\+adjustment()}}.
+
+\Hypertarget{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_af8bf41368400983fc278bfa3b0fa9500}\label{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_af8bf41368400983fc278bfa3b0fa9500} 
+\index{DataLogger@{DataLogger}!end\_pause@{end\_pause}}
+\index{end\_pause@{end\_pause}!DataLogger@{DataLogger}}
+\doxysubsubsection{\texorpdfstring{end\_pause()}{end\_pause()}}
+{\footnotesize\ttfamily end\+\_\+pause (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}After paused() is called, end_pause is used to end the paused action and add the duration to the logger.
+\end{DoxyVerb}
+ 
+
+References \mbox{\hyperlink{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_a8b88ea2fc7ce49ef394dbdc6d40c8cf1}{Data\+Logger.\+end\+\_\+timer()}}, \mbox{\hyperlink{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_a23bef5dbc59c116cc9a20754f9ee8f33}{Data\+Logger.\+get\+\_\+time\+\_\+elapsed()}}, Data\+Logger.\+logger\+\_\+df, Data\+Logger.\+paused\+\_\+data, and Data\+Logger.\+start\+\_\+time\+\_\+id.
+
+\Hypertarget{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_aa664a0547aaaf3562a55bc58a1fbc09f}\label{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_aa664a0547aaaf3562a55bc58a1fbc09f} 
+\index{DataLogger@{DataLogger}!end\_recording@{end\_recording}}
+\index{end\_recording@{end\_recording}!DataLogger@{DataLogger}}
+\doxysubsubsection{\texorpdfstring{end\_recording()}{end\_recording()}}
+{\footnotesize\ttfamily end\+\_\+recording (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+ends recording timer 
+
+\begin{DoxyVerb}Ends recording by setting the second value in the tuple (start, end) to the current time.
+\end{DoxyVerb}
+ 
+
+References Data\+Logger.\+start\+\_\+time\+\_\+id, and Data\+Logger.\+timer\+\_\+dict.
+
+\Hypertarget{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_ae8fb478549eb82488a7f1029b1f2e74c}\label{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_ae8fb478549eb82488a7f1029b1f2e74c} 
+\index{DataLogger@{DataLogger}!end\_slider@{end\_slider}}
+\index{end\_slider@{end\_slider}!DataLogger@{DataLogger}}
+\doxysubsubsection{\texorpdfstring{end\_slider()}{end\_slider()}}
+{\footnotesize\ttfamily end\+\_\+slider (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{frame\+\_\+to,  }\item[{}]{timer\+\_\+id }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}When slider_moved() is called, we call end_slider which removes a duration timer and adds the duration and SLIDER action to the logger.
+\end{DoxyVerb}
+ 
+
+References \mbox{\hyperlink{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_a8b88ea2fc7ce49ef394dbdc6d40c8cf1}{Data\+Logger.\+end\+\_\+timer()}}, \mbox{\hyperlink{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_a23bef5dbc59c116cc9a20754f9ee8f33}{Data\+Logger.\+get\+\_\+time\+\_\+elapsed()}}, Data\+Logger.\+logger\+\_\+df, Data\+Logger.\+slider\+\_\+data, and Data\+Logger.\+timer\+\_\+dict.
+
+\Hypertarget{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_a8b88ea2fc7ce49ef394dbdc6d40c8cf1}\label{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_a8b88ea2fc7ce49ef394dbdc6d40c8cf1} 
+\index{DataLogger@{DataLogger}!end\_timer@{end\_timer}}
+\index{end\_timer@{end\_timer}!DataLogger@{DataLogger}}
+\doxysubsubsection{\texorpdfstring{end\_timer()}{end\_timer()}}
+{\footnotesize\ttfamily end\+\_\+timer (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{timer\+\_\+id }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Ends the timer from when the project is finished
+\end{DoxyVerb}
+ 
+
+References \mbox{\hyperlink{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_a23bef5dbc59c116cc9a20754f9ee8f33}{Data\+Logger.\+get\+\_\+time\+\_\+elapsed()}}, and Data\+Logger.\+timer\+\_\+dict.
+
+
+
+Referenced by \mbox{\hyperlink{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_af8bf41368400983fc278bfa3b0fa9500}{Data\+Logger.\+end\+\_\+pause()}}, and \mbox{\hyperlink{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_ae8fb478549eb82488a7f1029b1f2e74c}{Data\+Logger.\+end\+\_\+slider()}}.
+
+\Hypertarget{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_a23bef5dbc59c116cc9a20754f9ee8f33}\label{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_a23bef5dbc59c116cc9a20754f9ee8f33} 
+\index{DataLogger@{DataLogger}!get\_time\_elapsed@{get\_time\_elapsed}}
+\index{get\_time\_elapsed@{get\_time\_elapsed}!DataLogger@{DataLogger}}
+\doxysubsubsection{\texorpdfstring{get\_time\_elapsed()}{get\_time\_elapsed()}}
+{\footnotesize\ttfamily get\+\_\+time\+\_\+elapsed (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{timer\+\_\+id }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}returns elapsed time of a timer in seconds
+\end{DoxyVerb}
+ 
+
+References Data\+Logger.\+start\+\_\+time\+\_\+id, and Data\+Logger.\+timer\+\_\+dict.
+
+
+
+Referenced by \mbox{\hyperlink{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_a640807eb3a47f21d60f4901383f9ab7e}{Data\+Logger.\+end\+\_\+adjustment()}}, \mbox{\hyperlink{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_af8bf41368400983fc278bfa3b0fa9500}{Data\+Logger.\+end\+\_\+pause()}}, \mbox{\hyperlink{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_ae8fb478549eb82488a7f1029b1f2e74c}{Data\+Logger.\+end\+\_\+slider()}}, and \mbox{\hyperlink{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_a8b88ea2fc7ce49ef394dbdc6d40c8cf1}{Data\+Logger.\+end\+\_\+timer()}}.
+
+\Hypertarget{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_a1f7f6db786512a4f60a0bf40f3dfb414}\label{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_a1f7f6db786512a4f60a0bf40f3dfb414} 
+\index{DataLogger@{DataLogger}!get\_tracker\_score@{get\_tracker\_score}}
+\index{get\_tracker\_score@{get\_tracker\_score}!DataLogger@{DataLogger}}
+\doxysubsubsection{\texorpdfstring{get\_tracker\_score()}{get\_tracker\_score()}}
+{\footnotesize\ttfamily get\+\_\+tracker\+\_\+score (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Not implemented
+\end{DoxyVerb}
+ \Hypertarget{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_a2c83fe18962be0a9264b914a3810a30e}\label{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_a2c83fe18962be0a9264b914a3810a30e} 
+\index{DataLogger@{DataLogger}!get\_video\_characteristics@{get\_video\_characteristics}}
+\index{get\_video\_characteristics@{get\_video\_characteristics}!DataLogger@{DataLogger}}
+\doxysubsubsection{\texorpdfstring{get\_video\_characteristics()}{get\_video\_characteristics()}}
+{\footnotesize\ttfamily get\+\_\+video\+\_\+characteristics (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{video = {\ttfamily None} }\end{DoxyParamCaption})}
+
+
+
+VIDEO COMPLEXITY STARTS HERE \#. 
+
+\begin{DoxyVerb}Records all video characteristics. 
+    This will be done independently from the user input 
+    and will be constants between intervention types
+\end{DoxyVerb}
+ 
+
+References \mbox{\hyperlink{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_a7e1305e3e399383a4b749ba2244f5943}{Data\+Logger.\+ground\+\_\+truth\+\_\+characteristics()}}, \mbox{\hyperlink{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_ad63c3dc24a49baaad8a67403006f0241}{Data\+Logger.\+illumination()}}, \mbox{\hyperlink{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_af0a6b39e1a4c8ba3a00d790253aab15c}{Data\+Logger.\+optical\+\_\+flow()}}, Data\+Logger.\+te, Data\+Logger.\+video, Data\+Logger.\+video\+\_\+id, Data\+Logger.\+video\+\_\+info\+\_\+df, and Data\+Logger.\+video\+\_\+location.
+
+\Hypertarget{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_a7e1305e3e399383a4b749ba2244f5943}\label{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_a7e1305e3e399383a4b749ba2244f5943} 
+\index{DataLogger@{DataLogger}!ground\_truth\_characteristics@{ground\_truth\_characteristics}}
+\index{ground\_truth\_characteristics@{ground\_truth\_characteristics}!DataLogger@{DataLogger}}
+\doxysubsubsection{\texorpdfstring{ground\_truth\_characteristics()}{ground\_truth\_characteristics()}}
+{\footnotesize\ttfamily ground\+\_\+truth\+\_\+characteristics (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{frame\+\_\+num }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Records ground truth height, width, and distance from last frame
+\end{DoxyVerb}
+ 
+
+References Data\+Logger.\+te.
+
+
+
+Referenced by \mbox{\hyperlink{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_a2c83fe18962be0a9264b914a3810a30e}{Data\+Logger.\+get\+\_\+video\+\_\+characteristics()}}.
+
+\Hypertarget{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_ad63c3dc24a49baaad8a67403006f0241}\label{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_ad63c3dc24a49baaad8a67403006f0241} 
+\index{DataLogger@{DataLogger}!illumination@{illumination}}
+\index{illumination@{illumination}!DataLogger@{DataLogger}}
+\doxysubsubsection{\texorpdfstring{illumination()}{illumination()}}
+{\footnotesize\ttfamily illumination (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{frame }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Records the average intensity of the RGB image in greyscale with values between 0 (black) and 255 (white)
+
+Intensity = (R + G + B)/3
+\end{DoxyVerb}
+ 
+
+Referenced by \mbox{\hyperlink{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_a2c83fe18962be0a9264b914a3810a30e}{Data\+Logger.\+get\+\_\+video\+\_\+characteristics()}}.
+
+\Hypertarget{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_af7dc8315b04b8b19f07ef5b7dab34782}\label{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_af7dc8315b04b8b19f07ef5b7dab34782} 
+\index{DataLogger@{DataLogger}!objects\_occluded@{objects\_occluded}}
+\index{objects\_occluded@{objects\_occluded}!DataLogger@{DataLogger}}
+\doxysubsubsection{\texorpdfstring{objects\_occluded()}{objects\_occluded()}}
+{\footnotesize\ttfamily objects\+\_\+occluded (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{folder\+\_\+path,  }\item[{}]{fps }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Records weather the occlusion flag has occured on that frame. Records how many IDs have been occluded.
+\end{DoxyVerb}
+ 
+
+References Data\+Logger.\+check\+\_\+intervention\+\_\+level(), \mbox{\hyperlink{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_a10d41eee6e85dbc18db528607f7641be}{Data\+Logger.\+intervention\+\_\+level}}, Data\+Logger.\+logger\+\_\+df, Data\+Logger.\+te, and Data\+Logger.\+video\+\_\+info\+\_\+df.
+
+\Hypertarget{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_a8662a7e19ab5209fd49a46a6d600885b}\label{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_a8662a7e19ab5209fd49a46a6d600885b} 
+\index{DataLogger@{DataLogger}!occuding\_objects@{occuding\_objects}}
+\index{occuding\_objects@{occuding\_objects}!DataLogger@{DataLogger}}
+\doxysubsubsection{\texorpdfstring{occuding\_objects()}{occuding\_objects()}}
+{\footnotesize\ttfamily occuding\+\_\+objects (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{occluding\+\_\+tracks\+\_\+csv,  }\item[{}]{occluding\+\_\+threshold = {\ttfamily 0.8} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Given recorded occluding objects, check the precision of ground truth onto occluding object.
+If precision of ground truth is above threshold, this means that object is occluded.
+This is the same measure as check_occlusion but data in this context is different and 
+therefore a different function
+\end{DoxyVerb}
+ \Hypertarget{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_af0a6b39e1a4c8ba3a00d790253aab15c}\label{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_af0a6b39e1a4c8ba3a00d790253aab15c} 
+\index{DataLogger@{DataLogger}!optical\_flow@{optical\_flow}}
+\index{optical\_flow@{optical\_flow}!DataLogger@{DataLogger}}
+\doxysubsubsection{\texorpdfstring{optical\_flow()}{optical\_flow()}}
+{\footnotesize\ttfamily optical\+\_\+flow (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{frame }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Uses optical flow to measure the average magnitude of movement from the flow of pixels.
+
+Also records the resolution of the image
+
+Returns values in a dictionary with names:
+    Mean
+    Median
+    STD
+    Mean_Magnitude
+    Dominant_Zoom
+    Percent_Zoom
+    Zoom_Dominance_Thresh
+    Zoom_Magnitude_Thresh
+    Dominant_Pan
+    Percent_Pan
+    Pan_Dominance_Thresh
+    Pan_Magnitude_Thresh
+
+[66] Gunnar Farnebäck. Two-frame motion estimation based on polynomial expansion. In Image Analysis, pages 363–370. Springer, 2003. 
+\end{DoxyVerb}
+ 
+
+References \mbox{\hyperlink{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_ae735fff941e047218ea858337e007484}{Data\+Logger.\+optical\+\_\+flow\+\_\+pan()}}, \mbox{\hyperlink{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_a3cff34c024334cefe903de3058e3a991}{Data\+Logger.\+optical\+\_\+flow\+\_\+zoom()}}, and Data\+Logger.\+previous\+\_\+frame.
+
+
+
+Referenced by \mbox{\hyperlink{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_a2c83fe18962be0a9264b914a3810a30e}{Data\+Logger.\+get\+\_\+video\+\_\+characteristics()}}.
+
+\Hypertarget{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_ae735fff941e047218ea858337e007484}\label{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_ae735fff941e047218ea858337e007484} 
+\index{DataLogger@{DataLogger}!optical\_flow\_pan@{optical\_flow\_pan}}
+\index{optical\_flow\_pan@{optical\_flow\_pan}!DataLogger@{DataLogger}}
+\doxysubsubsection{\texorpdfstring{optical\_flow\_pan()}{optical\_flow\_pan()}}
+{\footnotesize\ttfamily optical\+\_\+flow\+\_\+pan (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{flow,  }\item[{}]{dominance\+\_\+threshold = {\ttfamily 0.4},  }\item[{}]{magnitude\+\_\+threshold = {\ttfamily 0.5} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Vector orientation:
+t+1=current frame, t=previous frame
+
+atan( 
+    (yi^(t+1) - yi^(t)) / 
+    (xi^(t+1) - xi^(t)) 
+)
+
+
+Calculate Dominant Orientation = Peak value in orientation histogram of the imag
+np.histogram(np.array(vector orientation))
+
+returns the dominant orientation given a threshold, the threshold it passed by, and the average magnitude of movement.
+
+
+Makkapati, V. (2008). Robust camera pan and zoom change detection using optical flow. 
+In National conference on computer vision, pattern recognition, 
+image processing and graphics (pp. 73-78).
+\end{DoxyVerb}
+ 
+
+Referenced by \mbox{\hyperlink{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_af0a6b39e1a4c8ba3a00d790253aab15c}{Data\+Logger.\+optical\+\_\+flow()}}.
+
+\Hypertarget{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_a3cff34c024334cefe903de3058e3a991}\label{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_a3cff34c024334cefe903de3058e3a991} 
+\index{DataLogger@{DataLogger}!optical\_flow\_zoom@{optical\_flow\_zoom}}
+\index{optical\_flow\_zoom@{optical\_flow\_zoom}!DataLogger@{DataLogger}}
+\doxysubsubsection{\texorpdfstring{optical\_flow\_zoom()}{optical\_flow\_zoom()}}
+{\footnotesize\ttfamily optical\+\_\+flow\+\_\+zoom (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{flow,  }\item[{}]{dominance\+\_\+threshold = {\ttfamily 0.7},  }\item[{}]{magnitude\+\_\+threshold = {\ttfamily 1} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Describe each vector's direction. 
+
+Returns 
+    0 if diverging (zoom in), 1 if converging (zoom out), otherwise none.
+    percent of dominance
+    domenance threshold
+    mean magnitude threshold
+
+
+Makkapati, V. (2008). Robust camera pan and zoom change detection using optical flow. 
+In National conference on computer vision, pattern recognition, 
+image processing and graphics (pp. 73-78).
+\end{DoxyVerb}
+ 
+
+Referenced by \mbox{\hyperlink{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_af0a6b39e1a4c8ba3a00d790253aab15c}{Data\+Logger.\+optical\+\_\+flow()}}.
+
+\Hypertarget{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_a147ee854723ad7ce299aca8f95599f2c}\label{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_a147ee854723ad7ce299aca8f95599f2c} 
+\index{DataLogger@{DataLogger}!paused@{paused}}
+\index{paused@{paused}!DataLogger@{DataLogger}}
+\doxysubsubsection{\texorpdfstring{paused()}{paused()}}
+{\footnotesize\ttfamily paused (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{frame\+\_\+number,  }\item[{}]{pause\+\_\+type,  }\item[{}]{timer\+\_\+id,  }\item[{}]{tracker\+\_\+id }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Records what initiated the pause, and for how long the pause existed for.
+
+This requires an external timer, and will be recorded when *Play* has been selected.
+\end{DoxyVerb}
+ 
+
+References \mbox{\hyperlink{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_a10d41eee6e85dbc18db528607f7641be}{Data\+Logger.\+intervention\+\_\+level}}, Data\+Logger.\+paused\+\_\+data, and \mbox{\hyperlink{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_a18b9423164131f6a5cb5cb80069e0d2f}{Data\+Logger.\+start\+\_\+timer()}}.
+
+\Hypertarget{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_a5f192965f59bcadd25871fc878cd1962}\label{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_a5f192965f59bcadd25871fc878cd1962} 
+\index{DataLogger@{DataLogger}!record\_errors@{record\_errors}}
+\index{record\_errors@{record\_errors}!DataLogger@{DataLogger}}
+\doxysubsubsection{\texorpdfstring{record\_errors()}{record\_errors()}}
+{\footnotesize\ttfamily record\+\_\+errors (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{frame }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Not implemented
+\end{DoxyVerb}
+ \Hypertarget{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_a286d618835528c9cf90218dd6cd8e546}\label{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_a286d618835528c9cf90218dd6cd8e546} 
+\index{DataLogger@{DataLogger}!slider\_moved@{slider\_moved}}
+\index{slider\_moved@{slider\_moved}!DataLogger@{DataLogger}}
+\doxysubsubsection{\texorpdfstring{slider\_moved()}{slider\_moved()}}
+{\footnotesize\ttfamily slider\+\_\+moved (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{frame\+\_\+from,  }\item[{}]{timer\+\_\+id,  }\item[{}]{tracker\+\_\+id }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Records when the slider was changed, where from, and where to.
+\end{DoxyVerb}
+ 
+
+References \mbox{\hyperlink{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_a10d41eee6e85dbc18db528607f7641be}{Data\+Logger.\+intervention\+\_\+level}}, Data\+Logger.\+slider\+\_\+data, \mbox{\hyperlink{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_a18b9423164131f6a5cb5cb80069e0d2f}{Data\+Logger.\+start\+\_\+timer()}}, and Data\+Logger.\+timer\+\_\+dict.
+
+\Hypertarget{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_af1d3c1fa3e44db6ab404e162bd264d00}\label{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_af1d3c1fa3e44db6ab404e162bd264d00} 
+\index{DataLogger@{DataLogger}!start\_recording@{start\_recording}}
+\index{start\_recording@{start\_recording}!DataLogger@{DataLogger}}
+\doxysubsubsection{\texorpdfstring{start\_recording()}{start\_recording()}}
+{\footnotesize\ttfamily start\+\_\+recording (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+User input logging starts here \#. 
+
+\begin{DoxyVerb}Starts the recording timer
+\end{DoxyVerb}
+ 
+
+References Data\+Logger.\+start\+\_\+time\+\_\+id, and Data\+Logger.\+timer\+\_\+dict.
+
+
+
+Referenced by \mbox{\hyperlink{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_a18b9423164131f6a5cb5cb80069e0d2f}{Data\+Logger.\+start\+\_\+timer()}}.
+
+\Hypertarget{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_a18b9423164131f6a5cb5cb80069e0d2f}\label{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_a18b9423164131f6a5cb5cb80069e0d2f} 
+\index{DataLogger@{DataLogger}!start\_timer@{start\_timer}}
+\index{start\_timer@{start\_timer}!DataLogger@{DataLogger}}
+\doxysubsubsection{\texorpdfstring{start\_timer()}{start\_timer()}}
+{\footnotesize\ttfamily start\+\_\+timer (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{timer\+\_\+id }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Starts the timer from when the project is initiated
+\end{DoxyVerb}
+ 
+
+References \mbox{\hyperlink{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_af1d3c1fa3e44db6ab404e162bd264d00}{Data\+Logger.\+start\+\_\+recording()}}, Data\+Logger.\+start\+\_\+time\+\_\+id, and Data\+Logger.\+timer\+\_\+dict.
+
+
+
+Referenced by \mbox{\hyperlink{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_a2df6891576c591b86e3bf2e6a86e380e}{Data\+Logger.\+adjustment()}}, \mbox{\hyperlink{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_a147ee854723ad7ce299aca8f95599f2c}{Data\+Logger.\+paused()}}, and \mbox{\hyperlink{class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_a286d618835528c9cf90218dd6cd8e546}{Data\+Logger.\+slider\+\_\+moved()}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+K\+:/\+Github/\+People\+Tracker/src/datalogger.\+py\end{DoxyCompactItemize}

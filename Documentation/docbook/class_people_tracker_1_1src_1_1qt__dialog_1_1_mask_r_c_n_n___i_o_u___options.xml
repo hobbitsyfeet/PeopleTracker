@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_mask_r_c_n_n___i_o_u___options" xml:lang="en-US">
+<title>PeopleTracker.src.qt_dialog.MaskRCNN_IOU_Options Class Reference</title>
+<indexterm><primary>PeopleTracker.src.qt_dialog.MaskRCNN_IOU_Options</primary></indexterm>
+<para>Inheritance diagram for PeopleTracker.src.qt_dialog.MaskRCNN_IOU_Options:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_people_tracker_1_1src_1_1qt__dialog_1_1_mask_r_c_n_n___i_o_u___options.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_mask_r_c_n_n___i_o_u___options_1ab7c64e3017a8ad3f509e0759963fcb64"/><emphasis role="strong">__init__</emphasis> (self)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_mask_r_c_n_n___i_o_u___options_1af1464e179951c751f7bde9c876dd7962"/><emphasis role="strong">get_min_value</emphasis> (self)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_mask_r_c_n_n___i_o_u___options_1af7ab57507f4f39aa66ebf6b57c7d811e"/><emphasis role="strong">get_auto_assign</emphasis> (self)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_mask_r_c_n_n___i_o_u___options_1a321b3d036b8deec88d8f6c61e85abfcb"/><emphasis role="strong">get_similarity</emphasis> (self)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_mask_r_c_n_n___i_o_u___options_1a367a16f42d989994c866ad118145f3cc"/><emphasis role="strong">get_active</emphasis> (self)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_mask_r_c_n_n___i_o_u___options_1a406113f4f98212233e43e4a464ec9935"/><emphasis role="strong">label</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_mask_r_c_n_n___i_o_u___options_1afb97d264ea2f1ea55dcf3bbccc91ecda"/><emphasis role="strong">active</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_mask_r_c_n_n___i_o_u___options_1aad266f4d34592a620892ac66040ba684"/><emphasis role="strong">min_value</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_mask_r_c_n_n___i_o_u___options_1a8894ef2061b4e9798cb56e2d27b177d7"/><emphasis role="strong">auto_assign_value</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_mask_r_c_n_n___i_o_u___options_1a02163decb0e3eca7432e9138984fe1ab"/><emphasis role="strong">similarity</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Protected Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_mask_r_c_n_n___i_o_u___options_1adcf9a669809fec5cc0eff5a3f01d60bd"/><emphasis role="strong">_toggle_checkbox</emphasis> (self, checkbox)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para><literallayout><computeroutput>UI for setting Mask-RCNN IOU options
+</computeroutput></literallayout> </para>
+<para>
+The documentation for this class was generated from the following file:</para>
+K:/Github/PeopleTracker/src/qt_dialog.py</section>
+</section>

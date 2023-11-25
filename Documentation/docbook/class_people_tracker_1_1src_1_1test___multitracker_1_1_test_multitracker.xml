@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_people_tracker_1_1src_1_1test___multitracker_1_1_test_multitracker" xml:lang="en-US">
+<title>PeopleTracker.src.test_Multitracker.TestMultitracker Class Reference</title>
+<indexterm><primary>PeopleTracker.src.test_Multitracker.TestMultitracker</primary></indexterm>
+<para>Inheritance diagram for PeopleTracker.src.test_Multitracker.TestMultitracker:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_people_tracker_1_1src_1_1test___multitracker_1_1_test_multitracker.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1test___multitracker_1_1_test_multitracker_1a849475b5ee9df70f75770f044bcc8dcd"/><emphasis role="strong">__init__</emphasis> (self, *args, **kwargs)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1test___multitracker_1_1_test_multitracker_1aed27a36dcfbdc4fb70c4f8dd6b9f8217"/><emphasis role="strong">new_tracker</emphasis> (self)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1test___multitracker_1_1_test_multitracker_1aaa8ebd369841a8fe5413dc615d9153e5"/><emphasis role="strong">test_merge_intervals</emphasis> (self)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1test___multitracker_1_1_test_multitracker_1aee65cce92a1bbbe1c227d301630c855e"/><emphasis role="strong">test_part_time_into_segments_Empty</emphasis> (self)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1test___multitracker_1_1_test_multitracker_1a59c634f38c62749df9390769a85c8c7e"/><emphasis role="strong">test_part_time_into_segments_single</emphasis> (self)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1test___multitracker_1_1_test_multitracker_1a3d19f2eaf0cbfaab639b449e80751303"/><emphasis role="strong">test_part_time_into_segments_multiple</emphasis> (self)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1test___multitracker_1_1_test_multitracker_1a52598a4009ceed276e62e9b20ef101b5"/><emphasis role="strong">test_part_into_segments_complex</emphasis> (self)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1test___multitracker_1_1_test_multitracker_1ab3f7486c9e9313084a5639a6e24c7032"/><emphasis role="strong">test_calculate_time</emphasis> (self)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1test___multitracker_1_1_test_multitracker_1a2f16f8e9ae1dc9e035d69c7219252798"/><emphasis role="strong">test_calculate_total_time</emphasis> (self)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1test___multitracker_1_1_test_multitracker_1a2c53029c2a62452949ef4acf00cd76c7"/><emphasis role="strong">longMessage</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<para>
+The documentation for this class was generated from the following file:</para>
+K:/Github/PeopleTracker/src/test_Multitracker.py</section>

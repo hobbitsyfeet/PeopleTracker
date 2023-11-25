@@ -1,0 +1,2750 @@
+{\rtf1\ansi\ansicpg1252\uc1 \deff0\deflang1033\deflangfe1033
+{\fonttbl {\f0\froman\fcharset0\fprq2{\*\panose 02020603050405020304}Times New Roman;}
+{\f1\fswiss\fcharset0\fprq2{\*\panose 020b0604020202020204}Arial;}
+{\f2\fmodern\fcharset0\fprq1{\*\panose 02070309020205020404}Courier New;}
+{\f3\froman\fcharset2\fprq2{\*\panose 05050102010706020507}Symbol;}
+}
+{\colortbl;\red0\green0\blue0;\red0\green0\blue255;\red0\green255\blue255;\red0\green255\blue0;\red255\green0\blue255;\red255\green0\blue0;\red255\green255\blue0;\red255\green255\blue255;\red0\green0\blue128;\red0\green128\blue128;\red0\green128\blue0;\red128\green0\blue128;\red128\green0\blue0;\red128\green128\blue0;\red128\green128\blue128;\red192\green192\blue192;\red0\green128\blue0;\red96\green64\blue32;\rede0\green128\blue0;\red128\green0\blue0;\red128\green96\blue32;\red0\green32\blue128;\red0\green128\blue128;\red255\green0\blue255;\red0\green0\blue0;\red112\green0\blue112;\red255\green0\blue0;}
+{\stylesheet
+{\widctlpar\adjustright \fs20\cgrid \snext0 Normal;}
+{\paperw11900\paperh16840\margl1800\margr1800\margt1440\margb1440\gutter0\ltrsect}
+{\s1\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs36\kerning36\cgrid \sbasedon0 \snext0 heading 1;}
+{\s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid \sbasedon0 \snext0 heading 2;}
+{\s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid \sbasedon0 \snext0 heading 3;}
+{\s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid \sbasedon0 \snext0 heading 4;}{\*\cs10 \additive Default Paragraph Font;}
+{\s5\sb90\sa30\keepn\widctlpar\adjustright \b\f1\fs20\cgrid \sbasedon0 \snext0 heading 5;}{\*\cs10 \additive Default Paragraph Font;}
+{\s15\qc\sb240\sa60\widctlpar\outlinelevel0\adjustright \b\f1\fs32\kerning28\cgrid \sbasedon0 \snext15 Title;}
+{\s16\qc\sa60\widctlpar\outlinelevel1\adjustright \f1\cgrid \sbasedon0 \snext16 Subtitle;}
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid \sbasedon0 \snext17 BodyText;}
+{\s18\widctlpar\fs22\cgrid \sbasedon0 \snext18 DenseText;}
+{\s28\widctlpar\tqc\tx4320\tqr\tx8640\adjustright \fs20\cgrid \sbasedon0 \snext28 header;}
+{\s29\widctlpar\tqc\tx4320\tqr\tx8640\qr\adjustright \fs20\cgrid \sbasedon0 \snext29 footer;}
+{\s30\li360\sa60\sb120\keepn\widctlpar\adjustright \b\f1\fs20\cgrid \sbasedon0 \snext30 GroupHeader;}
+{\s40\li0\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid \sbasedon0 \snext41 Code Example 0;}
+{\s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid \sbasedon0 \snext42 Code Example 1;}
+{\s42\li720\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid \sbasedon0 \snext43 Code Example 2;}
+{\s43\li1080\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid \sbasedon0 \snext44 Code Example 3;}
+{\s44\li1440\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid \sbasedon0 \snext45 Code Example 4;}
+{\s45\li1800\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid \sbasedon0 \snext46 Code Example 5;}
+{\s46\li2160\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid \sbasedon0 \snext47 Code Example 6;}
+{\s47\li2520\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid \sbasedon0 \snext48 Code Example 7;}
+{\s48\li2880\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid \sbasedon0 \snext49 Code Example 8;}
+{\s49\li3240\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid \sbasedon0 \snext50 Code Example 9;}
+{\s50\li3600\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid \sbasedon0 \snext51 Code Example 10;}
+{\s51\li3960\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid \sbasedon0 \snext52 Code Example 11;}
+{\s52\li4320\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid \sbasedon0 \snext53 Code Example 12;}
+{\s53\li4680\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid \sbasedon0 \snext53 Code Example 13;}
+{\s60\li0\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid \sbasedon0 \snext61 List Continue 0;}
+{\s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid \sbasedon0 \snext62 List Continue 1;}
+{\s62\li720\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid \sbasedon0 \snext63 List Continue 2;}
+{\s63\li1080\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid \sbasedon0 \snext64 List Continue 3;}
+{\s64\li1440\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid \sbasedon0 \snext65 List Continue 4;}
+{\s65\li1800\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid \sbasedon0 \snext66 List Continue 5;}
+{\s66\li2160\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid \sbasedon0 \snext67 List Continue 6;}
+{\s67\li2520\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid \sbasedon0 \snext68 List Continue 7;}
+{\s68\li2880\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid \sbasedon0 \snext69 List Continue 8;}
+{\s69\li3240\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid \sbasedon0 \snext70 List Continue 9;}
+{\s70\li3600\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid \sbasedon0 \snext71 List Continue 10;}
+{\s71\li3960\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid \sbasedon0 \snext72 List Continue 11;}
+{\s72\li4320\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid \sbasedon0 \snext73 List Continue 12;}
+{\s73\li4680\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid \sbasedon0 \snext73 List Continue 13;}
+{\s80\li0\widctlpar\ql\adjustright \fs20\cgrid \sbasedon0 \snext81 DescContinue 0;}
+{\s81\li360\widctlpar\ql\adjustright \fs20\cgrid \sbasedon0 \snext82 DescContinue 1;}
+{\s82\li720\widctlpar\ql\adjustright \fs20\cgrid \sbasedon0 \snext83 DescContinue 2;}
+{\s83\li1080\widctlpar\ql\adjustright \fs20\cgrid \sbasedon0 \snext84 DescContinue 3;}
+{\s84\li1440\widctlpar\ql\adjustright \fs20\cgrid \sbasedon0 \snext85 DescContinue 4;}
+{\s85\li1800\widctlpar\ql\adjustright \fs20\cgrid \sbasedon0 \snext86 DescContinue 5;}
+{\s86\li2160\widctlpar\ql\adjustright \fs20\cgrid \sbasedon0 \snext87 DescContinue 6;}
+{\s87\li2520\widctlpar\ql\adjustright \fs20\cgrid \sbasedon0 \snext88 DescContinue 7;}
+{\s88\li2880\widctlpar\ql\adjustright \fs20\cgrid \sbasedon0 \snext89 DescContinue 8;}
+{\s89\li3240\widctlpar\ql\adjustright \fs20\cgrid \sbasedon0 \snext90 DescContinue 9;}
+{\s90\li3600\widctlpar\ql\adjustright \fs20\cgrid \sbasedon0 \snext91 DescContinue 10;}
+{\s91\li3960\widctlpar\ql\adjustright \fs20\cgrid \sbasedon0 \snext92 DescContinue 11;}
+{\s92\li4320\widctlpar\ql\adjustright \fs20\cgrid \sbasedon0 \snext93 DescContinue 12;}
+{\s93\li4680\widctlpar\ql\adjustright \fs20\cgrid \sbasedon0 \snext93 DescContinue 13;}
+{\s100\li0\sa30\sb30\widctlpar\tqr\tldot\tx8640\adjustright \fs20\cgrid \sbasedon0 \snext101 LatexTOC 0;}
+{\s101\li360\sa27\sb27\widctlpar\tqr\tldot\tx8640\adjustright \fs20\cgrid \sbasedon0 \snext102 LatexTOC 1;}
+{\s102\li720\sa24\sb24\widctlpar\tqr\tldot\tx8640\adjustright \fs20\cgrid \sbasedon0 \snext103 LatexTOC 2;}
+{\s103\li1080\sa21\sb21\widctlpar\tqr\tldot\tx8640\adjustright \fs20\cgrid \sbasedon0 \snext104 LatexTOC 3;}
+{\s104\li1440\sa18\sb18\widctlpar\tqr\tldot\tx8640\adjustright \fs20\cgrid \sbasedon0 \snext105 LatexTOC 4;}
+{\s105\li1800\sa15\sb15\widctlpar\tqr\tldot\tx8640\adjustright \fs20\cgrid \sbasedon0 \snext106 LatexTOC 5;}
+{\s106\li2160\sa12\sb12\widctlpar\tqr\tldot\tx8640\adjustright \fs20\cgrid \sbasedon0 \snext107 LatexTOC 6;}
+{\s107\li2520\sa9\sb9\widctlpar\tqr\tldot\tx8640\adjustright \fs20\cgrid \sbasedon0 \snext108 LatexTOC 7;}
+{\s108\li2880\sa6\sb6\widctlpar\tqr\tldot\tx8640\adjustright \fs20\cgrid \sbasedon0 \snext109 LatexTOC 8;}
+{\s109\li3240\sa3\sb3\widctlpar\tqr\tldot\tx8640\adjustright \fs20\cgrid \sbasedon0 \snext110 LatexTOC 9;}
+{\s110\li3600\sa3\sb3\widctlpar\tqr\tldot\tx8640\adjustright \fs20\cgrid \sbasedon0 \snext111 LatexTOC 10;}
+{\s111\li3960\sa3\sb3\widctlpar\tqr\tldot\tx8640\adjustright \fs20\cgrid \sbasedon0 \snext112 LatexTOC 11;}
+{\s112\li4320\sa3\sb3\widctlpar\tqr\tldot\tx8640\adjustright \fs20\cgrid \sbasedon0 \snext113 LatexTOC 12;}
+{\s113\li4680\sa3\sb3\widctlpar\tqr\tldot\tx8640\adjustright \fs20\cgrid \sbasedon0 \snext113 LatexTOC 13;}
+{\s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid \sbasedon0 \snext121 \sautoupd List Bullet 0;}
+{\s121\fi-360\li720\widctlpar\jclisttab\tx720{\*\pn \pnlvlbody\ilvl0\ls2\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid \sbasedon0 \snext122 \sautoupd List Bullet 1;}
+{\s122\fi-360\li1080\widctlpar\jclisttab\tx1080{\*\pn \pnlvlbody\ilvl0\ls3\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid \sbasedon0 \snext123 \sautoupd List Bullet 2;}
+{\s123\fi-360\li1440\widctlpar\jclisttab\tx1440{\*\pn \pnlvlbody\ilvl0\ls4\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid \sbasedon0 \snext124 \sautoupd List Bullet 3;}
+{\s124\fi-360\li1800\widctlpar\jclisttab\tx1800{\*\pn \pnlvlbody\ilvl0\ls5\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid \sbasedon0 \snext125 \sautoupd List Bullet 4;}
+{\s125\fi-360\li2160\widctlpar\jclisttab\tx2160{\*\pn \pnlvlbody\ilvl0\ls6\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid \sbasedon0 \snext126 \sautoupd List Bullet 5;}
+{\s126\fi-360\li2520\widctlpar\jclisttab\tx2520{\*\pn \pnlvlbody\ilvl0\ls7\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid \sbasedon0 \snext127 \sautoupd List Bullet 6;}
+{\s127\fi-360\li2880\widctlpar\jclisttab\tx2880{\*\pn \pnlvlbody\ilvl0\ls8\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid \sbasedon0 \snext128 \sautoupd List Bullet 7;}
+{\s128\fi-360\li3240\widctlpar\jclisttab\tx3240{\*\pn \pnlvlbody\ilvl0\ls9\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid \sbasedon0 \snext129 \sautoupd List Bullet 8;}
+{\s129\fi-360\li3600\widctlpar\jclisttab\tx3600{\*\pn \pnlvlbody\ilvl0\ls10\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid \sbasedon0 \snext130 \sautoupd List Bullet 9;}
+{\s130\fi-360\li3960\widctlpar\jclisttab\tx3960{\*\pn \pnlvlbody\ilvl0\ls11\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid \sbasedon0 \snext131 \sautoupd List Bullet 10;}
+{\s131\fi-360\li4320\widctlpar\jclisttab\tx4320{\*\pn \pnlvlbody\ilvl0\ls12\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid \sbasedon0 \snext132 \sautoupd List Bullet 11;}
+{\s132\fi-360\li4680\widctlpar\jclisttab\tx4680{\*\pn \pnlvlbody\ilvl0\ls13\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid \sbasedon0 \snext133 \sautoupd List Bullet 12;}
+{\s133\fi-360\li5040\widctlpar\jclisttab\tx5040{\*\pn \pnlvlbody\ilvl0\ls14\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid \sbasedon0 \snext133 \sautoupd List Bullet 13;}
+{\s140\fi-360\li360\widctlpar\fs20\cgrid \sbasedon0 \snext141 \sautoupd List Enum 0;}
+{\s141\fi-360\li720\widctlpar\fs20\cgrid \sbasedon0 \snext142 \sautoupd List Enum 1;}
+{\s142\fi-360\li1080\widctlpar\fs20\cgrid \sbasedon0 \snext143 \sautoupd List Enum 2;}
+{\s143\fi-360\li1440\widctlpar\fs20\cgrid \sbasedon0 \snext144 \sautoupd List Enum 3;}
+{\s144\fi-360\li1800\widctlpar\fs20\cgrid \sbasedon0 \snext145 \sautoupd List Enum 4;}
+{\s145\fi-360\li2160\widctlpar\fs20\cgrid \sbasedon0 \snext146 \sautoupd List Enum 5;}
+{\s146\fi-360\li2520\widctlpar\fs20\cgrid \sbasedon0 \snext147 \sautoupd List Enum 6;}
+{\s147\fi-360\li2880\widctlpar\fs20\cgrid \sbasedon0 \snext148 \sautoupd List Enum 7;}
+{\s148\fi-360\li3240\widctlpar\fs20\cgrid \sbasedon0 \snext149 \sautoupd List Enum 8;}
+{\s149\fi-360\li3600\widctlpar\fs20\cgrid \sbasedon0 \snext150 \sautoupd List Enum 9;}
+{\s150\fi-360\li3960\widctlpar\fs20\cgrid \sbasedon0 \snext151 \sautoupd List Enum 10;}
+{\s151\fi-360\li4320\widctlpar\fs20\cgrid \sbasedon0 \snext152 \sautoupd List Enum 11;}
+{\s152\fi-360\li4680\widctlpar\fs20\cgrid \sbasedon0 \snext153 \sautoupd List Enum 12;}
+{\s153\fi-360\li5040\widctlpar\fs20\cgrid \sbasedon0 \snext153 \sautoupd List Enum 13;}
+}
+{\comment begin body}
+\pard\plain \s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid 
+tracker_evaluation\par \pard\plain 
+{\tc\tcl2 \v tracker_evaluation}
+{\xe \v tracker_evaluation}
+{\bkmkstart AAAAAAAADV}
+{\bkmkend AAAAAAAADV}
+\par
+{
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+Based on {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAAC" }{}}{\fldrslt {\cs37\ul\cf2 [1]}}} {\field {\*\fldinst { HYPERLINK "https://www.idiap.ch/~odobez/publications/SmithGaticaOdobezBa-cvpr-eemcv05.pdf" }{}}{\fldrslt {\cs37\ul\cf2 https://www.idiap.ch/~odobez/publications/SmithGaticaOdobezBa-cvpr-eemcv05.pdf }}} }}\par
+\pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
+Public Member Functions\par
+\pard\plain 
+
+{
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAEA" }{}}{\fldrslt {\cs37\ul\cf2 __init__}}}
+ (self, tracker_file=None, ground_thruth_folder=None, fps=None)\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAEB" }{}}{\fldrslt {\cs37\ul\cf2 nothing}}}
+ (self)\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAEC" }{}}{\fldrslt {\cs37\ul\cf2 load_json}}}
+ (self, folder, fps=None)\par
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid {\i {\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+Loads annotation created with {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAAD" }{}}{\fldrslt {\cs37\ul\cf2 [2]}}}. }{
+}\par
+}\par}
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAED" }{}}{\fldrslt {\cs37\ul\cf2 load_tracker_data}}}
+ (self, tracker_file)\par
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid {\i {\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+Loads estimates from people tracker exported data. }{
+}\par
+}\par}
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAEE" }{}}{\fldrslt {\cs37\ul\cf2 plot_score}}}
+ (self)\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAEF" }{}}{\fldrslt {\cs37\ul\cf2 plot_scene}}}
+ (self)\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAEG" }{}}{\fldrslt {\cs37\ul\cf2 identification_graph}}}
+ (self)\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAEH" }{}}{\fldrslt {\cs37\ul\cf2 false_positive}}}
+ (self, es_config)\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAEI" }{}}{\fldrslt {\cs37\ul\cf2 false_negative}}}
+ (self, gt_config)\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAEJ" }{}}{\fldrslt {\cs37\ul\cf2 multiple_trackers}}}
+ (self, gt_config, frame_number)\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAEK" }{}}{\fldrslt {\cs37\ul\cf2 multiple_objects}}}
+ (self, es_config, frame_number)\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAEL" }{}}{\fldrslt {\cs37\ul\cf2 configuration_distance}}}
+ (self, frame_number)\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAEM" }{}}{\fldrslt {\cs37\ul\cf2 ground_truth_exists}}}
+ (self, frame_num)\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAEN" }{}}{\fldrslt {\cs37\ul\cf2 get_ground_truth_difference}}}
+ (self, frame_num_1, frame_num_2)\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAEO" }{}}{\fldrslt {\cs37\ul\cf2 check_occlusion}}}
+ (self, gt, frame_num)\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAEP" }{}}{\fldrslt {\cs37\ul\cf2 get_occlusion_count}}}
+ (self, frame_num)\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAEQ" }{}}{\fldrslt {\cs37\ul\cf2 precision}}}
+ (self, estimate, ground_truth, correct_estimate=False)\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAER" }{}}{\fldrslt {\cs37\ul\cf2 recall}}}
+ (self, estimate, ground_truth, correct_estimate=False)\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAES" }{}}{\fldrslt {\cs37\ul\cf2 fmeasure}}}
+ (self, estimate, ground_truth, correct_estimate=False)\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAET" }{}}{\fldrslt {\cs37\ul\cf2 configuration_map}}}
+ (self, frame_number)\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAEU" }{}}{\fldrslt {\cs37\ul\cf2 calculate_identification_map}}}
+ (self, manual_gtmap=None, manual_emap=None)\par
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid {\i {\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+Calculates Identification map for an entire video. }{
+}\par
+}\par}
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAEV" }{}}{\fldrslt {\cs37\ul\cf2 identification_map}}}
+ (self, frame_number)\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAEW" }{}}{\fldrslt {\cs37\ul\cf2 falsly_identified_object}}}
+ (self, frame_number)\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAEX" }{}}{\fldrslt {\cs37\ul\cf2 falsly_identified_tracker}}}
+ (self, frame_number)\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAEY" }{}}{\fldrslt {\cs37\ul\cf2 calculate_tracker_purity}}}
+ (self)\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAEZ" }{}}{\fldrslt {\cs37\ul\cf2 calculate_object_purity}}}
+ (self)\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAFA" }{}}{\fldrslt {\cs37\ul\cf2 calculate_frame_errors}}}
+ (self, frame_number, ratios=(1, 1), y_offset=720)\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAFB" }{}}{\fldrslt {\cs37\ul\cf2 calculate_identification_errors}}}
+ (self, frame_number)\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAFC" }{}}{\fldrslt {\cs37\ul\cf2 calculate_errors}}}
+ (self, printout=False, gt_maps_itself=True)\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAFD" }{}}{\fldrslt {\cs37\ul\cf2 compute_iou}}}
+ (self, box, boxes, ratios=None, frame=None)\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAFE" }{}}{\fldrslt {\cs37\ul\cf2 get_frame_count}}}
+ (self)\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAFF" }{}}{\fldrslt {\cs37\ul\cf2 get_area}}}
+ (self, box)\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAFG" }{}}{\fldrslt {\cs37\ul\cf2 get_height}}}
+ (self, box)\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAFH" }{}}{\fldrslt {\cs37\ul\cf2 get_width}}}
+ (self, box)\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAFI" }{}}{\fldrslt {\cs37\ul\cf2 get_ground_truths}}}
+ (self, frame_number, id=None)\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAFJ" }{}}{\fldrslt {\cs37\ul\cf2 get_estimates}}}
+ (self, frame_number, id=None)\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAFK" }{}}{\fldrslt {\cs37\ul\cf2 estimate_to_point}}}
+ (self, estimate, ratios=None, invert_y=None)\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAFL" }{}}{\fldrslt {\cs37\ul\cf2 get_number_estimates}}}
+ (self, frame_number)\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAFM" }{}}{\fldrslt {\cs37\ul\cf2 get_ground_truth_count}}}
+ (self, frame_number)\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAFN" }{}}{\fldrslt {\cs37\ul\cf2 list_labels}}}
+ (self)\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAFO" }{}}{\fldrslt {\cs37\ul\cf2 list_estimates}}}
+ (self)\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAFP" }{}}{\fldrslt {\cs37\ul\cf2 get_estimate_count}}}
+ (self)\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAFQ" }{}}{\fldrslt {\cs37\ul\cf2 get_groundtruth_count}}}
+ (self)\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAFR" }{}}{\fldrslt {\cs37\ul\cf2 validate_and_correct_ground_tuths}}}
+ (self)\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAFS" }{}}{\fldrslt {\cs37\ul\cf2 generate_manual_id_map}}}
+ (self)\par
+}
+\pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
+Public Attributes\par
+\pard\plain 
+
+{
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+{\b score}{\bkmkstart AAAAAAAAFT}
+{\bkmkend AAAAAAAAFT}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+{\b colour}{\bkmkstart AAAAAAAAFU}
+{\bkmkend AAAAAAAAFU}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+{\b ground_truth_dict}{\bkmkstart AAAAAAAAFV}
+{\bkmkend AAAAAAAAFV}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+{\b total_images}{\bkmkstart AAAAAAAAFW}
+{\bkmkend AAAAAAAAFW}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+{\b estimate_dict}{\bkmkstart AAAAAAAAFX}
+{\bkmkend AAAAAAAAFX}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+{\b fps}{\bkmkstart AAAAAAAAFY}
+{\bkmkend AAAAAAAAFY}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAFZ" }{}}{\fldrslt {\cs37\ul\cf2 threshold_to}}}
+\par
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid {\i {\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+Threshold of Precision allowed in agreement or overlap. }{
+}\par
+}\par}
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+{\b threshold_tc}{\bkmkstart AAAAAAAAGA}
+{\bkmkend AAAAAAAAGA}
+\par
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid {\i {\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+Used for evaluating F-Measure, Higher F-value, the higher allowed error. }{
+}\par
+}\par}
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+{\b id_map}{\bkmkstart AAAAAAAAGB}
+{\bkmkend AAAAAAAAGB}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+{\b invert_y}{\bkmkstart AAAAAAAAGC}
+{\bkmkend AAAAAAAAGC}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+{\b correction_ratio_x}{\bkmkstart AAAAAAAAGD}
+{\bkmkend AAAAAAAAGD}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+{\b correction_ratio_y}{\bkmkstart AAAAAAAAGE}
+{\bkmkend AAAAAAAAGE}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+{\b labels}{\bkmkstart AAAAAAAAGF}
+{\bkmkend AAAAAAAAGF}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+{\b estimates}{\bkmkstart AAAAAAAAGG}
+{\bkmkend AAAAAAAAGG}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+{\b gt_map}{\bkmkstart AAAAAAAAGH}
+{\bkmkend AAAAAAAAGH}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+{\b es_map}{\bkmkstart AAAAAAAAGI}
+{\bkmkend AAAAAAAAGI}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+{\b calulate}{\bkmkstart AAAAAAAAGJ}
+{\bkmkend AAAAAAAAGJ}
+\par
+}
+{\pard\widctlpar\brdrb\brdrs\brdrw5\brsp20 \adjustright \par}
+\pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
+Detailed Description\par
+\pard\plain 
+{
+\pard\plain \s17\sa60\sb30\widctlpar\qj \fs22\cgrid {\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+Based on {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAAC" }{}}{\fldrslt {\cs37\ul\cf2 [1]}}} {\field {\*\fldinst { HYPERLINK "https://www.idiap.ch/~odobez/publications/SmithGaticaOdobezBa-cvpr-eemcv05.pdf" }{}}{\fldrslt {\cs37\ul\cf2 https://www.idiap.ch/~odobez/publications/SmithGaticaOdobezBa-cvpr-eemcv05.pdf }}} \par
+}
+
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+Implementation by Justin Petluk {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAAC" }{}}{\fldrslt {\cs37\ul\cf2 [1]}}} {\field {\*\fldinst { HYPERLINK "https://www.idiap.ch/~odobez/publications/SmithGaticaOdobezBa-cvpr-eemcv05.pdf" }{}}{\fldrslt {\cs37\ul\cf2 https://www.idiap.ch/~odobez/publications/SmithGaticaOdobezBa-cvpr-eemcv05.pdf }}} \par
+}}
+{\pard\widctlpar\brdrb\brdrs\brdrw5\brsp20 \adjustright \par}
+\pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
+Constructor & Destructor Documentation\par
+\pard\plain 
+{\xe \v __init__\:tracker_evaluation}
+{\xe \v tracker_evaluation\:__init__}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+__init__ (  {\i self},   {\i tracker_file} = {\f2 None},   {\i ground_thruth_folder} = {\f2 None},   {\i fps} = {\f2 None})}}
+\par
+{\bkmkstart AAAAAAAAEA}
+{\bkmkend AAAAAAAAEA}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+{
+\par
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid Assigns default values\par
+}
+ \par
+}{
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 35     {\cf17 def }__init__(self, tracker_file = None, ground_thruth_folder = None, fps=None):\par
+36         {\cf22 '''}\par
+37 {\cf22         Assigns default values}\par
+38 {\cf22         '''}\par
+39         self.score = 0\par
+40         self.colour = {\cf18 None}\par
+41 \par
+42         {\cf19 if} ground_thruth_folder {\cf19 is} {\cf18 None}:\par
+43             self.ground_truth_dict = \{\}\par
+44         {\cf19 else}:\par
+45             self.load_json(ground_thruth_folder, fps)\par
+46 \par
+47 \par
+48         self.total_images = {\cf18 None}\par
+49 \par
+50         {\cf19 if} tracker_file {\cf19 is} {\cf19 not} {\cf18 None}:\par
+51             self.estimate_dict = self.load_tracker_data(tracker_file)\par
+52 \par
+53         {\cf19 if} fps {\cf19 is} {\cf18 None}:\par
+54             self.fps = 30\par
+55         {\cf19 else}:\par
+56             self.fps = fps\par
+57 \par
+58         \par
+59         self.threshold_to = 0.8\par
+60 \par
+61         \par
+62         self.threshold_tc = 0.5 \par
+63 \par
+64         self.id_map = \{\}\par
+65 \par
+66         self.invert_y = 0\par
+67 \par
+68         self.correction_ratio_x = {\cf18 None}\par
+69         self.correction_ratio_y = {\cf18 None}\par
+70 \par
+}
+{
+\ql
+References tracker_evaluation.colour, tracker_evaluation.estimate_dict, tracker_evaluation.fps, FPS.fps(), tracker_evaluation.ground_truth_dict, {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAEC" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.load_json()}}}
+, {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAED" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.load_tracker_data()}}}
+, tracker_evaluation.score, and tracker_evaluation.total_images.}\par
+}
+{\pard\widctlpar\brdrb\brdrs\brdrw5\brsp20 \adjustright \par}
+\pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
+Member Function Documentation\par
+\pard\plain 
+{\xe \v calculate_errors\:tracker_evaluation}
+{\xe \v tracker_evaluation\:calculate_errors}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+calculate_errors (  {\i self},   {\i printout} = {\f2 False},   {\i gt_maps_itself} = {\f2 True})}}
+\par
+{\bkmkstart AAAAAAAAFC}
+{\bkmkend AAAAAAAAFC}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+{
+\par
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid Iterates through every ground truth frame and compares a list of estimates. \par
+\par
+Returns final video score, as well as normalized results through the video.\par
+Normalized results are results where the number of errors on a frame is normalized by the number of ground truths.\par
+\par
+We define GT maps itself to override majority voting to determine what the correct labels are. This accounts for the problem where\par
+an estimate incorrectly labels a ground truth forthe majority of the time\par
+}
+ \par
+}{
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 867     {\cf17 def }calculate_errors(self, printout=False, gt_maps_itself=True):\par
+868         {\cf22 """}\par
+869 {\cf22         Iterates through every ground truth frame and compares a list of estimates. }\par
+870 {\cf22 }\par
+871 {\cf22         Returns final video score, as well as normalized results through the video.}\par
+872 {\cf22         Normalized results are results where the number of errors on a frame is normalized by the number of ground truths.}\par
+873 {\cf22 }\par
+874 {\cf22         We define GT maps itself to override majority voting to determine what the correct labels are. This accounts for the problem where}\par
+875 {\cf22         an estimate incorrectly labels a ground truth forthe majority of the time}\par
+876 {\cf22         """}\par
+877         errors_dict = \{\}\par
+878 \par
+879         total_fp = 0\par
+880         total_fn = 0\par
+881         total_mt = 0\par
+882         total_mo = 0\par
+883         total_cd = 0\par
+884 \par
+885         total_fit = 0\par
+886         total_fio = 0\par
+887 \par
+888         self.gt_map, self.es_map = self.calculate_identification_map()\par
+889 \par
+890         {\cf19 if} gt_maps_itself:\par
+891             self.gt_map, self.es_map = self.generate_manual_id_map()\par
+892             {\cf20 # self.es_map = self.gt_map}\par
+893             {\cf20 # print("GT MAPPING ITSELF", self.gt_map, self.es_map)}\par
+894 \par
+895         print({\cf22 "MAPS"}, self.gt_map, self.es_map)\par
+896         {\cf20 # input()}\par
+897         \par
+898         {\cf20 # self.gt_map, self.es_map = self.calculate_identification_map()}\par
+899         tp, total_tp, purity  = self.calculate_tracker_purity()\par
+900         op, total_op, o_purity = self.calculate_object_purity()\par
+901 \par
+902         count_fp = 0\par
+903         count_fn = 0\par
+904         count_mt = 0\par
+905         count_mo = 0\par
+906         count_cd = 0\par
+907         count_fit = 0\par
+908         count_fio = 0\par
+909 \par
+910         record_frames = []\par
+911         record_fp = []\par
+912         record_fn = []\par
+913         record_mt = []\par
+914         record_mo = []\par
+915         record_cd = []\par
+916         record_fit = []\par
+917         record_fio = []\par
+918 \par
+919         {\cf19 for} frame {\cf19 in} self.ground_truth_dict:\par
+920             \par
+921             {\cf20 # print("\\nFRAME", frame)}\par
+922             ngt = max(len(self.get_ground_truths(frame)),1)\par
+923             {\cf20 # nes = len(self.list_estimates())}\par
+924             errors = self.calculate_frame_errors(frame)\par
+925             cd, cd_t = self.configuration_distance(frame)\par
+926 \par
+927             {\cf20 # print(errors)}\par
+928             {\cf20 # print(count_cd)}\par
+929             count_fp += errors[{\cf22 'FP'}]\par
+930             count_fn += errors[{\cf22 'FN'}]\par
+931             count_mt += errors[{\cf22 'MT'}]\par
+932             count_mo += errors[{\cf22 'MO'}]\par
+933             count_cd += cd_t\par
+934             \par
+935 \par
+936             total_fp += errors[{\cf22 'FP'}]/ngt\par
+937             total_fn += errors[{\cf22 'FN'}]/ngt\par
+938             total_mt += errors[{\cf22 'MT'}]/ngt\par
+939             total_mo += errors[{\cf22 'MO'}]/ngt\par
+940             total_cd += abs(cd)\par
+941 \par
+942             {\cf20 # print("Normalized CD", errors['CD'])}\par
+943             \par
+944             fit, c_fit, fit_scores = self.falsly_identified_tracker(frame)\par
+945             fio, c_fio, fio_scores = self.falsly_identified_object(frame)\par
+946 \par
+947             total_fio += fio\par
+948             total_fit += fit\par
+949             count_fit += c_fit\par
+950             count_fio += c_fio \par
+951 \par
+952             {\cf20 # Records normalized results per frame}\par
+953             record_frames.append(frame)\par
+954             record_fp.append(errors[{\cf22 'FP'}]/ngt)\par
+955             record_fn.append(errors[{\cf22 'FN'}]/ngt)\par
+956             record_mt.append(errors[{\cf22 'MT'}]/ngt)\par
+957             record_mo.append(errors[{\cf22 'MO'}]/ngt)\par
+958             record_cd.append(abs(cd))\par
+959             record_fit.append(fit)\par
+960             record_fio.append(fio)\par
+961             \par
+962             {\cf20 # id_errors = self.calculate_identification_errors(frame)}\par
+963             {\cf20 # total_tp += id_errors['TP']}\par
+964             {\cf20 # total_op += id_errors['OP']}\par
+965             {\cf20 # total_fit += id_errors['FIT']}\par
+966             {\cf20 # total_fio += id_errors['FIO']}\par
+967             {\cf20 # print(id_errors)}\par
+968 \par
+969         {\cf20 # counts = \{"FP": count_fp, }\par
+970         {\cf20 #             "FN": count_fn,}\par
+971         {\cf20 #             "MT": count_mt,}\par
+972         {\cf20 #             "MO": count_mo,}\par
+973         {\cf20 #             "CD": count_cd,}\par
+974         {\cf20 #             "TP": total_tp,}\par
+975         {\cf20 #             "OP": total_op,}\par
+976         {\cf20 #             "FIT": count_fit,}\par
+977         {\cf20 #             "FIO": count_fio}\par
+978         {\cf20 #             \} }\par
+979         {\cf20 # print("\\nCOUNTS", counts)}\par
+980 \par
+981 \par
+982         {\cf20 # results = \{"FP": total_fp, }\par
+983         {\cf20 #             "FN": total_fn,}\par
+984         {\cf20 #             "MT": total_mt,}\par
+985         {\cf20 #             "MO": total_mo,}\par
+986         {\cf20 #             "CD": total_cd,}\par
+987         {\cf20 #             "TP": total_tp,}\par
+988         {\cf20 #             "OP": total_op,}\par
+989         {\cf20 #             "FIT": total_fit,}\par
+990         {\cf20 #             "FIO": total_fio}\par
+991         {\cf20 #             \} test}\par
+992         \par
+993         {\cf20 # print(normalization)}\par
+994         total_frames = self.total_images\par
+995         print({\cf22 "Total FP:"}, total_fp)\par
+996         print(self.total_images)\par
+997         {\cf20 # Normalization}\par
+998         normalized_results = \{\par
+999                     {\cf22 "FP"}: round((1/(total_frames)) * (total_fp),3),    {\cf20 #Good}\par
+1000                     {\cf22 "FN"}: round((1/(total_frames)) * (total_fn),3),    {\cf20 #Good }\par
+1001                     {\cf22 "MT"}: round((1/(total_frames)) * (total_mt),3),    {\cf20 #Good}\par
+1002                     {\cf22 "MO"}: round((1/(total_frames)) * (total_mo),3),    {\cf20 #Good}\par
+1003                     {\cf22 "CD"}: round((1/(total_frames)) * total_cd,3),      {\cf20 #Good}\par
+1004 \par
+1005                     {\cf22 "FIT"}: round((1/total_frames) * (total_fit),3),    {\cf20 #Good}\par
+1006                     {\cf22 "FIO"}: round((1/total_frames) * (total_fio),3),     {\cf20 #Good}\par
+1007                     {\cf22 "TP"}: round((tp), 3),                         {\cf20 #Good}\par
+1008                     {\cf22 "OP"}: round((op),3)     {\cf20 #Untested}\par
+1009                     \}\par
+1010 \par
+1011         {\cf20 # Runs through history of the errors, normalized to compare errors over time, between videos }\par
+1012         {\cf20 #NOTE tp and op are not recorded because those are performance across the entire video}\par
+1013         recorded_results = \{\par
+1014             {\cf22 "Frames"}:record_frames,\par
+1015             {\cf22 "FP"}:record_fp,\par
+1016             {\cf22 "FN"}:record_fn,\par
+1017             {\cf22 "MT"}:record_mt,\par
+1018             {\cf22 "MO"}:record_mo,\par
+1019             {\cf22 "CD"}:record_cd,\par
+1020             {\cf22 "FIT"}:record_fit,\par
+1021             {\cf22 "FIO"}:record_fio\par
+1022         \}\par
+1023 \par
+1024         print({\cf22 "\\nNORMALIZED"}, normalized_results)\par
+1025         {\cf19 return} normalized_results, recorded_results\par
+1026         {\cf20 # return results, normalized_results}\par
+1027 \par
+}
+{
+\ql
+References {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAFA" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.calculate_frame_errors()}}}
+, {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAEU" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.calculate_identification_map()}}}
+, {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAEZ" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.calculate_object_purity()}}}
+, {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAEY" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.calculate_tracker_purity()}}}
+, {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAEL" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.configuration_distance()}}}
+, tracker_evaluation.es_map, {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAEW" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.falsly_identified_object()}}}
+, {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAEX" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.falsly_identified_tracker()}}}
+, {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAFS" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.generate_manual_id_map()}}}
+, tracker_evaluation.get_ground_truths(), tracker_evaluation.ground_truth_dict, tracker_evaluation.gt_map, and tracker_evaluation.total_images.}\par
+}
+{\xe \v calculate_frame_errors\:tracker_evaluation}
+{\xe \v tracker_evaluation\:calculate_frame_errors}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+calculate_frame_errors (  {\i self},   {\i frame_number},   {\i ratios} = {\f2 (1,1)},   {\i y_offset} = {\f2 720})}}
+\par
+{\bkmkstart AAAAAAAAFA}
+{\bkmkend AAAAAAAAFA}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+{
+\par
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid }
+ \par
+}{
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 842     {\cf17 def }calculate_frame_errors(self, frame_number, ratios=(1,1), y_offset=720):\par
+843         {\cf22 '''}\par
+844 {\cf22         '''}\par
+845         {\cf20 # print("Getting map...", end='/n')}\par
+846         gt_map, es_map = self.configuration_map(frame_number)\par
+847         print(gt_map, es_map)\par
+848         {\cf20 # print("Getting CD...", end='/n')}\par
+849         cd, total_cd = self.configuration_distance(frame_number)\par
+850         {\cf20 # print("Calculating Results")}\par
+851         results = \{ {\cf22 "FP"}: self.false_positive(es_map), \par
+852                     {\cf22 "FN"}: self.false_negative(gt_map),\par
+853                     {\cf22 "MT"}: self.multiple_trackers(gt_map, frame_number),\par
+854                     {\cf22 "MO"}: self.multiple_objects(es_map, frame_number),\par
+855                     {\cf22 "CD"}: cd,\par
+856                     {\cf22 "FIT"}:self.falsly_identified_tracker(frame_number), \par
+857                     {\cf22 "FIO"}:self.falsly_identified_object(frame_number)\par
+858                     \}\par
+859         {\cf20 # print("Results:", results)}\par
+860         {\cf19 return} results\par
+861 \par
+}
+{
+\ql
+References {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAEY" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.calculate_tracker_purity()}}}
+, tracker_evaluation.calulate, {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAEL" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.configuration_distance()}}}
+, tracker_evaluation.configuration_map(), {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAEI" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.false_negative()}}}
+, {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAEH" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.false_positive()}}}
+, {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAEW" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.falsly_identified_object()}}}
+, {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAEX" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.falsly_identified_tracker()}}}
+, {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAEK" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.multiple_objects()}}}
+, and {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAEJ" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.multiple_trackers()}}}
+.}\par
+{
+\ql
+Referenced by {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAFC" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.calculate_errors()}}}
+.}\par
+}
+{\xe \v calculate_identification_errors\:tracker_evaluation}
+{\xe \v tracker_evaluation\:calculate_identification_errors}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+calculate_identification_errors (  {\i self},   {\i frame_number})}}
+\par
+{\bkmkstart AAAAAAAAFB}
+{\bkmkend AAAAAAAAFB}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+{
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 862     {\cf17 def }calculate_identification_errors(self, frame_number):\par
+863         {\cf19 return} \{{\cf22 "TP"}:self.calculate_tracker_purity()[0], {\cf22 "OP"}:self.calulate, {\cf22 "FIT"}:self.falsly_identified_tracker(frame_number)[0], {\cf22 "FIO"}:self.falsly_identified_object(frame_number)[0]\}\par
+864             \par
+865 \par
+866 \par
+}
+}
+{\xe \v calculate_identification_map\:tracker_evaluation}
+{\xe \v tracker_evaluation\:calculate_identification_map}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+calculate_identification_map (  {\i self},   {\i manual_gtmap} = {\f2 None},   {\i manual_emap} = {\f2 None})}}
+\par
+{\bkmkstart AAAAAAAAEU}
+{\bkmkend AAAAAAAAEU}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+\par
+{
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+Calculates Identification map for an entire video. }}\par
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+Calculate_identification_map calculates the id map of every frame based on how one fits onto another. Next is majority voting which counts the occurances of maps and grabs the ones which have the most.\par
+{{\s5\sb90\sa30\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
+Note\par}\pard\plain \s82\li720\widctlpar\ql\adjustright \fs20\cgrid {\s17 \sa60 \sb30
+manual_gtmap and manual_emap is used when the identifications map 1:1 with eachother. For example, if Ground Truth is P1, then it's corresponding estimate is also P1, as well as Estimate P1 maps to Ground Truth P1.\par
+}}{{\s5\sb90\sa30\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
+Parameters\par}
+\pard\plain \s81\li360\widctlpar\ql\adjustright \fs20\cgrid \trowd \trgaph108\trleft426\tblind426\trbrdrt\brdrs\brdrw10\brdrcf15 \trbrdrl\brdrs\brdrw10\brdrcf15 \trbrdrb\brdrs\brdrw10\brdrcf15 \trbrdrr\brdrs\brdrw10\brdrcf15 \trbrdrh\brdrs\brdrw10\brdrcf15 \trbrdrv\brdrs\brdrw10\brdrcf15 
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx2187
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx8748
+\pard \widctlpar\intbl\adjustright
+{{\i manual_gtmap} \cell }{input should be the unique set of ground truth label names \cell }
+{\row }
+\trowd \trgaph108\trleft426\tblind426\trbrdrt\brdrs\brdrw10\brdrcf15 \trbrdrl\brdrs\brdrw10\brdrcf15 \trbrdrb\brdrs\brdrw10\brdrcf15 \trbrdrr\brdrs\brdrw10\brdrcf15 \trbrdrh\brdrs\brdrw10\brdrcf15 \trbrdrv\brdrs\brdrw10\brdrcf15 
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx2187
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx8748
+\pard \widctlpar\intbl\adjustright
+{{\i manual_emap} \cell }{input should be the unique set of estimate label names\cell }
+{\row }
+}
+{{\s5\sb90\sa30\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
+Warning\par}\pard\plain \s82\li720\widctlpar\ql\adjustright \fs20\cgrid {\s17 \sa60 \sb30
+Required to use this when using labeled tracks (Not MaskRCNN) and it is required you DO NOT use this while using MaskRCNN predictions. \par
+}}}{
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 519     {\cf17 def }calculate_identification_map(self, manual_gtmap=None, manual_emap=None):\par
+520         {\cf22 """! }\par
+521 {\cf22         @brief Calculates Identification map for an entire video}\par
+522 {\cf22 }\par
+523 {\cf22         Calculate_identification_map calculates the id map of every frame based on how one fits onto another. }\par
+524 {\cf22         Next is majority voting which counts the occurances of maps and grabs the ones which have the most.}\par
+525 {\cf22 }\par
+526 {\cf22         @note manual_gtmap and manual_emap is used when the identifications map 1:1 with eachother.}\par
+527 {\cf22         For example, if Ground Truth is P1, then it's corresponding estimate is also P1, as well as Estimate P1 maps to Ground Truth P1.}\par
+528 {\cf22 }\par
+529 {\cf22         @param manual_gtmap input should be the unique set of ground truth label names}\par
+530 {\cf22         @param manual_emap input should be the unique set of estimate label names}\par
+531 {\cf22 }\par
+532 {\cf22         @warning Required to use this when using labeled tracks (Not MaskRCNN) and it is required you DO NOT use this while using MaskRCNN predictions.}\par
+533 {\cf22 }\par
+534 {\cf22 }\par
+535 {\cf22 }\par
+536 {\cf22         """}\par
+537         {\cf20 # if manual_gtmap is not None and manual_emap is not None:}\par
+538         {\cf20 #     return self.list_labels(), self.list_estimates()}\par
+539             {\cf20 # return manual_gtmap, manual_emap}\par
+540         \par
+541 \par
+542         {\cf20 #Calculates ID Map for every frame. One frame can have multiple maps}\par
+543         e_map = []\par
+544         g_map = []\par
+545         {\cf19 for} frame {\cf19 in} self.ground_truth_dict:\par
+546             maps = self.identification_map(frame)\par
+547                 \par
+548             {\cf19 if} maps {\cf19 is} {\cf19 not} {\cf18 None}:\par
+549                 e = maps[{\cf22 "Estimate"}]\par
+550                 g = maps[{\cf22 "Ground_Truth"}]\par
+551                 \par
+552                 {\cf19 for} key {\cf19 in} e.keys():\par
+553                     e_map.append((key, e[key]))\par
+554                 \par
+555                 {\cf19 for} key {\cf19 in} g.keys():\par
+556                     g_map.append((key, g[key]))\par
+557             \par
+558         e_map = dict((x,e_map.count(x)) {\cf19 for} x {\cf19 in} set(e_map))\par
+559         g_map = dict((x,g_map.count(x)) {\cf19 for} x {\cf19 in} set(g_map))   \par
+560 \par
+561         print({\cf22 "EMAP"},e_map)\par
+562         print({\cf22 "GMAP"},g_map)\par
+563 \par
+564         {\cf20 # print("E_MAP",e_map, "\\nG_MAP", g_map)}\par
+565 \par
+566         {\cf20 #Majority voting}\par
+567 \par
+568         {\cf20 # Iterate through labels and grab the label with the majority votes}\par
+569         majority_vote_labels = \{\}\par
+570         {\cf19 for} label {\cf19 in} self.labels:\par
+571             {\cf20 # Majority = ((label,estimate), count)}\par
+572             majority = {\cf18 None}\par
+573             {\cf20 # print(label)}\par
+574             {\cf19 for} pair {\cf19 in} g_map.keys():\par
+575                 {\cf20 # Assign the majority to the first}\par
+576                 \par
+577                 {\cf19 if} label == pair[0]:\par
+578                     {\cf19 if} majority {\cf19 is} {\cf18 None}:\par
+579                         majority = (pair, g_map[pair])\par
+580 \par
+581                     {\cf20 #Get the count and replace the majority if the count is }\par
+582                     {\cf19 elif} g_map[pair] > majority[1]:\par
+583                         majority = (pair, g_map[pair])\par
+584 \par
+585                         {\cf20 # print(majority)}\par
+586             {\cf20 # Majority_Vote_Labels = \{label: estiamte\}}\par
+587             {\cf20 # print(majority)}\par
+588             {\cf19 if} majority {\cf19 is} {\cf19 not} {\cf18 None}:\par
+589                 majority_vote_labels[majority[0][0]] = majority[0][1]\par
+590             {\cf20 # else:}\par
+591             {\cf20 #     # majority_vote_labels[]}\par
+592         \par
+593         majority_vote_estimates = \{\}\par
+594         {\cf19 for} es {\cf19 in} self.list_estimates():\par
+595             {\cf20 # Majority = ((label,estimate), count)}\par
+596             majority = {\cf18 None}\par
+597             {\cf19 for} pair {\cf19 in} e_map.keys():\par
+598                 {\cf20 # Assign the majority to the first}\par
+599                 {\cf19 if} es == pair[0]:\par
+600                     \par
+601                     {\cf19 if} majority {\cf19 is} {\cf18 None}:\par
+602                         majority = (pair, e_map[pair])\par
+603                         {\cf19 if} es == {\cf22 "L2"}:\par
+604                             print({\cf22 "P2 MAjority!"}, majority)\par
+605                     {\cf20 #Get the count and replace the majority if the count is }\par
+606                     {\cf19 elif} e_map[pair] > majority[1]:\par
+607                         majority = (pair, e_map[pair])\par
+608             {\cf20 # Majority_Vote_Labels = \{label: estiamte\}}\par
+609             {\cf19 if} majority {\cf19 is} {\cf19 not} {\cf18 None}:\par
+610                 majority_vote_estimates[majority[0][0]] = majority[0][1]\par
+611 \par
+612         \par
+613         {\cf19 return} majority_vote_labels, majority_vote_estimates\par
+614 \par
+615 \par
+616 \par
+}
+{
+\ql
+References tracker_evaluation.ground_truth_dict, {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAEV" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.identification_map()}}}
+, tracker_evaluation.labels, and {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAFO" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.list_estimates()}}}
+.}\par
+{
+\ql
+Referenced by {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAFC" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.calculate_errors()}}}
+.}\par
+}
+{\xe \v calculate_object_purity\:tracker_evaluation}
+{\xe \v tracker_evaluation\:calculate_object_purity}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+calculate_object_purity (  {\i self})}}
+\par
+{\bkmkstart AAAAAAAAEZ}
+{\bkmkend AAAAAAAAEZ}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+{
+\par
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid Measure I-4: (OP) - Object Purity. If the identity map\par
+w.r.t. GT indicates GTj is identified by Ei, the ratio of\par
+frames that GT j is correctly identified by Ei ( njˆij ) to\par
+the total number of frames GT j exists (nj ) \par
+}
+ \par
+}{
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 782     {\cf17 def }calculate_object_purity(self):\par
+783         {\cf22 '''}\par
+784 {\cf22         Measure I-4: (OP) - Object Purity. If the identity map}\par
+785 {\cf22         w.r.t. GT indicates GTj is identified by Ei, the ratio of}\par
+786 {\cf22         frames that GT j is correctly identified by Ei ( njˆij ) to}\par
+787 {\cf22         the total number of frames GT j exists (nj ) }\par
+788 {\cf22         '''}\par
+789         g_count = self.get_groundtruth_count() {\cf20 #total number of frames Ei exists (ni)}\par
+790         correct_dict = \{\}\par
+791 \par
+792         {\cf20 # Frames that Ei correctly identifies GTj ( niˆji )}\par
+793 \par
+794         {\cf20 #Iterate over the entire video's frames}\par
+795         {\cf19 for} frame {\cf19 in} self.ground_truth_dict:\par
+796             id_map = self.identification_map(frame)\par
+797 \par
+798             {\cf20 #Check if ID map is valid}\par
+799             {\cf19 if} id_map {\cf19 is} {\cf19 not} {\cf18 None}:\par
+800                 \par
+801                 {\cf20 #Grab ground truths and what the ground truths map to}\par
+802                 gt_map = id_map[{\cf22 'Ground_Truth'}]\par
+803                 ground_truths = self.get_ground_truths(frame)\par
+804                 {\cf20 # estimates = self.get_estimates(frame)}\par
+805 \par
+806                 {\cf20 #Go through each ground truh and check if the current frame matches the id_map key}\par
+807                 {\cf19 for} gt {\cf19 in} ground_truths:\par
+808                     name = gt[{\cf22 'label'}]\par
+809                     {\cf20 # if name not in list(correct_dict.keys()):}\par
+810                     {\cf20 #     print("NOT IN, assigning", name)}\par
+811                     {\cf20 #     correct_dict[name] = int(0)}\par
+812                     {\cf20 #     print(correct_dict[name])}\par
+813                     {\cf19 if} self.gt_map[name] == gt_map[name]:\par
+814                         {\cf20 # print(self.gt_map[name], [name])}\par
+815 \par
+816                         {\cf20 #If it does, we add to the number of times each id is correct}\par
+817                         {\cf19 if} name {\cf19 in} correct_dict.keys():\par
+818                             correct_dict[name] += 1\par
+819                         {\cf19 else}:\par
+820                             correct_dict[name] = 1\par
+821 \par
+822                         \par
+823 \par
+824         purity = \{\}\par
+825         {\cf19 for} name {\cf19 in} g_count.keys():\par
+826             {\cf19 if} name {\cf19 not} {\cf19 in} correct_dict.keys():\par
+827                 purity[name] = 1\par
+828             {\cf19 else}:\par
+829                 purity[name] = correct_dict[name]/g_count[name]\par
+830         \par
+831         op = 0\par
+832         {\cf19 for} value {\cf19 in} purity.values():\par
+833             op += value\par
+834         \par
+835         \par
+836         total_correct = op\par
+837         \par
+838         op = op/len(purity.values())\par
+839         print({\cf22 "Purity"}, purity)\par
+840         {\cf19 return} op, total_correct, purity\par
+841 \par
+}
+{
+\ql
+References tracker_evaluation.get_ground_truths(), tracker_evaluation.get_groundtruth_count(), tracker_evaluation.ground_truth_dict, tracker_evaluation.gt_map, and {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAEV" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.identification_map()}}}
+.}\par
+{
+\ql
+Referenced by {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAFC" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.calculate_errors()}}}
+.}\par
+}
+{\xe \v calculate_tracker_purity\:tracker_evaluation}
+{\xe \v tracker_evaluation\:calculate_tracker_purity}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+calculate_tracker_purity (  {\i self})}}
+\par
+{\bkmkstart AAAAAAAAEY}
+{\bkmkend AAAAAAAAEY}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+{
+\par
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid Measure I-3: (TP) Tracker Purity. If the identity map\par
+w.r.t. E indicates Ei identifies GT j , the ratio of frames\par
+that Ei correctly identifies GT j ( niˆji ) to the total num-\par
+ber of frames Ei exists (ni) \par
+}
+ \par
+}{
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 742     {\cf17 def }calculate_tracker_purity(self):\par
+743         {\cf22 '''}\par
+744 {\cf22         Measure I-3: (TP) Tracker Purity. If the identity map}\par
+745 {\cf22         w.r.t. E indicates Ei identifies GT j , the ratio of frames}\par
+746 {\cf22         that Ei correctly identifies GT j ( niˆji ) to the total num-}\par
+747 {\cf22         ber of frames Ei exists (ni) }\par
+748 {\cf22         '''}\par
+749         e_count = self.get_estimate_count() {\cf20 #total number of frames Ei exists (ni)}\par
+750         correct_dict = \{\}\par
+751 \par
+752         {\cf20 # Frames that Ei correctly identifies GTj ( niˆji )}\par
+753         {\cf19 for} frame {\cf19 in} self.ground_truth_dict:\par
+754             id_map = self.identification_map(frame)\par
+755             {\cf20 # print(id_map)}\par
+756             {\cf19 if} id_map {\cf19 is} {\cf19 not} {\cf18 None}:\par
+757                 estimate_map = id_map[{\cf22 'Estimate'}]\par
+758                 estimates = self.get_estimates(frame)\par
+759                 {\cf19 for} name {\cf19 in} estimates[{\cf22 'name'}]:\par
+760                     {\cf19 if} self.es_map[name] == estimate_map[name]:\par
+761                         {\cf19 if} name {\cf19 in} correct_dict.keys():\par
+762                             correct_dict[name] += 1\par
+763                         {\cf19 else}:\par
+764                             correct_dict[name] = 1\par
+765                     {\cf19 else}:\par
+766                         print({\cf22 "TRACKER PURITY FALSE"}, name, estimates[{\cf22 'name'}])\par
+767         purity = \{\}\par
+768         \par
+769         {\cf19 for} name {\cf19 in} e_count.keys():\par
+770             purity[name] = correct_dict[name]/e_count[name]\par
+771         \par
+772         tp = 0\par
+773         {\cf19 for} value {\cf19 in} purity.values():\par
+774             tp += value\par
+775             {\cf20 # print(value)}\par
+776         total_correct = tp\par
+777 \par
+778         tp = tp/len(purity.values())\par
+779         print({\cf22 "TRACKER PURITY"}, tp, purity)\par
+780         {\cf19 return} tp, total_correct, purity\par
+781 \par
+}
+{
+\ql
+References tracker_evaluation.es_map, tracker_evaluation.get_estimate_count(), {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAFJ" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.get_estimates()}}}
+, tracker_evaluation.ground_truth_dict, and {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAEV" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.identification_map()}}}
+.}\par
+{
+\ql
+Referenced by {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAFC" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.calculate_errors()}}}
+, and {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAFA" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.calculate_frame_errors()}}}
+.}\par
+}
+{\xe \v check_occlusion\:tracker_evaluation}
+{\xe \v tracker_evaluation\:check_occlusion}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+check_occlusion (  {\i self},   {\i gt},   {\i frame_num})}}
+\par
+{\bkmkstart AAAAAAAAEO}
+{\bkmkend AAAAAAAAEO}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+{
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 403     {\cf17 def }check_occlusion(self, gt,  frame_num):\par
+404         all_gt = self.get_ground_truths(frame_num)\par
+405         percent_covered = 0\par
+406         {\cf20 # Remove current shape from list so all other shapes are compared}\par
+407         {\cf20 # Calculate intersection of other points onto ground truth}\par
+408         {\cf19 for} test {\cf19 in} all_gt:\par
+409             {\cf19 if} gt[{\cf22 'label'}] == test[{\cf22 'label'}]:\par
+410                 {\cf19 continue}\par
+411             \par
+412             percent_covered = self.precision(gt[{\cf22 'points'}], test[{\cf22 'points'}])\par
+413             {\cf20 #Iterate through all other ground truths, returning true if any intersection exceeds threshold_to}\par
+414             {\cf19 if} percent_covered > self.threshold_to:\par
+415                 {\cf19 return} {\cf17 True}, percent_covered\par
+416 \par
+417         {\cf20 # No occlusion if no value exceeds}\par
+418         {\cf19 return} {\cf17 False}, percent_covered\par
+419 \par
+}
+\par
+{
+\ql
+Referenced by {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAEN" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.get_ground_truth_difference()}}}
+, {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAEK" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.multiple_objects()}}}
+, and {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAEJ" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.multiple_trackers()}}}
+.}\par
+}
+{\xe \v compute_iou\:tracker_evaluation}
+{\xe \v tracker_evaluation\:compute_iou}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+compute_iou (  {\i self},   {\i box},   {\i boxes},   {\i ratios} = {\f2 None},   {\i frame} = {\f2 None})}}
+\par
+{\bkmkstart AAAAAAAAFD}
+{\bkmkend AAAAAAAAFD}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+{
+\par
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid Calculates IoU of the given box with the array of the given boxes.\par
+box: 1D vector [x1, y1, x2, y2]\par
+boxes: [boxes_count, (x1, y1, x2, y2)]\par
+box_area: float. the area of 'box'\par
+boxes_area: array of length boxes_count.\par
+ratio: ratio (width, height) to scale boxes from video resolution to analysis resolution\par
+\par
+Note: the areas are passed in rather than calculated here for\par
+efficiency. Calculate once in the caller to avoid duplicate work.\par
+}
+ \par
+}{
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 1028     {\cf17 def }compute_iou(self, box, boxes, ratios=None, frame=None):\par
+1029         {\cf22 """Calculates IoU of the given box with the array of the given boxes.}\par
+1030 {\cf22         box: 1D vector [x1, y1, x2, y2]}\par
+1031 {\cf22         boxes: [boxes_count, (x1, y1, x2, y2)]}\par
+1032 {\cf22         box_area: float. the area of 'box'}\par
+1033 {\cf22         boxes_area: array of length boxes_count.}\par
+1034 {\cf22         ratio: ratio (width, height) to scale boxes from video resolution to analysis resolution}\par
+1035 {\cf22 }\par
+1036 {\cf22         Note: the areas are passed in rather than calculated here for}\par
+1037 {\cf22         efficiency. Calculate once in the caller to avoid duplicate work.}\par
+1038 {\cf22         """}\par
+1039         {\cf19 if} ratios {\cf19 is} {\cf18 None}:\par
+1040             ratios = self.correction_ratio_x, self.correction_ratio_y\par
+1041 \par
+1042         area = (box[0] - box[2]) * (box[1] - box[3]) {\cf20 # SOMETHING IS WRONG WITH BOX. GOOD NIGHT!}\par
+1043         ious = []\par
+1044         intersections = []\par
+1045         {\cf19 for} index, preds {\cf19 in} enumerate(boxes):\par
+1046             \par
+1047             {\cf20 # x1 = int(preds[0]*ratios[0])}\par
+1048             {\cf20 # y1 = int(preds[1]*ratios[1])}\par
+1049             {\cf20 # x2 = int(preds[2]*ratios[0])}\par
+1050             {\cf20 # y2 = int(preds[3]*ratios[1])}\par
+1051 \par
+1052             {\cf20 # get the box coordinates (x1, y1, x2, y2)}\par
+1053             x1 = int(preds[0])\par
+1054             y1 = int(preds[1])\par
+1055             x2 = int(preds[2])\par
+1056             y2 = int(preds[3])\par
+1057 \par
+1058             {\cf20 # if frame is not None:}\par
+1059             {\cf20 #     cv2.rectangle(frame, (x1,y1), (x2,y2), (150,150,0), 1)}\par
+1060 \par
+1061             {\cf20 # calculating IOU}\par
+1062             xA = max(box[0], x1)\par
+1063             yA = max(box[1], y1)\par
+1064             xB = min(box[2], x2)\par
+1065             yB = min(box[3], y2)\par
+1066 \par
+1067             interArea = max(0, xB - xA + 1) * max(0, yB - yA + 1)\par
+1068             \par
+1069             boxBArea = (x2 - x1 + 1) * (y2 - y1 + 1)\par
+1070 \par
+1071             iou = interArea / float(area + boxBArea - interArea)\par
+1072             ious.append(iou)\par
+1073             intersections.append(interArea)\par
+1074 \par
+1075         {\cf19 return} ious, intersections, frame\par
+1076     \par
+}
+{
+\ql
+References tracker_evaluation.correction_ratio_x, tracker_evaluation.correction_ratio_y, and tracker_evaluation.ground_truth_dict.}\par
+{
+\ql
+Referenced by {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAEQ" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.precision()}}}
+, and {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAER" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.recall()}}}
+.}\par
+}
+{\xe \v configuration_distance\:tracker_evaluation}
+{\xe \v tracker_evaluation\:configuration_distance}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+configuration_distance (  {\i self},   {\i frame_number})}}
+\par
+{\bkmkstart AAAAAAAAEL}
+{\bkmkend AAAAAAAAEL}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+{
+\par
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid Checks the difference between the number of ground truths and the number of estimates of a given frame\par
+CD = #Estiamtes - #Ground Truths / max(#Ground Truths, 1)\par
+}
+ \par
+}{
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 343     {\cf17 def }configuration_distance(self, frame_number):\par
+344         {\cf22 '''}\par
+345 {\cf22         Checks the difference between the number of ground truths and the number of estimates of a given frame}\par
+346 {\cf22         CD = #Estiamtes - #Ground Truths / max(#Ground Truths, 1)}\par
+347 {\cf22         '''}\par
+348         {\cf20 # collect all the data on given frame}\par
+349         estimates = self.get_estimates(frame_number)\par
+350 \par
+351         {\cf19 if} estimates {\cf19 is} {\cf18 None}:\par
+352             total_es = 0\par
+353         ground_truths = self.get_ground_truths(frame_number)\par
+354         {\cf20 # print(ground_truths)}\par
+355 \par
+356 \par
+357         {\cf20 # Total ground truths and estimates}\par
+358         total_es = estimates.shape[0]\par
+359         total_gt = len(ground_truths)\par
+360         {\cf20 # print("Total_GT", total_gt)}\par
+361         {\cf20 # print("Total ES:", total_es, "Total GT:", total_gt)}\par
+362         {\cf20 # Find the difference and set and normalization is non-zero total ground_truths.}\par
+363         difference = total_es - total_gt\par
+364         normalization = max(total_gt,1)\par
+365 \par
+366         {\cf20 # CD is the difference over the total ground truths. 0 when es = gt. Negative gt > es, positive gt < es}\par
+367         cd = difference/normalization\par
+368         {\cf20 # print("NormalizedCD", cd, "CD", difference)}\par
+369         total_cd = difference\par
+370         \par
+371         {\cf20 # print("CD Normalization", normalization)}\par
+372 \par
+373         {\cf20 # Don't normalize}\par
+374         {\cf20 # print("Es:", total_es, " | GTs:",  total_gt, end=" - ")}\par
+375         {\cf19 return} cd, total_cd\par
+376 \par
+}
+{
+\ql
+References {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAFJ" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.get_estimates()}}}
+, tracker_evaluation.get_ground_truths(), and tracker_evaluation.ground_truth_dict.}\par
+{
+\ql
+Referenced by {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAFC" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.calculate_errors()}}}
+, and {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAFA" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.calculate_frame_errors()}}}
+.}\par
+}
+{\xe \v configuration_map\:tracker_evaluation}
+{\xe \v tracker_evaluation\:configuration_map}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+configuration_map (  {\i self},   {\i frame_number})}}
+\par
+{\bkmkstart AAAAAAAAET}
+{\bkmkend AAAAAAAAET}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+{
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 483     {\cf17 def }configuration_map(self, frame_number):\par
+484         \par
+485         ground_truths = self.get_ground_truths(frame_number)\par
+486         estimates = self.get_estimates(frame_number)\par
+487 \par
+488         gt_config = \{\}\par
+489         es_config = \{\}\par
+490         {\cf19 for} index, estimate {\cf19 in} estimates.iterrows():\par
+491             \par
+492             es = self.estimate_to_point(estimate)\par
+493             name = estimate[{\cf22 'name'}]\par
+494             {\cf19 for} gt {\cf19 in} ground_truths:\par
+495                 f = self.fmeasure(es, gt[{\cf22 'points'}], correct_estimate={\cf17 False})\par
+496                 {\cf19 if} f > self.threshold_tc:\par
+497                     {\cf19 if} name {\cf19 not} {\cf19 in} es_config.keys():\par
+498                         es_config[name] = [gt[{\cf22 'label'}]]\par
+499                     {\cf19 else}:\par
+500                         es_config[name].append(gt[{\cf22 'label'}])\par
+501                     {\cf19 if} gt[{\cf22 'label'}] {\cf19 not} {\cf19 in} gt_config.keys():\par
+502                         gt_config[gt[{\cf22 'label'}]] = [name]\par
+503                     {\cf19 else}:\par
+504                         gt_config[gt[{\cf22 'label'}]].append(name)\par
+505                         \par
+506         \par
+507         {\cf19 for} gt {\cf19 in} ground_truths:\par
+508             {\cf19 if} gt[{\cf22 'label'}] {\cf19 not} {\cf19 in} gt_config.keys():\par
+509                 gt_config[gt[{\cf22 'label'}]] = [{\cf18 None}]\par
+510         \par
+511         {\cf19 for} index, estimate {\cf19 in} estimates.iterrows():\par
+512             {\cf19 if} estimate[{\cf22 'name'}] {\cf19 not} {\cf19 in} es_config.keys():\par
+513                 es_config[estimate[{\cf22 'name'}]] = [{\cf18 None}]\par
+514 \par
+515         {\cf20 # print("GT_CONFIG", gt_config, "ESCONFIG", es_config)}\par
+516         \par
+517         {\cf19 return} gt_config, es_config\par
+518 \par
+}
+\par
+{
+\ql
+Referenced by {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAFA" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.calculate_frame_errors()}}}
+.}\par
+}
+{\xe \v estimate_to_point\:tracker_evaluation}
+{\xe \v tracker_evaluation\:estimate_to_point}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+estimate_to_point (  {\i self},   {\i estimate},   {\i ratios} = {\f2 None},   {\i invert_y} = {\f2 None})}}
+\par
+{\bkmkstart AAAAAAAAFK}
+{\bkmkend AAAAAAAAFK}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+{
+\par
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid compute_iou\par
+ratios is the x,y|width,height ratios of the estimate to the ground truth.compute_iou\par
+Example: Estimates are recorded at 480x720 while ground truths are recorded at 720x1280. The ratio inputed would be (720/480, 1280/720) or (1.5, 1.777778)\par
+\par
+\par
+invert_y is the height of the video. We record the data as if the origin is in the bottom left, but in other applications the origin is the top left.\par
+This means we subtract the height of the video to inverse this effect.\par
+If the height of the video is 720, invert_y=720. If the data being tested IS NOT inverted, leave it as 0 \par
+}
+ \par
+}{
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 1112     {\cf17 def }estimate_to_point(self, estimate, ratios = None , invert_y=None):\par
+1113         {\cf22 """}\par
+1114 {\cf22         compute_iou}\par
+1115 {\cf22         ratios is the x,y|width,height ratios of the estimate to the ground truth.compute_iou}\par
+1116 {\cf22         Example: Estimates are recorded at 480x720 while ground truths are recorded at 720x1280. The ratio inputed would be (720/480, 1280/720) or (1.5, 1.777778)}\par
+1117 {\cf22         }\par
+1118 {\cf22 }\par
+1119 {\cf22         invert_y is the height of the video. We record the data as if the origin is in the bottom left, but in other applications the origin is the top left.}\par
+1120 {\cf22         This means we subtract the height of the video to inverse this effect.}\par
+1121 {\cf22         If the height of the video is 720, invert_y=720. If the data being tested IS NOT inverted, leave it as 0 }\par
+1122 {\cf22         """}\par
+1123         {\cf19 if} ratios {\cf19 is} {\cf18 None}:\par
+1124             ratios = (self.correction_ratio_x, self.correction_ratio_y)\par
+1125 \par
+1126         {\cf19 if} invert_y {\cf19 is} {\cf18 None}:\par
+1127             invert_y = self.invert_y\par
+1128 \par
+1129         point = (float(estimate[{\cf22 'x1'}])*ratios[0],\par
+1130         (invert_y-float(estimate[{\cf22 'y2'}]))*ratios[1],\par
+1131                 float(estimate[{\cf22 'x2'}])*ratios[0],\par
+1132         (invert_y-float(estimate[{\cf22 'y1'}]))*ratios[1]\par
+1133         )\par
+1134 \par
+1135         {\cf19 return} point\par
+1136 \par
+}
+{
+\ql
+References tracker_evaluation.correction_ratio_x, tracker_evaluation.correction_ratio_y, {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAFJ" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.get_estimates()}}}
+, tracker_evaluation.get_ground_truths(), tracker_evaluation.invert_y, and room_estimation.invert_y.}\par
+{
+\ql
+Referenced by {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAES" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.fmeasure()}}}
+, and {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAEV" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.identification_map()}}}
+.}\par
+}
+{\xe \v false_negative\:tracker_evaluation}
+{\xe \v tracker_evaluation\:false_negative}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+false_negative (  {\i self},   {\i gt_config})}}
+\par
+{\bkmkstart AAAAAAAAEI}
+{\bkmkend AAAAAAAAEI}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+{
+\par
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid False Negative checks all estimates in a given list (of a given frame) and \par
+checks if any of them exist on a ground truth within the f-measure threshold.\par
+\par
+Config map assigns a None for a value to a ground truth when no estimate exists \par
+within it's threhsold\par
+estimate E\par
+\par
+     ground truth GT\par
+    |a |b  | c |d |e |\par
+____|__|___|___|__|__|__\par
+E   |1 |2,3| - |5 |5 | \par
+         ↑   ↑\par
+         MT  FN\par
+}
+ \par
+}{
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 256     {\cf17 def }false_negative(self, gt_config):\par
+257         {\cf22 '''}\par
+258 {\cf22         False Negative checks all estimates in a given list (of a given frame) and }\par
+259 {\cf22         checks if any of them exist on a ground truth within the f-measure threshold.}\par
+260 {\cf22 }\par
+261 {\cf22         Config map assigns a None for a value to a ground truth when no estimate exists }\par
+262 {\cf22         within it's threhsold}\par
+263 {\cf22         estimate E}\par
+264 {\cf22 }\par
+265 {\cf22              ground truth GT}\par
+266 {\cf22             |a |b  | c |d |e |}\par
+267 {\cf22         ____|__|___|___|__|__|__}\par
+268 {\cf22         E   |1 |2,3| - |5 |5 | }\par
+269 {\cf22                  ↑   ↑}\par
+270 {\cf22                  MT  FN}\par
+271 {\cf22         '''}\par
+272 \par
+273 \par
+274 \par
+275         fn_count = 0\par
+276         {\cf19 for} gt {\cf19 in} gt_config.values():\par
+277             {\cf19 if} {\cf18 None} {\cf19 in} gt:\par
+278                 fn_count += 1\par
+279         {\cf19 return} fn_count\par
+280 \par
+}
+{
+\ql
+Referenced by {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAFA" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.calculate_frame_errors()}}}
+.}\par
+}
+{\xe \v false_positive\:tracker_evaluation}
+{\xe \v tracker_evaluation\:false_positive}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+false_positive (  {\i self},   {\i es_config})}}
+\par
+{\bkmkstart AAAAAAAAEH}
+{\bkmkend AAAAAAAAEH}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+{
+\par
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid     |1 |2 |3 |4 |5  |\par
+____|__|__|__|__|___|___\par
+GT  |a |b |b |- |d,e| \par
+              ↑   ↑\par
+              FP  MO\par
+}
+ \par
+}{
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 240     {\cf17 def }false_positive(self, es_config):\par
+241         {\cf22 '''}\par
+242 {\cf22             |1 |2 |3 |4 |5  |}\par
+243 {\cf22         ____|__|__|__|__|___|___}\par
+244 {\cf22         GT  |a |b |b |- |d,e| }\par
+245 {\cf22                       ↑   ↑}\par
+246 {\cf22                       FP  MO}\par
+247 {\cf22         '''}\par
+248         {\cf20 # An estimate exists that is not associated with a ground truth object}\par
+249         {\cf20 # Tracker is on but not on a ground truth}\par
+250         fp_count = 0\par
+251         {\cf19 for} estimate {\cf19 in} es_config.values():\par
+252             {\cf19 if} {\cf18 None} {\cf19 in} estimate:\par
+253                 fp_count += 1\par
+254         {\cf19 return} fp_count\par
+255 \par
+}
+{
+\ql
+Referenced by {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAFA" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.calculate_frame_errors()}}}
+.}\par
+}
+{\xe \v falsly_identified_object\:tracker_evaluation}
+{\xe \v tracker_evaluation\:falsly_identified_object}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+falsly_identified_object (  {\i self},   {\i frame_number})}}
+\par
+{\bkmkstart AAAAAAAAEW}
+{\bkmkend AAAAAAAAEW}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+{
+\par
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid Calculates FIO for a single frame normalized by the number of estimates in that frame\par
+}
+ \par
+}{
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 662     {\cf17 def }falsly_identified_object(self, frame_number):\par
+663         {\cf22 """}\par
+664 {\cf22         Calculates FIO for a single frame normalized by the number of estimates in that frame}\par
+665 {\cf22         """}\par
+666         {\cf20 #Calculates the id_map for the frame, both estimates and ground_truths}\par
+667         id_map = self.identification_map(frame_number)\par
+668 \par
+669         {\cf19 if} id_map {\cf19 is} {\cf19 not} {\cf18 None}:\par
+670             es_map = id_map[{\cf22 "Estimate"}]\par
+671             gt_map = id_map[{\cf22 "Ground_Truth"}]\par
+672 \par
+673 \par
+674             scores = \{\}\par
+675 \par
+676             {\cf20 # Go through all the estimates in the frame}\par
+677             {\cf19 for} estimate {\cf19 in} es_map.keys():\par
+678                 {\cf20 # if the estimate matches the correct map, set that to true, otherwise that estimate is false.}\par
+679                 {\cf19 if} es_map[estimate] == self.es_map[estimate]:\par
+680                     scores[estimate] = {\cf17 True}\par
+681                 {\cf19 elif} es_map[estimate] == {\cf18 None}:\par
+682                     scores[estimate] = {\cf18 None}\par
+683                 {\cf19 else}:\par
+684                     scores[estimate] = {\cf17 False}\par
+685 \par
+686             {\cf20 #Count the errors for that frame}\par
+687             total_errors = 0\par
+688             {\cf19 for} score {\cf19 in} scores.values():\par
+689                 {\cf19 if} score {\cf19 is} {\cf17 False}:\par
+690                     total_errors += 1\par
+691         {\cf19 else}:\par
+692             {\cf19 return} 0, 0, \{\}\par
+693         \par
+694         normalized_error = total_errors/len(gt_map.keys())\par
+695         {\cf20 # print(normalized_error)}\par
+696 \par
+697         {\cf19 return} normalized_error, total_errors, scores\par
+698 \par
+699 \par
+}
+{
+\ql
+References tracker_evaluation.es_map, and {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAEV" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.identification_map()}}}
+.}\par
+{
+\ql
+Referenced by {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAFC" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.calculate_errors()}}}
+, and {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAFA" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.calculate_frame_errors()}}}
+.}\par
+}
+{\xe \v falsly_identified_tracker\:tracker_evaluation}
+{\xe \v tracker_evaluation\:falsly_identified_tracker}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+falsly_identified_tracker (  {\i self},   {\i frame_number})}}
+\par
+{\bkmkstart AAAAAAAAEX}
+{\bkmkend AAAAAAAAEX}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+{
+\par
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid Falsely Identified Object. A\par
+GT segment which passes the coverage test for E but\par
+is not the identified GT.\par
+\par
+Assign FIT and FIO errors for each frame by checking if E\par
+and GT segments which pass the coverage test match Es and \par
+GTs indicated by the identity maps. Label segments as FIT,\par
+FIO, or correct\par
+}
+ \par
+}{
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 700     {\cf17 def }falsly_identified_tracker(self, frame_number):\par
+701         {\cf22 """}\par
+702 {\cf22         Falsely Identified Object. A}\par
+703 {\cf22         GT segment which passes the coverage test for E but}\par
+704 {\cf22         is not the identified GT.}\par
+705 {\cf22         }\par
+706 {\cf22         Assign FIT and FIO errors for each frame by checking if E}\par
+707 {\cf22         and GT segments which pass the coverage test match Es and }\par
+708 {\cf22         GTs indicated by the identity maps. Label segments as FIT,}\par
+709 {\cf22         FIO, or correct}\par
+710 {\cf22         """}      \par
+711         id_map = self.identification_map(frame_number)\par
+712         \par
+713 \par
+714         {\cf19 if} id_map {\cf19 is} {\cf19 not} {\cf18 None}:\par
+715             es_map = id_map[{\cf22 "Estimate"}]\par
+716             gt_map = id_map[{\cf22 "Ground_Truth"}]\par
+717             scores = \{\}\par
+718 \par
+719             {\cf20 # Go through all the estimates in the frame}\par
+720             {\cf19 for} estimate {\cf19 in} es_map.keys():\par
+721                 {\cf20 # if the estimate matches the correct map, set that to true, otherwise that estimate is false.}\par
+722                 gt = es_map[estimate]\par
+723                 {\cf19 if} gt {\cf19 is} {\cf19 not} {\cf18 None}:\par
+724                     {\cf19 if} estimate == self.gt_map[gt]:\par
+725                         scores[estimate] = {\cf17 True}\par
+726                     {\cf19 else}:\par
+727                         scores[estimate] = {\cf17 False}\par
+728 \par
+729             {\cf20 #Count the errors for that frame}\par
+730             total_errors = 0\par
+731             {\cf19 for} score {\cf19 in} scores.values():\par
+732                 {\cf19 if} score {\cf19 is} {\cf17 False}:\par
+733                     total_errors += 1\par
+734         {\cf19 else}:\par
+735             {\cf19 return} 0, 0, \{\}\par
+736         \par
+737         normalized_error = total_errors/len(gt_map.keys())\par
+738         {\cf20 # print(normalized_error)}\par
+739 \par
+740         {\cf19 return} normalized_error, total_errors, scores\par
+741 \par
+}
+{
+\ql
+References tracker_evaluation.gt_map, and {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAEV" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.identification_map()}}}
+.}\par
+{
+\ql
+Referenced by {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAFC" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.calculate_errors()}}}
+, and {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAFA" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.calculate_frame_errors()}}}
+.}\par
+}
+{\xe \v fmeasure\:tracker_evaluation}
+{\xe \v tracker_evaluation\:fmeasure}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+fmeasure (  {\i self},   {\i estimate},   {\i ground_truth},   {\i correct_estimate} = {\f2 False})}}
+\par
+{\bkmkstart AAAAAAAAES}
+{\bkmkend AAAAAAAAES}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+{
+\par
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid The F-measure(F = 2νρ/ν+ρ ) is suited to this task, as F is only high when both recall and precision are high\par
+}
+ \par
+}{
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 466     {\cf17 def }fmeasure(self, estimate, ground_truth, correct_estimate=False):\par
+467         {\cf22 '''}\par
+468 {\cf22         The F-measure(F = 2νρ/ν+ρ ) is suited to this task, as F is only high when both recall and precision are high}\par
+469 {\cf22         '''}\par
+470         {\cf20 # print("FMEASURE COMPARE ESTIMATE:", estimate, " | GT:", ground_truth)}\par
+471 \par
+472         {\cf19 if} correct_estimate {\cf19 is} {\cf17 False}:\par
+473             p = self.precision(estimate, ground_truth)\par
+474             r = self.recall(estimate, ground_truth)\par
+475 \par
+476         {\cf20 # Avoids division by zero}\par
+477         {\cf19 if} p == 0 {\cf19 and} r == 0:\par
+478             {\cf19 return} 0\par
+479 \par
+480         f = (2 * p * r) / (p + r)\par
+481         {\cf19 return} f\par
+482 \par
+}
+{
+\ql
+References {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAFK" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.estimate_to_point()}}}
+, {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAES" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.fmeasure()}}}
+, {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAFJ" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.get_estimates()}}}
+, tracker_evaluation.get_ground_truths(), {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAEQ" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.precision()}}}
+, {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAER" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.recall()}}}
+, and {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAGA" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.threshold_tc}}}
+.}\par
+{
+\ql
+Referenced by {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAES" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.fmeasure()}}}
+, and {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAEV" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.identification_map()}}}
+.}\par
+}
+{\xe \v generate_manual_id_map\:tracker_evaluation}
+{\xe \v tracker_evaluation\:generate_manual_id_map}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+generate_manual_id_map (  {\i self})}}
+\par
+{\bkmkstart AAAAAAAAFS}
+{\bkmkend AAAAAAAAFS}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+{
+\par
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid Creates a manual mapping where every estimate maps to the same id as it's labelled (as well as ground truths)\par
+\par
+This is used in the case where ground truths and estimates are designed to have the same IDs\par
+}
+ \par
+}{
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 1219     {\cf17 def }generate_manual_id_map(self):\par
+1220         {\cf22 '''}\par
+1221 {\cf22         Creates a manual mapping where every estimate maps to the same id as it's labelled (as well as ground truths)}\par
+1222 {\cf22 }\par
+1223 {\cf22         This is used in the case where ground truths and estimates are designed to have the same IDs}\par
+1224 {\cf22         '''}\par
+1225         manual_gt_map = \{\}\par
+1226         {\cf19 for} gt {\cf19 in} self.list_labels():\par
+1227             manual_gt_map[gt] = gt\par
+1228         \par
+1229         manual_es_map = \{\}\par
+1230         {\cf19 for} es {\cf19 in} self.list_estimates():\par
+1231             manual_es_map[es] = es\par
+1232 \par
+1233         {\cf19 return} manual_gt_map, manual_gt_map\par
+1234 \par
+}
+{
+\ql
+References {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAFO" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.list_estimates()}}}
+, and {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAFN" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.list_labels()}}}
+.}\par
+{
+\ql
+Referenced by {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAFC" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.calculate_errors()}}}
+.}\par
+}
+{\xe \v get_area\:tracker_evaluation}
+{\xe \v tracker_evaluation\:get_area}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+get_area (  {\i self},   {\i box})}}
+\par
+{\bkmkstart AAAAAAAAFF}
+{\bkmkend AAAAAAAAFF}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+{
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 1080     {\cf17 def }get_area(self, box):\par
+1081         {\cf19 return} (box[0] - box[2]) * (box[1] - box[3])\par
+1082 \par
+}
+\par
+{
+\ql
+Referenced by {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAEQ" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.precision()}}}
+, and {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAER" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.recall()}}}
+.}\par
+}
+{\xe \v get_estimate_count\:tracker_evaluation}
+{\xe \v tracker_evaluation\:get_estimate_count}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+get_estimate_count (  {\i self})}}
+\par
+{\bkmkstart AAAAAAAAFP}
+{\bkmkend AAAAAAAAFP}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+{
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 1176     {\cf17 def }get_estimate_count(self):\par
+1177         estimate_count = \{\}\par
+1178         {\cf19 for} frame {\cf19 in} self.ground_truth_dict:\par
+1179             estimates = self.get_estimates(frame)\par
+1180             {\cf19 if} estimates.empty {\cf19 is} {\cf17 False}:\par
+1181                 {\cf19 for} name {\cf19 in} estimates[{\cf22 'name'}]:\par
+1182                     {\cf19 if} name {\cf19 in} estimate_count.keys():\par
+1183                         estimate_count[name] += 1\par
+1184                     {\cf19 else}:\par
+1185                         estimate_count[name] = 1\par
+1186         {\cf19 return} estimate_count\par
+1187 \par
+}
+\par
+{
+\ql
+Referenced by {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAEY" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.calculate_tracker_purity()}}}
+.}\par
+}
+{\xe \v get_estimates\:tracker_evaluation}
+{\xe \v tracker_evaluation\:get_estimates}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+get_estimates (  {\i self},   {\i frame_number},   {\i id} = {\f2 None})}}
+\par
+{\bkmkstart AAAAAAAAFJ}
+{\bkmkend AAAAAAAAFJ}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+{
+\par
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid Returns all estimates by frame number\par
+}
+ \par
+}{
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 1101     {\cf17 def }get_estimates(self, frame_number, id=None):\par
+1102         {\cf22 '''}\par
+1103 {\cf22         Returns all estimates by frame number}\par
+1104 {\cf22         '''}\par
+1105         estimates = self.estimate_dict\par
+1106         estimates = estimates.loc[estimates[{\cf22 'frame'}].astype(int) == frame_number]\par
+1107         {\cf19 if} id:\par
+1108             estimates = estimates.loc[estimates[{\cf22 'name'}] == id]\par
+1109 \par
+1110         {\cf19 return} estimates\par
+1111 \par
+}
+{
+\ql
+References tracker_evaluation.estimate_dict.}\par
+{
+\ql
+Referenced by {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAEY" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.calculate_tracker_purity()}}}
+, {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAEL" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.configuration_distance()}}}
+, {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAFK" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.estimate_to_point()}}}
+, {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAES" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.fmeasure()}}}
+, {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAEV" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.identification_map()}}}
+, and {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAFO" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.list_estimates()}}}
+.}\par
+}
+{\xe \v get_frame_count\:tracker_evaluation}
+{\xe \v tracker_evaluation\:get_frame_count}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+get_frame_count (  {\i self})}}
+\par
+{\bkmkstart AAAAAAAAFE}
+{\bkmkend AAAAAAAAFE}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+{
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 1077     {\cf17 def }get_frame_count(self):\par
+1078         {\cf19 return} self.ground_truth_dict.keys() \par
+1079 \par
+}
+}
+{\xe \v get_ground_truth_count\:tracker_evaluation}
+{\xe \v tracker_evaluation\:get_ground_truth_count}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+get_ground_truth_count (  {\i self},   {\i frame_number})}}
+\par
+{\bkmkstart AAAAAAAAFM}
+{\bkmkend AAAAAAAAFM}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+{
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 1141     {\cf17 def }get_ground_truth_count(self, frame_number):\par
+1142         gts = self.get_ground_truths(frame_number)\par
+1143         {\cf20 # print(gts, frame_number)}\par
+1144         {\cf19 if} gts == {\cf18 None}:\par
+1145             {\cf19 return} {\cf18 None}\par
+1146         {\cf19 return} len(gts)\par
+1147 \par
+}
+}
+{\xe \v get_ground_truth_difference\:tracker_evaluation}
+{\xe \v tracker_evaluation\:get_ground_truth_difference}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+get_ground_truth_difference (  {\i self},   {\i frame_num_1},   {\i frame_num_2})}}
+\par
+{\bkmkstart AAAAAAAAEN}
+{\bkmkend AAAAAAAAEN}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+{
+\par
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid Returns the sets of ground truths where ids are new, or leaving.\par
+}
+ \par
+}{
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 382     {\cf17 def }get_ground_truth_difference(self, frame_num_1, frame_num_2):\par
+383         {\cf22 '''}\par
+384 {\cf22         Returns the sets of ground truths where ids are new, or leaving.}\par
+385 {\cf22         '''}\par
+386         gt_1 = self.get_ground_truths(frame_num_1)\par
+387         gt_2 = self.get_ground_truths(frame_num_2)\par
+388 \par
+389         set_1 = set()\par
+390         {\cf19 if} gt_1:\par
+391             {\cf19 for} gt {\cf19 in} gt_1:\par
+392                 set_1.add(gt[{\cf22 'label'}])\par
+393             \par
+394         set_2 = set()\par
+395         {\cf19 if} gt_2:\par
+396             {\cf19 for} gt {\cf19 in} gt_2:\par
+397                 set_2.add(gt[{\cf22 'label'}])\par
+398             \par
+399         new = set_2 - set_1\par
+400         leaving = set_1 - set_2\par
+401         {\cf19 return} new, leaving\par
+402 \par
+}
+{
+\ql
+References tracker_evaluation.check_occlusion(), tracker_evaluation.get_ground_truths(), tracker_evaluation.ground_truth_exists(), {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAEQ" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.precision()}}}
+, and {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAFZ" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.threshold_to}}}
+.}\par
+}
+{\xe \v get_ground_truths\:tracker_evaluation}
+{\xe \v tracker_evaluation\:get_ground_truths}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+get_ground_truths (  {\i self},   {\i frame_number},   {\i id} = {\f2 None})}}
+\par
+{\bkmkstart AAAAAAAAFI}
+{\bkmkend AAAAAAAAFI}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+{
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 1089     {\cf17 def }get_ground_truths(self, frame_number, id=None):\par
+1090         {\cf19 if} frame_number {\cf19 in} self.ground_truth_dict.keys():\par
+1091             ground_truths = self.ground_truth_dict[frame_number]\par
+1092             {\cf19 if} id:\par
+1093                 {\cf19 for} ground_truth {\cf19 in} ground_truths:\par
+1094                     {\cf19 if} id {\cf19 in} ground_truth[{\cf22 'label'}]:\par
+1095                         {\cf19 return} [ground_truth]\par
+1096             {\cf19 return} ground_truths\par
+1097         {\cf19 else}:\par
+1098             {\cf20 # print("frame out of range")}\par
+1099             {\cf19 return} {\cf18 None}\par
+1100     \par
+}
+\par
+{
+\ql
+Referenced by {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAFC" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.calculate_errors()}}}
+, {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAEZ" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.calculate_object_purity()}}}
+, {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAEL" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.configuration_distance()}}}
+, {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAFK" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.estimate_to_point()}}}
+, {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAES" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.fmeasure()}}}
+, {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAEN" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.get_ground_truth_difference()}}}
+, {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAEV" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.identification_map()}}}
+, {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAEK" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.multiple_objects()}}}
+, and {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAEJ" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.multiple_trackers()}}}
+.}\par
+}
+{\xe \v get_groundtruth_count\:tracker_evaluation}
+{\xe \v tracker_evaluation\:get_groundtruth_count}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+get_groundtruth_count (  {\i self})}}
+\par
+{\bkmkstart AAAAAAAAFQ}
+{\bkmkend AAAAAAAAFQ}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+{
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 1188     {\cf17 def }get_groundtruth_count(self):\par
+1189         gt_count = \{\}\par
+1190         {\cf19 for} frame {\cf19 in} self.ground_truth_dict:\par
+1191             {\cf19 for} gt {\cf19 in} self.ground_truth_dict[frame]:\par
+1192                 {\cf19 if} gt[{\cf22 'label'}] {\cf19 in} gt_count.keys():\par
+1193                     gt_count[gt[{\cf22 'label'}]] += 1\par
+1194                 {\cf19 else}:\par
+1195                     gt_count[gt[{\cf22 'label'}]] = 1\par
+1196 \par
+1197         {\cf19 return} gt_count\par
+1198     \par
+}
+\par
+{
+\ql
+Referenced by {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAEZ" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.calculate_object_purity()}}}
+.}\par
+}
+{\xe \v get_height\:tracker_evaluation}
+{\xe \v tracker_evaluation\:get_height}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+get_height (  {\i self},   {\i box})}}
+\par
+{\bkmkstart AAAAAAAAFG}
+{\bkmkend AAAAAAAAFG}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+{
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 1083     {\cf17 def }get_height(self, box):\par
+1084         {\cf19 return} (box[1] - box[3])\par
+1085     \par
+}
+}
+{\xe \v get_number_estimates\:tracker_evaluation}
+{\xe \v tracker_evaluation\:get_number_estimates}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+get_number_estimates (  {\i self},   {\i frame_number})}}
+\par
+{\bkmkstart AAAAAAAAFL}
+{\bkmkend AAAAAAAAFL}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+{
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 1137     {\cf17 def }get_number_estimates(self, frame_number):\par
+1138         es = self.get_estimates(frame_number)\par
+1139         {\cf19 return} es.shape[0]\par
+1140 \par
+}
+}
+{\xe \v get_occlusion_count\:tracker_evaluation}
+{\xe \v tracker_evaluation\:get_occlusion_count}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+get_occlusion_count (  {\i self},   {\i frame_num})}}
+\par
+{\bkmkstart AAAAAAAAEP}
+{\bkmkend AAAAAAAAEP}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+{
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 420     {\cf17 def }get_occlusion_count(self, frame_num):\par
+421         all_gt = self.get_ground_truths(frame_num)\par
+422 \par
+423         {\cf19 if} {\cf19 not} self.ground_truth_exists(frame_num):\par
+424             {\cf19 return} {\cf18 None}\par
+425             \par
+426         count = 0\par
+427         {\cf20 # Iterate over all ground truths and record how many others overlap with excess threshold_to}\par
+428         {\cf19 for} gt {\cf19 in} all_gt:\par
+429             occluded, _ = self.check_occlusion(gt, frame_num)\par
+430             {\cf19 if} occluded:\par
+431                 count += 1\par
+432         \par
+433         {\cf19 return} count\par
+434 \par
+435     \par
+}
+}
+{\xe \v get_width\:tracker_evaluation}
+{\xe \v tracker_evaluation\:get_width}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+get_width (  {\i self},   {\i box})}}
+\par
+{\bkmkstart AAAAAAAAFH}
+{\bkmkend AAAAAAAAFH}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+{
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 1086     {\cf17 def }get_width(self, box):\par
+1087         {\cf19 return} (box[0] - box[2])\par
+1088 \par
+}
+}
+{\xe \v ground_truth_exists\:tracker_evaluation}
+{\xe \v tracker_evaluation\:ground_truth_exists}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+ground_truth_exists (  {\i self},   {\i frame_num})}}
+\par
+{\bkmkstart AAAAAAAAEM}
+{\bkmkend AAAAAAAAEM}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+{
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 377     {\cf17 def }ground_truth_exists(self, frame_num):\par
+378         {\cf19 if} frame_num {\cf19 in} self.ground_truth_dict.keys():\par
+379             {\cf19 return} {\cf17 True}\par
+380         {\cf19 return} {\cf17 False}\par
+381 \par
+}
+\par
+{
+\ql
+Referenced by {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAEN" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.get_ground_truth_difference()}}}
+.}\par
+}
+{\xe \v identification_graph\:tracker_evaluation}
+{\xe \v tracker_evaluation\:identification_graph}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+identification_graph (  {\i self})}}
+\par
+{\bkmkstart AAAAAAAAEG}
+{\bkmkend AAAAAAAAEG}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+{
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 177     {\cf17 def }identification_graph(self):\par
+178         fig, ax = plt.subplots()  {\cf20 # Create a figure containing a single axes.}\par
+179         start_frame = 0\par
+180 \par
+181         data = []\par
+182         \par
+183         frame_number = []\par
+184         data = []\par
+185         \par
+186         gt_count = self.get_groundtruth_count()\par
+187         es_count = self.get_estimate_count()\par
+188         print({\cf22 "ES_COUNT"}, es_count)\par
+189         colors = \{\}\par
+190         es_colors = \{\}\par
+191 \par
+192         {\cf20 #Create Colour maps}\par
+193         {\cf19 for} index, gt {\cf19 in} enumerate(gt_count.keys()):\par
+194             colors[gt] = index+1\par
+195             \par
+196         {\cf19 for} index, es {\cf19 in} enumerate(es_count.keys()):\par
+197             es_colors[es] = index+1\par
+198         {\cf20 # cmaps = \{\}}\par
+199         self.gt_map, self.es_map = self.calculate_identification_map()\par
+200         \par
+201         print({\cf22 "Loading data to plot"})\par
+202         \par
+203         \par
+204         figs =[]\par
+205         cmap = []\par
+206         id_map_colors = []\par
+207         {\cf19 for} frame {\cf19 in} self.ground_truth_dict:\par
+208             {\cf20 # print(frame)}\par
+209             ground_truths = self.get_ground_truths(frame)\par
+210             id_map = self.identification_map(frame)\par
+211             {\cf19 for} gt {\cf19 in} ground_truths:\par
+212                 {\cf20 # ax.plot(gt['label'], frame)}\par
+213                 data.append(gt[{\cf22 'label'}])\par
+214                 cmap.append(colors[gt[{\cf22 'label'}]])\par
+215                 frame_number.append(frame)\par
+216                 {\cf19 if} id_map {\cf19 is} {\cf19 not} {\cf18 None}:\par
+217                     es_map = id_map[{\cf22 'Estimate'}]\par
+218                     gt_map = id_map[{\cf22 'Ground_Truth'}]\par
+219 \par
+220                     keys = [k {\cf19 for} k, v {\cf19 in} es_map.items() {\cf19 if} v == gt[{\cf22 'label'}]]\par
+221                     added = {\cf17 False}\par
+222                     {\cf19 for} key {\cf19 in} keys:\par
+223                         {\cf19 if} key == gt_map[gt[{\cf22 'label'}]]:\par
+224                             id_map_colors.append(es_colors[gt_map[gt[{\cf22 'label'}]]])\par
+225                             added = {\cf17 True}\par
+226                             {\cf19 break}\par
+227                     {\cf19 if} {\cf19 not} added:\par
+228                         id_map_colors.append(-20) \par
+229                         \par
+230                 {\cf19 else}:\par
+231                     id_map_colors.append(-20)\par
+232 \par
+233         self.gt_map, self.es_map = self.calculate_identification_map()\par
+234     \par
+235         ax.scatter(frame_number, data, c=id_map_colors,  cmap={\cf22 "Spectral"}, marker={\cf22 "s"}, s=80)\par
+236         ax.scatter(frame_number, data, c=cmap,  cmap={\cf22 "inferno"}, marker={\cf22 "."}, s=50)  {\cf20 # Plot some data on the axes.}\par
+237         \par
+238         plt.show(block = {\cf17 False})\par
+239 \par
+}
+}
+{\xe \v identification_map\:tracker_evaluation}
+{\xe \v tracker_evaluation\:identification_map}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+identification_map (  {\i self},   {\i frame_number})}}
+\par
+{\bkmkstart AAAAAAAAEV}
+{\bkmkend AAAAAAAAEV}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+{
+\par
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid Identification map produces a map for a specific frame number\par
+}
+ \par
+}{
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 617     {\cf17 def }identification_map(self, frame_number):\par
+618         {\cf22 """}\par
+619 {\cf22         Identification map produces a map for a specific frame number}\par
+620 {\cf22         """}\par
+621         ground_truths = self.get_ground_truths(frame_number)\par
+622         estimates = self.get_estimates(frame_number)\par
+623         {\cf19 if} estimates.empty:\par
+624             {\cf19 return} {\cf18 None}\par
+625 \par
+626         estimate_map = \{\}\par
+627         ground_truth_map = \{\}\par
+628 \par
+629         {\cf19 for} index, estimate {\cf19 in} estimates.iterrows():\par
+630             {\cf20 # print(estimate)}\par
+631             \par
+632             es = self.estimate_to_point(estimate)\par
+633             fmeasures = []\par
+634             {\cf19 for} gt {\cf19 in} ground_truths:\par
+635                 f = self.fmeasure(es, gt[{\cf22 'points'}], correct_estimate={\cf17 False})\par
+636                 {\cf20 # print("F", f)}\par
+637                 fmeasures.append(f)\par
+638             {\cf20 # Use the best estimate}\par
+639             max_index = fmeasures.index(max(fmeasures))\par
+640             {\cf19 if} fmeasures[max_index] == 0:\par
+641                 estimate_map[estimate[{\cf22 'name'}]] = {\cf18 None}\par
+642             {\cf19 else}:\par
+643                 estimate_map[estimate[{\cf22 'name'}]] = ground_truths[max_index][{\cf22 'label'}]\par
+644 \par
+645         {\cf19 for} gt {\cf19 in} ground_truths:\par
+646             fmeasures = []\par
+647             {\cf19 for} index, estimate {\cf19 in} estimates.iterrows():\par
+648                 es = self.estimate_to_point(estimate)\par
+649                 f = self.fmeasure(es, gt[{\cf22 'points'}], correct_estimate={\cf17 False})\par
+650                 fmeasures.append(f)\par
+651             \par
+652             max_index = fmeasures.index(max(fmeasures))\par
+653             {\cf19 if} fmeasures[max_index] == 0:\par
+654                 ground_truth_map[gt[{\cf22 'label'}]] = {\cf18 None}\par
+655             {\cf19 else}:\par
+656                 ground_truth_map[gt[{\cf22 'label'}]] = estimates.iloc[max_index][{\cf22 'name'}]\par
+657 \par
+658         maps = \{{\cf22 "Estimate"}: estimate_map, {\cf22 "Ground_Truth"}: ground_truth_map\}\par
+659         {\cf20 # print(maps)}\par
+660         {\cf19 return} maps\par
+661 \par
+}
+{
+\ql
+References {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAFK" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.estimate_to_point()}}}
+, {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAES" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.fmeasure()}}}
+, {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAFJ" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.get_estimates()}}}
+, and tracker_evaluation.get_ground_truths().}\par
+{
+\ql
+Referenced by {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAEU" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.calculate_identification_map()}}}
+, {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAEZ" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.calculate_object_purity()}}}
+, {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAEY" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.calculate_tracker_purity()}}}
+, {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAEW" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.falsly_identified_object()}}}
+, and {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAEX" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.falsly_identified_tracker()}}}
+.}\par
+}
+{\xe \v list_estimates\:tracker_evaluation}
+{\xe \v tracker_evaluation\:list_estimates}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+list_estimates (  {\i self})}}
+\par
+{\bkmkstart AAAAAAAAFO}
+{\bkmkend AAAAAAAAFO}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+{
+\par
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid Returns a list of unique estimate names\par
+}
+ \par
+}{
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 1159     {\cf17 def }list_estimates(self):\par
+1160         {\cf22 '''}\par
+1161 {\cf22         Returns a list of unique estimate names}\par
+1162 {\cf22         '''}\par
+1163         estimate_set = set()\par
+1164         {\cf20 # print(self.ground_truth_dict)}\par
+1165         {\cf19 for} frame {\cf19 in} self.ground_truth_dict:\par
+1166             {\cf20 # print(frame)}\par
+1167             estimates = self.get_estimates(frame)\par
+1168             {\cf20 # print(estimates)}\par
+1169             {\cf19 if} estimates.empty {\cf19 is} {\cf17 False}:\par
+1170                 {\cf19 for} name {\cf19 in} estimates[{\cf22 'name'}]:\par
+1171                     estimate_set.add(name)\par
+1172         print(estimate_set)\par
+1173         \par
+1174         {\cf19 return} list(sorted(estimate_set))\par
+1175     \par
+}
+{
+\ql
+References {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAFJ" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.get_estimates()}}}
+, and tracker_evaluation.ground_truth_dict.}\par
+{
+\ql
+Referenced by {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAEU" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.calculate_identification_map()}}}
+, {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAFS" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.generate_manual_id_map()}}}
+, and {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAED" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.load_tracker_data()}}}
+.}\par
+}
+{\xe \v list_labels\:tracker_evaluation}
+{\xe \v tracker_evaluation\:list_labels}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+list_labels (  {\i self})}}
+\par
+{\bkmkstart AAAAAAAAFN}
+{\bkmkend AAAAAAAAFN}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+{
+\par
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid Returns a list of unique label names\par
+}
+ \par
+}{
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 1148     {\cf17 def }list_labels(self):\par
+1149         {\cf22 '''}\par
+1150 {\cf22         Returns a list of unique label names}\par
+1151 {\cf22         '''}\par
+1152         label_set = set()\par
+1153         {\cf19 for} frame {\cf19 in} self.ground_truth_dict:\par
+1154             {\cf19 for} gt {\cf19 in} self.ground_truth_dict[frame]:\par
+1155                 {\cf19 if} gt[{\cf22 'label'}] {\cf19 not} {\cf19 in} label_set:\par
+1156                     label_set.add(gt[{\cf22 'label'}])\par
+1157         {\cf19 return} list(label_set)\par
+1158 \par
+}
+{
+\ql
+References tracker_evaluation.ground_truth_dict.}\par
+{
+\ql
+Referenced by {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAFS" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.generate_manual_id_map()}}}
+, and {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAEC" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.load_json()}}}
+.}\par
+}
+{\xe \v load_json\:tracker_evaluation}
+{\xe \v tracker_evaluation\:load_json}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+load_json (  {\i self},   {\i folder},   {\i fps} = {\f2 None})}}
+\par
+{\bkmkstart AAAAAAAAEC}
+{\bkmkend AAAAAAAAEC}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+\par
+{
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+Loads annotation created with {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAAD" }{}}{\fldrslt {\cs37\ul\cf2 [2]}}}. }}\par
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+Loads all json files in a folder. \par
+}{
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 77     {\cf17 def }load_json(self, folder, fps=None):\par
+78         {\cf22 '''!}\par
+79 {\cf22         Loads all json files in a folder.}\par
+80 {\cf22 }\par
+81 {\cf22         '''}\par
+82         {\cf20 # Load all json files}\par
+83         {\cf20 # Points exist in [x,y] pairs. Labelling determines order of points but it should be top left to bottom right. Make sure this is the order. (If not, flip order of points)}\par
+84         {\cf19 if} fps:\par
+85             self.fps = fps\par
+86         print({\cf22 "Loading JSON"})\par
+87         files = glob.glob(folder+{\cf22 "*.json"})\par
+88 \par
+89         self.total_images = len(files)\par
+90         {\cf19 for} file {\cf19 in} files:\par
+91             {\cf20 # Parse the filename and get the image number}\par
+92             json_image_number = int(file.split({\cf22 "."})[0].split({\cf22 "_"})[-1])\par
+93             frame_number = json_image_number * self.fps\par
+94             {\cf17 with} open(file) {\cf17 as} f:\par
+95                 data = json.load(f)\par
+96                 {\cf19 for} shape {\cf19 in} data[{\cf22 'shapes'}]:\par
+97                     shape[{\cf22 'points'}] = (shape[{\cf22 'points'}][0][0],shape[{\cf22 'points'}][0][1], shape[{\cf22 'points'}][1][0], shape[{\cf22 'points'}][1][1])\par
+98                 self.ground_truth_dict[frame_number] = data[{\cf22 'shapes'}]\par
+99         \par
+100 \par
+101         {\cf20 # Sort the dictionary}\par
+102         self.ground_truth_dict = \{k: self.ground_truth_dict[k] {\cf19 for} k {\cf19 in} sorted(self.ground_truth_dict)\}\par
+103         self.labels = self.list_labels()\par
+104 \par
+}
+{
+\ql
+References tracker_evaluation.fps, FPS.fps(), tracker_evaluation.ground_truth_dict, tracker_evaluation.labels, {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAFN" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.list_labels()}}}
+, and tracker_evaluation.total_images.}\par
+{
+\ql
+Referenced by {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAEA" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.__init__()}}}
+.}\par
+}
+{\xe \v load_tracker_data\:tracker_evaluation}
+{\xe \v tracker_evaluation\:load_tracker_data}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+load_tracker_data (  {\i self},   {\i tracker_file})}}
+\par
+{\bkmkstart AAAAAAAAED}
+{\bkmkend AAAAAAAAED}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+\par
+{
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+Loads estimates from people tracker exported data. }}\par
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+It loads private variables estimate_dict and estimates (a list of all estimate names)\par
+Returns a dataframe of tracker data \par
+}{
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 105     {\cf17 def }load_tracker_data(self, tracker_file):\par
+106         {\cf22 '''!}\par
+107 {\cf22         Loads estimates from people tracker exported data.}\par
+108 {\cf22         }\par
+109 {\cf22         It loads private variables estimate_dict and estimates (a list of all estimate names)}\par
+110 {\cf22 }\par
+111 {\cf22         Returns a dataframe of tracker data}\par
+112 {\cf22 }\par
+113 {\cf22         '''}\par
+114         print({\cf22 "Loading Tracker Data"})\par
+115         df = pd.read_csv(tracker_file)\par
+116         self.fps = int(round(df.iloc[0][{\cf22 'FrameRate'}]))\par
+117         {\cf20 # print(df)}\par
+118         self.invert_y = int(df.iloc[1][{\cf22 'Max_Pixel_y'}])\par
+119         {\cf20 # self.invert_y = 0}\par
+120 \par
+121         {\cf20 # try:}\par
+122         {\cf19 try}:\par
+123             video_width = int(df.iloc[0][{\cf22 'Width(px)'}])\par
+124             video_height = int(df.iloc[0][{\cf22 'Height(px)'}])\par
+125 \par
+126             recorded_width = int(df.iloc[1][{\cf22 'Max_Pixel_x'}])\par
+127             recorded_height = int(df.iloc[1][{\cf22 'Max_Pixel_y'}])\par
+128 \par
+129             {\cf20 # Example: Estimates are recorded at 480x720 while ground truths are recorded at 720x1280. The ratio inputed would be (720/480, 1280/720) or (1.5, 1.777778)}\par
+130             self.correction_ratio_x = video_width/recorded_width\par
+131             self.correction_ratio_y = video_height/recorded_height\par
+132 \par
+133         {\cf19 except}:\par
+134             print({\cf22 "It's likely that this data is MaskRCNN Predicted and recorded at full resolution: Setting scale ratio to 1:1"})\par
+135             {\cf20 # Example: Estimates are recorded at 480x720 while ground truths are recorded at 720x1280. The ratio inputed would be (720/480, 1280/720) or (1.5, 1.777778)}\par
+136             self.correction_ratio_x = 1\par
+137             self.correction_ratio_y = 1\par
+138 \par
+139         {\cf20 # except:}\par
+140         {\cf20 # self.correction_ratio_x = 1}\par
+141         {\cf20 # self.correction_ratio_y = 1}\par
+142 \par
+143         df = df.iloc[1: , :] {\cf20 # Drop first row}\par
+144 \par
+145 \par
+146         \par
+147         print({\cf22 "FRAME RATE"}, self.fps)\par
+148         tracker_data = df[[{\cf22 "Frame_Num"}, {\cf22 "Name"}, {\cf22 "ID"}, {\cf22 "BBox_TopLeft_x"}, {\cf22 "BBox_TopLeft_y"}, {\cf22 "BBox_BottomRight_x"}, {\cf22 "BBox_BottomRight_y"}]]\par
+149         tracker_data = tracker_data.rename(columns=\{{\cf22 'Frame_Num'}: {\cf22 'frame'}, \par
+150                                 {\cf22 'Name'}: {\cf22 'name'},\par
+151                                 {\cf22 'ID'}: {\cf22 'id'},\par
+152                                 {\cf22 'BBox_TopLeft_x'}: {\cf22 'x1'},\par
+153                                 {\cf22 'BBox_TopLeft_y'}: {\cf22 'y2'},\par
+154                                 {\cf22 'BBox_BottomRight_x'}: {\cf22 'x2'},\par
+155                                 {\cf22 'BBox_BottomRight_y'}: {\cf22 'y1'}\})\par
+156         {\cf20 # print(tracker_data)}\par
+157         self.estimate_dict = tracker_data\par
+158         self.estimates = self.list_estimates()\par
+159         print({\cf22 "Done loading Data"})\par
+160         {\cf19 return} self.estimate_dict\par
+161 \par
+162         \par
+}
+{
+\ql
+References tracker_evaluation.correction_ratio_x, tracker_evaluation.correction_ratio_y, tracker_evaluation.estimate_dict, tracker_evaluation.estimates, tracker_evaluation.fps, FPS.fps(), tracker_evaluation.invert_y, room_estimation.invert_y, and {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAFO" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.list_estimates()}}}
+.}\par
+{
+\ql
+Referenced by {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAEA" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.__init__()}}}
+.}\par
+}
+{\xe \v multiple_objects\:tracker_evaluation}
+{\xe \v tracker_evaluation\:multiple_objects}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+multiple_objects (  {\i self},   {\i es_config},   {\i frame_number})}}
+\par
+{\bkmkstart AAAAAAAAEK}
+{\bkmkend AAAAAAAAEK}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+{
+\par
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid         estimate E\par
+    |1 |2 |3 |4 |5  |\par
+____|__|__|__|__|___|___\par
+GT  |a |b |b |- |d,e| \par
+              ↑   ↑\par
+              FP  MO\par
+}
+ \par
+}{
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 308     {\cf17 def }multiple_objects(self, es_config, frame_number):\par
+309         {\cf22 '''}\par
+310 {\cf22                 estimate E}\par
+311 {\cf22             |1 |2 |3 |4 |5  |}\par
+312 {\cf22         ____|__|__|__|__|___|___}\par
+313 {\cf22         GT  |a |b |b |- |d,e| }\par
+314 {\cf22                       ↑   ↑}\par
+315 {\cf22                       FP  MO}\par
+316 {\cf22         '''}\par
+317         mo = 0\par
+318         {\cf20 # counts excess count of a 1:1 ground_truth:estimate}\par
+319         {\cf19 for} gt {\cf19 in} es_config.values():\par
+320             \par
+321             occluded = {\cf17 False}\par
+322 \par
+323             {\cf20 #Iterate through all the ground truths and check for occlusion.}\par
+324             {\cf19 for} ground_truth {\cf19 in} gt:\par
+325                 gts = self.get_ground_truths(frame_number, ground_truth)\par
+326                 occluded, _ = self.check_occlusion(gts[0], frame_number)\par
+327                 {\cf20 #If it is occluded we don't need to keep checking if it is}\par
+328                 {\cf19 if} occluded:\par
+329                     {\cf19 break}\par
+330             \par
+331             {\cf20 # # NOTE: This case represents the 'less correct' case mentioned in figure 3}\par
+332             {\cf20 # #If it's not occluded, we count all excess objects}\par
+333             {\cf20 # if not occluded:}\par
+334             {\cf20 #     mo += len(gt) - 1}\par
+335             \par
+336             {\cf20 # #This represents the 'more correct' case in figure 3}\par
+337             {\cf19 if} {\cf19 not} occluded {\cf19 and} len(gt) > 1:\par
+338                 mo += len(gt)\par
+339 \par
+340         {\cf19 return} mo\par
+341         \par
+342         {\cf20 # Still need to eliminate each excess ground truth}\par
+}
+{
+\ql
+References tracker_evaluation.check_occlusion(), and tracker_evaluation.get_ground_truths().}\par
+{
+\ql
+Referenced by {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAFA" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.calculate_frame_errors()}}}
+.}\par
+}
+{\xe \v multiple_trackers\:tracker_evaluation}
+{\xe \v tracker_evaluation\:multiple_trackers}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+multiple_trackers (  {\i self},   {\i gt_config},   {\i frame_number})}}
+\par
+{\bkmkstart AAAAAAAAEJ}
+{\bkmkend AAAAAAAAEJ}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+{
+\par
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid Two or more estimates are associated with the same ground truth. A MT error is assigned for each excess estimate.\par
+Multiple trackers track a ground truth\par
+\par
+Look for more than one estimate for each ground truth\par
+\par
+     ground truth GT\par
+    |a |b  | c |d |e |\par
+____|__|___|___|__|__|__\par
+E   |1 |2,3| - |5 |5 | \par
+         ↑   ↑\par
+         MT  FN\par
+}
+ \par
+}{
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 281     {\cf17 def }multiple_trackers(self, gt_config, frame_number):\par
+282         {\cf22 '''}\par
+283 {\cf22         Two or more estimates are associated with the same ground truth. A MT error is assigned for each excess estimate.}\par
+284 {\cf22         Multiple trackers track a ground truth}\par
+285 {\cf22         }\par
+286 {\cf22         Look for more than one estimate for each ground truth}\par
+287 {\cf22 }\par
+288 {\cf22              ground truth GT}\par
+289 {\cf22             |a |b  | c |d |e |}\par
+290 {\cf22         ____|__|___|___|__|__|__}\par
+291 {\cf22         E   |1 |2,3| - |5 |5 | }\par
+292 {\cf22                  ↑   ↑}\par
+293 {\cf22                  MT  FN}\par
+294 {\cf22         '''}\par
+295 \par
+296         mt = 0\par
+297         {\cf19 for} gt {\cf19 in} gt_config:\par
+298             gts = self.get_ground_truths(frame_number, gt)\par
+299             occluded, _ = self.check_occlusion(gts[0], frame_number)\par
+300 \par
+301             es = gt_config[gt]\par
+302             {\cf19 if} {\cf19 not} occluded:\par
+303                 mt += len(es) - 1\par
+304 \par
+305         {\cf19 return} mt\par
+306 \par
+307 \par
+}
+{
+\ql
+References tracker_evaluation.check_occlusion(), and tracker_evaluation.get_ground_truths().}\par
+{
+\ql
+Referenced by {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAFA" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.calculate_frame_errors()}}}
+.}\par
+}
+{\xe \v nothing\:tracker_evaluation}
+{\xe \v tracker_evaluation\:nothing}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+nothing (  {\i self})}}
+\par
+{\bkmkstart AAAAAAAAEB}
+{\bkmkend AAAAAAAAEB}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+{
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 71     {\cf17 def }nothing(self):\par
+72         {\cf19 pass}\par
+73     \par
+}
+}
+{\xe \v plot_scene\:tracker_evaluation}
+{\xe \v tracker_evaluation\:plot_scene}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+plot_scene (  {\i self})}}
+\par
+{\bkmkstart AAAAAAAAEF}
+{\bkmkend AAAAAAAAEF}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+{
+\par
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid Not Implemented\par
+}
+ \par
+}{
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 170     {\cf17 def }plot_scene(self):\par
+171         {\cf22 '''}\par
+172 {\cf22         Not Implemented}\par
+173 {\cf22         '''}\par
+174         {\cf20 # Plots a colour coded point over the scene. additionally plots id and errors spatially.}\par
+175         {\cf19 pass}\par
+176 \par
+}
+}
+{\xe \v plot_score\:tracker_evaluation}
+{\xe \v tracker_evaluation\:plot_score}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+plot_score (  {\i self})}}
+\par
+{\bkmkstart AAAAAAAAEE}
+{\bkmkend AAAAAAAAEE}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+{
+\par
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid Not implemented\par
+}
+ \par
+}{
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 163     {\cf17 def }plot_score(self):\par
+164         {\cf22 '''}\par
+165 {\cf22         Not implemented}\par
+166 {\cf22         '''}\par
+167         {\cf20 # Plots timeline (in frames) according to ground truth. Additionally, plots id and errors.}\par
+168         {\cf19 pass}\par
+169 \par
+}
+}
+{\xe \v precision\:tracker_evaluation}
+{\xe \v tracker_evaluation\:precision}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+precision (  {\i self},   {\i estimate},   {\i ground_truth},   {\i correct_estimate} = {\f2 False})}}
+\par
+{\bkmkstart AAAAAAAAEQ}
+{\bkmkend AAAAAAAAEQ}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+{
+\par
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid Precision measures how much of the E covers the GT and\par
+can take values between 0 (no overlap) and 1 (fully overlapped)\par
+}
+ \par
+}{
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 436     {\cf17 def }precision(self, estimate, ground_truth, correct_estimate=False):\par
+437         {\cf22 '''}\par
+438 {\cf22         Precision measures how much of the E covers the GT and}\par
+439 {\cf22         can take values between 0 (no overlap) and 1 (fully overlapped)}\par
+440 {\cf22         '''}\par
+441 \par
+442         {\cf19 if} correct_estimate:\par
+443             measures = self.compute_iou(estimate, [ground_truth], ratios=(self.correction_ratio_x, self.correction_ratio_y))\par
+444         {\cf19 else}:\par
+445             measures = self.compute_iou(estimate, [ground_truth])\par
+446 \par
+447         intersection = measures[1]\par
+448 \par
+449         gt = self.get_area(ground_truth)\par
+450         {\cf19 return} abs(intersection[0])/abs(gt)\par
+451     \par
+}
+{
+\ql
+References {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAFD" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.compute_iou()}}}
+, tracker_evaluation.correction_ratio_x, tracker_evaluation.correction_ratio_y, and tracker_evaluation.get_area().}\par
+{
+\ql
+Referenced by {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAES" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.fmeasure()}}}
+, and {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAEN" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.get_ground_truth_difference()}}}
+.}\par
+}
+{\xe \v recall\:tracker_evaluation}
+{\xe \v tracker_evaluation\:recall}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+recall (  {\i self},   {\i estimate},   {\i ground_truth},   {\i correct_estimate} = {\f2 False})}}
+\par
+{\bkmkstart AAAAAAAAER}
+{\bkmkend AAAAAAAAER}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+{
+\par
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid Recall measures how much of the GT covered by the\par
+E and can take values between 0 (no overlap) and 1 (fully overlapped)\par
+}
+ \par
+}{
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 452     {\cf17 def }recall(self, estimate, ground_truth, correct_estimate=False):\par
+453         {\cf22 '''}\par
+454 {\cf22         Recall measures how much of the GT covered by the}\par
+455 {\cf22         E and can take values between 0 (no overlap) and 1 (fully overlapped)}\par
+456 {\cf22         '''}\par
+457 \par
+458         {\cf19 if} correct_estimate:\par
+459             measures = self.compute_iou(estimate, [ground_truth], ratios=(self.correction_ratio_x, self.correction_ratio_y))\par
+460         {\cf19 else}:\par
+461             measures = self.compute_iou(estimate, [ground_truth])\par
+462         intersection = measures[1]\par
+463         es = self.get_area(estimate)\par
+464         {\cf19 return} abs(intersection[0])/abs(es)\par
+465 \par
+}
+{
+\ql
+References {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAFD" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.compute_iou()}}}
+, tracker_evaluation.correction_ratio_x, tracker_evaluation.correction_ratio_y, and tracker_evaluation.get_area().}\par
+{
+\ql
+Referenced by {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAES" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.fmeasure()}}}
+.}\par
+}
+{\xe \v validate_and_correct_ground_tuths\:tracker_evaluation}
+{\xe \v tracker_evaluation\:validate_and_correct_ground_tuths}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+validate_and_correct_ground_tuths (  {\i self})}}
+\par
+{\bkmkstart AAAAAAAAFR}
+{\bkmkend AAAAAAAAFR}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+{
+\par
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid This function removes ground truths where files imported are faulty.\par
+\par
+1: Labelme file is created but no ground truths are assigned.\par
+}
+ \par
+}{
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 1199     {\cf17 def }validate_and_correct_ground_tuths(self):\par
+1200         {\cf22 '''}\par
+1201 {\cf22         This function removes ground truths where files imported are faulty.}\par
+1202 {\cf22 }\par
+1203 {\cf22         1: Labelme file is created but no ground truths are assigned.}\par
+1204 {\cf22         '''}\par
+1205         frames_removed = []\par
+1206         {\cf19 for} frame {\cf19 in} self.ground_truth_dict:\par
+1207             gt = self.ground_truth_dict[frame]\par
+1208             {\cf20 # removes the frame from the dictionary}\par
+1209             {\cf19 if} gt == []:\par
+1210                 frames_removed.append(frame)\par
+1211                 print({\cf22 "Removing frame "}, frame, {\cf22 " because no ground truths found:"}, gt)\par
+1212                 {\cf20 # del self.ground_truth_dict[frame]}\par
+1213 \par
+1214         {\cf19 for} del_key {\cf19 in} frames_removed:\par
+1215             del self.ground_truth_dict[del_key]\par
+1216 \par
+1217         {\cf19 return} frames_removed\par
+1218         \par
+}
+{
+\ql
+References tracker_evaluation.ground_truth_dict.}\par
+}
+{\pard\widctlpar\brdrb\brdrs\brdrw5\brsp20 \adjustright \par}
+\pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
+Member Data Documentation\par
+\pard\plain 
+{\xe \v threshold_to\:tracker_evaluation}
+{\xe \v tracker_evaluation\:threshold_to}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+threshold_to}}
+\par
+{\bkmkstart AAAAAAAAFZ}
+{\bkmkend AAAAAAAAFZ}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+\par
+{
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+Threshold of Precision allowed in agreement or overlap. }}\par
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+If above threshold, an occlusion flag is noted. check_occlusion \par
+}{
+\ql
+Referenced by {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAEN" }{}}{\fldrslt {\cs37\ul\cf2 tracker_evaluation.get_ground_truth_difference()}}}
+.}\par
+}
+{\pard\widctlpar\brdrb\brdrs\brdrw5\brsp20 \adjustright \par}
+The documentation for this class was generated from the following file:{\par
+\pard\plain \s121\fi-360\li720\widctlpar\jclisttab\tx720{\*\pn \pnlvlbody\ilvl0\ls2\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+K:/Github/PeopleTracker/src/evaluate.py\par
+}}

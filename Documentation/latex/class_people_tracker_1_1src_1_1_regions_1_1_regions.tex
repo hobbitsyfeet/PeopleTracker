@@ -1,0 +1,108 @@
+\doxysection{Regions}
+\hypertarget{class_people_tracker_1_1src_1_1_regions_1_1_regions}{}\label{class_people_tracker_1_1src_1_1_regions_1_1_regions}\index{Regions@{Regions}}
+Inheritance diagram for Regions\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_people_tracker_1_1src_1_1_regions_1_1_regions}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1_regions_1_1_regions_aad814d522561b11a0153a27fbeef2f76}\label{class_people_tracker_1_1src_1_1_regions_1_1_regions_aad814d522561b11a0153a27fbeef2f76} 
+{\bfseries \+\_\+\+\_\+init\+\_\+\+\_\+} (self, log=None)
+\item 
+\mbox{\hyperlink{class_people_tracker_1_1src_1_1_regions_1_1_regions_a89700c3be1f743a710b70fbc86d8dfe7}{add\+\_\+region}} (self, frame)
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1_regions_1_1_regions_a461a49c632e7d7cf717ef335c92128b8}\label{class_people_tracker_1_1src_1_1_regions_1_1_regions_a461a49c632e7d7cf717ef335c92128b8} 
+{\bfseries add\+\_\+moving\+\_\+region} (self, name, point, dimensions, id=None)
+\item 
+\mbox{\hyperlink{class_people_tracker_1_1src_1_1_regions_1_1_regions_ac69072c9e8f9bb71ae2107cfeab27ca3}{set\+\_\+moving\+\_\+region}} (self, name, point, dimensions, id)
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1_regions_1_1_regions_afdf1ef8a30e9bc1c85b42c723b6649c8}\label{class_people_tracker_1_1src_1_1_regions_1_1_regions_afdf1ef8a30e9bc1c85b42c723b6649c8} 
+{\bfseries del\+\_\+region} (self)
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1_regions_1_1_regions_af96c1535e941e333711c6c56d883c0d0}\label{class_people_tracker_1_1src_1_1_regions_1_1_regions_af96c1535e941e333711c6c56d883c0d0} 
+{\bfseries del\+\_\+moving\+\_\+region} (self, name, id=None)
+\item 
+\mbox{\hyperlink{class_people_tracker_1_1src_1_1_regions_1_1_regions_a4d1c2522bead251ed698af05ffb015d6}{display\+\_\+region}} (self, frame)
+\item 
+\mbox{\hyperlink{class_people_tracker_1_1src_1_1_regions_1_1_regions_a1e456cb1d544c85ca419094f660ed2dd}{test\+\_\+region}} (self, test\+\_\+point)
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1_regions_1_1_regions_a313fa979c0dbfcb67a0f3623f8b66a87}\label{class_people_tracker_1_1src_1_1_regions_1_1_regions_a313fa979c0dbfcb67a0f3623f8b66a87} 
+{\bfseries handle\+\_\+inputs} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1_regions_1_1_regions_a43ae9e55f56e794ff92b0f3712af33a1}\label{class_people_tracker_1_1src_1_1_regions_1_1_regions_a43ae9e55f56e794ff92b0f3712af33a1} 
+{\bfseries region\+\_\+dict}
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1_regions_1_1_regions_ab09a63eb35b270b5cdbead1983ebdccb}\label{class_people_tracker_1_1src_1_1_regions_1_1_regions_ab09a63eb35b270b5cdbead1983ebdccb} 
+{\bfseries log}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_people_tracker_1_1src_1_1_regions_1_1_regions_a89700c3be1f743a710b70fbc86d8dfe7}\label{class_people_tracker_1_1src_1_1_regions_1_1_regions_a89700c3be1f743a710b70fbc86d8dfe7} 
+\index{Regions@{Regions}!add\_region@{add\_region}}
+\index{add\_region@{add\_region}!Regions@{Regions}}
+\doxysubsubsection{\texorpdfstring{add\_region()}{add\_region()}}
+{\footnotesize\ttfamily add\+\_\+region (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{frame }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Creates an ellipse given a rectangle ROI.
+\end{DoxyVerb}
+ 
+
+References App.\+log(), Regions.\+log, and Regions.\+region\+\_\+dict.
+
+\Hypertarget{class_people_tracker_1_1src_1_1_regions_1_1_regions_a4d1c2522bead251ed698af05ffb015d6}\label{class_people_tracker_1_1src_1_1_regions_1_1_regions_a4d1c2522bead251ed698af05ffb015d6} 
+\index{Regions@{Regions}!display\_region@{display\_region}}
+\index{display\_region@{display\_region}!Regions@{Regions}}
+\doxysubsubsection{\texorpdfstring{display\_region()}{display\_region()}}
+{\footnotesize\ttfamily display\+\_\+region (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{frame }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Displays all region created Radius on given frame
+\end{DoxyVerb}
+ 
+
+References Regions.\+region\+\_\+dict.
+
+\Hypertarget{class_people_tracker_1_1src_1_1_regions_1_1_regions_ac69072c9e8f9bb71ae2107cfeab27ca3}\label{class_people_tracker_1_1src_1_1_regions_1_1_regions_ac69072c9e8f9bb71ae2107cfeab27ca3} 
+\index{Regions@{Regions}!set\_moving\_region@{set\_moving\_region}}
+\index{set\_moving\_region@{set\_moving\_region}!Regions@{Regions}}
+\doxysubsubsection{\texorpdfstring{set\_moving\_region()}{set\_moving\_region()}}
+{\footnotesize\ttfamily set\+\_\+moving\+\_\+region (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{name,  }\item[{}]{point,  }\item[{}]{dimensions,  }\item[{}]{id }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb} Creates and sets a region with a given name, and given dimensions
+ Point (x, y) : (int, int)
+ Dimensions (width, height), (int, int)
+\end{DoxyVerb}
+ 
+
+References App.\+log(), Regions.\+log, and Regions.\+region\+\_\+dict.
+
+\Hypertarget{class_people_tracker_1_1src_1_1_regions_1_1_regions_a1e456cb1d544c85ca419094f660ed2dd}\label{class_people_tracker_1_1src_1_1_regions_1_1_regions_a1e456cb1d544c85ca419094f660ed2dd} 
+\index{Regions@{Regions}!test\_region@{test\_region}}
+\index{test\_region@{test\_region}!Regions@{Regions}}
+\doxysubsubsection{\texorpdfstring{test\_region()}{test\_region()}}
+{\footnotesize\ttfamily test\+\_\+region (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{test\+\_\+point }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Tests weather a point value exists within an eclipse
+ p <= 1 exists in or on eclipse
+
+Equation: Given p = (x-h)^2/a^2 + (y-k)^2/b^2
+    Where test_point is (x,y) and ellipse_center is (h,k), 
+    radius_width, radius_height as a,b respectivly
+
+Returns list(regions), p
+\end{DoxyVerb}
+ 
+
+References Regions.\+region\+\_\+dict.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+K\+:/\+Github/\+People\+Tracker/src/Regions.\+py\end{DoxyCompactItemize}

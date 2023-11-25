@@ -1,0 +1,142 @@
+\doxysection{STFile\+Video\+Stream}
+\hypertarget{a00230}{}\label{a00230}\index{STFileVideoStream@{STFileVideoStream}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{a00230_a5c31f1f2e9d4233bb84030798dbfd7cd}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, path)
+\item 
+\mbox{\hyperlink{a00230_a92f6a631059f85262380255391242b5f}{read}} (self)
+\item 
+\mbox{\hyperlink{a00230_a2f39781a0bb89a6705efdc8d4c527def}{stop}} (self)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{a00230_aa1f4d5fb4eba7c93eeb232fed844d925}\label{a00230_aa1f4d5fb4eba7c93eeb232fed844d925} 
+{\bfseries frame\+\_\+number}
+\item 
+\Hypertarget{a00230_aa305bf723b143958c967674c2af326fc}\label{a00230_aa305bf723b143958c967674c2af326fc} 
+{\bfseries skip\+\_\+value}
+\item 
+\Hypertarget{a00230_acde7555eca71d1f823fbaf6f6a1f4670}\label{a00230_acde7555eca71d1f823fbaf6f6a1f4670} 
+{\bfseries next}
+\item 
+\Hypertarget{a00230_a48bcfbb87c0af0d5390626d1ab65ab64}\label{a00230_a48bcfbb87c0af0d5390626d1ab65ab64} 
+{\bfseries reset}
+\item 
+\Hypertarget{a00230_ae489866f8220882799d2786ca0690e5b}\label{a00230_ae489866f8220882799d2786ca0690e5b} 
+{\bfseries stream}
+\item 
+\Hypertarget{a00230_a4c36b83a83cf283b3921419ac64a7f9b}\label{a00230_a4c36b83a83cf283b3921419ac64a7f9b} 
+{\bfseries stopped}
+\item 
+\Hypertarget{a00230_a50b0e06eed212ef1439c7169387e9f52}\label{a00230_a50b0e06eed212ef1439c7169387e9f52} 
+{\bfseries grabbed}
+\item 
+\Hypertarget{a00230_ad1420da4c7d63df47af45ac7d03c2067}\label{a00230_ad1420da4c7d63df47af45ac7d03c2067} 
+{\bfseries record\+\_\+live}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Single Thread File Video Stream
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{a00230_a5c31f1f2e9d4233bb84030798dbfd7cd}\label{a00230_a5c31f1f2e9d4233bb84030798dbfd7cd} 
+\index{STFileVideoStream@{STFileVideoStream}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!STFileVideoStream@{STFileVideoStream}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily \+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{path }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keyword}{def\ }\_\_init\_\_(self,\ path): }
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ initialize\ the\ file\ video\ stream\ along\ with\ the\ boolean }}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ used\ to\ indicate\ if\ the\ thread\ should\ be\ stopped\ or\ not }}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ self.frame\_number\ =\ 0 }
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ self.skip\_value\ =\ 10 }
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ self.next\ =\ self.frame\_number\ +\ self.skip\_value }
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ self.reset\ =\ \textcolor{keyword}{False} }
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ self.stream\ =\ cv2.VideoCapture(path) }
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ self.stopped\ =\ \textcolor{keyword}{False} }
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ self.grabbed\ =\ \textcolor{keyword}{False} }
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ type(path)\ ==\ type(0): }
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ self.record\_live\ =\ \textcolor{keyword}{True} }
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}: }
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ self.record\_live\ =\ \textcolor{keyword}{False} }
+\DoxyCodeLine{00034\  }
+\DoxyCodeLine{00035\  }
+\DoxyCodeLine{00036\  }
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{a00230_a92f6a631059f85262380255391242b5f}\label{a00230_a92f6a631059f85262380255391242b5f} 
+\index{STFileVideoStream@{STFileVideoStream}!read@{read}}
+\index{read@{read}!STFileVideoStream@{STFileVideoStream}}
+\doxysubsubsection{\texorpdfstring{read()}{read()}}
+{\footnotesize\ttfamily read (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keyword}{def\ }read(self): }
+\DoxyCodeLine{00038\  }
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ self.record\_live: }
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ self.frame\_number\ +=\ 1 }
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ (self.grabbed,\ frame)\ =\ self.stream.read() }
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ frame,\ self.frame\_number }
+\DoxyCodeLine{00043\  }
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ self.reset\ \textcolor{keywordflow}{is}\ \textcolor{keyword}{True}: }
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ self.stream.set(1,\ self.frame\_number) }
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ self.reset\ =\ \textcolor{keyword}{False} }
+\DoxyCodeLine{00047\  }
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ self.frame\_number\ +=\ 1 }}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ (self.grabbed,\ frame)\ =\ self.stream.read() }
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ self.grabbed: }
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ self.frame\_number\ +=\ 1 }}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ self.frame\_number\ +=\ self.skip\_value }
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ i\ \textcolor{keywordflow}{in}\ range(self.skip\_value\ -\/\ 1): }
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ self.frame\_number\ +=\ 1 }}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ self.grabbed\ =\ self.stream.grab() }
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00058\  }
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ if\ the\ \`{}grabbed`\ boolean\ is\ \`{}False`,\ then\ we\ have }}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ reached\ the\ end\ of\ the\ video\ file }}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keywordflow}{not}\ self.grabbed: }
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ self.stream.set(1,self.stream.get(cv2.CAP\_PROP\_FRAME\_COUNT)-\/1) }
+\DoxyCodeLine{00063\  }
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Sets\ frame\ to\ beginning\ if\ frame\ is\ past\ end.\ This\ buffers\ the\ beginning\ after\ it\ buffers\ the\ end }}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{elif}\ self.frame\_number\ >=\ self.stream.get(cv2.CAP\_PROP\_FRAME\_COUNT): }
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ self.stream.set(1,0) }
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ self.frame\_number\ =\ 0 }
+\DoxyCodeLine{00068\  }
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ return\ next\ frame\ in\ the\ queue }}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (frame,\ self.frame\_number) }
+\DoxyCodeLine{00071\  }
+
+\end{DoxyCode}
+\Hypertarget{a00230_a2f39781a0bb89a6705efdc8d4c527def}\label{a00230_a2f39781a0bb89a6705efdc8d4c527def} 
+\index{STFileVideoStream@{STFileVideoStream}!stop@{stop}}
+\index{stop@{stop}!STFileVideoStream@{STFileVideoStream}}
+\doxysubsubsection{\texorpdfstring{stop()}{stop()}}
+{\footnotesize\ttfamily stop (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keyword}{def\ }stop(self): }
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ self.stopped\ =\ \textcolor{keyword}{True} }
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ cv2.destroyAllWindows() }
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ exit(0) }
+\DoxyCodeLine{00076\  }
+\DoxyCodeLine{00077\  }
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+K\+:/\+Github/\+People\+Tracker/src/Video.\+py\end{DoxyCompactItemize}

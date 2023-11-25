@@ -1,0 +1,50 @@
+\doxysection{Main\+Window}
+\hypertarget{a00178}{}\label{a00178}\index{MainWindow@{MainWindow}}
+
+
+Inheritance diagram for Main\+Window\+:
+% FIG 0
+
+
+Collaboration diagram for Main\+Window\+:
+% FIG 1
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{a00178_a3c8689fcd9fdf3848bc1d79d8836b863}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, \texorpdfstring{$\ast$}{*}args, \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}kwargs)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{a00178_a3c8689fcd9fdf3848bc1d79d8836b863}\label{a00178_a3c8689fcd9fdf3848bc1d79d8836b863} 
+\index{MainWindow@{MainWindow}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily \+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{\texorpdfstring{$\ast$}{*}}]{args,  }\item[{\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{kwargs }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{01406\ \ \ \ \ \textcolor{keyword}{def\ }\_\_init\_\_(self,\ *args,\ **kwargs): }
+\DoxyCodeLine{01407\ \ \ \ \ \ \ \ \ super(MainWindow,\ self).\_\_init\_\_(*args,\ **kwargs) }
+\DoxyCodeLine{01408\  }
+\DoxyCodeLine{01409\ \ \ \ \ \ \ \ \ self.setWindowTitle(\textcolor{stringliteral}{"{}My\ Awesome\ App"{}}) }
+\DoxyCodeLine{01410\  }
+\DoxyCodeLine{01411\ \ \ \ \ \ \ \ \ label\ =\ QLabel(\textcolor{stringliteral}{"{}Get\ Pranked.\ "{}}) }
+\DoxyCodeLine{01412\  }
+\DoxyCodeLine{01413\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ The\ \`{}Qt`\ namespace\ has\ a\ lot\ of\ attributes\ to\ customise }}
+\DoxyCodeLine{01414\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ widgets.\ See:\ http://doc.qt.io/qt-\/5/qt.html }}
+\DoxyCodeLine{01415\ \ \ \ \ \ \ \ \ label.setAlignment(Qt.AlignCenter) }
+\DoxyCodeLine{01416\  }
+\DoxyCodeLine{01417\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Set\ the\ central\ widget\ of\ the\ Window.\ Widget\ will\ expand }}
+\DoxyCodeLine{01418\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ to\ take\ up\ all\ the\ space\ in\ the\ window\ by\ default. }}
+\DoxyCodeLine{01419\ \ \ \ \ \ \ \ \ self.setCentralWidget(label) }
+\DoxyCodeLine{01420\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ i\ \textcolor{keywordflow}{in}\ range(20): }
+\DoxyCodeLine{01421\ \ \ \ \ \ \ \ \ \ \ \ \ webbrowser.open(\textcolor{stringliteral}{'https://i.redd.it/cqkn0oppz6q61.png'}) }
+\DoxyCodeLine{01422\  }
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+K\+:/\+Github/\+People\+Tracker/src/prank.\+py\end{DoxyCompactItemize}

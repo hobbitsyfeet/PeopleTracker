@@ -1,0 +1,1027 @@
+Doxygen version used: 1.9.8 (c2fe5c3e4986974eb2a97608b24086683502f07f)
+Searching for include files...
+Searching for example files...
+Searching for images...
+Searching for dot files...
+Searching for msc files...
+Searching for dia files...
+Searching for files to exclude
+Searching INPUT for files to process...
+Searching for files in directory K:/Github/PeopleTracker/src
+Reading and parsing tag files
+Parsing files
+Reading K:/Github/PeopleTracker/src/__init__.py...
+Reading K:/Github/PeopleTracker/src/aga_estimation.py...
+Parsing file K:/Github/PeopleTracker/src/aga_estimation.py...
+Reading K:/Github/PeopleTracker/src/camera_position.py...
+Parsing file K:/Github/PeopleTracker/src/camera_position.py...
+Reading K:/Github/PeopleTracker/src/centroidtracker.py...
+Parsing file K:/Github/PeopleTracker/src/centroidtracker.py...
+Reading K:/Github/PeopleTracker/src/crashlogger.py...
+Parsing file K:/Github/PeopleTracker/src/crashlogger.py...
+Reading K:/Github/PeopleTracker/src/datalogger.py...
+Parsing file K:/Github/PeopleTracker/src/datalogger.py...
+Reading K:/Github/PeopleTracker/src/evaluate.py...
+Parsing file K:/Github/PeopleTracker/src/evaluate.py...
+Reading K:/Github/PeopleTracker/src/filters.py...
+Parsing file K:/Github/PeopleTracker/src/filters.py...
+Reading K:/Github/PeopleTracker/src/fps.py...
+Parsing file K:/Github/PeopleTracker/src/fps.py...
+Reading K:/Github/PeopleTracker/src/Join_Tracked_Sessions.py...
+Parsing file K:/Github/PeopleTracker/src/Join_Tracked_Sessions.py...
+Reading K:/Github/PeopleTracker/src/live_seg.py...
+Parsing file K:/Github/PeopleTracker/src/live_seg.py...
+Reading K:/Github/PeopleTracker/src/maskrcnn.py...
+Parsing file K:/Github/PeopleTracker/src/maskrcnn.py...
+Reading K:/Github/PeopleTracker/src/metadata.py...
+Parsing file K:/Github/PeopleTracker/src/metadata.py...
+Reading K:/Github/PeopleTracker/src/multiple_inputs.py...
+Parsing file K:/Github/PeopleTracker/src/multiple_inputs.py...
+Reading K:/Github/PeopleTracker/src/multitracker.py...
+Parsing file K:/Github/PeopleTracker/src/multitracker.py...
+Reading K:/Github/PeopleTracker/src/new_centroidtracker.py...
+Parsing file K:/Github/PeopleTracker/src/new_centroidtracker.py...
+Reading K:/Github/PeopleTracker/src/optical_flow.py...
+Parsing file K:/Github/PeopleTracker/src/optical_flow.py...
+Reading K:/Github/PeopleTracker/src/prank.py...
+Parsing file K:/Github/PeopleTracker/src/prank.py...
+Reading K:/Github/PeopleTracker/src/Predict_And_Evaluate.py...
+Parsing file K:/Github/PeopleTracker/src/Predict_And_Evaluate.py...
+Reading K:/Github/PeopleTracker/src/qt_dialog.py...
+Parsing file K:/Github/PeopleTracker/src/qt_dialog.py...
+Reading K:/Github/PeopleTracker/src/Regions.py...
+Parsing file K:/Github/PeopleTracker/src/Regions.py...
+Reading K:/Github/PeopleTracker/src/regression.py...
+Parsing file K:/Github/PeopleTracker/src/regression.py...
+Reading K:/Github/PeopleTracker/src/room_estimation.py...
+Parsing file K:/Github/PeopleTracker/src/room_estimation.py...
+Reading K:/Github/PeopleTracker/src/segment.py...
+Parsing file K:/Github/PeopleTracker/src/segment.py...
+Reading K:/Github/PeopleTracker/src/stream.py...
+Parsing file K:/Github/PeopleTracker/src/stream.py...
+Reading K:/Github/PeopleTracker/src/test_live.py...
+Parsing file K:/Github/PeopleTracker/src/test_live.py...
+Reading K:/Github/PeopleTracker/src/test_Multitracker.py...
+Parsing file K:/Github/PeopleTracker/src/test_Multitracker.py...
+Reading K:/Github/PeopleTracker/src/test_Regions.py...
+Parsing file K:/Github/PeopleTracker/src/test_Regions.py...
+Reading K:/Github/PeopleTracker/src/tracker_to_DLC.py...
+Parsing file K:/Github/PeopleTracker/src/tracker_to_DLC.py...
+Reading K:/Github/PeopleTracker/src/TrackerTab.py...
+Parsing file K:/Github/PeopleTracker/src/TrackerTab.py...
+Reading K:/Github/PeopleTracker/src/train.py...
+Parsing file K:/Github/PeopleTracker/src/train.py...
+Reading K:/Github/PeopleTracker/src/utils.py...
+Parsing file K:/Github/PeopleTracker/src/utils.py...
+Reading K:/Github/PeopleTracker/src/Video.py...
+Parsing file K:/Github/PeopleTracker/src/Video.py...
+Reading K:/Github/PeopleTracker/src/wifipriority.py...
+Parsing file K:/Github/PeopleTracker/src/wifipriority.py...
+Building macro definition list...
+Building group list...
+Building directory list...
+Building namespace list...
+Building file list...
+Building class list...
+Building concept list...
+Computing nesting relations for classes...
+Associating documentation with classes...
+Associating documentation with concepts...
+Associating documentation with modules...
+Building example list...
+Searching for enumerations...
+Searching for documented typedefs...
+Searching for members imported via using declarations...
+Searching for included using directives...
+Searching for documented variables...
+Building interface member list...
+Building member list...
+Searching for friends...
+Searching for documented defines...
+Computing class inheritance relations...
+Computing class usage relations...
+Flushing cached template relations that have become invalid...
+Computing class relations...
+K:/Github/PeopleTracker/src/Regions.py:9: warning: Compound PeopleTracker::src::Regions::Regions is not documented.
+K:/Github/PeopleTracker/src/TrackerTab.py:5: warning: Compound PeopleTracker::src::TrackerTab::person_tab is not documented.
+K:/Github/PeopleTracker/src/Video.py:78: warning: Compound PeopleTracker::src::Video::FileVideoStream is not documented.
+K:/Github/PeopleTracker/src/centroidtracker.py:8: warning: Compound PeopleTracker::src::centroidtracker::CentroidTracker is not documented.
+K:/Github/PeopleTracker/src/datalogger.py:25: warning: Compound PeopleTracker::src::datalogger::DataLogger is not documented.
+K:/Github/PeopleTracker/src/filters.py:8: warning: Compound PeopleTracker::src::filters::KalmanPred is not documented.
+K:/Github/PeopleTracker/src/fps.py:4: warning: Compound PeopleTracker::src::fps::FPS is not documented.
+K:/Github/PeopleTracker/src/multiple_inputs.py:7: warning: Compound PeopleTracker::src::multiple_inputs::InputDialog is not documented.
+K:/Github/PeopleTracker/src/new_centroidtracker.py:10: warning: Compound PeopleTracker::src::new_centroidtracker::NewCentroidTracker is not documented.
+K:/Github/PeopleTracker/src/prank.py:1404: warning: Compound PeopleTracker::src::prank::MainWindow is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:23: warning: Compound PeopleTracker::src::qt_dialog::App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:972: warning: Compound PeopleTracker::src::qt_dialog::Predictor_Options is not documented.
+K:/Github/PeopleTracker/src/regression.py:7: warning: Compound PeopleTracker::src::regression::rolling_regression is not documented.
+K:/Github/PeopleTracker/src/room_estimation.py:147: warning: Compound PeopleTracker::src::room_estimation::room_estimation is not documented.
+K:/Github/PeopleTracker/src/test_Multitracker.py:8: warning: Compound PeopleTracker::src::test_Multitracker::TestMultitracker is not documented.
+K:/Github/PeopleTracker/src/test_Regions.py:8: warning: Compound PeopleTracker::src::test_Regions::TestRegions is not documented.
+K:/Github/PeopleTracker/src/tracker_to_DLC.py:28: warning: Compound PeopleTracker::src::tracker_to_DLC::Converter is not documented.
+Add enum values to enums...
+Searching for member function documentation...
+Creating members for template instances...
+Building page list...
+Search for main page...
+Computing page relations...
+Determining the scope of groups...
+Computing module relations...
+Sorting lists...
+Determining which enums are documented
+Computing member relations...
+Building full member lists recursively...
+Adding members to member groups.
+Computing member references...
+Inheriting documentation...
+Generating disk names...
+Adding source references...
+Adding xrefitems...
+Sorting member lists...
+Setting anonymous enum type...
+Computing dependencies between directories...
+Generating citations page...
+Counting members...
+Counting data structures...
+Resolving user defined references...
+Finding anchors and sections in the documentation...
+Transferring function references...
+Combining using relations...
+Adding members to index pages...
+Correcting members for VHDL...
+Computing tooltip texts...
+Generating style sheet...
+Generating search indices...
+Generating example documentation...
+Generating docs for example Multitracker...
+K:/Github/PeopleTracker/src/multitracker.py:71: warning: included file Multitracker is not found. Check your EXAMPLE_PATH
+Generating file sources...
+Parsing code for file K:/Github/PeopleTracker/src/__init__.py...
+Parsing code for file K:/Github/PeopleTracker/src/aga_estimation.py...
+Parsing code for file K:/Github/PeopleTracker/src/camera_position.py...
+Parsing code for file K:/Github/PeopleTracker/src/centroidtracker.py...
+Parsing code for file K:/Github/PeopleTracker/src/crashlogger.py...
+Parsing code for file K:/Github/PeopleTracker/src/datalogger.py...
+Parsing code for file K:/Github/PeopleTracker/src/evaluate.py...
+Parsing code for file K:/Github/PeopleTracker/src/filters.py...
+Parsing code for file K:/Github/PeopleTracker/src/fps.py...
+Parsing code for file K:/Github/PeopleTracker/src/Join_Tracked_Sessions.py...
+Parsing code for file K:/Github/PeopleTracker/src/live_seg.py...
+Parsing code for file K:/Github/PeopleTracker/src/maskrcnn.py...
+Parsing code for file K:/Github/PeopleTracker/src/metadata.py...
+Parsing code for file K:/Github/PeopleTracker/src/multiple_inputs.py...
+Parsing code for file K:/Github/PeopleTracker/src/multitracker.py...
+Parsing code for file K:/Github/PeopleTracker/src/new_centroidtracker.py...
+Parsing code for file K:/Github/PeopleTracker/src/optical_flow.py...
+Parsing code for file K:/Github/PeopleTracker/src/prank.py...
+Parsing code for file K:/Github/PeopleTracker/src/Predict_And_Evaluate.py...
+Parsing code for file K:/Github/PeopleTracker/src/qt_dialog.py...
+Parsing code for file K:/Github/PeopleTracker/src/Regions.py...
+Parsing code for file K:/Github/PeopleTracker/src/regression.py...
+Parsing code for file K:/Github/PeopleTracker/src/room_estimation.py...
+Parsing code for file K:/Github/PeopleTracker/src/segment.py...
+Parsing code for file K:/Github/PeopleTracker/src/stream.py...
+Parsing code for file K:/Github/PeopleTracker/src/test_live.py...
+Parsing code for file K:/Github/PeopleTracker/src/test_Multitracker.py...
+Parsing code for file K:/Github/PeopleTracker/src/test_Regions.py...
+Parsing code for file K:/Github/PeopleTracker/src/tracker_to_DLC.py...
+Parsing code for file K:/Github/PeopleTracker/src/TrackerTab.py...
+Parsing code for file K:/Github/PeopleTracker/src/train.py...
+Parsing code for file K:/Github/PeopleTracker/src/utils.py...
+Parsing code for file K:/Github/PeopleTracker/src/Video.py...
+Parsing code for file K:/Github/PeopleTracker/src/wifipriority.py...
+Generating file documentation...
+Generating page documentation...
+Generating docs for page citelist...
+Generating group documentation...
+Generating class documentation...
+Generating concept documentation...
+Generating module documentation...
+Generating namespace documentation...
+Generating docs for compound PeopleTracker::src::camera_position::CameraPosition...
+K:/Github/PeopleTracker/src/camera_position.py:30: warning: Member __init__(self, source_vid=None, reference_vid=None) (function) of class PeopleTracker.src.camera_position.CameraPosition is not documented.
+K:/Github/PeopleTracker/src/camera_position.py:70: warning: Member openFileNameDialog(self) (function) of class PeopleTracker.src.camera_position.CameraPosition is not documented.
+K:/Github/PeopleTracker/src/camera_position.py:80: warning: Member initUI(self) (function) of class PeopleTracker.src.camera_position.CameraPosition is not documented.
+K:/Github/PeopleTracker/src/camera_position.py:88: warning: Member init_menubar(self) (function) of class PeopleTracker.src.camera_position.CameraPosition is not documented.
+K:/Github/PeopleTracker/src/camera_position.py:109: warning: Member set_view_roomestimation(self) (function) of class PeopleTracker.src.camera_position.CameraPosition is not documented.
+K:/Github/PeopleTracker/src/camera_position.py:145: warning: Member processtrigger(self, trigger) (function) of class PeopleTracker.src.camera_position.CameraPosition is not documented.
+K:/Github/PeopleTracker/src/camera_position.py:187: warning: Member stitch(self, image_list, out_path=None) (function) of class PeopleTracker.src.camera_position.CameraPosition is not documented.
+K:/Github/PeopleTracker/src/camera_position.py:217: warning: Member set_source(self, video_path, frame=0) (function) of class PeopleTracker.src.camera_position.CameraPosition is not documented.
+K:/Github/PeopleTracker/src/camera_position.py:225: warning: Member add_reference(self, video_path, frame_start, total_frames, step) (function) of class PeopleTracker.src.camera_position.CameraPosition is not documented.
+K:/Github/PeopleTracker/src/camera_position.py:233: warning: Member find_reference(self, query_img, train_img) (function) of class PeopleTracker.src.camera_position.CameraPosition is not documented.
+K:/Github/PeopleTracker/src/camera_position.py:266: warning: Member match_features(self, des1, des2, mode=0) (function) of class PeopleTracker.src.camera_position.CameraPosition is not documented.
+K:/Github/PeopleTracker/src/camera_position.py:292: warning: Member find_homography(self, img1, img2, kp1, kp2, matches) (function) of class PeopleTracker.src.camera_position.CameraPosition is not documented.
+K:/Github/PeopleTracker/src/camera_position.py:312: warning: Member show_estimation(self) (function) of class PeopleTracker.src.camera_position.CameraPosition is not documented.
+K:/Github/PeopleTracker/src/camera_position.py:33: warning: Member title (variable) of class PeopleTracker.src.camera_position.CameraPosition is not documented.
+K:/Github/PeopleTracker/src/camera_position.py:34: warning: Member left (variable) of class PeopleTracker.src.camera_position.CameraPosition is not documented.
+K:/Github/PeopleTracker/src/camera_position.py:35: warning: Member top (variable) of class PeopleTracker.src.camera_position.CameraPosition is not documented.
+K:/Github/PeopleTracker/src/camera_position.py:36: warning: Member width (variable) of class PeopleTracker.src.camera_position.CameraPosition is not documented.
+K:/Github/PeopleTracker/src/camera_position.py:37: warning: Member height (variable) of class PeopleTracker.src.camera_position.CameraPosition is not documented.
+K:/Github/PeopleTracker/src/camera_position.py:38: warning: Member stitched_img (variable) of class PeopleTracker.src.camera_position.CameraPosition is not documented.
+K:/Github/PeopleTracker/src/camera_position.py:42: warning: Member reference_imgs (variable) of class PeopleTracker.src.camera_position.CameraPosition is not documented.
+K:/Github/PeopleTracker/src/camera_position.py:44: warning: Member room_estimation (variable) of class PeopleTracker.src.camera_position.CameraPosition is not documented.
+K:/Github/PeopleTracker/src/camera_position.py:47: warning: Member source_img (variable) of class PeopleTracker.src.camera_position.CameraPosition is not documented.
+K:/Github/PeopleTracker/src/camera_position.py:59: warning: Member stitch_list (variable) of class PeopleTracker.src.camera_position.CameraPosition is not documented.
+K:/Github/PeopleTracker/src/camera_position.py:83: warning: Member layout (variable) of class PeopleTracker.src.camera_position.CameraPosition is not documented.
+K:/Github/PeopleTracker/src/camera_position.py:104: warning: Member processtrigger (variable) of class PeopleTracker.src.camera_position.CameraPosition is not documented.
+K:/Github/PeopleTracker/src/camera_position.py:110: warning: Member room_widget (variable) of class PeopleTracker.src.camera_position.CameraPosition is not documented.
+K:/Github/PeopleTracker/src/camera_position.py:112: warning: Member room_layout (variable) of class PeopleTracker.src.camera_position.CameraPosition is not documented.
+K:/Github/PeopleTracker/src/camera_position.py:115: warning: Member bottom_left_pt_x (variable) of class PeopleTracker.src.camera_position.CameraPosition is not documented.
+K:/Github/PeopleTracker/src/camera_position.py:116: warning: Member bottom_left_pt_y (variable) of class PeopleTracker.src.camera_position.CameraPosition is not documented.
+K:/Github/PeopleTracker/src/camera_position.py:120: warning: Member top_left_pt_x (variable) of class PeopleTracker.src.camera_position.CameraPosition is not documented.
+K:/Github/PeopleTracker/src/camera_position.py:121: warning: Member top_left_pt_y (variable) of class PeopleTracker.src.camera_position.CameraPosition is not documented.
+K:/Github/PeopleTracker/src/camera_position.py:125: warning: Member top_right_pt_x (variable) of class PeopleTracker.src.camera_position.CameraPosition is not documented.
+K:/Github/PeopleTracker/src/camera_position.py:126: warning: Member top_right_pt_y (variable) of class PeopleTracker.src.camera_position.CameraPosition is not documented.
+K:/Github/PeopleTracker/src/camera_position.py:130: warning: Member bottom_right_pt_x (variable) of class PeopleTracker.src.camera_position.CameraPosition is not documented.
+K:/Github/PeopleTracker/src/camera_position.py:131: warning: Member bottom_right_pt_y (variable) of class PeopleTracker.src.camera_position.CameraPosition is not documented.
+Generating docs for compound PeopleTracker::src::centroidtracker::CentroidTracker...
+K:/Github/PeopleTracker/src/centroidtracker.py:9: warning: Member __init__(self, maxDisappeared=50) (function) of class PeopleTracker.src.centroidtracker.CentroidTracker is not documented.
+K:/Github/PeopleTracker/src/centroidtracker.py:24: warning: Member register(self, centroid, corners, filter=None) (function) of class PeopleTracker.src.centroidtracker.CentroidTracker is not documented.
+K:/Github/PeopleTracker/src/centroidtracker.py:34: warning: Member deregister(self, objectID) (function) of class PeopleTracker.src.centroidtracker.CentroidTracker is not documented.
+K:/Github/PeopleTracker/src/centroidtracker.py:41: warning: Member update(self, rects, are_centroids=False) (function) of class PeopleTracker.src.centroidtracker.CentroidTracker is not documented.
+K:/Github/PeopleTracker/src/centroidtracker.py:14: warning: Member nextObjectID (variable) of class PeopleTracker.src.centroidtracker.CentroidTracker is not documented.
+K:/Github/PeopleTracker/src/centroidtracker.py:15: warning: Member objects (variable) of class PeopleTracker.src.centroidtracker.CentroidTracker is not documented.
+K:/Github/PeopleTracker/src/centroidtracker.py:16: warning: Member disappeared (variable) of class PeopleTracker.src.centroidtracker.CentroidTracker is not documented.
+K:/Github/PeopleTracker/src/centroidtracker.py:17: warning: Member filters (variable) of class PeopleTracker.src.centroidtracker.CentroidTracker is not documented.
+K:/Github/PeopleTracker/src/centroidtracker.py:22: warning: Member maxDisappeared (variable) of class PeopleTracker.src.centroidtracker.CentroidTracker is not documented.
+Generating docs for compound PeopleTracker::src::datalogger::DataLogger...
+K:/Github/PeopleTracker/src/datalogger.py:26: warning: Member __init__(self, video, video_location=None, video_metadata=None, intervention_level=NO_INTVERVENTION_TRACKER, ground_truth_folder=None) (function) of class PeopleTracker.src.datalogger.DataLogger is not documented.
+K:/Github/PeopleTracker/src/datalogger.py:585: warning: Member check_intervention_level(self) (function) of class PeopleTracker.src.datalogger.DataLogger is not documented.
+K:/Github/PeopleTracker/src/datalogger.py:612: warning: Member export_charactoristics(self, file_path) (function) of class PeopleTracker.src.datalogger.DataLogger is not documented.
+K:/Github/PeopleTracker/src/datalogger.py:621: warning: Member export_activity(self, file_path) (function) of class PeopleTracker.src.datalogger.DataLogger is not documented.
+K:/Github/PeopleTracker/src/datalogger.py:635: warning: Member plot_chars_df(self) (function) of class PeopleTracker.src.datalogger.DataLogger is not documented.
+K:/Github/PeopleTracker/src/datalogger.py:35: warning: Member ground_truth_folder (variable) of class PeopleTracker.src.datalogger.DataLogger is not documented.
+K:/Github/PeopleTracker/src/datalogger.py:36: warning: Member te (variable) of class PeopleTracker.src.datalogger.DataLogger is not documented.
+K:/Github/PeopleTracker/src/datalogger.py:56: warning: Member metadata (variable) of class PeopleTracker.src.datalogger.DataLogger is not documented.
+K:/Github/PeopleTracker/src/datalogger.py:57: warning: Member video (variable) of class PeopleTracker.src.datalogger.DataLogger is not documented.
+K:/Github/PeopleTracker/src/datalogger.py:60: warning: Member video_id (variable) of class PeopleTracker.src.datalogger.DataLogger is not documented.
+K:/Github/PeopleTracker/src/datalogger.py:64: warning: Member video_location (variable) of class PeopleTracker.src.datalogger.DataLogger is not documented.
+K:/Github/PeopleTracker/src/datalogger.py:66: warning: Member start_time_id (variable) of class PeopleTracker.src.datalogger.DataLogger is not documented.
+K:/Github/PeopleTracker/src/datalogger.py:68: warning: Member previous_frame (variable) of class PeopleTracker.src.datalogger.DataLogger is not documented.
+K:/Github/PeopleTracker/src/datalogger.py:69: warning: Member logging_dict (variable) of class PeopleTracker.src.datalogger.DataLogger is not documented.
+K:/Github/PeopleTracker/src/datalogger.py:70: warning: Member timer_dict (variable) of class PeopleTracker.src.datalogger.DataLogger is not documented.
+K:/Github/PeopleTracker/src/datalogger.py:72: warning: Member paused_data (variable) of class PeopleTracker.src.datalogger.DataLogger is not documented.
+K:/Github/PeopleTracker/src/datalogger.py:73: warning: Member slider_data (variable) of class PeopleTracker.src.datalogger.DataLogger is not documented.
+K:/Github/PeopleTracker/src/datalogger.py:74: warning: Member adjust_data (variable) of class PeopleTracker.src.datalogger.DataLogger is not documented.
+K:/Github/PeopleTracker/src/datalogger.py:77: warning: Member logger_df (variable) of class PeopleTracker.src.datalogger.DataLogger is not documented.
+K:/Github/PeopleTracker/src/datalogger.py:88: warning: Member video_info_df (variable) of class PeopleTracker.src.datalogger.DataLogger is not documented.
+Generating docs for namespace PeopleTracker::src::evaluate
+K:/Github/PeopleTracker/src/evaluate.py:1238: warning: Member te (variable) of namespace PeopleTracker.src.evaluate is not documented.
+K:/Github/PeopleTracker/src/evaluate.py:1243: warning: Member fps (variable) of namespace PeopleTracker.src.evaluate is not documented.
+K:/Github/PeopleTracker/src/evaluate.py:1246: warning: Member errors (variable) of namespace PeopleTracker.src.evaluate is not documented.
+K:/Github/PeopleTracker/src/evaluate.py:1246: warning: Member errors_dict (variable) of namespace PeopleTracker.src.evaluate is not documented.
+Generating docs for compound PeopleTracker::src::evaluate::tracker_evaluation...
+K:/Github/PeopleTracker/src/evaluate.py:71: warning: Member nothing(self) (function) of class PeopleTracker.src.evaluate.tracker_evaluation is not documented.
+K:/Github/PeopleTracker/src/evaluate.py:177: warning: Member identification_graph(self) (function) of class PeopleTracker.src.evaluate.tracker_evaluation is not documented.
+K:/Github/PeopleTracker/src/evaluate.py:377: warning: Member ground_truth_exists(self, frame_num) (function) of class PeopleTracker.src.evaluate.tracker_evaluation is not documented.
+K:/Github/PeopleTracker/src/evaluate.py:403: warning: Member check_occlusion(self, gt, frame_num) (function) of class PeopleTracker.src.evaluate.tracker_evaluation is not documented.
+K:/Github/PeopleTracker/src/evaluate.py:420: warning: Member get_occlusion_count(self, frame_num) (function) of class PeopleTracker.src.evaluate.tracker_evaluation is not documented.
+K:/Github/PeopleTracker/src/evaluate.py:483: warning: Member configuration_map(self, frame_number) (function) of class PeopleTracker.src.evaluate.tracker_evaluation is not documented.
+K:/Github/PeopleTracker/src/evaluate.py:862: warning: Member calculate_identification_errors(self, frame_number) (function) of class PeopleTracker.src.evaluate.tracker_evaluation is not documented.
+K:/Github/PeopleTracker/src/evaluate.py:1077: warning: Member get_frame_count(self) (function) of class PeopleTracker.src.evaluate.tracker_evaluation is not documented.
+K:/Github/PeopleTracker/src/evaluate.py:1080: warning: Member get_area(self, box) (function) of class PeopleTracker.src.evaluate.tracker_evaluation is not documented.
+K:/Github/PeopleTracker/src/evaluate.py:1083: warning: Member get_height(self, box) (function) of class PeopleTracker.src.evaluate.tracker_evaluation is not documented.
+K:/Github/PeopleTracker/src/evaluate.py:1086: warning: Member get_width(self, box) (function) of class PeopleTracker.src.evaluate.tracker_evaluation is not documented.
+K:/Github/PeopleTracker/src/evaluate.py:1089: warning: Member get_ground_truths(self, frame_number, id=None) (function) of class PeopleTracker.src.evaluate.tracker_evaluation is not documented.
+K:/Github/PeopleTracker/src/evaluate.py:1137: warning: Member get_number_estimates(self, frame_number) (function) of class PeopleTracker.src.evaluate.tracker_evaluation is not documented.
+K:/Github/PeopleTracker/src/evaluate.py:1141: warning: Member get_ground_truth_count(self, frame_number) (function) of class PeopleTracker.src.evaluate.tracker_evaluation is not documented.
+K:/Github/PeopleTracker/src/evaluate.py:1176: warning: Member get_estimate_count(self) (function) of class PeopleTracker.src.evaluate.tracker_evaluation is not documented.
+K:/Github/PeopleTracker/src/evaluate.py:1188: warning: Member get_groundtruth_count(self) (function) of class PeopleTracker.src.evaluate.tracker_evaluation is not documented.
+K:/Github/PeopleTracker/src/evaluate.py:39: warning: Member score (variable) of class PeopleTracker.src.evaluate.tracker_evaluation is not documented.
+K:/Github/PeopleTracker/src/evaluate.py:40: warning: Member colour (variable) of class PeopleTracker.src.evaluate.tracker_evaluation is not documented.
+K:/Github/PeopleTracker/src/evaluate.py:43: warning: Member ground_truth_dict (variable) of class PeopleTracker.src.evaluate.tracker_evaluation is not documented.
+K:/Github/PeopleTracker/src/evaluate.py:48: warning: Member total_images (variable) of class PeopleTracker.src.evaluate.tracker_evaluation is not documented.
+K:/Github/PeopleTracker/src/evaluate.py:51: warning: Member estimate_dict (variable) of class PeopleTracker.src.evaluate.tracker_evaluation is not documented.
+K:/Github/PeopleTracker/src/evaluate.py:54: warning: Member fps (variable) of class PeopleTracker.src.evaluate.tracker_evaluation is not documented.
+K:/Github/PeopleTracker/src/evaluate.py:64: warning: Member id_map (variable) of class PeopleTracker.src.evaluate.tracker_evaluation is not documented.
+K:/Github/PeopleTracker/src/evaluate.py:66: warning: Member invert_y (variable) of class PeopleTracker.src.evaluate.tracker_evaluation is not documented.
+K:/Github/PeopleTracker/src/evaluate.py:68: warning: Member correction_ratio_x (variable) of class PeopleTracker.src.evaluate.tracker_evaluation is not documented.
+K:/Github/PeopleTracker/src/evaluate.py:69: warning: Member correction_ratio_y (variable) of class PeopleTracker.src.evaluate.tracker_evaluation is not documented.
+K:/Github/PeopleTracker/src/evaluate.py:103: warning: Member labels (variable) of class PeopleTracker.src.evaluate.tracker_evaluation is not documented.
+K:/Github/PeopleTracker/src/evaluate.py:158: warning: Member estimates (variable) of class PeopleTracker.src.evaluate.tracker_evaluation is not documented.
+K:/Github/PeopleTracker/src/evaluate.py:199: warning: Member gt_map (variable) of class PeopleTracker.src.evaluate.tracker_evaluation is not documented.
+K:/Github/PeopleTracker/src/evaluate.py:199: warning: Member es_map (variable) of class PeopleTracker.src.evaluate.tracker_evaluation is not documented.
+K:/Github/PeopleTracker/src/evaluate.py:863: warning: Member calulate (variable) of class PeopleTracker.src.evaluate.tracker_evaluation is not documented.
+K:/Github/PeopleTracker/src/evaluate.py:1: warning: unable to resolve reference to 'check_occlusion' for \ref command
+Generating docs for compound PeopleTracker::src::filters::KalmanPred...
+K:/Github/PeopleTracker/src/filters.py:9: warning: Member __init__(self, white=False) (function) of class PeopleTracker.src.filters.KalmanPred is not documented.
+K:/Github/PeopleTracker/src/filters.py:12: warning: Member reset(self, white=False) (function) of class PeopleTracker.src.filters.KalmanPred is not documented.
+K:/Github/PeopleTracker/src/filters.py:55: warning: Member predict(self, location=None) (function) of class PeopleTracker.src.filters.KalmanPred is not documented.
+K:/Github/PeopleTracker/src/filters.py:14: warning: Member previous_location (variable) of class PeopleTracker.src.filters.KalmanPred is not documented.
+K:/Github/PeopleTracker/src/filters.py:16: warning: Member k_filter (variable) of class PeopleTracker.src.filters.KalmanPred is not documented.
+Generating docs for compound PeopleTracker::src::fps::FPS...
+K:/Github/PeopleTracker/src/fps.py:5: warning: Member __init__(self) (function) of class PeopleTracker.src.fps.FPS is not documented.
+K:/Github/PeopleTracker/src/fps.py:12: warning: Member start(self) (function) of class PeopleTracker.src.fps.FPS is not documented.
+K:/Github/PeopleTracker/src/fps.py:17: warning: Member stop(self) (function) of class PeopleTracker.src.fps.FPS is not documented.
+K:/Github/PeopleTracker/src/fps.py:21: warning: Member update(self) (function) of class PeopleTracker.src.fps.FPS is not documented.
+K:/Github/PeopleTracker/src/fps.py:26: warning: Member elapsed(self) (function) of class PeopleTracker.src.fps.FPS is not documented.
+K:/Github/PeopleTracker/src/fps.py:31: warning: Member fps(self) (function) of class PeopleTracker.src.fps.FPS is not documented.
+K:/Github/PeopleTracker/src/fps.py:8: warning: Member _start (variable) of class PeopleTracker.src.fps.FPS is not documented.
+K:/Github/PeopleTracker/src/fps.py:9: warning: Member _end (variable) of class PeopleTracker.src.fps.FPS is not documented.
+K:/Github/PeopleTracker/src/fps.py:10: warning: Member _numFrames (variable) of class PeopleTracker.src.fps.FPS is not documented.
+Generating docs for namespace PeopleTracker::src::maskrcnn
+K:/Github/PeopleTracker/src/maskrcnn.py:259: warning: Member track_predictions(pred_dict, video, method=0, id_prefix="P", KalmanFilter=KalmanPred(), ratios=(1, 1), buffer=10, preview=True) (function) of namespace PeopleTracker.src.maskrcnn is not documented.
+K:/Github/PeopleTracker/src/maskrcnn.py:380: warning: Member NEAREST_CENTROID (variable) of namespace PeopleTracker.src.maskrcnn is not documented.
+K:/Github/PeopleTracker/src/maskrcnn.py:381: warning: Member NEAREST_CORNERS (variable) of namespace PeopleTracker.src.maskrcnn is not documented.
+K:/Github/PeopleTracker/src/maskrcnn.py:382: warning: Member NEAREST_BOX (variable) of namespace PeopleTracker.src.maskrcnn is not documented.
+K:/Github/PeopleTracker/src/maskrcnn.py:383: warning: Member NEAREST_KALMAN_CENTROID (variable) of namespace PeopleTracker.src.maskrcnn is not documented.
+K:/Github/PeopleTracker/src/maskrcnn.py:384: warning: Member NEAREST_KALMAN_CORNERS (variable) of namespace PeopleTracker.src.maskrcnn is not documented.
+K:/Github/PeopleTracker/src/maskrcnn.py:385: warning: Member NEAREST_KALMAN (variable) of namespace PeopleTracker.src.maskrcnn is not documented.
+K:/Github/PeopleTracker/src/maskrcnn.py:554: warning: Member display (variable) of namespace PeopleTracker.src.maskrcnn is not documented.
+K:/Github/PeopleTracker/src/maskrcnn.py:554: warning: Member True (variable) of namespace PeopleTracker.src.maskrcnn is not documented.
+K:/Github/PeopleTracker/src/maskrcnn.py:554: warning: Member step (variable) of namespace PeopleTracker.src.maskrcnn is not documented.
+K:/Github/PeopleTracker/src/maskrcnn.py:563: warning: Member pred_dict (variable) of namespace PeopleTracker.src.maskrcnn is not documented.
+Generating docs for compound PeopleTracker::src::multiple_inputs::InputDialog...
+K:/Github/PeopleTracker/src/multiple_inputs.py:8: warning: Member __init__(self, List[str] labels, List[str] defaults, parent=None) (function) of class PeopleTracker.src.multiple_inputs.InputDialog is not documented.
+K:/Github/PeopleTracker/src/multiple_inputs.py:26: warning: Member getInputs(self) (function) of class PeopleTracker.src.multiple_inputs.InputDialog is not documented.
+K:/Github/PeopleTracker/src/multiple_inputs.py:14: warning: Member inputs (variable) of class PeopleTracker.src.multiple_inputs.InputDialog is not documented.
+K:/Github/PeopleTracker/src/multiple_inputs.py:23: warning: Member accept (variable) of class PeopleTracker.src.multiple_inputs.InputDialog is not documented.
+K:/Github/PeopleTracker/src/multiple_inputs.py:24: warning: Member reject (variable) of class PeopleTracker.src.multiple_inputs.InputDialog is not documented.
+Generating docs for compound PeopleTracker::src::new_centroidtracker::NewCentroidTracker...
+K:/Github/PeopleTracker/src/new_centroidtracker.py:11: warning: Member __init__(self, maxDisappeared=50, filter=None) (function) of class PeopleTracker.src.new_centroidtracker.NewCentroidTracker is not documented.
+K:/Github/PeopleTracker/src/new_centroidtracker.py:29: warning: Member register(self, box, filter=None) (function) of class PeopleTracker.src.new_centroidtracker.NewCentroidTracker is not documented.
+K:/Github/PeopleTracker/src/new_centroidtracker.py:40: warning: Member filter_predict(self, objectID) (function) of class PeopleTracker.src.new_centroidtracker.NewCentroidTracker is not documented.
+K:/Github/PeopleTracker/src/new_centroidtracker.py:55: warning: Member deregister(self, objectID) (function) of class PeopleTracker.src.new_centroidtracker.NewCentroidTracker is not documented.
+K:/Github/PeopleTracker/src/new_centroidtracker.py:63: warning: Member update(self, rects, are_centroids=False) (function) of class PeopleTracker.src.new_centroidtracker.NewCentroidTracker is not documented.
+K:/Github/PeopleTracker/src/new_centroidtracker.py:12: warning: Member filter (variable) of class PeopleTracker.src.new_centroidtracker.NewCentroidTracker is not documented.
+K:/Github/PeopleTracker/src/new_centroidtracker.py:17: warning: Member nextObjectID (variable) of class PeopleTracker.src.new_centroidtracker.NewCentroidTracker is not documented.
+K:/Github/PeopleTracker/src/new_centroidtracker.py:18: warning: Member objects (variable) of class PeopleTracker.src.new_centroidtracker.NewCentroidTracker is not documented.
+K:/Github/PeopleTracker/src/new_centroidtracker.py:19: warning: Member boxes (variable) of class PeopleTracker.src.new_centroidtracker.NewCentroidTracker is not documented.
+K:/Github/PeopleTracker/src/new_centroidtracker.py:20: warning: Member disappeared (variable) of class PeopleTracker.src.new_centroidtracker.NewCentroidTracker is not documented.
+K:/Github/PeopleTracker/src/new_centroidtracker.py:21: warning: Member filters (variable) of class PeopleTracker.src.new_centroidtracker.NewCentroidTracker is not documented.
+K:/Github/PeopleTracker/src/new_centroidtracker.py:22: warning: Member box_filters (variable) of class PeopleTracker.src.new_centroidtracker.NewCentroidTracker is not documented.
+K:/Github/PeopleTracker/src/new_centroidtracker.py:27: warning: Member maxDisappeared (variable) of class PeopleTracker.src.new_centroidtracker.NewCentroidTracker is not documented.
+Generating docs for compound PeopleTracker::src::prank::MainWindow...
+K:/Github/PeopleTracker/src/prank.py:1406: warning: Member __init__(self, *args, **kwargs) (function) of class PeopleTracker.src.prank.MainWindow is not documented.
+Generating docs for compound PeopleTracker::src::qt_dialog::App...
+K:/Github/PeopleTracker/src/qt_dialog.py:25: warning: Member __init__(self, start_file=None) (function) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:81: warning: Member flashSplash(self) (function) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:85: warning: Member keyPressEvent(self, event) (function) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:91: warning: Member mousePressEvent(self, event) (function) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:99: warning: Member test_method(self) (function) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:102: warning: Member evaluate_errors(self, filename, is_mrcnn) (function) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:160: warning: Member train_model(self) (function) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:184: warning: Member processtrigger(self, q) (function) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:343: warning: Member initUI(self, start_file) (function) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:659: warning: Member show_warning(self, message) (function) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:665: warning: Member get_integer(self) (function) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:673: warning: Member set_max_scrollbar(self, maximum) (function) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:677: warning: Member set_scrollbar(self, value) (function) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:681: warning: Member slider_update(self, value, func=None) (function) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:684: warning: Member slider_new(self, value, func=None) (function) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:692: warning: Member get_scrollbar_value(self) (function) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:696: warning: Member mediaStateChanged(self) (function) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:711: warning: Member set_pause_state(self) (function) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:716: warning: Member set_play_state(self) (function) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:721: warning: Member btn_state(self, b) (function) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:735: warning: Member set_tab_names(self) (function) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:747: warning: Member get_current_tab_info(self) (function) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:757: warning: Member add_tab(self, name=None) (function) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:768: warning: Member remove_tab(self) (function) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:787: warning: Member export_tab_pressed(self) (function) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:790: warning: Member set_fps_info(self, fps) (function) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:793: warning: Member get_frame_skip(self) (function) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:804: warning: Member openFileNameDialog(self, task=None, extensions=None) (function) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:815: warning: Member saveFileDialog(self) (function) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:823: warning: Member display_help(self) (function) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:830: warning: Member log(self, text) (function) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:835: warning: Member set_all_tabs(self, value) (function) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:844: warning: Member toggle_retain_region(self) (function) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:849: warning: Member get_new_data_version(self) (function) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:882: warning: Member clear_focus(self) (function) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:886: warning: Member track_live_video(self) (function) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:29: warning: Member filename (variable) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:30: warning: Member title (variable) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:31: warning: Member left (variable) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:32: warning: Member top (variable) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:33: warning: Member width (variable) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:34: warning: Member height (variable) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:36: warning: Member record_live (variable) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:37: warning: Member nothing_loaded (variable) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:39: warning: Member snap_to_frame_skip (variable) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:41: warning: Member pause_to_play (variable) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:42: warning: Member play_to_pause (variable) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:43: warning: Member play_state (variable) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:44: warning: Member export_state (variable) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:45: warning: Member region_state (variable) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:46: warning: Member del_region_state (variable) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:47: warning: Member export_all_state (variable) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:48: warning: Member scrollbar_changed (variable) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:49: warning: Member resolution_x (variable) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:50: warning: Member resolution_y (variable) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:51: warning: Member original_resolution (variable) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:52: warning: Member vid_fps (variable) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:53: warning: Member snap_state (variable) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:54: warning: Member set_tracker_state (variable) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:55: warning: Member retain_region (variable) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:56: warning: Member quit_State (variable) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:57: warning: Member image (variable) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:59: warning: Member predict_state (variable) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:60: warning: Member load_predictions_state (variable) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:61: warning: Member load_tracked_video_state (variable) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:62: warning: Member was_loaded (variable) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:63: warning: Member track_preds_state (variable) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:64: warning: Member export_charactoristics (variable) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:65: warning: Member export_activity (variable) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:66: warning: Member evaluate_occlusion (variable) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:68: warning: Member del_frame (variable) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:69: warning: Member del_active_frame (variable) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:70: warning: Member data_version_updated (variable) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:72: warning: Member newest_version_path (variable) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:72: warning: Member newest_version (variable) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:74: warning: Member exported_data (variable) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:75: warning: Member exported_activity (variable) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:82: warning: Member splash (variable) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:291: warning: Member version_name (variable) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:350: warning: Member mcrnn_options (variable) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:351: warning: Member predictor_options (variable) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:352: warning: Member image_options (variable) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:354: warning: Member log_label (variable) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:368: warning: Member layout (variable) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:418: warning: Member processtrigger (variable) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:530: warning: Member add_tab_state (variable) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:532: warning: Member tab_control_layout (variable) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:533: warning: Member add_tab_btn (variable) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:539: warning: Member add_tab (variable) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:544: warning: Member export_tab_btn (variable) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:548: warning: Member export_tab_pressed (variable) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:550: warning: Member del_tab_state (variable) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:551: warning: Member del_tab_btn (variable) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:555: warning: Member remove_tab (variable) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:562: warning: Member row2 (variable) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:564: warning: Member num_people_btn (variable) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:568: warning: Member num_people (variable) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:580: warning: Member tabs (variable) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:584: warning: Member tab_list (variable) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:594: warning: Member scrollframe (variable) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:598: warning: Member vidScroll (variable) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:603: warning: Member slider_update (variable) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:604: warning: Member slider_new (variable) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:607: warning: Member playButton (variable) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:609: warning: Member mediaStateChanged (variable) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:620: warning: Member skip_frames (variable) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:621: warning: Member onlyInt (variable) of class PeopleTracker.src.qt_dialog.App is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:632: warning: Member skip_label (variable) of class PeopleTracker.src.qt_dialog.App is not documented.
+Generating docs for compound PeopleTracker::src::qt_dialog::Image_Enhancement...
+K:/Github/PeopleTracker/src/qt_dialog.py:1042: warning: Member __init__(self) (function) of class PeopleTracker.src.qt_dialog.Image_Enhancement is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:1115: warning: Member reset_default(self) (function) of class PeopleTracker.src.qt_dialog.Image_Enhancement is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:1122: warning: Member update_brightness(self) (function) of class PeopleTracker.src.qt_dialog.Image_Enhancement is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:1125: warning: Member update_gamma(self) (function) of class PeopleTracker.src.qt_dialog.Image_Enhancement is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:1128: warning: Member update_alpha(self) (function) of class PeopleTracker.src.qt_dialog.Image_Enhancement is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:1132: warning: Member update_beta(self) (function) of class PeopleTracker.src.qt_dialog.Image_Enhancement is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:1135: warning: Member toggle_equalize_hist(self) (function) of class PeopleTracker.src.qt_dialog.Image_Enhancement is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:1138: warning: Member toggle_chahe_hist(self) (function) of class PeopleTracker.src.qt_dialog.Image_Enhancement is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:1141: warning: Member get_equalize_hist(self) (function) of class PeopleTracker.src.qt_dialog.Image_Enhancement is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:1144: warning: Member get_equalize_clahe_hist(self) (function) of class PeopleTracker.src.qt_dialog.Image_Enhancement is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:1147: warning: Member get_alpha(self) (function) of class PeopleTracker.src.qt_dialog.Image_Enhancement is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:1150: warning: Member get_beta(self) (function) of class PeopleTracker.src.qt_dialog.Image_Enhancement is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:1153: warning: Member get_gamma(self) (function) of class PeopleTracker.src.qt_dialog.Image_Enhancement is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:1160: warning: Member set_normalized_region(self, image) (function) of class PeopleTracker.src.qt_dialog.Image_Enhancement is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:1163: warning: Member clear_normalized_region(self) (function) of class PeopleTracker.src.qt_dialog.Image_Enhancement is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:1166: warning: Member set_normalize_flag(self) (function) of class PeopleTracker.src.qt_dialog.Image_Enhancement is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:1169: warning: Member enhance_normalized_roi(self, image) (function) of class PeopleTracker.src.qt_dialog.Image_Enhancement is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:1208: warning: Member add_brightness(self, image) (function) of class PeopleTracker.src.qt_dialog.Image_Enhancement is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:1213: warning: Member enhance_brightness_contrast(self, image) (function) of class PeopleTracker.src.qt_dialog.Image_Enhancement is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:1216: warning: Member enhance_gamma(self, image) (function) of class PeopleTracker.src.qt_dialog.Image_Enhancement is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:1223: warning: Member equalize_hist(self, image) (function) of class PeopleTracker.src.qt_dialog.Image_Enhancement is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:1231: warning: Member equalize_clahe_hist(self, image) (function) of class PeopleTracker.src.qt_dialog.Image_Enhancement is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:1240: warning: Member auto_enhance(self, image) (function) of class PeopleTracker.src.qt_dialog.Image_Enhancement is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:1047: warning: Member label (variable) of class PeopleTracker.src.qt_dialog.Image_Enhancement is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:1065: warning: Member alpha (variable) of class PeopleTracker.src.qt_dialog.Image_Enhancement is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:1069: warning: Member alpha_label (variable) of class PeopleTracker.src.qt_dialog.Image_Enhancement is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:1073: warning: Member beta (variable) of class PeopleTracker.src.qt_dialog.Image_Enhancement is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:1077: warning: Member beta_label (variable) of class PeopleTracker.src.qt_dialog.Image_Enhancement is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:1081: warning: Member gamma (variable) of class PeopleTracker.src.qt_dialog.Image_Enhancement is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:1086: warning: Member gamma_label (variable) of class PeopleTracker.src.qt_dialog.Image_Enhancement is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:1090: warning: Member roi_normalize (variable) of class PeopleTracker.src.qt_dialog.Image_Enhancement is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:1092: warning: Member roi_normalize_region (variable) of class PeopleTracker.src.qt_dialog.Image_Enhancement is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:1093: warning: Member roi_normalize_flag (variable) of class PeopleTracker.src.qt_dialog.Image_Enhancement is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:1098: warning: Member reset_button (variable) of class PeopleTracker.src.qt_dialog.Image_Enhancement is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:1102: warning: Member equalize_hist_button (variable) of class PeopleTracker.src.qt_dialog.Image_Enhancement is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:1109: warning: Member equalize_chahe_hist_button (variable) of class PeopleTracker.src.qt_dialog.Image_Enhancement is not documented.
+Generating docs for compound PeopleTracker::src::qt_dialog::MaskRCNN_IOU_Options...
+K:/Github/PeopleTracker/src/qt_dialog.py:902: warning: Member __init__(self) (function) of class PeopleTracker.src.qt_dialog.MaskRCNN_IOU_Options is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:954: warning: Member get_min_value(self) (function) of class PeopleTracker.src.qt_dialog.MaskRCNN_IOU_Options is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:957: warning: Member get_auto_assign(self) (function) of class PeopleTracker.src.qt_dialog.MaskRCNN_IOU_Options is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:960: warning: Member get_similarity(self) (function) of class PeopleTracker.src.qt_dialog.MaskRCNN_IOU_Options is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:963: warning: Member get_active(self) (function) of class PeopleTracker.src.qt_dialog.MaskRCNN_IOU_Options is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:907: warning: Member label (variable) of class PeopleTracker.src.qt_dialog.MaskRCNN_IOU_Options is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:914: warning: Member active (variable) of class PeopleTracker.src.qt_dialog.MaskRCNN_IOU_Options is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:920: warning: Member min_value (variable) of class PeopleTracker.src.qt_dialog.MaskRCNN_IOU_Options is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:934: warning: Member auto_assign_value (variable) of class PeopleTracker.src.qt_dialog.MaskRCNN_IOU_Options is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:944: warning: Member similarity (variable) of class PeopleTracker.src.qt_dialog.MaskRCNN_IOU_Options is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:966: warning: Member _toggle_checkbox(self, checkbox) (function) of class PeopleTracker.src.qt_dialog.MaskRCNN_IOU_Options is not documented.
+Generating docs for compound PeopleTracker::src::qt_dialog::Predictor_Options...
+K:/Github/PeopleTracker/src/qt_dialog.py:973: warning: Member __init__(self) (function) of class PeopleTracker.src.qt_dialog.Predictor_Options is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:1020: warning: Member get_min_IOU(self) (function) of class PeopleTracker.src.qt_dialog.Predictor_Options is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:1023: warning: Member get_min_distance(self) (function) of class PeopleTracker.src.qt_dialog.Predictor_Options is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:1026: warning: Member get_active_iou(self) (function) of class PeopleTracker.src.qt_dialog.Predictor_Options is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:1029: warning: Member get_active_centroid(self) (function) of class PeopleTracker.src.qt_dialog.Predictor_Options is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:978: warning: Member label (variable) of class PeopleTracker.src.qt_dialog.Predictor_Options is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:985: warning: Member activate_iou (variable) of class PeopleTracker.src.qt_dialog.Predictor_Options is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:991: warning: Member min_value_IOU (variable) of class PeopleTracker.src.qt_dialog.Predictor_Options is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:1004: warning: Member activate_centroid (variable) of class PeopleTracker.src.qt_dialog.Predictor_Options is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:1010: warning: Member min_value_distance (variable) of class PeopleTracker.src.qt_dialog.Predictor_Options is not documented.
+K:/Github/PeopleTracker/src/qt_dialog.py:1032: warning: Member _toggle_checkbox(self, checkbox) (function) of class PeopleTracker.src.qt_dialog.Predictor_Options is not documented.
+Generating docs for compound PeopleTracker::src::Regions::Regions...
+K:/Github/PeopleTracker/src/Regions.py:11: warning: Member __init__(self, log=None) (function) of class PeopleTracker.src.Regions.Regions is not documented.
+K:/Github/PeopleTracker/src/Regions.py:28: warning: Member add_moving_region(self, name, point, dimensions, id=None) (function) of class PeopleTracker.src.Regions.Regions is not documented.
+K:/Github/PeopleTracker/src/Regions.py:47: warning: Member del_region(self) (function) of class PeopleTracker.src.Regions.Regions is not documented.
+K:/Github/PeopleTracker/src/Regions.py:69: warning: Member del_moving_region(self, name, id=None) (function) of class PeopleTracker.src.Regions.Regions is not documented.
+K:/Github/PeopleTracker/src/Regions.py:152: warning: Member handle_inputs() (function) of class PeopleTracker.src.Regions.Regions is not documented.
+K:/Github/PeopleTracker/src/Regions.py:13: warning: Member region_dict (variable) of class PeopleTracker.src.Regions.Regions is not documented.
+K:/Github/PeopleTracker/src/Regions.py:14: warning: Member log (variable) of class PeopleTracker.src.Regions.Regions is not documented.
+Generating docs for compound PeopleTracker::src::regression::rolling_regression...
+K:/Github/PeopleTracker/src/regression.py:8: warning: Member __init__(self, window=10, regression="Linear") (function) of class PeopleTracker.src.regression.rolling_regression is not documented.
+K:/Github/PeopleTracker/src/regression.py:18: warning: Member predict(self, location) (function) of class PeopleTracker.src.regression.rolling_regression is not documented.
+K:/Github/PeopleTracker/src/regression.py:11: warning: Member regression (variable) of class PeopleTracker.src.regression.rolling_regression is not documented.
+K:/Github/PeopleTracker/src/regression.py:15: warning: Member window (variable) of class PeopleTracker.src.regression.rolling_regression is not documented.
+K:/Github/PeopleTracker/src/regression.py:16: warning: Member data_window (variable) of class PeopleTracker.src.regression.rolling_regression is not documented.
+Generating docs for compound PeopleTracker::src::room_estimation::room_estimation...
+K:/Github/PeopleTracker/src/room_estimation.py:148: warning: Member __init__(self, image=None, camera_matrix=JUSTIN_HERO4_SILVER_720_MEDIUM_FOV_MTX, distortion_matrix=JUSTIN_HERO4_SILVER_720_MEDIUM_FOV_DIST, rvecs=JUSTIN_HERO4_SILVER_720_MEDIUM_FOV_RVEC) (function) of class PeopleTracker.src.room_estimation.room_estimation is not documented.
+K:/Github/PeopleTracker/src/room_estimation.py:198: warning: Member set_image(self, image) (function) of class PeopleTracker.src.room_estimation.room_estimation is not documented.
+K:/Github/PeopleTracker/src/room_estimation.py:201: warning: Member display_room(self, image=None, axis=True, box=True, show_3d_plot=True, with_points=False) (function) of class PeopleTracker.src.room_estimation.room_estimation is not documented.
+K:/Github/PeopleTracker/src/room_estimation.py:226: warning: Member set_axis(self, x, y, z) (function) of class PeopleTracker.src.room_estimation.room_estimation is not documented.
+K:/Github/PeopleTracker/src/room_estimation.py:232: warning: Member set_corners(self, p1=None, p2=None, p3=None, p4=None) (function) of class PeopleTracker.src.room_estimation.room_estimation is not documented.
+K:/Github/PeopleTracker/src/room_estimation.py:242: warning: Member img_copy(self) (function) of class PeopleTracker.src.room_estimation.room_estimation is not documented.
+K:/Github/PeopleTracker/src/room_estimation.py:245: warning: Member define_sides(self, sides, lengths) (function) of class PeopleTracker.src.room_estimation.room_estimation is not documented.
+K:/Github/PeopleTracker/src/room_estimation.py:462: warning: Member clear_corners(self) (function) of class PeopleTracker.src.room_estimation.room_estimation is not documented.
+K:/Github/PeopleTracker/src/room_estimation.py:501: warning: Member edit_room_corner(self, index, new_pixel) (function) of class PeopleTracker.src.room_estimation.room_estimation is not documented.
+K:/Github/PeopleTracker/src/room_estimation.py:506: warning: Member connect_points(self, points) (function) of class PeopleTracker.src.room_estimation.room_estimation is not documented.
+K:/Github/PeopleTracker/src/room_estimation.py:525: warning: Member get_corners(self, event, x, y, flags, param) (function) of class PeopleTracker.src.room_estimation.room_estimation is not documented.
+K:/Github/PeopleTracker/src/room_estimation.py:536: warning: Member get_corner_with_definition(self, event, x, y, flags, param) (function) of class PeopleTracker.src.room_estimation.room_estimation is not documented.
+K:/Github/PeopleTracker/src/room_estimation.py:632: warning: Member project_points(self, points=[]) (function) of class PeopleTracker.src.room_estimation.room_estimation is not documented.
+K:/Github/PeopleTracker/src/room_estimation.py:638: warning: Member plot_points(event, x, y, flags, params) (function) of class PeopleTracker.src.room_estimation.room_estimation is not documented.
+K:/Github/PeopleTracker/src/room_estimation.py:730: warning: Member get_3d_point(self, pixel, height=1500, camera_matrix=None, rotation_matrix=None, tvec=None, show_point=True) (function) of class PeopleTracker.src.room_estimation.room_estimation is not documented.
+K:/Github/PeopleTracker/src/room_estimation.py:755: warning: Member display_3D_Plot(points, shown) (function) of class PeopleTracker.src.room_estimation.room_estimation is not documented.
+K:/Github/PeopleTracker/src/room_estimation.py:770: warning: Member draw_axis(self) (function) of class PeopleTracker.src.room_estimation.room_estimation is not documented.
+K:/Github/PeopleTracker/src/room_estimation.py:874: warning: Member draw_box(img, corners, imgpts) (function) of class PeopleTracker.src.room_estimation.room_estimation is not documented.
+K:/Github/PeopleTracker/src/room_estimation.py:886: warning: Member draw_point(self, img, front_pt, back_pt) (function) of class PeopleTracker.src.room_estimation.room_estimation is not documented.
+K:/Github/PeopleTracker/src/room_estimation.py:893: warning: Member estimate_plane(img, corners, points, calibration_matrix, distortion_matrix) (function) of class PeopleTracker.src.room_estimation.room_estimation is not documented.
+K:/Github/PeopleTracker/src/room_estimation.py:912: warning: Member draw_vector(self, event, x, y, flags, params) (function) of class PeopleTracker.src.room_estimation.room_estimation is not documented.
+K:/Github/PeopleTracker/src/room_estimation.py:1010: warning: Member get_room_3d(self, limits, height, step, save_filename=None) (function) of class PeopleTracker.src.room_estimation.room_estimation is not documented.
+K:/Github/PeopleTracker/src/room_estimation.py:1032: warning: Member save_room_3d(self, path, filename, mapped) (function) of class PeopleTracker.src.room_estimation.room_estimation is not documented.
+K:/Github/PeopleTracker/src/room_estimation.py:1040: warning: Member load_room_3d(self, filename) (function) of class PeopleTracker.src.room_estimation.room_estimation is not documented.
+K:/Github/PeopleTracker/src/room_estimation.py:1046: warning: Member get_room_points(self, width, length, height=0) (function) of class PeopleTracker.src.room_estimation.room_estimation is not documented.
+K:/Github/PeopleTracker/src/room_estimation.py:1204: warning: Member find_3d_limits(self, height=1000) (function) of class PeopleTracker.src.room_estimation.room_estimation is not documented.
+K:/Github/PeopleTracker/src/room_estimation.py:1416: warning: Member project_point(self, event, x, y, flags, params) (function) of class PeopleTracker.src.room_estimation.room_estimation is not documented.
+K:/Github/PeopleTracker/src/room_estimation.py:1679: warning: Member get_checkerboard_shape(self, checkerboard_images) (function) of class PeopleTracker.src.room_estimation.room_estimation is not documented.
+K:/Github/PeopleTracker/src/room_estimation.py:1699: warning: Member fisheye_calibrate(self, checkerboard_images, checkerboard_grid=None, out=None) (function) of class PeopleTracker.src.room_estimation.room_estimation is not documented.
+K:/Github/PeopleTracker/src/room_estimation.py:1781: warning: Member checkerboard_calibrate(self, checkerboard_images, checkerboard_grid=None, out=None) (function) of class PeopleTracker.src.room_estimation.room_estimation is not documented.
+K:/Github/PeopleTracker/src/room_estimation.py:1855: warning: Member save_calibration(self, file, mtx, distortion, rvecs, tvecs, error_list, resolution) (function) of class PeopleTracker.src.room_estimation.room_estimation is not documented.
+K:/Github/PeopleTracker/src/room_estimation.py:1948: warning: Member get_calibration_ratio(self, video_resolution, calibration_resolution) (function) of class PeopleTracker.src.room_estimation.room_estimation is not documented.
+K:/Github/PeopleTracker/src/room_estimation.py:2044: warning: Member undistort_tracker_data(self, data, image=None, camera_matrix=None, distortion=None) (function) of class PeopleTracker.src.room_estimation.room_estimation is not documented.
+K:/Github/PeopleTracker/src/room_estimation.py:2145: warning: Member show_tracker_3D(self, df, mapped_min, mapped_max) (function) of class PeopleTracker.src.room_estimation.room_estimation is not documented.
+K:/Github/PeopleTracker/src/room_estimation.py:2253: warning: Member show_tracker_2D(self, df, image, data_columns=['Pixel_Loc_x', 'Pixel_Loc_y'], window="Tracker2D", colour=(255, 255, 0)) (function) of class PeopleTracker.src.room_estimation.room_estimation is not documented.
+K:/Github/PeopleTracker/src/room_estimation.py:2324: warning: Member evaluate_calibration(self) (function) of class PeopleTracker.src.room_estimation.room_estimation is not documented.
+K:/Github/PeopleTracker/src/room_estimation.py:2459: warning: Member load_room(self, filename) (function) of class PeopleTracker.src.room_estimation.room_estimation is not documented.
+K:/Github/PeopleTracker/src/room_estimation.py:2478: warning: Member load_and_undistort_calibration(self, video_path, visualize_distortion=False, points_data=None) (function) of class PeopleTracker.src.room_estimation.room_estimation is not documented.
+K:/Github/PeopleTracker/src/room_estimation.py:2704: warning: Member draw_grid(self, grid_shape=(20, 20), color=(255, 255, 255), thickness=2) (function) of class PeopleTracker.src.room_estimation.room_estimation is not documented.
+K:/Github/PeopleTracker/src/room_estimation.py:2734: warning: Member get_files_from_folder(self, folder, extension="MP4") (function) of class PeopleTracker.src.room_estimation.room_estimation is not documented.
+K:/Github/PeopleTracker/src/room_estimation.py:151: warning: Member window_name (variable) of class PeopleTracker.src.room_estimation.room_estimation is not documented.
+K:/Github/PeopleTracker/src/room_estimation.py:153: warning: Member image (variable) of class PeopleTracker.src.room_estimation.room_estimation is not documented.
+K:/Github/PeopleTracker/src/room_estimation.py:154: warning: Member show_img (variable) of class PeopleTracker.src.room_estimation.room_estimation is not documented.
+K:/Github/PeopleTracker/src/room_estimation.py:155: warning: Member corners (variable) of class PeopleTracker.src.room_estimation.room_estimation is not documented.
+K:/Github/PeopleTracker/src/room_estimation.py:156: warning: Member room_points (variable) of class PeopleTracker.src.room_estimation.room_estimation is not documented.
+K:/Github/PeopleTracker/src/room_estimation.py:158: warning: Member real_locations (variable) of class PeopleTracker.src.room_estimation.room_estimation is not documented.
+K:/Github/PeopleTracker/src/room_estimation.py:160: warning: Member camera_matrix (variable) of class PeopleTracker.src.room_estimation.room_estimation is not documented.
+K:/Github/PeopleTracker/src/room_estimation.py:161: warning: Member distioriton_matrix (variable) of class PeopleTracker.src.room_estimation.room_estimation is not documented.
+K:/Github/PeopleTracker/src/room_estimation.py:162: warning: Member calibration_errors (variable) of class PeopleTracker.src.room_estimation.room_estimation is not documented.
+K:/Github/PeopleTracker/src/room_estimation.py:164: warning: Member calibration_resolution (variable) of class PeopleTracker.src.room_estimation.room_estimation is not documented.
+K:/Github/PeopleTracker/src/room_estimation.py:166: warning: Member rotation_vector (variable) of class PeopleTracker.src.room_estimation.room_estimation is not documented.
+K:/Github/PeopleTracker/src/room_estimation.py:167: warning: Member translation_vector (variable) of class PeopleTracker.src.room_estimation.room_estimation is not documented.
+K:/Github/PeopleTracker/src/room_estimation.py:170: warning: Member room_width (variable) of class PeopleTracker.src.room_estimation.room_estimation is not documented.
+K:/Github/PeopleTracker/src/room_estimation.py:171: warning: Member room_length (variable) of class PeopleTracker.src.room_estimation.room_estimation is not documented.
+K:/Github/PeopleTracker/src/room_estimation.py:172: warning: Member room_height (variable) of class PeopleTracker.src.room_estimation.room_estimation is not documented.
+K:/Github/PeopleTracker/src/room_estimation.py:174: warning: Member sample_rate (variable) of class PeopleTracker.src.room_estimation.room_estimation is not documented.
+K:/Github/PeopleTracker/src/room_estimation.py:176: warning: Member mapped_dictionary (variable) of class PeopleTracker.src.room_estimation.room_estimation is not documented.
+K:/Github/PeopleTracker/src/room_estimation.py:177: warning: Member mapped (variable) of class PeopleTracker.src.room_estimation.room_estimation is not documented.
+K:/Github/PeopleTracker/src/room_estimation.py:179: warning: Member points_data (variable) of class PeopleTracker.src.room_estimation.room_estimation is not documented.
+K:/Github/PeopleTracker/src/room_estimation.py:181: warning: Member vector_depth (variable) of class PeopleTracker.src.room_estimation.room_estimation is not documented.
+K:/Github/PeopleTracker/src/room_estimation.py:183: warning: Member axis (variable) of class PeopleTracker.src.room_estimation.room_estimation is not documented.
+K:/Github/PeopleTracker/src/room_estimation.py:184: warning: Member fig (variable) of class PeopleTracker.src.room_estimation.room_estimation is not documented.
+K:/Github/PeopleTracker/src/room_estimation.py:185: warning: Member stitch_homographies (variable) of class PeopleTracker.src.room_estimation.room_estimation is not documented.
+K:/Github/PeopleTracker/src/room_estimation.py:192: warning: Member show_3D_plot (variable) of class PeopleTracker.src.room_estimation.room_estimation is not documented.
+K:/Github/PeopleTracker/src/room_estimation.py:479: warning: Member get_corners (variable) of class PeopleTracker.src.room_estimation.room_estimation is not documented.
+K:/Github/PeopleTracker/src/room_estimation.py:971: warning: Member ax (variable) of class PeopleTracker.src.room_estimation.room_estimation is not documented.
+K:/Github/PeopleTracker/src/room_estimation.py:972: warning: Member front_plt (variable) of class PeopleTracker.src.room_estimation.room_estimation is not documented.
+K:/Github/PeopleTracker/src/room_estimation.py:973: warning: Member back_plt (variable) of class PeopleTracker.src.room_estimation.room_estimation is not documented.
+K:/Github/PeopleTracker/src/room_estimation.py:974: warning: Member float_plt (variable) of class PeopleTracker.src.room_estimation.room_estimation is not documented.
+K:/Github/PeopleTracker/src/room_estimation.py:975: warning: Member line_plt (variable) of class PeopleTracker.src.room_estimation.room_estimation is not documented.
+K:/Github/PeopleTracker/src/room_estimation.py:990: warning: Member points_plt (variable) of class PeopleTracker.src.room_estimation.room_estimation is not documented.
+K:/Github/PeopleTracker/src/room_estimation.py:1002: warning: Member quiver (variable) of class PeopleTracker.src.room_estimation.room_estimation is not documented.
+K:/Github/PeopleTracker/src/room_estimation.py:1130: warning: Member get_corner_with_definition (variable) of class PeopleTracker.src.room_estimation.room_estimation is not documented.
+K:/Github/PeopleTracker/src/room_estimation.py:1449: warning: Member get_depth (variable) of class PeopleTracker.src.room_estimation.room_estimation is not documented.
+K:/Github/PeopleTracker/src/room_estimation.py:1849: warning: Member error_list (variable) of class PeopleTracker.src.room_estimation.room_estimation is not documented.
+K:/Github/PeopleTracker/src/room_estimation.py:2107: warning: Member invert_y (variable) of class PeopleTracker.src.room_estimation.room_estimation is not documented.
+Generating docs for compound PeopleTracker::src::test_Multitracker::TestMultitracker...
+K:/Github/PeopleTracker/src/test_Multitracker.py:10: warning: Member __init__(self, *args, **kwargs) (function) of class PeopleTracker.src.test_Multitracker.TestMultitracker is not documented.
+K:/Github/PeopleTracker/src/test_Multitracker.py:14: warning: Member new_tracker(self) (function) of class PeopleTracker.src.test_Multitracker.TestMultitracker is not documented.
+K:/Github/PeopleTracker/src/test_Multitracker.py:20: warning: Member test_merge_intervals(self) (function) of class PeopleTracker.src.test_Multitracker.TestMultitracker is not documented.
+K:/Github/PeopleTracker/src/test_Multitracker.py:48: warning: Member test_part_time_into_segments_Empty(self) (function) of class PeopleTracker.src.test_Multitracker.TestMultitracker is not documented.
+K:/Github/PeopleTracker/src/test_Multitracker.py:60: warning: Member test_part_time_into_segments_single(self) (function) of class PeopleTracker.src.test_Multitracker.TestMultitracker is not documented.
+K:/Github/PeopleTracker/src/test_Multitracker.py:68: warning: Member test_part_time_into_segments_multiple(self) (function) of class PeopleTracker.src.test_Multitracker.TestMultitracker is not documented.
+K:/Github/PeopleTracker/src/test_Multitracker.py:89: warning: Member test_part_into_segments_complex(self) (function) of class PeopleTracker.src.test_Multitracker.TestMultitracker is not documented.
+K:/Github/PeopleTracker/src/test_Multitracker.py:106: warning: Member test_calculate_time(self) (function) of class PeopleTracker.src.test_Multitracker.TestMultitracker is not documented.
+K:/Github/PeopleTracker/src/test_Multitracker.py:125: warning: Member test_calculate_total_time(self) (function) of class PeopleTracker.src.test_Multitracker.TestMultitracker is not documented.
+K:/Github/PeopleTracker/src/test_Multitracker.py:12: warning: Member longMessage (variable) of class PeopleTracker.src.test_Multitracker.TestMultitracker is not documented.
+Generating docs for compound PeopleTracker::src::test_Regions::TestRegions...
+K:/Github/PeopleTracker/src/test_Regions.py:9: warning: Member __init__(self, *args, **kwargs) (function) of class PeopleTracker.src.test_Regions.TestRegions is not documented.
+K:/Github/PeopleTracker/src/test_Regions.py:13: warning: Member new_region(self) (function) of class PeopleTracker.src.test_Regions.TestRegions is not documented.
+K:/Github/PeopleTracker/src/test_Regions.py:20: warning: Member test_set_moving_region(self) (function) of class PeopleTracker.src.test_Regions.TestRegions is not documented.
+K:/Github/PeopleTracker/src/test_Regions.py:31: warning: Member del_moving_region(self) (function) of class PeopleTracker.src.test_Regions.TestRegions is not documented.
+K:/Github/PeopleTracker/src/test_Regions.py:11: warning: Member longMessage (variable) of class PeopleTracker.src.test_Regions.TestRegions is not documented.
+Generating docs for compound PeopleTracker::src::tracker_to_DLC::Converter...
+K:/Github/PeopleTracker/src/tracker_to_DLC.py:29: warning: Member __init__(self, author="Justin") (function) of class PeopleTracker.src.tracker_to_DLC.Converter is not documented.
+K:/Github/PeopleTracker/src/tracker_to_DLC.py:32: warning: Member extract_frames_from_video(self, frame_numbers, video_path) (function) of class PeopleTracker.src.tracker_to_DLC.Converter is not documented.
+K:/Github/PeopleTracker/src/tracker_to_DLC.py:35: warning: Member create_h5(self, file_path) (function) of class PeopleTracker.src.tracker_to_DLC.Converter is not documented.
+K:/Github/PeopleTracker/src/tracker_to_DLC.py:38: warning: Member read_tracker_csv(self, file_path) (function) of class PeopleTracker.src.tracker_to_DLC.Converter is not documented.
+K:/Github/PeopleTracker/src/tracker_to_DLC.py:42: warning: Member extract_tracker_info(self, tracker_dataframe) (function) of class PeopleTracker.src.tracker_to_DLC.Converter is not documented.
+K:/Github/PeopleTracker/src/tracker_to_DLC.py:59: warning: Member create_dataframe(author, frames, individuals, parts) (function) of class PeopleTracker.src.tracker_to_DLC.Converter is not documented.
+K:/Github/PeopleTracker/src/tracker_to_DLC.py:85: warning: Member read_dlc_csv(self, file_path) (function) of class PeopleTracker.src.tracker_to_DLC.Converter is not documented.
+K:/Github/PeopleTracker/src/tracker_to_DLC.py:92: warning: Member convert_tracker_to_dlc(self, tracker_dataframe) (function) of class PeopleTracker.src.tracker_to_DLC.Converter is not documented.
+K:/Github/PeopleTracker/src/tracker_to_DLC.py:99: warning: Member convert_dlc_to_tracker(self, dataframe) (function) of class PeopleTracker.src.tracker_to_DLC.Converter is not documented.
+K:/Github/PeopleTracker/src/tracker_to_DLC.py:102: warning: Member export_dlc(self, dataframe) (function) of class PeopleTracker.src.tracker_to_DLC.Converter is not documented.
+Generating docs for compound PeopleTracker::src::TrackerTab::person_tab...
+K:/Github/PeopleTracker/src/TrackerTab.py:6: warning: Member __init__(self, window) (function) of class PeopleTracker.src.TrackerTab.person_tab is not documented.
+K:/Github/PeopleTracker/src/TrackerTab.py:32: warning: Member init_tab(self, parent_window) (function) of class PeopleTracker.src.TrackerTab.person_tab is not documented.
+K:/Github/PeopleTracker/src/TrackerTab.py:144: warning: Member getInteger(self) (function) of class PeopleTracker.src.TrackerTab.person_tab is not documented.
+K:/Github/PeopleTracker/src/TrackerTab.py:156: warning: Member getChoice(self) (function) of class PeopleTracker.src.TrackerTab.person_tab is not documented.
+K:/Github/PeopleTracker/src/TrackerTab.py:164: warning: Member getText(self, input_name, line) (function) of class PeopleTracker.src.TrackerTab.person_tab is not documented.
+K:/Github/PeopleTracker/src/TrackerTab.py:175: warning: Member get_uuid(self) (function) of class PeopleTracker.src.TrackerTab.person_tab is not documented.
+K:/Github/PeopleTracker/src/TrackerTab.py:178: warning: Member get_beginning(self) (function) of class PeopleTracker.src.TrackerTab.person_tab is not documented.
+K:/Github/PeopleTracker/src/TrackerTab.py:181: warning: Member get_is_region(self) (function) of class PeopleTracker.src.TrackerTab.person_tab is not documented.
+K:/Github/PeopleTracker/src/TrackerTab.py:187: warning: Member get_is_chair(self) (function) of class PeopleTracker.src.TrackerTab.person_tab is not documented.
+K:/Github/PeopleTracker/src/TrackerTab.py:190: warning: Member get_read_only(self) (function) of class PeopleTracker.src.TrackerTab.person_tab is not documented.
+K:/Github/PeopleTracker/src/TrackerTab.py:193: warning: Member get_other_room(self) (function) of class PeopleTracker.src.TrackerTab.person_tab is not documented.
+K:/Github/PeopleTracker/src/TrackerTab.py:196: warning: Member toggle_active(self) (function) of class PeopleTracker.src.TrackerTab.person_tab is not documented.
+K:/Github/PeopleTracker/src/TrackerTab.py:203: warning: Member toggle_read(self) (function) of class PeopleTracker.src.TrackerTab.person_tab is not documented.
+K:/Github/PeopleTracker/src/TrackerTab.py:210: warning: Member toggle_beginning(self) (function) of class PeopleTracker.src.TrackerTab.person_tab is not documented.
+K:/Github/PeopleTracker/src/TrackerTab.py:215: warning: Member toggle_region(self) (function) of class PeopleTracker.src.TrackerTab.person_tab is not documented.
+K:/Github/PeopleTracker/src/TrackerTab.py:221: warning: Member toggle_other_room(self) (function) of class PeopleTracker.src.TrackerTab.person_tab is not documented.
+K:/Github/PeopleTracker/src/TrackerTab.py:226: warning: Member toggle_chair(self) (function) of class PeopleTracker.src.TrackerTab.person_tab is not documented.
+K:/Github/PeopleTracker/src/TrackerTab.py:231: warning: Member update_length_tracked(self, time) (function) of class PeopleTracker.src.TrackerTab.person_tab is not documented.
+K:/Github/PeopleTracker/src/TrackerTab.py:7: warning: Member id (variable) of class PeopleTracker.src.TrackerTab.person_tab is not documented.
+K:/Github/PeopleTracker/src/TrackerTab.py:8: warning: Member parent (variable) of class PeopleTracker.src.TrackerTab.person_tab is not documented.
+K:/Github/PeopleTracker/src/TrackerTab.py:9: warning: Member tab (variable) of class PeopleTracker.src.TrackerTab.person_tab is not documented.
+K:/Github/PeopleTracker/src/TrackerTab.py:13: warning: Member name_line (variable) of class PeopleTracker.src.TrackerTab.person_tab is not documented.
+K:/Github/PeopleTracker/src/TrackerTab.py:14: warning: Member id_line (variable) of class PeopleTracker.src.TrackerTab.person_tab is not documented.
+K:/Github/PeopleTracker/src/TrackerTab.py:15: warning: Member group_line (variable) of class PeopleTracker.src.TrackerTab.person_tab is not documented.
+K:/Github/PeopleTracker/src/TrackerTab.py:18: warning: Member sex_line (variable) of class PeopleTracker.src.TrackerTab.person_tab is not documented.
+K:/Github/PeopleTracker/src/TrackerTab.py:19: warning: Member desc_line (variable) of class PeopleTracker.src.TrackerTab.person_tab is not documented.
+K:/Github/PeopleTracker/src/TrackerTab.py:21: warning: Member length_tracked (variable) of class PeopleTracker.src.TrackerTab.person_tab is not documented.
+K:/Github/PeopleTracker/src/TrackerTab.py:24: warning: Member active (variable) of class PeopleTracker.src.TrackerTab.person_tab is not documented.
+K:/Github/PeopleTracker/src/TrackerTab.py:25: warning: Member read_only (variable) of class PeopleTracker.src.TrackerTab.person_tab is not documented.
+K:/Github/PeopleTracker/src/TrackerTab.py:26: warning: Member other_room (variable) of class PeopleTracker.src.TrackerTab.person_tab is not documented.
+K:/Github/PeopleTracker/src/TrackerTab.py:27: warning: Member beginning (variable) of class PeopleTracker.src.TrackerTab.person_tab is not documented.
+K:/Github/PeopleTracker/src/TrackerTab.py:28: warning: Member is_region (variable) of class PeopleTracker.src.TrackerTab.person_tab is not documented.
+K:/Github/PeopleTracker/src/TrackerTab.py:29: warning: Member is_chair (variable) of class PeopleTracker.src.TrackerTab.person_tab is not documented.
+K:/Github/PeopleTracker/src/TrackerTab.py:58: warning: Member getChoice (variable) of class PeopleTracker.src.TrackerTab.person_tab is not documented.
+K:/Github/PeopleTracker/src/TrackerTab.py:78: warning: Member image (variable) of class PeopleTracker.src.TrackerTab.person_tab is not documented.
+K:/Github/PeopleTracker/src/TrackerTab.py:96: warning: Member read_only_button (variable) of class PeopleTracker.src.TrackerTab.person_tab is not documented.
+K:/Github/PeopleTracker/src/TrackerTab.py:102: warning: Member other_room_button (variable) of class PeopleTracker.src.TrackerTab.person_tab is not documented.
+K:/Github/PeopleTracker/src/TrackerTab.py:109: warning: Member beginning_button (variable) of class PeopleTracker.src.TrackerTab.person_tab is not documented.
+K:/Github/PeopleTracker/src/TrackerTab.py:116: warning: Member is_region_button (variable) of class PeopleTracker.src.TrackerTab.person_tab is not documented.
+K:/Github/PeopleTracker/src/TrackerTab.py:121: warning: Member is_chair_button (variable) of class PeopleTracker.src.TrackerTab.person_tab is not documented.
+Generating docs for namespace PeopleTracker::src::utils
+K:/Github/PeopleTracker/src/utils.py:561: warning: Member mold_mask(mask, config) (function) of namespace PeopleTracker.src.utils is not documented.
+K:/Github/PeopleTracker/src/utils.py:915: warning: Member distance_2d(p1, p2) (function) of namespace PeopleTracker.src.utils is not documented.
+K:/Github/PeopleTracker/src/utils.py:27: warning: Member COCO_MODEL_URL (variable) of namespace PeopleTracker.src.utils is not documented.
+Generating docs for compound PeopleTracker::src::utils::Dataset...
+K:/Github/PeopleTracker/src/utils.py:260: warning: Member __init__(self, class_map=None) (function) of class PeopleTracker.src.utils.Dataset is not documented.
+K:/Github/PeopleTracker/src/utils.py:267: warning: Member add_class(self, source, class_id, class_name) (function) of class PeopleTracker.src.utils.Dataset is not documented.
+K:/Github/PeopleTracker/src/utils.py:281: warning: Member add_image(self, source, image_id, path, **kwargs) (function) of class PeopleTracker.src.utils.Dataset is not documented.
+K:/Github/PeopleTracker/src/utils.py:350: warning: Member image_ids(self) (function) of class PeopleTracker.src.utils.Dataset is not documented.
+K:/Github/PeopleTracker/src/utils.py:262: warning: Member image_info (variable) of class PeopleTracker.src.utils.Dataset is not documented.
+K:/Github/PeopleTracker/src/utils.py:264: warning: Member class_info (variable) of class PeopleTracker.src.utils.Dataset is not documented.
+K:/Github/PeopleTracker/src/utils.py:265: warning: Member source_class_ids (variable) of class PeopleTracker.src.utils.Dataset is not documented.
+K:/Github/PeopleTracker/src/utils.py:311: warning: Member num_classes (variable) of class PeopleTracker.src.utils.Dataset is not documented.
+K:/Github/PeopleTracker/src/utils.py:312: warning: Member class_ids (variable) of class PeopleTracker.src.utils.Dataset is not documented.
+K:/Github/PeopleTracker/src/utils.py:313: warning: Member class_names (variable) of class PeopleTracker.src.utils.Dataset is not documented.
+K:/Github/PeopleTracker/src/utils.py:314: warning: Member num_images (variable) of class PeopleTracker.src.utils.Dataset is not documented.
+K:/Github/PeopleTracker/src/utils.py:318: warning: Member class_from_source_map (variable) of class PeopleTracker.src.utils.Dataset is not documented.
+K:/Github/PeopleTracker/src/utils.py:320: warning: Member image_from_source_map (variable) of class PeopleTracker.src.utils.Dataset is not documented.
+K:/Github/PeopleTracker/src/utils.py:321: warning: Member image_ids (variable) of class PeopleTracker.src.utils.Dataset is not documented.
+K:/Github/PeopleTracker/src/utils.py:324: warning: Member sources (variable) of class PeopleTracker.src.utils.Dataset is not documented.
+K:/Github/PeopleTracker/src/utils.py:261: warning: Member _image_ids (variable) of class PeopleTracker.src.utils.Dataset is not documented.
+Generating docs for compound PeopleTracker::src::Video::FileVideoStream...
+K:/Github/PeopleTracker/src/Video.py:79: warning: Member __init__(self, path, transform=None, queue_size=200) (function) of class PeopleTracker.src.Video.FileVideoStream is not documented.
+K:/Github/PeopleTracker/src/Video.py:102: warning: Member set_next_frame(self, frame_num) (function) of class PeopleTracker.src.Video.FileVideoStream is not documented.
+K:/Github/PeopleTracker/src/Video.py:105: warning: Member start(self) (function) of class PeopleTracker.src.Video.FileVideoStream is not documented.
+K:/Github/PeopleTracker/src/Video.py:111: warning: Member update(self) (function) of class PeopleTracker.src.Video.FileVideoStream is not documented.
+K:/Github/PeopleTracker/src/Video.py:183: warning: Member read(self) (function) of class PeopleTracker.src.Video.FileVideoStream is not documented.
+K:/Github/PeopleTracker/src/Video.py:198: warning: Member running(self) (function) of class PeopleTracker.src.Video.FileVideoStream is not documented.
+K:/Github/PeopleTracker/src/Video.py:201: warning: Member more(self) (function) of class PeopleTracker.src.Video.FileVideoStream is not documented.
+K:/Github/PeopleTracker/src/Video.py:210: warning: Member stop(self) (function) of class PeopleTracker.src.Video.FileVideoStream is not documented.
+K:/Github/PeopleTracker/src/Video.py:82: warning: Member frame_number (variable) of class PeopleTracker.src.Video.FileVideoStream is not documented.
+K:/Github/PeopleTracker/src/Video.py:83: warning: Member skip_value (variable) of class PeopleTracker.src.Video.FileVideoStream is not documented.
+K:/Github/PeopleTracker/src/Video.py:84: warning: Member next (variable) of class PeopleTracker.src.Video.FileVideoStream is not documented.
+K:/Github/PeopleTracker/src/Video.py:85: warning: Member reset (variable) of class PeopleTracker.src.Video.FileVideoStream is not documented.
+K:/Github/PeopleTracker/src/Video.py:86: warning: Member stream (variable) of class PeopleTracker.src.Video.FileVideoStream is not documented.
+K:/Github/PeopleTracker/src/Video.py:87: warning: Member stopped (variable) of class PeopleTracker.src.Video.FileVideoStream is not documented.
+K:/Github/PeopleTracker/src/Video.py:88: warning: Member grabbed (variable) of class PeopleTracker.src.Video.FileVideoStream is not documented.
+K:/Github/PeopleTracker/src/Video.py:89: warning: Member transform (variable) of class PeopleTracker.src.Video.FileVideoStream is not documented.
+K:/Github/PeopleTracker/src/Video.py:90: warning: Member record_live (variable) of class PeopleTracker.src.Video.FileVideoStream is not documented.
+K:/Github/PeopleTracker/src/Video.py:97: warning: Member Q (variable) of class PeopleTracker.src.Video.FileVideoStream is not documented.
+K:/Github/PeopleTracker/src/Video.py:99: warning: Member thread (variable) of class PeopleTracker.src.Video.FileVideoStream is not documented.
+Generating docs for compound PeopleTracker::src::Video::STFileVideoStream...
+K:/Github/PeopleTracker/src/Video.py:20: warning: Member __init__(self, path) (function) of class PeopleTracker.src.Video.STFileVideoStream is not documented.
+K:/Github/PeopleTracker/src/Video.py:37: warning: Member read(self) (function) of class PeopleTracker.src.Video.STFileVideoStream is not documented.
+K:/Github/PeopleTracker/src/Video.py:72: warning: Member stop(self) (function) of class PeopleTracker.src.Video.STFileVideoStream is not documented.
+K:/Github/PeopleTracker/src/Video.py:23: warning: Member frame_number (variable) of class PeopleTracker.src.Video.STFileVideoStream is not documented.
+K:/Github/PeopleTracker/src/Video.py:24: warning: Member skip_value (variable) of class PeopleTracker.src.Video.STFileVideoStream is not documented.
+K:/Github/PeopleTracker/src/Video.py:25: warning: Member next (variable) of class PeopleTracker.src.Video.STFileVideoStream is not documented.
+K:/Github/PeopleTracker/src/Video.py:26: warning: Member reset (variable) of class PeopleTracker.src.Video.STFileVideoStream is not documented.
+K:/Github/PeopleTracker/src/Video.py:27: warning: Member stream (variable) of class PeopleTracker.src.Video.STFileVideoStream is not documented.
+K:/Github/PeopleTracker/src/Video.py:28: warning: Member stopped (variable) of class PeopleTracker.src.Video.STFileVideoStream is not documented.
+K:/Github/PeopleTracker/src/Video.py:29: warning: Member grabbed (variable) of class PeopleTracker.src.Video.STFileVideoStream is not documented.
+K:/Github/PeopleTracker/src/Video.py:31: warning: Member record_live (variable) of class PeopleTracker.src.Video.STFileVideoStream is not documented.
+Generating graph info page...
+Generating directory documentation...
+Generating index page...
+Generating page index...
+Generating topic index...
+Generating module index...
+Generating module member index...
+Generating namespace index...
+Generating namespace member index...
+Generating concept index...
+Generating annotated compound index...
+Generating alphabetical compound index...
+Generating hierarchical class index...
+Generating graphical class hierarchy...
+Generating member index...
+Generating file index...
+Generating file member index...
+Generating example index...
+finalizing index lists...
+writing tag file...
+Running plantuml with JAVA...
+Running dot...
+Generating dot graphs using 17 parallel threads...
+K:/Github/PeopleTracker/Documentation/html/a00176.dot:1: error: Problems running dot: exit code=-1, command='dot.exe', arguments='"K:/Github/PeopleTracker/Documentation/html/a00176.dot" -Tpng -o "K:/Github/PeopleTracker/Documentation/html/a00176.png"'
+K:/Github/PeopleTracker/Documentation/html/a00141.dot:1: error: Problems running dot: exit code=-1, command='dot.exe', arguments='"K:/Github/PeopleTracker/Documentation/html/a00141.dot" -Tpng -o "K:/Github/PeopleTracker/Documentation/html/a00141.png"'
+K:/Github/PeopleTracker/Documentation/html/a00165.dot:1: error: Problems running dot: exit code=-1, command='dot.exe', arguments='"K:/Github/PeopleTracker/Documentation/html/a00165.dot" -Tpng -o "K:/Github/PeopleTracker/Documentation/html/a00165.png"'
+K:/Github/PeopleTracker/Documentation/html/a00173.dot:1: error: Problems running dot: exit code=-1, command='dot.exe', arguments='"K:/Github/PeopleTracker/Documentation/html/a00173.dot" -Tpng -o "K:/Github/PeopleTracker/Documentation/html/a00173.png"'
+K:/Github/PeopleTracker/Documentation/html/a00164.dot:1: error: Problems running dot: exit code=-1, command='dot.exe', arguments='"K:/Github/PeopleTracker/Documentation/html/a00164.dot" -Tpng -o "K:/Github/PeopleTracker/Documentation/html/a00164.png"'
+K:/Github/PeopleTracker/Documentation/html/a00140.dot:1: error: Problems running dot: exit code=-1, command='dot.exe', arguments='"K:/Github/PeopleTracker/Documentation/html/a00140.dot" -Tpng -o "K:/Github/PeopleTracker/Documentation/html/a00140.png"'
+Running dot for graph 1/63
+Running dot for graph 2/63
+Running dot for graph 3/63
+Running dot for graph 4/63
+K:/Github/PeopleTracker/Documentation/html/a00172.dot:1: error: Problems running dot: exit code=-1, command='dot.exe', arguments='"K:/Github/PeopleTracker/Documentation/html/a00172.dot" -Tpng -o "K:/Github/PeopleTracker/Documentation/html/a00172.png"'
+Running dot for graph 5/63
+Running dot for graph 6/63
+Running dot for graph 7/63
+K:/Github/PeopleTracker/Documentation/html/a00185.dot:1: error: Problems running dot: exit code=-1, command='dot.exe', arguments='"K:/Github/PeopleTracker/Documentation/html/a00185.dot" -Tpng -o "K:/Github/PeopleTracker/Documentation/html/a00185.png"'
+K:/Github/PeopleTracker/Documentation/html/a00180.dot:1: error: Problems running dot: exit code=-1, command='dot.exe', arguments='"K:/Github/PeopleTracker/Documentation/html/a00180.dot" -Tpng -o "K:/Github/PeopleTracker/Documentation/html/a00180.png"'
+K:/Github/PeopleTracker/Documentation/html/a00177.dot:1: error: Problems running dot: exit code=-1, command='dot.exe', arguments='"K:/Github/PeopleTracker/Documentation/html/a00177.dot" -Tpng -o "K:/Github/PeopleTracker/Documentation/html/a00177.png"'
+K:/Github/PeopleTracker/Documentation/html/a00184.dot:1: error: Problems running dot: exit code=-1, command='dot.exe', arguments='"K:/Github/PeopleTracker/Documentation/html/a00184.dot" -Tpng -o "K:/Github/PeopleTracker/Documentation/html/a00184.png"'
+Running dot for graph 8/63
+Running dot for graph 9/63
+K:/Github/PeopleTracker/Documentation/html/a00189.dot:1: error: Problems running dot: exit code=-1, command='dot.exe', arguments='"K:/Github/PeopleTracker/Documentation/html/a00189.dot" -Tpng -o "K:/Github/PeopleTracker/Documentation/html/a00189.png"'
+K:/Github/PeopleTracker/Documentation/html/a00181.dot:1: error: Problems running dot: exit code=-1, command='dot.exe', arguments='"K:/Github/PeopleTracker/Documentation/html/a00181.dot" -Tpng -o "K:/Github/PeopleTracker/Documentation/html/a00181.png"'
+Running dot for graph 10/63
+Running dot for graph 11/63
+Running dot for graph 12/63
+K:/Github/PeopleTracker/Documentation/html/a00188.dot:1: error: Problems running dot: exit code=-1, command='dot.exe', arguments='"K:/Github/PeopleTracker/Documentation/html/a00188.dot" -Tpng -o "K:/Github/PeopleTracker/Documentation/html/a00188.png"'
+Running dot for graph 13/63
+Running dot for graph 14/63
+K:/Github/PeopleTracker/Documentation/html/a00192.dot:1: error: Problems running dot: exit code=-1, command='dot.exe', arguments='"K:/Github/PeopleTracker/Documentation/html/a00192.dot" -Tpng -o "K:/Github/PeopleTracker/Documentation/html/a00192.png"'
+Running dot for graph 15/63
+K:/Github/PeopleTracker/Documentation/html/a00193.dot:1: error: Problems running dot: exit code=-1, command='dot.exe', arguments='"K:/Github/PeopleTracker/Documentation/html/a00193.dot" -Tpng -o "K:/Github/PeopleTracker/Documentation/html/a00193.png"'
+Running dot for graph 16/63
+K:/Github/PeopleTracker/Documentation/html/a00209.dot:1: error: Problems running dot: exit code=-1, command='dot.exe', arguments='"K:/Github/PeopleTracker/Documentation/html/a00209.dot" -Tpng -o "K:/Github/PeopleTracker/Documentation/html/a00209.png"'
+K:/Github/PeopleTracker/Documentation/html/a00208.dot:1: error: Problems running dot: exit code=-1, command='dot.exe', arguments='"K:/Github/PeopleTracker/Documentation/html/a00208.dot" -Tpng -o "K:/Github/PeopleTracker/Documentation/html/a00208.png"'
+K:/Github/PeopleTracker/Documentation/html/a00205.dot:1: error: Problems running dot: exit code=-1, command='dot.exe', arguments='"K:/Github/PeopleTracker/Documentation/html/a00205.dot" -Tpng -o "K:/Github/PeopleTracker/Documentation/html/a00205.png"'
+K:/Github/PeopleTracker/Documentation/html/a00220.dot:1: error: Problems running dot: exit code=-1, command='dot.exe', arguments='"K:/Github/PeopleTracker/Documentation/html/a00220.dot" -Tpng -o "K:/Github/PeopleTracker/Documentation/html/a00220.png"'
+K:/Github/PeopleTracker/Documentation/html/a00204.dot:1: error: Problems running dot: exit code=-1, command='dot.exe', arguments='"K:/Github/PeopleTracker/Documentation/html/a00204.dot" -Tpng -o "K:/Github/PeopleTracker/Documentation/html/a00204.png"'
+Running dot for graph 17/63
+Running dot for graph 18/63
+Running dot for graph 19/63
+Running dot for graph 20/63
+Running dot for graph 21/63
+K:/Github/PeopleTracker/Documentation/html/a00221.dot:1: error: Problems running dot: exit code=-1, command='dot.exe', arguments='"K:/Github/PeopleTracker/Documentation/html/a00221.dot" -Tpng -o "K:/Github/PeopleTracker/Documentation/html/a00221.png"'
+Running dot for graph 22/63
+K:/Github/PeopleTracker/Documentation/html/inherit_graph_0.dot:1: error: Problems running dot: exit code=-1, command='dot.exe', arguments='"K:/Github/PeopleTracker/Documentation/html/inherit_graph_0.dot" -Tpng -o "K:/Github/PeopleTracker/Documentation/html/inherit_graph_0.png"'
+K:/Github/PeopleTracker/Documentation/html/inherit_graph_10.dot:1: error: Problems running dot: exit code=-1, command='dot.exe', arguments='"K:/Github/PeopleTracker/Documentation/html/inherit_graph_10.dot" -Tpng -o "K:/Github/PeopleTracker/Documentation/html/inherit_graph_10.png"'
+K:/Github/PeopleTracker/Documentation/html/graph_legend.dot:1: error: Problems running dot: exit code=-1, command='dot.exe', arguments='"K:/Github/PeopleTracker/Documentation/html/graph_legend.dot" -Tpng -o "K:/Github/PeopleTracker/Documentation/html/graph_legend.png"'
+Running dot for graph 23/63
+Running dot for graph 24/63
+K:/Github/PeopleTracker/Documentation/html/inherit_graph_1.dot:1: error: Problems running dot: exit code=-1, command='dot.exe', arguments='"K:/Github/PeopleTracker/Documentation/html/inherit_graph_1.dot" -Tpng -o "K:/Github/PeopleTracker/Documentation/html/inherit_graph_1.png"'
+K:/Github/PeopleTracker/Documentation/html/inherit_graph_11.dot:1: error: Problems running dot: exit code=-1, command='dot.exe', arguments='"K:/Github/PeopleTracker/Documentation/html/inherit_graph_11.dot" -Tpng -o "K:/Github/PeopleTracker/Documentation/html/inherit_graph_11.png"'
+Running dot for graph 25/63
+Running dot for graph 26/63
+Running dot for graph 27/63
+K:/Github/PeopleTracker/Documentation/html/inherit_graph_12.dot:1: error: Problems running dot: exit code=-1, command='dot.exe', arguments='"K:/Github/PeopleTracker/Documentation/html/inherit_graph_12.dot" -Tpng -o "K:/Github/PeopleTracker/Documentation/html/inherit_graph_12.png"'
+Running dot for graph 28/63
+K:/Github/PeopleTracker/Documentation/html/inherit_graph_13.dot:1: error: Problems running dot: exit code=-1, command='dot.exe', arguments='"K:/Github/PeopleTracker/Documentation/html/inherit_graph_13.dot" -Tpng -o "K:/Github/PeopleTracker/Documentation/html/inherit_graph_13.png"'
+Running dot for graph 29/63
+K:/Github/PeopleTracker/Documentation/html/inherit_graph_14.dot:1: error: Problems running dot: exit code=-1, command='dot.exe', arguments='"K:/Github/PeopleTracker/Documentation/html/inherit_graph_14.dot" -Tpng -o "K:/Github/PeopleTracker/Documentation/html/inherit_graph_14.png"'
+Running dot for graph 30/63
+K:/Github/PeopleTracker/Documentation/html/inherit_graph_15.dot:1: error: Problems running dot: exit code=-1, command='dot.exe', arguments='"K:/Github/PeopleTracker/Documentation/html/inherit_graph_15.dot" -Tpng -o "K:/Github/PeopleTracker/Documentation/html/inherit_graph_15.png"'
+Running dot for graph 31/63
+K:/Github/PeopleTracker/Documentation/html/inherit_graph_16.dot:1: error: Problems running dot: exit code=-1, command='dot.exe', arguments='"K:/Github/PeopleTracker/Documentation/html/inherit_graph_16.dot" -Tpng -o "K:/Github/PeopleTracker/Documentation/html/inherit_graph_16.png"'
+Running dot for graph 32/63
+K:/Github/PeopleTracker/Documentation/html/inherit_graph_17.dot:1: error: Problems running dot: exit code=-1, command='dot.exe', arguments='"K:/Github/PeopleTracker/Documentation/html/inherit_graph_17.dot" -Tpng -o "K:/Github/PeopleTracker/Documentation/html/inherit_graph_17.png"'
+Running dot for graph 33/63
+K:/Github/PeopleTracker/Documentation/html/inherit_graph_2.dot:1: error: Problems running dot: exit code=-1, command='dot.exe', arguments='"K:/Github/PeopleTracker/Documentation/html/inherit_graph_2.dot" -Tpng -o "K:/Github/PeopleTracker/Documentation/html/inherit_graph_2.png"'
+Running dot for graph 34/63
+K:/Github/PeopleTracker/Documentation/html/inherit_graph_4.dot:1: error: Problems running dot: exit code=-1, command='dot.exe', arguments='"K:/Github/PeopleTracker/Documentation/html/inherit_graph_4.dot" -Tpng -o "K:/Github/PeopleTracker/Documentation/html/inherit_graph_4.png"'
+K:/Github/PeopleTracker/Documentation/html/inherit_graph_3.dot:1: error: Problems running dot: exit code=-1, command='dot.exe', arguments='"K:/Github/PeopleTracker/Documentation/html/inherit_graph_3.dot" -Tpng -o "K:/Github/PeopleTracker/Documentation/html/inherit_graph_3.png"'
+Running dot for graph 35/63
+Running dot for graph 36/63
+K:/Github/PeopleTracker/Documentation/html/inherit_graph_6.dot:1: error: Problems running dot: exit code=-1, command='dot.exe', arguments='"K:/Github/PeopleTracker/Documentation/html/inherit_graph_6.dot" -Tpng -o "K:/Github/PeopleTracker/Documentation/html/inherit_graph_6.png"'
+K:/Github/PeopleTracker/Documentation/html/inherit_graph_5.dot:1: error: Problems running dot: exit code=-1, command='dot.exe', arguments='"K:/Github/PeopleTracker/Documentation/html/inherit_graph_5.dot" -Tpng -o "K:/Github/PeopleTracker/Documentation/html/inherit_graph_5.png"'
+Running dot for graph 37/63
+Running dot for graph 38/63
+K:/Github/PeopleTracker/Documentation/html/inherit_graph_8.dot:1: error: Problems running dot: exit code=-1, command='dot.exe', arguments='"K:/Github/PeopleTracker/Documentation/html/inherit_graph_8.dot" -Tpng -o "K:/Github/PeopleTracker/Documentation/html/inherit_graph_8.png"'
+K:/Github/PeopleTracker/Documentation/html/inherit_graph_7.dot:1: error: Problems running dot: exit code=-1, command='dot.exe', arguments='"K:/Github/PeopleTracker/Documentation/html/inherit_graph_7.dot" -Tpng -o "K:/Github/PeopleTracker/Documentation/html/inherit_graph_7.png"'
+Running dot for graph 39/63
+Running dot for graph 40/63
+K:/Github/PeopleTracker/Documentation/html/inherit_graph_9.dot:1: error: Problems running dot: exit code=-1, command='dot.exe', arguments='"K:/Github/PeopleTracker/Documentation/html/inherit_graph_9.dot" -Tpng -o "K:/Github/PeopleTracker/Documentation/html/inherit_graph_9.png"'
+Running dot for graph 41/63
+K:/Github/PeopleTracker/Documentation/latex/a00140.dot:1: error: Problems running dot: exit code=-1, command='dot.exe', arguments='"K:/Github/PeopleTracker/Documentation/latex/a00140.dot" -Tpdf -o "K:/Github/PeopleTracker/Documentation/latex/a00140.pdf"'
+Running dot for graph 42/63
+K:/Github/PeopleTracker/Documentation/latex/a00141.dot:1: error: Problems running dot: exit code=-1, command='dot.exe', arguments='"K:/Github/PeopleTracker/Documentation/latex/a00141.dot" -Tpdf -o "K:/Github/PeopleTracker/Documentation/latex/a00141.pdf"'
+Running dot for graph 43/63
+K:/Github/PeopleTracker/Documentation/latex/a00165.dot:1: error: Problems running dot: exit code=-1, command='dot.exe', arguments='"K:/Github/PeopleTracker/Documentation/latex/a00165.dot" -Tpdf -o "K:/Github/PeopleTracker/Documentation/latex/a00165.pdf"'
+K:/Github/PeopleTracker/Documentation/latex/a00164.dot:1: error: Problems running dot: exit code=-1, command='dot.exe', arguments='"K:/Github/PeopleTracker/Documentation/latex/a00164.dot" -Tpdf -o "K:/Github/PeopleTracker/Documentation/latex/a00164.pdf"'
+Running dot for graph 44/63
+Running dot for graph 45/63
+K:/Github/PeopleTracker/Documentation/latex/a00172.dot:1: error: Problems running dot: exit code=-1, command='dot.exe', arguments='"K:/Github/PeopleTracker/Documentation/latex/a00172.dot" -Tpdf -o "K:/Github/PeopleTracker/Documentation/latex/a00172.pdf"'
+Running dot for graph 46/63
+K:/Github/PeopleTracker/Documentation/latex/a00176.dot:1: error: Problems running dot: exit code=-1, command='dot.exe', arguments='"K:/Github/PeopleTracker/Documentation/latex/a00176.dot" -Tpdf -o "K:/Github/PeopleTracker/Documentation/latex/a00176.pdf"'
+K:/Github/PeopleTracker/Documentation/latex/a00173.dot:1: error: Problems running dot: exit code=-1, command='dot.exe', arguments='"K:/Github/PeopleTracker/Documentation/latex/a00173.dot" -Tpdf -o "K:/Github/PeopleTracker/Documentation/latex/a00173.pdf"'
+Running dot for graph 47/63
+Running dot for graph 48/63
+K:/Github/PeopleTracker/Documentation/latex/a00177.dot:1: error: Problems running dot: exit code=-1, command='dot.exe', arguments='"K:/Github/PeopleTracker/Documentation/latex/a00177.dot" -Tpdf -o "K:/Github/PeopleTracker/Documentation/latex/a00177.pdf"'
+Running dot for graph 49/63
+K:/Github/PeopleTracker/Documentation/latex/a00180.dot:1: error: Problems running dot: exit code=-1, command='dot.exe', arguments='"K:/Github/PeopleTracker/Documentation/latex/a00180.dot" -Tpdf -o "K:/Github/PeopleTracker/Documentation/latex/a00180.pdf"'
+K:/Github/PeopleTracker/Documentation/latex/a00181.dot:1: error: Problems running dot: exit code=-1, command='dot.exe', arguments='"K:/Github/PeopleTracker/Documentation/latex/a00181.dot" -Tpdf -o "K:/Github/PeopleTracker/Documentation/latex/a00181.pdf"'
+Running dot for graph 50/63
+Running dot for graph 51/63
+K:/Github/PeopleTracker/Documentation/latex/a00184.dot:1: error: Problems running dot: exit code=-1, command='dot.exe', arguments='"K:/Github/PeopleTracker/Documentation/latex/a00184.dot" -Tpdf -o "K:/Github/PeopleTracker/Documentation/latex/a00184.pdf"'
+Running dot for graph 52/63
+K:/Github/PeopleTracker/Documentation/latex/a00185.dot:1: error: Problems running dot: exit code=-1, command='dot.exe', arguments='"K:/Github/PeopleTracker/Documentation/latex/a00185.dot" -Tpdf -o "K:/Github/PeopleTracker/Documentation/latex/a00185.pdf"'
+Running dot for graph 53/63
+K:/Github/PeopleTracker/Documentation/latex/a00188.dot:1: error: Problems running dot: exit code=-1, command='dot.exe', arguments='"K:/Github/PeopleTracker/Documentation/latex/a00188.dot" -Tpdf -o "K:/Github/PeopleTracker/Documentation/latex/a00188.pdf"'
+Running dot for graph 54/63
+K:/Github/PeopleTracker/Documentation/latex/a00189.dot:1: error: Problems running dot: exit code=-1, command='dot.exe', arguments='"K:/Github/PeopleTracker/Documentation/latex/a00189.dot" -Tpdf -o "K:/Github/PeopleTracker/Documentation/latex/a00189.pdf"'
+Running dot for graph 55/63
+K:/Github/PeopleTracker/Documentation/latex/a00192.dot:1: error: Problems running dot: exit code=-1, command='dot.exe', arguments='"K:/Github/PeopleTracker/Documentation/latex/a00192.dot" -Tpdf -o "K:/Github/PeopleTracker/Documentation/latex/a00192.pdf"'
+Running dot for graph 56/63
+K:/Github/PeopleTracker/Documentation/latex/a00193.dot:1: error: Problems running dot: exit code=-1, command='dot.exe', arguments='"K:/Github/PeopleTracker/Documentation/latex/a00193.dot" -Tpdf -o "K:/Github/PeopleTracker/Documentation/latex/a00193.pdf"'
+Running dot for graph 57/63
+K:/Github/PeopleTracker/Documentation/latex/a00205.dot:1: error: Problems running dot: exit code=-1, command='dot.exe', arguments='"K:/Github/PeopleTracker/Documentation/latex/a00205.dot" -Tpdf -o "K:/Github/PeopleTracker/Documentation/latex/a00205.pdf"'
+K:/Github/PeopleTracker/Documentation/latex/a00204.dot:1: error: Problems running dot: exit code=-1, command='dot.exe', arguments='"K:/Github/PeopleTracker/Documentation/latex/a00204.dot" -Tpdf -o "K:/Github/PeopleTracker/Documentation/latex/a00204.pdf"'
+Running dot for graph 58/63
+Running dot for graph 59/63
+K:/Github/PeopleTracker/Documentation/latex/a00208.dot:1: error: Problems running dot: exit code=-1, command='dot.exe', arguments='"K:/Github/PeopleTracker/Documentation/latex/a00208.dot" -Tpdf -o "K:/Github/PeopleTracker/Documentation/latex/a00208.pdf"'
+Running dot for graph 60/63
+K:/Github/PeopleTracker/Documentation/latex/a00209.dot:1: error: Problems running dot: exit code=-1, command='dot.exe', arguments='"K:/Github/PeopleTracker/Documentation/latex/a00209.dot" -Tpdf -o "K:/Github/PeopleTracker/Documentation/latex/a00209.pdf"'
+Running dot for graph 61/63
+K:/Github/PeopleTracker/Documentation/latex/a00221.dot:1: error: Problems running dot: exit code=-1, command='dot.exe', arguments='"K:/Github/PeopleTracker/Documentation/latex/a00221.dot" -Tpdf -o "K:/Github/PeopleTracker/Documentation/latex/a00221.pdf"'
+K:/Github/PeopleTracker/Documentation/latex/a00220.dot:1: error: Problems running dot: exit code=-1, command='dot.exe', arguments='"K:/Github/PeopleTracker/Documentation/latex/a00220.dot" -Tpdf -o "K:/Github/PeopleTracker/Documentation/latex/a00220.pdf"'
+Running dot for graph 62/63
+Running dot for graph 63/63
+Patching output file 1/23
+error: problems opening map file K:/Github/PeopleTracker/Documentation/html/a00141.map for inclusion in the docs!
+If you installed Graphviz/dot after a previous failing run, 
+try deleting the output directory and rerun doxygen.
+error: problems opening map file K:/Github/PeopleTracker/Documentation/html/a00140.map for inclusion in the docs!
+If you installed Graphviz/dot after a previous failing run, 
+try deleting the output directory and rerun doxygen.
+Patching output file 2/23
+error: problems opening map file K:/Github/PeopleTracker/Documentation/html/a00165.map for inclusion in the docs!
+If you installed Graphviz/dot after a previous failing run, 
+try deleting the output directory and rerun doxygen.
+error: problems opening map file K:/Github/PeopleTracker/Documentation/html/a00164.map for inclusion in the docs!
+If you installed Graphviz/dot after a previous failing run, 
+try deleting the output directory and rerun doxygen.
+Patching output file 3/23
+error: problems opening map file K:/Github/PeopleTracker/Documentation/html/a00173.map for inclusion in the docs!
+If you installed Graphviz/dot after a previous failing run, 
+try deleting the output directory and rerun doxygen.
+error: problems opening map file K:/Github/PeopleTracker/Documentation/html/a00172.map for inclusion in the docs!
+If you installed Graphviz/dot after a previous failing run, 
+try deleting the output directory and rerun doxygen.
+Patching output file 4/23
+error: problems opening map file K:/Github/PeopleTracker/Documentation/html/a00177.map for inclusion in the docs!
+If you installed Graphviz/dot after a previous failing run, 
+try deleting the output directory and rerun doxygen.
+error: problems opening map file K:/Github/PeopleTracker/Documentation/html/a00176.map for inclusion in the docs!
+If you installed Graphviz/dot after a previous failing run, 
+try deleting the output directory and rerun doxygen.
+Patching output file 5/23
+error: problems opening map file K:/Github/PeopleTracker/Documentation/html/a00181.map for inclusion in the docs!
+If you installed Graphviz/dot after a previous failing run, 
+try deleting the output directory and rerun doxygen.
+error: problems opening map file K:/Github/PeopleTracker/Documentation/html/a00180.map for inclusion in the docs!
+If you installed Graphviz/dot after a previous failing run, 
+try deleting the output directory and rerun doxygen.
+Patching output file 6/23
+error: problems opening map file K:/Github/PeopleTracker/Documentation/html/a00185.map for inclusion in the docs!
+If you installed Graphviz/dot after a previous failing run, 
+try deleting the output directory and rerun doxygen.
+error: problems opening map file K:/Github/PeopleTracker/Documentation/html/a00184.map for inclusion in the docs!
+If you installed Graphviz/dot after a previous failing run, 
+try deleting the output directory and rerun doxygen.
+Patching output file 7/23
+error: problems opening map file K:/Github/PeopleTracker/Documentation/html/a00189.map for inclusion in the docs!
+If you installed Graphviz/dot after a previous failing run, 
+try deleting the output directory and rerun doxygen.
+error: problems opening map file K:/Github/PeopleTracker/Documentation/html/a00188.map for inclusion in the docs!
+If you installed Graphviz/dot after a previous failing run, 
+try deleting the output directory and rerun doxygen.
+Patching output file 8/23
+error: problems opening map file K:/Github/PeopleTracker/Documentation/html/a00193.map for inclusion in the docs!
+If you installed Graphviz/dot after a previous failing run, 
+try deleting the output directory and rerun doxygen.
+error: problems opening map file K:/Github/PeopleTracker/Documentation/html/a00192.map for inclusion in the docs!
+If you installed Graphviz/dot after a previous failing run, 
+try deleting the output directory and rerun doxygen.
+Patching output file 9/23
+error: problems opening map file K:/Github/PeopleTracker/Documentation/html/a00205.map for inclusion in the docs!
+If you installed Graphviz/dot after a previous failing run, 
+try deleting the output directory and rerun doxygen.
+error: problems opening map file K:/Github/PeopleTracker/Documentation/html/a00204.map for inclusion in the docs!
+If you installed Graphviz/dot after a previous failing run, 
+try deleting the output directory and rerun doxygen.
+Patching output file 10/23
+error: problems opening map file K:/Github/PeopleTracker/Documentation/html/a00209.map for inclusion in the docs!
+If you installed Graphviz/dot after a previous failing run, 
+try deleting the output directory and rerun doxygen.
+error: problems opening map file K:/Github/PeopleTracker/Documentation/html/a00208.map for inclusion in the docs!
+If you installed Graphviz/dot after a previous failing run, 
+try deleting the output directory and rerun doxygen.
+Patching output file 11/23
+error: problems opening map file K:/Github/PeopleTracker/Documentation/html/a00221.map for inclusion in the docs!
+If you installed Graphviz/dot after a previous failing run, 
+try deleting the output directory and rerun doxygen.
+error: problems opening map file K:/Github/PeopleTracker/Documentation/html/a00220.map for inclusion in the docs!
+If you installed Graphviz/dot after a previous failing run, 
+try deleting the output directory and rerun doxygen.
+Patching output file 12/23
+error: problems opening map file K:/Github/PeopleTracker/Documentation/html/inherit_graph_0.map for inclusion in the docs!
+If you installed Graphviz/dot after a previous failing run, 
+try deleting the output directory and rerun doxygen.
+error: problems opening map file K:/Github/PeopleTracker/Documentation/html/inherit_graph_1.map for inclusion in the docs!
+If you installed Graphviz/dot after a previous failing run, 
+try deleting the output directory and rerun doxygen.
+error: problems opening map file K:/Github/PeopleTracker/Documentation/html/inherit_graph_2.map for inclusion in the docs!
+If you installed Graphviz/dot after a previous failing run, 
+try deleting the output directory and rerun doxygen.
+error: problems opening map file K:/Github/PeopleTracker/Documentation/html/inherit_graph_3.map for inclusion in the docs!
+If you installed Graphviz/dot after a previous failing run, 
+try deleting the output directory and rerun doxygen.
+error: problems opening map file K:/Github/PeopleTracker/Documentation/html/inherit_graph_4.map for inclusion in the docs!
+If you installed Graphviz/dot after a previous failing run, 
+try deleting the output directory and rerun doxygen.
+error: problems opening map file K:/Github/PeopleTracker/Documentation/html/inherit_graph_5.map for inclusion in the docs!
+If you installed Graphviz/dot after a previous failing run, 
+try deleting the output directory and rerun doxygen.
+error: problems opening map file K:/Github/PeopleTracker/Documentation/html/inherit_graph_6.map for inclusion in the docs!
+If you installed Graphviz/dot after a previous failing run, 
+try deleting the output directory and rerun doxygen.
+error: problems opening map file K:/Github/PeopleTracker/Documentation/html/inherit_graph_7.map for inclusion in the docs!
+If you installed Graphviz/dot after a previous failing run, 
+try deleting the output directory and rerun doxygen.
+error: problems opening map file K:/Github/PeopleTracker/Documentation/html/inherit_graph_8.map for inclusion in the docs!
+If you installed Graphviz/dot after a previous failing run, 
+try deleting the output directory and rerun doxygen.
+error: problems opening map file K:/Github/PeopleTracker/Documentation/html/inherit_graph_9.map for inclusion in the docs!
+If you installed Graphviz/dot after a previous failing run, 
+try deleting the output directory and rerun doxygen.
+error: problems opening map file K:/Github/PeopleTracker/Documentation/html/inherit_graph_10.map for inclusion in the docs!
+If you installed Graphviz/dot after a previous failing run, 
+try deleting the output directory and rerun doxygen.
+error: problems opening map file K:/Github/PeopleTracker/Documentation/html/inherit_graph_11.map for inclusion in the docs!
+If you installed Graphviz/dot after a previous failing run, 
+try deleting the output directory and rerun doxygen.
+error: problems opening map file K:/Github/PeopleTracker/Documentation/html/inherit_graph_12.map for inclusion in the docs!
+If you installed Graphviz/dot after a previous failing run, 
+try deleting the output directory and rerun doxygen.
+error: problems opening map file K:/Github/PeopleTracker/Documentation/html/inherit_graph_13.map for inclusion in the docs!
+If you installed Graphviz/dot after a previous failing run, 
+try deleting the output directory and rerun doxygen.
+error: problems opening map file K:/Github/PeopleTracker/Documentation/html/inherit_graph_14.map for inclusion in the docs!
+If you installed Graphviz/dot after a previous failing run, 
+try deleting the output directory and rerun doxygen.
+error: problems opening map file K:/Github/PeopleTracker/Documentation/html/inherit_graph_15.map for inclusion in the docs!
+If you installed Graphviz/dot after a previous failing run, 
+try deleting the output directory and rerun doxygen.
+error: problems opening map file K:/Github/PeopleTracker/Documentation/html/inherit_graph_16.map for inclusion in the docs!
+If you installed Graphviz/dot after a previous failing run, 
+try deleting the output directory and rerun doxygen.
+error: problems opening map file K:/Github/PeopleTracker/Documentation/html/inherit_graph_17.map for inclusion in the docs!
+If you installed Graphviz/dot after a previous failing run, 
+try deleting the output directory and rerun doxygen.
+Patching output file 13/23
+error: Failed to open file K:/Github/PeopleTracker/Documentation/latex/a00141.pdf for extracting bounding box
+error: problem writing FIG 0 figure!
+type lookup cache used 1388/65536 hits=1422 misses=1532
+symbol lookup cache used 1351/65536 hits=6056 misses=1351
+finished...
+
+*** Doxygen has finished

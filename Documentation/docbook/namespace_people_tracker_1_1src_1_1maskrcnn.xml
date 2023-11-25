@@ -1,0 +1,126 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_namespace_people_tracker_1_1src_1_1maskrcnn" xml:lang="en-US">
+<title>PeopleTracker.src.maskrcnn Namespace Reference</title>
+<indexterm><primary>PeopleTracker.src.maskrcnn</primary></indexterm>
+<simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_namespace_people_tracker_1_1src_1_1maskrcnn_1ac922182d9b591855e38a6015fc67a61e">load_predicted</link> (pred_file)</para>
+</listitem>
+            <listitem><para><link linkend="_namespace_people_tracker_1_1src_1_1maskrcnn_1ad43e85c978c66e9ef57469fe3862ff35">display_preds</link> (frame, frame_num, pred_dict, ratios)</para>
+</listitem>
+            <listitem><para><link linkend="_namespace_people_tracker_1_1src_1_1maskrcnn_1a1eef26144f18fb9cfb5eda9019c95d28">predict</link> (filename, model=&quot;mask_rcnn_coco_person.h5&quot;, class_names=[&quot;BG&quot;, &quot;person&quot;], step=10, display=False, progress=None, logger=None)</para>
+</listitem>
+            <listitem><para><link linkend="_namespace_people_tracker_1_1src_1_1maskrcnn_1aa48957a48d16762e48f7385cdd5bc2e3">compute_iou</link> (box, boxes, boxes_area, ratios=(1, 1), frame=None)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespace_people_tracker_1_1src_1_1maskrcnn_1a4f616c5c826011dfc70f0e07de7ca3d5"/><emphasis role="strong">track_predictions</emphasis> (pred_dict, video, method=0, id_prefix=&quot;P&quot;, KalmanFilter=<link linkend="_class_people_tracker_1_1src_1_1filters_1_1_kalman_pred">KalmanPred</link>(), ratios=(1, 1), buffer=10, preview=True)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Variables    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_namespace_people_tracker_1_1src_1_1maskrcnn_1a9988e9624e01a6ae5229e8bb3ee99285"/>int <emphasis role="strong">NEAREST_CENTROID</emphasis> = 0</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespace_people_tracker_1_1src_1_1maskrcnn_1adca85d7dd06b8ee877d4d06fbf93380a"/>int <emphasis role="strong">NEAREST_CORNERS</emphasis> = 1</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespace_people_tracker_1_1src_1_1maskrcnn_1a7ba80cf26892b62ac13e0ecdd318fefc"/>int <emphasis role="strong">NEAREST_BOX</emphasis> = 2</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespace_people_tracker_1_1src_1_1maskrcnn_1ad69e88a326d4baad40fa039b8939f9ca"/>int <emphasis role="strong">NEAREST_KALMAN_CENTROID</emphasis> = 3</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespace_people_tracker_1_1src_1_1maskrcnn_1aba50e3eefa40bbb77b608b0275ef36ed"/>int <emphasis role="strong">NEAREST_KALMAN_CORNERS</emphasis> = 4</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespace_people_tracker_1_1src_1_1maskrcnn_1adf8c97e62a6612f3d6555de666ddcfd9"/>int <emphasis role="strong">NEAREST_KALMAN</emphasis> = 5</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespace_people_tracker_1_1src_1_1maskrcnn_1ae7ac28945180d62814656bd31cc52697"/><emphasis role="strong">display</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespace_people_tracker_1_1src_1_1maskrcnn_1a8205b0c669d41f2071f28b32feb4f727"/><emphasis role="strong">True</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespace_people_tracker_1_1src_1_1maskrcnn_1a577772577e5ce1eca7f55104a61889c4"/><emphasis role="strong">step</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespace_people_tracker_1_1src_1_1maskrcnn_1a46d9c4564646a6bb36c504b7aed41f01"/><emphasis role="strong">pred_dict</emphasis> = <link linkend="_namespace_people_tracker_1_1src_1_1maskrcnn_1ac922182d9b591855e38a6015fc67a61e">load_predicted</link>(&quot;K:/Github/PeopleTracker/videos/(Simple) GP014125_predict.csv&quot;)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para><literallayout><computeroutput>Model from: https://github.com/Superlee506/Mask_RCNN_Humanpose
+
+Cuda Version 10.1
+CUDNN Version
+                         # tensorflow==2.4.0 (Could be wrong??? just use GPU)d
+Tensorflow version 2.3.0 # tensorflow-gpu==2.3.0
+</computeroutput></literallayout> </para>
+</section>
+<section>
+<title>Function Documentation</title>
+<anchor xml:id="_namespace_people_tracker_1_1src_1_1maskrcnn_1aa48957a48d16762e48f7385cdd5bc2e3"/><section>
+    <title>compute_iou()</title>
+<indexterm><primary>compute_iou</primary><secondary>PeopleTracker.src.maskrcnn</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.maskrcnn</primary><secondary>compute_iou</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.maskrcnn.compute_iou ( box,  boxes,  boxes_area,  ratios = <computeroutput>(1,1)</computeroutput>
+,  frame = <computeroutput>None</computeroutput>
+)</computeroutput></para>
+<para><literallayout><computeroutput>Calculates IoU of the given box with the array of the given boxes.
+box: 1D vector [x1, y1, x2, y2]
+boxes: [boxes_count, (x1, y1, x2, y2)]
+box_area: float. the area of &apos;box&apos;
+boxes_area: array of length boxes_count.
+ratio: ratio (width, height) to scale boxes from video resolution to analysis resolution
+
+Note: the areas are passed in rather than calculated here for
+efficiency. Calculate once in the caller to avoid duplicate work.
+</computeroutput></literallayout> </para>
+<para>
+References <link linkend="_namespace_people_tracker_1_1src_1_1maskrcnn_1ac922182d9b591855e38a6015fc67a61e">PeopleTracker.src.maskrcnn.load_predicted()</link>, and <link linkend="_namespace_people_tracker_1_1src_1_1maskrcnn_1a1eef26144f18fb9cfb5eda9019c95d28">PeopleTracker.src.maskrcnn.predict()</link>.</para>
+</section>
+<anchor xml:id="_namespace_people_tracker_1_1src_1_1maskrcnn_1ad43e85c978c66e9ef57469fe3862ff35"/><section>
+    <title>display_preds()</title>
+<indexterm><primary>display_preds</primary><secondary>PeopleTracker.src.maskrcnn</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.maskrcnn</primary><secondary>display_preds</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.maskrcnn.display_preds ( frame,  frame_num,  pred_dict,  ratios)</computeroutput></para>
+<para><literallayout><computeroutput>Displays the prediction
+</computeroutput></literallayout> </para>
+</section>
+<anchor xml:id="_namespace_people_tracker_1_1src_1_1maskrcnn_1ac922182d9b591855e38a6015fc67a61e"/><section>
+    <title>load_predicted()</title>
+<indexterm><primary>load_predicted</primary><secondary>PeopleTracker.src.maskrcnn</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.maskrcnn</primary><secondary>load_predicted</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.maskrcnn.load_predicted ( pred_file)</computeroutput></para>
+<para><literallayout><computeroutput>Loads predicted data into a variable for later use.
+Pred_dict[frame_number] = Lost of boxes
+
+A box is described by:
+x = box[0],
+y = box[1],
+width = box[2],
+height = box[3]
+</computeroutput></literallayout> </para>
+<para>
+Referenced by <link linkend="_namespace_people_tracker_1_1src_1_1maskrcnn_1aa48957a48d16762e48f7385cdd5bc2e3">PeopleTracker.src.maskrcnn.compute_iou()</link>.</para>
+</section>
+<anchor xml:id="_namespace_people_tracker_1_1src_1_1maskrcnn_1a1eef26144f18fb9cfb5eda9019c95d28"/><section>
+    <title>predict()</title>
+<indexterm><primary>predict</primary><secondary>PeopleTracker.src.maskrcnn</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.maskrcnn</primary><secondary>predict</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.maskrcnn.predict ( filename,  model = <computeroutput>&quot;mask_rcnn_coco_person.h5&quot;</computeroutput>
+,  class_names = <computeroutput>[&quot;BG&quot;,&#160;&quot;person&quot;]</computeroutput>
+,  step = <computeroutput>10</computeroutput>
+,  display = <computeroutput>False</computeroutput>
+,  progress = <computeroutput>None</computeroutput>
+,  logger = <computeroutput>None</computeroutput>
+)</computeroutput></para>
+<para><literallayout><computeroutput>Uses MaskRCNN COCO models and uses them to predict items on the image.
+Steps indicate how frequently the model should predict on the video (default every 10 frames)
+Display shows predictions visually
+Progress is a QProgressDialog for the application
+Logger is a logger which both displays info and records it for crashlogger
+
+Exports results into filename_predict.csv
+</computeroutput></literallayout> </para>
+<para>
+Referenced by <link linkend="_namespace_people_tracker_1_1src_1_1maskrcnn_1aa48957a48d16762e48f7385cdd5bc2e3">PeopleTracker.src.maskrcnn.compute_iou()</link>.</para>
+</section>
+</section>
+</section>

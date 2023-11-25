@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_people_tracker_1_1src_1_1regression_1_1rolling__regression" xml:lang="en-US">
+<title>PeopleTracker.src.regression.rolling_regression Class Reference</title>
+<indexterm><primary>PeopleTracker.src.regression.rolling_regression</primary></indexterm>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1regression_1_1rolling__regression_1afcbef6b25c1146ac3bc9e973b2526f81"/><emphasis role="strong">__init__</emphasis> (self, window=10, regression=&quot;Linear&quot;)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1regression_1_1rolling__regression_1a48cbdbf0c6378ab01c373aab0d30d163"/><emphasis role="strong">predict</emphasis> (self, location)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1regression_1_1rolling__regression_1a764262e6b70f193b0a01e66c5eb2477d">get_direction</link> (self)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1regression_1_1rolling__regression_1af9fb8207531e4099c374093a4e47249e"/><emphasis role="strong">regression</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1regression_1_1rolling__regression_1a2161eb141d1f641f722e9368913656be"/><emphasis role="strong">window</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1regression_1_1rolling__regression_1aeddd6ffb7a3cd4eb8f91fa5113680bf5"/><emphasis role="strong">data_window</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_class_people_tracker_1_1src_1_1regression_1_1rolling__regression_1a764262e6b70f193b0a01e66c5eb2477d"/><section>
+    <title>get_direction()</title>
+<indexterm><primary>get_direction</primary><secondary>PeopleTracker.src.regression.rolling_regression</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.regression.rolling_regression</primary><secondary>get_direction</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.regression.rolling_regression.get_direction ( self)</computeroutput></para>
+<para><literallayout><computeroutput>True if positive(Right), False if negative (Left)
+</computeroutput></literallayout> </para>
+<para>
+References PeopleTracker.src.regression.rolling_regression.data_window.</para>
+</section>
+<para>
+The documentation for this class was generated from the following file:</para>
+K:/Github/PeopleTracker/src/regression.py</section>
+</section>

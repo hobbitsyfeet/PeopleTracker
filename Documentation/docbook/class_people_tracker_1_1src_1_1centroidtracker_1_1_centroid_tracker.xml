@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_people_tracker_1_1src_1_1centroidtracker_1_1_centroid_tracker" xml:lang="en-US">
+<title>PeopleTracker.src.centroidtracker.CentroidTracker Class Reference</title>
+<indexterm><primary>PeopleTracker.src.centroidtracker.CentroidTracker</primary></indexterm>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1centroidtracker_1_1_centroid_tracker_1ab84de02e8520a1044d9e6ffbd3abfacc"/><emphasis role="strong">__init__</emphasis> (self, maxDisappeared=50)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1centroidtracker_1_1_centroid_tracker_1ac6cf5ea5420ac3c988dc8a20cc7df075"/><emphasis role="strong">register</emphasis> (self, centroid, corners, filter=None)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1centroidtracker_1_1_centroid_tracker_1ab8e7b5a00af2a6c94aa8f89d54f8873c"/><emphasis role="strong">deregister</emphasis> (self, objectID)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1centroidtracker_1_1_centroid_tracker_1a956a2f51c7b78ae35395c81914be18bf"/><emphasis role="strong">update</emphasis> (self, rects, are_centroids=False)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1centroidtracker_1_1_centroid_tracker_1af254a5d60894516d72423bf1b4781b2a"/><emphasis role="strong">nextObjectID</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1centroidtracker_1_1_centroid_tracker_1a15fa28018996dd3b27f3cc346bef61b4"/><emphasis role="strong">objects</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1centroidtracker_1_1_centroid_tracker_1ad515bfbe93263f24d3a71e247eae4751"/><emphasis role="strong">disappeared</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1centroidtracker_1_1_centroid_tracker_1a7401cd45ff2cb189683c91f39039f363"/><emphasis role="strong">filters</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1centroidtracker_1_1_centroid_tracker_1a534471e6eb1b5b6187feb51c8aa48978"/><emphasis role="strong">maxDisappeared</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<para>
+The documentation for this class was generated from the following file:</para>
+K:/Github/PeopleTracker/src/centroidtracker.py</section>

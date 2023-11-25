@@ -1,0 +1,20 @@
+digraph "merge_intervals"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="RL";
+  Node1 [id="Node000001",label="merge_intervals",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Merges a list of integer segments of beginning/end time into one interval that contains the first and..."];
+  Node1 -> Node2 [id="edge8_Node000001_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="part_time_to_segments",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$a00170.html#aac82437aaf543e6e298cfbdd4eb231ab",tooltip="splits the time into beginning/end intervals given segment size as the largest absent gap"];
+  Node2 -> Node3 [id="edge9_Node000002_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="calculate_total_time",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$a00170.html#a291e78f1e4bc543e8b599dfa574867ed",tooltip=" "];
+  Node3 -> Node4 [id="edge10_Node000003_Node000004",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="get_time_tracked",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$a00170.html#a6a54b87590251552d1e772115c06e8da",tooltip="Time tracker has been tracking relative to the video."];
+  Node4 -> Node3 [id="edge11_Node000004_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node4 -> Node5 [id="edge12_Node000004_Node000005",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node5 [id="Node000005",label="export_data",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$a00170.html#aa871b1fc9de77b6f599d27bd2f027335",tooltip="Exports tracked data into csv of the given name and directory of the video."];
+  Node5 -> Node3 [id="edge13_Node000005_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node2 -> Node4 [id="edge14_Node000002_Node000004",dir="back",color="steelblue1",style="solid",tooltip=" "];
+}

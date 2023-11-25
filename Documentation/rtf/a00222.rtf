@@ -1,0 +1,631 @@
+{\rtf1\ansi\ansicpg1252\uc1 \deff0\deflang1033\deflangfe1033
+{\fonttbl {\f0\froman\fcharset0\fprq2{\*\panose 02020603050405020304}Times New Roman;}
+{\f1\fswiss\fcharset0\fprq2{\*\panose 020b0604020202020204}Arial;}
+{\f2\fmodern\fcharset0\fprq1{\*\panose 02070309020205020404}Courier New;}
+{\f3\froman\fcharset2\fprq2{\*\panose 05050102010706020507}Symbol;}
+}
+{\colortbl;\red0\green0\blue0;\red0\green0\blue255;\red0\green255\blue255;\red0\green255\blue0;\red255\green0\blue255;\red255\green0\blue0;\red255\green255\blue0;\red255\green255\blue255;\red0\green0\blue128;\red0\green128\blue128;\red0\green128\blue0;\red128\green0\blue128;\red128\green0\blue0;\red128\green128\blue0;\red128\green128\blue128;\red192\green192\blue192;\red0\green128\blue0;\red96\green64\blue32;\rede0\green128\blue0;\red128\green0\blue0;\red128\green96\blue32;\red0\green32\blue128;\red0\green128\blue128;\red255\green0\blue255;\red0\green0\blue0;\red112\green0\blue112;\red255\green0\blue0;}
+{\stylesheet
+{\widctlpar\adjustright \fs20\cgrid \snext0 Normal;}
+{\paperw11900\paperh16840\margl1800\margr1800\margt1440\margb1440\gutter0\ltrsect}
+{\s1\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs36\kerning36\cgrid \sbasedon0 \snext0 heading 1;}
+{\s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid \sbasedon0 \snext0 heading 2;}
+{\s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid \sbasedon0 \snext0 heading 3;}
+{\s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid \sbasedon0 \snext0 heading 4;}{\*\cs10 \additive Default Paragraph Font;}
+{\s5\sb90\sa30\keepn\widctlpar\adjustright \b\f1\fs20\cgrid \sbasedon0 \snext0 heading 5;}{\*\cs10 \additive Default Paragraph Font;}
+{\s15\qc\sb240\sa60\widctlpar\outlinelevel0\adjustright \b\f1\fs32\kerning28\cgrid \sbasedon0 \snext15 Title;}
+{\s16\qc\sa60\widctlpar\outlinelevel1\adjustright \f1\cgrid \sbasedon0 \snext16 Subtitle;}
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid \sbasedon0 \snext17 BodyText;}
+{\s18\widctlpar\fs22\cgrid \sbasedon0 \snext18 DenseText;}
+{\s28\widctlpar\tqc\tx4320\tqr\tx8640\adjustright \fs20\cgrid \sbasedon0 \snext28 header;}
+{\s29\widctlpar\tqc\tx4320\tqr\tx8640\qr\adjustright \fs20\cgrid \sbasedon0 \snext29 footer;}
+{\s30\li360\sa60\sb120\keepn\widctlpar\adjustright \b\f1\fs20\cgrid \sbasedon0 \snext30 GroupHeader;}
+{\s40\li0\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid \sbasedon0 \snext41 Code Example 0;}
+{\s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid \sbasedon0 \snext42 Code Example 1;}
+{\s42\li720\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid \sbasedon0 \snext43 Code Example 2;}
+{\s43\li1080\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid \sbasedon0 \snext44 Code Example 3;}
+{\s44\li1440\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid \sbasedon0 \snext45 Code Example 4;}
+{\s45\li1800\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid \sbasedon0 \snext46 Code Example 5;}
+{\s46\li2160\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid \sbasedon0 \snext47 Code Example 6;}
+{\s47\li2520\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid \sbasedon0 \snext48 Code Example 7;}
+{\s48\li2880\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid \sbasedon0 \snext49 Code Example 8;}
+{\s49\li3240\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid \sbasedon0 \snext50 Code Example 9;}
+{\s50\li3600\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid \sbasedon0 \snext51 Code Example 10;}
+{\s51\li3960\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid \sbasedon0 \snext52 Code Example 11;}
+{\s52\li4320\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid \sbasedon0 \snext53 Code Example 12;}
+{\s53\li4680\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid \sbasedon0 \snext53 Code Example 13;}
+{\s60\li0\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid \sbasedon0 \snext61 List Continue 0;}
+{\s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid \sbasedon0 \snext62 List Continue 1;}
+{\s62\li720\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid \sbasedon0 \snext63 List Continue 2;}
+{\s63\li1080\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid \sbasedon0 \snext64 List Continue 3;}
+{\s64\li1440\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid \sbasedon0 \snext65 List Continue 4;}
+{\s65\li1800\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid \sbasedon0 \snext66 List Continue 5;}
+{\s66\li2160\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid \sbasedon0 \snext67 List Continue 6;}
+{\s67\li2520\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid \sbasedon0 \snext68 List Continue 7;}
+{\s68\li2880\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid \sbasedon0 \snext69 List Continue 8;}
+{\s69\li3240\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid \sbasedon0 \snext70 List Continue 9;}
+{\s70\li3600\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid \sbasedon0 \snext71 List Continue 10;}
+{\s71\li3960\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid \sbasedon0 \snext72 List Continue 11;}
+{\s72\li4320\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid \sbasedon0 \snext73 List Continue 12;}
+{\s73\li4680\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid \sbasedon0 \snext73 List Continue 13;}
+{\s80\li0\widctlpar\ql\adjustright \fs20\cgrid \sbasedon0 \snext81 DescContinue 0;}
+{\s81\li360\widctlpar\ql\adjustright \fs20\cgrid \sbasedon0 \snext82 DescContinue 1;}
+{\s82\li720\widctlpar\ql\adjustright \fs20\cgrid \sbasedon0 \snext83 DescContinue 2;}
+{\s83\li1080\widctlpar\ql\adjustright \fs20\cgrid \sbasedon0 \snext84 DescContinue 3;}
+{\s84\li1440\widctlpar\ql\adjustright \fs20\cgrid \sbasedon0 \snext85 DescContinue 4;}
+{\s85\li1800\widctlpar\ql\adjustright \fs20\cgrid \sbasedon0 \snext86 DescContinue 5;}
+{\s86\li2160\widctlpar\ql\adjustright \fs20\cgrid \sbasedon0 \snext87 DescContinue 6;}
+{\s87\li2520\widctlpar\ql\adjustright \fs20\cgrid \sbasedon0 \snext88 DescContinue 7;}
+{\s88\li2880\widctlpar\ql\adjustright \fs20\cgrid \sbasedon0 \snext89 DescContinue 8;}
+{\s89\li3240\widctlpar\ql\adjustright \fs20\cgrid \sbasedon0 \snext90 DescContinue 9;}
+{\s90\li3600\widctlpar\ql\adjustright \fs20\cgrid \sbasedon0 \snext91 DescContinue 10;}
+{\s91\li3960\widctlpar\ql\adjustright \fs20\cgrid \sbasedon0 \snext92 DescContinue 11;}
+{\s92\li4320\widctlpar\ql\adjustright \fs20\cgrid \sbasedon0 \snext93 DescContinue 12;}
+{\s93\li4680\widctlpar\ql\adjustright \fs20\cgrid \sbasedon0 \snext93 DescContinue 13;}
+{\s100\li0\sa30\sb30\widctlpar\tqr\tldot\tx8640\adjustright \fs20\cgrid \sbasedon0 \snext101 LatexTOC 0;}
+{\s101\li360\sa27\sb27\widctlpar\tqr\tldot\tx8640\adjustright \fs20\cgrid \sbasedon0 \snext102 LatexTOC 1;}
+{\s102\li720\sa24\sb24\widctlpar\tqr\tldot\tx8640\adjustright \fs20\cgrid \sbasedon0 \snext103 LatexTOC 2;}
+{\s103\li1080\sa21\sb21\widctlpar\tqr\tldot\tx8640\adjustright \fs20\cgrid \sbasedon0 \snext104 LatexTOC 3;}
+{\s104\li1440\sa18\sb18\widctlpar\tqr\tldot\tx8640\adjustright \fs20\cgrid \sbasedon0 \snext105 LatexTOC 4;}
+{\s105\li1800\sa15\sb15\widctlpar\tqr\tldot\tx8640\adjustright \fs20\cgrid \sbasedon0 \snext106 LatexTOC 5;}
+{\s106\li2160\sa12\sb12\widctlpar\tqr\tldot\tx8640\adjustright \fs20\cgrid \sbasedon0 \snext107 LatexTOC 6;}
+{\s107\li2520\sa9\sb9\widctlpar\tqr\tldot\tx8640\adjustright \fs20\cgrid \sbasedon0 \snext108 LatexTOC 7;}
+{\s108\li2880\sa6\sb6\widctlpar\tqr\tldot\tx8640\adjustright \fs20\cgrid \sbasedon0 \snext109 LatexTOC 8;}
+{\s109\li3240\sa3\sb3\widctlpar\tqr\tldot\tx8640\adjustright \fs20\cgrid \sbasedon0 \snext110 LatexTOC 9;}
+{\s110\li3600\sa3\sb3\widctlpar\tqr\tldot\tx8640\adjustright \fs20\cgrid \sbasedon0 \snext111 LatexTOC 10;}
+{\s111\li3960\sa3\sb3\widctlpar\tqr\tldot\tx8640\adjustright \fs20\cgrid \sbasedon0 \snext112 LatexTOC 11;}
+{\s112\li4320\sa3\sb3\widctlpar\tqr\tldot\tx8640\adjustright \fs20\cgrid \sbasedon0 \snext113 LatexTOC 12;}
+{\s113\li4680\sa3\sb3\widctlpar\tqr\tldot\tx8640\adjustright \fs20\cgrid \sbasedon0 \snext113 LatexTOC 13;}
+{\s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid \sbasedon0 \snext121 \sautoupd List Bullet 0;}
+{\s121\fi-360\li720\widctlpar\jclisttab\tx720{\*\pn \pnlvlbody\ilvl0\ls2\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid \sbasedon0 \snext122 \sautoupd List Bullet 1;}
+{\s122\fi-360\li1080\widctlpar\jclisttab\tx1080{\*\pn \pnlvlbody\ilvl0\ls3\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid \sbasedon0 \snext123 \sautoupd List Bullet 2;}
+{\s123\fi-360\li1440\widctlpar\jclisttab\tx1440{\*\pn \pnlvlbody\ilvl0\ls4\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid \sbasedon0 \snext124 \sautoupd List Bullet 3;}
+{\s124\fi-360\li1800\widctlpar\jclisttab\tx1800{\*\pn \pnlvlbody\ilvl0\ls5\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid \sbasedon0 \snext125 \sautoupd List Bullet 4;}
+{\s125\fi-360\li2160\widctlpar\jclisttab\tx2160{\*\pn \pnlvlbody\ilvl0\ls6\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid \sbasedon0 \snext126 \sautoupd List Bullet 5;}
+{\s126\fi-360\li2520\widctlpar\jclisttab\tx2520{\*\pn \pnlvlbody\ilvl0\ls7\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid \sbasedon0 \snext127 \sautoupd List Bullet 6;}
+{\s127\fi-360\li2880\widctlpar\jclisttab\tx2880{\*\pn \pnlvlbody\ilvl0\ls8\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid \sbasedon0 \snext128 \sautoupd List Bullet 7;}
+{\s128\fi-360\li3240\widctlpar\jclisttab\tx3240{\*\pn \pnlvlbody\ilvl0\ls9\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid \sbasedon0 \snext129 \sautoupd List Bullet 8;}
+{\s129\fi-360\li3600\widctlpar\jclisttab\tx3600{\*\pn \pnlvlbody\ilvl0\ls10\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid \sbasedon0 \snext130 \sautoupd List Bullet 9;}
+{\s130\fi-360\li3960\widctlpar\jclisttab\tx3960{\*\pn \pnlvlbody\ilvl0\ls11\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid \sbasedon0 \snext131 \sautoupd List Bullet 10;}
+{\s131\fi-360\li4320\widctlpar\jclisttab\tx4320{\*\pn \pnlvlbody\ilvl0\ls12\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid \sbasedon0 \snext132 \sautoupd List Bullet 11;}
+{\s132\fi-360\li4680\widctlpar\jclisttab\tx4680{\*\pn \pnlvlbody\ilvl0\ls13\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid \sbasedon0 \snext133 \sautoupd List Bullet 12;}
+{\s133\fi-360\li5040\widctlpar\jclisttab\tx5040{\*\pn \pnlvlbody\ilvl0\ls14\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid \sbasedon0 \snext133 \sautoupd List Bullet 13;}
+{\s140\fi-360\li360\widctlpar\fs20\cgrid \sbasedon0 \snext141 \sautoupd List Enum 0;}
+{\s141\fi-360\li720\widctlpar\fs20\cgrid \sbasedon0 \snext142 \sautoupd List Enum 1;}
+{\s142\fi-360\li1080\widctlpar\fs20\cgrid \sbasedon0 \snext143 \sautoupd List Enum 2;}
+{\s143\fi-360\li1440\widctlpar\fs20\cgrid \sbasedon0 \snext144 \sautoupd List Enum 3;}
+{\s144\fi-360\li1800\widctlpar\fs20\cgrid \sbasedon0 \snext145 \sautoupd List Enum 4;}
+{\s145\fi-360\li2160\widctlpar\fs20\cgrid \sbasedon0 \snext146 \sautoupd List Enum 5;}
+{\s146\fi-360\li2520\widctlpar\fs20\cgrid \sbasedon0 \snext147 \sautoupd List Enum 6;}
+{\s147\fi-360\li2880\widctlpar\fs20\cgrid \sbasedon0 \snext148 \sautoupd List Enum 7;}
+{\s148\fi-360\li3240\widctlpar\fs20\cgrid \sbasedon0 \snext149 \sautoupd List Enum 8;}
+{\s149\fi-360\li3600\widctlpar\fs20\cgrid \sbasedon0 \snext150 \sautoupd List Enum 9;}
+{\s150\fi-360\li3960\widctlpar\fs20\cgrid \sbasedon0 \snext151 \sautoupd List Enum 10;}
+{\s151\fi-360\li4320\widctlpar\fs20\cgrid \sbasedon0 \snext152 \sautoupd List Enum 11;}
+{\s152\fi-360\li4680\widctlpar\fs20\cgrid \sbasedon0 \snext153 \sautoupd List Enum 12;}
+{\s153\fi-360\li5040\widctlpar\fs20\cgrid \sbasedon0 \snext153 \sautoupd List Enum 13;}
+}
+{\comment begin body}
+\pard\plain \s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid 
+Dataset\par \pard\plain 
+{\tc\tcl2 \v Dataset}
+{\xe \v Dataset}
+{\bkmkstart AAAAAAAAWL}
+{\bkmkend AAAAAAAAWL}
+\par
+{
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+Dataset. }}\par
+Inheritance diagram for Dataset:{
+\pard\plain 
+\par\pard \qc {\field\flddirty {\*\fldinst INCLUDEPICTURE "a00222.png" \\d \\*MERGEFORMAT}{\fldrslt IMAGE}}\par
+}
+\pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
+Public Member Functions\par
+\pard\plain 
+
+{
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAXP" }{}}{\fldrslt {\cs37\ul\cf2 __init__}}}
+ (self, class_map=None)\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAXQ" }{}}{\fldrslt {\cs37\ul\cf2 add_class}}}
+ (self, source, class_id, class_name)\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAXR" }{}}{\fldrslt {\cs37\ul\cf2 add_image}}}
+ (self, source, image_id, path, **kwargs)\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAXS" }{}}{\fldrslt {\cs37\ul\cf2 image_reference}}}
+ (self, image_id)\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAXT" }{}}{\fldrslt {\cs37\ul\cf2 prepare}}}
+ (self, class_map=None)\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAXU" }{}}{\fldrslt {\cs37\ul\cf2 map_source_class_id}}}
+ (self, source_class_id)\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAXV" }{}}{\fldrslt {\cs37\ul\cf2 get_source_class_id}}}
+ (self, class_id, source)\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAXW" }{}}{\fldrslt {\cs37\ul\cf2 image_ids}}}
+ (self)\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAXX" }{}}{\fldrslt {\cs37\ul\cf2 source_image_link}}}
+ (self, image_id)\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAXY" }{}}{\fldrslt {\cs37\ul\cf2 load_image}}}
+ (self, image_id)\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAXZ" }{}}{\fldrslt {\cs37\ul\cf2 load_mask}}}
+ (self, image_id)\par
+}
+\pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
+Public Attributes\par
+\pard\plain 
+
+{
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+{\b image_info}{\bkmkstart AAAAAAAAYA}
+{\bkmkend AAAAAAAAYA}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+{\b class_info}{\bkmkstart AAAAAAAAYB}
+{\bkmkend AAAAAAAAYB}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+{\b source_class_ids}{\bkmkstart AAAAAAAAYC}
+{\bkmkend AAAAAAAAYC}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+{\b num_classes}{\bkmkstart AAAAAAAAYD}
+{\bkmkend AAAAAAAAYD}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+{\b class_ids}{\bkmkstart AAAAAAAAYE}
+{\bkmkend AAAAAAAAYE}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+{\b class_names}{\bkmkstart AAAAAAAAYF}
+{\bkmkend AAAAAAAAYF}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+{\b num_images}{\bkmkstart AAAAAAAAYG}
+{\bkmkend AAAAAAAAYG}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+{\b class_from_source_map}{\bkmkstart AAAAAAAAYH}
+{\bkmkend AAAAAAAAYH}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+{\b image_from_source_map}{\bkmkstart AAAAAAAAYI}
+{\bkmkend AAAAAAAAYI}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+{\b image_ids}{\bkmkstart AAAAAAAAYJ}
+{\bkmkend AAAAAAAAYJ}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+{\b sources}{\bkmkstart AAAAAAAAYK}
+{\bkmkend AAAAAAAAYK}
+\par
+}
+\pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
+Protected Attributes\par
+\pard\plain 
+
+{
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+{\b _image_ids}{\bkmkstart AAAAAAAAYL}
+{\bkmkend AAAAAAAAYL}
+\par
+}
+{\pard\widctlpar\brdrb\brdrs\brdrw5\brsp20 \adjustright \par}
+\pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
+Detailed Description\par
+\pard\plain 
+{
+\pard\plain \s17\sa60\sb30\widctlpar\qj \fs22\cgrid {\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+Dataset. \par
+}
+
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+{
+\par
+\pard\plain \s40\li0\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid The base class for dataset classes.\par
+To use it, create a new class that adds functions specific to the dataset\par
+you want to use. For example:\par
+\par
+class CatsAndDogsDataset(Dataset):\par
+    def load_cats_and_dogs(self):\par
+        ...\par
+    def load_mask(self, image_id):\par
+        ...\par
+    def image_reference(self, image_id):\par
+        ...\par
+\par
+See COCODataset and ShapesDataset as examples.\par
+}
+ \par
+}}
+{\pard\widctlpar\brdrb\brdrs\brdrw5\brsp20 \adjustright \par}
+\pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
+Constructor & Destructor Documentation\par
+\pard\plain 
+{\xe \v __init__\:Dataset}
+{\xe \v Dataset\:__init__}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+__init__ (  {\i self},   {\i class_map} = {\f2 None})}}
+\par
+{\bkmkstart AAAAAAAAXP}
+{\bkmkend AAAAAAAAXP}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+{
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 260     {\cf17 def }__init__(self, class_map=None):\par
+261         self._image_ids = []\par
+262         self.image_info = []\par
+263         {\cf20 # Background is always the first class}\par
+264         self.class_info = [\{{\cf22 "source"}: {\cf22 ""}, {\cf22 "id"}: 0, {\cf22 "name"}: {\cf22 "BG"}\}]\par
+265         self.source_class_ids = \{\}\par
+266 \par
+}
+}
+{\pard\widctlpar\brdrb\brdrs\brdrw5\brsp20 \adjustright \par}
+\pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
+Member Function Documentation\par
+\pard\plain 
+{\xe \v add_class\:Dataset}
+{\xe \v Dataset\:add_class}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+add_class (  {\i self},   {\i source},   {\i class_id},   {\i class_name})}}
+\par
+{\bkmkstart AAAAAAAAXQ}
+{\bkmkend AAAAAAAAXQ}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+{
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 267     {\cf17 def }add_class(self, source, class_id, class_name):\par
+268         {\cf17 assert} {\cf22 "."} {\cf19 not} {\cf19 in} source, {\cf22 "Source name cannot contain a dot"}\par
+269         {\cf20 # Does the class exist already?}\par
+270         {\cf19 for} info {\cf19 in} self.class_info:\par
+271             {\cf19 if} info[{\cf22 'source'}] == source {\cf19 and} info[{\cf22 "id"}] == class_id:\par
+272                 {\cf20 # source.class_id combination already available, skip}\par
+273                 {\cf19 return}\par
+274         {\cf20 # Add the class}\par
+275         self.class_info.append(\{\par
+276             {\cf22 "source"}: source,\par
+277             {\cf22 "id"}: class_id,\par
+278             {\cf22 "name"}: class_name,\par
+279         \})\par
+280 \par
+}
+}
+{\xe \v add_image\:Dataset}
+{\xe \v Dataset\:add_image}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+add_image (  {\i self},   {\i source},   {\i image_id},   {\i path}, **  {\i kwargs})}}
+\par
+{\bkmkstart AAAAAAAAXR}
+{\bkmkend AAAAAAAAXR}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+{
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 281     {\cf17 def }add_image(self, source, image_id, path, **kwargs):\par
+282         image_info = \{\par
+283             {\cf22 "id"}: image_id,\par
+284             {\cf22 "source"}: source,\par
+285             {\cf22 "path"}: path,\par
+286         \}\par
+287         image_info.update(kwargs)\par
+288         self.image_info.append(image_info)\par
+289 \par
+}
+}
+{\xe \v get_source_class_id\:Dataset}
+{\xe \v Dataset\:get_source_class_id}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+get_source_class_id (  {\i self},   {\i class_id},   {\i source})}}
+\par
+{\bkmkstart AAAAAAAAXV}
+{\bkmkend AAAAAAAAXV}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+{
+\par
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid Map an internal class ID to the corresponding class ID in the source dataset.}
+ \par
+}{
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 343     {\cf17 def }get_source_class_id(self, class_id, source):\par
+344         {\cf22 """Map an internal class ID to the corresponding class ID in the source dataset."""}\par
+345         info = self.class_info[class_id]\par
+346         {\cf17 assert} info[{\cf22 'source'}] == source\par
+347         {\cf19 return} info[{\cf22 'id'}]\par
+348 \par
+}
+{
+\ql
+References Dataset._image_ids, and Dataset.class_info.}\par
+}
+{\xe \v image_ids\:Dataset}
+{\xe \v Dataset\:image_ids}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+image_ids (  {\i self})}}
+\par
+{\bkmkstart AAAAAAAAXW}
+{\bkmkend AAAAAAAAXW}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+{
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 350     {\cf17 def }image_ids(self):\par
+351         {\cf19 return} self._image_ids\par
+352 \par
+}
+\par
+{
+\ql
+Referenced by {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAXT" }{}}{\fldrslt {\cs37\ul\cf2 Dataset.prepare()}}}
+.}\par
+}
+{\xe \v image_reference\:Dataset}
+{\xe \v Dataset\:image_reference}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+image_reference (  {\i self},   {\i image_id})}}
+\par
+{\bkmkstart AAAAAAAAXS}
+{\bkmkend AAAAAAAAXS}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+{
+\par
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid Return a link to the image in its source Website or details about\par
+the image that help looking it up or debugging it.\par
+\par
+Override for your dataset, but pass to this function\par
+if you encounter images not in your dataset.\par
+}
+ \par
+}{
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 290     {\cf17 def }image_reference(self, image_id):\par
+291         {\cf22 """Return a link to the image in its source Website or details about}\par
+292 {\cf22         the image that help looking it up or debugging it.}\par
+293 {\cf22 }\par
+294 {\cf22         Override for your dataset, but pass to this function}\par
+295 {\cf22         if you encounter images not in your dataset.}\par
+296 {\cf22         """}\par
+297         {\cf19 return} {\cf22 ""}\par
+298 \par
+}
+}
+{\xe \v load_image\:Dataset}
+{\xe \v Dataset\:load_image}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+load_image (  {\i self},   {\i image_id})}}
+\par
+{\bkmkstart AAAAAAAAXY}
+{\bkmkend AAAAAAAAXY}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+{
+\par
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid Load the specified image and return a [H,W,3] Numpy array.\par
+}
+ \par
+}{
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 360     {\cf17 def }load_image(self, image_id):\par
+361         {\cf22 """Load the specified image and return a [H,W,3] Numpy array.}\par
+362 {\cf22         """}\par
+363         {\cf20 # Load image}\par
+364         image = skimage.io.imread(self.image_info[image_id][{\cf22 'path'}])\par
+365         {\cf20 # If grayscale. Convert to RGB for consistency.}\par
+366         {\cf19 if} image.ndim != 3:\par
+367             image = skimage.color.gray2rgb(image)\par
+368         {\cf20 # If has an alpha channel, remove it for consistency}\par
+369         {\cf19 if} image.shape[-1] == 4:\par
+370             image = image[..., :3]\par
+371         {\cf19 return} image\par
+372 \par
+}
+{
+\ql
+References Dataset.image_info.}\par
+}
+{\xe \v load_mask\:Dataset}
+{\xe \v Dataset\:load_mask}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+load_mask (  {\i self},   {\i image_id})}}
+\par
+{\bkmkstart AAAAAAAAXZ}
+{\bkmkend AAAAAAAAXZ}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+{
+\par
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid Load instance masks for the given image.\par
+\par
+Different datasets use different ways to store masks. Override this\par
+method to load instance masks and return them in the form of am\par
+array of binary masks of shape [height, width, instances].\par
+\par
+Returns:\par
+    masks: A bool array of shape [height, width, instance count] with\par
+        a binary mask per instance.\par
+    class_ids: a 1D array of class IDs of the instance masks.\par
+}
+ \par
+}{
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 373     {\cf17 def }load_mask(self, image_id):\par
+374         {\cf22 """Load instance masks for the given image.}\par
+375 {\cf22 }\par
+376 {\cf22         Different datasets use different ways to store masks. Override this}\par
+377 {\cf22         method to load instance masks and return them in the form of am}\par
+378 {\cf22         array of binary masks of shape [height, width, instances].}\par
+379 {\cf22 }\par
+380 {\cf22         Returns:}\par
+381 {\cf22             masks: A bool array of shape [height, width, instance count] with}\par
+382 {\cf22                 a binary mask per instance.}\par
+383 {\cf22             class_ids: a 1D array of class IDs of the instance masks.}\par
+384 {\cf22         """}\par
+385         {\cf20 # Override this function to load a mask from your dataset.}\par
+386         {\cf20 # Otherwise, it returns an empty mask.}\par
+387         logging.warning({\cf22 "You are using the default load_mask(), maybe you need to define your own one."})\par
+388         mask = np.empty([0, 0, 0])\par
+389         class_ids = np.empty([0], np.int32)\par
+390         {\cf19 return} mask, class_ids\par
+391 \par
+392 \par
+}
+}
+{\xe \v map_source_class_id\:Dataset}
+{\xe \v Dataset\:map_source_class_id}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+map_source_class_id (  {\i self},   {\i source_class_id})}}
+\par
+{\bkmkstart AAAAAAAAXU}
+{\bkmkend AAAAAAAAXU}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+{
+\par
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid Takes a source class ID and returns the int class ID assigned to it.\par
+\par
+For example:\par
+dataset.map_source_class_id("coco.12") -> 23\par
+}
+ \par
+}{
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 335     {\cf17 def }map_source_class_id(self, source_class_id):\par
+336         {\cf22 """Takes a source class ID and returns the int class ID assigned to it.}\par
+337 {\cf22 }\par
+338 {\cf22         For example:}\par
+339 {\cf22         dataset.map_source_class_id("coco.12") -> 23}\par
+340 {\cf22         """}\par
+341         {\cf19 return} self.class_from_source_map[source_class_id]\par
+342 \par
+}
+{
+\ql
+References Dataset.class_from_source_map.}\par
+}
+{\xe \v prepare\:Dataset}
+{\xe \v Dataset\:prepare}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+prepare (  {\i self},   {\i class_map} = {\f2 None})}}
+\par
+{\bkmkstart AAAAAAAAXT}
+{\bkmkend AAAAAAAAXT}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+{
+\par
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid Prepares the Dataset class for use.\par
+\par
+TODO: class map is not supported yet. When done, it should handle mapping\par
+      classes from different datasets to the same class ID.\par
+}
+ \par
+}{
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 299     {\cf17 def }prepare(self, class_map=None):\par
+300         {\cf22 """Prepares the Dataset class for use.}\par
+301 {\cf22 }\par
+302 {\cf22         TODO: class map is not supported yet. When done, it should handle mapping}\par
+303 {\cf22               classes from different datasets to the same class ID.}\par
+304 {\cf22         """}\par
+305 \par
+306         {\cf17 def }clean_name(name):\par
+307             {\cf22 """Returns a shorter version of object names for cleaner display."""}\par
+308             {\cf19 return} {\cf22 ","}.join(name.split({\cf22 ","})[:1])\par
+309 \par
+310         {\cf20 # Build (or rebuild) everything else from the info dicts.}\par
+311         self.num_classes = len(self.class_info)\par
+312         self.class_ids = np.arange(self.num_classes)\par
+313         self.class_names = [clean_name(c[{\cf22 "name"}]) {\cf19 for} c {\cf19 in} self.class_info]\par
+314         self.num_images = len(self.image_info)\par
+315         self._image_ids = np.arange(self.num_images)\par
+316 \par
+317         {\cf20 # Mapping from source class and image IDs to internal IDs}\par
+318         self.class_from_source_map = \{{\cf22 "\{\}.\{\}"}.format(info[{\cf22 'source'}], info[{\cf22 'id'}]): id\par
+319                                       {\cf19 for} info, id {\cf19 in} zip(self.class_info, self.class_ids)\}\par
+320         self.image_from_source_map = \{{\cf22 "\{\}.\{\}"}.format(info[{\cf22 'source'}], info[{\cf22 'id'}]): id\par
+321                                       {\cf19 for} info, id {\cf19 in} zip(self.image_info, self.image_ids)\}\par
+322 \par
+323         {\cf20 # Map sources to class_ids they support}\par
+324         self.sources = list(set([i[{\cf22 'source'}] {\cf19 for} i {\cf19 in} self.class_info]))\par
+325         self.source_class_ids = \{\}\par
+326         {\cf20 # Loop over datasets}\par
+327         {\cf19 for} source {\cf19 in} self.sources:\par
+328             self.source_class_ids[source] = []\par
+329             {\cf20 # Find classes that belong to this dataset}\par
+330             {\cf19 for} i, info {\cf19 in} enumerate(self.class_info):\par
+331                 {\cf20 # Include BG class in all datasets}\par
+332                 {\cf19 if} i == 0 {\cf19 or} source == info[{\cf22 'source'}]:\par
+333                     self.source_class_ids[source].append(i)\par
+334 \par
+}
+{
+\ql
+References Dataset._image_ids, Dataset.class_from_source_map, Dataset.class_ids, Dataset.class_info, Dataset.class_names, Dataset.image_from_source_map, Dataset.image_ids, Dataset.image_ids(), Dataset.image_info, Dataset.num_classes, Dataset.num_images, Dataset.source_class_ids, and Dataset.sources.}\par
+}
+{\xe \v source_image_link\:Dataset}
+{\xe \v Dataset\:source_image_link}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+source_image_link (  {\i self},   {\i image_id})}}
+\par
+{\bkmkstart AAAAAAAAXX}
+{\bkmkend AAAAAAAAXX}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+{
+\par
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid Returns the path or URL to the image.\par
+Override this to return a URL to the image if it's available online for easy\par
+debugging.\par
+}
+ \par
+}{
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 353     {\cf17 def }source_image_link(self, image_id):\par
+354         {\cf22 """Returns the path or URL to the image.}\par
+355 {\cf22         Override this to return a URL to the image if it's available online for easy}\par
+356 {\cf22         debugging.}\par
+357 {\cf22         """}\par
+358         {\cf19 return} self.image_info[image_id][{\cf22 "path"}]\par
+359 \par
+}
+{
+\ql
+References Dataset.image_info.}\par
+}
+{\pard\widctlpar\brdrb\brdrs\brdrw5\brsp20 \adjustright \par}
+The documentation for this class was generated from the following file:{\par
+\pard\plain \s121\fi-360\li720\widctlpar\jclisttab\tx720{\*\pn \pnlvlbody\ilvl0\ls2\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+K:/Github/PeopleTracker/src/utils.py\par
+}}

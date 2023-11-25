@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_people_tracker_1_1src_1_1fps_1_1_f_p_s" xml:lang="en-US">
+<title>PeopleTracker.src.fps.FPS Class Reference</title>
+<indexterm><primary>PeopleTracker.src.fps.FPS</primary></indexterm>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1fps_1_1_f_p_s_1ad8dc82b494c1ee317058f2d2ddeef1cd"/><emphasis role="strong">__init__</emphasis> (self)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1fps_1_1_f_p_s_1ae6e0db6eba906fcca8cfd9c4294dfb11"/><emphasis role="strong">start</emphasis> (self)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1fps_1_1_f_p_s_1ab45c44de72612a2efb3d57a1e9fc30b8"/><emphasis role="strong">stop</emphasis> (self)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1fps_1_1_f_p_s_1a0c285e97e23baf06dcf43ba4b89173f9"/><emphasis role="strong">update</emphasis> (self)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1fps_1_1_f_p_s_1ac4e55e33929bb384ee156aa38e5980a4"/><emphasis role="strong">elapsed</emphasis> (self)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1fps_1_1_f_p_s_1a5874eb4449f4e0f114e3f93000b37286"/><emphasis role="strong">fps</emphasis> (self)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Protected Attributes    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1fps_1_1_f_p_s_1a1dd4d17fd04472899b22037ec46af223"/><emphasis role="strong">_start</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1fps_1_1_f_p_s_1ac7bb85af18fff8ac279d763e69bd2444"/><emphasis role="strong">_end</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1fps_1_1_f_p_s_1af529e9cfd7a30265a4960db0a91d2e3a"/><emphasis role="strong">_numFrames</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<para>
+The documentation for this class was generated from the following file:</para>
+K:/Github/PeopleTracker/src/fps.py</section>

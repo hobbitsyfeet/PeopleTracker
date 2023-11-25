@@ -1,0 +1,19 @@
+digraph "get_video_characteristics"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [id="Node000001",label="get_video_characteristics",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="VIDEO COMPLEXITY STARTS HERE #."];
+  Node1 -> Node2 [id="edge6_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="ground_truth_characteristics",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$a00150.html#a7e1305e3e399383a4b749ba2244f5943",tooltip=" "];
+  Node1 -> Node3 [id="edge7_Node000001_Node000003",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="illumination",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$a00150.html#ad63c3dc24a49baaad8a67403006f0241",tooltip=" "];
+  Node1 -> Node4 [id="edge8_Node000001_Node000004",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="optical_flow",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$a00150.html#af0a6b39e1a4c8ba3a00d790253aab15c",tooltip=" "];
+  Node4 -> Node5 [id="edge9_Node000004_Node000005",color="steelblue1",style="solid",tooltip=" "];
+  Node5 [id="Node000005",label="optical_flow_pan",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$a00150.html#ae735fff941e047218ea858337e007484",tooltip=" "];
+  Node4 -> Node6 [id="edge10_Node000004_Node000006",color="steelblue1",style="solid",tooltip=" "];
+  Node6 [id="Node000006",label="optical_flow_zoom",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$a00150.html#a3cff34c024334cefe903de3058e3a991",tooltip=" "];
+}

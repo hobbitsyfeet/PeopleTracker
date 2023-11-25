@@ -1,0 +1,20 @@
+digraph "check_occlusion"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="RL";
+  Node1 [id="Node000001",label="check_occlusion",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Checks if a ground truth is occluded."];
+  Node1 -> Node2 [id="edge7_Node000001_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="get_occlusion_count",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$a00154.html#af23940c18d935e51e2445a917d091dd4",tooltip="Returns a number of occluded ground truths occur at a frame."];
+  Node1 -> Node3 [id="edge8_Node000001_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="multiple_objects",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$a00154.html#a24713f50b19ca4cf8b48421328fffcf4",tooltip=" "];
+  Node3 -> Node4 [id="edge9_Node000003_Node000004",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="calculate_frame_errors",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$a00154.html#afb84b7efc3d1670971c3a96f2289ac5a",tooltip=" "];
+  Node4 -> Node5 [id="edge10_Node000004_Node000005",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node5 [id="Node000005",label="calculate_errors",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$a00154.html#a2cc5036fce7e6fbf3fb8e999bcf5ae25",tooltip=" "];
+  Node1 -> Node6 [id="edge11_Node000001_Node000006",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node6 [id="Node000006",label="multiple_trackers",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$a00154.html#ae7a2ff900f60fe15be7946b972d55ce1",tooltip=" "];
+  Node6 -> Node4 [id="edge12_Node000006_Node000004",dir="back",color="steelblue1",style="solid",tooltip=" "];
+}

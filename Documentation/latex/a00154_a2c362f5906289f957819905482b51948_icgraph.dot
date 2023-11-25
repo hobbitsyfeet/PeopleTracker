@@ -1,0 +1,50 @@
+digraph "compute_iou"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="RL";
+  Node1 [id="Node000001",label="compute_iou",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Calculates IoU of the given box with the array of the given boxes."];
+  Node1 -> Node2 [id="edge27_Node000001_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="precision",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$a00154.html#aae33341ee61c7a874af86b59d4f81d84",tooltip=" "];
+  Node2 -> Node3 [id="edge28_Node000002_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="check_occlusion",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$a00154.html#a756c92b090c4b99e7afe65dd1a08cd38",tooltip="Checks if a ground truth is occluded."];
+  Node3 -> Node4 [id="edge29_Node000003_Node000004",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="get_occlusion_count",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$a00154.html#af23940c18d935e51e2445a917d091dd4",tooltip="Returns a number of occluded ground truths occur at a frame."];
+  Node3 -> Node5 [id="edge30_Node000003_Node000005",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node5 [id="Node000005",label="multiple_objects",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$a00154.html#a24713f50b19ca4cf8b48421328fffcf4",tooltip=" "];
+  Node5 -> Node6 [id="edge31_Node000005_Node000006",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node6 [id="Node000006",label="calculate_frame_errors",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$a00154.html#afb84b7efc3d1670971c3a96f2289ac5a",tooltip=" "];
+  Node6 -> Node7 [id="edge32_Node000006_Node000007",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node7 [id="Node000007",label="calculate_errors",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$a00154.html#a2cc5036fce7e6fbf3fb8e999bcf5ae25",tooltip=" "];
+  Node3 -> Node8 [id="edge33_Node000003_Node000008",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node8 [id="Node000008",label="multiple_trackers",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$a00154.html#ae7a2ff900f60fe15be7946b972d55ce1",tooltip=" "];
+  Node8 -> Node6 [id="edge34_Node000008_Node000006",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node2 -> Node9 [id="edge35_Node000002_Node000009",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node9 [id="Node000009",label="fmeasure",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$a00154.html#a1990a7819cacf1d4c1d72db40e19d7a9",tooltip=" "];
+  Node9 -> Node9 [id="edge36_Node000009_Node000009",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node9 -> Node10 [id="edge37_Node000009_Node000010",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node10 [id="Node000010",label="identification_map",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$a00154.html#aaaad9fe0f151923410425485f2f4c4ed",tooltip=" "];
+  Node10 -> Node11 [id="edge38_Node000010_Node000011",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node11 [id="Node000011",label="calculate_identification_map",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$a00154.html#a3639a941793f544ac8da43787caf0e79",tooltip="Calculates Identification map for an entire video."];
+  Node11 -> Node7 [id="edge39_Node000011_Node000007",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node10 -> Node12 [id="edge40_Node000010_Node000012",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node12 [id="Node000012",label="calculate_object_purity",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$a00154.html#afa5e4bd548b6ad8817feade0a06a04f2",tooltip=" "];
+  Node12 -> Node7 [id="edge41_Node000012_Node000007",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node10 -> Node13 [id="edge42_Node000010_Node000013",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node13 [id="Node000013",label="calculate_tracker_purity",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$a00154.html#abe18d5f6b249e1dde980ff17aabf9e8f",tooltip=" "];
+  Node13 -> Node7 [id="edge43_Node000013_Node000007",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node13 -> Node6 [id="edge44_Node000013_Node000006",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node10 -> Node14 [id="edge45_Node000010_Node000014",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node14 [id="Node000014",label="falsly_identified_object",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$a00154.html#a2a0bf799d0e7ebe787ced89e43d09bb5",tooltip=" "];
+  Node14 -> Node7 [id="edge46_Node000014_Node000007",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node14 -> Node6 [id="edge47_Node000014_Node000006",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node10 -> Node15 [id="edge48_Node000010_Node000015",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node15 [id="Node000015",label="falsly_identified_tracker",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$a00154.html#a86b2c6d7d6195d366eca3c999f3219a2",tooltip=" "];
+  Node15 -> Node7 [id="edge49_Node000015_Node000007",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node15 -> Node6 [id="edge50_Node000015_Node000006",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node1 -> Node16 [id="edge51_Node000001_Node000016",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node16 [id="Node000016",label="recall",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$a00154.html#a6fffa1ba921b56906be56b8ef88fead5",tooltip=" "];
+  Node16 -> Node9 [id="edge52_Node000016_Node000009",dir="back",color="steelblue1",style="solid",tooltip=" "];
+}

@@ -1,0 +1,778 @@
+\doxysection{room\+\_\+estimation}
+\hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation}{}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation}\index{room\_estimation@{room\_estimation}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a5fe35e96c37a5189461dc200d9860d4b}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a5fe35e96c37a5189461dc200d9860d4b} 
+{\bfseries \+\_\+\+\_\+init\+\_\+\+\_\+} (self, image=None, camera\+\_\+matrix=JUSTIN\+\_\+\+HERO4\+\_\+\+SILVER\+\_\+720\+\_\+\+MEDIUM\+\_\+\+FOV\+\_\+\+MTX, distortion\+\_\+matrix=JUSTIN\+\_\+\+HERO4\+\_\+\+SILVER\+\_\+720\+\_\+\+MEDIUM\+\_\+\+FOV\+\_\+\+DIST, rvecs=JUSTIN\+\_\+\+HERO4\+\_\+\+SILVER\+\_\+720\+\_\+\+MEDIUM\+\_\+\+FOV\+\_\+\+RVEC)
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a5da847c11e206bbccbe29ec5e042462a}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a5da847c11e206bbccbe29ec5e042462a} 
+{\bfseries set\+\_\+image} (self, image)
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a61a9f1d7c10c86838c5928c76bb2ca59}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a61a9f1d7c10c86838c5928c76bb2ca59} 
+{\bfseries display\+\_\+room} (self, image=None, axis=True, box=True, show\+\_\+3d\+\_\+plot=True, with\+\_\+points=False)
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a833c6efe94bd835b3ab82191c47f04fe}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a833c6efe94bd835b3ab82191c47f04fe} 
+{\bfseries set\+\_\+axis} (self, x, y, z)
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_acfa65bf2973032f8d2e0e33872634b06}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_acfa65bf2973032f8d2e0e33872634b06} 
+{\bfseries set\+\_\+corners} (self, p1=None, p2=None, p3=None, p4=None)
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_af380d3a1fe6a68080691e578d25937b1}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_af380d3a1fe6a68080691e578d25937b1} 
+{\bfseries img\+\_\+copy} (self)
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a5b5abc31dfc859a8bd979479f51da933}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a5b5abc31dfc859a8bd979479f51da933} 
+{\bfseries define\+\_\+sides} (self, sides, lengths)
+\item 
+\mbox{\hyperlink{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a84fbd0580af51d4905aeeb1b71889390}{define\+\_\+room}} (self, width=None, length=None, height=None, offset=\mbox{[}0, 0, 0, 0\mbox{]}, corners=None, room\+\_\+points=None, refine\+\_\+corners=False, image=None, stitch\+\_\+videos=None, calibration=None, extend=None)
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_ab0188ed983122bc7494460062c8ca22b}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_ab0188ed983122bc7494460062c8ca22b} 
+{\bfseries clear\+\_\+corners} (self)
+\item 
+\mbox{\hyperlink{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a1cc866ee6a78b68a77485eb1eb0f00ba}{get\+\_\+room\+\_\+corners}} (self, num\+\_\+points=4)
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a5e02ad6d52be2fc94cd6f1663ecac18d}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a5e02ad6d52be2fc94cd6f1663ecac18d} 
+{\bfseries edit\+\_\+room\+\_\+corner} (self, index, new\+\_\+pixel)
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_ae2c8ef2eee13d8eb75d88c0559626fac}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_ae2c8ef2eee13d8eb75d88c0559626fac} 
+{\bfseries connect\+\_\+points} (self, points)
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a7975986cd4d5ecccaadb6a9a0a521e1e}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a7975986cd4d5ecccaadb6a9a0a521e1e} 
+{\bfseries get\+\_\+corners} (self, event, x, y, flags, param)
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a5f01474eaee314a7013feeaa49685bb9}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a5f01474eaee314a7013feeaa49685bb9} 
+{\bfseries get\+\_\+corner\+\_\+with\+\_\+definition} (self, event, x, y, flags, param)
+\item 
+\mbox{\hyperlink{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a7bcf809e2d6ba963c04b331f5c53a3a8}{get\+\_\+cube\+\_\+side}} (self, cube, side)
+\item 
+\mbox{\hyperlink{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a9d5c0b06be5dbf308587eac88c486612}{crop\+\_\+plain}} (self, points, plain\+\_\+width, plain\+\_\+length, image=None)
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a671eb2401939cdbb1c91570e58d4f7c3}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a671eb2401939cdbb1c91570e58d4f7c3} 
+{\bfseries project\+\_\+points} (self, points=\mbox{[}$\,$\mbox{]})
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_ab8bb923e853aeed05b8e25def792f5e4}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_ab8bb923e853aeed05b8e25def792f5e4} 
+{\bfseries plot\+\_\+points} (event, x, y, flags, params)
+\item 
+\mbox{\hyperlink{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a8277f150767e58ce0824de54928fb184}{get\+\_\+3d\+\_\+to\+\_\+2d}} (self, point, show=True)
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a52e10ca5ff3f0e459f47e6ccaf82adeb}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a52e10ca5ff3f0e459f47e6ccaf82adeb} 
+{\bfseries get\+\_\+3d\+\_\+point} (self, pixel, height=1500, camera\+\_\+matrix=None, rotation\+\_\+matrix=None, tvec=None, show\+\_\+point=True)
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_acd30d2c67d090d15947b3abde53e876f}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_acd30d2c67d090d15947b3abde53e876f} 
+{\bfseries display\+\_\+3\+D\+\_\+\+Plot} (points, shown)
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a6b52f7921f3d60a3a6b7d2dc641aa44c}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a6b52f7921f3d60a3a6b7d2dc641aa44c} 
+{\bfseries draw\+\_\+axis} (self)
+\item 
+\mbox{\hyperlink{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_aef4827bfb173a05c4794fb8b29ec8055}{draw\+\_\+cuboid}} (self, image=None, distortion=None, rvec=None, tvec=None)
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a07baa9eba436c81cea0c49e0d5b5099f}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a07baa9eba436c81cea0c49e0d5b5099f} 
+{\bfseries draw\+\_\+box} (img, corners, imgpts)
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a9efcb6eeef35186ade72c0bbc5c531fe}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a9efcb6eeef35186ade72c0bbc5c531fe} 
+{\bfseries draw\+\_\+point} (self, img, front\+\_\+pt, back\+\_\+pt)
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a557b4ac632e812552cc251f7b57b6a6e}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a557b4ac632e812552cc251f7b57b6a6e} 
+{\bfseries estimate\+\_\+plane} (img, corners, points, calibration\+\_\+matrix, distortion\+\_\+matrix)
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a77a48d83bb7e61c5a28680a2de16c11c}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a77a48d83bb7e61c5a28680a2de16c11c} 
+{\bfseries draw\+\_\+vector} (self, event, x, y, flags, params)
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a68abc4d3a13c1374dfa93018a57b84be}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a68abc4d3a13c1374dfa93018a57b84be} 
+{\bfseries get\+\_\+room\+\_\+3d} (self, limits, height, step, save\+\_\+filename=None)
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_acf8ba8f0370d5371ba8c5a28e3e3d587}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_acf8ba8f0370d5371ba8c5a28e3e3d587} 
+{\bfseries save\+\_\+room\+\_\+3d} (self, path, filename, mapped)
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_ae66e446204a8676a532acab744601f10}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_ae66e446204a8676a532acab744601f10} 
+{\bfseries load\+\_\+room\+\_\+3d} (self, filename)
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a62767547824d2f147fc10c5b38f2c725}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a62767547824d2f147fc10c5b38f2c725} 
+{\bfseries get\+\_\+room\+\_\+points} (self, width, length, height=0)
+\item 
+\mbox{\hyperlink{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_ae29c16a83d737f9e9f2b584ae560ad85}{get\+\_\+n\+\_\+room\+\_\+points}} (self, n\+\_\+locations=None, height=0)
+\item 
+\mbox{\hyperlink{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a921523998615aa3555a3cb0ca2b36965}{assign\+\_\+non\+\_\+square\+\_\+corners}} (self, num\+\_\+points=inf)
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a9f82d1ff05b9a54401f4749899cfedb5}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a9f82d1ff05b9a54401f4749899cfedb5} 
+{\bfseries find\+\_\+3d\+\_\+limits} (self, height=1000)
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a4446e4e6d7e24976a0eb63a6d7970209}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a4446e4e6d7e24976a0eb63a6d7970209} 
+{\bfseries project\+\_\+point} (self, event, x, y, flags, params)
+\item 
+\mbox{\hyperlink{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a8113e0511b9bcb908b6a9aee98cee69b}{get\+\_\+depth}} (self, event, x, y, p1, p2)
+\item 
+\mbox{\hyperlink{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a3b5b618d6f1cc697a5191f0617a9200a}{estimate}} (self)
+\item 
+\mbox{\hyperlink{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a0246e47740851d72979f6d5cdc76bf18}{get\+\_\+pixel\+\_\+location}} (self, pixel)
+\item 
+\mbox{\hyperlink{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a9ddc57e65b6b90133dae37504451b764}{poly\+\_\+fit\+\_\+wall}} (self, samples, pixels\+\_\+past\+\_\+extent=100, horizontal\+\_\+extent=None, degree=2)
+\item 
+\mbox{\hyperlink{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a54166ae0c7b7f8e5aadcc81eda56ce58}{find\+\_\+intersection}} (self, line\+\_\+equation1, line\+\_\+equation2)
+\item 
+\mbox{\hyperlink{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a54ccab8062e8ce67319dcd81d75b6d4a}{make\+\_\+interpolater}} (left\+\_\+min, left\+\_\+max, right\+\_\+min, right\+\_\+max)
+\item 
+\mbox{\hyperlink{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_abeac4cbae89aef891cee148cbbbc6232}{superimpose\+\_\+checker}} (self, size=21)
+\item 
+\mbox{\hyperlink{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_ae4a382139afef48e3b930752120b4c35}{define\+\_\+perspective\+\_\+grid}} (self, division=10, extend=500)
+\item 
+\mbox{\hyperlink{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_af69d43ebb2e1d46a4e6313f41860c4fb}{find\+\_\+wall\+\_\+intersection}} (self, number\+\_\+of\+\_\+walls=2, samples\+\_\+per\+\_\+wall=4, extent=10000, intersection\+\_\+pairs=\mbox{[}$\,$\mbox{]}, degree=1)
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a7c5233bfe740d0250450332850fcad71}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a7c5233bfe740d0250450332850fcad71} 
+{\bfseries get\+\_\+checkerboard\+\_\+shape} (self, checkerboard\+\_\+images)
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a0686ad347e6e14189cd0035e2ea7bd54}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a0686ad347e6e14189cd0035e2ea7bd54} 
+{\bfseries fisheye\+\_\+calibrate} (self, checkerboard\+\_\+images, checkerboard\+\_\+grid=None, out=None)
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a770916344506672f541f976b5048555f}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a770916344506672f541f976b5048555f} 
+{\bfseries checkerboard\+\_\+calibrate} (self, checkerboard\+\_\+images, checkerboard\+\_\+grid=None, out=None)
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_ae36b88c1816fb4bd3fef0f9967aa3527}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_ae36b88c1816fb4bd3fef0f9967aa3527} 
+{\bfseries save\+\_\+calibration} (self, file, mtx, distortion, rvecs, tvecs, error\+\_\+list, resolution)
+\item 
+\mbox{\hyperlink{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a14966b15146b30927e515a9b3c64328d}{load\+\_\+calibration}} (self, file)
+\item 
+\mbox{\hyperlink{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a048722841bc8d71bae4a1e4a9eb9db00}{collect\+\_\+frames}} (self, video\+\_\+source, start\+\_\+frame=1, skip=15, total\+\_\+frames=None)
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_ad5f4b9a9b0ee17c82d3731e05dba3109}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_ad5f4b9a9b0ee17c82d3731e05dba3109} 
+{\bfseries get\+\_\+calibration\+\_\+ratio} (self, video\+\_\+resolution, calibration\+\_\+resolution)
+\item 
+\mbox{\hyperlink{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_abd979a29c40c64a598514d7d165bb4a9}{undistort\+\_\+room}} (self, image=None, points\+\_\+data=None, camera\+\_\+matrix=None, distortion=None, show=False, fisheye=False, calibration\+\_\+resolution=None)
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a66fa5cbb4e0e7ce0bfa08b4b5e14482f}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a66fa5cbb4e0e7ce0bfa08b4b5e14482f} 
+{\bfseries undistort\+\_\+tracker\+\_\+data} (self, data, image=None, camera\+\_\+matrix=None, distortion=None)
+\item 
+\mbox{\hyperlink{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a444510358faa06884318d1ebe94846ff}{load\+\_\+tracker}} (self, csv\+\_\+file)
+\item 
+\mbox{\hyperlink{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_ab870abde92556016846a09d5feb9e03c}{correct\+\_\+tracker\+\_\+points}} (self, df)
+\item 
+\mbox{\hyperlink{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a0bd7f71bd75e917a01563ad8dce62565}{update\+\_\+tracker\+\_\+3D}} (self, index, df, mapped\+\_\+min, mapped\+\_\+max)
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_ab099905032ea6fd2a2e17e2414e58872}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_ab099905032ea6fd2a2e17e2414e58872} 
+{\bfseries show\+\_\+tracker\+\_\+3D} (self, df, mapped\+\_\+min, mapped\+\_\+max)
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a0a327e18a9cf669bab61d714980d73b0}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a0a327e18a9cf669bab61d714980d73b0} 
+{\bfseries show\+\_\+tracker\+\_\+2D} (self, df, image, data\+\_\+columns=\mbox{[}\textquotesingle{}Pixel\+\_\+\+Loc\+\_\+x\textquotesingle{}, \textquotesingle{}Pixel\+\_\+\+Loc\+\_\+y\textquotesingle{}\mbox{]}, window="{}Tracker2\+D"{}, colour=(255, 255, 0))
+\item 
+\mbox{\hyperlink{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a2e21d867efbc8b743664f8b6f41d1b8e}{extend\+\_\+image\+\_\+to\+\_\+corners}} (self, image, corners)
+\item 
+\mbox{\hyperlink{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_aab76a3fa2901de336d5a1a3e1b707604}{get\+\_\+room\+\_\+dimensions}} (self, room\+\_\+points)
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_ad1eaebbb5317d01c6bbd133cf98a4d30}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_ad1eaebbb5317d01c6bbd133cf98a4d30} 
+{\bfseries evaluate\+\_\+calibration} (self)
+\item 
+\mbox{\hyperlink{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a6c6c06bc8bbf8a0f9f7237a97ff9487e}{visualize\+\_\+distortion}} (self, camera\+\_\+matrix, distiortion, image=None)
+\item 
+\mbox{\hyperlink{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a2a5df656a4b4d07c05b290f8197c316f}{save\+\_\+room}} (self, filename)
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a7fea1337eef39488e7f6b170151cf628}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a7fea1337eef39488e7f6b170151cf628} 
+{\bfseries load\+\_\+room} (self, filename)
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a3b7fb08f24516ed753d38cd1eccd73f6}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a3b7fb08f24516ed753d38cd1eccd73f6} 
+{\bfseries load\+\_\+and\+\_\+undistort\+\_\+calibration} (self, video\+\_\+path, \mbox{\hyperlink{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a6c6c06bc8bbf8a0f9f7237a97ff9487e}{visualize\+\_\+distortion}}=False, points\+\_\+data=None)
+\item 
+\mbox{\hyperlink{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_adbe2f98b84513775c3106191f2845ed3}{stitch\+\_\+rooms}} (self, video\+\_\+list, undistort=True, key\+\_\+index=None, show=False)
+\item 
+\mbox{\hyperlink{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a75031a34aadd8c7847c479a17524e00e}{stitch\+\_\+trackers}} (self, video\+\_\+list, homography\+\_\+list, use\+\_\+csv=True, offsets=\mbox{[}0, 0, 0, 0\mbox{]})
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_ab20e46a19ec3f0b9c7fd04d2264ba8a1}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_ab20e46a19ec3f0b9c7fd04d2264ba8a1} 
+{\bfseries draw\+\_\+grid} (self, grid\+\_\+shape=(20, 20), color=(255, 255, 255), thickness=2)
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a6c3906082600df696b318ba028d67911}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a6c3906082600df696b318ba028d67911} 
+{\bfseries get\+\_\+files\+\_\+from\+\_\+folder} (self, folder, extension="{}MP4"{})
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_af1a464766317ca2878de63df2ec7c041}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_af1a464766317ca2878de63df2ec7c041} 
+{\bfseries window\+\_\+name}
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a42cb5f5737262947250c709931232c69}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a42cb5f5737262947250c709931232c69} 
+{\bfseries image}
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_ad0b8708ab613a74394c90970fd0abd21}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_ad0b8708ab613a74394c90970fd0abd21} 
+{\bfseries show\+\_\+img}
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_af9d23a302c24f0ec934688542ce94817}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_af9d23a302c24f0ec934688542ce94817} 
+{\bfseries corners}
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a2d200e8176a8ed50871d138d8ac5d61d}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a2d200e8176a8ed50871d138d8ac5d61d} 
+{\bfseries room\+\_\+points}
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a4c3efb71d455de72ae4236dbcdae0acc}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a4c3efb71d455de72ae4236dbcdae0acc} 
+{\bfseries real\+\_\+locations}
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_ad0c10237443ae47f40315a47f947ccfc}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_ad0c10237443ae47f40315a47f947ccfc} 
+{\bfseries camera\+\_\+matrix}
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a8080a08b5711d0ac4df50eed1234b40f}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a8080a08b5711d0ac4df50eed1234b40f} 
+{\bfseries distioriton\+\_\+matrix}
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a37b0915b42b797dac08c9ca96a548212}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a37b0915b42b797dac08c9ca96a548212} 
+{\bfseries calibration\+\_\+errors}
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_aae23222e1130f873ce9799eec51f7ae6}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_aae23222e1130f873ce9799eec51f7ae6} 
+{\bfseries calibration\+\_\+resolution}
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_acadb5519abbf736dc420142a91e7f0b5}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_acadb5519abbf736dc420142a91e7f0b5} 
+{\bfseries rotation\+\_\+vector}
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a770476f7dd2d2628d33edf11f6498479}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a770476f7dd2d2628d33edf11f6498479} 
+{\bfseries translation\+\_\+vector}
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_aff94c8cfdec3db9def9b56fb1d0681a4}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_aff94c8cfdec3db9def9b56fb1d0681a4} 
+{\bfseries room\+\_\+width}
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a58cff685b88c5112830f468a43b50b3a}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a58cff685b88c5112830f468a43b50b3a} 
+{\bfseries room\+\_\+length}
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_ac526d1e7e8928a97a3275d1c0bb4fb1e}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_ac526d1e7e8928a97a3275d1c0bb4fb1e} 
+{\bfseries room\+\_\+height}
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a9feef5270e0e54f103868362df0cd27a}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a9feef5270e0e54f103868362df0cd27a} 
+{\bfseries sample\+\_\+rate}
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a792f6008e56b261c4df28ceaf113d908}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a792f6008e56b261c4df28ceaf113d908} 
+{\bfseries mapped\+\_\+dictionary}
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_aa9862ac00cbd1fbcdd68a24d65bac005}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_aa9862ac00cbd1fbcdd68a24d65bac005} 
+{\bfseries mapped}
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a2da155f5c1ba42a71b8fcc1e4d517476}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a2da155f5c1ba42a71b8fcc1e4d517476} 
+{\bfseries points\+\_\+data}
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a97ea70af4f4f5aa1943bc30f1bbdef81}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a97ea70af4f4f5aa1943bc30f1bbdef81} 
+{\bfseries vector\+\_\+depth}
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_accc088009d44c521706aa98d6387ee21}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_accc088009d44c521706aa98d6387ee21} 
+{\bfseries axis}
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a64aa603bc3c6c1587e7c6542452481ac}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a64aa603bc3c6c1587e7c6542452481ac} 
+{\bfseries fig}
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a269da524371d8ddf28357afd20e378ef}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a269da524371d8ddf28357afd20e378ef} 
+{\bfseries stitch\+\_\+homographies}
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_af375124b5ef04d3b8bb534e9da5a59d0}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_af375124b5ef04d3b8bb534e9da5a59d0} 
+{\bfseries show\+\_\+3\+D\+\_\+plot}
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a65225117e6365e16eec0b0fd2e1353e5}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a65225117e6365e16eec0b0fd2e1353e5} 
+{\bfseries get\+\_\+corners}
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a8fa675eb2fcec5b95d9d21c670da7f30}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a8fa675eb2fcec5b95d9d21c670da7f30} 
+{\bfseries ax}
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a6dedc2f4868ac1e98c70aa8a14a446ce}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a6dedc2f4868ac1e98c70aa8a14a446ce} 
+{\bfseries front\+\_\+plt}
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a1e6f90e673f1651f1546af9a598f18f2}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a1e6f90e673f1651f1546af9a598f18f2} 
+{\bfseries back\+\_\+plt}
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a6d42d479602ba7103d40854d696ef438}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a6d42d479602ba7103d40854d696ef438} 
+{\bfseries float\+\_\+plt}
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_ad390bb5a59ecbedcd954e93c4112b95f}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_ad390bb5a59ecbedcd954e93c4112b95f} 
+{\bfseries line\+\_\+plt}
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a944741645bb51634cd0cd79b0f5c880c}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a944741645bb51634cd0cd79b0f5c880c} 
+{\bfseries points\+\_\+plt}
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a23f49f701d2d2d1826da95278d96746f}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a23f49f701d2d2d1826da95278d96746f} 
+{\bfseries quiver}
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a437585bedd20447eb4ffe1ffa7770bcd}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a437585bedd20447eb4ffe1ffa7770bcd} 
+{\bfseries get\+\_\+corner\+\_\+with\+\_\+definition}
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a96dbb5c8baf443a0b757d117330d89b6}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a96dbb5c8baf443a0b757d117330d89b6} 
+{\bfseries get\+\_\+depth}
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a315556486e7e941c41eb072c7bd93b2e}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a315556486e7e941c41eb072c7bd93b2e} 
+{\bfseries error\+\_\+list}
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a087ba3f393340dc3e98e2f4b0717bf90}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a087ba3f393340dc3e98e2f4b0717bf90} 
+{\bfseries invert\+\_\+y}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a921523998615aa3555a3cb0ca2b36965}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a921523998615aa3555a3cb0ca2b36965} 
+\index{room\_estimation@{room\_estimation}!assign\_non\_square\_corners@{assign\_non\_square\_corners}}
+\index{assign\_non\_square\_corners@{assign\_non\_square\_corners}!room\_estimation@{room\_estimation}}
+\doxysubsubsection{\texorpdfstring{assign\_non\_square\_corners()}{assign\_non\_square\_corners()}}
+{\footnotesize\ttfamily assign\+\_\+non\+\_\+square\+\_\+corners (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{num\+\_\+points = {\ttfamily inf} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Assigns points around the room with any number of known coordinates.
+
+Assign point
+Set width and length of known coordinate.
+Origin should be 0,0
+Sets the dimentions of the room to the largest dimensions
+\end{DoxyVerb}
+ 
+
+References room\+\_\+estimation.\+camera\+\_\+matrix, room\+\_\+estimation.\+connect\+\_\+points(), room\+\_\+estimation.\+corners, room\+\_\+estimation.\+distioriton\+\_\+matrix, room\+\_\+estimation.\+get\+\_\+corner\+\_\+with\+\_\+definition(), room\+\_\+estimation.\+get\+\_\+corner\+\_\+with\+\_\+definition, room\+\_\+estimation.\+get\+\_\+corners, room\+\_\+estimation.\+get\+\_\+corners(), \mbox{\hyperlink{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_ae29c16a83d737f9e9f2b584ae560ad85}{room\+\_\+estimation.\+get\+\_\+n\+\_\+room\+\_\+points()}}, room\+\_\+estimation.\+room\+\_\+length, room\+\_\+estimation.\+room\+\_\+points, room\+\_\+estimation.\+room\+\_\+width, room\+\_\+estimation.\+rotation\+\_\+vector, room\+\_\+estimation.\+show\+\_\+img, and room\+\_\+estimation.\+translation\+\_\+vector.
+
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a048722841bc8d71bae4a1e4a9eb9db00}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a048722841bc8d71bae4a1e4a9eb9db00} 
+\index{room\_estimation@{room\_estimation}!collect\_frames@{collect\_frames}}
+\index{collect\_frames@{collect\_frames}!room\_estimation@{room\_estimation}}
+\doxysubsubsection{\texorpdfstring{collect\_frames()}{collect\_frames()}}
+{\footnotesize\ttfamily collect\+\_\+frames (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{video\+\_\+source,  }\item[{}]{start\+\_\+frame = {\ttfamily 1},  }\item[{}]{skip = {\ttfamily 15},  }\item[{}]{total\+\_\+frames = {\ttfamily None} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Collects the images for stitching
+\end{DoxyVerb}
+ 
+
+Referenced by \mbox{\hyperlink{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a2a5df656a4b4d07c05b290f8197c316f}{room\+\_\+estimation.\+save\+\_\+room()}}, \mbox{\hyperlink{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_adbe2f98b84513775c3106191f2845ed3}{room\+\_\+estimation.\+stitch\+\_\+rooms()}}, and \mbox{\hyperlink{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a75031a34aadd8c7847c479a17524e00e}{room\+\_\+estimation.\+stitch\+\_\+trackers()}}.
+
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_ab870abde92556016846a09d5feb9e03c}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_ab870abde92556016846a09d5feb9e03c} 
+\index{room\_estimation@{room\_estimation}!correct\_tracker\_points@{correct\_tracker\_points}}
+\index{correct\_tracker\_points@{correct\_tracker\_points}!room\_estimation@{room\_estimation}}
+\doxysubsubsection{\texorpdfstring{correct\_tracker\_points()}{correct\_tracker\_points()}}
+{\footnotesize\ttfamily correct\+\_\+tracker\+\_\+points (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{df }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}ratios is the x,y|width,height ratios of the estimate to the ground truth.
+Example: Estimates are recorded at 480x720 while ground truths are recorded at 720x1280. The ratio inputed would be (720/480, 1280/720) or (1.5, 1.777778)
+
+
+invert_y is the height of the video. We record the data as if the origin is in the bottom left, but in other applications the origin is the top left.
+This means we subtract the height of the video to inverse this effect.
+If the height of the video is 720, invert_y=720. If the data being tested IS NOT inverted, leave it as 0 
+\end{DoxyVerb}
+ 
+
+Referenced by \mbox{\hyperlink{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a444510358faa06884318d1ebe94846ff}{room\+\_\+estimation.\+load\+\_\+tracker()}}.
+
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a9d5c0b06be5dbf308587eac88c486612}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a9d5c0b06be5dbf308587eac88c486612} 
+\index{room\_estimation@{room\_estimation}!crop\_plain@{crop\_plain}}
+\index{crop\_plain@{crop\_plain}!room\_estimation@{room\_estimation}}
+\doxysubsubsection{\texorpdfstring{crop\_plain()}{crop\_plain()}}
+{\footnotesize\ttfamily crop\+\_\+plain (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{points,  }\item[{}]{plain\+\_\+width,  }\item[{}]{plain\+\_\+length,  }\item[{}]{image = {\ttfamily None} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Given 4 points the image will be cropped and reprojected as a rectangle.
+
+NOTE: Use length and height synonymously
+
+points = [(x1,y1), (x2,y2) ... (x4,y4)]
+\end{DoxyVerb}
+ 
+
+References App.\+image, room\+\_\+estimation.\+image, and person\+\_\+tab.\+image.
+
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_ae4a382139afef48e3b930752120b4c35}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_ae4a382139afef48e3b930752120b4c35} 
+\index{room\_estimation@{room\_estimation}!define\_perspective\_grid@{define\_perspective\_grid}}
+\index{define\_perspective\_grid@{define\_perspective\_grid}!room\_estimation@{room\_estimation}}
+\doxysubsubsection{\texorpdfstring{define\_perspective\_grid()}{define\_perspective\_grid()}}
+{\footnotesize\ttfamily define\+\_\+perspective\+\_\+grid (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{division = {\ttfamily 10},  }\item[{}]{extend = {\ttfamily 500} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Assign 4 corners on an image where a grid will be projected into that space. This only selects the points and draws the edges. This should be called before superimpose_checker.
+
+See superimpose_checker for definition of the grid and how it works.
+\end{DoxyVerb}
+ 
+
+References room\+\_\+estimation.\+clear\+\_\+corners(), \mbox{\hyperlink{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a54166ae0c7b7f8e5aadcc81eda56ce58}{room\+\_\+estimation.\+find\+\_\+intersection()}}, \mbox{\hyperlink{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a1cc866ee6a78b68a77485eb1eb0f00ba}{room\+\_\+estimation.\+get\+\_\+room\+\_\+corners()}}, \mbox{\hyperlink{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a9ddc57e65b6b90133dae37504451b764}{room\+\_\+estimation.\+poly\+\_\+fit\+\_\+wall()}}, and room\+\_\+estimation.\+show\+\_\+img.
+
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a84fbd0580af51d4905aeeb1b71889390}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a84fbd0580af51d4905aeeb1b71889390} 
+\index{room\_estimation@{room\_estimation}!define\_room@{define\_room}}
+\index{define\_room@{define\_room}!room\_estimation@{room\_estimation}}
+\doxysubsubsection{\texorpdfstring{define\_room()}{define\_room()}}
+{\footnotesize\ttfamily define\+\_\+room (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{width = {\ttfamily None},  }\item[{}]{length = {\ttfamily None},  }\item[{}]{height = {\ttfamily None},  }\item[{}]{offset = {\ttfamily \mbox{[}0,0,0,0\mbox{]}},  }\item[{}]{corners = {\ttfamily None},  }\item[{}]{room\+\_\+points = {\ttfamily None},  }\item[{}]{refine\+\_\+corners = {\ttfamily False},  }\item[{}]{image = {\ttfamily None},  }\item[{}]{stitch\+\_\+videos = {\ttfamily None},  }\item[{}]{calibration = {\ttfamily None},  }\item[{}]{extend = {\ttfamily None} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Takes variables and defines a room
+
+- width: and length are in mm
+
+- height: is the assumed height of all objects in the room
+
+- offset: is used when we extend the image to get all of the corners.
+NOTE: If arrows do not line up with lines you drew, the camera matrix or the distortion matrix are off
+
+- room_points: are the real-world defined points in mm (if not defined points are the height and width of the room)
+
+- refine_corners: is opencv's sub-pixel optimizer to better estimate corner locations. This is mostly used in checkerboard calibration but may be useful when manually selecting corners.
+
+- calibration: is the calibration saved from a video (enter a video to calibrate, if calibration has been done save results in a pickle file)\end{DoxyVerb}
+ \Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_aef4827bfb173a05c4794fb8b29ec8055}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_aef4827bfb173a05c4794fb8b29ec8055} 
+\index{room\_estimation@{room\_estimation}!draw\_cuboid@{draw\_cuboid}}
+\index{draw\_cuboid@{draw\_cuboid}!room\_estimation@{room\_estimation}}
+\doxysubsubsection{\texorpdfstring{draw\_cuboid()}{draw\_cuboid()}}
+{\footnotesize\ttfamily draw\+\_\+cuboid (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{image = {\ttfamily None},  }\item[{}]{distortion = {\ttfamily None},  }\item[{}]{rvec = {\ttfamily None},  }\item[{}]{tvec = {\ttfamily None} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}    Distortion is removed if image is undistorted.
+    Rvec and Tvec are transformation vectors calculated by previous SolvePNP, so we use that if we have alerady done so.
+    6        7
+   *--------*
+ / |       /|
+2 *---------*3|
+|  * 5    | *8
+| /       |/
+1 *---------*4\end{DoxyVerb}
+ 
+
+References room\+\_\+estimation.\+ax, room\+\_\+estimation.\+back\+\_\+plt, room\+\_\+estimation.\+camera\+\_\+matrix, room\+\_\+estimation.\+distioriton\+\_\+matrix, room\+\_\+estimation.\+fig, room\+\_\+estimation.\+float\+\_\+plt, room\+\_\+estimation.\+front\+\_\+plt, room\+\_\+estimation.\+line\+\_\+plt, room\+\_\+estimation.\+mapped, room\+\_\+estimation.\+mapped\+\_\+dictionary, room\+\_\+estimation.\+points\+\_\+plt, room\+\_\+estimation.\+quiver, room\+\_\+estimation.\+room\+\_\+height, room\+\_\+estimation.\+room\+\_\+length, room\+\_\+estimation.\+room\+\_\+width, room\+\_\+estimation.\+rotation\+\_\+vector, room\+\_\+estimation.\+show\+\_\+3\+D\+\_\+plot, room\+\_\+estimation.\+show\+\_\+img, room\+\_\+estimation.\+translation\+\_\+vector, room\+\_\+estimation.\+vector\+\_\+depth, and room\+\_\+estimation.\+window\+\_\+name.
+
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a3b5b618d6f1cc697a5191f0617a9200a}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a3b5b618d6f1cc697a5191f0617a9200a} 
+\index{room\_estimation@{room\_estimation}!estimate@{estimate}}
+\index{estimate@{estimate}!room\_estimation@{room\_estimation}}
+\doxysubsubsection{\texorpdfstring{estimate()}{estimate()}}
+{\footnotesize\ttfamily estimate (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Depreciated...
+
+NOTE: define room first
+
+This defines room limits and projects 3D points onto the screen
+\end{DoxyVerb}
+ 
+
+References room\+\_\+estimation.\+find\+\_\+3d\+\_\+limits(), \mbox{\hyperlink{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a8113e0511b9bcb908b6a9aee98cee69b}{room\+\_\+estimation.\+get\+\_\+depth()}}, room\+\_\+estimation.\+get\+\_\+depth, room\+\_\+estimation.\+get\+\_\+room\+\_\+3d(), room\+\_\+estimation.\+room\+\_\+height, and room\+\_\+estimation.\+show\+\_\+img.
+
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a2e21d867efbc8b743664f8b6f41d1b8e}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a2e21d867efbc8b743664f8b6f41d1b8e} 
+\index{room\_estimation@{room\_estimation}!extend\_image\_to\_corners@{extend\_image\_to\_corners}}
+\index{extend\_image\_to\_corners@{extend\_image\_to\_corners}!room\_estimation@{room\_estimation}}
+\doxysubsubsection{\texorpdfstring{extend\_image\_to\_corners()}{extend\_image\_to\_corners()}}
+{\footnotesize\ttfamily extend\+\_\+image\+\_\+to\+\_\+corners (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{image,  }\item[{}]{corners }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}extends the image with black until corners are visible.
+
+Returns new image as well as the amount extended and on which sides. This is useful for transforming datapoints.
+
+offset = [top, left, bottom, right] in pixels
+\end{DoxyVerb}
+ 
+
+References room\+\_\+estimation.\+clear\+\_\+corners().
+
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a54166ae0c7b7f8e5aadcc81eda56ce58}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a54166ae0c7b7f8e5aadcc81eda56ce58} 
+\index{room\_estimation@{room\_estimation}!find\_intersection@{find\_intersection}}
+\index{find\_intersection@{find\_intersection}!room\_estimation@{room\_estimation}}
+\doxysubsubsection{\texorpdfstring{find\_intersection()}{find\_intersection()}}
+{\footnotesize\ttfamily find\+\_\+intersection (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{line\+\_\+equation1,  }\item[{}]{line\+\_\+equation2 }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Returns the (x,y) location of the intersection of 2 lines given m and b of both lines from slope intercept form (m*x + b)
+\end{DoxyVerb}
+ 
+
+Referenced by \mbox{\hyperlink{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_ae4a382139afef48e3b930752120b4c35}{room\+\_\+estimation.\+define\+\_\+perspective\+\_\+grid()}}, and \mbox{\hyperlink{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_af69d43ebb2e1d46a4e6313f41860c4fb}{room\+\_\+estimation.\+find\+\_\+wall\+\_\+intersection()}}.
+
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_af69d43ebb2e1d46a4e6313f41860c4fb}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_af69d43ebb2e1d46a4e6313f41860c4fb} 
+\index{room\_estimation@{room\_estimation}!find\_wall\_intersection@{find\_wall\_intersection}}
+\index{find\_wall\_intersection@{find\_wall\_intersection}!room\_estimation@{room\_estimation}}
+\doxysubsubsection{\texorpdfstring{find\_wall\_intersection()}{find\_wall\_intersection()}}
+{\footnotesize\ttfamily find\+\_\+wall\+\_\+intersection (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{number\+\_\+of\+\_\+walls = {\ttfamily 2},  }\item[{}]{samples\+\_\+per\+\_\+wall = {\ttfamily 4},  }\item[{}]{extent = {\ttfamily 10000},  }\item[{}]{intersection\+\_\+pairs = {\ttfamily \mbox{[}\mbox{]}},  }\item[{}]{degree = {\ttfamily 1} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Using samples along visible parts of walls, it is possible to fit the curve and extend the visible location of the wall
+
+
+intersection_pairs is a list of pairs of lines which are to be checked for intersections
+Because we only check the current, previous and beginning and last, we leave out all other instances so a specification of which pairs are desired is optional
+[(0,3), (1,3)] 
+\end{DoxyVerb}
+ 
+
+References room\+\_\+estimation.\+calibration\+\_\+resolution, room\+\_\+estimation.\+camera\+\_\+matrix, room\+\_\+estimation.\+clear\+\_\+corners(), room\+\_\+estimation.\+connect\+\_\+points(), room\+\_\+estimation.\+distioriton\+\_\+matrix, room\+\_\+estimation.\+error\+\_\+list, \mbox{\hyperlink{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a54166ae0c7b7f8e5aadcc81eda56ce58}{room\+\_\+estimation.\+find\+\_\+intersection()}}, room\+\_\+estimation.\+get\+\_\+checkerboard\+\_\+shape(), \mbox{\hyperlink{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a1cc866ee6a78b68a77485eb1eb0f00ba}{room\+\_\+estimation.\+get\+\_\+room\+\_\+corners()}}, \mbox{\hyperlink{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a9ddc57e65b6b90133dae37504451b764}{room\+\_\+estimation.\+poly\+\_\+fit\+\_\+wall()}}, room\+\_\+estimation.\+rotation\+\_\+vector, room\+\_\+estimation.\+save\+\_\+calibration(), room\+\_\+estimation.\+show\+\_\+img, and room\+\_\+estimation.\+translation\+\_\+vector.
+
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a8277f150767e58ce0824de54928fb184}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a8277f150767e58ce0824de54928fb184} 
+\index{room\_estimation@{room\_estimation}!get\_3d\_to\_2d@{get\_3d\_to\_2d}}
+\index{get\_3d\_to\_2d@{get\_3d\_to\_2d}!room\_estimation@{room\_estimation}}
+\doxysubsubsection{\texorpdfstring{get\_3d\_to\_2d()}{get\_3d\_to\_2d()}}
+{\footnotesize\ttfamily get\+\_\+3d\+\_\+to\+\_\+2d (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{point,  }\item[{}]{show = {\ttfamily True} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Point = (X, Z, Y) in mm (NOT PIXELS)
+\end{DoxyVerb}
+ 
+
+References room\+\_\+estimation.\+axis, room\+\_\+estimation.\+camera\+\_\+matrix, room\+\_\+estimation.\+corners, room\+\_\+estimation.\+distioriton\+\_\+matrix, room\+\_\+estimation.\+draw\+\_\+axis(), room\+\_\+estimation.\+rotation\+\_\+vector, room\+\_\+estimation.\+show\+\_\+img, room\+\_\+estimation.\+translation\+\_\+vector, and room\+\_\+estimation.\+window\+\_\+name.
+
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a7bcf809e2d6ba963c04b331f5c53a3a8}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a7bcf809e2d6ba963c04b331f5c53a3a8} 
+\index{room\_estimation@{room\_estimation}!get\_cube\_side@{get\_cube\_side}}
+\index{get\_cube\_side@{get\_cube\_side}!room\_estimation@{room\_estimation}}
+\doxysubsubsection{\texorpdfstring{get\_cube\_side()}{get\_cube\_side()}}
+{\footnotesize\ttfamily get\+\_\+cube\+\_\+side (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{cube,  }\item[{}]{side }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Returns the point set of each side of the cube in 
+Start at bottom left of the plane on the opened cube displayed, in clockwise order  (or, the perspective from the center)
+This function is to be paired before crop_plain() and the points returned from requested side should be passed on
+Example: Side 1 contains points 1,2,6,5
+
+                                    |   5   |   
+   5        6                       |_______|
+   *--------*                       |       |
+ / |       /|                       |   4   |
+1 *---------*2|                _______|_______|_______
+|  * 4    | *7              |       |       |       |
+| /       |/                |   1   |   2   |   3   |
+0 *---------*3                |_______|_______|_______|
+\end{DoxyVerb}
+ \Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a8113e0511b9bcb908b6a9aee98cee69b}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a8113e0511b9bcb908b6a9aee98cee69b} 
+\index{room\_estimation@{room\_estimation}!get\_depth@{get\_depth}}
+\index{get\_depth@{get\_depth}!room\_estimation@{room\_estimation}}
+\doxysubsubsection{\texorpdfstring{get\_depth()}{get\_depth()}}
+{\footnotesize\ttfamily get\+\_\+depth (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{event,  }\item[{}]{x,  }\item[{}]{y,  }\item[{}]{p1,  }\item[{}]{p2 }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}get z position given x and y.
+\end{DoxyVerb}
+ 
+
+Referenced by \mbox{\hyperlink{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a3b5b618d6f1cc697a5191f0617a9200a}{room\+\_\+estimation.\+estimate()}}.
+
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_ae29c16a83d737f9e9f2b584ae560ad85}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_ae29c16a83d737f9e9f2b584ae560ad85} 
+\index{room\_estimation@{room\_estimation}!get\_n\_room\_points@{get\_n\_room\_points}}
+\index{get\_n\_room\_points@{get\_n\_room\_points}!room\_estimation@{room\_estimation}}
+\doxysubsubsection{\texorpdfstring{get\_n\_room\_points()}{get\_n\_room\_points()}}
+{\footnotesize\ttfamily get\+\_\+n\+\_\+room\+\_\+points (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{n\+\_\+locations = {\ttfamily None},  }\item[{}]{height = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}N_locations are known locations along the floor (Non-square rooms)
+    5000mm
+--------------  
+       3-----4  
+       |     |
+       |     |
+1------2     | 5000mm  (Length)
+|            |
+|            |
+0------------5
+    (Width)
+Where (width,length) in mm
+0 = (0,0)
+1 = (0, 2500)
+2 = (2500, 2500)
+3 = (2500, 5000)
+4 = (5000, 5000)
+5 = (5000, 0)
+\end{DoxyVerb}
+ 
+
+References room\+\_\+estimation.\+room\+\_\+points.
+
+
+
+Referenced by \mbox{\hyperlink{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a921523998615aa3555a3cb0ca2b36965}{room\+\_\+estimation.\+assign\+\_\+non\+\_\+square\+\_\+corners()}}.
+
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a0246e47740851d72979f6d5cdc76bf18}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a0246e47740851d72979f6d5cdc76bf18} 
+\index{room\_estimation@{room\_estimation}!get\_pixel\_location@{get\_pixel\_location}}
+\index{get\_pixel\_location@{get\_pixel\_location}!room\_estimation@{room\_estimation}}
+\doxysubsubsection{\texorpdfstring{get\_pixel\_location()}{get\_pixel\_location()}}
+{\footnotesize\ttfamily get\+\_\+pixel\+\_\+location (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{pixel }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Returns the pixel location in 3D
+\end{DoxyVerb}
+ 
+
+References room\+\_\+estimation.\+mapped.
+
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a1cc866ee6a78b68a77485eb1eb0f00ba}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a1cc866ee6a78b68a77485eb1eb0f00ba} 
+\index{room\_estimation@{room\_estimation}!get\_room\_corners@{get\_room\_corners}}
+\index{get\_room\_corners@{get\_room\_corners}!room\_estimation@{room\_estimation}}
+\doxysubsubsection{\texorpdfstring{get\_room\_corners()}{get\_room\_corners()}}
+{\footnotesize\ttfamily get\+\_\+room\+\_\+corners (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{num\+\_\+points = {\ttfamily 4} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Assigns 2D Room corners which will map to the real world 3D.
+
+This function is a loop for the number of room points (real world) and lets you select the location they should exist in the video.
+
+Each point should be respective to the order that room points exist. For example, consistently clockwise starting from the bottom left.
+\end{DoxyVerb}
+ 
+
+References room\+\_\+estimation.\+clear\+\_\+corners(), room\+\_\+estimation.\+connect\+\_\+points(), room\+\_\+estimation.\+corners, room\+\_\+estimation.\+get\+\_\+corners, room\+\_\+estimation.\+get\+\_\+corners(), room\+\_\+estimation.\+room\+\_\+points, room\+\_\+estimation.\+show\+\_\+img, and room\+\_\+estimation.\+window\+\_\+name.
+
+
+
+Referenced by \mbox{\hyperlink{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_ae4a382139afef48e3b930752120b4c35}{room\+\_\+estimation.\+define\+\_\+perspective\+\_\+grid()}}, \mbox{\hyperlink{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_af69d43ebb2e1d46a4e6313f41860c4fb}{room\+\_\+estimation.\+find\+\_\+wall\+\_\+intersection()}}, and \mbox{\hyperlink{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_abeac4cbae89aef891cee148cbbbc6232}{room\+\_\+estimation.\+superimpose\+\_\+checker()}}.
+
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_aab76a3fa2901de336d5a1a3e1b707604}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_aab76a3fa2901de336d5a1a3e1b707604} 
+\index{room\_estimation@{room\_estimation}!get\_room\_dimensions@{get\_room\_dimensions}}
+\index{get\_room\_dimensions@{get\_room\_dimensions}!room\_estimation@{room\_estimation}}
+\doxysubsubsection{\texorpdfstring{get\_room\_dimensions()}{get\_room\_dimensions()}}
+{\footnotesize\ttfamily get\+\_\+room\+\_\+dimensions (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{room\+\_\+points }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Given room points returns the width and length of the room given the farthest points.
+\end{DoxyVerb}
+ \Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a14966b15146b30927e515a9b3c64328d}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a14966b15146b30927e515a9b3c64328d} 
+\index{room\_estimation@{room\_estimation}!load\_calibration@{load\_calibration}}
+\index{load\_calibration@{load\_calibration}!room\_estimation@{room\_estimation}}
+\doxysubsubsection{\texorpdfstring{load\_calibration()}{load\_calibration()}}
+{\footnotesize\ttfamily load\+\_\+calibration (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{file }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Loads in order
+1 Camera matrix
+2 Distortion Matrix
+3 Rvecs
+4 Tvecs
+\end{DoxyVerb}
+ 
+
+References room\+\_\+estimation.\+calibration\+\_\+resolution, room\+\_\+estimation.\+camera\+\_\+matrix, room\+\_\+estimation.\+distioriton\+\_\+matrix, room\+\_\+estimation.\+error\+\_\+list, room\+\_\+estimation.\+rotation\+\_\+vector, and room\+\_\+estimation.\+translation\+\_\+vector.
+
+
+
+Referenced by \mbox{\hyperlink{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a2a5df656a4b4d07c05b290f8197c316f}{room\+\_\+estimation.\+save\+\_\+room()}}.
+
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a444510358faa06884318d1ebe94846ff}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a444510358faa06884318d1ebe94846ff} 
+\index{room\_estimation@{room\_estimation}!load\_tracker@{load\_tracker}}
+\index{load\_tracker@{load\_tracker}!room\_estimation@{room\_estimation}}
+\doxysubsubsection{\texorpdfstring{load\_tracker()}{load\_tracker()}}
+{\footnotesize\ttfamily load\+\_\+tracker (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{csv\+\_\+file }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Loads the tracker data of a csv file
+\end{DoxyVerb}
+ 
+
+References \mbox{\hyperlink{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_ab870abde92556016846a09d5feb9e03c}{room\+\_\+estimation.\+correct\+\_\+tracker\+\_\+points()}}, tracker\+\_\+evaluation.\+invert\+\_\+y, and room\+\_\+estimation.\+invert\+\_\+y.
+
+
+
+Referenced by \mbox{\hyperlink{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a75031a34aadd8c7847c479a17524e00e}{room\+\_\+estimation.\+stitch\+\_\+trackers()}}.
+
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a54ccab8062e8ce67319dcd81d75b6d4a}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a54ccab8062e8ce67319dcd81d75b6d4a} 
+\index{room\_estimation@{room\_estimation}!make\_interpolater@{make\_interpolater}}
+\index{make\_interpolater@{make\_interpolater}!room\_estimation@{room\_estimation}}
+\doxysubsubsection{\texorpdfstring{make\_interpolater()}{make\_interpolater()}}
+{\footnotesize\ttfamily make\+\_\+interpolater (\begin{DoxyParamCaption}\item[{}]{left\+\_\+min,  }\item[{}]{left\+\_\+max,  }\item[{}]{right\+\_\+min,  }\item[{}]{right\+\_\+max }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Depreciated.
+Supposed to be used to divide a grid space given pixels.
+Interpolates values in between min and max.
+\end{DoxyVerb}
+ \Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a9ddc57e65b6b90133dae37504451b764}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a9ddc57e65b6b90133dae37504451b764} 
+\index{room\_estimation@{room\_estimation}!poly\_fit\_wall@{poly\_fit\_wall}}
+\index{poly\_fit\_wall@{poly\_fit\_wall}!room\_estimation@{room\_estimation}}
+\doxysubsubsection{\texorpdfstring{poly\_fit\_wall()}{poly\_fit\_wall()}}
+{\footnotesize\ttfamily poly\+\_\+fit\+\_\+wall (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{samples,  }\item[{}]{pixels\+\_\+past\+\_\+extent = {\ttfamily 100},  }\item[{}]{horizontal\+\_\+extent = {\ttfamily None},  }\item[{}]{degree = {\ttfamily 2} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Samples exist in format np.array([x,y,z], [x,y,z])
+
+Used to find intersection points.
+
+Utilized to define points in the grid.
+\end{DoxyVerb}
+ 
+
+Referenced by \mbox{\hyperlink{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_ae4a382139afef48e3b930752120b4c35}{room\+\_\+estimation.\+define\+\_\+perspective\+\_\+grid()}}, and \mbox{\hyperlink{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_af69d43ebb2e1d46a4e6313f41860c4fb}{room\+\_\+estimation.\+find\+\_\+wall\+\_\+intersection()}}.
+
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a2a5df656a4b4d07c05b290f8197c316f}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a2a5df656a4b4d07c05b290f8197c316f} 
+\index{room\_estimation@{room\_estimation}!save\_room@{save\_room}}
+\index{save\_room@{save\_room}!room\_estimation@{room\_estimation}}
+\doxysubsubsection{\texorpdfstring{save\_room()}{save\_room()}}
+{\footnotesize\ttfamily save\+\_\+room (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{filename }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Saves all values which define a room.
+\end{DoxyVerb}
+ 
+
+References room\+\_\+estimation.\+calibration\+\_\+resolution, room\+\_\+estimation.\+camera\+\_\+matrix, \mbox{\hyperlink{class_people_tracker_1_1src_1_1camera__position_1_1_camera_position_adcab0c33567748a21cfc4a90e663c1d6}{Camera\+Position.\+collect\+\_\+frames()}}, \mbox{\hyperlink{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a048722841bc8d71bae4a1e4a9eb9db00}{room\+\_\+estimation.\+collect\+\_\+frames()}}, room\+\_\+estimation.\+corners, room\+\_\+estimation.\+distioriton\+\_\+matrix, \mbox{\hyperlink{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a14966b15146b30927e515a9b3c64328d}{room\+\_\+estimation.\+load\+\_\+calibration()}}, room\+\_\+estimation.\+mapped, room\+\_\+estimation.\+room\+\_\+height, room\+\_\+estimation.\+room\+\_\+length, room\+\_\+estimation.\+room\+\_\+points, room\+\_\+estimation.\+room\+\_\+width, room\+\_\+estimation.\+rotation\+\_\+vector, room\+\_\+estimation.\+translation\+\_\+vector, \mbox{\hyperlink{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_abd979a29c40c64a598514d7d165bb4a9}{room\+\_\+estimation.\+undistort\+\_\+room()}}, and \mbox{\hyperlink{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a6c6c06bc8bbf8a0f9f7237a97ff9487e}{room\+\_\+estimation.\+visualize\+\_\+distortion()}}.
+
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_adbe2f98b84513775c3106191f2845ed3}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_adbe2f98b84513775c3106191f2845ed3} 
+\index{room\_estimation@{room\_estimation}!stitch\_rooms@{stitch\_rooms}}
+\index{stitch\_rooms@{stitch\_rooms}!room\_estimation@{room\_estimation}}
+\doxysubsubsection{\texorpdfstring{stitch\_rooms()}{stitch\_rooms()}}
+{\footnotesize\ttfamily stitch\+\_\+rooms (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{video\+\_\+list,  }\item[{}]{undistort = {\ttfamily True},  }\item[{}]{key\+\_\+index = {\ttfamily None},  }\item[{}]{show = {\ttfamily False} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Stitches rooms with custom keypoints with SIFT descriptors
+
+undistort uses current room undistortion parameters to undistort all the videos in video_list
+
+key_index is the index for which video is the source that all others will use as alignment reference.
+
+returns a stitched image that is overlapped by all videos and a list of homography transformation matrices for every video index
+\end{DoxyVerb}
+ 
+
+References \mbox{\hyperlink{class_people_tracker_1_1src_1_1camera__position_1_1_camera_position_adcab0c33567748a21cfc4a90e663c1d6}{Camera\+Position.\+collect\+\_\+frames()}}, \mbox{\hyperlink{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a048722841bc8d71bae4a1e4a9eb9db00}{room\+\_\+estimation.\+collect\+\_\+frames()}}, and \mbox{\hyperlink{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_abd979a29c40c64a598514d7d165bb4a9}{room\+\_\+estimation.\+undistort\+\_\+room()}}.
+
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a75031a34aadd8c7847c479a17524e00e}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a75031a34aadd8c7847c479a17524e00e} 
+\index{room\_estimation@{room\_estimation}!stitch\_trackers@{stitch\_trackers}}
+\index{stitch\_trackers@{stitch\_trackers}!room\_estimation@{room\_estimation}}
+\doxysubsubsection{\texorpdfstring{stitch\_trackers()}{stitch\_trackers()}}
+{\footnotesize\ttfamily stitch\+\_\+trackers (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{video\+\_\+list,  }\item[{}]{homography\+\_\+list,  }\item[{}]{use\+\_\+csv = {\ttfamily True},  }\item[{}]{offsets = {\ttfamily \mbox{[}0,0,0,0\mbox{]}} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}returns a list of trackers
+# offset = [top, left, bottom, right] in pixels
+
+We correct offsets if top and left edges are extended
+\end{DoxyVerb}
+ 
+
+References \mbox{\hyperlink{class_people_tracker_1_1src_1_1camera__position_1_1_camera_position_adcab0c33567748a21cfc4a90e663c1d6}{Camera\+Position.\+collect\+\_\+frames()}}, \mbox{\hyperlink{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a048722841bc8d71bae4a1e4a9eb9db00}{room\+\_\+estimation.\+collect\+\_\+frames()}}, \mbox{\hyperlink{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a444510358faa06884318d1ebe94846ff}{room\+\_\+estimation.\+load\+\_\+tracker()}}, and room\+\_\+estimation.\+undistort\+\_\+tracker\+\_\+data().
+
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_abeac4cbae89aef891cee148cbbbc6232}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_abeac4cbae89aef891cee148cbbbc6232} 
+\index{room\_estimation@{room\_estimation}!superimpose\_checker@{superimpose\_checker}}
+\index{superimpose\_checker@{superimpose\_checker}!room\_estimation@{room\_estimation}}
+\doxysubsubsection{\texorpdfstring{superimpose\_checker()}{superimpose\_checker()}}
+{\footnotesize\ttfamily superimpose\+\_\+checker (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{size = {\ttfamily 21} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}This draws the grid from "define_perspective_grid" onto an image. 
+
+This grid is given a "size" that is the number of lines present. 
+This function utilizes draw_grid which is a 1080x1080 resolution image with cv2.lines drawn on it.
+
+This grid image is then registered onto defined points from "define_perspective_grid" given the homograpy.
+\end{DoxyVerb}
+ 
+
+References room\+\_\+estimation.\+clear\+\_\+corners(), room\+\_\+estimation.\+draw\+\_\+grid(), \mbox{\hyperlink{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a1cc866ee6a78b68a77485eb1eb0f00ba}{room\+\_\+estimation.\+get\+\_\+room\+\_\+corners()}}, App.\+image, room\+\_\+estimation.\+image, and person\+\_\+tab.\+image.
+
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_abd979a29c40c64a598514d7d165bb4a9}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_abd979a29c40c64a598514d7d165bb4a9} 
+\index{room\_estimation@{room\_estimation}!undistort\_room@{undistort\_room}}
+\index{undistort\_room@{undistort\_room}!room\_estimation@{room\_estimation}}
+\doxysubsubsection{\texorpdfstring{undistort\_room()}{undistort\_room()}}
+{\footnotesize\ttfamily undistort\+\_\+room (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{image = {\ttfamily None},  }\item[{}]{points\+\_\+data = {\ttfamily None},  }\item[{}]{camera\+\_\+matrix = {\ttfamily None},  }\item[{}]{distortion = {\ttfamily None},  }\item[{}]{show = {\ttfamily False},  }\item[{}]{fisheye = {\ttfamily False},  }\item[{}]{calibration\+\_\+resolution = {\ttfamily None} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}\end{DoxyVerb}
+ 
+
+References room\+\_\+estimation.\+calibration\+\_\+resolution, room\+\_\+estimation.\+camera\+\_\+matrix, room\+\_\+estimation.\+distioriton\+\_\+matrix, App.\+image, room\+\_\+estimation.\+image, person\+\_\+tab.\+image, and room\+\_\+estimation.\+points\+\_\+data.
+
+
+
+Referenced by \mbox{\hyperlink{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a2a5df656a4b4d07c05b290f8197c316f}{room\+\_\+estimation.\+save\+\_\+room()}}, and \mbox{\hyperlink{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_adbe2f98b84513775c3106191f2845ed3}{room\+\_\+estimation.\+stitch\+\_\+rooms()}}.
+
+\Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a0bd7f71bd75e917a01563ad8dce62565}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a0bd7f71bd75e917a01563ad8dce62565} 
+\index{room\_estimation@{room\_estimation}!update\_tracker\_3D@{update\_tracker\_3D}}
+\index{update\_tracker\_3D@{update\_tracker\_3D}!room\_estimation@{room\_estimation}}
+\doxysubsubsection{\texorpdfstring{update\_tracker\_3D()}{update\_tracker\_3D()}}
+{\footnotesize\ttfamily update\+\_\+tracker\+\_\+3D (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{index,  }\item[{}]{df,  }\item[{}]{mapped\+\_\+min,  }\item[{}]{mapped\+\_\+max }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Updates the already created plot with new data
+\end{DoxyVerb}
+ \Hypertarget{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a6c6c06bc8bbf8a0f9f7237a97ff9487e}\label{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a6c6c06bc8bbf8a0f9f7237a97ff9487e} 
+\index{room\_estimation@{room\_estimation}!visualize\_distortion@{visualize\_distortion}}
+\index{visualize\_distortion@{visualize\_distortion}!room\_estimation@{room\_estimation}}
+\doxysubsubsection{\texorpdfstring{visualize\_distortion()}{visualize\_distortion()}}
+{\footnotesize\ttfamily visualize\+\_\+distortion (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{camera\+\_\+matrix,  }\item[{}]{distiortion,  }\item[{}]{image = {\ttfamily None} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}https://docs.opencv.org/2.4/modules/calib3d/doc/camera_calibration_and_3d_reconstruction.html#void%20projectPoints(InputArray%20objectPoints,%20InputArray%20rvec,%20InputArray%20tvec,%20InputArray%20cameraMatrix,%20InputArray%20distCoeffs,%20OutputArray%20imagePoints,%20OutputArray%20jacobian,%20double%20aspectRatio)
+
+opencv 3 here: 
+https://docs.opencv.org/4.x/dc/dbb/tutorial_py_calibration.html
+
+[x] =  [X]
+[y] = R[Y] + t
+[z] =  [Z]
+
+x' = x/z
+y' = y/z
+
+NOTE: k1-6 are radial distortion coefficients, p1 and p2 are tangential distortion
+        if any 
+
+x'' = x' (1 + k1 * r^2+k2 + k3*r^4 + k3*r^6)/ + 2*p1*x'*y' + p2(r^2 + (2x')^2)
+         (1 + k4 * r^2+k5 + k3*r^4 + k6*r^6)
+
+y'' = y' (1 + k1 * r^2+k2 + k3*r^4 + k3*r^6)/ + p1(r^2 + (2y')^2) + 2*p2 * x' * y'
+         (1 + k4 * r^2+k5 + k3*r^4 + k6*r^6)
+
+r^2 = x'^2 + y'^2
+u = fx * x'' + cx
+v = fy * y'' + cy
+\end{DoxyVerb}
+ 
+
+Referenced by \mbox{\hyperlink{class_people_tracker_1_1src_1_1room__estimation_1_1room__estimation_a2a5df656a4b4d07c05b290f8197c316f}{room\+\_\+estimation.\+save\+\_\+room()}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+K\+:/\+Github/\+People\+Tracker/src/room\+\_\+estimation.\+py\end{DoxyCompactItemize}

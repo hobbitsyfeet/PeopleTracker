@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_namespace_people_tracker_1_1src_1_1evaluate" xml:lang="en-US">
+<title>PeopleTracker.src.evaluate Namespace Reference</title>
+<indexterm><primary>PeopleTracker.src.evaluate</primary></indexterm>
+<simplesect>
+    <title>Classes    </title>
+        <itemizedlist>
+            <listitem><para>class <link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation">tracker_evaluation</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Variables    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_namespace_people_tracker_1_1src_1_1evaluate_1a17f1f6bb02e8c63f6147559904088c5b"/><emphasis role="strong">te</emphasis> = <link linkend="_class_people_tracker_1_1src_1_1evaluate_1_1tracker__evaluation">tracker_evaluation</link>()</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespace_people_tracker_1_1src_1_1evaluate_1ac650debee7676fe8bb66415a02fa68d7"/><emphasis role="strong">fps</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespace_people_tracker_1_1src_1_1evaluate_1a56ebe5f4e4d15f5bcbdae93c55a13210"/><emphasis role="strong">errors</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespace_people_tracker_1_1src_1_1evaluate_1a298d2f7139da6982c7aee20314454f96"/><emphasis role="strong">errors_dict</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para><literallayout><computeroutput>NOTE: Add additional evaluation methods to help plot data
+
+- Centroid point distance. This is an additional measure of accuracy. This is because that&apos;s how we collect data for our study.
+- region change rate (or shape over time) - this is important to measure alongside performance. This allows us to see where measures go wrong. When ground truths change drastically, how can we expect a tracker to adapt? (Ours has a hard time when objects scale or change shape a lot)</computeroutput></literallayout> </para>
+</section>
+</section>

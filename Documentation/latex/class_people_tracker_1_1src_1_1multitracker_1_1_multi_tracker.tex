@@ -1,0 +1,414 @@
+\doxysection{People\+Tracker.\+src.\+multitracker.\+Multi\+Tracker Class Reference}
+\hypertarget{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker}{}\label{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker}\index{PeopleTracker.src.multitracker.MultiTracker@{PeopleTracker.src.multitracker.MultiTracker}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_aed64a7c0e532974e33400375692ceee2}\label{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_aed64a7c0e532974e33400375692ceee2} 
+{\bfseries \+\_\+\+\_\+init\+\_\+\+\_\+} (self, tab, colour=(255, 255, 255))
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_ab02fd8c7c721b554da2762720b970ebe}\label{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_ab02fd8c7c721b554da2762720b970ebe} 
+{\bfseries grab\+\_\+cut} (self, frame, rect, export\+\_\+path=None)
+\item 
+\mbox{\hyperlink{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a5ade8a95a06e2e59d9f82d2f3e9c7d89}{get\+\_\+name}} (self)
+\item 
+\mbox{\hyperlink{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a6d6815ec782e07934b75b2637b04cb18}{get\+\_\+id}} (self)
+\item 
+\mbox{\hyperlink{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a536cd71412de97f972b68b5cce0d8688}{get\+\_\+sex}} (self)
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a89eb2646731a1eea9cefa2280804900f}\label{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a89eb2646731a1eea9cefa2280804900f} 
+{\bfseries get\+\_\+description} (self)
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_ae939772d2dddd50a2241406fc52c5bb2}\label{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_ae939772d2dddd50a2241406fc52c5bb2} 
+{\bfseries get\+\_\+group} (self)
+\item 
+\mbox{\hyperlink{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a8b780f861414568533fce20fbb6afc84}{get\+\_\+time\+\_\+tracked}} (self, framerate)
+\item 
+\mbox{\hyperlink{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_ac6e6cca7dee4d4d1d8fc2976eb1324c3}{create}} (self, tracker\+\_\+type=\textquotesingle{}CSRT\textquotesingle{})
+\item 
+\mbox{\hyperlink{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a798bcd0cfb659a608c40d79ea59e3045}{rename}} (self, name)
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a6ae7c57f60c2f547f23993263416df2f}\label{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a6ae7c57f60c2f547f23993263416df2f} 
+{\bfseries set\+\_\+colour} (self, color=(255, 255, 255))
+\item 
+\mbox{\hyperlink{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a02722c3cded357ed14615b3a3f9b46c0}{assign}} (self, frame, tracker\+\_\+type="{}CSRT"{})
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_aab072dff057c97c64303f36acd4494b1}\label{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_aab072dff057c97c64303f36acd4494b1} 
+{\bfseries auto\+\_\+assign} (self, frame, bounding\+\_\+box=None, xywh=None, tracker\+\_\+type="{}CSRT"{})
+\item 
+\mbox{\hyperlink{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a6fd992a7dbe9523bee0751d3fc47655b}{update\+\_\+tracker}} (self, frame)
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a10d11e230a09b52c09454fa86325ffa8}\label{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a10d11e230a09b52c09454fa86325ffa8} 
+{\bfseries draw\+\_\+tracker} (self, frame, box, opacity=0.\+5, name=True)
+\item 
+\mbox{\hyperlink{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_ae54dd8b3805689c9e4ab5436b24ff8a3}{remove}} (self)
+\item 
+\mbox{\hyperlink{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_acc3261b569fec0f90a26df009b0925c1}{predict}} (self)
+\item 
+\mbox{\hyperlink{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a3ee5742c09d6dc589a7bf6069c14df38}{record\+\_\+data}} (self, frame, total\+\_\+people, x=-\/1, y=-\/1, w=-\/1, h=-\/1, regions=\mbox{[}$\,$\mbox{]}, other\+\_\+room=False, image\+\_\+frame=None)
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_aec3cdb13dacefae44912f7572d684fc1}\label{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_aec3cdb13dacefae44912f7572d684fc1} 
+{\bfseries run\+\_\+bayes\+\_\+model} (self, new\+\_\+img, whole\+\_\+image)
+\item 
+\mbox{\hyperlink{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_afde99ef2f33b7798157e06b05699e5e7}{append\+\_\+data}} (self, dataframe)
+\item 
+\mbox{\hyperlink{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a33a4d9b5c8fd916c134bc913e5c6b0d6}{export\+\_\+data}} (self, vid\+\_\+width, vid\+\_\+height, vid\+\_\+name, fps, new\+\_\+version=None)
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a46beccd0098828ea7883243564e179cd}\label{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a46beccd0098828ea7883243564e179cd} 
+{\bfseries evaluate\+\_\+data} (self)
+\item 
+\mbox{\hyperlink{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_af652b6d13505a9cd3e4d3d5c87f7ce16}{merge\+\_\+intervals}} (self, total\+\_\+segments)
+\item 
+\mbox{\hyperlink{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a7bacf5811931e0d9d38f9bc940589c5c}{part\+\_\+time\+\_\+to\+\_\+segments}} (self, time\+\_\+data, segment\+\_\+size=300)
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_afb81def2f1cbdc152c82156783b76cbd}\label{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_afb81def2f1cbdc152c82156783b76cbd} 
+{\bfseries estimate\+\_\+distance} (self, size)
+\item 
+\mbox{\hyperlink{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a0960c0ee961c5f7624f1135b3df1cb0e}{calculate\+\_\+time}} (self, frame\+\_\+start, frame\+\_\+end, fps=30)
+\item 
+\mbox{\hyperlink{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a4a0915feed4b55be407bfcca8130ad76}{calculate\+\_\+total\+\_\+time}} (self, total\+\_\+frames, fps=30, segmented=True)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a4f8cf66f457f8d1f4fe60678b5451ad9}\label{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a4f8cf66f457f8d1f4fe60678b5451ad9} 
+{\bfseries name}
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a25b6ad873f4c65d28f07298408a84c7e}\label{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a25b6ad873f4c65d28f07298408a84c7e} 
+{\bfseries pid}
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a0fd2eaeeb716f3217ae06b511279e707}\label{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a0fd2eaeeb716f3217ae06b511279e707} 
+{\bfseries colour}
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a5e8f1cbcd7d85efef95724566c1152c2}\label{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a5e8f1cbcd7d85efef95724566c1152c2} 
+{\bfseries distance\+\_\+data}
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_ac9de223f65b3af5cb129b846b0e3ff9f}\label{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_ac9de223f65b3af5cb129b846b0e3ff9f} 
+{\bfseries time\+\_\+data}
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_aae46759f1d9fc8efaa0d0249c26e6fa1}\label{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_aae46759f1d9fc8efaa0d0249c26e6fa1} 
+{\bfseries data\+\_\+dict}
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a40982764f25037a16802b63d19673fdb}\label{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a40982764f25037a16802b63d19673fdb} 
+{\bfseries previous\+\_\+time}
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a92b24b795223c9ad8384d33f8357e9ae}\label{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a92b24b795223c9ad8384d33f8357e9ae} 
+{\bfseries sex}
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a72bf78e5685498711342b4891e74a970}\label{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a72bf78e5685498711342b4891e74a970} 
+{\bfseries group}
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a2c0309bcf70d2354db7114a0d4d99085}\label{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a2c0309bcf70d2354db7114a0d4d99085} 
+{\bfseries description}
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a224ddc77a5336fe60a85667f9486d909}\label{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a224ddc77a5336fe60a85667f9486d909} 
+{\bfseries beginning}
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a59b911453ced09fbbd968afca0c419bd}\label{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a59b911453ced09fbbd968afca0c419bd} 
+{\bfseries is\+\_\+region}
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a61fb133abf160fc119c842ecb875a5c7}\label{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a61fb133abf160fc119c842ecb875a5c7} 
+{\bfseries is\+\_\+chair}
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_aef6dd28864296ee3d5b2ef66de280588}\label{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_aef6dd28864296ee3d5b2ef66de280588} 
+{\bfseries read\+\_\+only}
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_aa4df551c4a26f9392e1b21b21567682a}\label{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_aa4df551c4a26f9392e1b21b21567682a} 
+{\bfseries id}
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a3cb731a247986db26d909138fb3097dd}\label{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a3cb731a247986db26d909138fb3097dd} 
+{\bfseries record\+\_\+state}
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_ae6b340e471d6d3df501152de79638c07}\label{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_ae6b340e471d6d3df501152de79638c07} 
+{\bfseries tracker}
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a957659c4c9166ad3310a75e42a8b7722}\label{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a957659c4c9166ad3310a75e42a8b7722} 
+{\bfseries init\+\_\+bounding\+\_\+box}
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a960685c419078f6879ec3daa2840fe30}\label{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a960685c419078f6879ec3daa2840fe30} 
+{\bfseries reset}
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_ab64c212239d5cbaf9f675fee2c454bb3}\label{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_ab64c212239d5cbaf9f675fee2c454bb3} 
+{\bfseries auto\+\_\+assign\+\_\+state}
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_ab116e837f3c543de4034ebef2550e547}\label{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_ab116e837f3c543de4034ebef2550e547} 
+{\bfseries box}
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a6823ded706c7e48c7460092edc087ec5}\label{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a6823ded706c7e48c7460092edc087ec5} 
+{\bfseries predictor}
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_abc69d6bf1946a8e657726a5c1f1f715b}\label{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_abc69d6bf1946a8e657726a5c1f1f715b} 
+{\bfseries box\+\_\+predictor}
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a24e1ff2d30848dfb7635d45a09ac672a}\label{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a24e1ff2d30848dfb7635d45a09ac672a} 
+{\bfseries regression}
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a99bfaac03dffc1d0104f0f6363acf9bd}\label{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a99bfaac03dffc1d0104f0f6363acf9bd} 
+{\bfseries predicted\+\_\+bbox}
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a36a1ef33446113cac73de996295e27b8}\label{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a36a1ef33446113cac73de996295e27b8} 
+{\bfseries predicted\+\_\+centroid}
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a8dcc830104d555aaa09a1434a6229b91}\label{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a8dcc830104d555aaa09a1434a6229b91} 
+{\bfseries recording\+\_\+video}
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a4e86cbab8bcafb16118804bb78d58bde}\label{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a4e86cbab8bcafb16118804bb78d58bde} 
+{\bfseries svm\+\_\+model}
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_aba1b760e5b8c2518d8ad79d4932ab6fc}\label{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_aba1b760e5b8c2518d8ad79d4932ab6fc} 
+{\bfseries bayes\+\_\+model}
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a403cfbb85013d6411318196386c03462}\label{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a403cfbb85013d6411318196386c03462} 
+{\bfseries self\+\_\+aware\+\_\+gallery}
+\item 
+\Hypertarget{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a3c4886c0a5c31054a4e63fa7c344fb94}\label{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a3c4886c0a5c31054a4e63fa7c344fb94} 
+{\bfseries normalized\+\_\+gallery}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}    The `MultiTracker` class is a Python class that represents a multi-object tracker and contains
+    various attributes and methods for tracking objects.
+    
+    @param tab is a designated tab in the UI which will populate provided values.
+    @param colour is a 255/255/255 RGB value that defines a tracking colour for easy distinction.
+
+    Many values are retrieved from `tab` defined in TrackerTab.py\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_afde99ef2f33b7798157e06b05699e5e7}\label{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_afde99ef2f33b7798157e06b05699e5e7} 
+\index{PeopleTracker.src.multitracker.MultiTracker@{PeopleTracker.src.multitracker.MultiTracker}!append\_data@{append\_data}}
+\index{append\_data@{append\_data}!PeopleTracker.src.multitracker.MultiTracker@{PeopleTracker.src.multitracker.MultiTracker}}
+\doxysubsubsection{\texorpdfstring{append\_data()}{append\_data()}}
+{\footnotesize\ttfamily People\+Tracker.\+src.\+multitracker.\+Multi\+Tracker.\+append\+\_\+data (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{dataframe }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Appends the data into a given dataframe categoriezed with the name given
+\end{DoxyVerb}
+ \Hypertarget{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a02722c3cded357ed14615b3a3f9b46c0}\label{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a02722c3cded357ed14615b3a3f9b46c0} 
+\index{PeopleTracker.src.multitracker.MultiTracker@{PeopleTracker.src.multitracker.MultiTracker}!assign@{assign}}
+\index{assign@{assign}!PeopleTracker.src.multitracker.MultiTracker@{PeopleTracker.src.multitracker.MultiTracker}}
+\doxysubsubsection{\texorpdfstring{assign()}{assign()}}
+{\footnotesize\ttfamily People\+Tracker.\+src.\+multitracker.\+Multi\+Tracker.\+assign (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{frame,  }\item[{}]{tracker\+\_\+type = {\ttfamily "{}CSRT"{}} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Assigns the box, name and sex of a tracked person.
+Takes care of reassigning as well.
+\end{DoxyVerb}
+ 
+
+References People\+Tracker.\+src.\+multitracker.\+Multi\+Tracker.\+box, People\+Tracker.\+src.\+multitracker.\+Multi\+Tracker.\+box\+\_\+predictor, \mbox{\hyperlink{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_ac6e6cca7dee4d4d1d8fc2976eb1324c3}{People\+Tracker.\+src.\+multitracker.\+Multi\+Tracker.\+create()}}, People\+Tracker.\+src.\+multitracker.\+Multi\+Tracker.\+init\+\_\+bounding\+\_\+box, People\+Tracker.\+src.\+multitracker.\+Multi\+Tracker.\+predictor, People\+Tracker.\+src.\+filters.\+Kalman\+Pred.\+reset(), People\+Tracker.\+src.\+multitracker.\+Multi\+Tracker.\+reset, People\+Tracker.\+src.\+Video.\+STFile\+Video\+Stream.\+reset, People\+Tracker.\+src.\+Video.\+File\+Video\+Stream.\+reset, and People\+Tracker.\+src.\+multitracker.\+Multi\+Tracker.\+tracker.
+
+
+
+Referenced by \mbox{\hyperlink{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a4a0915feed4b55be407bfcca8130ad76}{People\+Tracker.\+src.\+multitracker.\+Multi\+Tracker.\+calculate\+\_\+total\+\_\+time()}}.
+
+\Hypertarget{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a0960c0ee961c5f7624f1135b3df1cb0e}\label{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a0960c0ee961c5f7624f1135b3df1cb0e} 
+\index{PeopleTracker.src.multitracker.MultiTracker@{PeopleTracker.src.multitracker.MultiTracker}!calculate\_time@{calculate\_time}}
+\index{calculate\_time@{calculate\_time}!PeopleTracker.src.multitracker.MultiTracker@{PeopleTracker.src.multitracker.MultiTracker}}
+\doxysubsubsection{\texorpdfstring{calculate\_time()}{calculate\_time()}}
+{\footnotesize\ttfamily People\+Tracker.\+src.\+multitracker.\+Multi\+Tracker.\+calculate\+\_\+time (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{frame\+\_\+start,  }\item[{}]{frame\+\_\+end,  }\item[{}]{fps = {\ttfamily 30} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Calculates time between two given frames and the FPS rate
+\end{DoxyVerb}
+ 
+
+Referenced by \mbox{\hyperlink{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a4a0915feed4b55be407bfcca8130ad76}{People\+Tracker.\+src.\+multitracker.\+Multi\+Tracker.\+calculate\+\_\+total\+\_\+time()}}.
+
+\Hypertarget{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a4a0915feed4b55be407bfcca8130ad76}\label{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a4a0915feed4b55be407bfcca8130ad76} 
+\index{PeopleTracker.src.multitracker.MultiTracker@{PeopleTracker.src.multitracker.MultiTracker}!calculate\_total\_time@{calculate\_total\_time}}
+\index{calculate\_total\_time@{calculate\_total\_time}!PeopleTracker.src.multitracker.MultiTracker@{PeopleTracker.src.multitracker.MultiTracker}}
+\doxysubsubsection{\texorpdfstring{calculate\_total\_time()}{calculate\_total\_time()}}
+{\footnotesize\ttfamily People\+Tracker.\+src.\+multitracker.\+Multi\+Tracker.\+calculate\+\_\+total\+\_\+time (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{total\+\_\+frames,  }\item[{}]{fps = {\ttfamily 30},  }\item[{}]{segmented = {\ttfamily True} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Calculates total time tracked. This takes into consideration segmented time
+\end{DoxyVerb}
+ 
+
+References \mbox{\hyperlink{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a02722c3cded357ed14615b3a3f9b46c0}{People\+Tracker.\+src.\+multitracker.\+Multi\+Tracker.\+assign()}}, \mbox{\hyperlink{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a0960c0ee961c5f7624f1135b3df1cb0e}{People\+Tracker.\+src.\+multitracker.\+Multi\+Tracker.\+calculate\+\_\+time()}}, \mbox{\hyperlink{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_ac6e6cca7dee4d4d1d8fc2976eb1324c3}{People\+Tracker.\+src.\+multitracker.\+Multi\+Tracker.\+create()}}, \mbox{\hyperlink{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a33a4d9b5c8fd916c134bc913e5c6b0d6}{People\+Tracker.\+src.\+multitracker.\+Multi\+Tracker.\+export\+\_\+data()}}, \mbox{\hyperlink{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a5ade8a95a06e2e59d9f82d2f3e9c7d89}{People\+Tracker.\+src.\+multitracker.\+Multi\+Tracker.\+get\+\_\+name()}}, \mbox{\hyperlink{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a8b780f861414568533fce20fbb6afc84}{People\+Tracker.\+src.\+multitracker.\+Multi\+Tracker.\+get\+\_\+time\+\_\+tracked()}}, \mbox{\hyperlink{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a7bacf5811931e0d9d38f9bc940589c5c}{People\+Tracker.\+src.\+multitracker.\+Multi\+Tracker.\+part\+\_\+time\+\_\+to\+\_\+segments()}}, and \mbox{\hyperlink{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_acc3261b569fec0f90a26df009b0925c1}{People\+Tracker.\+src.\+multitracker.\+Multi\+Tracker.\+predict()}}.
+
+
+
+Referenced by \mbox{\hyperlink{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a8b780f861414568533fce20fbb6afc84}{People\+Tracker.\+src.\+multitracker.\+Multi\+Tracker.\+get\+\_\+time\+\_\+tracked()}}.
+
+\Hypertarget{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_ac6e6cca7dee4d4d1d8fc2976eb1324c3}\label{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_ac6e6cca7dee4d4d1d8fc2976eb1324c3} 
+\index{PeopleTracker.src.multitracker.MultiTracker@{PeopleTracker.src.multitracker.MultiTracker}!create@{create}}
+\index{create@{create}!PeopleTracker.src.multitracker.MultiTracker@{PeopleTracker.src.multitracker.MultiTracker}}
+\doxysubsubsection{\texorpdfstring{create()}{create()}}
+{\footnotesize\ttfamily People\+Tracker.\+src.\+multitracker.\+Multi\+Tracker.\+create (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{tracker\+\_\+type = {\ttfamily \textquotesingle{}CSRT\textquotesingle{}} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}The creation of the Opencvs Tracking mechanism.
+
+tracker_type = ["BOOSTING", "MIL","KCF", "TLD", "MEDIANFLOW", "GOTURN", "MOSSE", "CSRT"]
+
+https://docs.opencv.org/3.4/d9/df8/group__tracking.html
+\end{DoxyVerb}
+ 
+
+References People\+Tracker.\+src.\+multitracker.\+Multi\+Tracker.\+tracker.
+
+
+
+Referenced by \mbox{\hyperlink{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a02722c3cded357ed14615b3a3f9b46c0}{People\+Tracker.\+src.\+multitracker.\+Multi\+Tracker.\+assign()}}, and \mbox{\hyperlink{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a4a0915feed4b55be407bfcca8130ad76}{People\+Tracker.\+src.\+multitracker.\+Multi\+Tracker.\+calculate\+\_\+total\+\_\+time()}}.
+
+\Hypertarget{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a33a4d9b5c8fd916c134bc913e5c6b0d6}\label{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a33a4d9b5c8fd916c134bc913e5c6b0d6} 
+\index{PeopleTracker.src.multitracker.MultiTracker@{PeopleTracker.src.multitracker.MultiTracker}!export\_data@{export\_data}}
+\index{export\_data@{export\_data}!PeopleTracker.src.multitracker.MultiTracker@{PeopleTracker.src.multitracker.MultiTracker}}
+\doxysubsubsection{\texorpdfstring{export\_data()}{export\_data()}}
+{\footnotesize\ttfamily People\+Tracker.\+src.\+multitracker.\+Multi\+Tracker.\+export\+\_\+data (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{vid\+\_\+width,  }\item[{}]{vid\+\_\+height,  }\item[{}]{vid\+\_\+name,  }\item[{}]{fps,  }\item[{}]{new\+\_\+version = {\ttfamily None} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Exports the recorded data and appends constants such as name, total time recorded, and pixel percent Loc
+\end{DoxyVerb}
+ 
+
+Referenced by \mbox{\hyperlink{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a4a0915feed4b55be407bfcca8130ad76}{People\+Tracker.\+src.\+multitracker.\+Multi\+Tracker.\+calculate\+\_\+total\+\_\+time()}}.
+
+\Hypertarget{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a6d6815ec782e07934b75b2637b04cb18}\label{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a6d6815ec782e07934b75b2637b04cb18} 
+\index{PeopleTracker.src.multitracker.MultiTracker@{PeopleTracker.src.multitracker.MultiTracker}!get\_id@{get\_id}}
+\index{get\_id@{get\_id}!PeopleTracker.src.multitracker.MultiTracker@{PeopleTracker.src.multitracker.MultiTracker}}
+\doxysubsubsection{\texorpdfstring{get\_id()}{get\_id()}}
+{\footnotesize\ttfamily People\+Tracker.\+src.\+multitracker.\+Multi\+Tracker.\+get\+\_\+id (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb} Returns ID of person tracked: returns string \end{DoxyVerb}
+ 
+
+References People\+Tracker.\+src.\+multitracker.\+Multi\+Tracker.\+pid.
+
+\Hypertarget{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a5ade8a95a06e2e59d9f82d2f3e9c7d89}\label{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a5ade8a95a06e2e59d9f82d2f3e9c7d89} 
+\index{PeopleTracker.src.multitracker.MultiTracker@{PeopleTracker.src.multitracker.MultiTracker}!get\_name@{get\_name}}
+\index{get\_name@{get\_name}!PeopleTracker.src.multitracker.MultiTracker@{PeopleTracker.src.multitracker.MultiTracker}}
+\doxysubsubsection{\texorpdfstring{get\_name()}{get\_name()}}
+{\footnotesize\ttfamily People\+Tracker.\+src.\+multitracker.\+Multi\+Tracker.\+get\+\_\+name (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb} Returns name of person tracked: returns string \end{DoxyVerb}
+ 
+
+References People\+Tracker.\+src.\+multitracker.\+Multi\+Tracker.\+name.
+
+
+
+Referenced by \mbox{\hyperlink{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a4a0915feed4b55be407bfcca8130ad76}{People\+Tracker.\+src.\+multitracker.\+Multi\+Tracker.\+calculate\+\_\+total\+\_\+time()}}, and \mbox{\hyperlink{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a6fd992a7dbe9523bee0751d3fc47655b}{People\+Tracker.\+src.\+multitracker.\+Multi\+Tracker.\+update\+\_\+tracker()}}.
+
+\Hypertarget{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a536cd71412de97f972b68b5cce0d8688}\label{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a536cd71412de97f972b68b5cce0d8688} 
+\index{PeopleTracker.src.multitracker.MultiTracker@{PeopleTracker.src.multitracker.MultiTracker}!get\_sex@{get\_sex}}
+\index{get\_sex@{get\_sex}!PeopleTracker.src.multitracker.MultiTracker@{PeopleTracker.src.multitracker.MultiTracker}}
+\doxysubsubsection{\texorpdfstring{get\_sex()}{get\_sex()}}
+{\footnotesize\ttfamily People\+Tracker.\+src.\+multitracker.\+Multi\+Tracker.\+get\+\_\+sex (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb} Returns sex of person being tracked: returns string \end{DoxyVerb}
+ 
+
+References People\+Tracker.\+src.\+multitracker.\+Multi\+Tracker.\+description, People\+Tracker.\+src.\+multitracker.\+Multi\+Tracker.\+group, and People\+Tracker.\+src.\+multitracker.\+Multi\+Tracker.\+sex.
+
+\Hypertarget{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a8b780f861414568533fce20fbb6afc84}\label{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a8b780f861414568533fce20fbb6afc84} 
+\index{PeopleTracker.src.multitracker.MultiTracker@{PeopleTracker.src.multitracker.MultiTracker}!get\_time\_tracked@{get\_time\_tracked}}
+\index{get\_time\_tracked@{get\_time\_tracked}!PeopleTracker.src.multitracker.MultiTracker@{PeopleTracker.src.multitracker.MultiTracker}}
+\doxysubsubsection{\texorpdfstring{get\_time\_tracked()}{get\_time\_tracked()}}
+{\footnotesize\ttfamily People\+Tracker.\+src.\+multitracker.\+Multi\+Tracker.\+get\+\_\+time\+\_\+tracked (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{framerate }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb} Returns total time being tracked in video: returns  \end{DoxyVerb}
+ 
+
+References \mbox{\hyperlink{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a4a0915feed4b55be407bfcca8130ad76}{People\+Tracker.\+src.\+multitracker.\+Multi\+Tracker.\+calculate\+\_\+total\+\_\+time()}}, People\+Tracker.\+src.\+multitracker.\+Multi\+Tracker.\+data\+\_\+dict, and \mbox{\hyperlink{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a7bacf5811931e0d9d38f9bc940589c5c}{People\+Tracker.\+src.\+multitracker.\+Multi\+Tracker.\+part\+\_\+time\+\_\+to\+\_\+segments()}}.
+
+
+
+Referenced by \mbox{\hyperlink{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a4a0915feed4b55be407bfcca8130ad76}{People\+Tracker.\+src.\+multitracker.\+Multi\+Tracker.\+calculate\+\_\+total\+\_\+time()}}.
+
+\Hypertarget{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_af652b6d13505a9cd3e4d3d5c87f7ce16}\label{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_af652b6d13505a9cd3e4d3d5c87f7ce16} 
+\index{PeopleTracker.src.multitracker.MultiTracker@{PeopleTracker.src.multitracker.MultiTracker}!merge\_intervals@{merge\_intervals}}
+\index{merge\_intervals@{merge\_intervals}!PeopleTracker.src.multitracker.MultiTracker@{PeopleTracker.src.multitracker.MultiTracker}}
+\doxysubsubsection{\texorpdfstring{merge\_intervals()}{merge\_intervals()}}
+{\footnotesize\ttfamily People\+Tracker.\+src.\+multitracker.\+Multi\+Tracker.\+merge\+\_\+intervals (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{total\+\_\+segments }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}On a continous set of intervals, merges them such that intersecting inervals will become a new interval with new limits. 
+Example: [[0, 20], [10, 50]] becomes [[0,50]]
+[[0, 500]] stays the same
+\end{DoxyVerb}
+ 
+
+Referenced by \mbox{\hyperlink{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a7bacf5811931e0d9d38f9bc940589c5c}{People\+Tracker.\+src.\+multitracker.\+Multi\+Tracker.\+part\+\_\+time\+\_\+to\+\_\+segments()}}.
+
+\Hypertarget{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a7bacf5811931e0d9d38f9bc940589c5c}\label{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a7bacf5811931e0d9d38f9bc940589c5c} 
+\index{PeopleTracker.src.multitracker.MultiTracker@{PeopleTracker.src.multitracker.MultiTracker}!part\_time\_to\_segments@{part\_time\_to\_segments}}
+\index{part\_time\_to\_segments@{part\_time\_to\_segments}!PeopleTracker.src.multitracker.MultiTracker@{PeopleTracker.src.multitracker.MultiTracker}}
+\doxysubsubsection{\texorpdfstring{part\_time\_to\_segments()}{part\_time\_to\_segments()}}
+{\footnotesize\ttfamily People\+Tracker.\+src.\+multitracker.\+Multi\+Tracker.\+part\+\_\+time\+\_\+to\+\_\+segments (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{time\+\_\+data,  }\item[{}]{segment\+\_\+size = {\ttfamily 300} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Parts the times into segments based on the distance between tracked frames.
+    time_data is the entire time of the object tracked.
+    segment_size is the distance between frames that should be considered as one segment. Default is 10 seconds at 30fps.
+    min_segment is the minimum size of segment allowed. If it is too small, it will be ignored. Defualt is 1 second (30 frames).
+
+Example with default segment size of 300:
+    [0, 10, 20, 30, 100, 200, 300, 400, 1000, 1010, 1020] results in [[0, 400], [1000, 1020]]
+\end{DoxyVerb}
+ 
+
+References \mbox{\hyperlink{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_af652b6d13505a9cd3e4d3d5c87f7ce16}{People\+Tracker.\+src.\+multitracker.\+Multi\+Tracker.\+merge\+\_\+intervals()}}.
+
+
+
+Referenced by \mbox{\hyperlink{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a4a0915feed4b55be407bfcca8130ad76}{People\+Tracker.\+src.\+multitracker.\+Multi\+Tracker.\+calculate\+\_\+total\+\_\+time()}}, and \mbox{\hyperlink{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a8b780f861414568533fce20fbb6afc84}{People\+Tracker.\+src.\+multitracker.\+Multi\+Tracker.\+get\+\_\+time\+\_\+tracked()}}.
+
+\Hypertarget{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_acc3261b569fec0f90a26df009b0925c1}\label{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_acc3261b569fec0f90a26df009b0925c1} 
+\index{PeopleTracker.src.multitracker.MultiTracker@{PeopleTracker.src.multitracker.MultiTracker}!predict@{predict}}
+\index{predict@{predict}!PeopleTracker.src.multitracker.MultiTracker@{PeopleTracker.src.multitracker.MultiTracker}}
+\doxysubsubsection{\texorpdfstring{predict()}{predict()}}
+{\footnotesize\ttfamily People\+Tracker.\+src.\+multitracker.\+Multi\+Tracker.\+predict (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Applies KNN taking into consideration a Hidden Markov Model
+\end{DoxyVerb}
+ 
+
+Referenced by \mbox{\hyperlink{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a4a0915feed4b55be407bfcca8130ad76}{People\+Tracker.\+src.\+multitracker.\+Multi\+Tracker.\+calculate\+\_\+total\+\_\+time()}}.
+
+\Hypertarget{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a3ee5742c09d6dc589a7bf6069c14df38}\label{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a3ee5742c09d6dc589a7bf6069c14df38} 
+\index{PeopleTracker.src.multitracker.MultiTracker@{PeopleTracker.src.multitracker.MultiTracker}!record\_data@{record\_data}}
+\index{record\_data@{record\_data}!PeopleTracker.src.multitracker.MultiTracker@{PeopleTracker.src.multitracker.MultiTracker}}
+\doxysubsubsection{\texorpdfstring{record\_data()}{record\_data()}}
+{\footnotesize\ttfamily People\+Tracker.\+src.\+multitracker.\+Multi\+Tracker.\+record\+\_\+data (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{frame,  }\item[{}]{total\+\_\+people,  }\item[{}]{x = {\ttfamily -\/1},  }\item[{}]{y = {\ttfamily -\/1},  }\item[{}]{w = {\ttfamily -\/1},  }\item[{}]{h = {\ttfamily -\/1},  }\item[{}]{regions = {\ttfamily \mbox{[}\mbox{]}},  }\item[{}]{other\+\_\+room = {\ttfamily False},  }\item[{}]{image\+\_\+frame = {\ttfamily None} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Appends location and time to a list of data
+
+X,Y,W,H No Data are described as -1, and regions is described as []
+\end{DoxyVerb}
+ \Hypertarget{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_ae54dd8b3805689c9e4ab5436b24ff8a3}\label{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_ae54dd8b3805689c9e4ab5436b24ff8a3} 
+\index{PeopleTracker.src.multitracker.MultiTracker@{PeopleTracker.src.multitracker.MultiTracker}!remove@{remove}}
+\index{remove@{remove}!PeopleTracker.src.multitracker.MultiTracker@{PeopleTracker.src.multitracker.MultiTracker}}
+\doxysubsubsection{\texorpdfstring{remove()}{remove()}}
+{\footnotesize\ttfamily People\+Tracker.\+src.\+multitracker.\+Multi\+Tracker.\+remove (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Removes the tracker from being recorded. DOES NOT YET DELETE INFO
+\end{DoxyVerb}
+ 
+
+References People\+Tracker.\+src.\+multitracker.\+Multi\+Tracker.\+init\+\_\+bounding\+\_\+box, and People\+Tracker.\+src.\+multitracker.\+Multi\+Tracker.\+tracker.
+
+\Hypertarget{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a798bcd0cfb659a608c40d79ea59e3045}\label{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a798bcd0cfb659a608c40d79ea59e3045} 
+\index{PeopleTracker.src.multitracker.MultiTracker@{PeopleTracker.src.multitracker.MultiTracker}!rename@{rename}}
+\index{rename@{rename}!PeopleTracker.src.multitracker.MultiTracker@{PeopleTracker.src.multitracker.MultiTracker}}
+\doxysubsubsection{\texorpdfstring{rename()}{rename()}}
+{\footnotesize\ttfamily People\+Tracker.\+src.\+multitracker.\+Multi\+Tracker.\+rename (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{name }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Renames the tracking object
+\end{DoxyVerb}
+ 
+
+References People\+Tracker.\+src.\+evaluate.\+tracker\+\_\+evaluation.\+colour, People\+Tracker.\+src.\+multitracker.\+Multi\+Tracker.\+colour, and People\+Tracker.\+src.\+multitracker.\+Multi\+Tracker.\+name.
+
+\Hypertarget{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a6fd992a7dbe9523bee0751d3fc47655b}\label{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a6fd992a7dbe9523bee0751d3fc47655b} 
+\index{PeopleTracker.src.multitracker.MultiTracker@{PeopleTracker.src.multitracker.MultiTracker}!update\_tracker@{update\_tracker}}
+\index{update\_tracker@{update\_tracker}!PeopleTracker.src.multitracker.MultiTracker@{PeopleTracker.src.multitracker.MultiTracker}}
+\doxysubsubsection{\texorpdfstring{update\_tracker()}{update\_tracker()}}
+{\footnotesize\ttfamily People\+Tracker.\+src.\+multitracker.\+Multi\+Tracker.\+update\+\_\+tracker (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{frame }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}track and draw box on the frame
+\end{DoxyVerb}
+ 
+
+References People\+Tracker.\+src.\+multitracker.\+Multi\+Tracker.\+box, People\+Tracker.\+src.\+evaluate.\+tracker\+\_\+evaluation.\+colour, People\+Tracker.\+src.\+multitracker.\+Multi\+Tracker.\+colour, People\+Tracker.\+src.\+multitracker.\+Multi\+Tracker.\+draw\+\_\+tracker(), \mbox{\hyperlink{class_people_tracker_1_1src_1_1multitracker_1_1_multi_tracker_a5ade8a95a06e2e59d9f82d2f3e9c7d89}{People\+Tracker.\+src.\+multitracker.\+Multi\+Tracker.\+get\+\_\+name()}}, People\+Tracker.\+src.\+multitracker.\+Multi\+Tracker.\+init\+\_\+bounding\+\_\+box, and People\+Tracker.\+src.\+multitracker.\+Multi\+Tracker.\+tracker.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+K\+:/\+Github/\+People\+Tracker/src/multitracker.\+py\end{DoxyCompactItemize}

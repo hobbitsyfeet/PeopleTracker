@@ -1,0 +1,241 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app" xml:lang="en-US">
+<title>PeopleTracker.src.qt_dialog.App Class Reference</title>
+<indexterm><primary>PeopleTracker.src.qt_dialog.App</primary></indexterm>
+<para>Inheritance diagram for PeopleTracker.src.qt_dialog.App:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_people_tracker_1_1src_1_1qt__dialog_1_1_app.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1a623506d4b78dabde8b6d85abeed82a72"/><emphasis role="strong">__init__</emphasis> (self, start_file=None)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1af7be6d093ee8fa421d949dee59ef5870"/><emphasis role="strong">flashSplash</emphasis> (self)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1aee21bde1d2c8d217820f99f25ac07c82"/><emphasis role="strong">keyPressEvent</emphasis> (self, event)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1a483a77ae8760547c8fb70051e5f063b6"/><emphasis role="strong">mousePressEvent</emphasis> (self, event)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1aca1eb709510c58853af76436d614d29d"/><emphasis role="strong">test_method</emphasis> (self)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1ab95239cc26fc41b1a6418013d0f4f864"/><emphasis role="strong">evaluate_errors</emphasis> (self, filename, is_mrcnn)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1a8087b2b1ad528a768387f589b1bd3e9d"/><emphasis role="strong">train_model</emphasis> (self)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1a8e1e88425d7582659bcd90b9a31ab5a5"/><emphasis role="strong">processtrigger</emphasis> (self, q)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1a61e18a9e597e4467b60ff983a5db93e4"/><emphasis role="strong">initUI</emphasis> (self, start_file)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1a1be2f62dec2a0fdd7fb5a673b676269c"/><emphasis role="strong">show_warning</emphasis> (self, message)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1abeea6f5b7e2dba19dd3fc15f067a13a7"/><emphasis role="strong">get_integer</emphasis> (self)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1a62adfddaa704856cb3e9758bc5e1c8b3"/><emphasis role="strong">set_max_scrollbar</emphasis> (self, maximum)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1adbb652cb195952bd9c90ee231c6bda14"/><emphasis role="strong">set_scrollbar</emphasis> (self, value)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1a7c16319e1e0945e7d6677f4ed763e9e3"/><emphasis role="strong">slider_update</emphasis> (self, value, func=None)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1a71a12ab0cafad1a44ff081506f953bc3"/><emphasis role="strong">slider_new</emphasis> (self, value, func=None)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1a442d6f41f7222e36ea0f84f40c5358ef"/><emphasis role="strong">get_scrollbar_value</emphasis> (self)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1ae0e575258eeca940352ee53c790161e4"/><emphasis role="strong">mediaStateChanged</emphasis> (self)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1a693b9833d83c4477e99724818e0e27f1"/><emphasis role="strong">set_pause_state</emphasis> (self)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1a1f2680ba820c28f72665cf277ec0bf74"/><emphasis role="strong">set_play_state</emphasis> (self)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1a29c7bc0311f13e07d666c8bcbbf8cf7a"/><emphasis role="strong">btn_state</emphasis> (self, b)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1af11201c1fe9bb391a596fc845c7b610b"/><emphasis role="strong">set_tab_names</emphasis> (self)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1a01a523332cf58f83212e755c28d73e45"/><emphasis role="strong">get_current_tab_info</emphasis> (self)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1ad460888e4faf8e412a987210164775d5"/><emphasis role="strong">add_tab</emphasis> (self, name=None)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1aaa4ed83f0a2c554bcc6be9c8d9e06bfd"/><emphasis role="strong">remove_tab</emphasis> (self)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1a7ce914ca2ba4e8eeab92a95d735c60d0"/><emphasis role="strong">export_tab_pressed</emphasis> (self)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1a4170de90943596e12784defbdfa8a650"/><emphasis role="strong">set_fps_info</emphasis> (self, fps)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1a5f500ea86ce1509d21552ff63db51381"/><emphasis role="strong">get_frame_skip</emphasis> (self)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1a704f93c73a36169421082e6f1ca00049"/><emphasis role="strong">openFileNameDialog</emphasis> (self, task=None, extensions=None)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1a8593d7a6d1660709a6ac70ea7c7b30c8"/><emphasis role="strong">saveFileDialog</emphasis> (self)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1a546ef0d4ade3a2208bbed202d2117fef"/><emphasis role="strong">display_help</emphasis> (self)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1a8cd66f12e10b87bc856feee499ce6379"/><emphasis role="strong">log</emphasis> (self, text)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1a3ec3e06c249fe7e0cb2b8f21100a42bd"/><emphasis role="strong">set_all_tabs</emphasis> (self, value)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1a736cce1dd02a6a46d902a4202eaca51f"/><emphasis role="strong">toggle_retain_region</emphasis> (self)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1aec5e37965e5c524d6ca49f936141def3"/><emphasis role="strong">get_new_data_version</emphasis> (self)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1ad66359eada5cc02ffda44e8a1e91bcd0"/><emphasis role="strong">clear_focus</emphasis> (self)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1a374cdf846a4fa08f3df8c8d58af92d30"/><emphasis role="strong">track_live_video</emphasis> (self)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1af9597a5758c6dc980f17305ef88ed11f"/><emphasis role="strong">filename</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1a8ec9fe9cf63cbf8194bd5a7c6a5c098d"/><emphasis role="strong">title</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1ac9b806dfb3f7e8ffcd714386b42faabe"/><emphasis role="strong">left</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1a8fea678384da20c9bc5008d366308024"/><emphasis role="strong">top</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1ad0b917c4df793bfa2ebb9eae88cdb31f"/><emphasis role="strong">width</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1a598b1311f4da90c24579a8da065ece91"/><emphasis role="strong">height</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1a3869e2809902adb62a81838d753008d4"/><emphasis role="strong">record_live</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1a1f34ca4e2f884ae1bdee3033b283fd40"/><emphasis role="strong">nothing_loaded</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1a1064e0b4b7e8fed0858678ea7c6ac689"/><emphasis role="strong">snap_to_frame_skip</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1a39a8151dc056466172a42eaa3baf9126"/><emphasis role="strong">pause_to_play</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1a11613ec84f5165aee3b3e817539afae3"/><emphasis role="strong">play_to_pause</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1a41cc69cc454b7a023c44addaae2bc14d"/><emphasis role="strong">play_state</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1a1baacd56450e968d931d18530f1453d7"/><emphasis role="strong">export_state</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1a1235ab8f81ffb2b011eac62f180b6805"/><emphasis role="strong">region_state</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1a0ced5796a15a2caf2cf385e0c82c5cff"/><emphasis role="strong">del_region_state</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1ac8c5c0fa62e4c2bde3d7570c9b00eaf6"/><emphasis role="strong">export_all_state</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1a40f882bf4c363a208b8361e6e946c0d1"/><emphasis role="strong">scrollbar_changed</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1af61fb2dec5e74487d59090c9903f5a37"/><emphasis role="strong">resolution_x</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1aeaa338b4c23d5beb29d4e67eb3f7d36c"/><emphasis role="strong">resolution_y</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1ab3ff7770f2ce1aca78d03ffb679e2fe8"/><emphasis role="strong">original_resolution</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1aa3e755d2630c824158b744871597ec71"/><emphasis role="strong">vid_fps</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1a49a5f5a6b8f37c92d5a5908398a6ea79"/><emphasis role="strong">snap_state</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1a8a7a0d8522134763d237c9374b1d716d"/><emphasis role="strong">set_tracker_state</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1a4aab24cfe6d4a1eac33beedbf8629d79"/><emphasis role="strong">retain_region</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1a55e49f4c10c0a0ecc49f3331a9c51908"/><emphasis role="strong">quit_State</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1a213e1808ad39e21055bfd2dc437fd6ae"/><emphasis role="strong">image</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1a5b88b8d4a8c7e5e212a4453679e10c17"/><emphasis role="strong">predict_state</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1a8cb19cd528579430db6abc1a874871be"/><emphasis role="strong">load_predictions_state</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1a037d9055b856c1728fe4c3615423eead"/><emphasis role="strong">load_tracked_video_state</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1a5744dd38808a3422e839c3cd8c5da107"/><emphasis role="strong">was_loaded</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1a5594bb2cd5a7c75588e95b48ba1b98a3"/><emphasis role="strong">track_preds_state</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1a0e386338194ef94c2974edcd86b2b7c1"/><emphasis role="strong">export_charactoristics</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1abd448f62cbddb8e46b2f0cc669b9d0c8"/><emphasis role="strong">export_activity</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1ac1fa0752c617de6eed2bce57385da043"/><emphasis role="strong">evaluate_occlusion</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1a253adc6aeb5a2f001ca00132c118b647"/><emphasis role="strong">del_frame</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1a93c27033146f67dc90df6ccb83568128"/><emphasis role="strong">del_active_frame</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1a425644f39d94d7c8ea63cae32e29b35a"/><emphasis role="strong">data_version_updated</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1a8039d4e8a302f6a39ce19aa33f29025a"/><emphasis role="strong">newest_version_path</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1ae4036b630708051d5f519a2c5eeb8b09"/><emphasis role="strong">newest_version</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1a2eeae07818f04bae55cdf3c16215d3ee"/><emphasis role="strong">exported_data</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1a677968e1b40d589bf2bc2792a5c0e0ca"/><emphasis role="strong">exported_activity</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1abf339292dc4e94af60e6fed01457219b"/><emphasis role="strong">splash</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1a3de89dfed4fe1194a4650ca68b050c5d"/><emphasis role="strong">version_name</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1ac2fc35b8c4222e2dc319a1a5c9c166d2"/><emphasis role="strong">mcrnn_options</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1a541b8a97f92b76b741c9a5741a8ae3af"/><emphasis role="strong">predictor_options</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1a258dce9c66cbd21f157adcbaf9fc1842"/><emphasis role="strong">image_options</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1a1b1bf88947c1708f93424014964d2c81"/><emphasis role="strong">log_label</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1ab89fe8d061c032f9a0d0ebe695e34bc6"/><emphasis role="strong">layout</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1af2a738275c726b93b5fb570a4c5edf26"/><emphasis role="strong">processtrigger</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1a2a346275046e09570dd0d7a354a7ed3d"/><emphasis role="strong">add_tab_state</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1a1462f31b9b9418c8d1ec13adfc802bf3"/><emphasis role="strong">tab_control_layout</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1a8b7733ef6b50156f26d345dfd8b366dd"/><emphasis role="strong">add_tab_btn</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1a674c56e3f515fe5f28dd9f76b0457352"/><emphasis role="strong">add_tab</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1a96650dc69f54f967c615f1179f1ed58a"/><emphasis role="strong">export_tab_btn</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1a38be3400609d08132bb9aaca2e18c129"/><emphasis role="strong">export_tab_pressed</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1a5b03b2f6ad2e7d8fe06a52dad924ca6c"/><emphasis role="strong">del_tab_state</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1a30bad29599eb936cce7bab6bd0f37431"/><emphasis role="strong">del_tab_btn</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1a0a068af83491f8f19aa2bbbbc41e4a7d"/><emphasis role="strong">remove_tab</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1a011c0746fcf6ea516c11ce155961743d"/><emphasis role="strong">row2</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1a34501373d26fa7020671da010f76c5bb"/><emphasis role="strong">num_people_btn</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1a617482578471f24a5c8620773f27d69b"/><emphasis role="strong">num_people</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1a73657b09aa43c0f2f7748e2f6a3efffb"/><emphasis role="strong">tabs</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1adc0306fa71906a7a2b871eaf83850455"/><emphasis role="strong">tab_list</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1a99481459823d486a71ecdc53fe6b5812"/><emphasis role="strong">scrollframe</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1a119c83ae8e5ac84e708643d1668657f7"/><emphasis role="strong">vidScroll</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1a077868ceec282d9a6eb52fda7d329d29"/><emphasis role="strong">slider_update</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1a7aa3ccfee39c0c200b32fa593e168dda"/><emphasis role="strong">slider_new</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1afab836bf2af34d3b00c768bc9de6793e"/><emphasis role="strong">playButton</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1a9d8507a110a6f72fb24808a8d0fdc9d6"/><emphasis role="strong">mediaStateChanged</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1aed1060244e77c383af270f43390aa7af"/><emphasis role="strong">skip_frames</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1a44525bcd098dac173c4399e4a812d017"/><emphasis role="strong">onlyInt</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1qt__dialog_1_1_app_1a8addcb8d9bb671bd6a110e7ea09fd150"/><emphasis role="strong">skip_label</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<para>
+The documentation for this class was generated from the following file:</para>
+K:/Github/PeopleTracker/src/qt_dialog.py</section>

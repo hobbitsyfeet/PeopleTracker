@@ -1,0 +1,135 @@
+\doxysection{FPS}
+\hypertarget{a00162}{}\label{a00162}\index{FPS@{FPS}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{a00162_abdd362d5f799ad16b5d6700efe590290}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self)
+\item 
+\mbox{\hyperlink{a00162_aeb3b30c60946a22761128cbd397add94}{start}} (self)
+\item 
+\mbox{\hyperlink{a00162_a2f39781a0bb89a6705efdc8d4c527def}{stop}} (self)
+\item 
+\mbox{\hyperlink{a00162_a3ed6c48ad94cd8dc1ef028827ce10997}{update}} (self)
+\item 
+\mbox{\hyperlink{a00162_aa9b04371b7477b7d750c985c16997d25}{elapsed}} (self)
+\item 
+\mbox{\hyperlink{a00162_a7cde1bca8b06d0e16b36326cb6cf531e}{fps}} (self)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{a00162_a05c51c1a92942972ea12f2c32d05f24a}\label{a00162_a05c51c1a92942972ea12f2c32d05f24a} 
+{\bfseries \+\_\+start}
+\item 
+\Hypertarget{a00162_ac27a820ef1b48eb1f5d6650f94e3b095}\label{a00162_ac27a820ef1b48eb1f5d6650f94e3b095} 
+{\bfseries \+\_\+end}
+\item 
+\Hypertarget{a00162_aca9c55b2db99fb3b103e723f3889ee5c}\label{a00162_aca9c55b2db99fb3b103e723f3889ee5c} 
+{\bfseries \+\_\+num\+Frames}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{a00162_abdd362d5f799ad16b5d6700efe590290}\label{a00162_abdd362d5f799ad16b5d6700efe590290} 
+\index{FPS@{FPS}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!FPS@{FPS}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily \+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00005\ \ \ \ \ \textcolor{keyword}{def\ }\_\_init\_\_(self): }
+\DoxyCodeLine{00006\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ store\ the\ start\ time,\ end\ time,\ and\ total\ number\ of\ frames }}
+\DoxyCodeLine{00007\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ that\ were\ examined\ between\ the\ start\ and\ end\ intervals }}
+\DoxyCodeLine{00008\ \ \ \ \ \ \ \ \ self.\_start\ =\ \textcolor{keywordtype}{None} }
+\DoxyCodeLine{00009\ \ \ \ \ \ \ \ \ self.\_end\ =\ \textcolor{keywordtype}{None} }
+\DoxyCodeLine{00010\ \ \ \ \ \ \ \ \ self.\_numFrames\ =\ 0 }
+\DoxyCodeLine{00011\  }
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{a00162_aa9b04371b7477b7d750c985c16997d25}\label{a00162_aa9b04371b7477b7d750c985c16997d25} 
+\index{FPS@{FPS}!elapsed@{elapsed}}
+\index{elapsed@{elapsed}!FPS@{FPS}}
+\doxysubsubsection{\texorpdfstring{elapsed()}{elapsed()}}
+{\footnotesize\ttfamily elapsed (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{def\ }elapsed(self): }
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ return\ the\ total\ number\ of\ seconds\ between\ the\ start\ and }}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ end\ interval }}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (self.\_end\ -\/\ self.\_start).total\_seconds() }
+\DoxyCodeLine{00030\  }
+
+\end{DoxyCode}
+\Hypertarget{a00162_a7cde1bca8b06d0e16b36326cb6cf531e}\label{a00162_a7cde1bca8b06d0e16b36326cb6cf531e} 
+\index{FPS@{FPS}!fps@{fps}}
+\index{fps@{fps}!FPS@{FPS}}
+\doxysubsubsection{\texorpdfstring{fps()}{fps()}}
+{\footnotesize\ttfamily fps (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{def\ }fps(self): }
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ compute\ the\ (approximate)\ frames\ per\ second }}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ self.\_numFrames\ /\ self.elapsed()}
+
+\end{DoxyCode}
+
+
+Referenced by \mbox{\hyperlink{a00154_a44156c7a1b52b45402849d05832c990a}{tracker\+\_\+evaluation.\+\_\+\+\_\+init\+\_\+\+\_\+()}}, \mbox{\hyperlink{a00154_a64bfd27c55021f0970aa44942ee4c7e9}{tracker\+\_\+evaluation.\+load\+\_\+json()}}, and \mbox{\hyperlink{a00154_ad4605f802eb54b9eae17e159f064e9d7}{tracker\+\_\+evaluation.\+load\+\_\+tracker\+\_\+data()}}.
+
+Here is the caller graph for this function\+:
+% FIG 0
+\Hypertarget{a00162_aeb3b30c60946a22761128cbd397add94}\label{a00162_aeb3b30c60946a22761128cbd397add94} 
+\index{FPS@{FPS}!start@{start}}
+\index{start@{start}!FPS@{FPS}}
+\doxysubsubsection{\texorpdfstring{start()}{start()}}
+{\footnotesize\ttfamily start (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keyword}{def\ }start(self): }
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ start\ the\ timer }}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ self.\_start\ =\ datetime.datetime.now() }
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ self }
+\DoxyCodeLine{00016\  }
+
+\end{DoxyCode}
+\Hypertarget{a00162_a2f39781a0bb89a6705efdc8d4c527def}\label{a00162_a2f39781a0bb89a6705efdc8d4c527def} 
+\index{FPS@{FPS}!stop@{stop}}
+\index{stop@{stop}!FPS@{FPS}}
+\doxysubsubsection{\texorpdfstring{stop()}{stop()}}
+{\footnotesize\ttfamily stop (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{def\ }stop(self): }
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ stop\ the\ timer }}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ self.\_end\ =\ datetime.datetime.now() }
+\DoxyCodeLine{00020\  }
+
+\end{DoxyCode}
+\Hypertarget{a00162_a3ed6c48ad94cd8dc1ef028827ce10997}\label{a00162_a3ed6c48ad94cd8dc1ef028827ce10997} 
+\index{FPS@{FPS}!update@{update}}
+\index{update@{update}!FPS@{FPS}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily update (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keyword}{def\ }update(self): }
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ increment\ the\ total\ number\ of\ frames\ examined\ during\ the }}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ start\ and\ end\ intervals }}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ self.\_numFrames\ +=\ 1 }
+\DoxyCodeLine{00025\  }
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+K\+:/\+Github/\+People\+Tracker/src/fps.\+py\end{DoxyCompactItemize}

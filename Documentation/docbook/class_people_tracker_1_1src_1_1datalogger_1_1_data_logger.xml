@@ -1,0 +1,366 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_people_tracker_1_1src_1_1datalogger_1_1_data_logger" xml:lang="en-US">
+<title>PeopleTracker.src.datalogger.DataLogger Class Reference</title>
+<indexterm><primary>PeopleTracker.src.datalogger.DataLogger</primary></indexterm>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_1aed578b1c6f61555a673d09ebcbcf109c"/><emphasis role="strong">__init__</emphasis> (self, video, video_location=None, video_metadata=None, intervention_level=NO_INTVERVENTION_TRACKER, ground_truth_folder=None)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_1aca54596ef704751914ed44d783141fc1">start_recording</link> (self)</para>
+
+<para>User input logging starts here #. </para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_1a7f5b092d96c7c0e6c8b8c823839f8611">end_recording</link> (self)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_1ac95d4eae57d2b242cde750bd9d3788a6">start_timer</link> (self, timer_id)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_1aa65d41b9331fa9583ea23fa741550050">get_time_elapsed</link> (self, timer_id)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_1a696b920945958ee47aa6724ce9a1caff">end_timer</link> (self, timer_id)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_1a26b07f216862ee37fe8d7fcd03fec307">adjustment</link> (self, frame_number, from_box, timer_id, tracker_id, intervention_type=&quot;USER&quot;, to_box=None)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_1a97e2dd106ab44e959861fc01179dda16">end_adjustment</link> (self, to_box, timer_id)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_1a52d26620d96397a15200e5e5ca9ee03a">paused</link> (self, frame_number, pause_type, timer_id, tracker_id)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_1aa1388f8c6b0ab6d64ff307b08d487630"/><emphasis role="strong">end_pause</emphasis> (self)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_1a74dbb58bd3850df58ae9a1ee915cfa7b">slider_moved</link> (self, frame_from, timer_id, tracker_id)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_1a22765f69c12a9a42e1aaa6a2a569d6bd"/><emphasis role="strong">end_slider</emphasis> (self, frame_to, timer_id)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_1a3ec99203345c9126c33a9eba8495dc65"/><emphasis role="strong">record_errors</emphasis> (self, frame)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_1a7fecc892e3882ffd0cb5069a000ececb"/><emphasis role="strong">get_tracker_score</emphasis> (self)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_1a2b551aed0300df21a4c754de3058140e">get_video_characteristics</link> (self, video=None)</para>
+
+<para>VIDEO COMPLEXITY STARTS HERE #. </para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_1a1fd7ca71573383d41d9b1c6d60240e19">illumination</link> (self, frame)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_1a8d2cc80e55ad7fc0a78d5d07dd82aee8">optical_flow</link> (self, frame)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_1a19518dc55f77f902e330b7ffb8ee1599">optical_flow_pan</link> (self, flow, dominance_threshold=0.4, magnitude_threshold=0.5)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_1a1e097d470386417c25ddd4d2d19f593c">optical_flow_zoom</link> (self, flow, dominance_threshold=0.7, magnitude_threshold=1)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_1aee8d3b87b2ddf7dc823920299788e386">ground_truth_characteristics</link> (self, frame_num)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_1a8eb90f84b9622648f34eb20430c1edef">objects_occluded</link> (self, folder_path, fps)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_1a13541a165927f1cc6c09391550ce1bb2"/><emphasis role="strong">check_intervention_level</emphasis> (self)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_1a9903c060f37db7450069f3dc0ea826f9"/><emphasis role="strong">export_charactoristics</emphasis> (self, file_path)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_1a3369bc1f3106f35f6cdd094fbfba31c0"/><emphasis role="strong">export_activity</emphasis> (self, file_path)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_1af4b8a26859b36f5517c7fbc56de9ba38"/><emphasis role="strong">plot_chars_df</emphasis> (self)</para>
+</listitem>
+            <listitem><para><link linkend="_class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_1a2fbe14b3a451688846351a50f5f6bd2e">occuding_objects</link> (self, occluding_tracks_csv, occluding_threshold=0.8)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_1a4b7e766736847e7a42b04de545db14e8"/><emphasis role="strong">intervention_level</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_1ad3c2b4589d14578c70c3968ff10fcb0e"/><emphasis role="strong">ground_truth_folder</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_1aa537e17e22156de86a4ea1f61f422f55"/><emphasis role="strong">te</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_1a1ec12b259d9b6c2cc469a741bd153a4e"/><emphasis role="strong">metadata</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_1a84a4441fb67469a8a6c83b7ddf280c91"/><emphasis role="strong">video</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_1a070ddd112c1c277f892294f93e8d193d"/><emphasis role="strong">video_id</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_1a4e8b0c35b57ab9241bac4b1606099e53"/><emphasis role="strong">video_location</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_1ae7c95d53c638e57678247ca0c137d61e"/><emphasis role="strong">start_time_id</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_1a742f062590f5650f5f331e9d5724dbf2"/><emphasis role="strong">previous_frame</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_1aa3a4403c7915ccfb1314d09d9d2ee3fa"/><emphasis role="strong">logging_dict</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_1aa99ccb3cc3ca07c3f65ef8c5777a65db"/><emphasis role="strong">timer_dict</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_1a96dea1d909eb4b3e3c7db575a1559e70"/><emphasis role="strong">paused_data</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_1ad4252a5de7a8ef2f2369ea29d22fdaa3"/><emphasis role="strong">slider_data</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_1af2efca9fd8b3e80792c0e8b790e863e8"/><emphasis role="strong">adjust_data</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_1a99b710ca233334fb75e3ac8ce18dcf73"/><emphasis role="strong">logger_df</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_1a6ccef88a6e40c1cf4356522a77cd2e0e"/><emphasis role="strong">video_info_df</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_1a26b07f216862ee37fe8d7fcd03fec307"/><section>
+    <title>adjustment()</title>
+<indexterm><primary>adjustment</primary><secondary>PeopleTracker.src.datalogger.DataLogger</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.datalogger.DataLogger</primary><secondary>adjustment</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.datalogger.DataLogger.adjustment ( self,  frame_number,  from_box,  timer_id,  tracker_id,  intervention_type = <computeroutput>&quot;USER&quot;</computeroutput>
+,  to_box = <computeroutput>None</computeroutput>
+)</computeroutput></para>
+<para><literallayout><computeroutput>Records the frame number and locations where the tracker is moved from and to.
+
+Records what made the adjustment.
+    
+    Human - If the user made the adjustment
+    
+    Model - If the MaskRCNN model made the automatic adjustment
+</computeroutput></literallayout> </para>
+<para>
+References PeopleTracker.src.datalogger.DataLogger.adjust_data, <link linkend="_class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_1a97e2dd106ab44e959861fc01179dda16">PeopleTracker.src.datalogger.DataLogger.end_adjustment()</link>, PeopleTracker.src.datalogger.DataLogger.intervention_level, and <link linkend="_class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_1ac95d4eae57d2b242cde750bd9d3788a6">PeopleTracker.src.datalogger.DataLogger.start_timer()</link>.</para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_1a97e2dd106ab44e959861fc01179dda16"/><section>
+    <title>end_adjustment()</title>
+<indexterm><primary>end_adjustment</primary><secondary>PeopleTracker.src.datalogger.DataLogger</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.datalogger.DataLogger</primary><secondary>end_adjustment</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.datalogger.DataLogger.end_adjustment ( self,  to_box,  timer_id)</computeroutput></para>
+<para><literallayout><computeroutput>Records the adjustment when final changes are made. This contributes final location and duration.
+</computeroutput></literallayout> </para>
+<para>
+References PeopleTracker.src.datalogger.DataLogger.adjust_data, <link linkend="_class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_1aa65d41b9331fa9583ea23fa741550050">PeopleTracker.src.datalogger.DataLogger.get_time_elapsed()</link>, and PeopleTracker.src.datalogger.DataLogger.logger_df.</para>
+<para>
+Referenced by <link linkend="_class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_1a26b07f216862ee37fe8d7fcd03fec307">PeopleTracker.src.datalogger.DataLogger.adjustment()</link>.</para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_1a7f5b092d96c7c0e6c8b8c823839f8611"/><section>
+    <title>end_recording()</title>
+<indexterm><primary>end_recording</primary><secondary>PeopleTracker.src.datalogger.DataLogger</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.datalogger.DataLogger</primary><secondary>end_recording</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.datalogger.DataLogger.end_recording ( self)</computeroutput></para>
+<para><literallayout><computeroutput></computeroutput></literallayout> </para>
+<para>
+References PeopleTracker.src.datalogger.DataLogger.start_time_id, and PeopleTracker.src.datalogger.DataLogger.timer_dict.</para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_1a696b920945958ee47aa6724ce9a1caff"/><section>
+    <title>end_timer()</title>
+<indexterm><primary>end_timer</primary><secondary>PeopleTracker.src.datalogger.DataLogger</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.datalogger.DataLogger</primary><secondary>end_timer</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.datalogger.DataLogger.end_timer ( self,  timer_id)</computeroutput></para>
+<para><literallayout><computeroutput>Ends the timer from when the project is finished
+</computeroutput></literallayout> </para>
+<para>
+References <link linkend="_class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_1aa65d41b9331fa9583ea23fa741550050">PeopleTracker.src.datalogger.DataLogger.get_time_elapsed()</link>, and PeopleTracker.src.datalogger.DataLogger.timer_dict.</para>
+<para>
+Referenced by <link linkend="_class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_1a52d26620d96397a15200e5e5ca9ee03a">PeopleTracker.src.datalogger.DataLogger.paused()</link>, and <link linkend="_class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_1a74dbb58bd3850df58ae9a1ee915cfa7b">PeopleTracker.src.datalogger.DataLogger.slider_moved()</link>.</para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_1aa65d41b9331fa9583ea23fa741550050"/><section>
+    <title>get_time_elapsed()</title>
+<indexterm><primary>get_time_elapsed</primary><secondary>PeopleTracker.src.datalogger.DataLogger</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.datalogger.DataLogger</primary><secondary>get_time_elapsed</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.datalogger.DataLogger.get_time_elapsed ( self,  timer_id)</computeroutput></para>
+<para><literallayout><computeroutput>returns elapsed time of a timer in seconds
+</computeroutput></literallayout> </para>
+<para>
+References PeopleTracker.src.datalogger.DataLogger.start_time_id, and PeopleTracker.src.datalogger.DataLogger.timer_dict.</para>
+<para>
+Referenced by <link linkend="_class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_1a97e2dd106ab44e959861fc01179dda16">PeopleTracker.src.datalogger.DataLogger.end_adjustment()</link>, <link linkend="_class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_1a696b920945958ee47aa6724ce9a1caff">PeopleTracker.src.datalogger.DataLogger.end_timer()</link>, <link linkend="_class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_1a52d26620d96397a15200e5e5ca9ee03a">PeopleTracker.src.datalogger.DataLogger.paused()</link>, and <link linkend="_class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_1a74dbb58bd3850df58ae9a1ee915cfa7b">PeopleTracker.src.datalogger.DataLogger.slider_moved()</link>.</para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_1a2b551aed0300df21a4c754de3058140e"/><section>
+    <title>get_video_characteristics()</title>
+<indexterm><primary>get_video_characteristics</primary><secondary>PeopleTracker.src.datalogger.DataLogger</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.datalogger.DataLogger</primary><secondary>get_video_characteristics</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.datalogger.DataLogger.get_video_characteristics ( self,  video = <computeroutput>None</computeroutput>
+)</computeroutput></para><para>
+
+<para>VIDEO COMPLEXITY STARTS HERE #. </para>
+</para>
+
+<para><literallayout><computeroutput>Records all video characteristics. 
+    This will be done independently from the user input 
+    and will be constants between intervention types
+</computeroutput></literallayout> </para>
+<para>
+References <link linkend="_class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_1aee8d3b87b2ddf7dc823920299788e386">PeopleTracker.src.datalogger.DataLogger.ground_truth_characteristics()</link>, <link linkend="_class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_1a1fd7ca71573383d41d9b1c6d60240e19">PeopleTracker.src.datalogger.DataLogger.illumination()</link>, <link linkend="_class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_1a8d2cc80e55ad7fc0a78d5d07dd82aee8">PeopleTracker.src.datalogger.DataLogger.optical_flow()</link>, PeopleTracker.src.datalogger.DataLogger.te, PeopleTracker.src.datalogger.DataLogger.video, PeopleTracker.src.datalogger.DataLogger.video_id, PeopleTracker.src.datalogger.DataLogger.video_info_df, and PeopleTracker.src.datalogger.DataLogger.video_location.</para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_1aee8d3b87b2ddf7dc823920299788e386"/><section>
+    <title>ground_truth_characteristics()</title>
+<indexterm><primary>ground_truth_characteristics</primary><secondary>PeopleTracker.src.datalogger.DataLogger</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.datalogger.DataLogger</primary><secondary>ground_truth_characteristics</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.datalogger.DataLogger.ground_truth_characteristics ( self,  frame_num)</computeroutput></para>
+<para><literallayout><computeroutput>Records ground truth height, width, and distance from last frame
+</computeroutput></literallayout> </para>
+<para>
+References PeopleTracker.src.datalogger.DataLogger.te.</para>
+<para>
+Referenced by <link linkend="_class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_1a2b551aed0300df21a4c754de3058140e">PeopleTracker.src.datalogger.DataLogger.get_video_characteristics()</link>.</para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_1a1fd7ca71573383d41d9b1c6d60240e19"/><section>
+    <title>illumination()</title>
+<indexterm><primary>illumination</primary><secondary>PeopleTracker.src.datalogger.DataLogger</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.datalogger.DataLogger</primary><secondary>illumination</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.datalogger.DataLogger.illumination ( self,  frame)</computeroutput></para>
+<para><literallayout><computeroutput>Records the average intensity of the RGB image in greyscale with values between 0 (black) and 255 (white)
+
+Intensity = (R + G + B)/3
+</computeroutput></literallayout> </para>
+<para>
+Referenced by <link linkend="_class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_1a2b551aed0300df21a4c754de3058140e">PeopleTracker.src.datalogger.DataLogger.get_video_characteristics()</link>.</para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_1a8eb90f84b9622648f34eb20430c1edef"/><section>
+    <title>objects_occluded()</title>
+<indexterm><primary>objects_occluded</primary><secondary>PeopleTracker.src.datalogger.DataLogger</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.datalogger.DataLogger</primary><secondary>objects_occluded</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.datalogger.DataLogger.objects_occluded ( self,  folder_path,  fps)</computeroutput></para>
+<para><literallayout><computeroutput>Records weather the occlusion flag has occured on that frame. Records how many IDs have been occluded.
+</computeroutput></literallayout> </para>
+<para>
+References PeopleTracker.src.datalogger.DataLogger.check_intervention_level(), PeopleTracker.src.datalogger.DataLogger.intervention_level, PeopleTracker.src.datalogger.DataLogger.logger_df, PeopleTracker.src.datalogger.DataLogger.te, and PeopleTracker.src.datalogger.DataLogger.video_info_df.</para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_1a2fbe14b3a451688846351a50f5f6bd2e"/><section>
+    <title>occuding_objects()</title>
+<indexterm><primary>occuding_objects</primary><secondary>PeopleTracker.src.datalogger.DataLogger</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.datalogger.DataLogger</primary><secondary>occuding_objects</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.datalogger.DataLogger.occuding_objects ( self,  occluding_tracks_csv,  occluding_threshold = <computeroutput>0.8</computeroutput>
+)</computeroutput></para>
+<para><literallayout><computeroutput>Given recorded occluding objects, check the precision of ground truth onto occluding object.
+If precision of ground truth is above threshold, this means that object is occluded.
+This is the same measure as check_occlusion but data in this context is different and 
+therefore a different function
+</computeroutput></literallayout> </para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_1a8d2cc80e55ad7fc0a78d5d07dd82aee8"/><section>
+    <title>optical_flow()</title>
+<indexterm><primary>optical_flow</primary><secondary>PeopleTracker.src.datalogger.DataLogger</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.datalogger.DataLogger</primary><secondary>optical_flow</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.datalogger.DataLogger.optical_flow ( self,  frame)</computeroutput></para>
+<para><literallayout><computeroutput>Uses optical flow to measure the average magnitude of movement from the flow of pixels.
+
+Also records the resolution of the image
+
+Returns values in a dictionary with names:
+    Mean
+    Median
+    STD
+    Mean_Magnitude
+    Dominant_Zoom
+    Percent_Zoom
+    Zoom_Dominance_Thresh
+    Zoom_Magnitude_Thresh
+    Dominant_Pan
+    Percent_Pan
+    Pan_Dominance_Thresh
+    Pan_Magnitude_Thresh
+
+[66] Gunnar Farnebäck. Two-frame motion estimation based on polynomial expansion. In Image Analysis, pages 363–370. Springer, 2003. 
+</computeroutput></literallayout> </para>
+<para>
+References <link linkend="_class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_1a19518dc55f77f902e330b7ffb8ee1599">PeopleTracker.src.datalogger.DataLogger.optical_flow_pan()</link>, <link linkend="_class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_1a1e097d470386417c25ddd4d2d19f593c">PeopleTracker.src.datalogger.DataLogger.optical_flow_zoom()</link>, and PeopleTracker.src.datalogger.DataLogger.previous_frame.</para>
+<para>
+Referenced by <link linkend="_class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_1a2b551aed0300df21a4c754de3058140e">PeopleTracker.src.datalogger.DataLogger.get_video_characteristics()</link>.</para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_1a19518dc55f77f902e330b7ffb8ee1599"/><section>
+    <title>optical_flow_pan()</title>
+<indexterm><primary>optical_flow_pan</primary><secondary>PeopleTracker.src.datalogger.DataLogger</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.datalogger.DataLogger</primary><secondary>optical_flow_pan</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.datalogger.DataLogger.optical_flow_pan ( self,  flow,  dominance_threshold = <computeroutput>0.4</computeroutput>
+,  magnitude_threshold = <computeroutput>0.5</computeroutput>
+)</computeroutput></para>
+<para><literallayout><computeroutput>Vector orientation:
+t+1=current frame, t=previous frame
+
+atan( 
+    (yi^(t+1) - yi^(t)) / 
+    (xi^(t+1) - xi^(t)) 
+)
+
+
+Calculate Dominant Orientation = Peak value in orientation histogram of the imag
+np.histogram(np.array(vector orientation))
+
+returns the dominant orientation given a threshold, the threshold it passed by, and the average magnitude of movement.
+
+
+Makkapati, V. (2008). Robust camera pan and zoom change detection using optical flow. 
+In National conference on computer vision, pattern recognition, 
+image processing and graphics (pp. 73-78).
+</computeroutput></literallayout> </para>
+<para>
+Referenced by <link linkend="_class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_1a8d2cc80e55ad7fc0a78d5d07dd82aee8">PeopleTracker.src.datalogger.DataLogger.optical_flow()</link>.</para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_1a1e097d470386417c25ddd4d2d19f593c"/><section>
+    <title>optical_flow_zoom()</title>
+<indexterm><primary>optical_flow_zoom</primary><secondary>PeopleTracker.src.datalogger.DataLogger</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.datalogger.DataLogger</primary><secondary>optical_flow_zoom</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.datalogger.DataLogger.optical_flow_zoom ( self,  flow,  dominance_threshold = <computeroutput>0.7</computeroutput>
+,  magnitude_threshold = <computeroutput>1</computeroutput>
+)</computeroutput></para>
+<para><literallayout><computeroutput>Describe each vector&apos;s direction. 
+
+Returns 
+    0 if diverging (zoom in), 1 if converging (zoom out), otherwise none.
+    percent of dominance
+    domenance threshold
+    mean magnitude threshold
+
+
+Makkapati, V. (2008). Robust camera pan and zoom change detection using optical flow. 
+In National conference on computer vision, pattern recognition, 
+image processing and graphics (pp. 73-78).
+</computeroutput></literallayout> </para>
+<para>
+Referenced by <link linkend="_class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_1a8d2cc80e55ad7fc0a78d5d07dd82aee8">PeopleTracker.src.datalogger.DataLogger.optical_flow()</link>.</para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_1a52d26620d96397a15200e5e5ca9ee03a"/><section>
+    <title>paused()</title>
+<indexterm><primary>paused</primary><secondary>PeopleTracker.src.datalogger.DataLogger</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.datalogger.DataLogger</primary><secondary>paused</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.datalogger.DataLogger.paused ( self,  frame_number,  pause_type,  timer_id,  tracker_id)</computeroutput></para>
+<para><literallayout><computeroutput>Records what initiated the pause, and for how long the pause existed for.
+
+This requires an external timer, and will be recorded when *Play* has been selected.
+</computeroutput></literallayout> </para>
+<para>
+References <link linkend="_class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_1a696b920945958ee47aa6724ce9a1caff">PeopleTracker.src.datalogger.DataLogger.end_timer()</link>, <link linkend="_class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_1aa65d41b9331fa9583ea23fa741550050">PeopleTracker.src.datalogger.DataLogger.get_time_elapsed()</link>, PeopleTracker.src.datalogger.DataLogger.intervention_level, PeopleTracker.src.datalogger.DataLogger.logger_df, PeopleTracker.src.datalogger.DataLogger.paused_data, PeopleTracker.src.datalogger.DataLogger.start_time_id, and <link linkend="_class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_1ac95d4eae57d2b242cde750bd9d3788a6">PeopleTracker.src.datalogger.DataLogger.start_timer()</link>.</para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_1a74dbb58bd3850df58ae9a1ee915cfa7b"/><section>
+    <title>slider_moved()</title>
+<indexterm><primary>slider_moved</primary><secondary>PeopleTracker.src.datalogger.DataLogger</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.datalogger.DataLogger</primary><secondary>slider_moved</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.datalogger.DataLogger.slider_moved ( self,  frame_from,  timer_id,  tracker_id)</computeroutput></para>
+<para><literallayout><computeroutput>Records when the slider was changed, where from, and where to.
+</computeroutput></literallayout> </para>
+<para>
+References <link linkend="_class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_1a696b920945958ee47aa6724ce9a1caff">PeopleTracker.src.datalogger.DataLogger.end_timer()</link>, <link linkend="_class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_1aa65d41b9331fa9583ea23fa741550050">PeopleTracker.src.datalogger.DataLogger.get_time_elapsed()</link>, PeopleTracker.src.datalogger.DataLogger.intervention_level, PeopleTracker.src.datalogger.DataLogger.logger_df, PeopleTracker.src.datalogger.DataLogger.slider_data, <link linkend="_class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_1ac95d4eae57d2b242cde750bd9d3788a6">PeopleTracker.src.datalogger.DataLogger.start_timer()</link>, and PeopleTracker.src.datalogger.DataLogger.timer_dict.</para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_1aca54596ef704751914ed44d783141fc1"/><section>
+    <title>start_recording()</title>
+<indexterm><primary>start_recording</primary><secondary>PeopleTracker.src.datalogger.DataLogger</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.datalogger.DataLogger</primary><secondary>start_recording</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.datalogger.DataLogger.start_recording ( self)</computeroutput></para><para>
+
+<para>User input logging starts here #. </para>
+</para>
+
+<para><literallayout><computeroutput>Starts the recording timer
+</computeroutput></literallayout> </para>
+<para>
+References PeopleTracker.src.datalogger.DataLogger.start_time_id, and PeopleTracker.src.datalogger.DataLogger.timer_dict.</para>
+<para>
+Referenced by <link linkend="_class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_1ac95d4eae57d2b242cde750bd9d3788a6">PeopleTracker.src.datalogger.DataLogger.start_timer()</link>.</para>
+</section>
+<anchor xml:id="_class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_1ac95d4eae57d2b242cde750bd9d3788a6"/><section>
+    <title>start_timer()</title>
+<indexterm><primary>start_timer</primary><secondary>PeopleTracker.src.datalogger.DataLogger</secondary></indexterm>
+<indexterm><primary>PeopleTracker.src.datalogger.DataLogger</primary><secondary>start_timer</secondary></indexterm>
+<para><computeroutput>PeopleTracker.src.datalogger.DataLogger.start_timer ( self,  timer_id)</computeroutput></para>
+<para><literallayout><computeroutput>Starts the timer from when the project is initiated
+</computeroutput></literallayout> </para>
+<para>
+References <link linkend="_class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_1aca54596ef704751914ed44d783141fc1">PeopleTracker.src.datalogger.DataLogger.start_recording()</link>, PeopleTracker.src.datalogger.DataLogger.start_time_id, and PeopleTracker.src.datalogger.DataLogger.timer_dict.</para>
+<para>
+Referenced by <link linkend="_class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_1a26b07f216862ee37fe8d7fcd03fec307">PeopleTracker.src.datalogger.DataLogger.adjustment()</link>, <link linkend="_class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_1a52d26620d96397a15200e5e5ca9ee03a">PeopleTracker.src.datalogger.DataLogger.paused()</link>, and <link linkend="_class_people_tracker_1_1src_1_1datalogger_1_1_data_logger_1a74dbb58bd3850df58ae9a1ee915cfa7b">PeopleTracker.src.datalogger.DataLogger.slider_moved()</link>.</para>
+</section>
+<para>
+The documentation for this class was generated from the following file:</para>
+K:/Github/PeopleTracker/src/datalogger.py</section>
+</section>

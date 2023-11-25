@@ -1,0 +1,416 @@
+\doxysection{Dataset}
+\hypertarget{a00226}{}\label{a00226}\index{Dataset@{Dataset}}
+
+
+Dataset.  
+
+
+
+
+Inheritance diagram for Dataset\+:
+% FIG 0
+
+
+Collaboration diagram for Dataset\+:
+% FIG 1
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{a00226_a22605c1c43052f80461f3450cf603791}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, class\+\_\+map=None)
+\item 
+\mbox{\hyperlink{a00226_ac2038781f57896f7c90fed604c5b1e01}{add\+\_\+class}} (self, source, class\+\_\+id, class\+\_\+name)
+\item 
+\mbox{\hyperlink{a00226_a4dba8ad2c059a793e6fc9441533c48c0}{add\+\_\+image}} (self, source, image\+\_\+id, path, \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}kwargs)
+\item 
+\mbox{\hyperlink{a00226_abacade72f9aedb0f86c2396a7e379ed4}{image\+\_\+reference}} (self, image\+\_\+id)
+\item 
+\mbox{\hyperlink{a00226_a2832d59054abc646970e1cfb40622395}{prepare}} (self, class\+\_\+map=None)
+\item 
+\mbox{\hyperlink{a00226_a6308d9cde8d3b3cca65eb1089f8b18cb}{map\+\_\+source\+\_\+class\+\_\+id}} (self, source\+\_\+class\+\_\+id)
+\item 
+\mbox{\hyperlink{a00226_a1e104d3ab6306408a1c107a242e9bf9b}{get\+\_\+source\+\_\+class\+\_\+id}} (self, class\+\_\+id, source)
+\item 
+\mbox{\hyperlink{a00226_a188d968f1da9d6cfc10f0ada14d13b54}{image\+\_\+ids}} (self)
+\item 
+\mbox{\hyperlink{a00226_a7dcadc8978db8c7d9c4158ffcc266c96}{source\+\_\+image\+\_\+link}} (self, image\+\_\+id)
+\item 
+\mbox{\hyperlink{a00226_a2cc86b5a704e88aa1e788104d5d165ad}{load\+\_\+image}} (self, image\+\_\+id)
+\item 
+\mbox{\hyperlink{a00226_ab9ff83f253875feea4d66b268e21bc61}{load\+\_\+mask}} (self, image\+\_\+id)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{a00226_acbece7f6018dfd8f365e3d447f53d3ca}\label{a00226_acbece7f6018dfd8f365e3d447f53d3ca} 
+{\bfseries image\+\_\+info}
+\item 
+\Hypertarget{a00226_a09fefff6ccd8daebd7c19d56c116773f}\label{a00226_a09fefff6ccd8daebd7c19d56c116773f} 
+{\bfseries class\+\_\+info}
+\item 
+\Hypertarget{a00226_a139ff2d72d4d16dfa1b753558d4b9b31}\label{a00226_a139ff2d72d4d16dfa1b753558d4b9b31} 
+{\bfseries source\+\_\+class\+\_\+ids}
+\item 
+\Hypertarget{a00226_aa453ae9576bb338eb51bfc92b7f18f2d}\label{a00226_aa453ae9576bb338eb51bfc92b7f18f2d} 
+{\bfseries num\+\_\+classes}
+\item 
+\Hypertarget{a00226_a398129874898f4c6e96a2bcad4c1c33d}\label{a00226_a398129874898f4c6e96a2bcad4c1c33d} 
+{\bfseries class\+\_\+ids}
+\item 
+\Hypertarget{a00226_a2c827e08ef43f536bd661d96bce350f7}\label{a00226_a2c827e08ef43f536bd661d96bce350f7} 
+{\bfseries class\+\_\+names}
+\item 
+\Hypertarget{a00226_ac3eb632b1a788eb448ac9474d94a2436}\label{a00226_ac3eb632b1a788eb448ac9474d94a2436} 
+{\bfseries num\+\_\+images}
+\item 
+\Hypertarget{a00226_acef499acd0de43c393ee5dfd1a0191e6}\label{a00226_acef499acd0de43c393ee5dfd1a0191e6} 
+{\bfseries class\+\_\+from\+\_\+source\+\_\+map}
+\item 
+\Hypertarget{a00226_a0c87d001c125f5eb31ea359b70d79c62}\label{a00226_a0c87d001c125f5eb31ea359b70d79c62} 
+{\bfseries image\+\_\+from\+\_\+source\+\_\+map}
+\item 
+\Hypertarget{a00226_a14d26094edb67b867e7c35bc463189c0}\label{a00226_a14d26094edb67b867e7c35bc463189c0} 
+{\bfseries image\+\_\+ids}
+\item 
+\Hypertarget{a00226_a9d704146f0e129f9cb3ac9d1edfdd867}\label{a00226_a9d704146f0e129f9cb3ac9d1edfdd867} 
+{\bfseries sources}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{a00226_a152c51b5e60f9bf39298e91f4ae635ba}\label{a00226_a152c51b5e60f9bf39298e91f4ae635ba} 
+{\bfseries \+\_\+image\+\_\+ids}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Dataset. 
+
+\begin{DoxyVerb}The base class for dataset classes.
+To use it, create a new class that adds functions specific to the dataset
+you want to use. For example:
+
+class CatsAndDogsDataset(Dataset):
+    def load_cats_and_dogs(self):
+        ...
+    def load_mask(self, image_id):
+        ...
+    def image_reference(self, image_id):
+        ...
+
+See COCODataset and ShapesDataset as examples.
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{a00226_a22605c1c43052f80461f3450cf603791}\label{a00226_a22605c1c43052f80461f3450cf603791} 
+\index{Dataset@{Dataset}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!Dataset@{Dataset}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily \+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{class\+\_\+map = {\ttfamily None} }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00260\ \ \ \ \ \textcolor{keyword}{def\ }\_\_init\_\_(self,\ class\_map=None): }
+\DoxyCodeLine{00261\ \ \ \ \ \ \ \ \ self.\_image\_ids\ =\ [] }
+\DoxyCodeLine{00262\ \ \ \ \ \ \ \ \ self.image\_info\ =\ [] }
+\DoxyCodeLine{00263\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Background\ is\ always\ the\ first\ class }}
+\DoxyCodeLine{00264\ \ \ \ \ \ \ \ \ self.class\_info\ =\ [\{\textcolor{stringliteral}{"{}source"{}}:\ \textcolor{stringliteral}{"{}"{}},\ \textcolor{stringliteral}{"{}id"{}}:\ 0,\ \textcolor{stringliteral}{"{}name"{}}:\ \textcolor{stringliteral}{"{}BG"{}}\}] }
+\DoxyCodeLine{00265\ \ \ \ \ \ \ \ \ self.source\_class\_ids\ =\ \{\} }
+\DoxyCodeLine{00266\  }
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{a00226_ac2038781f57896f7c90fed604c5b1e01}\label{a00226_ac2038781f57896f7c90fed604c5b1e01} 
+\index{Dataset@{Dataset}!add\_class@{add\_class}}
+\index{add\_class@{add\_class}!Dataset@{Dataset}}
+\doxysubsubsection{\texorpdfstring{add\_class()}{add\_class()}}
+{\footnotesize\ttfamily add\+\_\+class (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{source,  }\item[{}]{class\+\_\+id,  }\item[{}]{class\+\_\+name }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00267\ \ \ \ \ \textcolor{keyword}{def\ }add\_class(self,\ source,\ class\_id,\ class\_name): }
+\DoxyCodeLine{00268\ \ \ \ \ \ \ \ \ \textcolor{keyword}{assert}\ \textcolor{stringliteral}{"{}."{}}\ \textcolor{keywordflow}{not}\ \textcolor{keywordflow}{in}\ source,\ \textcolor{stringliteral}{"{}Source\ name\ cannot\ contain\ a\ dot"{}} }
+\DoxyCodeLine{00269\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Does\ the\ class\ exist\ already? }}
+\DoxyCodeLine{00270\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ info\ \textcolor{keywordflow}{in}\ self.class\_info: }
+\DoxyCodeLine{00271\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ info[\textcolor{stringliteral}{'source'}]\ ==\ source\ \textcolor{keywordflow}{and}\ info[\textcolor{stringliteral}{"{}id"{}}]\ ==\ class\_id: }
+\DoxyCodeLine{00272\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ source.class\_id\ combination\ already\ available,\ skip }}
+\DoxyCodeLine{00273\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return} }
+\DoxyCodeLine{00274\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Add\ the\ class }}
+\DoxyCodeLine{00275\ \ \ \ \ \ \ \ \ self.class\_info.append(\{ }
+\DoxyCodeLine{00276\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}source"{}}:\ source, }
+\DoxyCodeLine{00277\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}id"{}}:\ class\_id, }
+\DoxyCodeLine{00278\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}name"{}}:\ class\_name, }
+\DoxyCodeLine{00279\ \ \ \ \ \ \ \ \ \}) }
+\DoxyCodeLine{00280\  }
+
+\end{DoxyCode}
+\Hypertarget{a00226_a4dba8ad2c059a793e6fc9441533c48c0}\label{a00226_a4dba8ad2c059a793e6fc9441533c48c0} 
+\index{Dataset@{Dataset}!add\_image@{add\_image}}
+\index{add\_image@{add\_image}!Dataset@{Dataset}}
+\doxysubsubsection{\texorpdfstring{add\_image()}{add\_image()}}
+{\footnotesize\ttfamily add\+\_\+image (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{source,  }\item[{}]{image\+\_\+id,  }\item[{}]{path,  }\item[{\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{kwargs }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00281\ \ \ \ \ \textcolor{keyword}{def\ }add\_image(self,\ source,\ image\_id,\ path,\ **kwargs): }
+\DoxyCodeLine{00282\ \ \ \ \ \ \ \ \ image\_info\ =\ \{ }
+\DoxyCodeLine{00283\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}id"{}}:\ image\_id, }
+\DoxyCodeLine{00284\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}source"{}}:\ source, }
+\DoxyCodeLine{00285\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}path"{}}:\ path, }
+\DoxyCodeLine{00286\ \ \ \ \ \ \ \ \ \} }
+\DoxyCodeLine{00287\ \ \ \ \ \ \ \ \ image\_info.update(kwargs) }
+\DoxyCodeLine{00288\ \ \ \ \ \ \ \ \ self.image\_info.append(image\_info) }
+\DoxyCodeLine{00289\  }
+
+\end{DoxyCode}
+\Hypertarget{a00226_a1e104d3ab6306408a1c107a242e9bf9b}\label{a00226_a1e104d3ab6306408a1c107a242e9bf9b} 
+\index{Dataset@{Dataset}!get\_source\_class\_id@{get\_source\_class\_id}}
+\index{get\_source\_class\_id@{get\_source\_class\_id}!Dataset@{Dataset}}
+\doxysubsubsection{\texorpdfstring{get\_source\_class\_id()}{get\_source\_class\_id()}}
+{\footnotesize\ttfamily get\+\_\+source\+\_\+class\+\_\+id (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{class\+\_\+id,  }\item[{}]{source }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Map an internal class ID to the corresponding class ID in the source dataset.\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00343\ \ \ \ \ \textcolor{keyword}{def\ }get\_source\_class\_id(self,\ class\_id,\ source): }
+\DoxyCodeLine{00344\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Map\ an\ internal\ class\ ID\ to\ the\ corresponding\ class\ ID\ in\ the\ source\ dataset."{}"{}"{}} }
+\DoxyCodeLine{00345\ \ \ \ \ \ \ \ \ info\ =\ self.class\_info[class\_id] }
+\DoxyCodeLine{00346\ \ \ \ \ \ \ \ \ \textcolor{keyword}{assert}\ info[\textcolor{stringliteral}{'source'}]\ ==\ source }
+\DoxyCodeLine{00347\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ info[\textcolor{stringliteral}{'id'}] }
+\DoxyCodeLine{00348\  }
+
+\end{DoxyCode}
+
+
+References Dataset.\+\_\+image\+\_\+ids, and Dataset.\+class\+\_\+info.
+
+\Hypertarget{a00226_a188d968f1da9d6cfc10f0ada14d13b54}\label{a00226_a188d968f1da9d6cfc10f0ada14d13b54} 
+\index{Dataset@{Dataset}!image\_ids@{image\_ids}}
+\index{image\_ids@{image\_ids}!Dataset@{Dataset}}
+\doxysubsubsection{\texorpdfstring{image\_ids()}{image\_ids()}}
+{\footnotesize\ttfamily image\+\_\+ids (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00350\ \ \ \ \ \textcolor{keyword}{def\ }image\_ids(self): }
+\DoxyCodeLine{00351\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ self.\_image\_ids }
+\DoxyCodeLine{00352\  }
+
+\end{DoxyCode}
+
+
+Referenced by \mbox{\hyperlink{a00226_a2832d59054abc646970e1cfb40622395}{Dataset.\+prepare()}}.
+
+Here is the caller graph for this function\+:
+% FIG 2
+\Hypertarget{a00226_abacade72f9aedb0f86c2396a7e379ed4}\label{a00226_abacade72f9aedb0f86c2396a7e379ed4} 
+\index{Dataset@{Dataset}!image\_reference@{image\_reference}}
+\index{image\_reference@{image\_reference}!Dataset@{Dataset}}
+\doxysubsubsection{\texorpdfstring{image\_reference()}{image\_reference()}}
+{\footnotesize\ttfamily image\+\_\+reference (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{image\+\_\+id }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Return a link to the image in its source Website or details about
+the image that help looking it up or debugging it.
+
+Override for your dataset, but pass to this function
+if you encounter images not in your dataset.
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00290\ \ \ \ \ \textcolor{keyword}{def\ }image\_reference(self,\ image\_id): }
+\DoxyCodeLine{00291\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Return\ a\ link\ to\ the\ image\ in\ its\ source\ Website\ or\ details\ about }}
+\DoxyCodeLine{00292\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ the\ image\ that\ help\ looking\ it\ up\ or\ debugging\ it. }}
+\DoxyCodeLine{00293\ \textcolor{stringliteral}{ }}
+\DoxyCodeLine{00294\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Override\ for\ your\ dataset,\ but\ pass\ to\ this\ function }}
+\DoxyCodeLine{00295\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ if\ you\ encounter\ images\ not\ in\ your\ dataset. }}
+\DoxyCodeLine{00296\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}} }
+\DoxyCodeLine{00297\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}"{}} }
+\DoxyCodeLine{00298\  }
+
+\end{DoxyCode}
+\Hypertarget{a00226_a2cc86b5a704e88aa1e788104d5d165ad}\label{a00226_a2cc86b5a704e88aa1e788104d5d165ad} 
+\index{Dataset@{Dataset}!load\_image@{load\_image}}
+\index{load\_image@{load\_image}!Dataset@{Dataset}}
+\doxysubsubsection{\texorpdfstring{load\_image()}{load\_image()}}
+{\footnotesize\ttfamily load\+\_\+image (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{image\+\_\+id }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Load the specified image and return a [H,W,3] Numpy array.
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00360\ \ \ \ \ \textcolor{keyword}{def\ }load\_image(self,\ image\_id): }
+\DoxyCodeLine{00361\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Load\ the\ specified\ image\ and\ return\ a\ [H,W,3]\ Numpy\ array. }}
+\DoxyCodeLine{00362\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}} }
+\DoxyCodeLine{00363\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Load\ image }}
+\DoxyCodeLine{00364\ \ \ \ \ \ \ \ \ image\ =\ skimage.io.imread(self.image\_info[image\_id][\textcolor{stringliteral}{'path'}]) }
+\DoxyCodeLine{00365\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ If\ grayscale.\ Convert\ to\ RGB\ for\ consistency. }}
+\DoxyCodeLine{00366\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ image.ndim\ !=\ 3: }
+\DoxyCodeLine{00367\ \ \ \ \ \ \ \ \ \ \ \ \ image\ =\ skimage.color.gray2rgb(image) }
+\DoxyCodeLine{00368\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ If\ has\ an\ alpha\ channel,\ remove\ it\ for\ consistency }}
+\DoxyCodeLine{00369\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ image.shape[-\/1]\ ==\ 4: }
+\DoxyCodeLine{00370\ \ \ \ \ \ \ \ \ \ \ \ \ image\ =\ image[...,\ :3] }
+\DoxyCodeLine{00371\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ image }
+\DoxyCodeLine{00372\  }
+
+\end{DoxyCode}
+
+
+References Dataset.\+image\+\_\+info.
+
+\Hypertarget{a00226_ab9ff83f253875feea4d66b268e21bc61}\label{a00226_ab9ff83f253875feea4d66b268e21bc61} 
+\index{Dataset@{Dataset}!load\_mask@{load\_mask}}
+\index{load\_mask@{load\_mask}!Dataset@{Dataset}}
+\doxysubsubsection{\texorpdfstring{load\_mask()}{load\_mask()}}
+{\footnotesize\ttfamily load\+\_\+mask (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{image\+\_\+id }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Load instance masks for the given image.
+
+Different datasets use different ways to store masks. Override this
+method to load instance masks and return them in the form of am
+array of binary masks of shape [height, width, instances].
+
+Returns:
+    masks: A bool array of shape [height, width, instance count] with
+        a binary mask per instance.
+    class_ids: a 1D array of class IDs of the instance masks.
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00373\ \ \ \ \ \textcolor{keyword}{def\ }load\_mask(self,\ image\_id): }
+\DoxyCodeLine{00374\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Load\ instance\ masks\ for\ the\ given\ image. }}
+\DoxyCodeLine{00375\ \textcolor{stringliteral}{ }}
+\DoxyCodeLine{00376\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Different\ datasets\ use\ different\ ways\ to\ store\ masks.\ Override\ this }}
+\DoxyCodeLine{00377\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ method\ to\ load\ instance\ masks\ and\ return\ them\ in\ the\ form\ of\ am }}
+\DoxyCodeLine{00378\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ array\ of\ binary\ masks\ of\ shape\ [height,\ width,\ instances]. }}
+\DoxyCodeLine{00379\ \textcolor{stringliteral}{ }}
+\DoxyCodeLine{00380\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns: }}
+\DoxyCodeLine{00381\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ masks:\ A\ bool\ array\ of\ shape\ [height,\ width,\ instance\ count]\ with }}
+\DoxyCodeLine{00382\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ a\ binary\ mask\ per\ instance. }}
+\DoxyCodeLine{00383\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ class\_ids:\ a\ 1D\ array\ of\ class\ IDs\ of\ the\ instance\ masks. }}
+\DoxyCodeLine{00384\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}} }
+\DoxyCodeLine{00385\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Override\ this\ function\ to\ load\ a\ mask\ from\ your\ dataset. }}
+\DoxyCodeLine{00386\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Otherwise,\ it\ returns\ an\ empty\ mask. }}
+\DoxyCodeLine{00387\ \ \ \ \ \ \ \ \ logging.warning(\textcolor{stringliteral}{"{}You\ are\ using\ the\ default\ load\_mask(),\ maybe\ you\ need\ to\ define\ your\ own\ one."{}}) }
+\DoxyCodeLine{00388\ \ \ \ \ \ \ \ \ mask\ =\ np.empty([0,\ 0,\ 0]) }
+\DoxyCodeLine{00389\ \ \ \ \ \ \ \ \ class\_ids\ =\ np.empty([0],\ np.int32) }
+\DoxyCodeLine{00390\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ mask,\ class\_ids }
+\DoxyCodeLine{00391\  }
+\DoxyCodeLine{00392\  }
+
+\end{DoxyCode}
+\Hypertarget{a00226_a6308d9cde8d3b3cca65eb1089f8b18cb}\label{a00226_a6308d9cde8d3b3cca65eb1089f8b18cb} 
+\index{Dataset@{Dataset}!map\_source\_class\_id@{map\_source\_class\_id}}
+\index{map\_source\_class\_id@{map\_source\_class\_id}!Dataset@{Dataset}}
+\doxysubsubsection{\texorpdfstring{map\_source\_class\_id()}{map\_source\_class\_id()}}
+{\footnotesize\ttfamily map\+\_\+source\+\_\+class\+\_\+id (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{source\+\_\+class\+\_\+id }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Takes a source class ID and returns the int class ID assigned to it.
+
+For example:
+dataset.map_source_class_id("coco.12") -> 23
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00335\ \ \ \ \ \textcolor{keyword}{def\ }map\_source\_class\_id(self,\ source\_class\_id): }
+\DoxyCodeLine{00336\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Takes\ a\ source\ class\ ID\ and\ returns\ the\ int\ class\ ID\ assigned\ to\ it. }}
+\DoxyCodeLine{00337\ \textcolor{stringliteral}{ }}
+\DoxyCodeLine{00338\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ For\ example: }}
+\DoxyCodeLine{00339\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ dataset.map\_source\_class\_id("{}coco.12"{})\ -\/>\ 23 }}
+\DoxyCodeLine{00340\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}} }
+\DoxyCodeLine{00341\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ self.class\_from\_source\_map[source\_class\_id] }
+\DoxyCodeLine{00342\  }
+
+\end{DoxyCode}
+
+
+References Dataset.\+class\+\_\+from\+\_\+source\+\_\+map.
+
+\Hypertarget{a00226_a2832d59054abc646970e1cfb40622395}\label{a00226_a2832d59054abc646970e1cfb40622395} 
+\index{Dataset@{Dataset}!prepare@{prepare}}
+\index{prepare@{prepare}!Dataset@{Dataset}}
+\doxysubsubsection{\texorpdfstring{prepare()}{prepare()}}
+{\footnotesize\ttfamily prepare (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{class\+\_\+map = {\ttfamily None} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Prepares the Dataset class for use.
+
+TODO: class map is not supported yet. When done, it should handle mapping
+      classes from different datasets to the same class ID.
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00299\ \ \ \ \ \textcolor{keyword}{def\ }prepare(self,\ class\_map=None): }
+\DoxyCodeLine{00300\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Prepares\ the\ Dataset\ class\ for\ use. }}
+\DoxyCodeLine{00301\ \textcolor{stringliteral}{ }}
+\DoxyCodeLine{00302\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ TODO:\ class\ map\ is\ not\ supported\ yet.\ When\ done,\ it\ should\ handle\ mapping }}
+\DoxyCodeLine{00303\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ classes\ from\ different\ datasets\ to\ the\ same\ class\ ID. }}
+\DoxyCodeLine{00304\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}} }
+\DoxyCodeLine{00305\  }
+\DoxyCodeLine{00306\ \ \ \ \ \ \ \ \ \textcolor{keyword}{def\ }clean\_name(name): }
+\DoxyCodeLine{00307\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Returns\ a\ shorter\ version\ of\ object\ names\ for\ cleaner\ display."{}"{}"{}} }
+\DoxyCodeLine{00308\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{},"{}}.join(name.split(\textcolor{stringliteral}{"{},"{}})[:1]) }
+\DoxyCodeLine{00309\  }
+\DoxyCodeLine{00310\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Build\ (or\ rebuild)\ everything\ else\ from\ the\ info\ dicts. }}
+\DoxyCodeLine{00311\ \ \ \ \ \ \ \ \ self.num\_classes\ =\ len(self.class\_info) }
+\DoxyCodeLine{00312\ \ \ \ \ \ \ \ \ self.class\_ids\ =\ np.arange(self.num\_classes) }
+\DoxyCodeLine{00313\ \ \ \ \ \ \ \ \ self.class\_names\ =\ [clean\_name(c[\textcolor{stringliteral}{"{}name"{}}])\ \textcolor{keywordflow}{for}\ c\ \textcolor{keywordflow}{in}\ self.class\_info] }
+\DoxyCodeLine{00314\ \ \ \ \ \ \ \ \ self.num\_images\ =\ len(self.image\_info) }
+\DoxyCodeLine{00315\ \ \ \ \ \ \ \ \ self.\_image\_ids\ =\ np.arange(self.num\_images) }
+\DoxyCodeLine{00316\  }
+\DoxyCodeLine{00317\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Mapping\ from\ source\ class\ and\ image\ IDs\ to\ internal\ IDs }}
+\DoxyCodeLine{00318\ \ \ \ \ \ \ \ \ self.class\_from\_source\_map\ =\ \{\textcolor{stringliteral}{"{}\{\}.\{\}"{}}.format(info[\textcolor{stringliteral}{'source'}],\ info[\textcolor{stringliteral}{'id'}]):\ id }
+\DoxyCodeLine{00319\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ info,\ id\ \textcolor{keywordflow}{in}\ zip(self.class\_info,\ self.class\_ids)\} }
+\DoxyCodeLine{00320\ \ \ \ \ \ \ \ \ self.image\_from\_source\_map\ =\ \{\textcolor{stringliteral}{"{}\{\}.\{\}"{}}.format(info[\textcolor{stringliteral}{'source'}],\ info[\textcolor{stringliteral}{'id'}]):\ id }
+\DoxyCodeLine{00321\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ info,\ id\ \textcolor{keywordflow}{in}\ zip(self.image\_info,\ self.image\_ids)\} }
+\DoxyCodeLine{00322\  }
+\DoxyCodeLine{00323\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Map\ sources\ to\ class\_ids\ they\ support }}
+\DoxyCodeLine{00324\ \ \ \ \ \ \ \ \ self.sources\ =\ list(set([i[\textcolor{stringliteral}{'source'}]\ \textcolor{keywordflow}{for}\ i\ \textcolor{keywordflow}{in}\ self.class\_info])) }
+\DoxyCodeLine{00325\ \ \ \ \ \ \ \ \ self.source\_class\_ids\ =\ \{\} }
+\DoxyCodeLine{00326\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Loop\ over\ datasets }}
+\DoxyCodeLine{00327\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ source\ \textcolor{keywordflow}{in}\ self.sources: }
+\DoxyCodeLine{00328\ \ \ \ \ \ \ \ \ \ \ \ \ self.source\_class\_ids[source]\ =\ [] }
+\DoxyCodeLine{00329\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Find\ classes\ that\ belong\ to\ this\ dataset }}
+\DoxyCodeLine{00330\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ i,\ info\ \textcolor{keywordflow}{in}\ enumerate(self.class\_info): }
+\DoxyCodeLine{00331\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Include\ BG\ class\ in\ all\ datasets }}
+\DoxyCodeLine{00332\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ i\ ==\ 0\ \textcolor{keywordflow}{or}\ source\ ==\ info[\textcolor{stringliteral}{'source'}]: }
+\DoxyCodeLine{00333\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.source\_class\_ids[source].append(i) }
+\DoxyCodeLine{00334\  }
+
+\end{DoxyCode}
+
+
+References Dataset.\+\_\+image\+\_\+ids, Dataset.\+class\+\_\+from\+\_\+source\+\_\+map, Dataset.\+class\+\_\+ids, Dataset.\+class\+\_\+info, Dataset.\+class\+\_\+names, Dataset.\+image\+\_\+from\+\_\+source\+\_\+map, Dataset.\+image\+\_\+ids, Dataset.\+image\+\_\+ids(), Dataset.\+image\+\_\+info, Dataset.\+num\+\_\+classes, Dataset.\+num\+\_\+images, Dataset.\+source\+\_\+class\+\_\+ids, and Dataset.\+sources.
+
+Here is the call graph for this function\+:
+% FIG 3
+\Hypertarget{a00226_a7dcadc8978db8c7d9c4158ffcc266c96}\label{a00226_a7dcadc8978db8c7d9c4158ffcc266c96} 
+\index{Dataset@{Dataset}!source\_image\_link@{source\_image\_link}}
+\index{source\_image\_link@{source\_image\_link}!Dataset@{Dataset}}
+\doxysubsubsection{\texorpdfstring{source\_image\_link()}{source\_image\_link()}}
+{\footnotesize\ttfamily source\+\_\+image\+\_\+link (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{image\+\_\+id }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Returns the path or URL to the image.
+Override this to return a URL to the image if it's available online for easy
+debugging.
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00353\ \ \ \ \ \textcolor{keyword}{def\ }source\_image\_link(self,\ image\_id): }
+\DoxyCodeLine{00354\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Returns\ the\ path\ or\ URL\ to\ the\ image. }}
+\DoxyCodeLine{00355\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Override\ this\ to\ return\ a\ URL\ to\ the\ image\ if\ it's\ available\ online\ for\ easy }}
+\DoxyCodeLine{00356\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ debugging. }}
+\DoxyCodeLine{00357\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}} }
+\DoxyCodeLine{00358\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ self.image\_info[image\_id][\textcolor{stringliteral}{"{}path"{}}] }
+\DoxyCodeLine{00359\  }
+
+\end{DoxyCode}
+
+
+References Dataset.\+image\+\_\+info.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+K\+:/\+Github/\+People\+Tracker/src/utils.\+py\end{DoxyCompactItemize}

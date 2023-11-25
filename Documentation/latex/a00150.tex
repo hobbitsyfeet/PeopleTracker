@@ -1,0 +1,1293 @@
+\doxysection{Data\+Logger}
+\hypertarget{a00150}{}\label{a00150}\index{DataLogger@{DataLogger}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{a00150_ac811b5e12ce6cb6fc4e7b4dfde282132}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, video, video\+\_\+location=None, video\+\_\+metadata=None, \mbox{\hyperlink{a00150_a10d41eee6e85dbc18db528607f7641be}{intervention\+\_\+level}}=NO\+\_\+\+INTVERVENTION\+\_\+\+TRACKER, ground\+\_\+truth\+\_\+folder=None)
+\item 
+\mbox{\hyperlink{a00150_af1d3c1fa3e44db6ab404e162bd264d00}{start\+\_\+recording}} (self)
+\begin{DoxyCompactList}\small\item\em User input logging starts here \#. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{a00150_aa664a0547aaaf3562a55bc58a1fbc09f}{end\+\_\+recording}} (self)
+\begin{DoxyCompactList}\small\item\em ends recording timer \end{DoxyCompactList}\item 
+\mbox{\hyperlink{a00150_a18b9423164131f6a5cb5cb80069e0d2f}{start\+\_\+timer}} (self, timer\+\_\+id)
+\item 
+\mbox{\hyperlink{a00150_a23bef5dbc59c116cc9a20754f9ee8f33}{get\+\_\+time\+\_\+elapsed}} (self, timer\+\_\+id)
+\item 
+\mbox{\hyperlink{a00150_a8b88ea2fc7ce49ef394dbdc6d40c8cf1}{end\+\_\+timer}} (self, timer\+\_\+id)
+\item 
+\mbox{\hyperlink{a00150_a2df6891576c591b86e3bf2e6a86e380e}{adjustment}} (self, frame\+\_\+number, from\+\_\+box, timer\+\_\+id, tracker\+\_\+id, intervention\+\_\+type="{}USER"{}, to\+\_\+box=None)
+\item 
+\mbox{\hyperlink{a00150_a640807eb3a47f21d60f4901383f9ab7e}{end\+\_\+adjustment}} (self, to\+\_\+box, timer\+\_\+id)
+\item 
+\mbox{\hyperlink{a00150_a147ee854723ad7ce299aca8f95599f2c}{paused}} (self, frame\+\_\+number, pause\+\_\+type, timer\+\_\+id, tracker\+\_\+id)
+\item 
+\mbox{\hyperlink{a00150_af8bf41368400983fc278bfa3b0fa9500}{end\+\_\+pause}} (self)
+\item 
+\mbox{\hyperlink{a00150_a286d618835528c9cf90218dd6cd8e546}{slider\+\_\+moved}} (self, frame\+\_\+from, timer\+\_\+id, tracker\+\_\+id)
+\item 
+\mbox{\hyperlink{a00150_ae8fb478549eb82488a7f1029b1f2e74c}{end\+\_\+slider}} (self, frame\+\_\+to, timer\+\_\+id)
+\item 
+\mbox{\hyperlink{a00150_a5f192965f59bcadd25871fc878cd1962}{record\+\_\+errors}} (self, frame)
+\item 
+\mbox{\hyperlink{a00150_a1f7f6db786512a4f60a0bf40f3dfb414}{get\+\_\+tracker\+\_\+score}} (self)
+\item 
+\mbox{\hyperlink{a00150_a2c83fe18962be0a9264b914a3810a30e}{get\+\_\+video\+\_\+characteristics}} (self, video=None)
+\begin{DoxyCompactList}\small\item\em VIDEO COMPLEXITY STARTS HERE \#. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{a00150_ad63c3dc24a49baaad8a67403006f0241}{illumination}} (self, frame)
+\item 
+\mbox{\hyperlink{a00150_af0a6b39e1a4c8ba3a00d790253aab15c}{optical\+\_\+flow}} (self, frame)
+\item 
+\mbox{\hyperlink{a00150_ae735fff941e047218ea858337e007484}{optical\+\_\+flow\+\_\+pan}} (self, flow, dominance\+\_\+threshold=0.\+4, magnitude\+\_\+threshold=0.\+5)
+\item 
+\mbox{\hyperlink{a00150_a3cff34c024334cefe903de3058e3a991}{optical\+\_\+flow\+\_\+zoom}} (self, flow, dominance\+\_\+threshold=0.\+7, magnitude\+\_\+threshold=1)
+\item 
+\mbox{\hyperlink{a00150_a7e1305e3e399383a4b749ba2244f5943}{ground\+\_\+truth\+\_\+characteristics}} (self, frame\+\_\+num)
+\item 
+\mbox{\hyperlink{a00150_af7dc8315b04b8b19f07ef5b7dab34782}{objects\+\_\+occluded}} (self, folder\+\_\+path, fps)
+\item 
+\mbox{\hyperlink{a00150_a94f679a64f572ad08936323f8cb85b5b}{check\+\_\+intervention\+\_\+level}} (self)
+\item 
+\mbox{\hyperlink{a00150_a141cad1e6d50d6c15b02caa0458ac193}{export\+\_\+charactoristics}} (self, file\+\_\+path)
+\item 
+\mbox{\hyperlink{a00150_a346584b03fbdc533d0a329c2aed67605}{export\+\_\+activity}} (self, file\+\_\+path)
+\item 
+\mbox{\hyperlink{a00150_ac17ffb0fb99926c99dcaab63b5335243}{plot\+\_\+chars\+\_\+df}} (self)
+\item 
+\mbox{\hyperlink{a00150_a8662a7e19ab5209fd49a46a6d600885b}{occuding\+\_\+objects}} (self, occluding\+\_\+tracks\+\_\+csv, occluding\+\_\+threshold=0.\+8)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{a00150_a10d41eee6e85dbc18db528607f7641be}\label{a00150_a10d41eee6e85dbc18db528607f7641be} 
+{\bfseries intervention\+\_\+level}
+\begin{DoxyCompactList}\small\item\em String representing constants. \end{DoxyCompactList}\item 
+\Hypertarget{a00150_a9c7ab704a0e99c8f10dd2be7211ef18a}\label{a00150_a9c7ab704a0e99c8f10dd2be7211ef18a} 
+{\bfseries ground\+\_\+truth\+\_\+folder}
+\item 
+\Hypertarget{a00150_a2db313fabca57504d9dc776e46b304f6}\label{a00150_a2db313fabca57504d9dc776e46b304f6} 
+{\bfseries te}
+\item 
+\Hypertarget{a00150_a9cfcb724bbf4bae5f97bc17cf58cf522}\label{a00150_a9cfcb724bbf4bae5f97bc17cf58cf522} 
+{\bfseries metadata}
+\item 
+\Hypertarget{a00150_abb2fd43e6da5bee9edb1e75519db7a3d}\label{a00150_abb2fd43e6da5bee9edb1e75519db7a3d} 
+{\bfseries video}
+\item 
+\Hypertarget{a00150_a3197c2b2aa49f8dfcf7df21494fb9a3a}\label{a00150_a3197c2b2aa49f8dfcf7df21494fb9a3a} 
+{\bfseries video\+\_\+id}
+\item 
+\Hypertarget{a00150_a9a6a7b2fcdc9047119bb00f6bb2a2b99}\label{a00150_a9a6a7b2fcdc9047119bb00f6bb2a2b99} 
+{\bfseries video\+\_\+location}
+\item 
+\Hypertarget{a00150_af1379a970f9829fbb1ab49d135d1e484}\label{a00150_af1379a970f9829fbb1ab49d135d1e484} 
+{\bfseries start\+\_\+time\+\_\+id}
+\item 
+\Hypertarget{a00150_a09ecb172e1edc06d1724fd4deb21977a}\label{a00150_a09ecb172e1edc06d1724fd4deb21977a} 
+{\bfseries previous\+\_\+frame}
+\item 
+\Hypertarget{a00150_a5da338488b54f4aaf26d9ddad6001c60}\label{a00150_a5da338488b54f4aaf26d9ddad6001c60} 
+{\bfseries logging\+\_\+dict}
+\item 
+\Hypertarget{a00150_a8ae661c9fde21bfa7519d2fae6edf0bb}\label{a00150_a8ae661c9fde21bfa7519d2fae6edf0bb} 
+{\bfseries timer\+\_\+dict}
+\item 
+\Hypertarget{a00150_a89e28442ff2c5633d3dc7c69ed77d11e}\label{a00150_a89e28442ff2c5633d3dc7c69ed77d11e} 
+{\bfseries paused\+\_\+data}
+\item 
+\Hypertarget{a00150_ad0e8ba2bf35f2c5313ee1283690a9a5a}\label{a00150_ad0e8ba2bf35f2c5313ee1283690a9a5a} 
+{\bfseries slider\+\_\+data}
+\item 
+\Hypertarget{a00150_a1b9ffb1083895c281197dbf7d72dc285}\label{a00150_a1b9ffb1083895c281197dbf7d72dc285} 
+{\bfseries adjust\+\_\+data}
+\item 
+\Hypertarget{a00150_afae84ae851c5cb3f6bea8d07dae48838}\label{a00150_afae84ae851c5cb3f6bea8d07dae48838} 
+{\bfseries logger\+\_\+df}
+\item 
+\Hypertarget{a00150_aed5fc6f05a53f1d31ee01d2e3f39e23d}\label{a00150_aed5fc6f05a53f1d31ee01d2e3f39e23d} 
+{\bfseries video\+\_\+info\+\_\+df}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{a00150_ac811b5e12ce6cb6fc4e7b4dfde282132}\label{a00150_ac811b5e12ce6cb6fc4e7b4dfde282132} 
+\index{DataLogger@{DataLogger}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!DataLogger@{DataLogger}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily \+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{video,  }\item[{}]{video\+\_\+location = {\ttfamily None},  }\item[{}]{video\+\_\+metadata = {\ttfamily None},  }\item[{}]{intervention\+\_\+level = {\ttfamily NO\+\_\+INTVERVENTION\+\_\+TRACKER},  }\item[{}]{ground\+\_\+truth\+\_\+folder = {\ttfamily None} }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{def\ }\_\_init\_\_(self,\ video,\ video\_location=None,\ video\_metadata=None,\ intervention\_level=NO\_INTVERVENTION\_TRACKER,\ ground\_truth\_folder=None): }
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ live\_video\ =\ \textcolor{keyword}{False} }
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#assume\ number\ is\ live\ camera }}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ type(video)\ ==\ type(0): }
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ live\_video\ =\ \textcolor{keyword}{True} }
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ self.intervention\_level\ =\ intervention\_level }
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ self.ground\_truth\_folder\ =\ ground\_truth\_folder }
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ self.te\ =\ evaluate.tracker\_evaluation() }
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keywordflow}{not}\ live\_video: }
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ self.te.fps\ =\ float(video\_metadata[\textcolor{stringliteral}{'QuickTime:VideoFrameRate'}]) }
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}:\  }
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ self.te.fps\ =\ 30 }
+\DoxyCodeLine{00041\  }
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ self.ground\_truth\_folder\ \textcolor{keywordflow}{is}\ \textcolor{keywordtype}{None}\ \textcolor{keywordflow}{and}\ \textcolor{keywordflow}{not}\ live\_video: }
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#Check\ the\ same\ folder\ and\ see\ if\ it\ works }}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{"{}Checking\ to\ see\ if\ ground\ truths\ are\ in\ the\ same\ folder\ as\ video..."{}}) }
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ self.ground\_truth\_folder\ =\ os.path.dirname(video)\ +\ \textcolor{stringliteral}{"{}/"{}} }
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ self.te.load\_json(self.ground\_truth\_folder,\ fps=int(self.te.fps)) }
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keywordflow}{not}\ self.te.ground\_truth\_dict: }
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{"{}Checking\ Adjacent\ folder\ with\ the\ same\ name..."{}}) }
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.ground\_truth\_folder\ =\ os.path.dirname(video)\ +\ \textcolor{stringliteral}{"{}/"{}}\ +\ os.path.basename(video)[:-\/4]\ +\ \textcolor{stringliteral}{"{}/"{}} }
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.te.load\_json(self.ground\_truth\_folder,\ fps=int(self.te.fps)) }
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keywordflow}{not}\ self.te.ground\_truth\_dict: }
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{"{}Could\ not\ find\ ground\ truths"{}}) }
+\DoxyCodeLine{00055\  }
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ self.metadata\ =\ video\_metadata }
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ self.video\ =\ video }
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keywordflow}{not}\ live\_video: }
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ self.video\_id\ =\ os.path.basename(video)[:-\/4] }
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}: }
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ self.video\_id\ =\ -\/1 }
+\DoxyCodeLine{00063\  }
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ self.video\_location\ =\ video\_location }
+\DoxyCodeLine{00065\  }
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ self.start\_time\_id\ =\ \textcolor{stringliteral}{"{}START\_STOP"{}} }
+\DoxyCodeLine{00067\  }
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ self.previous\_frame\ =\ \textcolor{keywordtype}{None} }
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ self.logging\_dict\ =\ \{\} }
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ self.timer\_dict\ =\ \{\} }
+\DoxyCodeLine{00071\  }
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ self.paused\_data\ =\ \{\} }
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ self.slider\_data\ =\ \{\} }
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ self.adjust\_data\ =\ \{\} }
+\DoxyCodeLine{00075\  }
+\DoxyCodeLine{00076\  }
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ self.logger\_df\ =\ pd.DataFrame(columns\ =[\textcolor{stringliteral}{'Frame\_Number'}, }
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{'Event\_Time'}, }
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{'Event\_Duration'}, }
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{'Event\_Type'}, }
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{'Event\_Value'}, }
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{'Intervention\_Level'}, }
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{'Intervention\_Type'}, }
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{'Tracker\_ID'}])\ \textcolor{comment}{\#\ NOTE:\ Tracker\ ID\ is\ one\ of\ either:\ Selected\ (And\ active\ Tracker),\ or\ tracker\ acted\ upon\ by\ additional\ methods. }}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ This\ means\ that\ all\ USER\ Intervention\_Types,\ the\ tracker\_ID\ is\ the\ current\ tracker }}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ When\ Kalman,\ Regressuion\ or\ MRCNN\ make\ changes,\ it\ does\ not\ need\ to\ be\ the\ current\ tracker\ selected.\  }}
+\DoxyCodeLine{00087\  }
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ self.video\_info\_df\ =\ pd.DataFrame(columns=[\ \textcolor{stringliteral}{'Frame\_Number'},\  }
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{'Mean\_Illumination'},\  }
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{'Std\_Illumination'},\  }
+\DoxyCodeLine{00091\  }
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{'Mean\_Opticalflow'},\  }
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{'Median\_Opticalflow'}, }
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{'Mean\_Magnitude\_Opticalflow'}, }
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{'Std\_Opticalflow'}, }
+\DoxyCodeLine{00096\  }
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{'Zoom\_Opticalflow'}, }
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{'Zoom\_Dominance\_Percent'}, }
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{'Zoom\_Dominance\_Threshold'}, }
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{'Zoom\_Mean\_Magnitude\_Threshold'}, }
+\DoxyCodeLine{00101\  }
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{'Pan\_Opticalflow'}, }
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{'Pan\_Dominance\_Percent'}, }
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{'Pan\_Dominance\_Threshold'}, }
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{'Pan\_Mean\_Magnitude\_Threshold'}, }
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{'Ground\_Truth\_Count'}, }
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{'Occluded\_Ground\_Truths\_Count'}, }
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{'Entering\_Ground\_Truths'}, }
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{'Entering\_Ground\_Truths\_Count'}, }
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{'Exiting\_Ground\_Truths'}, }
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{'Exiting\_Ground\_Truths\_Count'}, }
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{'Ground\_Truth\_Labels'}, }
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{'Ground\_Truth\_Areas'}, }
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{'Ground\_Truth\_Heights'}, }
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{'Ground\_Truth\_Widths'}, }
+\DoxyCodeLine{00117\  }
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{'Video\_ID'},\  }
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{'Video\_Location'}]) }
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{a00150_a2df6891576c591b86e3bf2e6a86e380e}\label{a00150_a2df6891576c591b86e3bf2e6a86e380e} 
+\index{DataLogger@{DataLogger}!adjustment@{adjustment}}
+\index{adjustment@{adjustment}!DataLogger@{DataLogger}}
+\doxysubsubsection{\texorpdfstring{adjustment()}{adjustment()}}
+{\footnotesize\ttfamily adjustment (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{frame\+\_\+number,  }\item[{}]{from\+\_\+box,  }\item[{}]{timer\+\_\+id,  }\item[{}]{tracker\+\_\+id,  }\item[{}]{intervention\+\_\+type = {\ttfamily "{}USER"{}},  }\item[{}]{to\+\_\+box = {\ttfamily None} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Records the frame number and locations where the tracker is moved from and to.
+
+Records what made the adjustment.
+    
+    Human - If the user made the adjustment
+    
+    Model - If the MaskRCNN model made the automatic adjustment
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00169\ \ \ \ \ \textcolor{keyword}{def\ }adjustment(self,\ frame\_number,\ from\_box,\ timer\_id,\ tracker\_id,\ intervention\_type="{}USER"{},\ to\_box=None): }
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{} }}
+\DoxyCodeLine{00171\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Records\ the\ frame\ number\ and\ locations\ where\ the\ tracker\ is\ moved\ from\ and\ to. }}
+\DoxyCodeLine{00172\ \textcolor{stringliteral}{ }}
+\DoxyCodeLine{00173\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Records\ what\ made\ the\ adjustment. }}
+\DoxyCodeLine{00174\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \  }}
+\DoxyCodeLine{00175\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ Human\ -\/\ If\ the\ user\ made\ the\ adjustment }}
+\DoxyCodeLine{00176\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \  }}
+\DoxyCodeLine{00177\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ Model\ -\/\ If\ the\ MaskRCNN\ model\ made\ the\ automatic\ adjustment }}
+\DoxyCodeLine{00178\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}} }
+\DoxyCodeLine{00179\  }
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ time\_started\ =\ self.start\_timer(timer\_id) }
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ data\ =\ [frame\_number, }
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ time\_started, }
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ 0, }
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Assignment"{}}, }
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ str(from\_box), }
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ self.intervention\_level, }
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ intervention\_type, }
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ tracker\_id }
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ ] }
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ self.adjust\_data[timer\_id]\ =\ data }
+\DoxyCodeLine{00191\  }
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ to\_box: }
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \ \ \ \ self.end\_adjustment(to\_box,\ timer\_id) }
+\DoxyCodeLine{00194\  }
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print(self.logger\_df) }}
+\DoxyCodeLine{00197\ \ \ \ \  }
+
+\end{DoxyCode}
+
+
+References Data\+Logger.\+adjust\+\_\+data, \mbox{\hyperlink{a00150_a640807eb3a47f21d60f4901383f9ab7e}{Data\+Logger.\+end\+\_\+adjustment()}}, \mbox{\hyperlink{a00150_a10d41eee6e85dbc18db528607f7641be}{Data\+Logger.\+intervention\+\_\+level}}, and \mbox{\hyperlink{a00150_a18b9423164131f6a5cb5cb80069e0d2f}{Data\+Logger.\+start\+\_\+timer()}}.
+
+Here is the call graph for this function\+:
+% FIG 0
+\Hypertarget{a00150_a94f679a64f572ad08936323f8cb85b5b}\label{a00150_a94f679a64f572ad08936323f8cb85b5b} 
+\index{DataLogger@{DataLogger}!check\_intervention\_level@{check\_intervention\_level}}
+\index{check\_intervention\_level@{check\_intervention\_level}!DataLogger@{DataLogger}}
+\doxysubsubsection{\texorpdfstring{check\_intervention\_level()}{check\_intervention\_level()}}
+{\footnotesize\ttfamily check\+\_\+intervention\+\_\+level (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00585\ \ \ \ \ \textcolor{keyword}{def\ }check\_intervention\_level(self): }
+\DoxyCodeLine{00586\ \ \ \ \ \ \ \ \ intervention\ =\ pd.unique(self.logger\_df[\textcolor{stringliteral}{'Intervention\_Type'}]) }
+\DoxyCodeLine{00587\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{stringliteral}{"{}USER"{}}\ \textcolor{keywordflow}{in}\ intervention: }
+\DoxyCodeLine{00588\ \ \ \ \ \ \ \ \ \ \ \ \ self.intervention\_level\ =\ HUMAN\_INTERVENTION }
+\DoxyCodeLine{00589\  }
+\DoxyCodeLine{00590\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{stringliteral}{"{}KALMAN"{}}\ \textcolor{keywordflow}{in}\ intervention\ \textcolor{keywordflow}{or}\ \textcolor{stringliteral}{"{}REGRESSION"{}}\ \textcolor{keywordflow}{in}\ intervention: }
+\DoxyCodeLine{00591\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.intervention\_level\ =\ HUMAN\_INTERVENTION\_REGRESSION\_KALMAN }
+\DoxyCodeLine{00592\ \ \ \ \ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00593\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{stringliteral}{"{}MRCNN"{}}\ \textcolor{keywordflow}{in}\ intervention: }
+\DoxyCodeLine{00594\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.intervention\_level\ =\ HUMAN\_INTERVENTION\_MRCNN\_KALMAN\_REGRESSION }
+\DoxyCodeLine{00595\  }
+\DoxyCodeLine{00596\  }
+\DoxyCodeLine{00597\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{stringliteral}{"{}MRCNN"{}}\ \textcolor{keywordflow}{in}\ intervention: }
+\DoxyCodeLine{00598\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.intervention\_level\ =\ HUMAN\_INTERVENTION\_MCRNN }
+\DoxyCodeLine{00599\  }
+\DoxyCodeLine{00600\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{stringliteral}{"{}KALMAN"{}}\ \textcolor{keywordflow}{in}\ intervention\ \textcolor{keywordflow}{or}\ \textcolor{stringliteral}{"{}REGRESSION"{}}: }
+\DoxyCodeLine{00601\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.intervention\_level\ =\ HUMAN\_INTERVENTION\_MRCNN\_KALMAN\_REGRESSION }
+\DoxyCodeLine{00602\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00603\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ If\ there\ is\ no\ human\ intervention }}
+\DoxyCodeLine{00604\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{elif}\ \textcolor{stringliteral}{"{}MRCNN"{}}\ \textcolor{keywordflow}{in}\ intervention: }
+\DoxyCodeLine{00605\ \ \ \ \ \ \ \ \ \ \ \ \ self.intervention\_level\ =\ NO\_INTERVENTION\_MODEL }
+\DoxyCodeLine{00606\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00607\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}: }
+\DoxyCodeLine{00608\ \ \ \ \ \ \ \ \ \ \ \ \ self.intervention\_level\ =\ NO\_INTVERVENTION\_TRACKER }
+\DoxyCodeLine{00609\  }
+\DoxyCodeLine{00610\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ self.intervention\_level }
+\DoxyCodeLine{00611\  }
+
+\end{DoxyCode}
+
+
+Referenced by \mbox{\hyperlink{a00150_af7dc8315b04b8b19f07ef5b7dab34782}{Data\+Logger.\+objects\+\_\+occluded()}}.
+
+Here is the caller graph for this function\+:
+% FIG 1
+\Hypertarget{a00150_a640807eb3a47f21d60f4901383f9ab7e}\label{a00150_a640807eb3a47f21d60f4901383f9ab7e} 
+\index{DataLogger@{DataLogger}!end\_adjustment@{end\_adjustment}}
+\index{end\_adjustment@{end\_adjustment}!DataLogger@{DataLogger}}
+\doxysubsubsection{\texorpdfstring{end\_adjustment()}{end\_adjustment()}}
+{\footnotesize\ttfamily end\+\_\+adjustment (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{to\+\_\+box,  }\item[{}]{timer\+\_\+id }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Records the adjustment when final changes are made. This contributes final location and duration.
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00198\ \ \ \ \ \textcolor{keyword}{def\ }end\_adjustment(self,\ to\_box,\ timer\_id): }
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{''' }}
+\DoxyCodeLine{00200\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Records\ the\ adjustment\ when\ final\ changes\ are\ made.\ This\ contributes\ final\ location\ and\ duration. }}
+\DoxyCodeLine{00201\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ '''} }
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ duration\ =\ self.get\_time\_elapsed(timer\_id) }
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ data\ =\ self.adjust\_data[timer\_id] }
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ data[2]\ =\ duration }
+\DoxyCodeLine{00205\  }
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ data[4]\ =\ str(data[4])\ +\ str(to\_box) }
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ self.logger\_df.loc[self.logger\_df.shape[0]]\ =\ data }
+\DoxyCodeLine{00208\  }
+\DoxyCodeLine{00209\  }
+
+\end{DoxyCode}
+
+
+References Data\+Logger.\+adjust\+\_\+data, \mbox{\hyperlink{a00150_a23bef5dbc59c116cc9a20754f9ee8f33}{Data\+Logger.\+get\+\_\+time\+\_\+elapsed()}}, and Data\+Logger.\+logger\+\_\+df.
+
+
+
+Referenced by \mbox{\hyperlink{a00150_a2df6891576c591b86e3bf2e6a86e380e}{Data\+Logger.\+adjustment()}}.
+
+Here is the call graph for this function\+:
+% FIG 2
+Here is the caller graph for this function\+:
+% FIG 3
+\Hypertarget{a00150_af8bf41368400983fc278bfa3b0fa9500}\label{a00150_af8bf41368400983fc278bfa3b0fa9500} 
+\index{DataLogger@{DataLogger}!end\_pause@{end\_pause}}
+\index{end\_pause@{end\_pause}!DataLogger@{DataLogger}}
+\doxysubsubsection{\texorpdfstring{end\_pause()}{end\_pause()}}
+{\footnotesize\ttfamily end\+\_\+pause (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}After paused() is called, end_pause is used to end the paused action and add the duration to the logger.
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00232\ \ \ \ \ \textcolor{keyword}{def\ }end\_pause(self): }
+\DoxyCodeLine{00233\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{''' }}
+\DoxyCodeLine{00234\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ After\ paused()\ is\ called,\ end\_pause\ is\ used\ to\ end\ the\ paused\ action\ and\ add\ the\ duration\ to\ the\ logger. }}
+\DoxyCodeLine{00235\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ '''} }
+\DoxyCodeLine{00236\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ self.paused\_data: }
+\DoxyCodeLine{00237\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ pause\_ids\ \textcolor{keywordflow}{in}\ self.paused\_data.keys(): }
+\DoxyCodeLine{00238\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ pause\_ids\ \textcolor{keywordflow}{is}\ \textcolor{keywordflow}{not}\ self.start\_time\_id: }
+\DoxyCodeLine{00239\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print(pause\_ids) }}
+\DoxyCodeLine{00240\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.end\_timer(pause\_ids) }
+\DoxyCodeLine{00241\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ duration\ =\ self.get\_time\_elapsed(pause\_ids) }
+\DoxyCodeLine{00242\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ data\ =\ self.paused\_data[pause\_ids] }
+\DoxyCodeLine{00243\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ data[2]\ =\ duration }
+\DoxyCodeLine{00244\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.logger\_df.loc[self.logger\_df.shape[0]]\ =\ data }
+\DoxyCodeLine{00245\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00246\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print(self.logger\_df) }}
+\DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ \ \ \ \ self.paused\_data\ =\ \{\} }
+\DoxyCodeLine{00248\  }
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{a00150_a8b88ea2fc7ce49ef394dbdc6d40c8cf1}{Data\+Logger.\+end\+\_\+timer()}}, \mbox{\hyperlink{a00150_a23bef5dbc59c116cc9a20754f9ee8f33}{Data\+Logger.\+get\+\_\+time\+\_\+elapsed()}}, Data\+Logger.\+logger\+\_\+df, Data\+Logger.\+paused\+\_\+data, and Data\+Logger.\+start\+\_\+time\+\_\+id.
+
+Here is the call graph for this function\+:
+% FIG 4
+\Hypertarget{a00150_aa664a0547aaaf3562a55bc58a1fbc09f}\label{a00150_aa664a0547aaaf3562a55bc58a1fbc09f} 
+\index{DataLogger@{DataLogger}!end\_recording@{end\_recording}}
+\index{end\_recording@{end\_recording}!DataLogger@{DataLogger}}
+\doxysubsubsection{\texorpdfstring{end\_recording()}{end\_recording()}}
+{\footnotesize\ttfamily end\+\_\+recording (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+ends recording timer 
+
+\begin{DoxyVerb}Ends recording by setting the second value in the tuple (start, end) to the current time.
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00135\ \ \ \ \ \textcolor{keyword}{def\ }end\_recording(self): }
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{''' }}
+\DoxyCodeLine{00137\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Ends\ recording\ by\ setting\ the\ second\ value\ in\ the\ tuple\ (start,\ end)\ to\ the\ current\ time. }}
+\DoxyCodeLine{00138\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ '''} }
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ self.timer\_dict[self.start\_time\_id][1]\ =\ time.time() }
+\DoxyCodeLine{00140\  }
+
+\end{DoxyCode}
+
+
+References Data\+Logger.\+start\+\_\+time\+\_\+id, and Data\+Logger.\+timer\+\_\+dict.
+
+\Hypertarget{a00150_ae8fb478549eb82488a7f1029b1f2e74c}\label{a00150_ae8fb478549eb82488a7f1029b1f2e74c} 
+\index{DataLogger@{DataLogger}!end\_slider@{end\_slider}}
+\index{end\_slider@{end\_slider}!DataLogger@{DataLogger}}
+\doxysubsubsection{\texorpdfstring{end\_slider()}{end\_slider()}}
+{\footnotesize\ttfamily end\+\_\+slider (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{frame\+\_\+to,  }\item[{}]{timer\+\_\+id }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}When slider_moved() is called, we call end_slider which removes a duration timer and adds the duration and SLIDER action to the logger.
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00269\ \ \ \ \ \textcolor{keyword}{def\ }end\_slider(self,\ frame\_to,\ timer\_id): }
+\DoxyCodeLine{00270\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{''' }}
+\DoxyCodeLine{00271\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ When\ slider\_moved()\ is\ called,\ we\ call\ end\_slider\ which\ removes\ a\ duration\ timer\ and\ adds\ the\ duration\ and\ SLIDER\ action\ to\ the\ logger. }}
+\DoxyCodeLine{00272\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ '''} }
+\DoxyCodeLine{00273\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ self.slider\_data: }
+\DoxyCodeLine{00274\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ time\_started,\ timer\_ended\ =\ self.timer\_dict[timer\_id] }}
+\DoxyCodeLine{00275\ \ \ \ \ \ \ \ \ \ \ \ \ duration\ =\ self.get\_time\_elapsed(timer\_id) }
+\DoxyCodeLine{00276\ \ \ \ \ \ \ \ \ \ \ \ \ data\ =\ self.slider\_data[timer\_id] }
+\DoxyCodeLine{00277\ \ \ \ \ \ \ \ \ \ \ \ \ data[2]\ =\ duration }
+\DoxyCodeLine{00278\ \ \ \ \ \ \ \ \ \ \ \ \ data[4]\ =\ frame\_to }
+\DoxyCodeLine{00279\ \ \ \ \ \ \ \ \ \ \ \ \ self.logger\_df.loc[self.logger\_df.shape[0]]\ =\ data }
+\DoxyCodeLine{00280\ \ \ \ \ \ \ \ \ \ \ \ \ self.slider\_data\ =\ \{\} }
+\DoxyCodeLine{00281\ \ \ \ \ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00282\ \ \ \ \ \ \ \ \ \ \ \ \ self.end\_timer(timer\_id) }
+\DoxyCodeLine{00283\ \ \ \ \ \ \ \ \ \ \ \ \ del\ self.timer\_dict[timer\_id] }
+\DoxyCodeLine{00284\  }
+\DoxyCodeLine{00285\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print(self.logger\_df) }}
+\DoxyCodeLine{00286\ \ \ \ \  }
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{a00150_a8b88ea2fc7ce49ef394dbdc6d40c8cf1}{Data\+Logger.\+end\+\_\+timer()}}, \mbox{\hyperlink{a00150_a23bef5dbc59c116cc9a20754f9ee8f33}{Data\+Logger.\+get\+\_\+time\+\_\+elapsed()}}, Data\+Logger.\+logger\+\_\+df, Data\+Logger.\+slider\+\_\+data, and Data\+Logger.\+timer\+\_\+dict.
+
+Here is the call graph for this function\+:
+% FIG 5
+\Hypertarget{a00150_a8b88ea2fc7ce49ef394dbdc6d40c8cf1}\label{a00150_a8b88ea2fc7ce49ef394dbdc6d40c8cf1} 
+\index{DataLogger@{DataLogger}!end\_timer@{end\_timer}}
+\index{end\_timer@{end\_timer}!DataLogger@{DataLogger}}
+\doxysubsubsection{\texorpdfstring{end\_timer()}{end\_timer()}}
+{\footnotesize\ttfamily end\+\_\+timer (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{timer\+\_\+id }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Ends the timer from when the project is finished
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00162\ \ \ \ \ \textcolor{keyword}{def\ }end\_timer(self,\ timer\_id): }
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{} }}
+\DoxyCodeLine{00164\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Ends\ the\ timer\ from\ when\ the\ project\ is\ finished }}
+\DoxyCodeLine{00165\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}} }
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ duration\ =\ self.get\_time\_elapsed(timer\_id) }
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ self.timer\_dict[timer\_id]\ =\ (self.timer\_dict[timer\_id][0],\ duration) }
+\DoxyCodeLine{00168\  }
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{a00150_a23bef5dbc59c116cc9a20754f9ee8f33}{Data\+Logger.\+get\+\_\+time\+\_\+elapsed()}}, and Data\+Logger.\+timer\+\_\+dict.
+
+
+
+Referenced by \mbox{\hyperlink{a00150_af8bf41368400983fc278bfa3b0fa9500}{Data\+Logger.\+end\+\_\+pause()}}, and \mbox{\hyperlink{a00150_ae8fb478549eb82488a7f1029b1f2e74c}{Data\+Logger.\+end\+\_\+slider()}}.
+
+Here is the call graph for this function\+:
+% FIG 6
+Here is the caller graph for this function\+:
+% FIG 7
+\Hypertarget{a00150_a346584b03fbdc533d0a329c2aed67605}\label{a00150_a346584b03fbdc533d0a329c2aed67605} 
+\index{DataLogger@{DataLogger}!export\_activity@{export\_activity}}
+\index{export\_activity@{export\_activity}!DataLogger@{DataLogger}}
+\doxysubsubsection{\texorpdfstring{export\_activity()}{export\_activity()}}
+{\footnotesize\ttfamily export\+\_\+activity (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{file\+\_\+path }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00621\ \ \ \ \ \textcolor{keyword}{def\ }export\_activity(self,\ file\_path): }
+\DoxyCodeLine{00622\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ self.logger\_df.shape[0]\ >\ 0: }
+\DoxyCodeLine{00623\ \ \ \ \ \ \ \ \ \ \ \ \ logger\_filename\ =\ \ \ file\_path\ +\ \textcolor{stringliteral}{"{}\_ACTIVITY\_LOGGER\_"{}}\ +\ self.intervention\_level\ +\ \textcolor{stringliteral}{"{}.csv"{}} }
+\DoxyCodeLine{00624\  }
+\DoxyCodeLine{00625\ \ \ \ \ \ \ \ \ \ \ \ \ intervention\_level\ =\ self.check\_intervention\_level() }
+\DoxyCodeLine{00626\ \ \ \ \ \ \ \ \ \ \ \ \ print(intervention\_level) }
+\DoxyCodeLine{00627\  }
+\DoxyCodeLine{00628\ \ \ \ \ \ \ \ \ \ \ \ \ self.logger\_df\ =\ self.logger\_df.assign(Intervention\_Level=intervention\_level) }
+\DoxyCodeLine{00629\  }
+\DoxyCodeLine{00630\ \ \ \ \ \ \ \ \ \ \ \ \ self.logger\_df.to\_csv(logger\_filename,\ index=\textcolor{keyword}{False}) }
+\DoxyCodeLine{00631\ \ \ \ \ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{"{}Exported"{}}) }
+\DoxyCodeLine{00632\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}: }
+\DoxyCodeLine{00633\ \ \ \ \ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{"{}No\ Data\ Available"{}}) }
+\DoxyCodeLine{00634\  }
+
+\end{DoxyCode}
+\Hypertarget{a00150_a141cad1e6d50d6c15b02caa0458ac193}\label{a00150_a141cad1e6d50d6c15b02caa0458ac193} 
+\index{DataLogger@{DataLogger}!export\_charactoristics@{export\_charactoristics}}
+\index{export\_charactoristics@{export\_charactoristics}!DataLogger@{DataLogger}}
+\doxysubsubsection{\texorpdfstring{export\_charactoristics()}{export\_charactoristics()}}
+{\footnotesize\ttfamily export\+\_\+charactoristics (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{file\+\_\+path }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00612\ \ \ \ \ \textcolor{keyword}{def\ }export\_charactoristics(self,\ file\_path): }
+\DoxyCodeLine{00613\ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{"{}Saving\ Characteristics"{}}) }
+\DoxyCodeLine{00614\  }
+\DoxyCodeLine{00615\ \ \ \ \ \ \ \ \ char\_filename\ =\ \ file\_path\ +\ \textcolor{stringliteral}{"{}CHARACTERISTICS\ "{}}\ +\ \textcolor{stringliteral}{"{}.csv"{}} }
+\DoxyCodeLine{00616\ \ \ \ \ \ \ \ \ self.video\_info\_df.to\_csv(char\_filename,\ index=\textcolor{keyword}{False}) }
+\DoxyCodeLine{00617\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00618\ \ \ \ \ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00619\ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{"{}Saving\ complete"{}}) }
+\DoxyCodeLine{00620\  }
+
+\end{DoxyCode}
+\Hypertarget{a00150_a23bef5dbc59c116cc9a20754f9ee8f33}\label{a00150_a23bef5dbc59c116cc9a20754f9ee8f33} 
+\index{DataLogger@{DataLogger}!get\_time\_elapsed@{get\_time\_elapsed}}
+\index{get\_time\_elapsed@{get\_time\_elapsed}!DataLogger@{DataLogger}}
+\doxysubsubsection{\texorpdfstring{get\_time\_elapsed()}{get\_time\_elapsed()}}
+{\footnotesize\ttfamily get\+\_\+time\+\_\+elapsed (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{timer\+\_\+id }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}returns elapsed time of a timer in seconds
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00155\ \ \ \ \ \textcolor{keyword}{def\ }get\_time\_elapsed(self,\ timer\_id): }
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{} }}
+\DoxyCodeLine{00157\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ returns\ elapsed\ time\ of\ a\ timer\ in\ seconds }}
+\DoxyCodeLine{00158\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}} }
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ time.time()\ -\/\ self.timer\_dict[self.start\_time\_id][0]\ -\/\ self.timer\_dict[timer\_id][0] }
+\DoxyCodeLine{00160\  }
+\DoxyCodeLine{00161\  }
+
+\end{DoxyCode}
+
+
+References Data\+Logger.\+start\+\_\+time\+\_\+id, and Data\+Logger.\+timer\+\_\+dict.
+
+
+
+Referenced by \mbox{\hyperlink{a00150_a640807eb3a47f21d60f4901383f9ab7e}{Data\+Logger.\+end\+\_\+adjustment()}}, \mbox{\hyperlink{a00150_af8bf41368400983fc278bfa3b0fa9500}{Data\+Logger.\+end\+\_\+pause()}}, \mbox{\hyperlink{a00150_ae8fb478549eb82488a7f1029b1f2e74c}{Data\+Logger.\+end\+\_\+slider()}}, and \mbox{\hyperlink{a00150_a8b88ea2fc7ce49ef394dbdc6d40c8cf1}{Data\+Logger.\+end\+\_\+timer()}}.
+
+Here is the caller graph for this function\+:
+% FIG 8
+\Hypertarget{a00150_a1f7f6db786512a4f60a0bf40f3dfb414}\label{a00150_a1f7f6db786512a4f60a0bf40f3dfb414} 
+\index{DataLogger@{DataLogger}!get\_tracker\_score@{get\_tracker\_score}}
+\index{get\_tracker\_score@{get\_tracker\_score}!DataLogger@{DataLogger}}
+\doxysubsubsection{\texorpdfstring{get\_tracker\_score()}{get\_tracker\_score()}}
+{\footnotesize\ttfamily get\+\_\+tracker\+\_\+score (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Not implemented
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00293\ \ \ \ \ \textcolor{keyword}{def\ }get\_tracker\_score(self): }
+\DoxyCodeLine{00294\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{''' }}
+\DoxyCodeLine{00295\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Not\ implemented }}
+\DoxyCodeLine{00296\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ '''} }
+\DoxyCodeLine{00297\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{pass} }
+\DoxyCodeLine{00298\ \ \ \ \  }
+
+\end{DoxyCode}
+\Hypertarget{a00150_a2c83fe18962be0a9264b914a3810a30e}\label{a00150_a2c83fe18962be0a9264b914a3810a30e} 
+\index{DataLogger@{DataLogger}!get\_video\_characteristics@{get\_video\_characteristics}}
+\index{get\_video\_characteristics@{get\_video\_characteristics}!DataLogger@{DataLogger}}
+\doxysubsubsection{\texorpdfstring{get\_video\_characteristics()}{get\_video\_characteristics()}}
+{\footnotesize\ttfamily get\+\_\+video\+\_\+characteristics (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{video = {\ttfamily None} }\end{DoxyParamCaption})}
+
+
+
+VIDEO COMPLEXITY STARTS HERE \#. 
+
+\begin{DoxyVerb}Records all video characteristics. 
+    This will be done independently from the user input 
+    and will be constants between intervention types
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00303\ \ \ \ \ \textcolor{keyword}{def\ }get\_video\_characteristics(self,\ video=None): }
+\DoxyCodeLine{00304\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{} }}
+\DoxyCodeLine{00305\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Records\ all\ video\ characteristics.\  }}
+\DoxyCodeLine{00306\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ This\ will\ be\ done\ independently\ from\ the\ user\ input\  }}
+\DoxyCodeLine{00307\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ and\ will\ be\ constants\ between\ intervention\ types }}
+\DoxyCodeLine{00308\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}} }
+\DoxyCodeLine{00309\  }
+\DoxyCodeLine{00310\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ video\ \textcolor{keywordflow}{is}\ \textcolor{keywordtype}{None}: }
+\DoxyCodeLine{00311\ \ \ \ \ \ \ \ \ \ \ \ \ video\ =\ self.video }
+\DoxyCodeLine{00312\ \ \ \ \ \ \ \ \ cap\ =\ cv2.VideoCapture(video) }
+\DoxyCodeLine{00313\ \ \ \ \ \ \ \ \ fps\ =\ cap.get(cv2.CAP\_PROP\_FPS) }
+\DoxyCodeLine{00314\ \ \ \ \ \ \ \ \ te\_loaded\ =\ \textcolor{keyword}{True} }
+\DoxyCodeLine{00315\  }
+\DoxyCodeLine{00316\ \ \ \ \ \ \ \ \ folder\ =\ os.path.dirname(video) }
+\DoxyCodeLine{00317\ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{"{}Done"{}}) }
+\DoxyCodeLine{00318\  }
+\DoxyCodeLine{00319\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (cap.isOpened()==\ \textcolor{keyword}{False}):\  }
+\DoxyCodeLine{00320\ \ \ \ \ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{"{}Error\ opening\ video\ \ file"{}}) }
+\DoxyCodeLine{00321\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00322\ \ \ \ \ \ \ \ \ previous\_gt\_frame\ =\ 0 }
+\DoxyCodeLine{00323\ \ \ \ \ \ \ \ \ gt\_count\ =\ \textcolor{keywordtype}{None} }
+\DoxyCodeLine{00324\ \ \ \ \ \ \ \ \ occluded\_count\ =\ \textcolor{keywordtype}{None} }
+\DoxyCodeLine{00325\ \ \ \ \ \ \ \ \ total\_frames\ =\ cap.get(cv2.CAP\_PROP\_FRAME\_COUNT) }
+\DoxyCodeLine{00326\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Read\ until\ video\ is\ completed }}
+\DoxyCodeLine{00327\ \ \ \ \ \ \ \ \ while(\textcolor{keyword}{True}): }
+\DoxyCodeLine{00328\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Capture\ frame-\/by-\/frame }}
+\DoxyCodeLine{00329\ \ \ \ \ \ \ \ \ \ \ \ \ ret,\ frame\ =\ cap.read() }
+\DoxyCodeLine{00330\ \ \ \ \ \ \ \ \ \ \ \ \ frame\_num\ =\ cap.get(cv2.CAP\_PROP\_POS\_FRAMES) }
+\DoxyCodeLine{00331\ \ \ \ \ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00332\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ \textcolor{keywordflow}{not}\ ret: }
+\DoxyCodeLine{00333\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ print(ret,\ frame\_num) }
+\DoxyCodeLine{00334\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ frame\_num\ +=\ 1 }
+\DoxyCodeLine{00335\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cap.set(cv2.CAP\_PROP\_POS\_FRAMES,\ frame\_num) }
+\DoxyCodeLine{00336\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ret,\ frame\ =\ cap.read() }
+\DoxyCodeLine{00337\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ frame\_num\ >=\ total\_frames: }
+\DoxyCodeLine{00338\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break} }
+\DoxyCodeLine{00339\ \ \ \ \ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00340\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ret\ ==\ \textcolor{keyword}{True}: }
+\DoxyCodeLine{00341\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ill\_mean,\ ill\_std\ =\ self.illumination(frame) }
+\DoxyCodeLine{00342\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ of\_dict\ =\ self.optical\_flow(frame)\ \textcolor{comment}{\#\ Mean\ Median\ STD\ Mean\_Magnitude\ Dominant\_Zoom\ Percent\_Zoom\  }}
+\DoxyCodeLine{00343\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Zoom\_Dominance\_Thresh\ Zoom\_Magnitude\_Thresh\ Dominant\_Pan\ Percent\_Pan\  }}
+\DoxyCodeLine{00344\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Pan\_Dominance\_Thresh\ Pan\_Magnitude\_Thresh }}
+\DoxyCodeLine{00345\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ print(of\_dict) }
+\DoxyCodeLine{00346\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ te\_loaded: }
+\DoxyCodeLine{00347\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ gt\_count\ =\ self.te.get\_ground\_truth\_count(int(frame\_num)) }
+\DoxyCodeLine{00348\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ occluded\_count\ =\ self.te.get\_occlusion\_count(int(frame\_num)) }
+\DoxyCodeLine{00349\  }
+\DoxyCodeLine{00350\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00351\  }
+\DoxyCodeLine{00352\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ new\_trackers\ =\ \textcolor{keywordtype}{None} }
+\DoxyCodeLine{00353\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ nt\_count\ =\ \textcolor{keywordtype}{None} }
+\DoxyCodeLine{00354\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ leaving\_trackers\ =\ \textcolor{keywordtype}{None} }
+\DoxyCodeLine{00355\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ leaving\_count\ =\ \textcolor{keywordtype}{None} }
+\DoxyCodeLine{00356\  }
+\DoxyCodeLine{00357\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ labels\ =\ \textcolor{keywordtype}{None} }
+\DoxyCodeLine{00358\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ areas\ =\ \textcolor{keywordtype}{None} }
+\DoxyCodeLine{00359\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ heights\ =\ \textcolor{keywordtype}{None} }
+\DoxyCodeLine{00360\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ widths\ =\ \textcolor{keywordtype}{None} }
+\DoxyCodeLine{00361\  }
+\DoxyCodeLine{00362\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ self.te.ground\_truth\_exists(frame\_num)\ \textcolor{keywordflow}{and}\ te\_loaded: }
+\DoxyCodeLine{00363\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ self.te.ground\_truth\_exists(frame\_num): }
+\DoxyCodeLine{00364\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ new\_trackers,\ leaving\_trackers\ =\ self.te.get\_ground\_truth\_difference(previous\_gt\_frame,\ frame\_num) }
+\DoxyCodeLine{00365\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ nt\_count\ =\ len(new\_trackers) }
+\DoxyCodeLine{00366\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ leaving\_count\ =\ len(leaving\_trackers) }
+\DoxyCodeLine{00367\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ labels,\ areas,\ heights,\ widths\ =\ self.ground\_truth\_characteristics(frame\_num) }
+\DoxyCodeLine{00368\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00369\  }
+\DoxyCodeLine{00370\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ previous\_gt\_frame\ =\ frame\_num }
+\DoxyCodeLine{00371\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00372\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print(ill\_mean,\ ill\_std,\ flow\_mean,\ flow\_median,\ flow\_std,\ gt\_count,\ occluded\_count) }}
+\DoxyCodeLine{00373\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ data\ =\ [frame\_num,\ ill\_mean,\ ill\_std,\ of\_dict[\textcolor{stringliteral}{"{}Mean"{}}],\ of\_dict[\textcolor{stringliteral}{"{}Median"{}}],\  }
+\DoxyCodeLine{00374\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ of\_dict[\textcolor{stringliteral}{"{}STD"{}}],\ of\_dict[\textcolor{stringliteral}{"{}Mean\_Magnitude"{}}],\ of\_dict[\textcolor{stringliteral}{"{}Dominant\_Zoom"{}}],\  }
+\DoxyCodeLine{00375\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ of\_dict[\textcolor{stringliteral}{"{}Percent\_Zoom"{}}],\ of\_dict[\textcolor{stringliteral}{"{}Zoom\_Dominance\_Thresh"{}}],\ of\_dict[\textcolor{stringliteral}{"{}Zoom\_Magnitude\_Thresh"{}}], }
+\DoxyCodeLine{00376\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ of\_dict[\textcolor{stringliteral}{"{}Dominant\_Pan"{}}],\ of\_dict[\textcolor{stringliteral}{"{}Percent\_Pan"{}}],\ of\_dict[\textcolor{stringliteral}{"{}Pan\_Dominance\_Thresh"{}}],\ of\_dict[\textcolor{stringliteral}{"{}Pan\_Magnitude\_Thresh"{}}], }
+\DoxyCodeLine{00377\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ gt\_count,\ occluded\_count,\ new\_trackers,\ nt\_count,\ leaving\_trackers,\ leaving\_count,\ labels,\ areas,\ heights,\ widths,\ \  }
+\DoxyCodeLine{00378\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.video\_id,\ self.video\_location }
+\DoxyCodeLine{00379\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ] }
+\DoxyCodeLine{00380\  }
+\DoxyCodeLine{00381\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.video\_info\_df.loc[self.video\_info\_df.shape[0]]\ =\ data }
+\DoxyCodeLine{00382\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ \#\ Display\ the\ resulting\ frame }}
+\DoxyCodeLine{00383\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cv2.imshow(\textcolor{stringliteral}{'Frame'},\ frame) }
+\DoxyCodeLine{00384\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cv2.waitKey(1) }
+\DoxyCodeLine{00385\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}: }
+\DoxyCodeLine{00386\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ self.video\_info\_df }
+\DoxyCodeLine{00387\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ self.video\_info\_df }
+\DoxyCodeLine{00388\  }
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{a00150_a7e1305e3e399383a4b749ba2244f5943}{Data\+Logger.\+ground\+\_\+truth\+\_\+characteristics()}}, \mbox{\hyperlink{a00150_ad63c3dc24a49baaad8a67403006f0241}{Data\+Logger.\+illumination()}}, \mbox{\hyperlink{a00150_af0a6b39e1a4c8ba3a00d790253aab15c}{Data\+Logger.\+optical\+\_\+flow()}}, Data\+Logger.\+te, Data\+Logger.\+video, Data\+Logger.\+video\+\_\+id, Data\+Logger.\+video\+\_\+info\+\_\+df, and Data\+Logger.\+video\+\_\+location.
+
+Here is the call graph for this function\+:
+% FIG 9
+\Hypertarget{a00150_a7e1305e3e399383a4b749ba2244f5943}\label{a00150_a7e1305e3e399383a4b749ba2244f5943} 
+\index{DataLogger@{DataLogger}!ground\_truth\_characteristics@{ground\_truth\_characteristics}}
+\index{ground\_truth\_characteristics@{ground\_truth\_characteristics}!DataLogger@{DataLogger}}
+\doxysubsubsection{\texorpdfstring{ground\_truth\_characteristics()}{ground\_truth\_characteristics()}}
+{\footnotesize\ttfamily ground\+\_\+truth\+\_\+characteristics (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{frame\+\_\+num }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Records ground truth height, width, and distance from last frame
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00554\ \ \ \ \ \textcolor{keyword}{def\ }ground\_truth\_characteristics(self,\ frame\_num): }
+\DoxyCodeLine{00555\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{''' }}
+\DoxyCodeLine{00556\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Records\ ground\ truth\ height,\ width,\ and\ distance\ from\ last\ frame }}
+\DoxyCodeLine{00557\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ '''} }
+\DoxyCodeLine{00558\ \ \ \ \ \ \ \ \ ground\_truths\ =\ self.te.get\_ground\_truths(frame\_num) }
+\DoxyCodeLine{00559\ \ \ \ \ \ \ \ \ labels\ =\ [] }
+\DoxyCodeLine{00560\ \ \ \ \ \ \ \ \ gt\_areas\ =\ [] }
+\DoxyCodeLine{00561\ \ \ \ \ \ \ \ \ gt\_heights\ =\ [] }
+\DoxyCodeLine{00562\ \ \ \ \ \ \ \ \ gt\_widths\ =\ [] }
+\DoxyCodeLine{00563\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ gt\ \textcolor{keywordflow}{in}\ ground\_truths: }
+\DoxyCodeLine{00564\ \ \ \ \ \ \ \ \ \ \ \ \ box\ =\ gt[\textcolor{stringliteral}{'points'}] }
+\DoxyCodeLine{00565\ \ \ \ \ \ \ \ \ \ \ \ \ labels.append(gt[\textcolor{stringliteral}{'label'}]) }
+\DoxyCodeLine{00566\ \ \ \ \ \ \ \ \ \ \ \ \ gt\_areas.append(self.te.get\_area(box)) }
+\DoxyCodeLine{00567\ \ \ \ \ \ \ \ \ \ \ \ \ gt\_heights.append(self.te.get\_height(box)) }
+\DoxyCodeLine{00568\ \ \ \ \ \ \ \ \ \ \ \ \ gt\_widths.append(self.te.get\_width(box)) }
+\DoxyCodeLine{00569\  }
+\DoxyCodeLine{00570\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ labels,\ gt\_areas,\ gt\_heights,\ gt\_widths }
+\DoxyCodeLine{00571\  }
+
+\end{DoxyCode}
+
+
+References Data\+Logger.\+te.
+
+
+
+Referenced by \mbox{\hyperlink{a00150_a2c83fe18962be0a9264b914a3810a30e}{Data\+Logger.\+get\+\_\+video\+\_\+characteristics()}}.
+
+Here is the caller graph for this function\+:
+% FIG 10
+\Hypertarget{a00150_ad63c3dc24a49baaad8a67403006f0241}\label{a00150_ad63c3dc24a49baaad8a67403006f0241} 
+\index{DataLogger@{DataLogger}!illumination@{illumination}}
+\index{illumination@{illumination}!DataLogger@{DataLogger}}
+\doxysubsubsection{\texorpdfstring{illumination()}{illumination()}}
+{\footnotesize\ttfamily illumination (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{frame }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Records the average intensity of the RGB image in greyscale with values between 0 (black) and 255 (white)
+
+Intensity = (R + G + B)/3
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00389\ \ \ \ \ \textcolor{keyword}{def\ }illumination(self,\ frame): }
+\DoxyCodeLine{00390\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{} }}
+\DoxyCodeLine{00391\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Records\ the\ average\ intensity\ of\ the\ RGB\ image\ in\ greyscale\ with\ values\ between\ 0\ (black)\ and\ 255\ (white) }}
+\DoxyCodeLine{00392\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \  }}
+\DoxyCodeLine{00393\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Intensity\ =\ (R\ +\ G\ +\ B)/3 }}
+\DoxyCodeLine{00394\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}} }
+\DoxyCodeLine{00395\ \ \ \ \ \ \ \ \ gray\ =\ cv2.cvtColor(frame,\ cv2.COLOR\_BGR2GRAY) }
+\DoxyCodeLine{00396\ \ \ \ \ \ \ \ \ mean,\ std\ =\ cv2.meanStdDev(gray) }
+\DoxyCodeLine{00397\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ mean[0][0],\ std[0][0] }
+\DoxyCodeLine{00398\  }
+
+\end{DoxyCode}
+
+
+Referenced by \mbox{\hyperlink{a00150_a2c83fe18962be0a9264b914a3810a30e}{Data\+Logger.\+get\+\_\+video\+\_\+characteristics()}}.
+
+Here is the caller graph for this function\+:
+% FIG 11
+\Hypertarget{a00150_af7dc8315b04b8b19f07ef5b7dab34782}\label{a00150_af7dc8315b04b8b19f07ef5b7dab34782} 
+\index{DataLogger@{DataLogger}!objects\_occluded@{objects\_occluded}}
+\index{objects\_occluded@{objects\_occluded}!DataLogger@{DataLogger}}
+\doxysubsubsection{\texorpdfstring{objects\_occluded()}{objects\_occluded()}}
+{\footnotesize\ttfamily objects\+\_\+occluded (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{folder\+\_\+path,  }\item[{}]{fps }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Records weather the occlusion flag has occured on that frame. Records how many IDs have been occluded.
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00572\ \ \ \ \ \textcolor{keyword}{def\ }objects\_occluded(self,\ folder\_path,\ fps): }
+\DoxyCodeLine{00573\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{} }}
+\DoxyCodeLine{00574\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Records\ weather\ the\ occlusion\ flag\ has\ occured\ on\ that\ frame.\ Records\ how\ many\ IDs\ have\ been\ occluded. }}
+\DoxyCodeLine{00575\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}} }
+\DoxyCodeLine{00576\ \ \ \ \ \ \ \ \ occlusion\_dict\ =\ \{\} }
+\DoxyCodeLine{00577\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ frame\ \textcolor{keywordflow}{in}\ self.te.get\_frame\_count(): }
+\DoxyCodeLine{00578\ \ \ \ \ \ \ \ \ \ \ \ \ occlusion\_dict[frame]\ =\ self.te.count\_occlusion(frame) }
+\DoxyCodeLine{00579\ \ \ \ \ \ \ \ \ \ \ \ \ print(occlusion\_dict[frame]) }
+\DoxyCodeLine{00580\  }
+\DoxyCodeLine{00581\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ occlusion\_dict }
+\DoxyCodeLine{00582\  }
+\DoxyCodeLine{00583\  }
+\DoxyCodeLine{00584\ \ \ \ \  }
+
+\end{DoxyCode}
+
+
+References Data\+Logger.\+check\+\_\+intervention\+\_\+level(), \mbox{\hyperlink{a00150_a10d41eee6e85dbc18db528607f7641be}{Data\+Logger.\+intervention\+\_\+level}}, Data\+Logger.\+logger\+\_\+df, Data\+Logger.\+te, and Data\+Logger.\+video\+\_\+info\+\_\+df.
+
+Here is the call graph for this function\+:
+% FIG 12
+\Hypertarget{a00150_a8662a7e19ab5209fd49a46a6d600885b}\label{a00150_a8662a7e19ab5209fd49a46a6d600885b} 
+\index{DataLogger@{DataLogger}!occuding\_objects@{occuding\_objects}}
+\index{occuding\_objects@{occuding\_objects}!DataLogger@{DataLogger}}
+\doxysubsubsection{\texorpdfstring{occuding\_objects()}{occuding\_objects()}}
+{\footnotesize\ttfamily occuding\+\_\+objects (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{occluding\+\_\+tracks\+\_\+csv,  }\item[{}]{occluding\+\_\+threshold = {\ttfamily 0.8} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Given recorded occluding objects, check the precision of ground truth onto occluding object.
+If precision of ground truth is above threshold, this means that object is occluded.
+This is the same measure as check_occlusion but data in this context is different and 
+therefore a different function
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00638\ \ \ \ \ \textcolor{keyword}{def\ }occuding\_objects(self,\ occluding\_tracks\_csv,\ occluding\_threshold=0.8): }
+\DoxyCodeLine{00639\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{''' }}
+\DoxyCodeLine{00640\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Given\ recorded\ occluding\ objects,\ check\ the\ precision\ of\ ground\ truth\ onto\ occluding\ object. }}
+\DoxyCodeLine{00641\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ If\ precision\ of\ ground\ truth\ is\ above\ threshold,\ this\ means\ that\ object\ is\ occluded. }}
+\DoxyCodeLine{00642\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ This\ is\ the\ same\ measure\ as\ check\_occlusion\ but\ data\ in\ this\ context\ is\ different\ and\  }}
+\DoxyCodeLine{00643\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ therefore\ a\ different\ function }}
+\DoxyCodeLine{00644\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ '''} }
+\DoxyCodeLine{00645\ \ \ \ \ \ \ \ \ percent\_occluded\ =\ \{\} }
+\DoxyCodeLine{00646\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00647\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Load\ occluding\ tracks }}
+\DoxyCodeLine{00648\ \ \ \ \ \ \ \ \ occlusion\_dict\ =\ self.te.load\_tracker\_data(occluding\_tracks\_csv) }
+\DoxyCodeLine{00649\  }
+\DoxyCodeLine{00650\ \ \ \ \ \ \ \ \ occluding\_frame\ =\ [] }
+\DoxyCodeLine{00651\ \ \ \ \ \ \ \ \ occluding\_name\ =\ [] }
+\DoxyCodeLine{00652\ \ \ \ \ \ \ \ \ occluded\_list\ =\ [] }
+\DoxyCodeLine{00653\ \ \ \ \ \ \ \ \ percent\_occluded\_list\ =\ [] }
+\DoxyCodeLine{00654\  }
+\DoxyCodeLine{00655\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#convert\ occlusions\ to\ gt\ form }}
+\DoxyCodeLine{00656\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ frame\ \textcolor{keywordflow}{in}\ occlusion\_dict.keys(): }
+\DoxyCodeLine{00657\ \ \ \ \ \ \ \ \ \ \ \ \ occlusion\_trackers\ =\ self.te.get\_estimates(frame) }
+\DoxyCodeLine{00658\  }
+\DoxyCodeLine{00659\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ occlusion\_object\ \textcolor{keywordflow}{in}\ occlusion\_trackers: }
+\DoxyCodeLine{00660\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Correct\ for\ comparing\ tracker\ to\ ground\_truths\ based\ on\ loaded\ information }}
+\DoxyCodeLine{00661\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ corrected\_occlusion\ =\ self.estimate\_to\_point(occlusion\_object,\ invert\_y=self.te.invert\_y) }
+\DoxyCodeLine{00662\  }
+\DoxyCodeLine{00663\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Get\ precision\ of\ occluding\ object\ onto\ ground\ truths. }}
+\DoxyCodeLine{00664\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ This\ method\ looks\ all\ ground\ truths,\ and\ checks\ intersection\ with\ occlusion. }}
+\DoxyCodeLine{00665\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Precision\ measures\ how\ much\ of\ the\ E\ covers\ the\ GT }}
+\DoxyCodeLine{00666\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ occluded,\ percent\_occluded\ =\ self.te.check\_occlusion(corrected\_occlusion,\ frame) }
+\DoxyCodeLine{00667\  }
+\DoxyCodeLine{00668\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ occluding\_frame.append(frame) }
+\DoxyCodeLine{00669\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ occluding\_name.append(occlusion\_object[\textcolor{stringliteral}{'name'}]) }
+\DoxyCodeLine{00670\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ occluded\_list.append(occluded) }
+\DoxyCodeLine{00671\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ percent\_occluded\_list.append(percent\_occluded) }
+\DoxyCodeLine{00672\  }
+\DoxyCodeLine{00673\  }
+\DoxyCodeLine{00674\  }
+\DoxyCodeLine{00675\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ \#\ Return\ Dictionary\ of\ objects\ and\ their\ percent\ occlusion }}
+\DoxyCodeLine{00676\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ data\ =\ \{ }}
+\DoxyCodeLine{00677\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ "{}Frame\_Num"{}:\ occluding\_frame, }}
+\DoxyCodeLine{00678\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ "{}Occluding\_Name"{}:\ occluding\_name, }}
+\DoxyCodeLine{00679\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ "{}Ground\_Truth"{}:\  }}
+\DoxyCodeLine{00680\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ "{}Occluding"{}:\ occluded\_list, }}
+\DoxyCodeLine{00681\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ "{}Percent\_Occluding"{}:\ percent\_occluded\_list, }}
+\DoxyCodeLine{00682\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ "{}"{} }}
+\DoxyCodeLine{00683\  }
+\DoxyCodeLine{00684\  }
+\DoxyCodeLine{00685\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ \} }}
+\DoxyCodeLine{00686\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ pass }}
+\DoxyCodeLine{00687\  }
+
+\end{DoxyCode}
+\Hypertarget{a00150_af0a6b39e1a4c8ba3a00d790253aab15c}\label{a00150_af0a6b39e1a4c8ba3a00d790253aab15c} 
+\index{DataLogger@{DataLogger}!optical\_flow@{optical\_flow}}
+\index{optical\_flow@{optical\_flow}!DataLogger@{DataLogger}}
+\doxysubsubsection{\texorpdfstring{optical\_flow()}{optical\_flow()}}
+{\footnotesize\ttfamily optical\+\_\+flow (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{frame }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Uses optical flow to measure the average magnitude of movement from the flow of pixels.
+
+Also records the resolution of the image
+
+Returns values in a dictionary with names:
+    Mean
+    Median
+    STD
+    Mean_Magnitude
+    Dominant_Zoom
+    Percent_Zoom
+    Zoom_Dominance_Thresh
+    Zoom_Magnitude_Thresh
+    Dominant_Pan
+    Percent_Pan
+    Pan_Dominance_Thresh
+    Pan_Magnitude_Thresh
+
+[66] Gunnar Farnebäck. Two-frame motion estimation based on polynomial expansion. In Image Analysis, pages 363–370. Springer, 2003. 
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00399\ \ \ \ \ \textcolor{keyword}{def\ }optical\_flow(self,\ frame): }
+\DoxyCodeLine{00400\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{} }}
+\DoxyCodeLine{00401\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Uses\ optical\ flow\ to\ measure\ the\ average\ magnitude\ of\ movement\ from\ the\ flow\ of\ pixels. }}
+\DoxyCodeLine{00402\ \textcolor{stringliteral}{ }}
+\DoxyCodeLine{00403\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Also\ records\ the\ resolution\ of\ the\ image }}
+\DoxyCodeLine{00404\ \textcolor{stringliteral}{ }}
+\DoxyCodeLine{00405\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns\ values\ in\ a\ dictionary\ with\ names: }}
+\DoxyCodeLine{00406\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ Mean }}
+\DoxyCodeLine{00407\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ Median }}
+\DoxyCodeLine{00408\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ STD }}
+\DoxyCodeLine{00409\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ Mean\_Magnitude }}
+\DoxyCodeLine{00410\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ Dominant\_Zoom }}
+\DoxyCodeLine{00411\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ Percent\_Zoom }}
+\DoxyCodeLine{00412\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ Zoom\_Dominance\_Thresh }}
+\DoxyCodeLine{00413\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ Zoom\_Magnitude\_Thresh }}
+\DoxyCodeLine{00414\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ Dominant\_Pan }}
+\DoxyCodeLine{00415\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ Percent\_Pan }}
+\DoxyCodeLine{00416\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ Pan\_Dominance\_Thresh }}
+\DoxyCodeLine{00417\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ Pan\_Magnitude\_Thresh }}
+\DoxyCodeLine{00418\ \textcolor{stringliteral}{ }}
+\DoxyCodeLine{00419\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ [66]\ Gunnar\ Farnebäck.\ Two-\/frame\ motion\ estimation\ based\ on\ polynomial\ expansion.\ In\ Image\ Analysis,\ pages\ 363–370.\ Springer,\ 2003.\  }}
+\DoxyCodeLine{00420\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}} }
+\DoxyCodeLine{00421\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ self.previous\_frame\ \textcolor{keywordflow}{is}\ \textcolor{keywordtype}{None}: }
+\DoxyCodeLine{00422\ \ \ \ \ \ \ \ \ \ \ \ \ self.previous\_frame\ =\ frame }
+\DoxyCodeLine{00423\ \ \ \ \ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00424\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{\textcolor{stringliteral}{"{}Mean"{}}:0,\ \textcolor{stringliteral}{"{}Median"{}}:\ 0,\ \textcolor{stringliteral}{"{}STD"{}}:0,\ \textcolor{stringliteral}{"{}Mean\_Magnitude"{}}:0,\ \textcolor{stringliteral}{"{}Dominant\_Zoom"{}}:0,\ \textcolor{stringliteral}{"{}Percent\_Zoom"{}}:0,\ \textcolor{stringliteral}{"{}Zoom\_Dominance\_Thresh"{}}:0,\ \textcolor{stringliteral}{"{}Zoom\_Magnitude\_Thresh"{}}:\ 0,\textcolor{stringliteral}{"{}Dominant\_Pan"{}}:\ 0,\ \textcolor{stringliteral}{"{}Percent\_Pan"{}}:\ 0,\ \textcolor{stringliteral}{"{}Pan\_Dominance\_Thresh"{}}:\ 0,\ \textcolor{stringliteral}{"{}Pan\_Magnitude\_Thresh"{}}:0\} }
+\DoxyCodeLine{00425\  }
+\DoxyCodeLine{00426\ \ \ \ \ \ \ \ \ gray\_prev\ =\ cv2.cvtColor(self.previous\_frame,\ cv2.COLOR\_BGR2GRAY) }
+\DoxyCodeLine{00427\ \ \ \ \ \ \ \ \ gray\_current\ =\ cv2.cvtColor(frame,\ cv2.COLOR\_BGR2GRAY) }
+\DoxyCodeLine{00428\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00429\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#Resize\ to\ 1/4\ to\ reduce\ complexity }}
+\DoxyCodeLine{00430\ \ \ \ \ \ \ \ \ gray\_prev\ =\ cv2.resize(gray\_prev,\ (0,0),\ fx=0.25,\ fy=0.25)\  }
+\DoxyCodeLine{00431\ \ \ \ \ \ \ \ \ gray\_current\ =\ cv2.resize(gray\_current,\ (0,0),\ fx=0.25,\ fy=0.25) }
+\DoxyCodeLine{00432\  }
+\DoxyCodeLine{00433\ \ \ \ \ \ \ \ \ flow\ =\ cv2.calcOpticalFlowFarneback(gray\_prev,\ gray\_current,\ flow=\textcolor{keywordtype}{None},\ pyr\_scale=0.5,\ levels=6,\ winsize=50,\ iterations=3,\ poly\_n=5,\ poly\_sigma=1.2,\ flags=\textcolor{keywordtype}{None}) }
+\DoxyCodeLine{00434\  }
+\DoxyCodeLine{00435\ \ \ \ \ \ \ \ \ mean\_magnitude\ =\ np.mean(cv2.cartToPolar(flow[...,\ 0],\ flow[...,\ 1])[0]) }
+\DoxyCodeLine{00436\  }
+\DoxyCodeLine{00437\ \ \ \ \ \ \ \ \ zoom\_dom\_direction,\ zoom\_perc\_dom,\ zoom\_dom\_thresh,\ zoom\_mean\_mag\_thresh\ \ =\ \ self.optical\_flow\_zoom(flow) }
+\DoxyCodeLine{00438\ \ \ \ \ \ \ \ \ pan\_dom\_direction,\ pan\_perc\_dom,\ pan\_dom\_thresh,\ pan\_mean\_mag\_thresh\ =\ \ self.optical\_flow\_pan(flow) }
+\DoxyCodeLine{00439\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ flow\ =\ cv2.calcOpticalFlowFarneback(previous\_frame,\ frame,\ None,\ 0.5,\ 3,\ 15,\ 3,\ 5,\ 1.2,\ 0) }}
+\DoxyCodeLine{00440\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00441\ \ \ \ \ \ \ \ \ mean\ =\ np.mean(flow) }
+\DoxyCodeLine{00442\ \ \ \ \ \ \ \ \ median\ =\ np.median(flow) }
+\DoxyCodeLine{00443\ \ \ \ \ \ \ \ \ std\ =\ np.std(flow) }
+\DoxyCodeLine{00444\ \ \ \ \ \ \ \ \ self.previous\_frame\ =\ frame }
+\DoxyCodeLine{00445\  }
+\DoxyCodeLine{00446\ \ \ \ \ \ \ \ \ opticalflow\_dict\ =\ \{\textcolor{stringliteral}{"{}Mean"{}}:mean,\ \textcolor{stringliteral}{"{}Median"{}}:\ median,\ \textcolor{stringliteral}{"{}STD"{}}:std,\ \textcolor{stringliteral}{"{}Mean\_Magnitude"{}}:mean\_magnitude,\ \textcolor{stringliteral}{"{}Dominant\_Zoom"{}}:zoom\_dom\_direction,\ \textcolor{stringliteral}{"{}Percent\_Zoom"{}}:zoom\_perc\_dom,\ \textcolor{stringliteral}{"{}Zoom\_Dominance\_Thresh"{}}:zoom\_dom\_thresh,\ \textcolor{stringliteral}{"{}Zoom\_Magnitude\_Thresh"{}}:\ zoom\_mean\_mag\_thresh,\textcolor{stringliteral}{"{}Dominant\_Pan"{}}:\ pan\_dom\_direction,\ \textcolor{stringliteral}{"{}Percent\_Pan"{}}:\ pan\_perc\_dom,\ \textcolor{stringliteral}{"{}Pan\_Dominance\_Thresh"{}}:\ pan\_dom\_thresh,\ \textcolor{stringliteral}{"{}Pan\_Magnitude\_Thresh"{}}:pan\_mean\_mag\_thresh\} }
+\DoxyCodeLine{00447\ \ \ \ \ \ \ \ \ print(opticalflow\_dict) }
+\DoxyCodeLine{00448\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ opticalflow\_dict }
+\DoxyCodeLine{00449\  }
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{a00150_ae735fff941e047218ea858337e007484}{Data\+Logger.\+optical\+\_\+flow\+\_\+pan()}}, \mbox{\hyperlink{a00150_a3cff34c024334cefe903de3058e3a991}{Data\+Logger.\+optical\+\_\+flow\+\_\+zoom()}}, and Data\+Logger.\+previous\+\_\+frame.
+
+
+
+Referenced by \mbox{\hyperlink{a00150_a2c83fe18962be0a9264b914a3810a30e}{Data\+Logger.\+get\+\_\+video\+\_\+characteristics()}}.
+
+Here is the call graph for this function\+:
+% FIG 13
+Here is the caller graph for this function\+:
+% FIG 14
+\Hypertarget{a00150_ae735fff941e047218ea858337e007484}\label{a00150_ae735fff941e047218ea858337e007484} 
+\index{DataLogger@{DataLogger}!optical\_flow\_pan@{optical\_flow\_pan}}
+\index{optical\_flow\_pan@{optical\_flow\_pan}!DataLogger@{DataLogger}}
+\doxysubsubsection{\texorpdfstring{optical\_flow\_pan()}{optical\_flow\_pan()}}
+{\footnotesize\ttfamily optical\+\_\+flow\+\_\+pan (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{flow,  }\item[{}]{dominance\+\_\+threshold = {\ttfamily 0.4},  }\item[{}]{magnitude\+\_\+threshold = {\ttfamily 0.5} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Vector orientation:
+t+1=current frame, t=previous frame
+
+atan( 
+    (yi^(t+1) - yi^(t)) / 
+    (xi^(t+1) - xi^(t)) 
+)
+
+
+Calculate Dominant Orientation = Peak value in orientation histogram of the imag
+np.histogram(np.array(vector orientation))
+
+returns the dominant orientation given a threshold, the threshold it passed by, and the average magnitude of movement.
+
+
+Makkapati, V. (2008). Robust camera pan and zoom change detection using optical flow. 
+In National conference on computer vision, pattern recognition, 
+image processing and graphics (pp. 73-78).
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00450\ \ \ \ \ \textcolor{keyword}{def\ }optical\_flow\_pan(self,\ flow,\ dominance\_threshold=0.4,\ magnitude\_threshold=0.5): }
+\DoxyCodeLine{00451\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{} }}
+\DoxyCodeLine{00452\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Vector\ orientation: }}
+\DoxyCodeLine{00453\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ t+1=current\ frame,\ t=previous\ frame }}
+\DoxyCodeLine{00454\ \textcolor{stringliteral}{ }}
+\DoxyCodeLine{00455\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ atan(\  }}
+\DoxyCodeLine{00456\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ (yi\string^(t+1)\ -\/\ yi\string^(t))\ /\  }}
+\DoxyCodeLine{00457\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ (xi\string^(t+1)\ -\/\ xi\string^(t))\  }}
+\DoxyCodeLine{00458\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ ) }}
+\DoxyCodeLine{00459\ \textcolor{stringliteral}{ }}
+\DoxyCodeLine{00460\ \textcolor{stringliteral}{ }}
+\DoxyCodeLine{00461\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Calculate\ Dominant\ Orientation\ =\ Peak\ value\ in\ orientation\ histogram\ of\ the\ imag }}
+\DoxyCodeLine{00462\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ np.histogram(np.array(vector\ orientation)) }}
+\DoxyCodeLine{00463\ \textcolor{stringliteral}{ }}
+\DoxyCodeLine{00464\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ returns\ the\ dominant\ orientation\ given\ a\ threshold,\ the\ threshold\ it\ passed\ by,\ and\ the\ average\ magnitude\ of\ movement. }}
+\DoxyCodeLine{00465\ \textcolor{stringliteral}{ }}
+\DoxyCodeLine{00466\ \textcolor{stringliteral}{ }}
+\DoxyCodeLine{00467\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Makkapati,\ V.\ (2008).\ Robust\ camera\ pan\ and\ zoom\ change\ detection\ using\ optical\ flow.\  }}
+\DoxyCodeLine{00468\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ In\ National\ conference\ on\ computer\ vision,\ pattern\ recognition,\  }}
+\DoxyCodeLine{00469\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ image\ processing\ and\ graphics\ (pp.\ 73-\/78). }}
+\DoxyCodeLine{00470\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}} }
+\DoxyCodeLine{00471\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ get\ all\ vector\ orientations }}
+\DoxyCodeLine{00472\ \ \ \ \ \ \ \ \ orientation\ =\ np.rad2deg(cv2.cartToPolar(flow[...,\ 0],\ flow[...,\ 1])[1]) }
+\DoxyCodeLine{00473\ \ \ \ \ \ \ \ \ magnitude\ =\ cv2.cartToPolar(flow[...,\ 0],\ flow[...,\ 1])[0] }
+\DoxyCodeLine{00474\ \ \ \ \ \ \ \ \ orientation\_hist\ =\ np.histogram(orientation,\ bins=8,\ range=(0,360))\ \textcolor{comment}{\#\ Bin\ every\ 45\ degrees }}
+\DoxyCodeLine{00475\  }
+\DoxyCodeLine{00476\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print(orientation\_hist) }}
+\DoxyCodeLine{00477\ \ \ \ \ \ \ \ \ max\_value\_index\ =\ np.argmax(orientation\_hist[0],\ axis=0) }
+\DoxyCodeLine{00478\ \ \ \ \ \ \ \ \ percent\ =\ orientation\_hist[0][max\_value\_index]/np.sum(orientation\_hist[0]) }
+\DoxyCodeLine{00479\ \ \ \ \ \ \ \ \ dominant\_orientation\ =\ orientation\_hist[1][max\_value\_index] }
+\DoxyCodeLine{00480\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00481\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00482\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ percent\ >=\ dominance\_threshold\ \textcolor{keywordflow}{and}\ np.mean(magnitude)\ >=\ magnitude\_threshold: }
+\DoxyCodeLine{00483\ \ \ \ \ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{"{}PANNING:"{}},\ dominant\_orientation,\ percent,\ np.mean(magnitude)) }
+\DoxyCodeLine{00484\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ dominant\_orientation,\ percent,\ dominance\_threshold,\ magnitude\_threshold }
+\DoxyCodeLine{00485\  }
+\DoxyCodeLine{00486\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keywordtype}{None},\ \textcolor{keywordtype}{None},\ \textcolor{keywordtype}{None},\ \textcolor{keywordtype}{None} }
+\DoxyCodeLine{00487\  }
+\DoxyCodeLine{00488\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00489\  }
+
+\end{DoxyCode}
+
+
+Referenced by \mbox{\hyperlink{a00150_af0a6b39e1a4c8ba3a00d790253aab15c}{Data\+Logger.\+optical\+\_\+flow()}}.
+
+Here is the caller graph for this function\+:
+% FIG 15
+\Hypertarget{a00150_a3cff34c024334cefe903de3058e3a991}\label{a00150_a3cff34c024334cefe903de3058e3a991} 
+\index{DataLogger@{DataLogger}!optical\_flow\_zoom@{optical\_flow\_zoom}}
+\index{optical\_flow\_zoom@{optical\_flow\_zoom}!DataLogger@{DataLogger}}
+\doxysubsubsection{\texorpdfstring{optical\_flow\_zoom()}{optical\_flow\_zoom()}}
+{\footnotesize\ttfamily optical\+\_\+flow\+\_\+zoom (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{flow,  }\item[{}]{dominance\+\_\+threshold = {\ttfamily 0.7},  }\item[{}]{magnitude\+\_\+threshold = {\ttfamily 1} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Describe each vector's direction. 
+
+Returns 
+    0 if diverging (zoom in), 1 if converging (zoom out), otherwise none.
+    percent of dominance
+    domenance threshold
+    mean magnitude threshold
+
+
+Makkapati, V. (2008). Robust camera pan and zoom change detection using optical flow. 
+In National conference on computer vision, pattern recognition, 
+image processing and graphics (pp. 73-78).
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00490\ \ \ \ \ \textcolor{keyword}{def\ }optical\_flow\_zoom(self,\ flow,\ dominance\_threshold=0.7,\ magnitude\_threshold=1): }
+\DoxyCodeLine{00491\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{} }}
+\DoxyCodeLine{00492\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Describe\ each\ vector's\ direction.\  }}
+\DoxyCodeLine{00493\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \  }}
+\DoxyCodeLine{00494\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns\  }}
+\DoxyCodeLine{00495\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ 0\ if\ diverging\ (zoom\ in),\ 1\ if\ converging\ (zoom\ out),\ otherwise\ none. }}
+\DoxyCodeLine{00496\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ percent\ of\ dominance }}
+\DoxyCodeLine{00497\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ domenance\ threshold }}
+\DoxyCodeLine{00498\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ mean\ magnitude\ threshold }}
+\DoxyCodeLine{00499\ \textcolor{stringliteral}{ }}
+\DoxyCodeLine{00500\ \textcolor{stringliteral}{ }}
+\DoxyCodeLine{00501\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Makkapati,\ V.\ (2008).\ Robust\ camera\ pan\ and\ zoom\ change\ detection\ using\ optical\ flow.\  }}
+\DoxyCodeLine{00502\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ In\ National\ conference\ on\ computer\ vision,\ pattern\ recognition,\  }}
+\DoxyCodeLine{00503\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ image\ processing\ and\ graphics\ (pp.\ 73-\/78). }}
+\DoxyCodeLine{00504\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}} }
+\DoxyCodeLine{00505\  }
+\DoxyCodeLine{00506\ \ \ \ \ \ \ \ \ orientation\ =\ np.rad2deg(cv2.cartToPolar(flow[...,\ 0],\ flow[...,\ 1])[1]) }
+\DoxyCodeLine{00507\ \ \ \ \ \ \ \ \ magnitude\ =\ cv2.cartToPolar(flow[...,\ 0],\ flow[...,\ 1])[0] }
+\DoxyCodeLine{00508\  }
+\DoxyCodeLine{00509\ \ \ \ \ \ \ \ \ height,\ width,\ dim\ =\ flow.shape }
+\DoxyCodeLine{00510\ \ \ \ \ \ \ \ \ center\ =\ (width/2,\ height/2)\ \textcolor{comment}{\#\ (x,y) }}
+\DoxyCodeLine{00511\  }
+\DoxyCodeLine{00512\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ converging\ =\ np.full((height,\ width),\ False) }}
+\DoxyCodeLine{00513\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00514\ \ \ \ \ \ \ \ \ original\_location\ =\ np.moveaxis(np.mgrid[:height,:width],\ 0,\ -\/1) }
+\DoxyCodeLine{00515\  }
+\DoxyCodeLine{00516\ \ \ \ \ \ \ \ \ original\_diff\_x\ =\ (original\_location[...,0]**2\ -\/\ center[0]**2) }
+\DoxyCodeLine{00517\ \ \ \ \ \ \ \ \ original\_diff\_y\ =\ (original\_location[...,1]**2\ -\/\ center[1]**2) }
+\DoxyCodeLine{00518\  }
+\DoxyCodeLine{00519\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ flow\_location\_x\ =\ original\_location[...,\ 0]\ +\ flow[...,\ 0] }}
+\DoxyCodeLine{00520\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ flow\_location\_y\ =\ original\_location[...,\ 1]\ +\ flow[...,\ 1] }}
+\DoxyCodeLine{00521\ \ \ \ \ \ \ \ \ flow\_diff\_x\ =\ ((original\_location[...,0]\ +\ flow[...,\ 0])**2\ -\/\ center[0]**2) }
+\DoxyCodeLine{00522\ \ \ \ \ \ \ \ \ flow\_diff\_y\ =\ ((original\_location[...,1]\ +\ flow[...,\ 1])**2\ -\/\ center[1]**2) }
+\DoxyCodeLine{00523\  }
+\DoxyCodeLine{00524\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print(flow\_diff\_x) }}
+\DoxyCodeLine{00525\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print(flow\_diff\_y) }}
+\DoxyCodeLine{00526\ \ \ \ \ \ \ \ \ flow\_diff\ =\ abs((flow\_diff\_x\ +\ flow\_diff\_y)**1/2) }
+\DoxyCodeLine{00527\ \ \ \ \ \ \ \ \ original\_diff\ =\ abs((original\_diff\_x\ +\ original\_diff\_y)**1/2) }
+\DoxyCodeLine{00528\  }
+\DoxyCodeLine{00529\ \ \ \ \ \ \ \ \ converging\ =\ flow\_diff\ <=\ original\_diff }
+\DoxyCodeLine{00530\  }
+\DoxyCodeLine{00531\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print(converging) }}
+\DoxyCodeLine{00532\ \ \ \ \ \ \ \ \ convergence\_hist\ =\ np.histogram(converging,\ bins=2,\ range=(0,1)) }
+\DoxyCodeLine{00533\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print(convergence\_hist) }}
+\DoxyCodeLine{00534\ \ \ \ \ \ \ \ \ max\_value\_index\ =\ np.argmax(convergence\_hist[0],\ axis=0)\ \textcolor{comment}{\#\ Get\ the\ most\ dominant }}
+\DoxyCodeLine{00535\ \ \ \ \ \ \ \ \ percent\ =\ convergence\_hist[0][max\_value\_index]/np.sum(convergence\_hist[0])\ \textcolor{comment}{\#\ get\ dominance\ percentage }}
+\DoxyCodeLine{00536\ \ \ \ \ \ \ \ \ dominant\_convergence\ =\ convergence\_hist[1][max\_value\_index]\ \textcolor{comment}{\#\ get\ the\ dominant\ convergence\ (True\ is\ converging) }}
+\DoxyCodeLine{00537\  }
+\DoxyCodeLine{00538\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ percent\ >=\ dominance\_threshold\ \textcolor{keywordflow}{and}\ np.mean(magnitude)\ >=\ magnitude\_threshold: }
+\DoxyCodeLine{00539\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ dominant\_convergence\ >=\ 0: }
+\DoxyCodeLine{00540\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{"{}ZOOM\ IN:"{}},\ dominant\_convergence,\ percent,\ np.mean(magnitude)) }
+\DoxyCodeLine{00541\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}: }
+\DoxyCodeLine{00542\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{"{}ZOOM\ OUT:"{}},\ dominant\_convergence,\ percent,\ np.mean(magnitude)) }
+\DoxyCodeLine{00543\ \ \ \ \ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00544\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ dominant\_convergence,\ percent,\ dominance\_threshold,\ magnitude\_threshold }
+\DoxyCodeLine{00545\  }
+\DoxyCodeLine{00546\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keywordtype}{None},\ \textcolor{keywordtype}{None},\ \textcolor{keywordtype}{None},\ \textcolor{keywordtype}{None} }
+\DoxyCodeLine{00547\  }
+\DoxyCodeLine{00548\  }
+\DoxyCodeLine{00549\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print(flow.shape) }}
+\DoxyCodeLine{00550\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print(np.ndindex(flow.shape)) }}
+\DoxyCodeLine{00551\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ for\ iy,\ ix,\ \ in\ np.ndindex(flow.shape): }}
+\DoxyCodeLine{00552\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ \ \ \ \ print(iy,\ ix) }}
+\DoxyCodeLine{00553\  }
+
+\end{DoxyCode}
+
+
+Referenced by \mbox{\hyperlink{a00150_af0a6b39e1a4c8ba3a00d790253aab15c}{Data\+Logger.\+optical\+\_\+flow()}}.
+
+Here is the caller graph for this function\+:
+% FIG 16
+\Hypertarget{a00150_a147ee854723ad7ce299aca8f95599f2c}\label{a00150_a147ee854723ad7ce299aca8f95599f2c} 
+\index{DataLogger@{DataLogger}!paused@{paused}}
+\index{paused@{paused}!DataLogger@{DataLogger}}
+\doxysubsubsection{\texorpdfstring{paused()}{paused()}}
+{\footnotesize\ttfamily paused (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{frame\+\_\+number,  }\item[{}]{pause\+\_\+type,  }\item[{}]{timer\+\_\+id,  }\item[{}]{tracker\+\_\+id }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Records what initiated the pause, and for how long the pause existed for.
+
+This requires an external timer, and will be recorded when *Play* has been selected.
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00210\ \ \ \ \ \textcolor{keyword}{def\ }paused(self,\ frame\_number,\ pause\_type,\ timer\_id,\ tracker\_id): }
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{} }}
+\DoxyCodeLine{00212\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Records\ what\ initiated\ the\ pause,\ and\ for\ how\ long\ the\ pause\ existed\ for. }}
+\DoxyCodeLine{00213\ \textcolor{stringliteral}{ }}
+\DoxyCodeLine{00214\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ This\ requires\ an\ external\ timer,\ and\ will\ be\ recorded\ when\ *Play*\ has\ been\ selected. }}
+\DoxyCodeLine{00215\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}} }
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ time\_started\ =\ self.start\_timer(timer\_id) }
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ data\ =\ [ }
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \ \ \ \ frame\_number, }
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \ \ \ \ time\_started, }
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{None}, }
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Pause"{}}, }
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{None}, }
+\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \ \ \ \ self.intervention\_level, }
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ \ \ \ \ pause\_type, }
+\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \ \ \ \ tracker\_id }
+\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ ] }
+\DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ self.paused\_data[timer\_id]\ =\ data }
+\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print(self.logger\_df) }}
+\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00231\ \ \ \ \  }
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{a00150_a10d41eee6e85dbc18db528607f7641be}{Data\+Logger.\+intervention\+\_\+level}}, Data\+Logger.\+paused\+\_\+data, and \mbox{\hyperlink{a00150_a18b9423164131f6a5cb5cb80069e0d2f}{Data\+Logger.\+start\+\_\+timer()}}.
+
+Here is the call graph for this function\+:
+% FIG 17
+\Hypertarget{a00150_ac17ffb0fb99926c99dcaab63b5335243}\label{a00150_ac17ffb0fb99926c99dcaab63b5335243} 
+\index{DataLogger@{DataLogger}!plot\_chars\_df@{plot\_chars\_df}}
+\index{plot\_chars\_df@{plot\_chars\_df}!DataLogger@{DataLogger}}
+\doxysubsubsection{\texorpdfstring{plot\_chars\_df()}{plot\_chars\_df()}}
+{\footnotesize\ttfamily plot\+\_\+chars\+\_\+df (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00635\ \ \ \ \ \textcolor{keyword}{def\ }plot\_chars\_df(self): }
+\DoxyCodeLine{00636\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{pass} }
+\DoxyCodeLine{00637\  }
+
+\end{DoxyCode}
+\Hypertarget{a00150_a5f192965f59bcadd25871fc878cd1962}\label{a00150_a5f192965f59bcadd25871fc878cd1962} 
+\index{DataLogger@{DataLogger}!record\_errors@{record\_errors}}
+\index{record\_errors@{record\_errors}!DataLogger@{DataLogger}}
+\doxysubsubsection{\texorpdfstring{record\_errors()}{record\_errors()}}
+{\footnotesize\ttfamily record\+\_\+errors (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{frame }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Not implemented
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00287\ \ \ \ \ \textcolor{keyword}{def\ }record\_errors(self,\ frame): }
+\DoxyCodeLine{00288\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{''' }}
+\DoxyCodeLine{00289\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Not\ implemented }}
+\DoxyCodeLine{00290\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ '''} }
+\DoxyCodeLine{00291\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{pass} }
+\DoxyCodeLine{00292\  }
+
+\end{DoxyCode}
+\Hypertarget{a00150_a286d618835528c9cf90218dd6cd8e546}\label{a00150_a286d618835528c9cf90218dd6cd8e546} 
+\index{DataLogger@{DataLogger}!slider\_moved@{slider\_moved}}
+\index{slider\_moved@{slider\_moved}!DataLogger@{DataLogger}}
+\doxysubsubsection{\texorpdfstring{slider\_moved()}{slider\_moved()}}
+{\footnotesize\ttfamily slider\+\_\+moved (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{frame\+\_\+from,  }\item[{}]{timer\+\_\+id,  }\item[{}]{tracker\+\_\+id }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Records when the slider was changed, where from, and where to.
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00249\ \ \ \ \ \textcolor{keyword}{def\ }slider\_moved(self,\ frame\_from,\ timer\_id,\ tracker\_id): }
+\DoxyCodeLine{00250\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{} }}
+\DoxyCodeLine{00251\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Records\ when\ the\ slider\ was\ changed,\ where\ from,\ and\ where\ to. }}
+\DoxyCodeLine{00252\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}} }
+\DoxyCodeLine{00253\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ timer\_id\ \textcolor{keywordflow}{not}\ \textcolor{keywordflow}{in}\ self.timer\_dict.keys(): }
+\DoxyCodeLine{00254\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print("{}Recording\ Slider"{}) }}
+\DoxyCodeLine{00255\ \ \ \ \ \ \ \ \ \ \ \ \ time\_started\ =\ self.start\_timer(timer\_id) }
+\DoxyCodeLine{00256\ \ \ \ \ \ \ \ \ \ \ \ \ data\ =\ [ }
+\DoxyCodeLine{00257\ \ \ \ \ \ \ \ \ \ \ \ \ frame\_from, }
+\DoxyCodeLine{00258\ \ \ \ \ \ \ \ \ \ \ \ \ time\_started, }
+\DoxyCodeLine{00259\ \ \ \ \ \ \ \ \ \ \ \ \ 0, }
+\DoxyCodeLine{00260\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Slider"{}}, }
+\DoxyCodeLine{00261\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{None}, }
+\DoxyCodeLine{00262\ \ \ \ \ \ \ \ \ \ \ \ \ self.intervention\_level, }
+\DoxyCodeLine{00263\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}USER"{}}, }
+\DoxyCodeLine{00264\ \ \ \ \ \ \ \ \ \ \ \ \ tracker\_id }
+\DoxyCodeLine{00265\ \ \ \ \ \ \ \ \ \ \ \ \ ] }
+\DoxyCodeLine{00266\ \ \ \ \ \ \ \ \ \ \ \ \ self.slider\_data[timer\_id]\ =\ data }
+\DoxyCodeLine{00267\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ print(self.logger\_df) }}
+\DoxyCodeLine{00268\ \ \ \ \  }
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{a00150_a10d41eee6e85dbc18db528607f7641be}{Data\+Logger.\+intervention\+\_\+level}}, Data\+Logger.\+slider\+\_\+data, \mbox{\hyperlink{a00150_a18b9423164131f6a5cb5cb80069e0d2f}{Data\+Logger.\+start\+\_\+timer()}}, and Data\+Logger.\+timer\+\_\+dict.
+
+Here is the call graph for this function\+:
+% FIG 18
+\Hypertarget{a00150_af1d3c1fa3e44db6ab404e162bd264d00}\label{a00150_af1d3c1fa3e44db6ab404e162bd264d00} 
+\index{DataLogger@{DataLogger}!start\_recording@{start\_recording}}
+\index{start\_recording@{start\_recording}!DataLogger@{DataLogger}}
+\doxysubsubsection{\texorpdfstring{start\_recording()}{start\_recording()}}
+{\footnotesize\ttfamily start\+\_\+recording (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+User input logging starts here \#. 
+
+\begin{DoxyVerb}Starts the recording timer
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00125\ \ \ \ \ \textcolor{keyword}{def\ }start\_recording(self): }
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{''' }}
+\DoxyCodeLine{00128\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Starts\ the\ recording\ timer }}
+\DoxyCodeLine{00129\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ '''} }
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ start\_time\ =\ time.time() }
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ self.timer\_dict[self.start\_time\_id]\ =\ (start\_time,\ \textcolor{keywordtype}{None}) }
+\DoxyCodeLine{00132\ \ \ \ \  }
+
+\end{DoxyCode}
+
+
+References Data\+Logger.\+start\+\_\+time\+\_\+id, and Data\+Logger.\+timer\+\_\+dict.
+
+
+
+Referenced by \mbox{\hyperlink{a00150_a18b9423164131f6a5cb5cb80069e0d2f}{Data\+Logger.\+start\+\_\+timer()}}.
+
+Here is the caller graph for this function\+:
+% FIG 19
+\Hypertarget{a00150_a18b9423164131f6a5cb5cb80069e0d2f}\label{a00150_a18b9423164131f6a5cb5cb80069e0d2f} 
+\index{DataLogger@{DataLogger}!start\_timer@{start\_timer}}
+\index{start\_timer@{start\_timer}!DataLogger@{DataLogger}}
+\doxysubsubsection{\texorpdfstring{start\_timer()}{start\_timer()}}
+{\footnotesize\ttfamily start\+\_\+timer (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{timer\+\_\+id }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Starts the timer from when the project is initiated
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00141\ \ \ \ \ \textcolor{keyword}{def\ }start\_timer(self,\ timer\_id): }
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{} }}
+\DoxyCodeLine{00143\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Starts\ the\ timer\ from\ when\ the\ project\ is\ initiated }}
+\DoxyCodeLine{00144\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}} }
+\DoxyCodeLine{00145\  }
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ We\ start\ recording\ when\ the\ first\ action\ is\ done }}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ self.start\_time\_id\ \textcolor{keywordflow}{not}\ \textcolor{keywordflow}{in}\ self.timer\_dict: }
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \ \ \ \ self.start\_recording() }
+\DoxyCodeLine{00149\  }
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ start\_record\ =\ self.timer\_dict[self.start\_time\_id][0] }
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ start\_time\ =\ time.time()\ -\/\ start\_record }
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ self.timer\_dict[timer\_id]\ =\ (start\_time,\ \textcolor{keywordtype}{None}) }
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ start\_time }
+\DoxyCodeLine{00154\  }
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{a00150_af1d3c1fa3e44db6ab404e162bd264d00}{Data\+Logger.\+start\+\_\+recording()}}, Data\+Logger.\+start\+\_\+time\+\_\+id, and Data\+Logger.\+timer\+\_\+dict.
+
+
+
+Referenced by \mbox{\hyperlink{a00150_a2df6891576c591b86e3bf2e6a86e380e}{Data\+Logger.\+adjustment()}}, \mbox{\hyperlink{a00150_a147ee854723ad7ce299aca8f95599f2c}{Data\+Logger.\+paused()}}, and \mbox{\hyperlink{a00150_a286d618835528c9cf90218dd6cd8e546}{Data\+Logger.\+slider\+\_\+moved()}}.
+
+Here is the call graph for this function\+:
+% FIG 20
+Here is the caller graph for this function\+:
+% FIG 21
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+K\+:/\+Github/\+People\+Tracker/src/datalogger.\+py\end{DoxyCompactItemize}

@@ -1,0 +1,1372 @@
+\doxysection{People\+Tracker.\+src.\+utils Namespace Reference}
+\hypertarget{a00136}{}\label{a00136}\index{PeopleTracker.src.utils@{PeopleTracker.src.utils}}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{a00226}{Dataset}}
+\begin{DoxyCompactList}\small\item\em Dataset. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{a00136_a1a51d5a5a3fe1f6844bee72b28df0942}{extract\+\_\+bboxes}} (mask)
+\begin{DoxyCompactList}\small\item\em Bounding Boxes. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{a00136_a54175253a17d081ebc1bcd813cab91f7}{compute\+\_\+iou}} (box1, box2)
+\item 
+\mbox{\hyperlink{a00136_af9c400799ddffca56340bb6b5fa4d7f6}{compute\+\_\+overlaps\+\_\+masks}} (masks1, masks2)
+\item 
+\mbox{\hyperlink{a00136_ac003690af3dada90fdaf9269da467d27}{non\+\_\+max\+\_\+suppression}} (boxes, scores, threshold)
+\item 
+\mbox{\hyperlink{a00136_acc07676c38e2f8b94e9fe6b92b43edf8}{apply\+\_\+box\+\_\+deltas}} (boxes, deltas)
+\item 
+\mbox{\hyperlink{a00136_a02d5a032da1926059b55a8c91cbc2610}{box\+\_\+refinement\+\_\+graph}} (box, gt\+\_\+box)
+\item 
+\mbox{\hyperlink{a00136_a91902236d996fed61ce52c46259ac538}{box\+\_\+refinement}} (box, gt\+\_\+box)
+\item 
+\mbox{\hyperlink{a00136_a22a2b3a4d83a5030b8b521c5624e6df1}{resize\+\_\+image}} (image, min\+\_\+dim=None, max\+\_\+dim=None, min\+\_\+scale=None, mode="{}square"{})
+\item 
+\mbox{\hyperlink{a00136_acfc6cc89f95c11ed3cd05bf706320e25}{resize\+\_\+mask}} (mask, scale, padding, crop=None)
+\item 
+\mbox{\hyperlink{a00136_aa4f6abff284ec7b73a0ff0aa8b7d34b3}{minimize\+\_\+mask}} (bbox, mask, mini\+\_\+shape)
+\item 
+\mbox{\hyperlink{a00136_a22aaf6d13a2e17305eb6ee8265c9cf78}{expand\+\_\+mask}} (bbox, mini\+\_\+mask, image\+\_\+shape)
+\item 
+\mbox{\hyperlink{a00136_a651da7d3000d528a604b59f8c783976f}{mold\+\_\+mask}} (mask, config)
+\item 
+\mbox{\hyperlink{a00136_a7c1e401d91ffe4fb86ec6c1265f3e524}{unmold\+\_\+mask}} (mask, bbox, image\+\_\+shape)
+\item 
+\mbox{\hyperlink{a00136_a973741449cda9c868338d356e40b0513}{generate\+\_\+anchors}} (scales, ratios, shape, feature\+\_\+stride, anchor\+\_\+stride)
+\begin{DoxyCompactList}\small\item\em Anchors. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{a00136_a4108c4037ef4ec36d97596e8cc91fd27}{generate\+\_\+pyramid\+\_\+anchors}} (scales, ratios, feature\+\_\+shapes, feature\+\_\+strides, anchor\+\_\+stride)
+\item 
+\mbox{\hyperlink{a00136_a41cc5ed08039f095ef85d066b5ac5736}{trim\+\_\+zeros}} (x)
+\begin{DoxyCompactList}\small\item\em Miscellaneous. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{a00136_af5f7f7aa33fdb94ed802f23199ad0d56}{compute\+\_\+matches}} (gt\+\_\+boxes, gt\+\_\+class\+\_\+ids, gt\+\_\+masks, pred\+\_\+boxes, pred\+\_\+class\+\_\+ids, pred\+\_\+scores, pred\+\_\+masks, iou\+\_\+threshold=0.\+5, score\+\_\+threshold=0.\+0)
+\item 
+\mbox{\hyperlink{a00136_aa2a69305337265325ecceb7631d94f5d}{compute\+\_\+ap}} (gt\+\_\+boxes, gt\+\_\+class\+\_\+ids, gt\+\_\+masks, pred\+\_\+boxes, pred\+\_\+class\+\_\+ids, pred\+\_\+scores, pred\+\_\+masks, iou\+\_\+threshold=0.\+5)
+\item 
+\mbox{\hyperlink{a00136_a629c576d5b82079e1236348613463e95}{compute\+\_\+ap\+\_\+range}} (gt\+\_\+box, gt\+\_\+class\+\_\+id, gt\+\_\+mask, pred\+\_\+box, pred\+\_\+class\+\_\+id, pred\+\_\+score, pred\+\_\+mask, iou\+\_\+thresholds=None, verbose=1)
+\item 
+\mbox{\hyperlink{a00136_a5f05888211cf7c5a974ca4596fdb3718}{compute\+\_\+recall}} (pred\+\_\+boxes, gt\+\_\+boxes, iou)
+\item 
+\mbox{\hyperlink{a00136_afa0874686dd08355e2d30e5ab1059e3e}{batch\+\_\+slice}} (inputs, graph\+\_\+fn, batch\+\_\+size, names=None)
+\item 
+\mbox{\hyperlink{a00136_aee772bddb501c4c61cff61c57e32d93b}{download\+\_\+trained\+\_\+weights}} (coco\+\_\+model\+\_\+path, verbose=1)
+\item 
+\mbox{\hyperlink{a00136_ad07b294d2354bd0f176739c10d4abc2b}{norm\+\_\+boxes}} (boxes, shape)
+\item 
+\mbox{\hyperlink{a00136_a2a452eed5467a833e48d52bc25949a94}{denorm\+\_\+boxes}} (boxes, shape)
+\item 
+\mbox{\hyperlink{a00136_ad8268f50c6823c07e975ec0c64cba6b2}{resize}} (image, output\+\_\+shape, order=1, mode=\textquotesingle{}constant\textquotesingle{}, cval=0, clip=True, preserve\+\_\+range=False, anti\+\_\+aliasing=False, anti\+\_\+aliasing\+\_\+sigma=None)
+\item 
+\mbox{\hyperlink{a00136_ae198d56e2e3251f0d31a2a3bfbc17f8b}{distance\+\_\+2d}} (p1, p2)
+\item 
+\mbox{\hyperlink{a00136_a620244aa4f32f617b201abe47dbb8c1b}{get\+\_\+centroid}} (box)
+\item 
+\mbox{\hyperlink{a00136_a4510da153c804121f91e79645ff14f15}{get\+\_\+corners}} (box)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{a00136_aa0468abca41ad91bea42de1d0b01a9d8}\label{a00136_aa0468abca41ad91bea42de1d0b01a9d8} 
+str {\bfseries COCO\+\_\+\+MODEL\+\_\+\+URL} = "{}https\+://github.\+com/matterport/Mask\+\_\+\+RCNN/releases/download/v2.\+0/mask\+\_\+rcnn\+\_\+coco.\+h5"{}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Mask R-CNN
+Common utility functions and classes.
+
+Copyright (c) 2017 Matterport, Inc.
+Licensed under the MIT License (see LICENSE for details)
+Written by Waleed Abdulla
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{a00136_acc07676c38e2f8b94e9fe6b92b43edf8}\label{a00136_acc07676c38e2f8b94e9fe6b92b43edf8} 
+\index{PeopleTracker.src.utils@{PeopleTracker.src.utils}!apply\_box\_deltas@{apply\_box\_deltas}}
+\index{apply\_box\_deltas@{apply\_box\_deltas}!PeopleTracker.src.utils@{PeopleTracker.src.utils}}
+\doxysubsubsection{\texorpdfstring{apply\_box\_deltas()}{apply\_box\_deltas()}}
+{\footnotesize\ttfamily apply\+\_\+box\+\_\+deltas (\begin{DoxyParamCaption}\item[{}]{boxes,  }\item[{}]{deltas }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Applies the given deltas to the given boxes.
+boxes: [N, (y1, x1, y2, x2)]. Note that (y2, x2) is outside the box.
+deltas: [N, (dy, dx, log(dh), log(dw))]
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00164\ \textcolor{keyword}{def\ }apply\_box\_deltas(boxes,\ deltas): }
+\DoxyCodeLine{00165\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Applies\ the\ given\ deltas\ to\ the\ given\ boxes. }}
+\DoxyCodeLine{00166\ \textcolor{stringliteral}{\ \ \ \ boxes:\ [N,\ (y1,\ x1,\ y2,\ x2)].\ Note\ that\ (y2,\ x2)\ is\ outside\ the\ box. }}
+\DoxyCodeLine{00167\ \textcolor{stringliteral}{\ \ \ \ deltas:\ [N,\ (dy,\ dx,\ log(dh),\ log(dw))] }}
+\DoxyCodeLine{00168\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}} }
+\DoxyCodeLine{00169\ \ \ \ \ boxes\ =\ boxes.astype(np.float32) }
+\DoxyCodeLine{00170\ \ \ \ \ \textcolor{comment}{\#\ Convert\ to\ y,\ x,\ h,\ w }}
+\DoxyCodeLine{00171\ \ \ \ \ height\ =\ boxes[:,\ 2]\ -\/\ boxes[:,\ 0] }
+\DoxyCodeLine{00172\ \ \ \ \ width\ =\ boxes[:,\ 3]\ -\/\ boxes[:,\ 1] }
+\DoxyCodeLine{00173\ \ \ \ \ center\_y\ =\ boxes[:,\ 0]\ +\ 0.5\ *\ height }
+\DoxyCodeLine{00174\ \ \ \ \ center\_x\ =\ boxes[:,\ 1]\ +\ 0.5\ *\ width }
+\DoxyCodeLine{00175\ \ \ \ \ \textcolor{comment}{\#\ Apply\ deltas }}
+\DoxyCodeLine{00176\ \ \ \ \ center\_y\ +=\ deltas[:,\ 0]\ *\ height }
+\DoxyCodeLine{00177\ \ \ \ \ center\_x\ +=\ deltas[:,\ 1]\ *\ width }
+\DoxyCodeLine{00178\ \ \ \ \ height\ *=\ np.exp(deltas[:,\ 2]) }
+\DoxyCodeLine{00179\ \ \ \ \ width\ *=\ np.exp(deltas[:,\ 3]) }
+\DoxyCodeLine{00180\ \ \ \ \ \textcolor{comment}{\#\ Convert\ back\ to\ y1,\ x1,\ y2,\ x2 }}
+\DoxyCodeLine{00181\ \ \ \ \ y1\ =\ center\_y\ -\/\ 0.5\ *\ height }
+\DoxyCodeLine{00182\ \ \ \ \ x1\ =\ center\_x\ -\/\ 0.5\ *\ width }
+\DoxyCodeLine{00183\ \ \ \ \ y2\ =\ y1\ +\ height }
+\DoxyCodeLine{00184\ \ \ \ \ x2\ =\ x1\ +\ width }
+\DoxyCodeLine{00185\ \ \ \ \ \textcolor{keywordflow}{return}\ np.stack([y1,\ x1,\ y2,\ x2],\ axis=1) }
+\DoxyCodeLine{00186\  }
+\DoxyCodeLine{00187\  }
+
+\end{DoxyCode}
+\Hypertarget{a00136_afa0874686dd08355e2d30e5ab1059e3e}\label{a00136_afa0874686dd08355e2d30e5ab1059e3e} 
+\index{PeopleTracker.src.utils@{PeopleTracker.src.utils}!batch\_slice@{batch\_slice}}
+\index{batch\_slice@{batch\_slice}!PeopleTracker.src.utils@{PeopleTracker.src.utils}}
+\doxysubsubsection{\texorpdfstring{batch\_slice()}{batch\_slice()}}
+{\footnotesize\ttfamily batch\+\_\+slice (\begin{DoxyParamCaption}\item[{}]{inputs,  }\item[{}]{graph\+\_\+fn,  }\item[{}]{batch\+\_\+size,  }\item[{}]{names = {\ttfamily None} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Splits inputs into slices and feeds each slice to a copy of the given
+computation graph and then combines the results. It allows you to run a
+graph on a batch of inputs even if the graph is written to support one
+instance only.
+
+inputs: list of tensors. All must have the same first dimension length
+graph_fn: A function that returns a TF tensor that's part of a graph.
+batch_size: number of slices to divide the data into.
+names: If provided, assigns names to the resulting tensors.
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00808\ \textcolor{keyword}{def\ }batch\_slice(inputs,\ graph\_fn,\ batch\_size,\ names=None): }
+\DoxyCodeLine{00809\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Splits\ inputs\ into\ slices\ and\ feeds\ each\ slice\ to\ a\ copy\ of\ the\ given }}
+\DoxyCodeLine{00810\ \textcolor{stringliteral}{\ \ \ \ computation\ graph\ and\ then\ combines\ the\ results.\ It\ allows\ you\ to\ run\ a }}
+\DoxyCodeLine{00811\ \textcolor{stringliteral}{\ \ \ \ graph\ on\ a\ batch\ of\ inputs\ even\ if\ the\ graph\ is\ written\ to\ support\ one }}
+\DoxyCodeLine{00812\ \textcolor{stringliteral}{\ \ \ \ instance\ only. }}
+\DoxyCodeLine{00813\ \textcolor{stringliteral}{ }}
+\DoxyCodeLine{00814\ \textcolor{stringliteral}{\ \ \ \ inputs:\ list\ of\ tensors.\ All\ must\ have\ the\ same\ first\ dimension\ length }}
+\DoxyCodeLine{00815\ \textcolor{stringliteral}{\ \ \ \ graph\_fn:\ A\ function\ that\ returns\ a\ TF\ tensor\ that's\ part\ of\ a\ graph. }}
+\DoxyCodeLine{00816\ \textcolor{stringliteral}{\ \ \ \ batch\_size:\ number\ of\ slices\ to\ divide\ the\ data\ into. }}
+\DoxyCodeLine{00817\ \textcolor{stringliteral}{\ \ \ \ names:\ If\ provided,\ assigns\ names\ to\ the\ resulting\ tensors. }}
+\DoxyCodeLine{00818\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}} }
+\DoxyCodeLine{00819\ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keywordflow}{not}\ isinstance(inputs,\ list): }
+\DoxyCodeLine{00820\ \ \ \ \ \ \ \ \ inputs\ =\ [inputs] }
+\DoxyCodeLine{00821\  }
+\DoxyCodeLine{00822\ \ \ \ \ outputs\ =\ [] }
+\DoxyCodeLine{00823\ \ \ \ \ \textcolor{keywordflow}{for}\ i\ \textcolor{keywordflow}{in}\ range(batch\_size): }
+\DoxyCodeLine{00824\ \ \ \ \ \ \ \ \ inputs\_slice\ =\ [x[i]\ \textcolor{keywordflow}{for}\ x\ \textcolor{keywordflow}{in}\ inputs] }
+\DoxyCodeLine{00825\ \ \ \ \ \ \ \ \ output\_slice\ =\ graph\_fn(*inputs\_slice) }
+\DoxyCodeLine{00826\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keywordflow}{not}\ isinstance(output\_slice,\ (tuple,\ list)): }
+\DoxyCodeLine{00827\ \ \ \ \ \ \ \ \ \ \ \ \ output\_slice\ =\ [output\_slice] }
+\DoxyCodeLine{00828\ \ \ \ \ \ \ \ \ outputs.append(output\_slice) }
+\DoxyCodeLine{00829\ \ \ \ \ \textcolor{comment}{\#\ Change\ outputs\ from\ a\ list\ of\ slices\ where\ each\ is }}
+\DoxyCodeLine{00830\ \ \ \ \ \textcolor{comment}{\#\ a\ list\ of\ outputs\ to\ a\ list\ of\ outputs\ and\ each\ has }}
+\DoxyCodeLine{00831\ \ \ \ \ \textcolor{comment}{\#\ a\ list\ of\ slices }}
+\DoxyCodeLine{00832\ \ \ \ \ outputs\ =\ list(zip(*outputs)) }
+\DoxyCodeLine{00833\  }
+\DoxyCodeLine{00834\ \ \ \ \ \textcolor{keywordflow}{if}\ names\ \textcolor{keywordflow}{is}\ \textcolor{keywordtype}{None}: }
+\DoxyCodeLine{00835\ \ \ \ \ \ \ \ \ names\ =\ [\textcolor{keywordtype}{None}]\ *\ len(outputs) }
+\DoxyCodeLine{00836\  }
+\DoxyCodeLine{00837\ \ \ \ \ result\ =\ [tf.stack(o,\ axis=0,\ name=n) }
+\DoxyCodeLine{00838\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ o,\ n\ \textcolor{keywordflow}{in}\ zip(outputs,\ names)] }
+\DoxyCodeLine{00839\ \ \ \ \ \textcolor{keywordflow}{if}\ len(result)\ ==\ 1: }
+\DoxyCodeLine{00840\ \ \ \ \ \ \ \ \ result\ =\ result[0] }
+\DoxyCodeLine{00841\  }
+\DoxyCodeLine{00842\ \ \ \ \ \textcolor{keywordflow}{return}\ result }
+\DoxyCodeLine{00843\  }
+\DoxyCodeLine{00844\  }
+
+\end{DoxyCode}
+\Hypertarget{a00136_a91902236d996fed61ce52c46259ac538}\label{a00136_a91902236d996fed61ce52c46259ac538} 
+\index{PeopleTracker.src.utils@{PeopleTracker.src.utils}!box\_refinement@{box\_refinement}}
+\index{box\_refinement@{box\_refinement}!PeopleTracker.src.utils@{PeopleTracker.src.utils}}
+\doxysubsubsection{\texorpdfstring{box\_refinement()}{box\_refinement()}}
+{\footnotesize\ttfamily box\+\_\+refinement (\begin{DoxyParamCaption}\item[{}]{box,  }\item[{}]{gt\+\_\+box }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Compute refinement needed to transform box to gt_box.
+box and gt_box are [N, (y1, x1, y2, x2)]. (y2, x2) is
+assumed to be outside the box.
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00214\ \textcolor{keyword}{def\ }box\_refinement(box,\ gt\_box): }
+\DoxyCodeLine{00215\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Compute\ refinement\ needed\ to\ transform\ box\ to\ gt\_box. }}
+\DoxyCodeLine{00216\ \textcolor{stringliteral}{\ \ \ \ box\ and\ gt\_box\ are\ [N,\ (y1,\ x1,\ y2,\ x2)].\ (y2,\ x2)\ is }}
+\DoxyCodeLine{00217\ \textcolor{stringliteral}{\ \ \ \ assumed\ to\ be\ outside\ the\ box. }}
+\DoxyCodeLine{00218\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}} }
+\DoxyCodeLine{00219\ \ \ \ \ box\ =\ box.astype(np.float32) }
+\DoxyCodeLine{00220\ \ \ \ \ gt\_box\ =\ gt\_box.astype(np.float32) }
+\DoxyCodeLine{00221\  }
+\DoxyCodeLine{00222\ \ \ \ \ height\ =\ box[:,\ 2]\ -\/\ box[:,\ 0] }
+\DoxyCodeLine{00223\ \ \ \ \ width\ =\ box[:,\ 3]\ -\/\ box[:,\ 1] }
+\DoxyCodeLine{00224\ \ \ \ \ center\_y\ =\ box[:,\ 0]\ +\ 0.5\ *\ height }
+\DoxyCodeLine{00225\ \ \ \ \ center\_x\ =\ box[:,\ 1]\ +\ 0.5\ *\ width }
+\DoxyCodeLine{00226\  }
+\DoxyCodeLine{00227\ \ \ \ \ gt\_height\ =\ gt\_box[:,\ 2]\ -\/\ gt\_box[:,\ 0] }
+\DoxyCodeLine{00228\ \ \ \ \ gt\_width\ =\ gt\_box[:,\ 3]\ -\/\ gt\_box[:,\ 1] }
+\DoxyCodeLine{00229\ \ \ \ \ gt\_center\_y\ =\ gt\_box[:,\ 0]\ +\ 0.5\ *\ gt\_height }
+\DoxyCodeLine{00230\ \ \ \ \ gt\_center\_x\ =\ gt\_box[:,\ 1]\ +\ 0.5\ *\ gt\_width }
+\DoxyCodeLine{00231\  }
+\DoxyCodeLine{00232\ \ \ \ \ dy\ =\ (gt\_center\_y\ -\/\ center\_y)\ /\ height }
+\DoxyCodeLine{00233\ \ \ \ \ dx\ =\ (gt\_center\_x\ -\/\ center\_x)\ /\ width }
+\DoxyCodeLine{00234\ \ \ \ \ dh\ =\ np.log(gt\_height\ /\ height) }
+\DoxyCodeLine{00235\ \ \ \ \ dw\ =\ np.log(gt\_width\ /\ width) }
+\DoxyCodeLine{00236\  }
+\DoxyCodeLine{00237\ \ \ \ \ \textcolor{keywordflow}{return}\ np.stack([dy,\ dx,\ dh,\ dw],\ axis=1) }
+\DoxyCodeLine{00238\  }
+\DoxyCodeLine{00239\  }
+
+\end{DoxyCode}
+\Hypertarget{a00136_a02d5a032da1926059b55a8c91cbc2610}\label{a00136_a02d5a032da1926059b55a8c91cbc2610} 
+\index{PeopleTracker.src.utils@{PeopleTracker.src.utils}!box\_refinement\_graph@{box\_refinement\_graph}}
+\index{box\_refinement\_graph@{box\_refinement\_graph}!PeopleTracker.src.utils@{PeopleTracker.src.utils}}
+\doxysubsubsection{\texorpdfstring{box\_refinement\_graph()}{box\_refinement\_graph()}}
+{\footnotesize\ttfamily box\+\_\+refinement\+\_\+graph (\begin{DoxyParamCaption}\item[{}]{box,  }\item[{}]{gt\+\_\+box }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Compute refinement needed to transform box to gt_box.
+box and gt_box are [N, (y1, x1, y2, x2)]
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00188\ \textcolor{keyword}{def\ }box\_refinement\_graph(box,\ gt\_box): }
+\DoxyCodeLine{00189\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Compute\ refinement\ needed\ to\ transform\ box\ to\ gt\_box. }}
+\DoxyCodeLine{00190\ \textcolor{stringliteral}{\ \ \ \ box\ and\ gt\_box\ are\ [N,\ (y1,\ x1,\ y2,\ x2)] }}
+\DoxyCodeLine{00191\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}} }
+\DoxyCodeLine{00192\ \ \ \ \ box\ =\ tf.cast(box,\ tf.float32) }
+\DoxyCodeLine{00193\ \ \ \ \ gt\_box\ =\ tf.cast(gt\_box,\ tf.float32) }
+\DoxyCodeLine{00194\  }
+\DoxyCodeLine{00195\ \ \ \ \ height\ =\ box[:,\ 2]\ -\/\ box[:,\ 0] }
+\DoxyCodeLine{00196\ \ \ \ \ width\ =\ box[:,\ 3]\ -\/\ box[:,\ 1] }
+\DoxyCodeLine{00197\ \ \ \ \ center\_y\ =\ box[:,\ 0]\ +\ 0.5\ *\ height }
+\DoxyCodeLine{00198\ \ \ \ \ center\_x\ =\ box[:,\ 1]\ +\ 0.5\ *\ width }
+\DoxyCodeLine{00199\  }
+\DoxyCodeLine{00200\ \ \ \ \ gt\_height\ =\ gt\_box[:,\ 2]\ -\/\ gt\_box[:,\ 0] }
+\DoxyCodeLine{00201\ \ \ \ \ gt\_width\ =\ gt\_box[:,\ 3]\ -\/\ gt\_box[:,\ 1] }
+\DoxyCodeLine{00202\ \ \ \ \ gt\_center\_y\ =\ gt\_box[:,\ 0]\ +\ 0.5\ *\ gt\_height }
+\DoxyCodeLine{00203\ \ \ \ \ gt\_center\_x\ =\ gt\_box[:,\ 1]\ +\ 0.5\ *\ gt\_width }
+\DoxyCodeLine{00204\  }
+\DoxyCodeLine{00205\ \ \ \ \ dy\ =\ (gt\_center\_y\ -\/\ center\_y)\ /\ height }
+\DoxyCodeLine{00206\ \ \ \ \ dx\ =\ (gt\_center\_x\ -\/\ center\_x)\ /\ width }
+\DoxyCodeLine{00207\ \ \ \ \ dh\ =\ tf.log(gt\_height\ /\ height) }
+\DoxyCodeLine{00208\ \ \ \ \ dw\ =\ tf.log(gt\_width\ /\ width) }
+\DoxyCodeLine{00209\  }
+\DoxyCodeLine{00210\ \ \ \ \ result\ =\ tf.stack([dy,\ dx,\ dh,\ dw],\ axis=1) }
+\DoxyCodeLine{00211\ \ \ \ \ \textcolor{keywordflow}{return}\ result }
+\DoxyCodeLine{00212\  }
+\DoxyCodeLine{00213\  }
+
+\end{DoxyCode}
+\Hypertarget{a00136_aa2a69305337265325ecceb7631d94f5d}\label{a00136_aa2a69305337265325ecceb7631d94f5d} 
+\index{PeopleTracker.src.utils@{PeopleTracker.src.utils}!compute\_ap@{compute\_ap}}
+\index{compute\_ap@{compute\_ap}!PeopleTracker.src.utils@{PeopleTracker.src.utils}}
+\doxysubsubsection{\texorpdfstring{compute\_ap()}{compute\_ap()}}
+{\footnotesize\ttfamily compute\+\_\+ap (\begin{DoxyParamCaption}\item[{}]{gt\+\_\+boxes,  }\item[{}]{gt\+\_\+class\+\_\+ids,  }\item[{}]{gt\+\_\+masks,  }\item[{}]{pred\+\_\+boxes,  }\item[{}]{pred\+\_\+class\+\_\+ids,  }\item[{}]{pred\+\_\+scores,  }\item[{}]{pred\+\_\+masks,  }\item[{}]{iou\+\_\+threshold = {\ttfamily 0.5} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Compute Average Precision at a set IoU threshold (default 0.5).
+
+Returns:
+mAP: Mean Average Precision
+precisions: List of precisions at different class score thresholds.
+recalls: List of recall values at different class score thresholds.
+overlaps: [pred_boxes, gt_boxes] IoU overlaps.
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00722\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ iou\_threshold=0.5): }
+\DoxyCodeLine{00723\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Compute\ Average\ Precision\ at\ a\ set\ IoU\ threshold\ (default\ 0.5). }}
+\DoxyCodeLine{00724\ \textcolor{stringliteral}{ }}
+\DoxyCodeLine{00725\ \textcolor{stringliteral}{\ \ \ \ Returns: }}
+\DoxyCodeLine{00726\ \textcolor{stringliteral}{\ \ \ \ mAP:\ Mean\ Average\ Precision }}
+\DoxyCodeLine{00727\ \textcolor{stringliteral}{\ \ \ \ precisions:\ List\ of\ precisions\ at\ different\ class\ score\ thresholds. }}
+\DoxyCodeLine{00728\ \textcolor{stringliteral}{\ \ \ \ recalls:\ List\ of\ recall\ values\ at\ different\ class\ score\ thresholds. }}
+\DoxyCodeLine{00729\ \textcolor{stringliteral}{\ \ \ \ overlaps:\ [pred\_boxes,\ gt\_boxes]\ IoU\ overlaps. }}
+\DoxyCodeLine{00730\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}} }
+\DoxyCodeLine{00731\ \ \ \ \ \textcolor{comment}{\#\ Get\ matches\ and\ overlaps }}
+\DoxyCodeLine{00732\ \ \ \ \ gt\_match,\ pred\_match,\ overlaps\ =\ compute\_matches( }
+\DoxyCodeLine{00733\ \ \ \ \ \ \ \ \ gt\_boxes,\ gt\_class\_ids,\ gt\_masks, }
+\DoxyCodeLine{00734\ \ \ \ \ \ \ \ \ pred\_boxes,\ pred\_class\_ids,\ pred\_scores,\ pred\_masks, }
+\DoxyCodeLine{00735\ \ \ \ \ \ \ \ \ iou\_threshold) }
+\DoxyCodeLine{00736\  }
+\DoxyCodeLine{00737\ \ \ \ \ \textcolor{comment}{\#\ Compute\ precision\ and\ recall\ at\ each\ prediction\ box\ step }}
+\DoxyCodeLine{00738\ \ \ \ \ precisions\ =\ np.cumsum(pred\_match\ >\ -\/1)\ /\ (np.arange(len(pred\_match))\ +\ 1) }
+\DoxyCodeLine{00739\ \ \ \ \ recalls\ =\ np.cumsum(pred\_match\ >\ -\/1).astype(np.float32)\ /\ len(gt\_match) }
+\DoxyCodeLine{00740\  }
+\DoxyCodeLine{00741\ \ \ \ \ \textcolor{comment}{\#\ Pad\ with\ start\ and\ end\ values\ to\ simplify\ the\ math }}
+\DoxyCodeLine{00742\ \ \ \ \ precisions\ =\ np.concatenate([[0],\ precisions,\ [0]]) }
+\DoxyCodeLine{00743\ \ \ \ \ recalls\ =\ np.concatenate([[0],\ recalls,\ [1]]) }
+\DoxyCodeLine{00744\  }
+\DoxyCodeLine{00745\ \ \ \ \ \textcolor{comment}{\#\ Ensure\ precision\ values\ decrease\ but\ don't\ increase.\ This\ way,\ the }}
+\DoxyCodeLine{00746\ \ \ \ \ \textcolor{comment}{\#\ precision\ value\ at\ each\ recall\ threshold\ is\ the\ maximum\ it\ can\ be }}
+\DoxyCodeLine{00747\ \ \ \ \ \textcolor{comment}{\#\ for\ all\ following\ recall\ thresholds,\ as\ specified\ by\ the\ VOC\ paper. }}
+\DoxyCodeLine{00748\ \ \ \ \ \textcolor{keywordflow}{for}\ i\ \textcolor{keywordflow}{in}\ range(len(precisions)\ -\/\ 2,\ -\/1,\ -\/1): }
+\DoxyCodeLine{00749\ \ \ \ \ \ \ \ \ precisions[i]\ =\ np.maximum(precisions[i],\ precisions[i\ +\ 1]) }
+\DoxyCodeLine{00750\  }
+\DoxyCodeLine{00751\ \ \ \ \ \textcolor{comment}{\#\ Compute\ mean\ AP\ over\ recall\ range }}
+\DoxyCodeLine{00752\ \ \ \ \ indices\ =\ np.where(recalls[:-\/1]\ !=\ recalls[1:])[0]\ +\ 1 }
+\DoxyCodeLine{00753\ \ \ \ \ mAP\ =\ np.sum((recalls[indices]\ -\/\ recalls[indices\ -\/\ 1])\ * }
+\DoxyCodeLine{00754\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ precisions[indices]) }
+\DoxyCodeLine{00755\  }
+\DoxyCodeLine{00756\ \ \ \ \ \textcolor{keywordflow}{return}\ mAP,\ precisions,\ recalls,\ overlaps }
+\DoxyCodeLine{00757\  }
+\DoxyCodeLine{00758\  }
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{a00136_af5f7f7aa33fdb94ed802f23199ad0d56}{People\+Tracker.\+src.\+utils.\+compute\+\_\+matches()}}.
+
+
+
+Referenced by \mbox{\hyperlink{a00136_a629c576d5b82079e1236348613463e95}{People\+Tracker.\+src.\+utils.\+compute\+\_\+ap\+\_\+range()}}.
+
+Here is the call graph for this function\+:
+% FIG 0
+Here is the caller graph for this function\+:
+% FIG 1
+\Hypertarget{a00136_a629c576d5b82079e1236348613463e95}\label{a00136_a629c576d5b82079e1236348613463e95} 
+\index{PeopleTracker.src.utils@{PeopleTracker.src.utils}!compute\_ap\_range@{compute\_ap\_range}}
+\index{compute\_ap\_range@{compute\_ap\_range}!PeopleTracker.src.utils@{PeopleTracker.src.utils}}
+\doxysubsubsection{\texorpdfstring{compute\_ap\_range()}{compute\_ap\_range()}}
+{\footnotesize\ttfamily compute\+\_\+ap\+\_\+range (\begin{DoxyParamCaption}\item[{}]{gt\+\_\+box,  }\item[{}]{gt\+\_\+class\+\_\+id,  }\item[{}]{gt\+\_\+mask,  }\item[{}]{pred\+\_\+box,  }\item[{}]{pred\+\_\+class\+\_\+id,  }\item[{}]{pred\+\_\+score,  }\item[{}]{pred\+\_\+mask,  }\item[{}]{iou\+\_\+thresholds = {\ttfamily None},  }\item[{}]{verbose = {\ttfamily 1} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Compute AP over a range or IoU thresholds. Default range is 0.5-0.95.\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00761\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ iou\_thresholds=\textcolor{keywordtype}{None},\ verbose=1): }
+\DoxyCodeLine{00762\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Compute\ AP\ over\ a\ range\ or\ IoU\ thresholds.\ Default\ range\ is\ 0.5-\/0.95."{}"{}"{}} }
+\DoxyCodeLine{00763\ \ \ \ \ \textcolor{comment}{\#\ Default\ is\ 0.5\ to\ 0.95\ with\ increments\ of\ 0.05 }}
+\DoxyCodeLine{00764\ \ \ \ \ iou\_thresholds\ =\ iou\_thresholds\ \textcolor{keywordflow}{or}\ np.arange(0.5,\ 1.0,\ 0.05) }
+\DoxyCodeLine{00765\ \ \ \ \  }
+\DoxyCodeLine{00766\ \ \ \ \ \textcolor{comment}{\#\ Compute\ AP\ over\ range\ of\ IoU\ thresholds }}
+\DoxyCodeLine{00767\ \ \ \ \ AP\ =\ [] }
+\DoxyCodeLine{00768\ \ \ \ \ \textcolor{keywordflow}{for}\ iou\_threshold\ \textcolor{keywordflow}{in}\ iou\_thresholds: }
+\DoxyCodeLine{00769\ \ \ \ \ \ \ \ \ ap,\ precisions,\ recalls,\ overlaps\ =\(\backslash\) }
+\DoxyCodeLine{00770\ \ \ \ \ \ \ \ \ \ \ \ \ compute\_ap(gt\_box,\ gt\_class\_id,\ gt\_mask, }
+\DoxyCodeLine{00771\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pred\_box,\ pred\_class\_id,\ pred\_score,\ pred\_mask, }
+\DoxyCodeLine{00772\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ iou\_threshold=iou\_threshold) }
+\DoxyCodeLine{00773\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ verbose: }
+\DoxyCodeLine{00774\ \ \ \ \ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{"{}AP\ @\{:.2f\}:\(\backslash\)t\ \{:.3f\}"{}}.format(iou\_threshold,\ ap)) }
+\DoxyCodeLine{00775\ \ \ \ \ \ \ \ \ AP.append(ap) }
+\DoxyCodeLine{00776\ \ \ \ \ AP\ =\ np.array(AP).mean() }
+\DoxyCodeLine{00777\ \ \ \ \ \textcolor{keywordflow}{if}\ verbose: }
+\DoxyCodeLine{00778\ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{"{}AP\ @\{:.2f\}-\/\{:.2f\}:\(\backslash\)t\ \{:.3f\}"{}}.format( }
+\DoxyCodeLine{00779\ \ \ \ \ \ \ \ \ \ \ \ \ iou\_thresholds[0],\ iou\_thresholds[-\/1],\ AP)) }
+\DoxyCodeLine{00780\ \ \ \ \ \textcolor{keywordflow}{return}\ AP }
+\DoxyCodeLine{00781\  }
+\DoxyCodeLine{00782\  }
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{a00136_aa2a69305337265325ecceb7631d94f5d}{People\+Tracker.\+src.\+utils.\+compute\+\_\+ap()}}.
+
+Here is the call graph for this function\+:
+% FIG 2
+\Hypertarget{a00136_a54175253a17d081ebc1bcd813cab91f7}\label{a00136_a54175253a17d081ebc1bcd813cab91f7} 
+\index{PeopleTracker.src.utils@{PeopleTracker.src.utils}!compute\_iou@{compute\_iou}}
+\index{compute\_iou@{compute\_iou}!PeopleTracker.src.utils@{PeopleTracker.src.utils}}
+\doxysubsubsection{\texorpdfstring{compute\_iou()}{compute\_iou()}}
+{\footnotesize\ttfamily compute\+\_\+iou (\begin{DoxyParamCaption}\item[{}]{box1,  }\item[{}]{box2 }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Computes IOU of the two bounding boxes.
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00080\ \textcolor{keyword}{def\ }compute\_iou(box1,\ box2): }
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{} }}
+\DoxyCodeLine{00082\ \textcolor{stringliteral}{\ \ \ \ Computes\ IOU\ of\ the\ two\ bounding\ boxes. }}
+\DoxyCodeLine{00083\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}} }
+\DoxyCodeLine{00084\ \ \ \ \ b1\_area\ =\ () }
+\DoxyCodeLine{00085\  }
+\DoxyCodeLine{00086\ \textcolor{comment}{\#\ def\ compute\_overlaps(boxes1,\ boxes2): }}
+\DoxyCodeLine{00087\ \textcolor{comment}{\#\ \ \ \ \ "{}"{}"{}Computes\ IoU\ overlaps\ between\ two\ sets\ of\ boxes. }}
+\DoxyCodeLine{00088\ \textcolor{comment}{\#\ \ \ \ \ boxes1,\ boxes2:\ [N,\ (y1,\ x1,\ y2,\ x2)]. }}
+\DoxyCodeLine{00089\  }
+\DoxyCodeLine{00090\ \textcolor{comment}{\#\ \ \ \ \ For\ better\ performance,\ pass\ the\ largest\ set\ first\ and\ the\ smaller\ second. }}
+\DoxyCodeLine{00091\ \textcolor{comment}{\#\ \ \ \ \ "{}"{}"{} }}
+\DoxyCodeLine{00092\ \textcolor{comment}{\#\ \ \ \ \ \#\ Areas\ of\ anchors\ and\ GT\ boxes }}
+\DoxyCodeLine{00093\ \textcolor{comment}{\#\ \ \ \ \ area1\ =\ (boxes1[:,\ 2]\ -\/\ boxes1[:,\ 0])\ *\ (boxes1[:,\ 3]\ -\/\ boxes1[:,\ 1]) }}
+\DoxyCodeLine{00094\ \textcolor{comment}{\#\ \ \ \ \ area2\ =\ (boxes2[:,\ 2]\ -\/\ boxes2[:,\ 0])\ *\ (boxes2[:,\ 3]\ -\/\ boxes2[:,\ 1]) }}
+\DoxyCodeLine{00095\  }
+\DoxyCodeLine{00096\ \textcolor{comment}{\#\ \ \ \ \ \#\ Compute\ overlaps\ to\ generate\ matrix\ [boxes1\ count,\ boxes2\ count] }}
+\DoxyCodeLine{00097\ \textcolor{comment}{\#\ \ \ \ \ \#\ Each\ cell\ contains\ the\ IoU\ value. }}
+\DoxyCodeLine{00098\ \textcolor{comment}{\#\ \ \ \ \ overlaps\ =\ np.zeros((boxes1.shape[0],\ boxes2.shape[0])) }}
+\DoxyCodeLine{00099\ \textcolor{comment}{\#\ \ \ \ \ for\ i\ in\ range(overlaps.shape[1]): }}
+\DoxyCodeLine{00100\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ box2\ =\ boxes2[i] }}
+\DoxyCodeLine{00101\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ overlaps[:,\ i]\ =\ compute\_iou(box2,\ boxes1,\ area2[i],\ area1) }}
+\DoxyCodeLine{00102\ \textcolor{comment}{\#\ \ \ \ \ return\ overlaps }}
+\DoxyCodeLine{00103\  }
+\DoxyCodeLine{00104\  }
+
+\end{DoxyCode}
+
+
+Referenced by \mbox{\hyperlink{a00136_ac003690af3dada90fdaf9269da467d27}{People\+Tracker.\+src.\+utils.\+non\+\_\+max\+\_\+suppression()}}.
+
+Here is the caller graph for this function\+:
+% FIG 3
+\Hypertarget{a00136_af5f7f7aa33fdb94ed802f23199ad0d56}\label{a00136_af5f7f7aa33fdb94ed802f23199ad0d56} 
+\index{PeopleTracker.src.utils@{PeopleTracker.src.utils}!compute\_matches@{compute\_matches}}
+\index{compute\_matches@{compute\_matches}!PeopleTracker.src.utils@{PeopleTracker.src.utils}}
+\doxysubsubsection{\texorpdfstring{compute\_matches()}{compute\_matches()}}
+{\footnotesize\ttfamily compute\+\_\+matches (\begin{DoxyParamCaption}\item[{}]{gt\+\_\+boxes,  }\item[{}]{gt\+\_\+class\+\_\+ids,  }\item[{}]{gt\+\_\+masks,  }\item[{}]{pred\+\_\+boxes,  }\item[{}]{pred\+\_\+class\+\_\+ids,  }\item[{}]{pred\+\_\+scores,  }\item[{}]{pred\+\_\+masks,  }\item[{}]{iou\+\_\+threshold = {\ttfamily 0.5},  }\item[{}]{score\+\_\+threshold = {\ttfamily 0.0} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Finds matches between prediction and ground truth instances.
+
+Returns:
+    gt_match: 1-D array. For each GT box it has the index of the matched
+              predicted box.
+    pred_match: 1-D array. For each predicted box, it has the index of
+                the matched ground truth box.
+    overlaps: [pred_boxes, gt_boxes] IoU overlaps.
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00663\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ iou\_threshold=0.5,\ score\_threshold=0.0): }
+\DoxyCodeLine{00664\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Finds\ matches\ between\ prediction\ and\ ground\ truth\ instances. }}
+\DoxyCodeLine{00665\ \textcolor{stringliteral}{ }}
+\DoxyCodeLine{00666\ \textcolor{stringliteral}{\ \ \ \ Returns: }}
+\DoxyCodeLine{00667\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ gt\_match:\ 1-\/D\ array.\ For\ each\ GT\ box\ it\ has\ the\ index\ of\ the\ matched }}
+\DoxyCodeLine{00668\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ predicted\ box. }}
+\DoxyCodeLine{00669\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ pred\_match:\ 1-\/D\ array.\ For\ each\ predicted\ box,\ it\ has\ the\ index\ of }}
+\DoxyCodeLine{00670\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ the\ matched\ ground\ truth\ box. }}
+\DoxyCodeLine{00671\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ overlaps:\ [pred\_boxes,\ gt\_boxes]\ IoU\ overlaps. }}
+\DoxyCodeLine{00672\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}} }
+\DoxyCodeLine{00673\ \ \ \ \ \textcolor{comment}{\#\ Trim\ zero\ padding }}
+\DoxyCodeLine{00674\ \ \ \ \ \textcolor{comment}{\#\ TODO:\ cleaner\ to\ do\ zero\ unpadding\ upstream }}
+\DoxyCodeLine{00675\ \ \ \ \ gt\_boxes\ =\ trim\_zeros(gt\_boxes) }
+\DoxyCodeLine{00676\ \ \ \ \ gt\_masks\ =\ gt\_masks[...,\ :gt\_boxes.shape[0]] }
+\DoxyCodeLine{00677\ \ \ \ \ pred\_boxes\ =\ trim\_zeros(pred\_boxes) }
+\DoxyCodeLine{00678\ \ \ \ \ pred\_scores\ =\ pred\_scores[:pred\_boxes.shape[0]] }
+\DoxyCodeLine{00679\ \ \ \ \ \textcolor{comment}{\#\ Sort\ predictions\ by\ score\ from\ high\ to\ low }}
+\DoxyCodeLine{00680\ \ \ \ \ indices\ =\ np.argsort(pred\_scores)[::-\/1] }
+\DoxyCodeLine{00681\ \ \ \ \ pred\_boxes\ =\ pred\_boxes[indices] }
+\DoxyCodeLine{00682\ \ \ \ \ pred\_class\_ids\ =\ pred\_class\_ids[indices] }
+\DoxyCodeLine{00683\ \ \ \ \ pred\_scores\ =\ pred\_scores[indices] }
+\DoxyCodeLine{00684\ \ \ \ \ pred\_masks\ =\ pred\_masks[...,\ indices] }
+\DoxyCodeLine{00685\  }
+\DoxyCodeLine{00686\ \ \ \ \ \textcolor{comment}{\#\ Compute\ IoU\ overlaps\ [pred\_masks,\ gt\_masks] }}
+\DoxyCodeLine{00687\ \ \ \ \ overlaps\ =\ compute\_overlaps\_masks(pred\_masks,\ gt\_masks) }
+\DoxyCodeLine{00688\  }
+\DoxyCodeLine{00689\ \ \ \ \ \textcolor{comment}{\#\ Loop\ through\ predictions\ and\ find\ matching\ ground\ truth\ boxes }}
+\DoxyCodeLine{00690\ \ \ \ \ match\_count\ =\ 0 }
+\DoxyCodeLine{00691\ \ \ \ \ pred\_match\ =\ -\/1\ *\ np.ones([pred\_boxes.shape[0]]) }
+\DoxyCodeLine{00692\ \ \ \ \ gt\_match\ =\ -\/1\ *\ np.ones([gt\_boxes.shape[0]]) }
+\DoxyCodeLine{00693\ \ \ \ \ \textcolor{keywordflow}{for}\ i\ \textcolor{keywordflow}{in}\ range(len(pred\_boxes)): }
+\DoxyCodeLine{00694\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Find\ best\ matching\ ground\ truth\ box }}
+\DoxyCodeLine{00695\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ 1.\ Sort\ matches\ by\ score }}
+\DoxyCodeLine{00696\ \ \ \ \ \ \ \ \ sorted\_ixs\ =\ np.argsort(overlaps[i])[::-\/1] }
+\DoxyCodeLine{00697\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ 2.\ Remove\ low\ scores }}
+\DoxyCodeLine{00698\ \ \ \ \ \ \ \ \ low\_score\_idx\ =\ np.where(overlaps[i,\ sorted\_ixs]\ <\ score\_threshold)[0] }
+\DoxyCodeLine{00699\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ low\_score\_idx.size\ >\ 0: }
+\DoxyCodeLine{00700\ \ \ \ \ \ \ \ \ \ \ \ \ sorted\_ixs\ =\ sorted\_ixs[:low\_score\_idx[0]] }
+\DoxyCodeLine{00701\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ 3.\ Find\ the\ match }}
+\DoxyCodeLine{00702\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ j\ \textcolor{keywordflow}{in}\ sorted\_ixs: }
+\DoxyCodeLine{00703\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ If\ ground\ truth\ box\ is\ already\ matched,\ go\ to\ next\ one }}
+\DoxyCodeLine{00704\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ gt\_match[j]\ >\ -\/1: }
+\DoxyCodeLine{00705\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue} }
+\DoxyCodeLine{00706\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ If\ we\ reach\ IoU\ smaller\ than\ the\ threshold,\ end\ the\ loop }}
+\DoxyCodeLine{00707\ \ \ \ \ \ \ \ \ \ \ \ \ iou\ =\ overlaps[i,\ j] }
+\DoxyCodeLine{00708\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ iou\ <\ iou\_threshold: }
+\DoxyCodeLine{00709\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break} }
+\DoxyCodeLine{00710\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Do\ we\ have\ a\ match? }}
+\DoxyCodeLine{00711\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ pred\_class\_ids[i]\ ==\ gt\_class\_ids[j]: }
+\DoxyCodeLine{00712\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ match\_count\ +=\ 1 }
+\DoxyCodeLine{00713\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ gt\_match[j]\ =\ i }
+\DoxyCodeLine{00714\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pred\_match[i]\ =\ j }
+\DoxyCodeLine{00715\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break} }
+\DoxyCodeLine{00716\  }
+\DoxyCodeLine{00717\ \ \ \ \ \textcolor{keywordflow}{return}\ gt\_match,\ pred\_match,\ overlaps }
+\DoxyCodeLine{00718\  }
+\DoxyCodeLine{00719\  }
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{a00136_af9c400799ddffca56340bb6b5fa4d7f6}{People\+Tracker.\+src.\+utils.\+compute\+\_\+overlaps\+\_\+masks()}}, and \mbox{\hyperlink{a00136_a41cc5ed08039f095ef85d066b5ac5736}{People\+Tracker.\+src.\+utils.\+trim\+\_\+zeros()}}.
+
+
+
+Referenced by \mbox{\hyperlink{a00136_aa2a69305337265325ecceb7631d94f5d}{People\+Tracker.\+src.\+utils.\+compute\+\_\+ap()}}.
+
+Here is the call graph for this function\+:
+% FIG 4
+Here is the caller graph for this function\+:
+% FIG 5
+\Hypertarget{a00136_af9c400799ddffca56340bb6b5fa4d7f6}\label{a00136_af9c400799ddffca56340bb6b5fa4d7f6} 
+\index{PeopleTracker.src.utils@{PeopleTracker.src.utils}!compute\_overlaps\_masks@{compute\_overlaps\_masks}}
+\index{compute\_overlaps\_masks@{compute\_overlaps\_masks}!PeopleTracker.src.utils@{PeopleTracker.src.utils}}
+\doxysubsubsection{\texorpdfstring{compute\_overlaps\_masks()}{compute\_overlaps\_masks()}}
+{\footnotesize\ttfamily compute\+\_\+overlaps\+\_\+masks (\begin{DoxyParamCaption}\item[{}]{masks1,  }\item[{}]{masks2 }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Computes IoU overlaps between two sets of masks.
+masks1, masks2: [Height, Width, instances]
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00105\ \textcolor{keyword}{def\ }compute\_overlaps\_masks(masks1,\ masks2): }
+\DoxyCodeLine{00106\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Computes\ IoU\ overlaps\ between\ two\ sets\ of\ masks. }}
+\DoxyCodeLine{00107\ \textcolor{stringliteral}{\ \ \ \ masks1,\ masks2:\ [Height,\ Width,\ instances] }}
+\DoxyCodeLine{00108\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}} }
+\DoxyCodeLine{00109\ \ \ \ \  }
+\DoxyCodeLine{00110\ \ \ \ \ \textcolor{comment}{\#\ If\ either\ set\ of\ masks\ is\ empty\ return\ empty\ result }}
+\DoxyCodeLine{00111\ \ \ \ \ \textcolor{keywordflow}{if}\ masks1.shape[-\/1]\ ==\ 0\ \textcolor{keywordflow}{or}\ masks2.shape[-\/1]\ ==\ 0: }
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ np.zeros((masks1.shape[-\/1],\ masks2.shape[-\/1])) }
+\DoxyCodeLine{00113\ \ \ \ \ \textcolor{comment}{\#\ flatten\ masks\ and\ compute\ their\ areas }}
+\DoxyCodeLine{00114\ \ \ \ \ masks1\ =\ np.reshape(masks1\ >\ .5,\ (-\/1,\ masks1.shape[-\/1])).astype(np.float32) }
+\DoxyCodeLine{00115\ \ \ \ \ masks2\ =\ np.reshape(masks2\ >\ .5,\ (-\/1,\ masks2.shape[-\/1])).astype(np.float32) }
+\DoxyCodeLine{00116\ \ \ \ \ area1\ =\ np.sum(masks1,\ axis=0) }
+\DoxyCodeLine{00117\ \ \ \ \ area2\ =\ np.sum(masks2,\ axis=0) }
+\DoxyCodeLine{00118\  }
+\DoxyCodeLine{00119\ \ \ \ \ \textcolor{comment}{\#\ intersections\ and\ union }}
+\DoxyCodeLine{00120\ \ \ \ \ intersections\ =\ np.dot(masks1.T,\ masks2) }
+\DoxyCodeLine{00121\ \ \ \ \ union\ =\ area1[:,\ \textcolor{keywordtype}{None}]\ +\ area2[\textcolor{keywordtype}{None},\ :]\ -\/\ intersections }
+\DoxyCodeLine{00122\ \ \ \ \ overlaps\ =\ intersections\ /\ union }
+\DoxyCodeLine{00123\  }
+\DoxyCodeLine{00124\ \ \ \ \ \textcolor{keywordflow}{return}\ overlaps }
+\DoxyCodeLine{00125\  }
+\DoxyCodeLine{00126\  }
+
+\end{DoxyCode}
+
+
+Referenced by \mbox{\hyperlink{a00136_af5f7f7aa33fdb94ed802f23199ad0d56}{People\+Tracker.\+src.\+utils.\+compute\+\_\+matches()}}, and \mbox{\hyperlink{a00136_a5f05888211cf7c5a974ca4596fdb3718}{People\+Tracker.\+src.\+utils.\+compute\+\_\+recall()}}.
+
+Here is the caller graph for this function\+:
+% FIG 6
+\Hypertarget{a00136_a5f05888211cf7c5a974ca4596fdb3718}\label{a00136_a5f05888211cf7c5a974ca4596fdb3718} 
+\index{PeopleTracker.src.utils@{PeopleTracker.src.utils}!compute\_recall@{compute\_recall}}
+\index{compute\_recall@{compute\_recall}!PeopleTracker.src.utils@{PeopleTracker.src.utils}}
+\doxysubsubsection{\texorpdfstring{compute\_recall()}{compute\_recall()}}
+{\footnotesize\ttfamily compute\+\_\+recall (\begin{DoxyParamCaption}\item[{}]{pred\+\_\+boxes,  }\item[{}]{gt\+\_\+boxes,  }\item[{}]{iou }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Compute the recall at the given IoU threshold. It's an indication
+of how many GT boxes were found by the given prediction boxes.
+
+pred_boxes: [N, (y1, x1, y2, x2)] in image coordinates
+gt_boxes: [N, (y1, x1, y2, x2)] in image coordinates
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00783\ \textcolor{keyword}{def\ }compute\_recall(pred\_boxes,\ gt\_boxes,\ iou): }
+\DoxyCodeLine{00784\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Compute\ the\ recall\ at\ the\ given\ IoU\ threshold.\ It's\ an\ indication }}
+\DoxyCodeLine{00785\ \textcolor{stringliteral}{\ \ \ \ of\ how\ many\ GT\ boxes\ were\ found\ by\ the\ given\ prediction\ boxes. }}
+\DoxyCodeLine{00786\ \textcolor{stringliteral}{ }}
+\DoxyCodeLine{00787\ \textcolor{stringliteral}{\ \ \ \ pred\_boxes:\ [N,\ (y1,\ x1,\ y2,\ x2)]\ in\ image\ coordinates }}
+\DoxyCodeLine{00788\ \textcolor{stringliteral}{\ \ \ \ gt\_boxes:\ [N,\ (y1,\ x1,\ y2,\ x2)]\ in\ image\ coordinates }}
+\DoxyCodeLine{00789\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}} }
+\DoxyCodeLine{00790\ \ \ \ \ \textcolor{comment}{\#\ Measure\ overlaps }}
+\DoxyCodeLine{00791\ \ \ \ \ overlaps\ =\ compute\_overlaps\_masks(pred\_boxes,\ gt\_boxes) }
+\DoxyCodeLine{00792\ \ \ \ \ iou\_max\ =\ np.max(overlaps,\ axis=1) }
+\DoxyCodeLine{00793\ \ \ \ \ iou\_argmax\ =\ np.argmax(overlaps,\ axis=1) }
+\DoxyCodeLine{00794\ \ \ \ \ positive\_ids\ =\ np.where(iou\_max\ >=\ iou)[0] }
+\DoxyCodeLine{00795\ \ \ \ \ matched\_gt\_boxes\ =\ iou\_argmax[positive\_ids] }
+\DoxyCodeLine{00796\  }
+\DoxyCodeLine{00797\ \ \ \ \ recall\ =\ len(set(matched\_gt\_boxes))\ /\ gt\_boxes.shape[0] }
+\DoxyCodeLine{00798\ \ \ \ \ \textcolor{keywordflow}{return}\ recall,\ positive\_ids }
+\DoxyCodeLine{00799\  }
+\DoxyCodeLine{00800\  }
+\DoxyCodeLine{00801\ \textcolor{comment}{\#\ \#\#\ Batch\ Slicing }}
+\DoxyCodeLine{00802\ \textcolor{comment}{\#\ Some\ custom\ layers\ support\ a\ batch\ size\ of\ 1\ only,\ and\ require\ a\ lot\ of\ work }}
+\DoxyCodeLine{00803\ \textcolor{comment}{\#\ to\ support\ batches\ greater\ than\ 1.\ This\ function\ slices\ an\ input\ tensor }}
+\DoxyCodeLine{00804\ \textcolor{comment}{\#\ across\ the\ batch\ dimension\ and\ feeds\ batches\ of\ size\ 1.\ Effectively, }}
+\DoxyCodeLine{00805\ \textcolor{comment}{\#\ an\ easy\ way\ to\ support\ batches\ >\ 1\ quickly\ with\ little\ code\ modification. }}
+\DoxyCodeLine{00806\ \textcolor{comment}{\#\ In\ the\ long\ run,\ it's\ more\ efficient\ to\ modify\ the\ code\ to\ support\ large }}
+\DoxyCodeLine{00807\ \textcolor{comment}{\#\ batches\ and\ getting\ rid\ of\ this\ function.\ Consider\ this\ a\ temporary\ solution }}
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{a00136_af9c400799ddffca56340bb6b5fa4d7f6}{People\+Tracker.\+src.\+utils.\+compute\+\_\+overlaps\+\_\+masks()}}.
+
+Here is the call graph for this function\+:
+% FIG 7
+\Hypertarget{a00136_a2a452eed5467a833e48d52bc25949a94}\label{a00136_a2a452eed5467a833e48d52bc25949a94} 
+\index{PeopleTracker.src.utils@{PeopleTracker.src.utils}!denorm\_boxes@{denorm\_boxes}}
+\index{denorm\_boxes@{denorm\_boxes}!PeopleTracker.src.utils@{PeopleTracker.src.utils}}
+\doxysubsubsection{\texorpdfstring{denorm\_boxes()}{denorm\_boxes()}}
+{\footnotesize\ttfamily denorm\+\_\+boxes (\begin{DoxyParamCaption}\item[{}]{boxes,  }\item[{}]{shape }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Converts boxes from normalized coordinates to pixel coordinates.
+boxes: [N, (y1, x1, y2, x2)] in normalized coordinates
+shape: [..., (height, width)] in pixels
+
+Note: In pixel coordinates (y2, x2) is outside the box. But in normalized
+coordinates it's inside the box.
+
+Returns:
+    [N, (y1, x1, y2, x2)] in pixel coordinates
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00875\ \textcolor{keyword}{def\ }denorm\_boxes(boxes,\ shape): }
+\DoxyCodeLine{00876\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Converts\ boxes\ from\ normalized\ coordinates\ to\ pixel\ coordinates. }}
+\DoxyCodeLine{00877\ \textcolor{stringliteral}{\ \ \ \ boxes:\ [N,\ (y1,\ x1,\ y2,\ x2)]\ in\ normalized\ coordinates }}
+\DoxyCodeLine{00878\ \textcolor{stringliteral}{\ \ \ \ shape:\ [...,\ (height,\ width)]\ in\ pixels }}
+\DoxyCodeLine{00879\ \textcolor{stringliteral}{ }}
+\DoxyCodeLine{00880\ \textcolor{stringliteral}{\ \ \ \ Note:\ In\ pixel\ coordinates\ (y2,\ x2)\ is\ outside\ the\ box.\ But\ in\ normalized }}
+\DoxyCodeLine{00881\ \textcolor{stringliteral}{\ \ \ \ coordinates\ it's\ inside\ the\ box. }}
+\DoxyCodeLine{00882\ \textcolor{stringliteral}{ }}
+\DoxyCodeLine{00883\ \textcolor{stringliteral}{\ \ \ \ Returns: }}
+\DoxyCodeLine{00884\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ [N,\ (y1,\ x1,\ y2,\ x2)]\ in\ pixel\ coordinates }}
+\DoxyCodeLine{00885\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}} }
+\DoxyCodeLine{00886\ \ \ \ \ h,\ w\ =\ shape }
+\DoxyCodeLine{00887\ \ \ \ \ scale\ =\ np.array([h\ -\/\ 1,\ w\ -\/\ 1,\ h\ -\/\ 1,\ w\ -\/\ 1]) }
+\DoxyCodeLine{00888\ \ \ \ \ shift\ =\ np.array([0,\ 0,\ 1,\ 1]) }
+\DoxyCodeLine{00889\ \ \ \ \ \textcolor{keywordflow}{return}\ np.around(np.multiply(boxes,\ scale)\ +\ shift).astype(np.int32) }
+\DoxyCodeLine{00890\  }
+\DoxyCodeLine{00891\  }
+
+\end{DoxyCode}
+\Hypertarget{a00136_ae198d56e2e3251f0d31a2a3bfbc17f8b}\label{a00136_ae198d56e2e3251f0d31a2a3bfbc17f8b} 
+\index{PeopleTracker.src.utils@{PeopleTracker.src.utils}!distance\_2d@{distance\_2d}}
+\index{distance\_2d@{distance\_2d}!PeopleTracker.src.utils@{PeopleTracker.src.utils}}
+\doxysubsubsection{\texorpdfstring{distance\_2d()}{distance\_2d()}}
+{\footnotesize\ttfamily distance\+\_\+2d (\begin{DoxyParamCaption}\item[{}]{p1,  }\item[{}]{p2 }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00915\ \textcolor{keyword}{def\ }distance\_2d(p1,\ p2): }
+\DoxyCodeLine{00916\ \ \ \ \ \textcolor{keywordflow}{return}\ abs(\ ((p2[0]-\/p1[0])**2\ +\ (p2[1]-\/p1[1])**2)**(1/2)\ ) }
+\DoxyCodeLine{00917\  }
+
+\end{DoxyCode}
+\Hypertarget{a00136_aee772bddb501c4c61cff61c57e32d93b}\label{a00136_aee772bddb501c4c61cff61c57e32d93b} 
+\index{PeopleTracker.src.utils@{PeopleTracker.src.utils}!download\_trained\_weights@{download\_trained\_weights}}
+\index{download\_trained\_weights@{download\_trained\_weights}!PeopleTracker.src.utils@{PeopleTracker.src.utils}}
+\doxysubsubsection{\texorpdfstring{download\_trained\_weights()}{download\_trained\_weights()}}
+{\footnotesize\ttfamily download\+\_\+trained\+\_\+weights (\begin{DoxyParamCaption}\item[{}]{coco\+\_\+model\+\_\+path,  }\item[{}]{verbose = {\ttfamily 1} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Download COCO trained weights from Releases.
+
+coco_model_path: local path of COCO trained weights
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00845\ \textcolor{keyword}{def\ }download\_trained\_weights(coco\_model\_path,\ verbose=1): }
+\DoxyCodeLine{00846\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Download\ COCO\ trained\ weights\ from\ Releases. }}
+\DoxyCodeLine{00847\ \textcolor{stringliteral}{ }}
+\DoxyCodeLine{00848\ \textcolor{stringliteral}{\ \ \ \ coco\_model\_path:\ local\ path\ of\ COCO\ trained\ weights }}
+\DoxyCodeLine{00849\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}} }
+\DoxyCodeLine{00850\ \ \ \ \ \textcolor{keywordflow}{if}\ verbose\ >\ 0: }
+\DoxyCodeLine{00851\ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{"{}Downloading\ pretrained\ model\ to\ "{}}\ +\ coco\_model\_path\ +\ \textcolor{stringliteral}{"{}\ ..."{}}) }
+\DoxyCodeLine{00852\ \ \ \ \ \textcolor{keyword}{with}\ urllib.request.urlopen(COCO\_MODEL\_URL)\ \textcolor{keyword}{as}\ resp,\ open(coco\_model\_path,\ \textcolor{stringliteral}{'wb'})\ \textcolor{keyword}{as}\ out: }
+\DoxyCodeLine{00853\ \ \ \ \ \ \ \ \ shutil.copyfileobj(resp,\ out) }
+\DoxyCodeLine{00854\ \ \ \ \ \textcolor{keywordflow}{if}\ verbose\ >\ 0: }
+\DoxyCodeLine{00855\ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{"{}...\ done\ downloading\ pretrained\ model!"{}}) }
+\DoxyCodeLine{00856\  }
+\DoxyCodeLine{00857\  }
+
+\end{DoxyCode}
+\Hypertarget{a00136_a22aaf6d13a2e17305eb6ee8265c9cf78}\label{a00136_a22aaf6d13a2e17305eb6ee8265c9cf78} 
+\index{PeopleTracker.src.utils@{PeopleTracker.src.utils}!expand\_mask@{expand\_mask}}
+\index{expand\_mask@{expand\_mask}!PeopleTracker.src.utils@{PeopleTracker.src.utils}}
+\doxysubsubsection{\texorpdfstring{expand\_mask()}{expand\_mask()}}
+{\footnotesize\ttfamily expand\+\_\+mask (\begin{DoxyParamCaption}\item[{}]{bbox,  }\item[{}]{mini\+\_\+mask,  }\item[{}]{image\+\_\+shape }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Resizes mini masks back to image size. Reverses the change
+of minimize_mask().
+
+See inspect_data.ipynb notebook for more details.
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00542\ \textcolor{keyword}{def\ }expand\_mask(bbox,\ mini\_mask,\ image\_shape): }
+\DoxyCodeLine{00543\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Resizes\ mini\ masks\ back\ to\ image\ size.\ Reverses\ the\ change }}
+\DoxyCodeLine{00544\ \textcolor{stringliteral}{\ \ \ \ of\ minimize\_mask(). }}
+\DoxyCodeLine{00545\ \textcolor{stringliteral}{ }}
+\DoxyCodeLine{00546\ \textcolor{stringliteral}{\ \ \ \ See\ inspect\_data.ipynb\ notebook\ for\ more\ details. }}
+\DoxyCodeLine{00547\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}} }
+\DoxyCodeLine{00548\ \ \ \ \ mask\ =\ np.zeros(image\_shape[:2]\ +\ (mini\_mask.shape[-\/1],),\ dtype=bool) }
+\DoxyCodeLine{00549\ \ \ \ \ \textcolor{keywordflow}{for}\ i\ \textcolor{keywordflow}{in}\ range(mask.shape[-\/1]): }
+\DoxyCodeLine{00550\ \ \ \ \ \ \ \ \ m\ =\ mini\_mask[:,\ :,\ i] }
+\DoxyCodeLine{00551\ \ \ \ \ \ \ \ \ y1,\ x1,\ y2,\ x2\ =\ bbox[i][:4] }
+\DoxyCodeLine{00552\ \ \ \ \ \ \ \ \ h\ =\ y2\ -\/\ y1 }
+\DoxyCodeLine{00553\ \ \ \ \ \ \ \ \ w\ =\ x2\ -\/\ x1 }
+\DoxyCodeLine{00554\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Resize\ with\ bilinear\ interpolation }}
+\DoxyCodeLine{00555\ \ \ \ \ \ \ \ \ m\ =\ resize(m,\ (h,\ w)) }
+\DoxyCodeLine{00556\ \ \ \ \ \ \ \ \ mask[y1:y2,\ x1:x2,\ i]\ =\ np.around(m).astype(np.bool) }
+\DoxyCodeLine{00557\ \ \ \ \ \textcolor{keywordflow}{return}\ mask }
+\DoxyCodeLine{00558\  }
+\DoxyCodeLine{00559\  }
+\DoxyCodeLine{00560\ \textcolor{comment}{\#\ TODO:\ Build\ and\ use\ this\ function\ to\ reduce\ code\ duplication }}
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{a00136_ad8268f50c6823c07e975ec0c64cba6b2}{People\+Tracker.\+src.\+utils.\+resize()}}.
+
+Here is the call graph for this function\+:
+% FIG 8
+\Hypertarget{a00136_a1a51d5a5a3fe1f6844bee72b28df0942}\label{a00136_a1a51d5a5a3fe1f6844bee72b28df0942} 
+\index{PeopleTracker.src.utils@{PeopleTracker.src.utils}!extract\_bboxes@{extract\_bboxes}}
+\index{extract\_bboxes@{extract\_bboxes}!PeopleTracker.src.utils@{PeopleTracker.src.utils}}
+\doxysubsubsection{\texorpdfstring{extract\_bboxes()}{extract\_bboxes()}}
+{\footnotesize\ttfamily extract\+\_\+bboxes (\begin{DoxyParamCaption}\item[{}]{mask }\end{DoxyParamCaption})}
+
+
+
+Bounding Boxes. 
+
+\begin{DoxyVerb}Compute bounding boxes from masks.
+mask: [height, width, num_instances]. Mask pixels are either 1 or 0.
+
+Returns: bbox array [num_instances, (y1, x1, y2, x2)].
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00034\ \textcolor{keyword}{def\ }extract\_bboxes(mask): }
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Compute\ bounding\ boxes\ from\ masks. }}
+\DoxyCodeLine{00036\ \textcolor{stringliteral}{\ \ \ \ mask:\ [height,\ width,\ num\_instances].\ Mask\ pixels\ are\ either\ 1\ or\ 0. }}
+\DoxyCodeLine{00037\ \textcolor{stringliteral}{ }}
+\DoxyCodeLine{00038\ \textcolor{stringliteral}{\ \ \ \ Returns:\ bbox\ array\ [num\_instances,\ (y1,\ x1,\ y2,\ x2)]. }}
+\DoxyCodeLine{00039\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}} }
+\DoxyCodeLine{00040\ \ \ \ \ boxes\ =\ np.zeros([mask.shape[-\/1],\ 4],\ dtype=np.int32) }
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordflow}{for}\ i\ \textcolor{keywordflow}{in}\ range(mask.shape[-\/1]): }
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ m\ =\ mask[:,\ :,\ i] }
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Bounding\ box. }}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ horizontal\_indicies\ =\ np.where(np.any(m,\ axis=0))[0] }
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ vertical\_indicies\ =\ np.where(np.any(m,\ axis=1))[0] }
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ horizontal\_indicies.shape[0]: }
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ x1,\ x2\ =\ horizontal\_indicies[[0,\ -\/1]] }
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ y1,\ y2\ =\ vertical\_indicies[[0,\ -\/1]] }
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ x2\ and\ y2\ should\ not\ be\ part\ of\ the\ box.\ Increment\ by\ 1. }}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ x2\ +=\ 1 }
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ y2\ +=\ 1 }
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}: }
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ No\ mask\ for\ this\ instance.\ Might\ happen\ due\ to }}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ resizing\ or\ cropping.\ Set\ bbox\ to\ zeros }}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ x1,\ x2,\ y1,\ y2\ =\ 0,\ 0,\ 0,\ 0 }
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ boxes[i]\ =\ np.array([y1,\ x1,\ y2,\ x2]) }
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordflow}{return}\ boxes.astype(np.int32) }
+\DoxyCodeLine{00058\  }
+\DoxyCodeLine{00059\  }
+\DoxyCodeLine{00060\ \textcolor{comment}{\#\ def\ compute\_iou(box,\ boxes,\ box\_area,\ boxes\_area): }}
+\DoxyCodeLine{00061\ \textcolor{comment}{\#\ \ \ \ \ "{}"{}"{}Calculates\ IoU\ of\ the\ given\ box\ with\ the\ array\ of\ the\ given\ boxes. }}
+\DoxyCodeLine{00062\ \textcolor{comment}{\#\ \ \ \ \ box:\ 1D\ vector\ [y1,\ x1,\ y2,\ x2] }}
+\DoxyCodeLine{00063\ \textcolor{comment}{\#\ \ \ \ \ boxes:\ [boxes\_count,\ (y1,\ x1,\ y2,\ x2)] }}
+\DoxyCodeLine{00064\ \textcolor{comment}{\#\ \ \ \ \ box\_area:\ float.\ the\ area\ of\ 'box' }}
+\DoxyCodeLine{00065\ \textcolor{comment}{\#\ \ \ \ \ boxes\_area:\ array\ of\ length\ boxes\_count. }}
+\DoxyCodeLine{00066\  }
+\DoxyCodeLine{00067\ \textcolor{comment}{\#\ \ \ \ \ Note:\ the\ areas\ are\ passed\ in\ rather\ than\ calculated\ here\ for }}
+\DoxyCodeLine{00068\ \textcolor{comment}{\#\ \ \ \ \ efficiency.\ Calculate\ once\ in\ the\ caller\ to\ avoid\ duplicate\ work. }}
+\DoxyCodeLine{00069\ \textcolor{comment}{\#\ \ \ \ \ "{}"{}"{} }}
+\DoxyCodeLine{00070\ \textcolor{comment}{\#\ \ \ \ \ \#\ Calculate\ intersection\ areas }}
+\DoxyCodeLine{00071\ \textcolor{comment}{\#\ \ \ \ \ y1\ =\ np.maximum(box[0],\ boxes[:,\ 0]) }}
+\DoxyCodeLine{00072\ \textcolor{comment}{\#\ \ \ \ \ y2\ =\ np.minimum(box[2],\ boxes[:,\ 2]) }}
+\DoxyCodeLine{00073\ \textcolor{comment}{\#\ \ \ \ \ x1\ =\ np.maximum(box[1],\ boxes[:,\ 1]) }}
+\DoxyCodeLine{00074\ \textcolor{comment}{\#\ \ \ \ \ x2\ =\ np.minimum(box[3],\ boxes[:,\ 3]) }}
+\DoxyCodeLine{00075\ \textcolor{comment}{\#\ \ \ \ \ intersection\ =\ np.maximum(x2\ -\/\ x1,\ 0)\ *\ np.maximum(y2\ -\/\ y1,\ 0) }}
+\DoxyCodeLine{00076\ \textcolor{comment}{\#\ \ \ \ \ union\ =\ box\_area\ +\ boxes\_area[:]\ -\/\ intersection[:] }}
+\DoxyCodeLine{00077\ \textcolor{comment}{\#\ \ \ \ \ iou\ =\ intersection\ /\ union }}
+\DoxyCodeLine{00078\ \textcolor{comment}{\#\ \ \ \ \ return\ iou }}
+\DoxyCodeLine{00079\  }
+
+\end{DoxyCode}
+\Hypertarget{a00136_a973741449cda9c868338d356e40b0513}\label{a00136_a973741449cda9c868338d356e40b0513} 
+\index{PeopleTracker.src.utils@{PeopleTracker.src.utils}!generate\_anchors@{generate\_anchors}}
+\index{generate\_anchors@{generate\_anchors}!PeopleTracker.src.utils@{PeopleTracker.src.utils}}
+\doxysubsubsection{\texorpdfstring{generate\_anchors()}{generate\_anchors()}}
+{\footnotesize\ttfamily generate\+\_\+anchors (\begin{DoxyParamCaption}\item[{}]{scales,  }\item[{}]{ratios,  }\item[{}]{shape,  }\item[{}]{feature\+\_\+stride,  }\item[{}]{anchor\+\_\+stride }\end{DoxyParamCaption})}
+
+
+
+Anchors. 
+
+\begin{DoxyVerb}scales: 1D array of anchor sizes in pixels. Example: [32, 64, 128]
+ratios: 1D array of anchor ratios of width/height. Example: [0.5, 1, 2]
+shape: [height, width] spatial shape of the feature map over which
+        to generate anchors.
+feature_stride: Stride of the feature map relative to the image in pixels.
+anchor_stride: Stride of anchors on the feature map. For example, if the
+    value is 2 then generate anchors for every other feature map pixel.
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00588\ \textcolor{keyword}{def\ }generate\_anchors(scales,\ ratios,\ shape,\ feature\_stride,\ anchor\_stride): }
+\DoxyCodeLine{00589\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{} }}
+\DoxyCodeLine{00590\ \textcolor{stringliteral}{\ \ \ \ scales:\ 1D\ array\ of\ anchor\ sizes\ in\ pixels.\ Example:\ [32,\ 64,\ 128] }}
+\DoxyCodeLine{00591\ \textcolor{stringliteral}{\ \ \ \ ratios:\ 1D\ array\ of\ anchor\ ratios\ of\ width/height.\ Example:\ [0.5,\ 1,\ 2] }}
+\DoxyCodeLine{00592\ \textcolor{stringliteral}{\ \ \ \ shape:\ [height,\ width]\ spatial\ shape\ of\ the\ feature\ map\ over\ which }}
+\DoxyCodeLine{00593\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ to\ generate\ anchors. }}
+\DoxyCodeLine{00594\ \textcolor{stringliteral}{\ \ \ \ feature\_stride:\ Stride\ of\ the\ feature\ map\ relative\ to\ the\ image\ in\ pixels. }}
+\DoxyCodeLine{00595\ \textcolor{stringliteral}{\ \ \ \ anchor\_stride:\ Stride\ of\ anchors\ on\ the\ feature\ map.\ For\ example,\ if\ the }}
+\DoxyCodeLine{00596\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ value\ is\ 2\ then\ generate\ anchors\ for\ every\ other\ feature\ map\ pixel. }}
+\DoxyCodeLine{00597\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}} }
+\DoxyCodeLine{00598\ \ \ \ \ \textcolor{comment}{\#\ Get\ all\ combinations\ of\ scales\ and\ ratios }}
+\DoxyCodeLine{00599\ \ \ \ \ scales,\ ratios\ =\ np.meshgrid(np.array(scales),\ np.array(ratios)) }
+\DoxyCodeLine{00600\ \ \ \ \ scales\ =\ scales.flatten() }
+\DoxyCodeLine{00601\ \ \ \ \ ratios\ =\ ratios.flatten() }
+\DoxyCodeLine{00602\  }
+\DoxyCodeLine{00603\ \ \ \ \ \textcolor{comment}{\#\ Enumerate\ heights\ and\ widths\ from\ scales\ and\ ratios }}
+\DoxyCodeLine{00604\ \ \ \ \ heights\ =\ scales\ /\ np.sqrt(ratios) }
+\DoxyCodeLine{00605\ \ \ \ \ widths\ =\ scales\ *\ np.sqrt(ratios) }
+\DoxyCodeLine{00606\  }
+\DoxyCodeLine{00607\ \ \ \ \ \textcolor{comment}{\#\ Enumerate\ shifts\ in\ feature\ space }}
+\DoxyCodeLine{00608\ \ \ \ \ shifts\_y\ =\ np.arange(0,\ shape[0],\ anchor\_stride)\ *\ feature\_stride }
+\DoxyCodeLine{00609\ \ \ \ \ shifts\_x\ =\ np.arange(0,\ shape[1],\ anchor\_stride)\ *\ feature\_stride }
+\DoxyCodeLine{00610\ \ \ \ \ shifts\_x,\ shifts\_y\ =\ np.meshgrid(shifts\_x,\ shifts\_y) }
+\DoxyCodeLine{00611\  }
+\DoxyCodeLine{00612\ \ \ \ \ \textcolor{comment}{\#\ Enumerate\ combinations\ of\ shifts,\ widths,\ and\ heights }}
+\DoxyCodeLine{00613\ \ \ \ \ box\_widths,\ box\_centers\_x\ =\ np.meshgrid(widths,\ shifts\_x) }
+\DoxyCodeLine{00614\ \ \ \ \ box\_heights,\ box\_centers\_y\ =\ np.meshgrid(heights,\ shifts\_y) }
+\DoxyCodeLine{00615\  }
+\DoxyCodeLine{00616\ \ \ \ \ \textcolor{comment}{\#\ Reshape\ to\ get\ a\ list\ of\ (y,\ x)\ and\ a\ list\ of\ (h,\ w) }}
+\DoxyCodeLine{00617\ \ \ \ \ box\_centers\ =\ np.stack( }
+\DoxyCodeLine{00618\ \ \ \ \ \ \ \ \ [box\_centers\_y,\ box\_centers\_x],\ axis=2).reshape([-\/1,\ 2]) }
+\DoxyCodeLine{00619\ \ \ \ \ box\_sizes\ =\ np.stack([box\_heights,\ box\_widths],\ axis=2).reshape([-\/1,\ 2]) }
+\DoxyCodeLine{00620\  }
+\DoxyCodeLine{00621\ \ \ \ \ \textcolor{comment}{\#\ Convert\ to\ corner\ coordinates\ (y1,\ x1,\ y2,\ x2) }}
+\DoxyCodeLine{00622\ \ \ \ \ boxes\ =\ np.concatenate([box\_centers\ -\/\ 0.5\ *\ box\_sizes, }
+\DoxyCodeLine{00623\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ box\_centers\ +\ 0.5\ *\ box\_sizes],\ axis=1) }
+\DoxyCodeLine{00624\ \ \ \ \ \textcolor{keywordflow}{return}\ boxes }
+\DoxyCodeLine{00625\  }
+\DoxyCodeLine{00626\  }
+
+\end{DoxyCode}
+
+
+Referenced by \mbox{\hyperlink{a00136_a4108c4037ef4ec36d97596e8cc91fd27}{People\+Tracker.\+src.\+utils.\+generate\+\_\+pyramid\+\_\+anchors()}}.
+
+Here is the caller graph for this function\+:
+% FIG 9
+\Hypertarget{a00136_a4108c4037ef4ec36d97596e8cc91fd27}\label{a00136_a4108c4037ef4ec36d97596e8cc91fd27} 
+\index{PeopleTracker.src.utils@{PeopleTracker.src.utils}!generate\_pyramid\_anchors@{generate\_pyramid\_anchors}}
+\index{generate\_pyramid\_anchors@{generate\_pyramid\_anchors}!PeopleTracker.src.utils@{PeopleTracker.src.utils}}
+\doxysubsubsection{\texorpdfstring{generate\_pyramid\_anchors()}{generate\_pyramid\_anchors()}}
+{\footnotesize\ttfamily generate\+\_\+pyramid\+\_\+anchors (\begin{DoxyParamCaption}\item[{}]{scales,  }\item[{}]{ratios,  }\item[{}]{feature\+\_\+shapes,  }\item[{}]{feature\+\_\+strides,  }\item[{}]{anchor\+\_\+stride }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Generate anchors at different levels of a feature pyramid. Each scale
+is associated with a level of the pyramid, but each ratio is used in
+all levels of the pyramid.
+
+Returns:
+anchors: [N, (y1, x1, y2, x2)]. All generated anchors in one array. Sorted
+    with the same order of the given scales. So, anchors of scale[0] come
+    first, then anchors of scale[1], and so on.
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00628\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ anchor\_stride): }
+\DoxyCodeLine{00629\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Generate\ anchors\ at\ different\ levels\ of\ a\ feature\ pyramid.\ Each\ scale }}
+\DoxyCodeLine{00630\ \textcolor{stringliteral}{\ \ \ \ is\ associated\ with\ a\ level\ of\ the\ pyramid,\ but\ each\ ratio\ is\ used\ in }}
+\DoxyCodeLine{00631\ \textcolor{stringliteral}{\ \ \ \ all\ levels\ of\ the\ pyramid. }}
+\DoxyCodeLine{00632\ \textcolor{stringliteral}{ }}
+\DoxyCodeLine{00633\ \textcolor{stringliteral}{\ \ \ \ Returns: }}
+\DoxyCodeLine{00634\ \textcolor{stringliteral}{\ \ \ \ anchors:\ [N,\ (y1,\ x1,\ y2,\ x2)].\ All\ generated\ anchors\ in\ one\ array.\ Sorted }}
+\DoxyCodeLine{00635\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ with\ the\ same\ order\ of\ the\ given\ scales.\ So,\ anchors\ of\ scale[0]\ come }}
+\DoxyCodeLine{00636\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ first,\ then\ anchors\ of\ scale[1],\ and\ so\ on. }}
+\DoxyCodeLine{00637\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}} }
+\DoxyCodeLine{00638\ \ \ \ \ \textcolor{comment}{\#\ Anchors }}
+\DoxyCodeLine{00639\ \ \ \ \ \textcolor{comment}{\#\ [anchor\_count,\ (y1,\ x1,\ y2,\ x2)] }}
+\DoxyCodeLine{00640\ \ \ \ \ anchors\ =\ [] }
+\DoxyCodeLine{00641\ \ \ \ \ \textcolor{keywordflow}{for}\ i\ \textcolor{keywordflow}{in}\ range(len(scales)): }
+\DoxyCodeLine{00642\ \ \ \ \ \ \ \ \ anchors.append(generate\_anchors(scales[i],\ ratios,\ feature\_shapes[i], }
+\DoxyCodeLine{00643\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ feature\_strides[i],\ anchor\_stride)) }
+\DoxyCodeLine{00644\ \ \ \ \ \textcolor{keywordflow}{return}\ np.concatenate(anchors,\ axis=0) }
+\DoxyCodeLine{00645\  }
+\DoxyCodeLine{00646\  }
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{a00136_a973741449cda9c868338d356e40b0513}{People\+Tracker.\+src.\+utils.\+generate\+\_\+anchors()}}.
+
+Here is the call graph for this function\+:
+% FIG 10
+\Hypertarget{a00136_a620244aa4f32f617b201abe47dbb8c1b}\label{a00136_a620244aa4f32f617b201abe47dbb8c1b} 
+\index{PeopleTracker.src.utils@{PeopleTracker.src.utils}!get\_centroid@{get\_centroid}}
+\index{get\_centroid@{get\_centroid}!PeopleTracker.src.utils@{PeopleTracker.src.utils}}
+\doxysubsubsection{\texorpdfstring{get\_centroid()}{get\_centroid()}}
+{\footnotesize\ttfamily get\+\_\+centroid (\begin{DoxyParamCaption}\item[{}]{box }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}returns centroid of a box, given the box is in format (x1, y1, x2, y2)
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00918\ \textcolor{keyword}{def\ }get\_centroid(box): }
+\DoxyCodeLine{00919\ \ \ \ \ \textcolor{stringliteral}{''' }}
+\DoxyCodeLine{00920\ \textcolor{stringliteral}{\ \ \ \ returns\ centroid\ of\ a\ box,\ given\ the\ box\ is\ in\ format\ (x1,\ y1,\ x2,\ y2) }}
+\DoxyCodeLine{00921\ \textcolor{stringliteral}{\ \ \ \ '''} }
+\DoxyCodeLine{00922\ \ \ \ \ \textcolor{keywordflow}{return}\ ((box[0]\ -\/\ box[2])/2),\ ((box[1]\ -\/\ box[3])/2) }
+\DoxyCodeLine{00923\  }
+
+\end{DoxyCode}
+\Hypertarget{a00136_a4510da153c804121f91e79645ff14f15}\label{a00136_a4510da153c804121f91e79645ff14f15} 
+\index{PeopleTracker.src.utils@{PeopleTracker.src.utils}!get\_corners@{get\_corners}}
+\index{get\_corners@{get\_corners}!PeopleTracker.src.utils@{PeopleTracker.src.utils}}
+\doxysubsubsection{\texorpdfstring{get\_corners()}{get\_corners()}}
+{\footnotesize\ttfamily get\+\_\+corners (\begin{DoxyParamCaption}\item[{}]{box }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}returns 2 point pairs describing the corners of the box
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00924\ \textcolor{keyword}{def\ }get\_corners(box): }
+\DoxyCodeLine{00925\ \ \ \ \ \textcolor{stringliteral}{''' }}
+\DoxyCodeLine{00926\ \textcolor{stringliteral}{\ \ \ \ returns\ 2\ point\ pairs\ describing\ the\ corners\ of\ the\ box }}
+\DoxyCodeLine{00927\ \textcolor{stringliteral}{\ \ \ \ '''} }
+\DoxyCodeLine{00928\ \ \ \ \ \textcolor{keywordflow}{return}\ ((box[0],box[1]),\ (box[2],box[3]))}
+
+\end{DoxyCode}
+\Hypertarget{a00136_aa4f6abff284ec7b73a0ff0aa8b7d34b3}\label{a00136_aa4f6abff284ec7b73a0ff0aa8b7d34b3} 
+\index{PeopleTracker.src.utils@{PeopleTracker.src.utils}!minimize\_mask@{minimize\_mask}}
+\index{minimize\_mask@{minimize\_mask}!PeopleTracker.src.utils@{PeopleTracker.src.utils}}
+\doxysubsubsection{\texorpdfstring{minimize\_mask()}{minimize\_mask()}}
+{\footnotesize\ttfamily minimize\+\_\+mask (\begin{DoxyParamCaption}\item[{}]{bbox,  }\item[{}]{mask,  }\item[{}]{mini\+\_\+shape }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Resize masks to a smaller version to reduce memory load.
+Mini-masks can be resized back to image scale using expand_masks()
+
+See inspect_data.ipynb notebook for more details.
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00522\ \textcolor{keyword}{def\ }minimize\_mask(bbox,\ mask,\ mini\_shape): }
+\DoxyCodeLine{00523\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Resize\ masks\ to\ a\ smaller\ version\ to\ reduce\ memory\ load. }}
+\DoxyCodeLine{00524\ \textcolor{stringliteral}{\ \ \ \ Mini-\/masks\ can\ be\ resized\ back\ to\ image\ scale\ using\ expand\_masks() }}
+\DoxyCodeLine{00525\ \textcolor{stringliteral}{ }}
+\DoxyCodeLine{00526\ \textcolor{stringliteral}{\ \ \ \ See\ inspect\_data.ipynb\ notebook\ for\ more\ details. }}
+\DoxyCodeLine{00527\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}} }
+\DoxyCodeLine{00528\ \ \ \ \ mini\_mask\ =\ np.zeros(mini\_shape\ +\ (mask.shape[-\/1],),\ dtype=bool) }
+\DoxyCodeLine{00529\ \ \ \ \ \textcolor{keywordflow}{for}\ i\ \textcolor{keywordflow}{in}\ range(mask.shape[-\/1]): }
+\DoxyCodeLine{00530\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Pick\ slice\ and\ cast\ to\ bool\ in\ case\ load\_mask()\ returned\ wrong\ dtype }}
+\DoxyCodeLine{00531\ \ \ \ \ \ \ \ \ m\ =\ mask[:,\ :,\ i].astype(bool) }
+\DoxyCodeLine{00532\ \ \ \ \ \ \ \ \ y1,\ x1,\ y2,\ x2\ =\ bbox[i][:4] }
+\DoxyCodeLine{00533\ \ \ \ \ \ \ \ \ m\ =\ m[y1:y2,\ x1:x2] }
+\DoxyCodeLine{00534\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ m.size\ ==\ 0: }
+\DoxyCodeLine{00535\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{raise}\ Exception(\textcolor{stringliteral}{"{}Invalid\ bounding\ box\ with\ area\ of\ zero"{}}) }
+\DoxyCodeLine{00536\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Resize\ with\ bilinear\ interpolation }}
+\DoxyCodeLine{00537\ \ \ \ \ \ \ \ \ m\ =\ resize(m,\ mini\_shape) }
+\DoxyCodeLine{00538\ \ \ \ \ \ \ \ \ mini\_mask[:,\ :,\ i]\ =\ np.around(m).astype(np.bool) }
+\DoxyCodeLine{00539\ \ \ \ \ \textcolor{keywordflow}{return}\ mini\_mask }
+\DoxyCodeLine{00540\  }
+\DoxyCodeLine{00541\  }
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{a00136_ad8268f50c6823c07e975ec0c64cba6b2}{People\+Tracker.\+src.\+utils.\+resize()}}.
+
+Here is the call graph for this function\+:
+% FIG 11
+\Hypertarget{a00136_a651da7d3000d528a604b59f8c783976f}\label{a00136_a651da7d3000d528a604b59f8c783976f} 
+\index{PeopleTracker.src.utils@{PeopleTracker.src.utils}!mold\_mask@{mold\_mask}}
+\index{mold\_mask@{mold\_mask}!PeopleTracker.src.utils@{PeopleTracker.src.utils}}
+\doxysubsubsection{\texorpdfstring{mold\_mask()}{mold\_mask()}}
+{\footnotesize\ttfamily mold\+\_\+mask (\begin{DoxyParamCaption}\item[{}]{mask,  }\item[{}]{config }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00561\ \textcolor{keyword}{def\ }mold\_mask(mask,\ config): }
+\DoxyCodeLine{00562\ \ \ \ \ \textcolor{keywordflow}{pass} }
+\DoxyCodeLine{00563\  }
+\DoxyCodeLine{00564\  }
+
+\end{DoxyCode}
+\Hypertarget{a00136_ac003690af3dada90fdaf9269da467d27}\label{a00136_ac003690af3dada90fdaf9269da467d27} 
+\index{PeopleTracker.src.utils@{PeopleTracker.src.utils}!non\_max\_suppression@{non\_max\_suppression}}
+\index{non\_max\_suppression@{non\_max\_suppression}!PeopleTracker.src.utils@{PeopleTracker.src.utils}}
+\doxysubsubsection{\texorpdfstring{non\_max\_suppression()}{non\_max\_suppression()}}
+{\footnotesize\ttfamily non\+\_\+max\+\_\+suppression (\begin{DoxyParamCaption}\item[{}]{boxes,  }\item[{}]{scores,  }\item[{}]{threshold }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Performs non-maximum suppression and returns indices of kept boxes.
+boxes: [N, (y1, x1, y2, x2)]. Notice that (y2, x2) lays outside the box.
+scores: 1-D array of box scores.
+threshold: Float. IoU threshold to use for filtering.
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00127\ \textcolor{keyword}{def\ }non\_max\_suppression(boxes,\ scores,\ threshold): }
+\DoxyCodeLine{00128\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Performs\ non-\/maximum\ suppression\ and\ returns\ indices\ of\ kept\ boxes. }}
+\DoxyCodeLine{00129\ \textcolor{stringliteral}{\ \ \ \ boxes:\ [N,\ (y1,\ x1,\ y2,\ x2)].\ Notice\ that\ (y2,\ x2)\ lays\ outside\ the\ box. }}
+\DoxyCodeLine{00130\ \textcolor{stringliteral}{\ \ \ \ scores:\ 1-\/D\ array\ of\ box\ scores. }}
+\DoxyCodeLine{00131\ \textcolor{stringliteral}{\ \ \ \ threshold:\ Float.\ IoU\ threshold\ to\ use\ for\ filtering. }}
+\DoxyCodeLine{00132\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}} }
+\DoxyCodeLine{00133\ \ \ \ \ \textcolor{keyword}{assert}\ boxes.shape[0]\ >\ 0 }
+\DoxyCodeLine{00134\ \ \ \ \ \textcolor{keywordflow}{if}\ boxes.dtype.kind\ !=\ \textcolor{stringliteral}{"{}f"{}}: }
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ boxes\ =\ boxes.astype(np.float32) }
+\DoxyCodeLine{00136\  }
+\DoxyCodeLine{00137\ \ \ \ \ \textcolor{comment}{\#\ Compute\ box\ areas }}
+\DoxyCodeLine{00138\ \ \ \ \ y1\ =\ boxes[:,\ 0] }
+\DoxyCodeLine{00139\ \ \ \ \ x1\ =\ boxes[:,\ 1] }
+\DoxyCodeLine{00140\ \ \ \ \ y2\ =\ boxes[:,\ 2] }
+\DoxyCodeLine{00141\ \ \ \ \ x2\ =\ boxes[:,\ 3] }
+\DoxyCodeLine{00142\ \ \ \ \ area\ =\ (y2\ -\/\ y1)\ *\ (x2\ -\/\ x1) }
+\DoxyCodeLine{00143\  }
+\DoxyCodeLine{00144\ \ \ \ \ \textcolor{comment}{\#\ Get\ indicies\ of\ boxes\ sorted\ by\ scores\ (highest\ first) }}
+\DoxyCodeLine{00145\ \ \ \ \ ixs\ =\ scores.argsort()[::-\/1] }
+\DoxyCodeLine{00146\  }
+\DoxyCodeLine{00147\ \ \ \ \ pick\ =\ [] }
+\DoxyCodeLine{00148\ \ \ \ \ \textcolor{keywordflow}{while}\ len(ixs)\ >\ 0: }
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Pick\ top\ box\ and\ add\ its\ index\ to\ the\ list }}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ i\ =\ ixs[0] }
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ pick.append(i) }
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Compute\ IoU\ of\ the\ picked\ box\ with\ the\ rest }}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ iou\ =\ compute\_iou(boxes[i],\ boxes[ixs[1:]],\ area[i],\ area[ixs[1:]]) }
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Identify\ boxes\ with\ IoU\ over\ the\ threshold.\ This }}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ returns\ indices\ into\ ixs[1:],\ so\ add\ 1\ to\ get }}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ indices\ into\ ixs. }}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ remove\_ixs\ =\ np.where(iou\ >\ threshold)[0]\ +\ 1 }
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Remove\ indices\ of\ the\ picked\ and\ overlapped\ boxes. }}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ ixs\ =\ np.delete(ixs,\ remove\_ixs) }
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ ixs\ =\ np.delete(ixs,\ 0) }
+\DoxyCodeLine{00161\ \ \ \ \ \textcolor{keywordflow}{return}\ np.array(pick,\ dtype=np.int32) }
+\DoxyCodeLine{00162\  }
+\DoxyCodeLine{00163\  }
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{a00136_a54175253a17d081ebc1bcd813cab91f7}{People\+Tracker.\+src.\+utils.\+compute\+\_\+iou()}}.
+
+Here is the call graph for this function\+:
+% FIG 12
+\Hypertarget{a00136_ad07b294d2354bd0f176739c10d4abc2b}\label{a00136_ad07b294d2354bd0f176739c10d4abc2b} 
+\index{PeopleTracker.src.utils@{PeopleTracker.src.utils}!norm\_boxes@{norm\_boxes}}
+\index{norm\_boxes@{norm\_boxes}!PeopleTracker.src.utils@{PeopleTracker.src.utils}}
+\doxysubsubsection{\texorpdfstring{norm\_boxes()}{norm\_boxes()}}
+{\footnotesize\ttfamily norm\+\_\+boxes (\begin{DoxyParamCaption}\item[{}]{boxes,  }\item[{}]{shape }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Converts boxes from pixel coordinates to normalized coordinates.
+boxes: [N, (y1, x1, y2, x2)] in pixel coordinates
+shape: [..., (height, width)] in pixels
+
+Note: In pixel coordinates (y2, x2) is outside the box. But in normalized
+coordinates it's inside the box.
+
+Returns:
+    [N, (y1, x1, y2, x2)] in normalized coordinates
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00858\ \textcolor{keyword}{def\ }norm\_boxes(boxes,\ shape): }
+\DoxyCodeLine{00859\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Converts\ boxes\ from\ pixel\ coordinates\ to\ normalized\ coordinates. }}
+\DoxyCodeLine{00860\ \textcolor{stringliteral}{\ \ \ \ boxes:\ [N,\ (y1,\ x1,\ y2,\ x2)]\ in\ pixel\ coordinates }}
+\DoxyCodeLine{00861\ \textcolor{stringliteral}{\ \ \ \ shape:\ [...,\ (height,\ width)]\ in\ pixels }}
+\DoxyCodeLine{00862\ \textcolor{stringliteral}{ }}
+\DoxyCodeLine{00863\ \textcolor{stringliteral}{\ \ \ \ Note:\ In\ pixel\ coordinates\ (y2,\ x2)\ is\ outside\ the\ box.\ But\ in\ normalized }}
+\DoxyCodeLine{00864\ \textcolor{stringliteral}{\ \ \ \ coordinates\ it's\ inside\ the\ box. }}
+\DoxyCodeLine{00865\ \textcolor{stringliteral}{ }}
+\DoxyCodeLine{00866\ \textcolor{stringliteral}{\ \ \ \ Returns: }}
+\DoxyCodeLine{00867\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ [N,\ (y1,\ x1,\ y2,\ x2)]\ in\ normalized\ coordinates }}
+\DoxyCodeLine{00868\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}} }
+\DoxyCodeLine{00869\ \ \ \ \ h,\ w\ =\ shape }
+\DoxyCodeLine{00870\ \ \ \ \ scale\ =\ np.array([h\ -\/\ 1,\ w\ -\/\ 1,\ h\ -\/\ 1,\ w\ -\/\ 1]) }
+\DoxyCodeLine{00871\ \ \ \ \ shift\ =\ np.array([0,\ 0,\ 1,\ 1]) }
+\DoxyCodeLine{00872\ \ \ \ \ \textcolor{keywordflow}{return}\ np.divide((boxes\ -\/\ shift),\ scale).astype(np.float32) }
+\DoxyCodeLine{00873\  }
+\DoxyCodeLine{00874\  }
+
+\end{DoxyCode}
+\Hypertarget{a00136_ad8268f50c6823c07e975ec0c64cba6b2}\label{a00136_ad8268f50c6823c07e975ec0c64cba6b2} 
+\index{PeopleTracker.src.utils@{PeopleTracker.src.utils}!resize@{resize}}
+\index{resize@{resize}!PeopleTracker.src.utils@{PeopleTracker.src.utils}}
+\doxysubsubsection{\texorpdfstring{resize()}{resize()}}
+{\footnotesize\ttfamily resize (\begin{DoxyParamCaption}\item[{}]{image,  }\item[{}]{output\+\_\+shape,  }\item[{}]{order = {\ttfamily 1},  }\item[{}]{mode = {\ttfamily \textquotesingle{}constant\textquotesingle{}},  }\item[{}]{cval = {\ttfamily 0},  }\item[{}]{clip = {\ttfamily True},  }\item[{}]{preserve\+\_\+range = {\ttfamily False},  }\item[{}]{anti\+\_\+aliasing = {\ttfamily False},  }\item[{}]{anti\+\_\+aliasing\+\_\+sigma = {\ttfamily None} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}A wrapper for Scikit-Image resize().
+
+Scikit-Image generates warnings on every call to resize() if it doesn't
+receive the right parameters. The right parameters depend on the version
+of skimage. This solves the problem by using different parameters per
+version. And it provides a central place to control resizing defaults.
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00893\ \ \ \ \ \ \ \ \ \ \ \ preserve\_range=\textcolor{keyword}{False},\ anti\_aliasing=\textcolor{keyword}{False},\ anti\_aliasing\_sigma=\textcolor{keywordtype}{None}): }
+\DoxyCodeLine{00894\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}A\ wrapper\ for\ Scikit-\/Image\ resize(). }}
+\DoxyCodeLine{00895\ \textcolor{stringliteral}{ }}
+\DoxyCodeLine{00896\ \textcolor{stringliteral}{\ \ \ \ Scikit-\/Image\ generates\ warnings\ on\ every\ call\ to\ resize()\ if\ it\ doesn't }}
+\DoxyCodeLine{00897\ \textcolor{stringliteral}{\ \ \ \ receive\ the\ right\ parameters.\ The\ right\ parameters\ depend\ on\ the\ version }}
+\DoxyCodeLine{00898\ \textcolor{stringliteral}{\ \ \ \ of\ skimage.\ This\ solves\ the\ problem\ by\ using\ different\ parameters\ per }}
+\DoxyCodeLine{00899\ \textcolor{stringliteral}{\ \ \ \ version.\ And\ it\ provides\ a\ central\ place\ to\ control\ resizing\ defaults. }}
+\DoxyCodeLine{00900\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}} }
+\DoxyCodeLine{00901\ \ \ \ \ \textcolor{keywordflow}{if}\ LooseVersion(skimage.\_\_version\_\_)\ >=\ LooseVersion(\textcolor{stringliteral}{"{}0.14"{}}): }
+\DoxyCodeLine{00902\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ New\ in\ 0.14:\ anti\_aliasing.\ Default\ it\ to\ False\ for\ backward }}
+\DoxyCodeLine{00903\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ compatibility\ with\ skimage\ 0.13. }}
+\DoxyCodeLine{00904\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ skimage.transform.resize( }
+\DoxyCodeLine{00905\ \ \ \ \ \ \ \ \ \ \ \ \ image,\ output\_shape, }
+\DoxyCodeLine{00906\ \ \ \ \ \ \ \ \ \ \ \ \ order=order,\ mode=mode,\ cval=cval,\ clip=clip, }
+\DoxyCodeLine{00907\ \ \ \ \ \ \ \ \ \ \ \ \ preserve\_range=preserve\_range,\ anti\_aliasing=anti\_aliasing, }
+\DoxyCodeLine{00908\ \ \ \ \ \ \ \ \ \ \ \ \ anti\_aliasing\_sigma=anti\_aliasing\_sigma) }
+\DoxyCodeLine{00909\ \ \ \ \ \textcolor{keywordflow}{else}: }
+\DoxyCodeLine{00910\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ skimage.transform.resize( }
+\DoxyCodeLine{00911\ \ \ \ \ \ \ \ \ \ \ \ \ image,\ output\_shape, }
+\DoxyCodeLine{00912\ \ \ \ \ \ \ \ \ \ \ \ \ order=order,\ mode=mode,\ cval=cval,\ clip=clip, }
+\DoxyCodeLine{00913\ \ \ \ \ \ \ \ \ \ \ \ \ preserve\_range=preserve\_range) }
+\DoxyCodeLine{00914\  }
+
+\end{DoxyCode}
+
+
+Referenced by \mbox{\hyperlink{a00136_a22aaf6d13a2e17305eb6ee8265c9cf78}{People\+Tracker.\+src.\+utils.\+expand\+\_\+mask()}}, \mbox{\hyperlink{a00136_aa4f6abff284ec7b73a0ff0aa8b7d34b3}{People\+Tracker.\+src.\+utils.\+minimize\+\_\+mask()}}, and \mbox{\hyperlink{a00136_a22a2b3a4d83a5030b8b521c5624e6df1}{People\+Tracker.\+src.\+utils.\+resize\+\_\+image()}}.
+
+Here is the caller graph for this function\+:
+% FIG 13
+\Hypertarget{a00136_a22a2b3a4d83a5030b8b521c5624e6df1}\label{a00136_a22a2b3a4d83a5030b8b521c5624e6df1} 
+\index{PeopleTracker.src.utils@{PeopleTracker.src.utils}!resize\_image@{resize\_image}}
+\index{resize\_image@{resize\_image}!PeopleTracker.src.utils@{PeopleTracker.src.utils}}
+\doxysubsubsection{\texorpdfstring{resize\_image()}{resize\_image()}}
+{\footnotesize\ttfamily resize\+\_\+image (\begin{DoxyParamCaption}\item[{}]{image,  }\item[{}]{min\+\_\+dim = {\ttfamily None},  }\item[{}]{max\+\_\+dim = {\ttfamily None},  }\item[{}]{min\+\_\+scale = {\ttfamily None},  }\item[{}]{mode = {\ttfamily "{}square"{}} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Resizes an image keeping the aspect ratio unchanged.
+
+min_dim: if provided, resizes the image such that it's smaller
+    dimension == min_dim
+max_dim: if provided, ensures that the image longest side doesn't
+    exceed this value.
+min_scale: if provided, ensure that the image is scaled up by at least
+    this percent even if min_dim doesn't require it.
+mode: Resizing mode.
+    none: No resizing. Return the image unchanged.
+    square: Resize and pad with zeros to get a square image
+        of size [max_dim, max_dim].
+    pad64: Pads width and height with zeros to make them multiples of 64.
+           If min_dim or min_scale are provided, it scales the image up
+           before padding. max_dim is ignored in this mode.
+           The multiple of 64 is needed to ensure smooth scaling of feature
+           maps up and down the 6 levels of the FPN pyramid (2**6=64).
+    crop: Picks random crops from the image. First, scales the image based
+          on min_dim and min_scale, then picks a random crop of
+          size min_dim x min_dim. Can be used in training only.
+          max_dim is not used in this mode.
+
+Returns:
+image: the resized image
+window: (y1, x1, y2, x2). If max_dim is provided, padding might
+    be inserted in the returned image. If so, this window is the
+    coordinates of the image part of the full image (excluding
+    the padding). The x2, y2 pixels are not included.
+scale: The scale factor used to resize the image
+padding: Padding added to the image [(top, bottom), (left, right), (0, 0)]
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00393\ \textcolor{keyword}{def\ }resize\_image(image,\ min\_dim=None,\ max\_dim=None,\ min\_scale=None,\ mode="{}square"{}): }
+\DoxyCodeLine{00394\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Resizes\ an\ image\ keeping\ the\ aspect\ ratio\ unchanged. }}
+\DoxyCodeLine{00395\ \textcolor{stringliteral}{ }}
+\DoxyCodeLine{00396\ \textcolor{stringliteral}{\ \ \ \ min\_dim:\ if\ provided,\ resizes\ the\ image\ such\ that\ it's\ smaller }}
+\DoxyCodeLine{00397\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ dimension\ ==\ min\_dim }}
+\DoxyCodeLine{00398\ \textcolor{stringliteral}{\ \ \ \ max\_dim:\ if\ provided,\ ensures\ that\ the\ image\ longest\ side\ doesn't }}
+\DoxyCodeLine{00399\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ exceed\ this\ value. }}
+\DoxyCodeLine{00400\ \textcolor{stringliteral}{\ \ \ \ min\_scale:\ if\ provided,\ ensure\ that\ the\ image\ is\ scaled\ up\ by\ at\ least }}
+\DoxyCodeLine{00401\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ this\ percent\ even\ if\ min\_dim\ doesn't\ require\ it. }}
+\DoxyCodeLine{00402\ \textcolor{stringliteral}{\ \ \ \ mode:\ Resizing\ mode. }}
+\DoxyCodeLine{00403\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ none:\ No\ resizing.\ Return\ the\ image\ unchanged. }}
+\DoxyCodeLine{00404\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ square:\ Resize\ and\ pad\ with\ zeros\ to\ get\ a\ square\ image }}
+\DoxyCodeLine{00405\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ of\ size\ [max\_dim,\ max\_dim]. }}
+\DoxyCodeLine{00406\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ pad64:\ Pads\ width\ and\ height\ with\ zeros\ to\ make\ them\ multiples\ of\ 64. }}
+\DoxyCodeLine{00407\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ If\ min\_dim\ or\ min\_scale\ are\ provided,\ it\ scales\ the\ image\ up }}
+\DoxyCodeLine{00408\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ before\ padding.\ max\_dim\ is\ ignored\ in\ this\ mode. }}
+\DoxyCodeLine{00409\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ The\ multiple\ of\ 64\ is\ needed\ to\ ensure\ smooth\ scaling\ of\ feature }}
+\DoxyCodeLine{00410\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ maps\ up\ and\ down\ the\ 6\ levels\ of\ the\ FPN\ pyramid\ (2**6=64). }}
+\DoxyCodeLine{00411\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ crop:\ Picks\ random\ crops\ from\ the\ image.\ First,\ scales\ the\ image\ based }}
+\DoxyCodeLine{00412\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ on\ min\_dim\ and\ min\_scale,\ then\ picks\ a\ random\ crop\ of }}
+\DoxyCodeLine{00413\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ size\ min\_dim\ x\ min\_dim.\ Can\ be\ used\ in\ training\ only. }}
+\DoxyCodeLine{00414\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ max\_dim\ is\ not\ used\ in\ this\ mode. }}
+\DoxyCodeLine{00415\ \textcolor{stringliteral}{ }}
+\DoxyCodeLine{00416\ \textcolor{stringliteral}{\ \ \ \ Returns: }}
+\DoxyCodeLine{00417\ \textcolor{stringliteral}{\ \ \ \ image:\ the\ resized\ image }}
+\DoxyCodeLine{00418\ \textcolor{stringliteral}{\ \ \ \ window:\ (y1,\ x1,\ y2,\ x2).\ If\ max\_dim\ is\ provided,\ padding\ might }}
+\DoxyCodeLine{00419\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ be\ inserted\ in\ the\ returned\ image.\ If\ so,\ this\ window\ is\ the }}
+\DoxyCodeLine{00420\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ coordinates\ of\ the\ image\ part\ of\ the\ full\ image\ (excluding }}
+\DoxyCodeLine{00421\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ the\ padding).\ The\ x2,\ y2\ pixels\ are\ not\ included. }}
+\DoxyCodeLine{00422\ \textcolor{stringliteral}{\ \ \ \ scale:\ The\ scale\ factor\ used\ to\ resize\ the\ image }}
+\DoxyCodeLine{00423\ \textcolor{stringliteral}{\ \ \ \ padding:\ Padding\ added\ to\ the\ image\ [(top,\ bottom),\ (left,\ right),\ (0,\ 0)] }}
+\DoxyCodeLine{00424\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}} }
+\DoxyCodeLine{00425\ \ \ \ \ \textcolor{comment}{\#\ Keep\ track\ of\ image\ dtype\ and\ return\ results\ in\ the\ same\ dtype }}
+\DoxyCodeLine{00426\ \ \ \ \ image\_dtype\ =\ image.dtype }
+\DoxyCodeLine{00427\ \ \ \ \ \textcolor{comment}{\#\ Default\ window\ (y1,\ x1,\ y2,\ x2)\ and\ default\ scale\ ==\ 1. }}
+\DoxyCodeLine{00428\ \ \ \ \ h,\ w\ =\ image.shape[:2] }
+\DoxyCodeLine{00429\ \ \ \ \ window\ =\ (0,\ 0,\ h,\ w) }
+\DoxyCodeLine{00430\ \ \ \ \ scale\ =\ 1 }
+\DoxyCodeLine{00431\ \ \ \ \ padding\ =\ [(0,\ 0),\ (0,\ 0),\ (0,\ 0)] }
+\DoxyCodeLine{00432\ \ \ \ \ crop\ =\ \textcolor{keywordtype}{None} }
+\DoxyCodeLine{00433\  }
+\DoxyCodeLine{00434\ \ \ \ \ \textcolor{keywordflow}{if}\ mode\ ==\ \textcolor{stringliteral}{"{}none"{}}: }
+\DoxyCodeLine{00435\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ image,\ window,\ scale,\ padding,\ crop }
+\DoxyCodeLine{00436\  }
+\DoxyCodeLine{00437\ \ \ \ \ \textcolor{comment}{\#\ Scale? }}
+\DoxyCodeLine{00438\ \ \ \ \ \textcolor{keywordflow}{if}\ min\_dim: }
+\DoxyCodeLine{00439\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Scale\ up\ but\ not\ down }}
+\DoxyCodeLine{00440\ \ \ \ \ \ \ \ \ scale\ =\ max(1,\ min\_dim\ /\ min(h,\ w)) }
+\DoxyCodeLine{00441\ \ \ \ \ \textcolor{keywordflow}{if}\ min\_scale\ \textcolor{keywordflow}{and}\ scale\ <\ min\_scale: }
+\DoxyCodeLine{00442\ \ \ \ \ \ \ \ \ scale\ =\ min\_scale }
+\DoxyCodeLine{00443\  }
+\DoxyCodeLine{00444\ \ \ \ \ \textcolor{comment}{\#\ Does\ it\ exceed\ max\ dim? }}
+\DoxyCodeLine{00445\ \ \ \ \ \textcolor{keywordflow}{if}\ max\_dim\ \textcolor{keywordflow}{and}\ mode\ ==\ \textcolor{stringliteral}{"{}square"{}}: }
+\DoxyCodeLine{00446\ \ \ \ \ \ \ \ \ image\_max\ =\ max(h,\ w) }
+\DoxyCodeLine{00447\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ round(image\_max\ *\ scale)\ >\ max\_dim: }
+\DoxyCodeLine{00448\ \ \ \ \ \ \ \ \ \ \ \ \ scale\ =\ max\_dim\ /\ image\_max }
+\DoxyCodeLine{00449\  }
+\DoxyCodeLine{00450\ \ \ \ \ \textcolor{comment}{\#\ Resize\ image\ using\ bilinear\ interpolation }}
+\DoxyCodeLine{00451\ \ \ \ \ \textcolor{keywordflow}{if}\ scale\ !=\ 1: }
+\DoxyCodeLine{00452\ \ \ \ \ \ \ \ \ image\ =\ resize(image,\ (round(h\ *\ scale),\ round(w\ *\ scale)), }
+\DoxyCodeLine{00453\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ preserve\_range=\textcolor{keyword}{True}) }
+\DoxyCodeLine{00454\  }
+\DoxyCodeLine{00455\ \ \ \ \ \textcolor{comment}{\#\ Need\ padding\ or\ cropping? }}
+\DoxyCodeLine{00456\ \ \ \ \ \textcolor{keywordflow}{if}\ mode\ ==\ \textcolor{stringliteral}{"{}square"{}}: }
+\DoxyCodeLine{00457\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Get\ new\ height\ and\ width }}
+\DoxyCodeLine{00458\ \ \ \ \ \ \ \ \ h,\ w\ =\ image.shape[:2] }
+\DoxyCodeLine{00459\ \ \ \ \ \ \ \ \ top\_pad\ =\ (max\_dim\ -\/\ h)\ //\ 2 }
+\DoxyCodeLine{00460\ \ \ \ \ \ \ \ \ bottom\_pad\ =\ max\_dim\ -\/\ h\ -\/\ top\_pad }
+\DoxyCodeLine{00461\ \ \ \ \ \ \ \ \ left\_pad\ =\ (max\_dim\ -\/\ w)\ //\ 2 }
+\DoxyCodeLine{00462\ \ \ \ \ \ \ \ \ right\_pad\ =\ max\_dim\ -\/\ w\ -\/\ left\_pad }
+\DoxyCodeLine{00463\ \ \ \ \ \ \ \ \ padding\ =\ [(top\_pad,\ bottom\_pad),\ (left\_pad,\ right\_pad),\ (0,\ 0)] }
+\DoxyCodeLine{00464\ \ \ \ \ \ \ \ \ image\ =\ np.pad(image,\ padding,\ mode=\textcolor{stringliteral}{'constant'},\ constant\_values=0) }
+\DoxyCodeLine{00465\ \ \ \ \ \ \ \ \ window\ =\ (top\_pad,\ left\_pad,\ h\ +\ top\_pad,\ w\ +\ left\_pad) }
+\DoxyCodeLine{00466\ \ \ \ \ \textcolor{keywordflow}{elif}\ mode\ ==\ \textcolor{stringliteral}{"{}pad64"{}}: }
+\DoxyCodeLine{00467\ \ \ \ \ \ \ \ \ h,\ w\ =\ image.shape[:2] }
+\DoxyCodeLine{00468\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Both\ sides\ must\ be\ divisible\ by\ 64 }}
+\DoxyCodeLine{00469\ \ \ \ \ \ \ \ \ \textcolor{keyword}{assert}\ min\_dim\ \%\ 64\ ==\ 0,\ \textcolor{stringliteral}{"{}Minimum\ dimension\ must\ be\ a\ multiple\ of\ 64"{}} }
+\DoxyCodeLine{00470\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Height }}
+\DoxyCodeLine{00471\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ h\ \%\ 64\ >\ 0: }
+\DoxyCodeLine{00472\ \ \ \ \ \ \ \ \ \ \ \ \ max\_h\ =\ h\ -\/\ (h\ \%\ 64)\ +\ 64 }
+\DoxyCodeLine{00473\ \ \ \ \ \ \ \ \ \ \ \ \ top\_pad\ =\ (max\_h\ -\/\ h)\ //\ 2 }
+\DoxyCodeLine{00474\ \ \ \ \ \ \ \ \ \ \ \ \ bottom\_pad\ =\ max\_h\ -\/\ h\ -\/\ top\_pad }
+\DoxyCodeLine{00475\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}: }
+\DoxyCodeLine{00476\ \ \ \ \ \ \ \ \ \ \ \ \ top\_pad\ =\ bottom\_pad\ =\ 0 }
+\DoxyCodeLine{00477\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Width }}
+\DoxyCodeLine{00478\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ w\ \%\ 64\ >\ 0: }
+\DoxyCodeLine{00479\ \ \ \ \ \ \ \ \ \ \ \ \ max\_w\ =\ w\ -\/\ (w\ \%\ 64)\ +\ 64 }
+\DoxyCodeLine{00480\ \ \ \ \ \ \ \ \ \ \ \ \ left\_pad\ =\ (max\_w\ -\/\ w)\ //\ 2 }
+\DoxyCodeLine{00481\ \ \ \ \ \ \ \ \ \ \ \ \ right\_pad\ =\ max\_w\ -\/\ w\ -\/\ left\_pad }
+\DoxyCodeLine{00482\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}: }
+\DoxyCodeLine{00483\ \ \ \ \ \ \ \ \ \ \ \ \ left\_pad\ =\ right\_pad\ =\ 0 }
+\DoxyCodeLine{00484\ \ \ \ \ \ \ \ \ padding\ =\ [(top\_pad,\ bottom\_pad),\ (left\_pad,\ right\_pad),\ (0,\ 0)] }
+\DoxyCodeLine{00485\ \ \ \ \ \ \ \ \ image\ =\ np.pad(image,\ padding,\ mode=\textcolor{stringliteral}{'constant'},\ constant\_values=0) }
+\DoxyCodeLine{00486\ \ \ \ \ \ \ \ \ window\ =\ (top\_pad,\ left\_pad,\ h\ +\ top\_pad,\ w\ +\ left\_pad) }
+\DoxyCodeLine{00487\ \ \ \ \ \textcolor{keywordflow}{elif}\ mode\ ==\ \textcolor{stringliteral}{"{}crop"{}}: }
+\DoxyCodeLine{00488\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Pick\ a\ random\ crop }}
+\DoxyCodeLine{00489\ \ \ \ \ \ \ \ \ h,\ w\ =\ image.shape[:2] }
+\DoxyCodeLine{00490\ \ \ \ \ \ \ \ \ y\ =\ random.randint(0,\ (h\ -\/\ min\_dim)) }
+\DoxyCodeLine{00491\ \ \ \ \ \ \ \ \ x\ =\ random.randint(0,\ (w\ -\/\ min\_dim)) }
+\DoxyCodeLine{00492\ \ \ \ \ \ \ \ \ crop\ =\ (y,\ x,\ min\_dim,\ min\_dim) }
+\DoxyCodeLine{00493\ \ \ \ \ \ \ \ \ image\ =\ image[y:y\ +\ min\_dim,\ x:x\ +\ min\_dim] }
+\DoxyCodeLine{00494\ \ \ \ \ \ \ \ \ window\ =\ (0,\ 0,\ min\_dim,\ min\_dim) }
+\DoxyCodeLine{00495\ \ \ \ \ \textcolor{keywordflow}{else}: }
+\DoxyCodeLine{00496\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{raise}\ Exception(\textcolor{stringliteral}{"{}Mode\ \{\}\ not\ supported"{}}.format(mode)) }
+\DoxyCodeLine{00497\ \ \ \ \ \textcolor{keywordflow}{return}\ image.astype(image\_dtype),\ window,\ scale,\ padding,\ crop }
+\DoxyCodeLine{00498\  }
+\DoxyCodeLine{00499\  }
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{a00136_ad8268f50c6823c07e975ec0c64cba6b2}{People\+Tracker.\+src.\+utils.\+resize()}}.
+
+Here is the call graph for this function\+:
+% FIG 14
+\Hypertarget{a00136_acfc6cc89f95c11ed3cd05bf706320e25}\label{a00136_acfc6cc89f95c11ed3cd05bf706320e25} 
+\index{PeopleTracker.src.utils@{PeopleTracker.src.utils}!resize\_mask@{resize\_mask}}
+\index{resize\_mask@{resize\_mask}!PeopleTracker.src.utils@{PeopleTracker.src.utils}}
+\doxysubsubsection{\texorpdfstring{resize\_mask()}{resize\_mask()}}
+{\footnotesize\ttfamily resize\+\_\+mask (\begin{DoxyParamCaption}\item[{}]{mask,  }\item[{}]{scale,  }\item[{}]{padding,  }\item[{}]{crop = {\ttfamily None} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Resizes a mask using the given scale and padding.
+Typically, you get the scale and padding from resize_image() to
+ensure both, the image and the mask, are resized consistently.
+
+scale: mask scaling factor
+padding: Padding to add to the mask in the form
+        [(top, bottom), (left, right), (0, 0)]
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00500\ \textcolor{keyword}{def\ }resize\_mask(mask,\ scale,\ padding,\ crop=None): }
+\DoxyCodeLine{00501\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Resizes\ a\ mask\ using\ the\ given\ scale\ and\ padding. }}
+\DoxyCodeLine{00502\ \textcolor{stringliteral}{\ \ \ \ Typically,\ you\ get\ the\ scale\ and\ padding\ from\ resize\_image()\ to }}
+\DoxyCodeLine{00503\ \textcolor{stringliteral}{\ \ \ \ ensure\ both,\ the\ image\ and\ the\ mask,\ are\ resized\ consistently. }}
+\DoxyCodeLine{00504\ \textcolor{stringliteral}{ }}
+\DoxyCodeLine{00505\ \textcolor{stringliteral}{\ \ \ \ scale:\ mask\ scaling\ factor }}
+\DoxyCodeLine{00506\ \textcolor{stringliteral}{\ \ \ \ padding:\ Padding\ to\ add\ to\ the\ mask\ in\ the\ form }}
+\DoxyCodeLine{00507\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ [(top,\ bottom),\ (left,\ right),\ (0,\ 0)] }}
+\DoxyCodeLine{00508\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}} }
+\DoxyCodeLine{00509\ \ \ \ \ \textcolor{comment}{\#\ Suppress\ warning\ from\ scipy\ 0.13.0,\ the\ output\ shape\ of\ zoom()\ is }}
+\DoxyCodeLine{00510\ \ \ \ \ \textcolor{comment}{\#\ calculated\ with\ round()\ instead\ of\ int() }}
+\DoxyCodeLine{00511\ \ \ \ \ \textcolor{keyword}{with}\ warnings.catch\_warnings(): }
+\DoxyCodeLine{00512\ \ \ \ \ \ \ \ \ warnings.simplefilter(\textcolor{stringliteral}{"{}ignore"{}}) }
+\DoxyCodeLine{00513\ \ \ \ \ \ \ \ \ mask\ =\ scipy.ndimage.zoom(mask,\ zoom=[scale,\ scale,\ 1],\ order=0) }
+\DoxyCodeLine{00514\ \ \ \ \ \textcolor{keywordflow}{if}\ crop\ \textcolor{keywordflow}{is}\ \textcolor{keywordflow}{not}\ \textcolor{keywordtype}{None}: }
+\DoxyCodeLine{00515\ \ \ \ \ \ \ \ \ y,\ x,\ h,\ w\ =\ crop }
+\DoxyCodeLine{00516\ \ \ \ \ \ \ \ \ mask\ =\ mask[y:y\ +\ h,\ x:x\ +\ w] }
+\DoxyCodeLine{00517\ \ \ \ \ \textcolor{keywordflow}{else}: }
+\DoxyCodeLine{00518\ \ \ \ \ \ \ \ \ mask\ =\ np.pad(mask,\ padding,\ mode=\textcolor{stringliteral}{'constant'},\ constant\_values=0) }
+\DoxyCodeLine{00519\ \ \ \ \ \textcolor{keywordflow}{return}\ mask }
+\DoxyCodeLine{00520\  }
+\DoxyCodeLine{00521\  }
+
+\end{DoxyCode}
+\Hypertarget{a00136_a41cc5ed08039f095ef85d066b5ac5736}\label{a00136_a41cc5ed08039f095ef85d066b5ac5736} 
+\index{PeopleTracker.src.utils@{PeopleTracker.src.utils}!trim\_zeros@{trim\_zeros}}
+\index{trim\_zeros@{trim\_zeros}!PeopleTracker.src.utils@{PeopleTracker.src.utils}}
+\doxysubsubsection{\texorpdfstring{trim\_zeros()}{trim\_zeros()}}
+{\footnotesize\ttfamily trim\+\_\+zeros (\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})}
+
+
+
+Miscellaneous. 
+
+\begin{DoxyVerb}It's common to have tensors larger than the available data and
+pad with zeros. This function removes rows that are all zeros.
+
+x: [rows, columns].
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00651\ \textcolor{keyword}{def\ }trim\_zeros(x): }
+\DoxyCodeLine{00652\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}It's\ common\ to\ have\ tensors\ larger\ than\ the\ available\ data\ and }}
+\DoxyCodeLine{00653\ \textcolor{stringliteral}{\ \ \ \ pad\ with\ zeros.\ This\ function\ removes\ rows\ that\ are\ all\ zeros. }}
+\DoxyCodeLine{00654\ \textcolor{stringliteral}{ }}
+\DoxyCodeLine{00655\ \textcolor{stringliteral}{\ \ \ \ x:\ [rows,\ columns]. }}
+\DoxyCodeLine{00656\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}} }
+\DoxyCodeLine{00657\ \ \ \ \ \textcolor{keyword}{assert}\ len(x.shape)\ ==\ 2 }
+\DoxyCodeLine{00658\ \ \ \ \ \textcolor{keywordflow}{return}\ x[\string~np.all(x\ ==\ 0,\ axis=1)] }
+\DoxyCodeLine{00659\  }
+\DoxyCodeLine{00660\  }
+
+\end{DoxyCode}
+
+
+Referenced by \mbox{\hyperlink{a00136_af5f7f7aa33fdb94ed802f23199ad0d56}{People\+Tracker.\+src.\+utils.\+compute\+\_\+matches()}}.
+
+Here is the caller graph for this function\+:
+% FIG 15
+\Hypertarget{a00136_a7c1e401d91ffe4fb86ec6c1265f3e524}\label{a00136_a7c1e401d91ffe4fb86ec6c1265f3e524} 
+\index{PeopleTracker.src.utils@{PeopleTracker.src.utils}!unmold\_mask@{unmold\_mask}}
+\index{unmold\_mask@{unmold\_mask}!PeopleTracker.src.utils@{PeopleTracker.src.utils}}
+\doxysubsubsection{\texorpdfstring{unmold\_mask()}{unmold\_mask()}}
+{\footnotesize\ttfamily unmold\+\_\+mask (\begin{DoxyParamCaption}\item[{}]{mask,  }\item[{}]{bbox,  }\item[{}]{image\+\_\+shape }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Converts a mask generated by the neural network to a format similar
+to its original shape.
+mask: [height, width] of type float. A small, typically 28x28 mask.
+bbox: [y1, x1, y2, x2]. The box to fit the mask in.
+
+Returns a binary mask with the same size as the original image.
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00565\ \textcolor{keyword}{def\ }unmold\_mask(mask,\ bbox,\ image\_shape): }
+\DoxyCodeLine{00566\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Converts\ a\ mask\ generated\ by\ the\ neural\ network\ to\ a\ format\ similar }}
+\DoxyCodeLine{00567\ \textcolor{stringliteral}{\ \ \ \ to\ its\ original\ shape. }}
+\DoxyCodeLine{00568\ \textcolor{stringliteral}{\ \ \ \ mask:\ [height,\ width]\ of\ type\ float.\ A\ small,\ typically\ 28x28\ mask. }}
+\DoxyCodeLine{00569\ \textcolor{stringliteral}{\ \ \ \ bbox:\ [y1,\ x1,\ y2,\ x2].\ The\ box\ to\ fit\ the\ mask\ in. }}
+\DoxyCodeLine{00570\ \textcolor{stringliteral}{ }}
+\DoxyCodeLine{00571\ \textcolor{stringliteral}{\ \ \ \ Returns\ a\ binary\ mask\ with\ the\ same\ size\ as\ the\ original\ image. }}
+\DoxyCodeLine{00572\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}} }
+\DoxyCodeLine{00573\ \ \ \ \ threshold\ =\ 0.5 }
+\DoxyCodeLine{00574\ \ \ \ \ y1,\ x1,\ y2,\ x2\ =\ bbox }
+\DoxyCodeLine{00575\ \ \ \ \ mask\ =\ resize(mask,\ (y2\ -\/\ y1,\ x2\ -\/\ x1)) }
+\DoxyCodeLine{00576\ \ \ \ \ mask\ =\ np.where(mask\ >=\ threshold,\ 1,\ 0).astype(np.bool) }
+\DoxyCodeLine{00577\  }
+\DoxyCodeLine{00578\ \ \ \ \ \textcolor{comment}{\#\ Put\ the\ mask\ in\ the\ right\ location. }}
+\DoxyCodeLine{00579\ \ \ \ \ full\_mask\ =\ np.zeros(image\_shape[:2],\ dtype=np.bool) }
+\DoxyCodeLine{00580\ \ \ \ \ full\_mask[y1:y2,\ x1:x2]\ =\ mask }
+\DoxyCodeLine{00581\ \ \ \ \ \textcolor{keywordflow}{return}\ full\_mask }
+\DoxyCodeLine{00582\  }
+\DoxyCodeLine{00583\  }
+
+\end{DoxyCode}

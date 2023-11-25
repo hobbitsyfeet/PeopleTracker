@@ -1,0 +1,17 @@
+digraph "check_occlusion"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [id="Node000001",label="check_occlusion",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Checks if a ground truth is occluded."];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="get_ground_truths",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$a00154.html#aa0d2040d32ada937d1c5290044985240",tooltip=" "];
+  Node1 -> Node3 [id="edge2_Node000001_Node000003",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="precision",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$a00154.html#aae33341ee61c7a874af86b59d4f81d84",tooltip=" "];
+  Node3 -> Node4 [id="edge3_Node000003_Node000004",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="compute_iou",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$a00154.html#a2c362f5906289f957819905482b51948",tooltip="Calculates IoU of the given box with the array of the given boxes."];
+  Node3 -> Node5 [id="edge4_Node000003_Node000005",color="steelblue1",style="solid",tooltip=" "];
+  Node5 [id="Node000005",label="get_area",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$a00154.html#ad5cec8c10881d8efa8a4da5e7fccf5fe",tooltip=" "];
+}

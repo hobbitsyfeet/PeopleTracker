@@ -1,0 +1,189 @@
+\doxysection{Test\+Regions}
+\hypertarget{a00214}{}\label{a00214}\index{TestRegions@{TestRegions}}
+
+
+Inheritance diagram for Test\+Regions\+:
+% FIG 0
+
+
+Collaboration diagram for Test\+Regions\+:
+% FIG 1
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{a00214_a3c8689fcd9fdf3848bc1d79d8836b863}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, \texorpdfstring{$\ast$}{*}args, \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}kwargs)
+\item 
+\mbox{\hyperlink{a00214_a7f6edea4e5245920bf72e2990a348858}{new\+\_\+region}} (self)
+\item 
+\mbox{\hyperlink{a00214_a984668bd40ae7eeeb42de56646f339c3}{test\+\_\+set\+\_\+moving\+\_\+region}} (self)
+\item 
+\mbox{\hyperlink{a00214_ab68189bf6dfd11d54650acd3d180ee25}{del\+\_\+moving\+\_\+region}} (self)
+\item 
+\mbox{\hyperlink{a00214_a71f24ab7ecef358a30fdc8a74ef4fe58}{test\+\_\+test\+\_\+region}} (self)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{a00214_a50d033f3079818116fd82e853c0f291d}\label{a00214_a50d033f3079818116fd82e853c0f291d} 
+{\bfseries long\+Message}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{a00214_a3c8689fcd9fdf3848bc1d79d8836b863}\label{a00214_a3c8689fcd9fdf3848bc1d79d8836b863} 
+\index{TestRegions@{TestRegions}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!TestRegions@{TestRegions}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily \+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{\texorpdfstring{$\ast$}{*}}]{args,  }\item[{\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{kwargs }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00009\ \ \ \ \ \textcolor{keyword}{def\ }\_\_init\_\_(self,\ *args,\ **kwargs): }
+\DoxyCodeLine{00010\ \ \ \ \ \ \ \ \ super(TestRegions,\ self).\_\_init\_\_(*args,\ **kwargs) }
+\DoxyCodeLine{00011\ \ \ \ \ \ \ \ \ self.longMessage\ =\ \textcolor{keyword}{True} }
+\DoxyCodeLine{00012\  }
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{a00214_ab68189bf6dfd11d54650acd3d180ee25}\label{a00214_ab68189bf6dfd11d54650acd3d180ee25} 
+\index{TestRegions@{TestRegions}!del\_moving\_region@{del\_moving\_region}}
+\index{del\_moving\_region@{del\_moving\_region}!TestRegions@{TestRegions}}
+\doxysubsubsection{\texorpdfstring{del\_moving\_region()}{del\_moving\_region()}}
+{\footnotesize\ttfamily del\+\_\+moving\+\_\+region (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{def\ }del\_moving\_region(self): }
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ regions\ =\ self.new\_region() }
+\DoxyCodeLine{00033\  }
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Test\ Removal\ of\ name }}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ regions.set\_moving\_region(name=\textcolor{stringliteral}{"{}Test"{}},\ point=(0,0),\ dimensions=(0,0),\ id=\textcolor{stringliteral}{"{}1"{}}) }
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ regions.del\_moving\_region(name=\textcolor{stringliteral}{"{}Test"{}}) }
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ self.assertEqual(regions.region\_dict,\ dict()) }
+\DoxyCodeLine{00038\  }
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Test\ does\ not\ remove\ subset }}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ regions.set\_moving\_region(name=\textcolor{stringliteral}{"{}Test"{}},\ point=(0,0),\ dimensions=(0,0),\ id=\textcolor{stringliteral}{"{}1"{}}) }
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ regions.del\_moving\_region(name=\textcolor{stringliteral}{"{}Tes"{}}) }
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ self.assertEqual(regions.region\_dict.keys(),\ dict(\textcolor{stringliteral}{"{}1"{}}).keys()) }
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Test\ does\ not\ remove\ superset }}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ regions.set\_moving\_region(name=\textcolor{stringliteral}{"{}Test"{}},\ point=(0,0),\ dimensions=(0,0),\ id=\textcolor{stringliteral}{"{}1"{}}) }
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ regions.del\_moving\_region(name=\textcolor{stringliteral}{"{}Tests"{}}) }
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ self.assertEqual(regions.region\_dict.keys(),\ dict(\textcolor{stringliteral}{"{}1"{}}).keys()) }
+\DoxyCodeLine{00049\  }
+\DoxyCodeLine{00050\  }
+
+\end{DoxyCode}
+\Hypertarget{a00214_a7f6edea4e5245920bf72e2990a348858}\label{a00214_a7f6edea4e5245920bf72e2990a348858} 
+\index{TestRegions@{TestRegions}!new\_region@{new\_region}}
+\index{new\_region@{new\_region}!TestRegions@{TestRegions}}
+\doxysubsubsection{\texorpdfstring{new\_region()}{new\_region()}}
+{\footnotesize\ttfamily new\+\_\+region (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keyword}{def\ }new\_region(self): }
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#Requires\ app\ before\ regions\ can\ be\ declared }}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ app\ =\ QtWidgets.QApplication(sys.argv) }
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ region\ =\ Regions() }
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ self.assertNotEqual(region,\ \textcolor{keywordtype}{None},\ \textcolor{stringliteral}{"{}Should\ not\ be\ None"{}}) }
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ region }
+\DoxyCodeLine{00019\  }
+
+\end{DoxyCode}
+
+
+Referenced by \mbox{\hyperlink{a00214_a71f24ab7ecef358a30fdc8a74ef4fe58}{Test\+Regions.\+test\+\_\+test\+\_\+region()}}.
+
+Here is the caller graph for this function\+:
+% FIG 2
+\Hypertarget{a00214_a984668bd40ae7eeeb42de56646f339c3}\label{a00214_a984668bd40ae7eeeb42de56646f339c3} 
+\index{TestRegions@{TestRegions}!test\_set\_moving\_region@{test\_set\_moving\_region}}
+\index{test\_set\_moving\_region@{test\_set\_moving\_region}!TestRegions@{TestRegions}}
+\doxysubsubsection{\texorpdfstring{test\_set\_moving\_region()}{test\_set\_moving\_region()}}
+{\footnotesize\ttfamily test\+\_\+set\+\_\+moving\+\_\+region (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keyword}{def\ }test\_set\_moving\_region(self): }
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ regions\ =\ self.new\_region() }
+\DoxyCodeLine{00022\  }
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#Test\ Null\ Entry\ or\ Invalid }}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ regions.set\_moving\_region(name=\textcolor{stringliteral}{"{}Joe"{}},\ point=(0,0),\ dimensions=(0,0),\ id\ =\ \textcolor{stringliteral}{"{}1"{}}) }
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ regions.set\_moving\_region(name=\textcolor{stringliteral}{"{}Joe"{}},\ point=(0,0),\ dimensions=(-\/1,-\/1),id\ =\ \textcolor{stringliteral}{"{}2"{}}) }
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ regions.set\_moving\_region(name=\textcolor{stringliteral}{"{}Joe"{}},\ point=(0,0),\ dimensions=(10,10),\ id\ =\ \textcolor{stringliteral}{"{}3"{}}) }
+\DoxyCodeLine{00027\  }
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ regions.set\_moving\_region }}
+\DoxyCodeLine{00029\  }
+\DoxyCodeLine{00030\  }
+
+\end{DoxyCode}
+\Hypertarget{a00214_a71f24ab7ecef358a30fdc8a74ef4fe58}\label{a00214_a71f24ab7ecef358a30fdc8a74ef4fe58} 
+\index{TestRegions@{TestRegions}!test\_test\_region@{test\_test\_region}}
+\index{test\_test\_region@{test\_test\_region}!TestRegions@{TestRegions}}
+\doxysubsubsection{\texorpdfstring{test\_test\_region()}{test\_test\_region()}}
+{\footnotesize\ttfamily test\+\_\+test\+\_\+region (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}    if p <= 1: #point exists in or on ellipse
+    Otherwise the point exists outside of the ellipse
+
+    Note: Eclipse Center = (PointX + 1/2 W, PointY + H/2) because (x,y) describe top left corner of a bounding box, and (x + width, y + height) describe the bottom right
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keyword}{def\ }test\_test\_region(self): }
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{} }}
+\DoxyCodeLine{00053\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ if\ p\ <=\ 1:\ \#point\ exists\ in\ or\ on\ ellipse }}
+\DoxyCodeLine{00054\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ Otherwise\ the\ point\ exists\ outside\ of\ the\ ellipse }}
+\DoxyCodeLine{00055\ \textcolor{stringliteral}{ }}
+\DoxyCodeLine{00056\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ Note:\ Eclipse\ Center\ =\ (PointX\ +\ 1/2\ W,\ PointY\ +\ H/2)\ because\ (x,y)\ describe\ top\ left\ corner\ of\ a\ bounding\ box,\ and\ (x\ +\ width,\ y\ +\ height)\ describe\ the\ bottom\ right }}
+\DoxyCodeLine{00057\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}} }
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ regions\ =\ self.new\_region() }
+\DoxyCodeLine{00059\  }
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Test\ on\ Empty }}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ regions.set\_moving\_region(name=\textcolor{stringliteral}{"{}Test"{}},\ point=(0,0),\ dimensions=(0,0),\ id=\textcolor{stringliteral}{"{}1"{}}) }
+\DoxyCodeLine{00062\  }
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Zero\ Area\ cube\ has\ no\ center,\ therefore\ should\ not\ be\ in\ eclipse }}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ self.assertEqual(regions.test\_region((0,0))[0],\ []) }
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ self.assertGreaterEqual(regions.test\_region((0,0))[1],\ 1) }
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Point\ outside\ of\ zero\ area\ eclispe\ should\ not\ be\ in\ or\ on\ the\ eclipse }}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ self.assertEqual(regions.test\_region((10,10))[0],\ []) }
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ self.assertGreaterEqual(regions.test\_region((10,10))[1],\ 1) }
+\DoxyCodeLine{00070\  }
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Test\ Invalid }}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ regions.set\_moving\_region(name=\textcolor{stringliteral}{"{}Test"{}},\ point=(-\/1,-\/1),\ dimensions=(-\/1,-\/1),\ id=\textcolor{stringliteral}{"{}1"{}}) }
+\DoxyCodeLine{00073\  }
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ self.assertEqual(regions.test\_region((0,0))[0],\ []) }
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ self.assertGreaterEqual(regions.test\_region((0,0))[1],\ 1) }
+\DoxyCodeLine{00076\  }
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ self.assertEqual(regions.test\_region((-\/10,-\/10))[0],\ []) }
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ self.assertGreaterEqual(regions.test\_region((-\/10,-\/10))[1],\ 1) }
+\DoxyCodeLine{00079\  }
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Test\ Valid }}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ regions.set\_moving\_region(name=\textcolor{stringliteral}{"{}Test"{}},\ point=(100,100),\ dimensions=(5,10),id=\textcolor{stringliteral}{"{}1"{}}) }
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ self.assertGreaterEqual(regions.test\_region((0,0))[1],\ 1) }
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ self.assertGreaterEqual(regions.test\_region((100,100))[1],\ 1)\ \textcolor{comment}{\#\ The\ top\ left\ of\ a\ rectangle\ which\ describes\ an\ eclipse\ is\ not\ included\ in\ ellipse }}
+\DoxyCodeLine{00084\  }
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ self.assertLessEqual(regions.test\_region((102.5,100))[1],\ 1)\ \textcolor{comment}{\#\ Tangent\ Edge\ should\ exist\ within\ ellipse\ (top) }}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ self.assertLessEqual(regions.test\_region((102.5,110))[1],\ 1)\ \textcolor{comment}{\#\ Tangent\ Edge\ should\ exist\ within\ ellipse\ (bottom) }}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ self.assertLessEqual(regions.test\_region((100,105))[1],\ 1)\ \textcolor{comment}{\#\ Tangent\ Edge\ should\ exist\ within\ ellipse\ (left) }}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ self.assertLessEqual(regions.test\_region((105,105))[1],\ 1)\ \textcolor{comment}{\#\ Tangent\ Edge\ should\ exist\ within\ ellipse\ (right)\ \  }}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ self.assertEqual(regions.test\_region((,-\/10)),\ -\/1) }}
+\DoxyCodeLine{00090\  }
+
+\end{DoxyCode}
+
+
+References Test\+Regions.\+new\+\_\+region().
+
+Here is the call graph for this function\+:
+% FIG 3
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+K\+:/\+Github/\+People\+Tracker/src/test\+\_\+\+Regions.\+py\end{DoxyCompactItemize}

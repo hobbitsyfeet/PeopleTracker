@@ -1,0 +1,870 @@
+{\rtf1\ansi\ansicpg1252\uc1 \deff0\deflang1033\deflangfe1033
+{\fonttbl {\f0\froman\fcharset0\fprq2{\*\panose 02020603050405020304}Times New Roman;}
+{\f1\fswiss\fcharset0\fprq2{\*\panose 020b0604020202020204}Arial;}
+{\f2\fmodern\fcharset0\fprq1{\*\panose 02070309020205020404}Courier New;}
+{\f3\froman\fcharset2\fprq2{\*\panose 05050102010706020507}Symbol;}
+}
+{\colortbl;\red0\green0\blue0;\red0\green0\blue255;\red0\green255\blue255;\red0\green255\blue0;\red255\green0\blue255;\red255\green0\blue0;\red255\green255\blue0;\red255\green255\blue255;\red0\green0\blue128;\red0\green128\blue128;\red0\green128\blue0;\red128\green0\blue128;\red128\green0\blue0;\red128\green128\blue0;\red128\green128\blue128;\red192\green192\blue192;\red0\green128\blue0;\red96\green64\blue32;\rede0\green128\blue0;\red128\green0\blue0;\red128\green96\blue32;\red0\green32\blue128;\red0\green128\blue128;\red255\green0\blue255;\red0\green0\blue0;\red112\green0\blue112;\red255\green0\blue0;}
+{\stylesheet
+{\widctlpar\adjustright \fs20\cgrid \snext0 Normal;}
+{\paperw11900\paperh16840\margl1800\margr1800\margt1440\margb1440\gutter0\ltrsect}
+{\s1\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs36\kerning36\cgrid \sbasedon0 \snext0 heading 1;}
+{\s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid \sbasedon0 \snext0 heading 2;}
+{\s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid \sbasedon0 \snext0 heading 3;}
+{\s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid \sbasedon0 \snext0 heading 4;}{\*\cs10 \additive Default Paragraph Font;}
+{\s5\sb90\sa30\keepn\widctlpar\adjustright \b\f1\fs20\cgrid \sbasedon0 \snext0 heading 5;}{\*\cs10 \additive Default Paragraph Font;}
+{\s15\qc\sb240\sa60\widctlpar\outlinelevel0\adjustright \b\f1\fs32\kerning28\cgrid \sbasedon0 \snext15 Title;}
+{\s16\qc\sa60\widctlpar\outlinelevel1\adjustright \f1\cgrid \sbasedon0 \snext16 Subtitle;}
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid \sbasedon0 \snext17 BodyText;}
+{\s18\widctlpar\fs22\cgrid \sbasedon0 \snext18 DenseText;}
+{\s28\widctlpar\tqc\tx4320\tqr\tx8640\adjustright \fs20\cgrid \sbasedon0 \snext28 header;}
+{\s29\widctlpar\tqc\tx4320\tqr\tx8640\qr\adjustright \fs20\cgrid \sbasedon0 \snext29 footer;}
+{\s30\li360\sa60\sb120\keepn\widctlpar\adjustright \b\f1\fs20\cgrid \sbasedon0 \snext30 GroupHeader;}
+{\s40\li0\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid \sbasedon0 \snext41 Code Example 0;}
+{\s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid \sbasedon0 \snext42 Code Example 1;}
+{\s42\li720\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid \sbasedon0 \snext43 Code Example 2;}
+{\s43\li1080\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid \sbasedon0 \snext44 Code Example 3;}
+{\s44\li1440\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid \sbasedon0 \snext45 Code Example 4;}
+{\s45\li1800\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid \sbasedon0 \snext46 Code Example 5;}
+{\s46\li2160\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid \sbasedon0 \snext47 Code Example 6;}
+{\s47\li2520\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid \sbasedon0 \snext48 Code Example 7;}
+{\s48\li2880\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid \sbasedon0 \snext49 Code Example 8;}
+{\s49\li3240\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid \sbasedon0 \snext50 Code Example 9;}
+{\s50\li3600\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid \sbasedon0 \snext51 Code Example 10;}
+{\s51\li3960\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid \sbasedon0 \snext52 Code Example 11;}
+{\s52\li4320\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid \sbasedon0 \snext53 Code Example 12;}
+{\s53\li4680\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid \sbasedon0 \snext53 Code Example 13;}
+{\s60\li0\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid \sbasedon0 \snext61 List Continue 0;}
+{\s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid \sbasedon0 \snext62 List Continue 1;}
+{\s62\li720\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid \sbasedon0 \snext63 List Continue 2;}
+{\s63\li1080\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid \sbasedon0 \snext64 List Continue 3;}
+{\s64\li1440\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid \sbasedon0 \snext65 List Continue 4;}
+{\s65\li1800\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid \sbasedon0 \snext66 List Continue 5;}
+{\s66\li2160\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid \sbasedon0 \snext67 List Continue 6;}
+{\s67\li2520\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid \sbasedon0 \snext68 List Continue 7;}
+{\s68\li2880\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid \sbasedon0 \snext69 List Continue 8;}
+{\s69\li3240\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid \sbasedon0 \snext70 List Continue 9;}
+{\s70\li3600\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid \sbasedon0 \snext71 List Continue 10;}
+{\s71\li3960\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid \sbasedon0 \snext72 List Continue 11;}
+{\s72\li4320\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid \sbasedon0 \snext73 List Continue 12;}
+{\s73\li4680\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid \sbasedon0 \snext73 List Continue 13;}
+{\s80\li0\widctlpar\ql\adjustright \fs20\cgrid \sbasedon0 \snext81 DescContinue 0;}
+{\s81\li360\widctlpar\ql\adjustright \fs20\cgrid \sbasedon0 \snext82 DescContinue 1;}
+{\s82\li720\widctlpar\ql\adjustright \fs20\cgrid \sbasedon0 \snext83 DescContinue 2;}
+{\s83\li1080\widctlpar\ql\adjustright \fs20\cgrid \sbasedon0 \snext84 DescContinue 3;}
+{\s84\li1440\widctlpar\ql\adjustright \fs20\cgrid \sbasedon0 \snext85 DescContinue 4;}
+{\s85\li1800\widctlpar\ql\adjustright \fs20\cgrid \sbasedon0 \snext86 DescContinue 5;}
+{\s86\li2160\widctlpar\ql\adjustright \fs20\cgrid \sbasedon0 \snext87 DescContinue 6;}
+{\s87\li2520\widctlpar\ql\adjustright \fs20\cgrid \sbasedon0 \snext88 DescContinue 7;}
+{\s88\li2880\widctlpar\ql\adjustright \fs20\cgrid \sbasedon0 \snext89 DescContinue 8;}
+{\s89\li3240\widctlpar\ql\adjustright \fs20\cgrid \sbasedon0 \snext90 DescContinue 9;}
+{\s90\li3600\widctlpar\ql\adjustright \fs20\cgrid \sbasedon0 \snext91 DescContinue 10;}
+{\s91\li3960\widctlpar\ql\adjustright \fs20\cgrid \sbasedon0 \snext92 DescContinue 11;}
+{\s92\li4320\widctlpar\ql\adjustright \fs20\cgrid \sbasedon0 \snext93 DescContinue 12;}
+{\s93\li4680\widctlpar\ql\adjustright \fs20\cgrid \sbasedon0 \snext93 DescContinue 13;}
+{\s100\li0\sa30\sb30\widctlpar\tqr\tldot\tx8640\adjustright \fs20\cgrid \sbasedon0 \snext101 LatexTOC 0;}
+{\s101\li360\sa27\sb27\widctlpar\tqr\tldot\tx8640\adjustright \fs20\cgrid \sbasedon0 \snext102 LatexTOC 1;}
+{\s102\li720\sa24\sb24\widctlpar\tqr\tldot\tx8640\adjustright \fs20\cgrid \sbasedon0 \snext103 LatexTOC 2;}
+{\s103\li1080\sa21\sb21\widctlpar\tqr\tldot\tx8640\adjustright \fs20\cgrid \sbasedon0 \snext104 LatexTOC 3;}
+{\s104\li1440\sa18\sb18\widctlpar\tqr\tldot\tx8640\adjustright \fs20\cgrid \sbasedon0 \snext105 LatexTOC 4;}
+{\s105\li1800\sa15\sb15\widctlpar\tqr\tldot\tx8640\adjustright \fs20\cgrid \sbasedon0 \snext106 LatexTOC 5;}
+{\s106\li2160\sa12\sb12\widctlpar\tqr\tldot\tx8640\adjustright \fs20\cgrid \sbasedon0 \snext107 LatexTOC 6;}
+{\s107\li2520\sa9\sb9\widctlpar\tqr\tldot\tx8640\adjustright \fs20\cgrid \sbasedon0 \snext108 LatexTOC 7;}
+{\s108\li2880\sa6\sb6\widctlpar\tqr\tldot\tx8640\adjustright \fs20\cgrid \sbasedon0 \snext109 LatexTOC 8;}
+{\s109\li3240\sa3\sb3\widctlpar\tqr\tldot\tx8640\adjustright \fs20\cgrid \sbasedon0 \snext110 LatexTOC 9;}
+{\s110\li3600\sa3\sb3\widctlpar\tqr\tldot\tx8640\adjustright \fs20\cgrid \sbasedon0 \snext111 LatexTOC 10;}
+{\s111\li3960\sa3\sb3\widctlpar\tqr\tldot\tx8640\adjustright \fs20\cgrid \sbasedon0 \snext112 LatexTOC 11;}
+{\s112\li4320\sa3\sb3\widctlpar\tqr\tldot\tx8640\adjustright \fs20\cgrid \sbasedon0 \snext113 LatexTOC 12;}
+{\s113\li4680\sa3\sb3\widctlpar\tqr\tldot\tx8640\adjustright \fs20\cgrid \sbasedon0 \snext113 LatexTOC 13;}
+{\s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid \sbasedon0 \snext121 \sautoupd List Bullet 0;}
+{\s121\fi-360\li720\widctlpar\jclisttab\tx720{\*\pn \pnlvlbody\ilvl0\ls2\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid \sbasedon0 \snext122 \sautoupd List Bullet 1;}
+{\s122\fi-360\li1080\widctlpar\jclisttab\tx1080{\*\pn \pnlvlbody\ilvl0\ls3\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid \sbasedon0 \snext123 \sautoupd List Bullet 2;}
+{\s123\fi-360\li1440\widctlpar\jclisttab\tx1440{\*\pn \pnlvlbody\ilvl0\ls4\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid \sbasedon0 \snext124 \sautoupd List Bullet 3;}
+{\s124\fi-360\li1800\widctlpar\jclisttab\tx1800{\*\pn \pnlvlbody\ilvl0\ls5\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid \sbasedon0 \snext125 \sautoupd List Bullet 4;}
+{\s125\fi-360\li2160\widctlpar\jclisttab\tx2160{\*\pn \pnlvlbody\ilvl0\ls6\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid \sbasedon0 \snext126 \sautoupd List Bullet 5;}
+{\s126\fi-360\li2520\widctlpar\jclisttab\tx2520{\*\pn \pnlvlbody\ilvl0\ls7\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid \sbasedon0 \snext127 \sautoupd List Bullet 6;}
+{\s127\fi-360\li2880\widctlpar\jclisttab\tx2880{\*\pn \pnlvlbody\ilvl0\ls8\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid \sbasedon0 \snext128 \sautoupd List Bullet 7;}
+{\s128\fi-360\li3240\widctlpar\jclisttab\tx3240{\*\pn \pnlvlbody\ilvl0\ls9\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid \sbasedon0 \snext129 \sautoupd List Bullet 8;}
+{\s129\fi-360\li3600\widctlpar\jclisttab\tx3600{\*\pn \pnlvlbody\ilvl0\ls10\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid \sbasedon0 \snext130 \sautoupd List Bullet 9;}
+{\s130\fi-360\li3960\widctlpar\jclisttab\tx3960{\*\pn \pnlvlbody\ilvl0\ls11\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid \sbasedon0 \snext131 \sautoupd List Bullet 10;}
+{\s131\fi-360\li4320\widctlpar\jclisttab\tx4320{\*\pn \pnlvlbody\ilvl0\ls12\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid \sbasedon0 \snext132 \sautoupd List Bullet 11;}
+{\s132\fi-360\li4680\widctlpar\jclisttab\tx4680{\*\pn \pnlvlbody\ilvl0\ls13\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid \sbasedon0 \snext133 \sautoupd List Bullet 12;}
+{\s133\fi-360\li5040\widctlpar\jclisttab\tx5040{\*\pn \pnlvlbody\ilvl0\ls14\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid \sbasedon0 \snext133 \sautoupd List Bullet 13;}
+{\s140\fi-360\li360\widctlpar\fs20\cgrid \sbasedon0 \snext141 \sautoupd List Enum 0;}
+{\s141\fi-360\li720\widctlpar\fs20\cgrid \sbasedon0 \snext142 \sautoupd List Enum 1;}
+{\s142\fi-360\li1080\widctlpar\fs20\cgrid \sbasedon0 \snext143 \sautoupd List Enum 2;}
+{\s143\fi-360\li1440\widctlpar\fs20\cgrid \sbasedon0 \snext144 \sautoupd List Enum 3;}
+{\s144\fi-360\li1800\widctlpar\fs20\cgrid \sbasedon0 \snext145 \sautoupd List Enum 4;}
+{\s145\fi-360\li2160\widctlpar\fs20\cgrid \sbasedon0 \snext146 \sautoupd List Enum 5;}
+{\s146\fi-360\li2520\widctlpar\fs20\cgrid \sbasedon0 \snext147 \sautoupd List Enum 6;}
+{\s147\fi-360\li2880\widctlpar\fs20\cgrid \sbasedon0 \snext148 \sautoupd List Enum 7;}
+{\s148\fi-360\li3240\widctlpar\fs20\cgrid \sbasedon0 \snext149 \sautoupd List Enum 8;}
+{\s149\fi-360\li3600\widctlpar\fs20\cgrid \sbasedon0 \snext150 \sautoupd List Enum 9;}
+{\s150\fi-360\li3960\widctlpar\fs20\cgrid \sbasedon0 \snext151 \sautoupd List Enum 10;}
+{\s151\fi-360\li4320\widctlpar\fs20\cgrid \sbasedon0 \snext152 \sautoupd List Enum 11;}
+{\s152\fi-360\li4680\widctlpar\fs20\cgrid \sbasedon0 \snext153 \sautoupd List Enum 12;}
+{\s153\fi-360\li5040\widctlpar\fs20\cgrid \sbasedon0 \snext153 \sautoupd List Enum 13;}
+}
+{\comment begin body}
+\pard\plain \s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid 
+CameraPosition\par \pard\plain 
+{\tc\tcl2 \v CameraPosition}
+{\xe \v CameraPosition}
+{\bkmkstart AAAAAAAAAE}
+{\bkmkend AAAAAAAAAE}
+Inheritance diagram for CameraPosition:{
+\pard\plain 
+\par\pard \qc {\field\flddirty {\*\fldinst INCLUDEPICTURE "a00142.png" \\d \\*MERGEFORMAT}{\fldrslt IMAGE}}\par
+}
+\pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
+Public Member Functions\par
+\pard\plain 
+
+{
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAAF" }{}}{\fldrslt {\cs37\ul\cf2 __init__}}}
+ (self, source_vid=None, reference_vid=None)\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAAG" }{}}{\fldrslt {\cs37\ul\cf2 openFileNameDialog}}}
+ (self)\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAAH" }{}}{\fldrslt {\cs37\ul\cf2 initUI}}}
+ (self)\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAAI" }{}}{\fldrslt {\cs37\ul\cf2 init_menubar}}}
+ (self)\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAAJ" }{}}{\fldrslt {\cs37\ul\cf2 set_view_roomestimation}}}
+ (self)\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAAK" }{}}{\fldrslt {\cs37\ul\cf2 processtrigger}}}
+ (self, trigger)\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAAL" }{}}{\fldrslt {\cs37\ul\cf2 stitch}}}
+ (self, image_list, out_path=None)\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAAM" }{}}{\fldrslt {\cs37\ul\cf2 set_source}}}
+ (self, video_path, frame=0)\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAAN" }{}}{\fldrslt {\cs37\ul\cf2 add_reference}}}
+ (self, video_path, frame_start, total_frames, step)\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAAO" }{}}{\fldrslt {\cs37\ul\cf2 find_reference}}}
+ (self, query_img, train_img)\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAAP" }{}}{\fldrslt {\cs37\ul\cf2 find_features}}}
+ (self, img1, img2)\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAAQ" }{}}{\fldrslt {\cs37\ul\cf2 match_features}}}
+ (self, des1, des2, mode=0)\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAAR" }{}}{\fldrslt {\cs37\ul\cf2 find_homography}}}
+ (self, img1, img2, kp1, kp2, matches)\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAAS" }{}}{\fldrslt {\cs37\ul\cf2 show_estimation}}}
+ (self)\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+{\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAAT" }{}}{\fldrslt {\cs37\ul\cf2 collect_frames}}}
+ (self, video_source, start_frame, skip, total_frames)\par
+}
+\pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
+Public Attributes\par
+\pard\plain 
+
+{
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+{\b title}{\bkmkstart AAAAAAAAAU}
+{\bkmkend AAAAAAAAAU}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+{\b left}{\bkmkstart AAAAAAAAAV}
+{\bkmkend AAAAAAAAAV}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+{\b top}{\bkmkstart AAAAAAAAAW}
+{\bkmkend AAAAAAAAAW}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+{\b width}{\bkmkstart AAAAAAAAAX}
+{\bkmkend AAAAAAAAAX}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+{\b height}{\bkmkstart AAAAAAAAAY}
+{\bkmkend AAAAAAAAAY}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+{\b stitched_img}{\bkmkstart AAAAAAAAAZ}
+{\bkmkend AAAAAAAAAZ}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+{\b reference_imgs}{\bkmkstart AAAAAAAABA}
+{\bkmkend AAAAAAAABA}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+{\b room_estimation}{\bkmkstart AAAAAAAABB}
+{\bkmkend AAAAAAAABB}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+{\b source_img}{\bkmkstart AAAAAAAABC}
+{\bkmkend AAAAAAAABC}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+{\b stitch_list}{\bkmkstart AAAAAAAABD}
+{\bkmkend AAAAAAAABD}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+{\b layout}{\bkmkstart AAAAAAAABE}
+{\bkmkend AAAAAAAABE}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+{\b processtrigger}{\bkmkstart AAAAAAAABF}
+{\bkmkend AAAAAAAABF}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+{\b room_widget}{\bkmkstart AAAAAAAABG}
+{\bkmkend AAAAAAAABG}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+{\b room_layout}{\bkmkstart AAAAAAAABH}
+{\bkmkend AAAAAAAABH}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+{\b bottom_left_pt_x}{\bkmkstart AAAAAAAABI}
+{\bkmkend AAAAAAAABI}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+{\b bottom_left_pt_y}{\bkmkstart AAAAAAAABJ}
+{\bkmkend AAAAAAAABJ}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+{\b top_left_pt_x}{\bkmkstart AAAAAAAABK}
+{\bkmkend AAAAAAAABK}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+{\b top_left_pt_y}{\bkmkstart AAAAAAAABL}
+{\bkmkend AAAAAAAABL}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+{\b top_right_pt_x}{\bkmkstart AAAAAAAABM}
+{\bkmkend AAAAAAAABM}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+{\b top_right_pt_y}{\bkmkstart AAAAAAAABN}
+{\bkmkend AAAAAAAABN}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+{\b bottom_right_pt_x}{\bkmkstart AAAAAAAABO}
+{\bkmkend AAAAAAAABO}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+{\b bottom_right_pt_y}{\bkmkstart AAAAAAAABP}
+{\bkmkend AAAAAAAABP}
+\par
+}
+{\pard\widctlpar\brdrb\brdrs\brdrw5\brsp20 \adjustright \par}
+\pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
+Detailed Description\par
+\pard\plain 
+{
+\pard\plain \s17\sa60\sb30\widctlpar\qj \fs22\cgrid {\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+{
+\par
+\pard\plain \s40\li0\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid Steps to stitching the images\par
+1) Find Keypoints between images (SIFT/SURF/ORB?)\par
+ - SIFT and SURF are patented and if you want to use it in a real-world application, you need to pay a licensing fee.\par
+ - ORB is not.\par
+2) Compute the distances between every descriptor\par
+3) Select the best matches to align (Knn - 2 best matches for each descriptor \{k=2\})\par
+- finds two best matches for each feature and leaves the best one only if the ratio between descriptor distances is greater than the threshold\par
+4) Estimate Homography (Homography Estimator)\par
+5) Warp the images (translate and rotate) to align\par
+    - NOTE this is where we will extract the top left of each frame for reference on the stitched image\par
+    locations of each frame (hopefully)\par
+6) Stitch the images (Stitch and blend)\par
+}
+ \par
+}}
+{\pard\widctlpar\brdrb\brdrs\brdrw5\brsp20 \adjustright \par}
+\pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
+Constructor & Destructor Documentation\par
+\pard\plain 
+{\xe \v __init__\:CameraPosition}
+{\xe \v CameraPosition\:__init__}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+__init__ (  {\i self},   {\i source_vid} = {\f2 None},   {\i reference_vid} = {\f2 None})}}
+\par
+{\bkmkstart AAAAAAAAAF}
+{\bkmkend AAAAAAAAAF}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+{
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 30     {\cf17 def }__init__(self, source_vid=None, reference_vid=None):\par
+31         super().__init__()\par
+32         {\cf20 # self.openFileNameDialog()}\par
+33         self.title = {\cf22 'Camera Position'}\par
+34         self.left = 250\par
+35         self.top = 250\par
+36         self.width = 480\par
+37         self.height = 240\par
+38         self.stitched_img = {\cf18 None}\par
+39         self.initUI()\par
+40         self.init_menubar()\par
+41 \par
+42         self.reference_imgs = []\par
+43 \par
+44         self.room_estimation = {\cf18 None}\par
+45 \par
+46         {\cf19 if} source_vid {\cf19 is} {\cf19 not} {\cf18 None}:\par
+47             self.source_img = self.collect_frames(source_vid,0,1,1)[0]\par
+48             cv2.imshow({\cf22 "source"}, self.source_img)\par
+49             cv2.waitKey(0)\par
+50         {\cf19 else}:\par
+51             self.source_img = {\cf18 None}\par
+52 \par
+53 \par
+54         {\cf20 # if reference_vid is not None:}\par
+55         {\cf20 #     self.add_reference(reference_vid)}\par
+56         {\cf20 # else:}\par
+57         self.reference_imgs = []\par
+58 \par
+59         self.stitch_list = []\par
+60         {\cf20 # self.stitched_img = None}\par
+61         {\cf20 # self.source_img = None}\par
+62         {\cf20 # if self.source_img is not None and self.reference_imgs:}\par
+63         {\cf20 #     status, self.stitched_img = self.stitch()}\par
+64         {\cf20 #     cv2.imshow("stitched", self.stitched_img)}\par
+65         {\cf20 #     cv2.waitKey(0)}\par
+66         {\cf20 # else:}\par
+67         {\cf20 #     }\par
+68 \par
+69         {\cf20 # self.show_estimation()}\par
+}
+}
+{\pard\widctlpar\brdrb\brdrs\brdrw5\brsp20 \adjustright \par}
+\pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
+Member Function Documentation\par
+\pard\plain 
+{\xe \v add_reference\:CameraPosition}
+{\xe \v CameraPosition\:add_reference}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+add_reference (  {\i self},   {\i video_path},   {\i frame_start},   {\i total_frames},   {\i step})}}
+\par
+{\bkmkstart AAAAAAAAAN}
+{\bkmkend AAAAAAAAAN}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+{
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 225     {\cf17 def }add_reference(self, video_path, frame_start, total_frames, step):\par
+226         frames = self.collect_frames(video_path,frame_start,step,total_frames)\par
+227         self.reference_imgs = frames\par
+228         {\cf20 # if self.reference_imgs:}\par
+229         {\cf20 #     status, self.stitched_img = self.stitch()}\par
+230         {\cf20 # cv2.imshow(video_path, frames)}\par
+231         {\cf20 # cv2.waitKey(0)}\par
+232 \par
+}
+}
+{\xe \v collect_frames\:CameraPosition}
+{\xe \v CameraPosition\:collect_frames}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+collect_frames (  {\i self},   {\i video_source},   {\i start_frame},   {\i skip},   {\i total_frames})}}
+\par
+{\bkmkstart AAAAAAAAAT}
+{\bkmkend AAAAAAAAAT}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+{
+\par
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid Collects the images for stitching\par
+}
+ \par
+}{
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 325     {\cf17 def }collect_frames(self, video_source, start_frame, skip, total_frames):\par
+326         {\cf22 """}\par
+327 {\cf22         Collects the images for stitching}\par
+328 {\cf22         """}\par
+329         print(video_source)\par
+330         cap = cv2.VideoCapture(video_source)\par
+331         {\cf19 if} {\cf19 not} cap.isOpened():\par
+332             {\cf19 raise} ValueError({\cf22 "Unable to open video source"}, video_source)\par
+333         print({\cf22 "Collecting Frames..."})\par
+334 \par
+335         {\cf20 #setup cv2 capture from video}\par
+336         cap = cv2.VideoCapture(video_source)\par
+337         frames = []\par
+338         {\cf20 #set the starting frame}\par
+339         cap.set(cv2.CAP_PROP_POS_FRAMES, start_frame)\par
+340         {\cf20 # print("Starting at frame: " + str(cap.get(cv2.CAP_PROP_POS_FRAMES)))}\par
+341         {\cf19 while} len(frames) < total_frames:\par
+342             {\cf20 # print(frames)}\par
+343             {\cf20 #read the image from that skipped frame}\par
+344             ret, frame = cap.read()\par
+345 \par
+346             cap.set(cv2.CAP_PROP_POS_FRAMES, cap.get(cv2.CAP_PROP_POS_FRAMES) + skip-1)\par
+347             {\cf20 #set current frame to the next n-skipped frames}\par
+348             {\cf20 # print(cap.get(cv2.CAP_PROP_POS_FRAMES))}\par
+349 \par
+350             {\cf19 if} ret:\par
+351                 {\cf20 # if cv2.waitKey(30) & 0xFF == ord('q'):}\par
+352                 {\cf20 #     break}\par
+353                 {\cf20 # cv2.imshow('frame', frame)}\par
+354                 {\cf20 #append the frames to be processed}\par
+355                 frames.append(frame)\par
+356         cv2.destroyAllWindows()\par
+357         {\cf19 return} frames\par
+358 \par
+}
+{
+\ql
+Referenced by {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAABQ" }{}}{\fldrslt {\cs37\ul\cf2 room_estimation.save_room()}}}
+, {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAABR" }{}}{\fldrslt {\cs37\ul\cf2 room_estimation.stitch_rooms()}}}
+, and {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAABS" }{}}{\fldrslt {\cs37\ul\cf2 room_estimation.stitch_trackers()}}}
+.}\par
+}
+{\xe \v find_features\:CameraPosition}
+{\xe \v CameraPosition\:find_features}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+find_features (  {\i self},   {\i img1},   {\i img2})}}
+\par
+{\bkmkstart AAAAAAAAAP}
+{\bkmkend AAAAAAAAAP}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+{
+\par
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid This function finds features between 2 images using ORB\par
+Desribes keypoints using "steer" BRIEF\par
+}
+ \par
+}{
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 254     {\cf17 def }find_features(self, img1, img2):\par
+255         {\cf22 """}\par
+256 {\cf22         This function finds features between 2 images using ORB}\par
+257 {\cf22         Desribes keypoints using "steer" BRIEF}\par
+258 {\cf22         """}\par
+259         {\cf20 #use GPU}\par
+260         img1, img2 = cv2.UMat(img1), cv2.UMat(img2)\par
+261         orb = cv2.ORB_create()\par
+262         kp1, des1 = orb.detectAndCompute(img1, {\cf18 None})\par
+263         kp2, des2 = orb.detectAndCompute(img2, {\cf18 None})\par
+264         {\cf19 return} kp1, kp2, des1, des2\par
+265 \par
+}
+{
+\ql
+References CameraPosition.find_reference(), CameraPosition.reference_imgs, CameraPosition.source_img, and CameraPosition.stitched_img.}\par
+}
+{\xe \v find_homography\:CameraPosition}
+{\xe \v CameraPosition\:find_homography}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+find_homography (  {\i self},   {\i img1},   {\i img2},   {\i kp1},   {\i kp2},   {\i matches})}}
+\par
+{\bkmkstart AAAAAAAAAR}
+{\bkmkend AAAAAAAAAR}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+{
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 292     {\cf17 def }find_homography(self, img1, img2, kp1, kp2, matches):\par
+293         \par
+296 \par
+297         {\cf20 # plt.imshow(feature_match, 'gray'),plt.show()}\par
+298 \par
+299         src_pts  = np.array([kp1[m.queryIdx].pt {\cf19 for} m {\cf19 in} matches], dtype=np.float32).reshape(-1, 1, 2)\par
+300         dst_pts  = np.array([kp2[m.trainIdx].pt {\cf19 for} m {\cf19 in} matches], dtype=np.float32).reshape(-1, 1, 2)\par
+301 \par
+302         \par
+303         M, mask = cv2.findHomography(src_pts, dst_pts, cv2.RANSAC,5.0)\par
+304 \par
+305         h,w = img1.shape[:2]\par
+306         pts = np.array([ [0,0],[0,h-1],[w-1,h-1],[w-1,0] ], dtype=np.float32).reshape(-1, 1, 2)\par
+307         dst = cv2.perspectiveTransform(pts, M)\par
+308 \par
+309         {\cf20 # dst = cv2.getAffineTransform(pts, M)}\par
+310         {\cf19 return} dst, M\par
+311 \par
+}
+}
+{\xe \v find_reference\:CameraPosition}
+{\xe \v CameraPosition\:find_reference}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+find_reference (  {\i self},   {\i query_img},   {\i train_img})}}
+\par
+{\bkmkstart AAAAAAAAAO}
+{\bkmkend AAAAAAAAAO}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+{
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 233     {\cf17 def }find_reference(self, query_img, train_img):\par
+234 \par
+235         {\cf20 #find the common features between the two images}\par
+236         kp1, kp2, des1_umat, des2_umat = self.find_features(query_img, train_img)\par
+237         \par
+238         {\cf20 #match the features}\par
+239         matches = self.match_features(des1_umat, des2_umat, mode=1)\par
+240         {\cf22 '''}\par
+241 {\cf22         #draw matches}\par
+242 {\cf22         try:}\par
+243 {\cf22             match_img = cv2.drawMatchesKnn(query_img, kp1, train_img, kp2, matches, None, flags=2)}\par
+244 {\cf22         except:}\par
+245 {\cf22             print("draw matches (non-knn)")}\par
+246 {\cf22             match_img = cv2.drawMatches(query_img, kp1, train_img, kp2, matches, None, flags=2)}\par
+247 {\cf22         '''}\par
+248         {\cf20 #find the homography matrix}\par
+249         dst, M = self.find_homography(query_img, train_img, kp1, kp2, matches)\par
+250 \par
+251         {\cf20 #return the pixel values of the lines}\par
+252         {\cf19 return} [np.int32(dst)], M\par
+253 \par
+}
+\par
+{
+\ql
+Referenced by {\field {\*\fldinst { HYPERLINK  \\l "AAAAAAAAAP" }{}}{\fldrslt {\cs37\ul\cf2 CameraPosition.find_features()}}}
+.}\par
+}
+{\xe \v init_menubar\:CameraPosition}
+{\xe \v CameraPosition\:init_menubar}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+init_menubar (  {\i self})}}
+\par
+{\bkmkstart AAAAAAAAAI}
+{\bkmkend AAAAAAAAAI}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+{
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 88     {\cf17 def }init_menubar(self):\par
+89             bar = QMenuBar(self)\par
+90             file = bar.addMenu({\cf22 "File"})\par
+91             file.addAction({\cf22 "New Source"})\par
+92             file.addAction({\cf22 "New Reference"})\par
+93             file.addAction({\cf22 "Save Stitched Image"})\par
+94             file.addAction({\cf22 "Stitch Images"})\par
+95 \par
+96 \par
+97             edit = bar.addMenu({\cf22 "Edit"})\par
+98             edit.addAction({\cf22 "Estimate Room in 3D"})\par
+99             \par
+100 \par
+101             view = bar.addMenu({\cf22 "View"})\par
+102             view.addAction({\cf22 "View Camera Estimation"})\par
+103 \par
+104             file.triggered[QAction].connect(self.processtrigger)\par
+105             edit.triggered[QAction].connect(self.processtrigger)\par
+106             view.triggered[QAction].connect(self.processtrigger)\par
+107             self.layout.addWidget(bar)\par
+108 \par
+}
+}
+{\xe \v initUI\:CameraPosition}
+{\xe \v CameraPosition\:initUI}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+initUI (  {\i self})}}
+\par
+{\bkmkstart AAAAAAAAAH}
+{\bkmkend AAAAAAAAAH}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+{
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 80     {\cf17 def }initUI(self):\par
+81         self.setWindowTitle(self.title)\par
+82         self.setGeometry(self.left, self.top, self.width, self.height)\par
+83         self.layout = QVBoxLayout(self)\par
+84         self.setLayout(self.layout)\par
+85         self.show()\par
+86 \par
+87 \par
+}
+}
+{\xe \v match_features\:CameraPosition}
+{\xe \v CameraPosition\:match_features}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+match_features (  {\i self},   {\i des1},   {\i des2},   {\i mode} = {\f2 0})}}
+\par
+{\bkmkstart AAAAAAAAAQ}
+{\bkmkend AAAAAAAAAQ}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+{
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 266     {\cf17 def }match_features(self, des1, des2, mode=0):\par
+267         {\cf20 # 0 = BRUTE FORCE}\par
+268         {\cf20 # 1 = BRUTE FORCE HAMMING}\par
+269         {\cf19 if} mode == 0:\par
+270             {\cf20 # BFMatcher with default params}\par
+271             bf = cv2.BFMatcher()\par
+272             matches = bf.knnMatch(des1, des2, k=2)\par
+273             {\cf20 # Apply ratio test}\par
+274             good = []\par
+275             {\cf19 for} m,n {\cf19 in} matches:\par
+276                 {\cf19 if} m.distance < 0.75*n.distance:\par
+277                     good.append([m])\par
+278             matches = good\par
+279 \par
+280         {\cf19 elif} mode == 1:\par
+281             {\cf20 # create BFMatcher object with NORM_HAMMING}\par
+282             bf = cv2.BFMatcher(cv2.NORM_HAMMING, crossCheck={\cf17 True})\par
+283             {\cf20 # Match descriptors.}\par
+284             matches = bf.match(des1, des2)\par
+285             {\cf20 # Sort them in the order of their distance.}\par
+286             matches = sorted(matches, key={\cf17 lambda} x:x.distance)\par
+287             \par
+288             matches = matches[:20]\par
+289             \par
+290         {\cf19 return} matches\par
+291 \par
+}
+}
+{\xe \v openFileNameDialog\:CameraPosition}
+{\xe \v CameraPosition\:openFileNameDialog}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+openFileNameDialog (  {\i self})}}
+\par
+{\bkmkstart AAAAAAAAAG}
+{\bkmkend AAAAAAAAAG}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+{
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 70     {\cf17 def }openFileNameDialog(self):\par
+71         {\cf20 # options = QFileDialog.Options()}\par
+72         {\cf20 # options |= QFileDialog.DontUseNativeDialog}\par
+73         \par
+74         fileName, _ = QFileDialog.getOpenFileName(self,{\cf22 "QFileDialog.getOpenFileName()"}, {\cf22 ""},{\cf22 "MP4 (*.mp4)"})\par
+75     \par
+76         {\cf19 return} fileName\par
+77 \par
+78 \par
+79 \par
+}
+}
+{\xe \v processtrigger\:CameraPosition}
+{\xe \v CameraPosition\:processtrigger}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+processtrigger (  {\i self},   {\i trigger})}}
+\par
+{\bkmkstart AAAAAAAAAK}
+{\bkmkend AAAAAAAAAK}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+{
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 145     {\cf17 def }processtrigger(self, trigger):\par
+146         text = trigger.text()\par
+147 \par
+148         {\cf19 if} text == {\cf22 "New Source"}:\par
+149             fileName, _ = QFileDialog.getOpenFileName(self,{\cf22 "QFileDialog.getOpenFileName()"}, {\cf22 ""},{\cf22 "MP4 (*.mp4)"})\par
+150             {\cf19 if} fileName:\par
+151                 self.set_source(fileName)\par
+152         {\cf19 elif} text == {\cf22 "New Reference"}:\par
+153             fileName, _ = QFileDialog.getOpenFileName(self,{\cf22 "QFileDialog.getOpenFileName()"}, {\cf22 ""},{\cf22 "MP4 (*.mp4)"})\par
+154             {\cf19 if} fileName:\par
+155                 self.add_reference(fileName, 10, 5, 100)\par
+156         {\cf19 elif} text == {\cf22 "Stitch Images"}:\par
+157             success, stitched = self.stitch(self.reference_imgs)\par
+158             {\cf19 if} success:\par
+159                 print(stitched)\par
+160                 cv2.imshow({\cf22 "Stitched image"}, stitched)\par
+161         {\cf19 elif} text == {\cf22 "Save Stitched Image"}:\par
+162             options = QFileDialog.Options()\par
+163             options |= QFileDialog.DontUseNativeDialog\par
+164             fileName, _ = QFileDialog.getSaveFileName(self,{\cf22 "QFileDialog.getSaveFileName()"},{\cf22 ""},{\cf22 "JPEG (*.jpg);;All Files (*);;Text Files (*.txt)"}, options=options)\par
+165             {\cf19 if} fileName:\par
+166                 cv2.imwrite(fileName, self.stitched_img)\par
+167         {\cf19 elif} text == {\cf22 "Estimate Room in 3D"}:\par
+168             \par
+169             img = {\cf18 None}\par
+170             {\cf20 # room = None}\par
+171             self.room_estimation = re.room_estimation()\par
+172             {\cf19 if} self.stitched_img {\cf19 is} {\cf19 not} {\cf18 None}:\par
+173                 print({\cf22 "Setting estimation to stitched image"})\par
+174                 self.room_estimation.set_image(self.stitched_img)\par
+175             {\cf19 elif} self.source_img {\cf19 is} {\cf19 not} {\cf18 None}:\par
+176                 print({\cf22 "Setting estimation to stitched image"})\par
+177                 self.room_estimation.set_image(self.source_img)\par
+178 \par
+179             limits, _ = self.room_estimation.find_3d_limits()\par
+180             self.room_estimation.get_room_3d(limits, height=1000, step=2)\par
+181             \par
+182             self.set_view_roomestimation()\par
+183 \par
+184         {\cf19 elif} text == {\cf22 "View Camera Estimation"}:\par
+185             self.show_estimation()\par
+186 \par
+}
+}
+{\xe \v set_source\:CameraPosition}
+{\xe \v CameraPosition\:set_source}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+set_source (  {\i self},   {\i video_path},   {\i frame} = {\f2 0})}}
+\par
+{\bkmkstart AAAAAAAAAM}
+{\bkmkend AAAAAAAAAM}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+{
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 217     {\cf17 def }set_source(self, video_path, frame=0):\par
+218         self.source_img = self.collect_frames(video_path, frame,1,1)[0]\par
+219         self.room_estimation = re.room_estimation(self.source_img)\par
+220         {\cf20 # if self.reference_imgs and self.source_img is not None:}\par
+221         {\cf20 #     status, self.stitched_img = self.stitch()}\par
+222         cv2.imshow(video_path, self.source_img)\par
+223         cv2.waitKey(0)\par
+224 \par
+}
+}
+{\xe \v set_view_roomestimation\:CameraPosition}
+{\xe \v CameraPosition\:set_view_roomestimation}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+set_view_roomestimation (  {\i self})}}
+\par
+{\bkmkstart AAAAAAAAAJ}
+{\bkmkend AAAAAAAAAJ}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+{
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 109     {\cf17 def }set_view_roomestimation(self):\par
+110         self.room_widget = QWidget()\par
+111         self.layout.addWidget(self.room_widget)\par
+112         self.room_layout = QVBoxLayout()\par
+113         self.room_widget.setLayout(self.room_layout)\par
+114 \par
+115         self.bottom_left_pt_x = QSpinBox()\par
+116         self.bottom_left_pt_y = QSpinBox()\par
+117         self.bottom_left_pt_x.valueChanged.connect({\cf17 lambda}:self.room_estimation.set_corners(self.bottom_left_pt_x.value()))\par
+118         self.bottom_left_pt_y.valueChanged.connect({\cf17 lambda}:self.room_estimation.set_corners(self.bottom_left_pt_x.value()))\par
+119 \par
+120         self.top_left_pt_x = QSpinBox()\par
+121         self.top_left_pt_y = QSpinBox()\par
+122         self.top_left_pt_x.valueChanged.connect({\cf17 lambda}:self.room_estimation.set_corners(self.top_left_pt_x.value()))\par
+123         self.top_left_pt_y.valueChanged.connect({\cf17 lambda}:self.room_estimation.set_corners(self.top_left_pt_y.value()))\par
+124 \par
+125         self.top_right_pt_x = QSpinBox()\par
+126         self.top_right_pt_y = QSpinBox()\par
+127         self.top_right_pt_x.valueChanged.connect({\cf17 lambda}:self.room_estimation.set_corners(self.top_right_pt_x.value()))\par
+128         self.top_right_pt_y.valueChanged.connect({\cf17 lambda}:self.room_estimation.set_corners(self.top_right_pt_y.value()))\par
+129 \par
+130         self.bottom_right_pt_x = QSpinBox()\par
+131         self.bottom_right_pt_y = QSpinBox()\par
+132         self.bottom_right_pt_x.valueChanged.connect({\cf17 lambda}:self.room_estimation.set_corners(self.bottom_right_pt_x.value()))\par
+133         self.bottom_right_pt_y.valueChanged.connect({\cf17 lambda}:self.room_estimation.set_corners(self.bottom_right_pt_x.value()))\par
+134 \par
+135         self.room_layout.addWidget(self.bottom_left_pt_x)   \par
+136         self.room_layout.addWidget(self.bottom_left_pt_y)\par
+137         self.room_layout.addWidget(self.top_left_pt_x) \par
+138         self.room_layout.addWidget(self.top_left_pt_y)\par
+139         self.room_layout.addWidget(self.top_right_pt_x) \par
+140         self.room_layout.addWidget(self.top_right_pt_y)\par
+141         self.room_layout.addWidget(self.bottom_right_pt_x)\par
+142         self.room_layout.addWidget(self.bottom_right_pt_y)\par
+143         {\cf20 # self.room_estimation.set_corners()}\par
+144 \par
+}
+}
+{\xe \v show_estimation\:CameraPosition}
+{\xe \v CameraPosition\:show_estimation}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+show_estimation (  {\i self})}}
+\par
+{\bkmkstart AAAAAAAAAS}
+{\bkmkend AAAAAAAAAS}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+{
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 312     {\cf17 def }show_estimation(self):\par
+313         \par
+314         src_points, matrix = self.find_reference(self.source_img, self.stitched_img)\par
+315         cover_img = cv2.polylines(self.stitched_img, src_points, {\cf17 True}, (255, 0, 0),5, cv2.LINE_AA)\par
+316 \par
+317         {\cf19 for} ref {\cf19 in} self.reference_imgs:\par
+318             ref_points, matrix = self.find_reference(ref, self.stitched_img)\par
+319             cover_img = cv2.polylines(self.stitched_img, ref_points, {\cf17 True}, (0, 0, 255),5, cv2.LINE_AA)\par
+320         \par
+321         \par
+322         cv2.imshow({\cf22 "Camera Estimation"}, cover_img)\par
+323         {\cf19 return} cover_img\par
+324 \par
+}
+}
+{\xe \v stitch\:CameraPosition}
+{\xe \v CameraPosition\:stitch}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+stitch (  {\i self},   {\i image_list},   {\i out_path} = {\f2 None})}}
+\par
+{\bkmkstart AAAAAAAAAL}
+{\bkmkend AAAAAAAAAL}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+{
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 187     {\cf17 def }stitch(self, image_list, out_path=None):\par
+188         print({\cf22 "Stitching"})\par
+189         {\cf20 # Test images}\par
+190         {\cf20 # Initiate ORB detector}\par
+191         image_dict = \{\}\par
+192         orb = cv2.ORB_create()\par
+193         {\cf19 for} index, img {\cf19 in} enumerate(image_list):\par
+194             kp, des = orb.detectAndCompute(img,{\cf18 None})\par
+195             image_dict[index] = (kp, des)\par
+196 \par
+197         bf = cv2.BFMatcher()\par
+198         {\cf19 for} img_key_1 {\cf19 in} image_dict.keys():\par
+199             {\cf19 for} img_key_2 {\cf19 in} image_dict.keys():\par
+200                 matches = bf.knnMatch(image_dict[img_key_1][1],image_dict[img_key_2][1], k=10)\par
+201                 {\cf19 for} m {\cf19 in} matches:\par
+202                     print(m[0].distance)\par
+203 \par
+204         {\cf20 # print("Stitching images")}\par
+205         stitcher = cv2.Stitcher_create(cv2.Stitcher_SCANS)\par
+206         {\cf20 # img_list = [self.source_img] + self.reference_imgs}\par
+207         status, self.stitched_img = stitcher.stitch(image_list)\par
+208 \par
+209         {\cf19 if} status == cv2.Stitcher_OK:\par
+210             print({\cf22 "Stitching Successful."})\par
+211 \par
+212         {\cf19 if} out_path {\cf19 is} {\cf18 None} {\cf19 and} self.stitched_img {\cf19 is} {\cf19 not} {\cf18 None}:\par
+213             cv2.imwrite({\cf22 "./stitched.jpg"}, self.stitched_img)\par
+214 \par
+215         {\cf19 return} status, self.stitched_img\par
+216 \par
+}
+}
+{\pard\widctlpar\brdrb\brdrs\brdrw5\brsp20 \adjustright \par}
+The documentation for this class was generated from the following file:{\par
+\pard\plain \s121\fi-360\li720\widctlpar\jclisttab\tx720{\*\pn \pnlvlbody\ilvl0\ls2\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+K:/Github/PeopleTracker/src/camera_position.py\par
+}}
