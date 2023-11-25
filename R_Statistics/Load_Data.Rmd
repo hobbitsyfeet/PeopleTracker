@@ -20,6 +20,8 @@ install.packages("readxl")
 install.packages("reshape")
 install.packages("brms")
 
+install.packages("ggdag")
+
 ```
 
 ```{r load packages}
@@ -31,17 +33,111 @@ library(reshape)
 library(brms)
 
 library("bayesplot")
+library(dagitty)
 
 # Load functions from this file for multiplesheets function which 
 # loads all sheets within an excel workbook.
 source("load_help.r")
 ```
+```{r Dag}
+# Errors
+# FN
+# FP
+# MT
+# MO
+# CD
+# TP
+# OP
+# FIO
+# FIT
+# PRECISION (used to calculate error types)
+# RECALL (used to calculate error types)
+# FMEASURE
+# CENTROID DISTANCE
+# INTERVENTION TYPE
+# VIDEO FEATURES
+# POPULATION TYPE
+# ENVIRONMENT
+# BEHAVIOUR TYPE
+
+error_dag <- dagitty("dag {
+USER -> PAUSE
+USER -> SCROLL
+USER -> ASSIGN
+
+USER -> CSRT
+CSRT <-> ASSIGN
+
+MaskRCNN -> ASSIGN
+
+KALMAN -> PAUSE
+
+Ground_Truth -> MaskRCNN
+
+Ground_Truth -> FMEASURE
+FMEASURE -> ERRORS
+ASSIGN -> FMEASURE
+
+PAUSE -> ERRORS
+SCROLL -> ERRORS
+
+}")
+
+clean_dag <- dagitty( 'dag {
+bb="-4.356,-6.704,3.226,5.776"
+ASSIGN [pos="-1.292,2.150"]
+ERRORS [pos="0.576,0.591"]
+FMEASURE [pos="-1.265,4.416"]
+Ground_Truth [pos="-3.028,4.459"]
+KALMAN [pos="-1.292,-3.233"]
+MaskRCNN [pos="-3.001,2.135"]
+PAUSE [pos="-1.265,-1.137"]
+SCROLL [pos="-1.272,0.563"]
+USER [pos="-3.093,0.761"]
+ASSIGN -> FMEASURE
+FMEASURE -> ERRORS
+Ground_Truth -> FMEASURE
+Ground_Truth -> MaskRCNN
+KALMAN -> PAUSE
+MaskRCNN -> ASSIGN
+PAUSE -> ERRORS
+SCROLL -> ERRORS
+USER -> ASSIGN
+USER -> PAUSE
+USER -> SCROLL
+}')
+plot( graphLayout( clean_dag ) )
+plot( graphLayout( error_dag ) )
+
+dag <- dagitty("dag {
+  Human_Intervention -> CSRT
+  Ground_Truth -> MRCNN
+  Ground_Truth -> F_Measure
+  Ground_Truth -> Centroid_Similarity
+  CSRT -> Tracker
+  MRCNN -> Tracker
+
+  Tracker -> F_Measure
+  Tracker -> Centroid_Similarity
+  
+  Errors -> Performance
+  F_Measure -> Errors
+  Centroid_Similarity -> Performance
+
+  
+               }")
+plot( graphLayout( dag ) )
+```
+
+
+REDO MVI_2975
 
 ```{r Load Tracked Data and Evaluations (People)}
 options(warn=-1)
 # Tracked Data
 justin_activity <- multiplesheets("R_data/People/Justin_Activity.xlsx")
 justin_tracked <- multiplesheets("R_data/People/Justin_Tracked.xlsx")
+names(justin_tracked)
 justin_tracked_results <- read_excel("R_data/People/Justin_Results.xlsx")
 justin_results_history <- multiplesheets("R_data/People/Justin_Results_History.xlsx")
 
@@ -50,8 +146,14 @@ model_results <- read_excel("R_data/People/Model_Results.xlsx")
 model_results_history <- multiplesheets("R_data/People/Model_Results_History.xlsx")
 
 # Complexity
-video_complexity <- multiplesheets("R_data/People/Gallery_Characteristics.xlsx")
+# 
+people_complexity <- multiplesheets("R_data/People/Gallery_Characteristics.xlsx")
 options(warn=0)
+people_complexity$`GOPR3841CHARACTERISTICS `
+
+# GOPR3841 REDO
+# 
+results
 ```
 
 ```{r Load Tracked Data and Evaluations (Monkey)}
@@ -59,6 +161,7 @@ options(warn=-1)
 # Tracked Data
 justin_monkey_activity <- multiplesheets("R_data/Monkey/Justin_Activity.xlsx")
 justin_monkey_tracked <- multiplesheets("R_data/Monkey/Justin_Tracked.xlsx")
+names(justin_monkey_tracked)
 justin_monkey_results <- read_excel("R_data/Monkey/Justin_Results.xlsx")
 justin_monkey_results_history <- multiplesheets("R_data/Monkey/Justin_Results_History.xlsx")
 
@@ -157,13 +260,68 @@ model_plot <- ggplot() +
   # geom_boxplot(aes(x="Objecy Purity (OP)", y=`Object Purity (OP)`))
 
 model_plot 
+```
 
+```{r Video Complexity plots}
+# Merge complexity into one dataframe
+monkey_complexity
+people_complexity
+names(people_complexity)
+merge_complexity <- function(complexity_sheets){
+  characteristics_df <- NULL
+  for (video_index in 1:length(complexity_sheets)){
+    
+    print(complexity_sheets[[video_index]]$Video_ID[1])
+    video_data <- complexity_sheets[[video_index]] %>% dplyr::select("Frame_Number", 
+                                                                     "Video_ID", 
+                                                                     "Video_Location", 
+                                                                     "Mean_Illumination", 
+                                                                     "Std_Illumination", 
+                                                                     "Mean_Opticalflow", 
+                                                                     "Median_Opticalflow", 
+                                                                     # "Mean_Magnitude_Opticalflow", 
+                                                                     "Std_Opticalflow", 
+                                                                     # "Zoom_Opticalflow", 
+                                                                     # "Zoom_Dominance_Percent", 
+                                                                     # "Zoom_Dominance_Threshold", 
+                                                                     # "Zoom_Mean_Magnitude_Threshold",
+                                                                     # "Pan_Opticalflow",
+                                                                     # "Pan_Dominance_Percent", 
+                                                                     # "Pan_Dominance_Threshold"
+                                                                     # "Pan_Mean_Magnitude_Threshold")
+                                                                     )
+    
+    complexity_sheets[[video_index]]
+    
+    if (is.null(characteristics_df)){
+      characteristics_df <- video_data
+    }
+    else{
+      characteristics_df <- rbind(characteristics_df, video_data)
+    }
+  }
+  return (characteristics_df)
+}
+
+people_characteristics <- merge_complexity(people_complexity)
+people_characteristics
+monkey_characteristics <- merge_complexity(monkey_complexity)
+
+ggplot(characteristics_df) + geom_line(aes(x=Frame_Number,y=scale(Pan_Opticalflow * Mean_Opticalflow), colour=Video_ID), alpha=8) + 
+                              geom_line(aes(x=Frame_Number,y=scale(Mean_Illumination) -10, colour=Video_ID), alpha=0.5) + 
+  geom_point(aes(x=Frame_Number,y=Zoom_Opticalflow + 10, colour=Video_ID, shape=as.factor(Zoom_Opticalflow)))
+
+
+```
+```{r Plot Characteristics}
 
 ```
 
 There are a few questions we want to ask
+- The effect that person vs model has on each error type
 - What actions have what impact on errors (assignment, does KALMAN catch errors, does more interaction reduce error)
 - How does video complexity influence error types
+- 
 
 
 Here we will simply look at results and type of evaluation which is described in the plots above. We will look at the impact of Tracking_Type, Tracking_Environment and all of the normalized errors (FN, FP, ... FIO, FIT)
@@ -205,9 +363,7 @@ prior
 # Fit linear priors
 fit.linear.priors <- brm(Tracking ~ FP + FN + MT + MO + CD + FIT + FIO + TP + OP, data=results, family = "bernoulli", iter=1000, chains = 4, prior = priors, sample_prior = "only")
 
-fit.linear.priors
-
-fit.linear <- brm(Tracking ~ FP + FN + MT + MO + CD + FIT + FIO + TP + OP, data=results, family = "bernoulli", iter=2000, chains = 4, cores = 4, prior = priors, control = list(adapt_delta=0.95, max_treedepth = 14))
+fit.linear <- brm(Tracking ~ FP + FN + MT + MO + CD + FIT + FIO + TP + OP, data=results, family = "bernoulli", iter=2000, chains = 4, cores = 4, prior = fit.linear.priors, control = list(adapt_delta=0.95, max_treedepth = 14))
 
 
 ```
@@ -228,10 +384,10 @@ mcmc_areas(posterior,
            prob = 0.8)
 ```
 After we visualize the effects of errors on intervention level, we want to look at how each intervention level affects each error so we build one model where intervention and other factors such as location have an effect on each error
-```{r}
+```{r fit Linear Error models}
 fit.FP.linear <- brm(FP ~ Tracking, data=results, family = "gaussian", iter=2000, chains = 4, cores = 4, prior = priors, control = list(adapt_delta=0.95, max_treedepth = 14))
-fit.FN.linear <- brm(FP ~ Tracking, data=results, family = "gaussian", iter=2000, chains = 4, cores = 4, prior = priors, control = list(adapt_delta=0.95, max_treedepth = 14))
-fit.MT.linear <- brm(FN ~ Tracking, data=results, family = "gaussian", iter=2000, chains = 4, cores = 4, prior = priors, control = list(adapt_delta=0.95, max_treedepth = 14))
+fit.FN.linear <- brm(FN ~ Tracking, data=results, family = "gaussian", iter=2000, chains = 4, cores = 4, prior = priors, control = list(adapt_delta=0.95, max_treedepth = 14))
+fit.MT.linear <- brm(MT ~ Tracking, data=results, family = "gaussian", iter=2000, chains = 4, cores = 4, prior = priors, control = list(adapt_delta=0.95, max_treedepth = 14))
 fit.MO.linear <- brm(MO ~ Tracking, data=results, family = "gaussian", iter=2000, chains = 4, cores = 4, prior = priors, control = list(adapt_delta=0.95, max_treedepth = 14))
 fit.CD.linear <- brm(CD ~ Tracking, data=results, family = "gaussian", iter=2000, chains = 4, cores = 4, prior = priors, control = list(adapt_delta=0.95, max_treedepth = 14))
 fit.FIT.linear <- brm(FIT ~ Tracking, data=results, family = "gaussian", iter=2000, chains = 4, cores = 4, prior = priors, control = list(adapt_delta=0.95, max_treedepth = 14))
@@ -239,7 +395,8 @@ fit.FIO.linear <- brm(FIO ~ Tracking, data=results, family = "gaussian", iter=20
 fit.TP.linear <- brm(TP ~ Tracking, data=results, family = "gaussian", iter=2000, chains = 4, cores = 4, prior = priors, control = list(adapt_delta=0.95, max_treedepth = 14))
 fit.OP.linear <- brm(OP ~ Tracking, data=results, family = "gaussian", iter=2000, chains = 4, cores = 4, prior = priors, control = list(adapt_delta=0.95, max_treedepth = 14))
 ```
-```{r plot errors}
+
+```{r plot linear model errors}
 mcmc_areas(as.matrix(fit.FP.linear),pars = c("b_TrackingMaskRcnn"),prob = 0.8) + xlim(-4,4) + ggtitle("FP Error")
 mcmc_areas(as.matrix(fit.FN.linear),pars = c("b_TrackingMaskRcnn"),prob = 0.8)+ xlim(-4,4)+ ggtitle("FN Error")
 mcmc_areas(as.matrix(fit.MT.linear),pars = c("b_TrackingMaskRcnn"),prob = 0.8)+ xlim(-4,4)+ ggtitle("MT Error")
@@ -251,6 +408,41 @@ mcmc_areas(as.matrix(fit.TP.linear),pars = c("b_TrackingMaskRcnn"),prob = 0.8)+ 
 mcmc_areas(as.matrix(fit.OP.linear),pars = c("b_TrackingMaskRcnn"),prob = 0.8)+ xlim(-4,4)+ ggtitle("OP")
 
 ```
+
+ This structure allows a random slope by video AND (according to my notes) random intercept by PersonID nested in environment.
+ 
+ Determine MLM
+ 1: Is it a category
+ 2: Do you want to use all of the information from each category (do you want memory in this model?) category with high information to inform category with low information
+ 3: Want to make a prediction for a general category
+ 
+ 
+
+Error_Type column
+```{r Fit linear models cont.}
+results
+results
+levels_prior <- get_prior(FP ~ Tracking + (1 + Tracking|Environment/Video),
+          data = results, family = "gaussian")
+
+
+levels_prior
+levels_priors <- prior("normal(0,1)", class= "b" ) + prior("normal(0,1)", class = "Intercept") + prior("normal(0,1)", class="sd")
+
+
+fit.FP.levels <- brm(FP ~ Tracking + (1 + Tracking|Environment/Video) , data=results, family = "gaussian", iter=4000, chains = 4, cores = 4, prior = levels_priors, control = list(adapt_delta=0.95, max_treedepth = 14))
+
+fit.FP.levels
+as.matrix(fit.FP.levels)
+mcmc_areas(as.matrix(fit.FP.levels),pars = c("b_TrackingMaskRcnn"),prob = 0.8) + xlim(-4,4) + ggtitle("FP Error")
+
+plot(fit.FP.levels, ask=F)
+pp_check(fit.FP.levels)
+plot(marginal_effects(fit.FP.levels), ask=F, points=T)
+
+
+```
+
 
 Here we merge the results over time and the activity of the tracker to help explain how the results may have came to be.
 This looks at activity, and errors in an aligned manner.
