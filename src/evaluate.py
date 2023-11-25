@@ -1,8 +1,7 @@
-# Implementation by Justin Petluk
-# Smith, Kevin, et al. "Evaluating multi-object tracking." 2005 IEEE Computer Society Conference on Computer Vision and Pattern Recognition (CVPR'05)-Workshops. IEEE, 2005.
-# Source: https://www.idiap.ch/~odobez/publications/SmithGaticaOdobezBa-cvpr-eemcv05.pdf
 
 # import utils
+
+
 
 '''
 NOTE: Add additional evaluation methods to help plot data
@@ -25,9 +24,18 @@ import matplotlib.pyplot as plt
 
 # NOTE: Ground Truth frames are One full second ahead of the estimates. This is because we calculate from 1*60 = 60 so either we subtract a constant fps from the ground truth or add 60 to our data. Adjusting Ground truth would be the best option.
 
-
+##
+# Based on @cite evaluation <a href="https://www.idiap.ch/~odobez/publications/SmithGaticaOdobezBa-cvpr-eemcv05.pdf"> https://www.idiap.ch/~odobez/publications/SmithGaticaOdobezBa-cvpr-eemcv05.pdf </a>
 class tracker_evaluation:
+    '''!
+    Implementation by Justin Petluk
+    @cite evaluation 
+     <a href="https://www.idiap.ch/~odobez/publications/SmithGaticaOdobezBa-cvpr-eemcv05.pdf"> https://www.idiap.ch/~odobez/publications/SmithGaticaOdobezBa-cvpr-eemcv05.pdf </a> 
+    '''
     def __init__(self, tracker_file = None, ground_thruth_folder = None, fps=None):
+        '''
+        Assigns default values
+        '''
         self.score = 0
         self.colour = None
 
@@ -47,10 +55,13 @@ class tracker_evaluation:
         else:
             self.fps = fps
 
-        
+        ##! Threshold of Precision allowed in agreement or overlap. If above threshold, an occlusion flag is noted. @ref check_occlusion
         self.threshold_to = 0.8
-        self.threshold_tc = 0.5 # Used for evaluating F-Measure, Higher F-value, the higher allowed error.
 
+        ## Used for evaluating F-Measure, Higher F-value, the higher allowed error.
+        self.threshold_tc = 0.5 
+
+        ##! A map of IDs given on a single frame of data and used to save the output of @ref identification_map
         self.id_map = {}
 
         self.invert_y = 0
@@ -58,9 +69,12 @@ class tracker_evaluation:
         self.correction_ratio_x = None
         self.correction_ratio_y = None
 
-    
-
+    ## Loads annotation created with @cite labelme labelme
     def load_json(self, folder, fps=None):
+        '''!
+        Loads all json files in a folder.
+
+        '''
         # Load all json files
         # Points exist in [x,y] pairs. Labelling determines order of points but it should be top left to bottom right. Make sure this is the order. (If not, flip order of points)
         if fps:
@@ -85,7 +99,7 @@ class tracker_evaluation:
         self.labels = self.list_labels()
 
     def load_tracker_data(self, tracker_file):
-        '''
+        '''!
         Loads estimates from people tracker exported data.
         
         It loads private variables estimate_dict and estimates (a list of all estimate names)
@@ -96,7 +110,7 @@ class tracker_evaluation:
         print("Loading Tracker Data")
         df = pd.read_csv(tracker_file)
         self.fps = int(round(df.iloc[0]['FrameRate']))
-
+        # print(df)
         self.invert_y = int(df.iloc[1]['Max_Pixel_y'])
         # self.invert_y = 0
 
@@ -143,10 +157,16 @@ class tracker_evaluation:
 
         
     def plot_score(self):
+        '''
+        Not implemented
+        '''
         # Plots timeline (in frames) according to ground truth. Additionally, plots id and errors.
         pass
 
     def plot_scene(self):
+        '''
+        Not Implemented
+        '''
         # Plots a colour coded point over the scene. additionally plots id and errors spatially.
         pass
 
@@ -376,7 +396,21 @@ class tracker_evaluation:
         leaving = set_1 - set_2
         return new, leaving
 
+    ## Checks if a ground truth is occluded.
     def check_occlusion(self, gt,  frame_num):
+        '''!
+        Checks if a ground truth is occluded at a certain frame. 
+        
+        @param gt <b>(int, int, int, int)</b> a bounding box of the specified gt to check if they are occluded
+        @param frame_num <b>int</b>
+
+        @ref precision is calculated to generate percent covered.
+        @ref threshold_to is used to determine occlusion theshold.
+
+        @returns <b>True</b> if anyother ground truth is occluding the ground truth passed in
+        @returns <b>False</b> if there exists no other ground truth that occludes 
+        @returns <b>float</b> a percent covered (Precision)
+        '''
         all_gt = self.get_ground_truths(frame_num)
         percent_covered = 0
         # Remove current shape from list so all other shapes are compared
@@ -393,7 +427,13 @@ class tracker_evaluation:
         # No occlusion if no value exceeds
         return False, percent_covered
 
+    ## Returns a number of occluded ground truths occur at a frame
     def get_occlusion_count(self, frame_num):
+        '''!
+        Counts the number of True occurances of @ref check_occlusion happens on a frame.
+
+        @returns int Count of number of occluded ground truths
+        '''
         all_gt = self.get_ground_truths(frame_num)
 
         if not self.ground_truth_exists(frame_num):
@@ -493,14 +533,26 @@ class tracker_evaluation:
         return gt_config, es_config
 
     def calculate_identification_map(self, manual_gtmap=None, manual_emap=None):
-        """ Calculates Identification map for an entire video
+        """! 
+        @brief Calculates Identification map for an entire video
 
         Calculate_identification_map calculates the id map of every frame based on how one fits onto another. 
         Next is majority voting which counts the occurances of maps and grabs the ones which have the most.
 
+        @note manual_gtmap and manual_emap is used when the identifications map 1:1 with eachother.
+        For example, if Ground Truth is P1, then it's corresponding estimate is also P1, as well as Estimate P1 maps to Ground Truth P1.
+
+        @param manual_gtmap input should be the unique set of ground truth label names
+        @param manual_emap input should be the unique set of estimate label names
+
+        @warning Required to use this when using labeled tracks (Not MaskRCNN) and it is required you DO NOT use this while using MaskRCNN predictions.
+
+
+
         """
-        if manual_gtmap is not None and manual_emap is not None:
-            return manual_gtmap, manual_emap
+        # if manual_gtmap is not None and manual_emap is not None:
+        #     return self.list_labels(), self.list_estimates()
+            # return manual_gtmap, manual_emap
         
 
         #Calculates ID Map for every frame. One frame can have multiple maps
@@ -508,7 +560,7 @@ class tracker_evaluation:
         g_map = []
         for frame in self.ground_truth_dict:
             maps = self.identification_map(frame)
-            
+                
             if maps is not None:
                 e = maps["Estimate"]
                 g = maps["Ground_Truth"]
@@ -851,8 +903,10 @@ class tracker_evaluation:
 
         self.gt_map, self.es_map = self.calculate_identification_map()
 
-        # if gt_maps_itself:
-        #     self.es_map = self.gt_map
+        if gt_maps_itself:
+            self.gt_map, self.es_map = self.generate_manual_id_map()
+            # self.es_map = self.gt_map
+            # print("GT MAPPING ITSELF", self.gt_map, self.es_map)
 
         print("MAPS", self.gt_map, self.es_map)
         # input()
@@ -988,15 +1042,16 @@ class tracker_evaluation:
         # return results, normalized_results
 
     def compute_iou(self, box, boxes, ratios=None, frame=None):
-        """Calculates IoU of the given box with the array of the given boxes.
-        box: 1D vector [x1, y1, x2, y2]
-        boxes: [boxes_count, (x1, y1, x2, y2)]
-        box_area: float. the area of 'box'
-        boxes_area: array of length boxes_count.
-        ratio: ratio (width, height) to scale boxes from video resolution to analysis resolution
+        """!
+        Calculates IoU of the given box with the array of the given boxes.
+        
+        @param box: 1D vector [x1, y1, x2, y2]
+        @param boxes: [boxes_count, (x1, y1, x2, y2)]
+        @param box_area: float. the area of 'box'
+        @param boxes_area: array of length boxes_count.
+        @param ratio: ratio (width, height) to scale boxes from video resolution to analysis resolution
 
-        Note: the areas are passed in rather than calculated here for
-        efficiency. Calculate once in the caller to avoid duplicate work.
+        @note: The areas are passed in rather than calculated here for efficiency. Calculate once in the caller to avoid duplicate work.
         """
         if ratios is None:
             ratios = self.correction_ratio_x, self.correction_ratio_y
@@ -1010,25 +1065,26 @@ class tracker_evaluation:
             # y1 = int(preds[1]*ratios[1])
             # x2 = int(preds[2]*ratios[0])
             # y2 = int(preds[3]*ratios[1])
-                        
+
+            # get the box coordinates (x1, y1, x2, y2)
             x1 = int(preds[0])
             y1 = int(preds[1])
             x2 = int(preds[2])
             y2 = int(preds[3])
+
             # if frame is not None:
             #     cv2.rectangle(frame, (x1,y1), (x2,y2), (150,150,0), 1)
 
+            # calculating IOU
             xA = max(box[0], x1)
             yA = max(box[1], y1)
             xB = min(box[2], x2)
             yB = min(box[3], y2)
 
-            # print(x1,y1, x2,y2)
-            # print(box)
             interArea = max(0, xB - xA + 1) * max(0, yB - yA + 1)
             
             boxBArea = (x2 - x1 + 1) * (y2 - y1 + 1)
-            # print(box_area, boxBArea)
+
             iou = interArea / float(area + boxBArea - interArea)
             ious.append(iou)
             intersections.append(interArea)
@@ -1107,6 +1163,9 @@ class tracker_evaluation:
         return len(gts)
 
     def list_labels(self):
+        '''
+        Returns a list of unique label names
+        '''
         label_set = set()
         for frame in self.ground_truth_dict:
             for gt in self.ground_truth_dict[frame]:
@@ -1116,7 +1175,7 @@ class tracker_evaluation:
 
     def list_estimates(self):
         '''
-        Returns a list of estimate names
+        Returns a list of unique estimate names
         '''
         estimate_set = set()
         # print(self.ground_truth_dict)
@@ -1174,8 +1233,21 @@ class tracker_evaluation:
 
         return frames_removed
         
+    def generate_manual_id_map(self):
+        '''
+        Creates a manual mapping where every estimate maps to the same id as it's labelled (as well as ground truths)
 
+        This is used in the case where ground truths and estimates are designed to have the same IDs
+        '''
+        manual_gt_map = {}
+        for gt in self.list_labels():
+            manual_gt_map[gt] = gt
+        
+        manual_es_map = {}
+        for es in self.list_estimates():
+            manual_es_map[es] = es
 
+        return manual_gt_map, manual_gt_map
 
 if __name__ == "__main__":
     # cv2.waitKey(0)

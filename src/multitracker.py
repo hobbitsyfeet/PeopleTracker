@@ -28,64 +28,143 @@ import Video
 import filters
 import regression
 from Regions import Regions
+import time
 
 import evaluate
 CPU_COUNT = multiprocessing.cpu_count()
 
+from sklearn import svm
+from sklearn.naive_bayes import GaussianNB
+from sklearn.model_selection import GridSearchCV
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from sklearn.linear_model import Perceptron
+
+from copy import deepcopy
+
 #start tracking version at 1.0
+
 PEOPLETRACKER_VERSION = 2.8
 
 
 class MultiTracker():
+    '''!
+        @brief The `MultiTracker` class is a Python class that represents a multi-object tracker and contains
+        various attributes and methods for tracking objects.
+        
+        @param tab is a designated tab in the UI which will populate provided values.
+        @param colour is a 255/255/255 RGB value that defines a tracking colour for easy distinction.
+
+        Many values are retrieved from `tab` defined in TrackerTab.py which is generated in qt_dialog.py's App.
+
+    '''
     def __init__(self, tab, colour=(255,255,255)):    
-        self.name = tab.name_line
+        ## Recorded name is grabbed from tab's name line text box
+        self.name = tab.name_line 
+
+        ## Recorded id is grabbed from tab's id line text box
         self.pid = tab.id_line
+
+        ##(int, int, int) colour of the tracking box (not used) (rgb) 
         self.colour = colour
 
         # self.location_data = [] #(x, y)
-        self.distance_data = [] #(CLOSE, MED, FAR) (estimated)
-        self.time_data = [] #(frames tracked)
+
+        ## (CLOSE, MED, FAR) (estimated)
+        self.distance_data = []
+
+        ## frames tracked, the list structure is used to define the amount of time in the scene.
+        self.time_data = []
         # self.region_dict = dict
 
-        self.data_dict = dict()
-        self.previous_time = 0
+        ## Recorded data will be stored in this dictionary for every recorded frame for every tracker
+        self.data_dict = dict() 
+
+        ## Initial previous time, used for time_data
+        self.previous_time = 0 
 
         #Set these variables to getter functions (to update whenever accessed)
-        self.sex = tab.sex_line
-        self.group = tab.group_line
-        self.description = tab.desc_line
+
+        ## STRING: gender applied if known, grabbed from tab 
+        self.sex = tab.sex_line 
+
+        ## INT: group is the number of trackers that arrive in the same group
+        self.group = tab.group_line 
+
+        ## STRING description of the individual
+        self.description = tab.desc_line 
+
+        ## TRUE/FALSE values defining if tracker is there in the beginning of the video
         self.beginning = tab.get_beginning
-        self.is_region = tab.get_is_region
-        # self.region_state = tab.get_region_state
+
+        ## A Region is an area that will flag true if other trackers are in it's proximity. The region as a tracker will track through a video rather than being stagnant (TRUE/FALSE)
+        self.is_region = tab.get_is_region 
+
+        ## Returns TRUE/FALSE if tracker 'is' a chair (or in one?)
         self.is_chair = tab.get_is_chair
-        self.read_only = tab.get_read_only
-        self.id = tab.get_uuid
-        # self.other_room = tab.get_other_room
+        
+        ## Read Only is a TRUE/FALSE button that turns off new tracking from being recorded and displays already recorded information.
+        self.read_only = tab.get_read_only 
+
+        ## ID is a unique id that differentiates trackers even if individuals have the same name.
+        self.id = tab.get_uuid 
+        
+        ## TRUE/FALSE determines if the data should be recorded into data_dict or not.
         self.record_state = False
 
-        self.tracker = None
+        ## This will be defined as one of OpenCV's implemented Trackers. (assign by using create() function)
+        self.tracker = None 
 
-        # initialize the bounding box coordinates of the object we are going
-        # to track
+        ## The initial bounding box is where the tracker will start from. (User Defined from UI or from MaskRCNN's assignment)
         self.init_bounding_box = None
-        self.reset = False
-        self.state_tracking = False
-        self.auto_assign_state = True
-        self.box = None
 
-        self.predictor = filters.KalmanPred()
-        self.box_predictor = (filters.KalmanPred(white=True), filters.KalmanPred(white=True)) #One point predictor for two points on box (Top Left, Bottom Right)
-        # self.regression = None
-        self.regression = regression.rolling_regression(10, "Linear")
+        ## resets the tracker and asks for a new init_bounding_box
+        self.reset = False 
+
+        # self.state_tracking = False # UN-USED, MAYBE DELETE
+
+        ## AutoAssign is a state flagged to allow the tracker to be re-assigned to the closest bounding box created by MaskRCNN's predictions. (IOU measure)
+        self.auto_assign_state = True 
+
+        ## The value that stores the current state of tracker's box, the successor values of init_bounding_box (Extract tracking values from this)
+        self.box = None 
+
+        ## The center predictor created by KalmanFilter (Filters.py) (center arrow)
+        self.predictor = filters.KalmanPred() 
+
+        ## One point predictor for two points on box (Top Left, Bottom Right) Creates a prediction box.
+        self.box_predictor = (filters.KalmanPred(white=True), filters.KalmanPred(white=True))
+
+        ## The red line that appears on the screen is a regression prediction of the current path of tracker's center
+        self.regression = regression.rolling_regression(10, "Linear") 
+
+        ## Predictions generated by MaskRCNN is stored here
         self.predicted_bbox = None
-        self.predicted_centroid = None
 
-    # def compare_predicted(self, location, frame_num, predicitons):
+        ## Center of MaskRCNN is stored here.
+        self.predicted_centroid = None 
+
+        
+        # self.recording_video = False # Not Implemented
+        # self.svm_model = None # Not Implemented
+        # self.bayes_model = None # Not Implemented
+
+        # self.self_aware_gallery = [] # Not Implemented
+        # self.normalized_gallery = [] # Not Implemented
+
+    # def compare_predicted(self, location, frame_num, predictions):
     #     """
     #     Compares predicted file to tracked file in frame using IOU and overlapping measures.
     #     """
 
+    ## OpenCV's Grabcut on tracker's position
     def grab_cut(self, frame, rect, export_path=None):
+        """!
+        Performing image segmentation using the GrabCut algorithm in OpenCV.
+
+        @param frame int
+        @param rect (int, int, int, int)
+        """
         bgdModel = np.zeros((1,65),np.float64)
         fgdModel = np.zeros((1,65),np.float64)
 
@@ -97,41 +176,60 @@ class MultiTracker():
         img = frame*mask2[:,:,np.newaxis] 
         cv2.imshow("Cropped Image", img)
         
-
+    ## Name of tracker
     def get_name(self):
-        """ Returns name of person tracked: returns string """
+        """!
+        @returns string
+        """
         return self.name.text()
     
+    ## Tracker ID
     def get_id(self):
-        """ Returns ID of person tracked: returns string """
+        """ Returns ID of person tracked STRING """
         return self.pid.text()
 
     # def get_loc(self, frame):
     #     """ Returns pixel (x,y) location of person tracked: returns tuple(int,int)"""
     #     return self.location_data(frame)
     
+    ## Tacker sex
     def get_sex(self):
-        """ Returns sex of person being tracked: returns string """
+        """ Returns sex of person being tracked STRING"""
         return self.sex.text()
 
+    ## Tracker description
     def get_description(self):
+        """ Returns description of tracker STRING"""
         return self.description.toPlainText()
 
+    ## Tracker's group size
     def get_group(self):
+        """
+        returns group number STRING (can be converted to int)
+        """
         return self.group.text()
 
+    ## Time tracker has been tracking relative to the video
     def get_time_tracked(self, framerate):
-        """ Returns total time being tracked in video: returns  """
+        """ 
+        Returns total time being tracked in video: 
+        @returns  LIST(FLOAT) 
+        """
         
         # if len(self.data_dict) > 2:
         total_time = [self.calculate_total_time(self.part_time_to_segments(self.data_dict.keys()), framerate)]
         return total_time
 
+    ## Creates base cv2.Tracker
     def create(self, tracker_type='CSRT'):
         """ 
         The creation of the Opencvs Tracking mechanism.
 
         tracker_type = ["BOOSTING", "MIL","KCF", "TLD", "MEDIANFLOW", "GOTURN", "MOSSE", "CSRT"]
+
+        https://docs.opencv.org/3.4/d9/df8/group__tracking.html
+
+        @returns CV2.TRACKER
         """
             # tracker = cv2.Tracker_create(tracker_type)
         if tracker_type == 'BOOSTING':
@@ -169,21 +267,24 @@ class MultiTracker():
             self.tracker = cv2.TrackerCSRT_create()
 
 
-
+    ## UNUSED  renames tracker
     def rename(self, name):
         """
         Renames the tracking object
         """
         self.name = name
         
-
+    ## UNUSED sets tracker's box colour
     def set_colour(self, color=(255,255,255)):
         self.colour = color
 
+    ## Creates bounding box of tracker (user draws the box)
     def assign(self, frame, tracker_type="CSRT"):
         """
         Assigns the box, name and sex of a tracked person.
         Takes care of reassigning as well.
+
+        Leverages cv2.selectROI and creates init_bounding_box value.
         """
         # select the bounding box of the object we want to track (make
         # sure you press ENTER or SPACE after selecting the ROI)
@@ -306,7 +407,7 @@ class MultiTracker():
         """
         pass
 
-    def record_data(self, frame, total_people, x=-1, y=-1, w=-1, h=-1, regions=[], other_room=False):
+    def record_data(self, frame, total_people, x=-1, y=-1, w=-1, h=-1, regions=[], other_room=False, image_frame=None):
         """
         Appends location and time to a list of data
 
@@ -319,14 +420,77 @@ class MultiTracker():
         dimensions = (int(w), int(h))
         self.data_dict[frame] = (point, regions, dimensions, other_room, total_people, self.is_chair())
 
+        if image_frame is not None:
+            x = int(x)
+            y = int(y)
+            h = int(h/2)
+            w = int(w/2)
+            image = image_frame[y-h:y+h, x-w:x+w]
+            cv2.imshow("SELF AWARE", image)
+            
+            # self.self_aware_gallery.append()
+            self.run_bayes_model(image, image_frame)
+        # if frame:
+        #     if not self.recording_video:
+        #         video_name = self.get_name() + "mp4"
+        #         self.get_name()
+        #         self.video_recorder = cv2.VideoWriter(video_name, -1, 30, (input_dialog.width, input_dialog.height))
+                
+        #     if self.recording_video:
+        #         self.video_recorder.write(image_frame)
+
+    ## Do not use.
+    def run_bayes_model(self, new_img, whole_image):
+        '''!
+        @warning DO NOT USE - Experimental naive bayes predictor for the visual similarity of current tracker score
+        '''
+
+        cv2.imshow("WHOLE", whole_image)
+        new_img = cv2.cvtColor(new_img, cv2.COLOR_BGR2GRAY).reshape(-1,1) 
+        whole_image = cv2.cvtColor(whole_image, cv2.COLOR_BGR2GRAY).reshape(-1,1) 
+
+        joint_img = np.append(new_img, whole_image).reshape(-1,1) 
+        # print(joint_img)
+
+        try:
+            if self.bayes_model is None:
+                self.bayes_model = Perceptron()
+
+            # print(new_img.shape)
+            scaler = StandardScaler().fit(joint_img)
+            joint_img = scaler.transform(joint_img)
+
+            name_array = np.array([self.get_name()]*new_img.shape[0])
+            other_array = np.array(["None"]*whole_image.shape[0])
+            joint_labels = np.append(name_array, other_array)
+
+            self.bayes_model.partial_fit(joint_img, joint_labels, classes=np.unique([self.get_name(), "None"]))
+
+            pred_2 = self.bayes_model.predict(new_img)
+            # probability = self.bayes_model.predict_proba(new_img)
+            # print(pred_1, pred_2)
+            # print("pred:", pred_2)
+            # print(pred_2)
+            a = np.sum(pred_2 == '')
+            b = len(pred_2)
+
+            if a/b is not 0 or 1:
+                print(a / b)
+            # print(np.mean(probability))
+            # print("Probability", np.mean(probability))
+        except Exception as e:
+            print(e)
+
         # self.distance_data.append(self.estimate_distance(size)) #(CLOSE, MED, FAR) (estimated)
 
+    ## NOT IMPLEMENTED
     def append_data(self, dataframe):
         """
         Appends the data into a given dataframe categoriezed with the name given
         """
         pass
-
+    
+    ## Exports tracked data into csv of the given name and directory of the video
     def export_data(self, vid_width, vid_height, vid_name, fps, new_version=None):
         """
         Exports the recorded data and appends constants such as name, total time recorded, and pixel percent Loc
@@ -522,10 +686,11 @@ class MultiTracker():
 
         input_dialog.log("Export Data Complete!")
         
+    ## NOT USED
     def evaluate_data(self):
         te = evaluate.tracker_evaluation()
         
-
+    ## Merges a list of integer segments of beginning/end time into one interval that contains the first and last values of all segments.
     def merge_intervals(self, total_segments):
         """
         On a continous set of intervals, merges them such that intersecting inervals will become a new interval with new limits. 
@@ -550,6 +715,7 @@ class MultiTracker():
 
         return merged
 
+    ## splits the time into beginning/end intervals given segment size as the largest absent gap
     def part_time_to_segments(self, time_data, segment_size=300):
         """
         Parts the times into segments based on the distance between tracked frames.
@@ -613,9 +779,11 @@ class MultiTracker():
 
         return total_segments
 
+    ## NOT IMPLEMENTED
     def estimate_distance(self, size):
         pass
-            
+    
+    ## Calclulates time between two frames at a given framerate
     def calculate_time(self, frame_start, frame_end, fps=30):
         """
         Calculates time between two given frames and the FPS rate
@@ -623,6 +791,7 @@ class MultiTracker():
         time = (frame_end - frame_start)/fps
         return time
     
+    # Total time tracked where non-tracked frames are considered.
     def calculate_total_time(self, total_frames, fps=30, segmented=True):
         """
         Calculates total time tracked. This takes into consideration segmented time
@@ -648,10 +817,19 @@ class MultiTracker():
 
         return total_time
 
-
+## Exports a dataset full of NULL valriables at the beginning. Used if metadata fails to extract.
 def export_null_meta(vid_dir):
+    '''
+    Exports a dataset full of NULL valriables at the beginning. Used if metadata fails to extract.
+    '''
     #Create path string for exporting the data. It's just a change of extention.
-    export_filename = str(vid_dir[:-4]) + ".csv"
+    export_filename = None
+
+    # if its a number assume live
+    if type(vid_dir) == type(0):
+        export_filename = time.strftime("%Y_%m_%d-%H_%M_%S") + ".csv"
+    else:
+        export_filename = str(vid_dir[:-4]) + ".csv"
     
     #Create the first 2 rows of data with title and then info. Recorded info should have '-' or 'N/A'
     if not os.path.isfile(export_filename):
@@ -713,7 +891,8 @@ def export_null_meta(vid_dir):
         export_csv = df.to_csv (export_filename, index = None, header=True)
 
         input_dialog.log("Exported Null Metadata!")
-        
+
+# Exports metadata into the same csv that data is recorded. This is called first and populates the first two rows of data containing metadata.
 def export_meta(vid_dir, output_csv=None):
     """
     Exports a start line into a CSV with the same name as the video. This CSV will initialize with a set of columns on the left
@@ -749,6 +928,7 @@ def export_meta(vid_dir, output_csv=None):
             crashlogger.log(str(e))
             print("Could not collect")
             export_null_meta(vid_dir)
+            return None
 
 
 
@@ -848,8 +1028,18 @@ def export_meta(vid_dir, output_csv=None):
         # return metadata
     return metadata
 
-
+## Loads data from csv into multiple trackers
 def load_tracker_data(csv, input_dialog, frame):
+    '''
+    Populates tabs, data_dict and trackers previously labelled from csv.
+    All trackers will start in Read Only mode.
+
+    Useful for when the data needs to be saved/loaded between recording sessions.
+
+    Please note CSV must match the video or data will be uninformative.
+
+    If you modify the data by hand errors may occur because of different formats, and how third party programs save NULL and TRUE/FALSE values.
+    '''
     print("Loading csv")
     new_trackers = []
 
@@ -1000,8 +1190,11 @@ def load_tracker_data(csv, input_dialog, frame):
     print("End of loading.")
     return new_trackers, frame
 
-
+## Function that runs the entire multitracker program
 def run(video_path=None):
+    '''
+    
+    '''
     # startup_video = "K:/Github/PeopleTracker/Evaluation/People/John Scott/GP020002.MP4"
     try:
             # initialize the log settings
@@ -1021,12 +1214,19 @@ def run(video_path=None):
         #Get the video path from UI
         videoPath = input_dialog.filename
         
-
         input_dialog.log("Populating UI")
+
+        if input_dialog.filename is None or input_dialog.filename == "":
+            while input_dialog.nothing_loaded:
+                 PyQt5.QtCore.QCoreApplication.processEvents()
+        
+                #Get the video path from UI
+        videoPath = input_dialog.filename
+
+                     
 
         #Given the path, export the metadata and setup the csv for data collection
         metadata = export_meta(videoPath)
-        print(metadata)
         activity_logger = datalogger.DataLogger(videoPath, video_metadata=metadata)
         
         
@@ -1048,6 +1248,7 @@ def run(video_path=None):
         
         #Initialize video, get the first frame and setup the scrollbar to the video length
         cap = cv2.VideoCapture(videoPath)
+        
         # Assign original resolution variable
         input_dialog.original_resolution = (cap.get(cv2.CAP_PROP_FRAME_WIDTH), cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
 
@@ -1092,6 +1293,7 @@ def run(video_path=None):
         snap_called = False
 
         while True:
+
             PyQt5.QtCore.QCoreApplication.processEvents()
 
             if input_dialog.load_tracked_video_state:
@@ -1114,6 +1316,7 @@ def run(video_path=None):
                                             )
 
                 if input_dialog.tab_list[selected_tracker].read_only is False:
+                    print("RESETTING")
                     input_dialog.tab_list[selected_tracker].toggle_read()
                 # delete data dictionary key on active tracker
                 # print("Deleting frame number", fvs.frame_number)
@@ -1260,14 +1463,18 @@ def run(video_path=None):
 
             #When at the end, go to the beginning and pause
             if input_dialog.get_scrollbar_value() >= input_dialog.vidScroll.maximum() or (input_dialog.get_scrollbar_value() + skip_frame) >= input_dialog.vidScroll.maximum():
-                input_dialog.set_scrollbar(0)
                 fvs.frame_number = input_dialog.get_scrollbar_value()
-                fvs.reset = True
+                if not input_dialog.record_live:
+                    input_dialog.set_pause_state()
+                    input_dialog.set_all_tabs("Read")
+
+                    input_dialog.set_scrollbar(0)
+                    activity_logger.paused(fvs.frame_number, "END_VIDEO", "END_VIDEO", None)
+                    fvs.reset = True
                 input_dialog.scrollbar_changed = True
-                input_dialog.set_pause_state()
-                input_dialog.set_all_tabs("Read")
-                # When we reach the end of the video, actively selected trackers turn to read only (trackerID = None then) and we assign END_VIDEO tag to it.
-                activity_logger.paused(fvs.frame_number, "END_VIDEO", "END_VIDEO", None)
+
+                    # When we reach the end of the video, actively selected trackers turn to read only (trackerID = None then) and we assign END_VIDEO tag to it.
+                
                 # activity_logger.end_timer(activity_logger.start_time_ID)
             
             # if input_dialog.get_scrollbar_value() == 0 and fvs.frame_number != input_dialog.get_scrollbar_value():
@@ -1341,7 +1548,7 @@ def run(video_path=None):
                 # input_dialog.log("Scrolled.")  
                 fvs.reset = True
                 frame, frame_num = fvs.read()
-                print(frame_num)
+                # print(frame_num)
                 previous_frame = frame
                 
                 input_dialog.scrollbar_changed = False
@@ -1606,6 +1813,11 @@ def run(video_path=None):
                     # Defines when to record while play is active
                     play_active = input_dialog.play_state == True and input_dialog.tab_list[tracker_num].read_only is False
                     paused_snap_active = input_dialog.play_state == False and input_dialog.tab_list[tracker_num].read_only is False and snap_called == True
+                    
+                    # if record live always allow recording of data (cannot pause)
+                    if input_dialog.record_live:
+                        play_active = True
+                        paused_snap_active = True
 
                     if play_active or paused_snap_active:
                         # tracker.grab_cut(frame,box)
@@ -1700,8 +1912,10 @@ def run(video_path=None):
                                     cv2.line(show_frame, (int(center_x),0), (int(center_x),800), (0,0,255), 1)
                                 # cv2.line(frame, (int(center_x-30),int(center_y)), (int(center_x + 30),int(center_y)), (0,0,255), 1)
                         # print( ((pred_line[0] + pred_line[2])[0], (pred_line[1] + pred_line[3])[0]) )      
-
-                        tracker.record_data(input_dialog.get_scrollbar_value(), input_dialog.num_people.value(), center_x, center_y, width, height, in_region)
+                        if input_dialog.record_live:
+                            tracker.record_data(fvs.frame_number, input_dialog.num_people.value(), center_x, center_y, width, height, in_region, image_frame=show_frame)
+                        else:
+                            tracker.record_data(input_dialog.get_scrollbar_value(), input_dialog.num_people.value(), center_x, center_y, width, height, in_region)
             
                 # except Exception as e:
                 #     crashlogger.log(str(e))

@@ -77,8 +77,12 @@ def random_sample_folder(folder, sample_number, clear_empty=True):
                         
 
         print("Number of labels:", len(files), " in folder: ", folder)
+        if sample_number <= len(files):
+            sample_json = random.sample(files, sample_number)
+        else:
+            print("Number of labels less than sample size, including all labels and not sampling.")
+            sample_json = files
 
-        sample_json = random.sample(files, sample_number)
         sample_json_list.extend(sample_json)
 
         for file in sample_json:
@@ -200,20 +204,21 @@ def reclassify_labels(label, json_file, update_imagepath=True):
 
 
     
+def prepare_monkey():
+    base = "K:/Github/PeopleTracker/Evaluation/Monkeys/"
+    folder_list = [
+    "K:\Github\PeopleTracker\Evaluation\Monkeys/Displays Aggression/", 
+    "K:\Github\PeopleTracker\Evaluation\Monkeys/Grooming/", 
+    "K:\Github\PeopleTracker\Evaluation\Monkeys/Play/"
+    ]
+    
+    # base = "K:/Github/PeopleTracker/Evaluation/Monkeys/"
+    parent_folder = base + "/TestTrain/"
 
-def record_validation(output, value):
-    pass
-if __name__ == "__main__":
+    evaluation_folders = cross_validation_split(folder_list, out_folder=parent_folder, reclassify="Monkey", sample_size=50)
 
-    random.seed(42)
 
-    parent_folder = "K:/Github/PeopleTracker/Evaluation/People/TestTrain/"
-
-    # folder_list = [
-    # "K:\Github\PeopleTracker\Evaluation\Monkeys/Displays Aggression/", 
-    # "K:\Github\PeopleTracker\Evaluation\Monkeys/Grooming/", 
-    # "K:\Github\PeopleTracker\Evaluation\Monkeys/Play/"
-    # ]
+def prepare_people():
     base = "K:/Github/PeopleTracker/Evaluation/People/"
     folder_list = [
         (base + "John Scott/"),
@@ -222,14 +227,52 @@ if __name__ == "__main__":
         (base + "Contemporary/"),
         (base + "Historical/")
     ]
-    
-    # evaluation_folders = cross_validation_split(folder_list, out_folder=parent_folder, reclassify="Person", sample_size=100)
+    parent_folder = base + "/TestTrain/"
+    evaluation_folders = cross_validation_split(folder_list, out_folder=parent_folder, reclassify="People", sample_size=100)
 
+
+
+def record_validation(output, value):
+    pass
+if __name__ == "__main__":
+
+    random.seed(42)
+
+    
+    # base = "K:/Github/PeopleTracker/Evaluation/Monkeys/"
+    # folder_list = [
+    # "K:\Github\PeopleTracker\Evaluation\Monkeys/Displays Aggression/", 
+    # "K:\Github\PeopleTracker\Evaluation\Monkeys/Grooming/", 
+    # "K:\Github\PeopleTracker\Evaluation\Monkeys/Play/"
+    # ]
+    # base = "K:/Github/PeopleTracker/Evaluation/People/"
+    # folder_list = [
+    #     (base + "John Scott/"),
+    #     (base + "Camera Obscura/"),
+    #     (base + "Chris Cran/"),
+    #     (base + "Contemporary/"),
+    #     (base + "Historical/")
+    # ]
+    
+    # base = "K:/Github/PeopleTracker/Evaluation/Monkeys/"
+    # parent_folder = base + "/TestTrain/"
+    # folder_list = [
+    #     (base + "Displays Aggression/"),
+    #     (base + "Grooming/"),
+    #     (base + "Play/"),
+    # ]
+
+    # evaluation_folders = cross_validation_split(folder_list, out_folder=parent_folder, reclassify="People", sample_size=100)
+    # evaluation_folders = cross_validation_split(folder_list, out_folder=parent_folder, reclassify="Monkey", sample_size=50)
+    
     # Continue
     # cont = "K:/Github/PeopleTracker/Evaluation/People/TestTrain/0/mask_rcnn_model.049-0.530556.h5"
-    cont = "K:/Github/PeopleTracker/moved/mask_rcnn_coco.h5"
+    # cont = "K:/Github/PeopleTracker/moved/mask_rcnn_coco.h5"
     # for train_test in evaluation_folders:
-    train(classes=["Person"], pretrained_model=cont, dataset_path="K:/Github/PeopleTracker/Evaluation/People/TestTrain/4", output_path="K:/Github/PeopleTracker/Evaluation/People/TestTrain/4/", batch_size=1, num_epochs=100)
+
+    test_train_folder = "K:/Github/PeopleTracker/Evaluation/Monkeys/TestTrain/2/"
+    # print(test_train_folder[:-1])
+    train(classes=["Monkey"], pretrained_model="K:/Github/PeopleTracker/mask_rcnn_coco.h5", dataset_path=test_train_folder[:-1], output_path=test_train_folder, batch_size=1, num_epochs=100)
 
 
 

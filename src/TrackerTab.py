@@ -201,7 +201,9 @@ class person_tab():
 
     
     def toggle_read(self):
+        print("TOGGLING")
         self.parent.log("Setting Read only to " + str(not self.read_only))
+        # self.read_only = False
         self.read_only = not self.read_only
         return self.read_only
     

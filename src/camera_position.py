@@ -35,7 +35,7 @@ class CameraPosition(QWidget):
         self.top = 250
         self.width = 480
         self.height = 240
-        # self.stitched_img = None
+        self.stitched_img = None
         self.initUI()
         self.init_menubar()
 
@@ -51,11 +51,12 @@ class CameraPosition(QWidget):
             self.source_img = None
 
 
-        if reference_vid is not None:
-            self.add_reference(reference_vid)
-        else:
-            self.reference_imgs = []
+        # if reference_vid is not None:
+        #     self.add_reference(reference_vid)
+        # else:
+        self.reference_imgs = []
 
+        self.stitch_list = []
         # self.stitched_img = None
         # self.source_img = None
         # if self.source_img is not None and self.reference_imgs:
@@ -90,6 +91,7 @@ class CameraPosition(QWidget):
             file.addAction("New Source")
             file.addAction("New Reference")
             file.addAction("Save Stitched Image")
+            file.addAction("Stitch Images")
 
 
             edit = bar.addMenu("Edit")
@@ -150,7 +152,12 @@ class CameraPosition(QWidget):
         elif text == "New Reference":
             fileName, _ = QFileDialog.getOpenFileName(self,"QFileDialog.getOpenFileName()", "","MP4 (*.mp4)")
             if fileName:
-                self.add_reference(fileName)
+                self.add_reference(fileName, 10, 5, 100)
+        elif text == "Stitch Images":
+            success, stitched = self.stitch(self.reference_imgs)
+            if success:
+                print(stitched)
+                cv2.imshow("Stitched image", stitched)
         elif text == "Save Stitched Image":
             options = QFileDialog.Options()
             options |= QFileDialog.DontUseNativeDialog
@@ -161,40 +168,67 @@ class CameraPosition(QWidget):
             
             img = None
             # room = None
+            self.room_estimation = re.room_estimation()
             if self.stitched_img is not None:
-                self.room_estimation = re.room_estimation(self.stitched_img)
+                print("Setting estimation to stitched image")
+                self.room_estimation.set_image(self.stitched_img)
             elif self.source_img is not None:
-                self.room_estimation = re.room_estimation(self.source_img)
+                print("Setting estimation to stitched image")
+                self.room_estimation.set_image(self.source_img)
+
+            limits, _ = self.room_estimation.find_3d_limits()
+            self.room_estimation.get_room_3d(limits, height=1000, step=2)
+            
             self.set_view_roomestimation()
+
         elif text == "View Camera Estimation":
             self.show_estimation()
 
-    def stitch(self):
+    def stitch(self, image_list, out_path=None):
+        print("Stitching")
+        # Test images
+        # Initiate ORB detector
+        image_dict = {}
+        orb = cv2.ORB_create()
+        for index, img in enumerate(image_list):
+            kp, des = orb.detectAndCompute(img,None)
+            image_dict[index] = (kp, des)
+
+        bf = cv2.BFMatcher()
+        for img_key_1 in image_dict.keys():
+            for img_key_2 in image_dict.keys():
+                matches = bf.knnMatch(image_dict[img_key_1][1],image_dict[img_key_2][1], k=10)
+                for m in matches:
+                    print(m[0].distance)
+
         # print("Stitching images")
         stitcher = cv2.Stitcher_create(cv2.Stitcher_SCANS)
-        img_list = [self.source_img] + self.reference_imgs
-        status, self.stitched_img = stitcher.stitch(img_list)
+        # img_list = [self.source_img] + self.reference_imgs
+        status, self.stitched_img = stitcher.stitch(image_list)
 
         if status == cv2.Stitcher_OK:
             print("Stitching Successful.")
 
-        cv2.imwrite("./stitched.jpg", self.stitched_img)
+        if out_path is None and self.stitched_img is not None:
+            cv2.imwrite("./stitched.jpg", self.stitched_img)
+
         return status, self.stitched_img
 
-    def set_source(self, video_path):
-        self.source_img = self.collect_frames(video_path,0,1,1)[0]
-        if self.reference_imgs:
-            status, self.stitched_img = self.stitch()
+    def set_source(self, video_path, frame=0):
+        self.source_img = self.collect_frames(video_path, frame,1,1)[0]
+        self.room_estimation = re.room_estimation(self.source_img)
+        # if self.reference_imgs and self.source_img is not None:
+        #     status, self.stitched_img = self.stitch()
         cv2.imshow(video_path, self.source_img)
         cv2.waitKey(0)
 
-    def add_reference(self, video_path):
-        frames = self.collect_frames(video_path,0,1,1)[0]
-        self.reference_imgs.append(frames)
-        if self.reference_imgs:
-            status, self.stitched_img = self.stitch()
-        cv2.imshow(video_path, frames)
-        cv2.waitKey(0)
+    def add_reference(self, video_path, frame_start, total_frames, step):
+        frames = self.collect_frames(video_path,frame_start,step,total_frames)
+        self.reference_imgs = frames
+        # if self.reference_imgs:
+        #     status, self.stitched_img = self.stitch()
+        # cv2.imshow(video_path, frames)
+        # cv2.waitKey(0)
 
     def find_reference(self, query_img, train_img):
 
@@ -305,6 +339,7 @@ class CameraPosition(QWidget):
         cap.set(cv2.CAP_PROP_POS_FRAMES, start_frame)
         # print("Starting at frame: " + str(cap.get(cv2.CAP_PROP_POS_FRAMES)))
         while len(frames) < total_frames:
+            # print(frames)
             #read the image from that skipped frame
             ret, frame = cap.read()
 
@@ -313,8 +348,8 @@ class CameraPosition(QWidget):
             # print(cap.get(cv2.CAP_PROP_POS_FRAMES))
 
             if ret:
-                if cv2.waitKey(30) & 0xFF == ord('q'):
-                    break
+                # if cv2.waitKey(30) & 0xFF == ord('q'):
+                #     break
                 # cv2.imshow('frame', frame)
                 #append the frames to be processed
                 frames.append(frame)
@@ -326,7 +361,25 @@ if __name__ == "__main__":
     app = QApplication(sys.argv)
     
     ex = CameraPosition()
+    ex.set_source("C:/Users/legom/Videos/GOPR0072.MP4", 200)
+    # ex.room_estimation.define_room(2260, 2872)
+    # ex.room_estimation.estimate()
+
+
+
+
     # ex.add_reference("F:/MONKE_Ground_Truth/Gallery Videos/Contemporary/GP014189/GP014189.MP4")
+    # ex.add_reference("C:/Users/legom/Videos/GOPR0072.MP4", 150, 5, 10)
+    # print(ex.source_img)
+    # print(ex.reference_imgs)
+
+    # img_list = [ex.source_img] + ex.reference_imgs
+    # print(img_list)
+    # success, img = ex.stitch(img_list)
+    # print(success)
+
+    # cv2.imshow("Stitched", img)
+    # cv2.waitKey(0)
     # ex.show_estimation()
 
     sys.exit(app.exec_())

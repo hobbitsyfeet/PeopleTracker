@@ -1,17 +1,21 @@
 opencv-python>=4.3
 #opencv-contrib-python-headless>=4.3
-#opencv-contrib-python>=4.3
-imutils==0.5.3
-pandas==0.25.1
+#opencv-contrib-python>=4.3 # Windows
+# imutils==0.5.3
+
+pandas>=0.25.1
 pyqt5==5.14.0
 PyExifTool==0.1.1
 numpy==1.19.2
 
 pixellib>=0.5.2
 #tensorflow==2.4.0 CRITICAL DEPENDENCY
-tensorflow==2.5.2
+#tensorflow==2.5.2 # << USE
 #tensorflow-gpu==2.3.0
 
-sklearn
+scikit-image==0.17.2
+scikit-learn==0.24.1
 scipy>=1.4.1
 filterpy>=1.4.5
+
+#sympy #for solving equations

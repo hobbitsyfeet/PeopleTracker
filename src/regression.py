@@ -76,7 +76,7 @@ class rolling_regression():
         return (Right, Up)
 
 def distance_2d(p1, p2):
-    print(p1,p2)
+    # print(p1,p2)
     return abs( ((p2[0]-p1[0])**2 + (p2[1]-p1[1])**2)**(1/2) )
 
 if __name__ == "__main__":

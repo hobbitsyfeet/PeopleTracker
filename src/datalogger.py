@@ -24,11 +24,22 @@ NO_INTERVENTION_MODEL = "MRCNN"
 
 class DataLogger:
     def __init__(self, video, video_location=None, video_metadata=None, intervention_level=NO_INTVERVENTION_TRACKER, ground_truth_folder=None):
+        
+        live_video = False
+        #assume number is live camera
+        if type(video) == type(0):
+            live_video = True
+        
+        ## String representing constants 
         self.intervention_level = intervention_level
         self.ground_truth_folder = ground_truth_folder
         self.te = evaluate.tracker_evaluation()
-        self.te.fps = float(video_metadata['QuickTime:VideoFrameRate'])
-        if self.ground_truth_folder is None:
+        if not live_video:
+            self.te.fps = float(video_metadata['QuickTime:VideoFrameRate'])
+        else: 
+            self.te.fps = 30
+
+        if self.ground_truth_folder is None and not live_video:
             #Check the same folder and see if it works
             print("Checking to see if ground truths are in the same folder as video...")
             self.ground_truth_folder = os.path.dirname(video) + "/"
@@ -44,8 +55,12 @@ class DataLogger:
 
         self.metadata = video_metadata
         self.video = video
+        
+        if not live_video:
+            self.video_id = os.path.basename(video)[:-4]
+        else:
+            self.video_id = -1
 
-        self.video_id = os.path.basename(video)[:-4]
         self.video_location = video_location
 
         self.start_time_id = "START_STOP"
@@ -106,15 +121,20 @@ class DataLogger:
     # User input logging starts here #
     ##################################
 
+     #starts the recording timer
     def start_recording(self):
+       
         '''
         Starts the recording timer
         '''
         start_time = time.time()
         self.timer_dict[self.start_time_id] = (start_time, None)
-        
+    
+    ##
+    # ends recording timer 
     def end_recording(self):
         '''
+        Ends recording by setting the second value in the tuple (start, end) to the current time.
         '''
         self.timer_dict[self.start_time_id][1] = time.time()
 
@@ -210,6 +230,9 @@ class DataLogger:
         
     
     def end_pause(self):
+        '''
+        After paused() is called, end_pause is used to end the paused action and add the duration to the logger.
+        '''
         if self.paused_data:
             for pause_ids in self.paused_data.keys():
                 if pause_ids is not self.start_time_id:
@@ -244,6 +267,9 @@ class DataLogger:
             # print(self.logger_df)
     
     def end_slider(self, frame_to, timer_id):
+        '''
+        When slider_moved() is called, we call end_slider which removes a duration timer and adds the duration and SLIDER action to the logger.
+        '''
         if self.slider_data:
             # time_started, timer_ended = self.timer_dict[timer_id]
             duration = self.get_time_elapsed(timer_id)
@@ -259,9 +285,15 @@ class DataLogger:
             # print(self.logger_df)
     
     def record_errors(self, frame):
+        '''
+        Not implemented
+        '''
         pass
 
     def get_tracker_score(self):
+        '''
+        Not implemented
+        '''
         pass
     
     ################################
@@ -290,12 +322,21 @@ class DataLogger:
         previous_gt_frame = 0
         gt_count = None
         occluded_count = None
-
+        total_frames = cap.get(cv2.CAP_PROP_FRAME_COUNT)
         # Read until video is completed
-        while(cap.isOpened()):
+        while(True):
             # Capture frame-by-frame
             ret, frame = cap.read()
             frame_num = cap.get(cv2.CAP_PROP_POS_FRAMES)
+            
+            while not ret:
+                print(ret, frame_num)
+                frame_num += 1
+                cap.set(cv2.CAP_PROP_POS_FRAMES, frame_num)
+                ret, frame = cap.read()
+                if frame_num >= total_frames:
+                    break
+            
             if ret == True:
                 ill_mean, ill_std = self.illumination(frame)
                 of_dict = self.optical_flow(frame) # Mean Median STD Mean_Magnitude Dominant_Zoom Percent_Zoom 

@@ -26,13 +26,15 @@ class App(PyQt5.QtWidgets.QWidget):
         self.flashSplash()
 
         super().__init__()
-
+        self.filename = start_file
         self.title = 'Person'
         self.left = 250
         self.top = 250
         self.width = 480
         self.height = 240
         self.initUI(start_file)
+        self.record_live = False
+        self.nothing_loaded = True
         
         self.snap_to_frame_skip = True 
 
@@ -179,7 +181,6 @@ class App(PyQt5.QtWidgets.QWidget):
             print("Dialog Error")
 
 
-
     def processtrigger(self,q):
         try:
             self.log(q.text() + " is triggered")
@@ -323,6 +324,15 @@ class App(PyQt5.QtWidgets.QWidget):
                 self.del_frame = True
             elif q.text() == "Remove All Active Tracked Frame":
                 self.del_active_frame = True
+            elif q.text() == "Open Live Camera":
+                self.record_live = True
+                self.nothing_loaded = False
+                self.filename = 2
+                self.vidScroll.setEnabled(False)
+                self.skip_frames.setEnabled(False)
+                self.play_state = True
+                # self.skip_frames = 2
+
 
             
 
@@ -349,6 +359,7 @@ class App(PyQt5.QtWidgets.QWidget):
             
             if start_file is None:
                 self.filename = self.openFileNameDialog()
+                print(self.filename)
             else:
                 self.filename = start_file
             # self.openFileNamesDialog()
@@ -359,6 +370,10 @@ class App(PyQt5.QtWidgets.QWidget):
             # Menu bar
             bar = PyQt5.QtWidgets.QMenuBar()
             file = bar.addMenu("File")
+
+            live_camera = PyQt5.QtWidgets.QAction("Open Live Camera", self)
+            file.addAction(live_camera)
+
             file.addAction("New")
 
             save = PyQt5.QtWidgets.QAction("Save",self)
@@ -660,7 +675,8 @@ class App(PyQt5.QtWidgets.QWidget):
         self.vidScroll.maximum()
 
     def set_scrollbar(self, value):
-        self.vidScroll.setValue(value)
+        if not self.record_live:
+            self.vidScroll.setValue(value)
     
     def slider_update(self, value, func=None):
         self.scrollbar_changed = True
@@ -786,17 +802,14 @@ class App(PyQt5.QtWidgets.QWidget):
         return skip
     
     def openFileNameDialog(self, task=None, extensions=None):
-        fileName=""
+        filename = ""
         if extensions and task:
-            fileName, _ = PyQt5.QtWidgets.QFileDialog.getOpenFileName(self, task, "",("All Files (*);;(" + extensions +")") )
+            filename, _ = PyQt5.QtWidgets.QFileDialog.getOpenFileName(self, task, "",("All Files (*);;(" + extensions +")") )
         else:
         # options = PyQt5.QtWidgets.QFileDialog.Options()
         # options |= PyQt5.QtWidgets.QFileDialog.DontUseNativeDialog
-            fileName, _ = PyQt5.QtWidgets.QFileDialog.getOpenFileName(self,"PyQt5.QtWidgets.QFileDialog.getOpenFileName()", "","All Files (*);;Python Files (*.py)")
+            filename, _ = PyQt5.QtWidgets.QFileDialog.getOpenFileName(self,"PyQt5.QtWidgets.QFileDialog.getOpenFileName()", "","All Files (*);;Python Files (*.py)")
 
-        if fileName:
-            filename = fileName
-            self.log("Opening" + fileName)
         return filename
             
     def saveFileDialog(self):
@@ -835,7 +848,8 @@ class App(PyQt5.QtWidgets.QWidget):
 
     def get_new_data_version(self):
         # Use the video path loaded
-
+        if self.filename is None or self.filename == "":
+            return -1, -1
         # version_filename = (export_filename[:-4] + "_V")
         # version_filename = self.filename
         # out_path = os.path.abspath(self.filename)
@@ -868,6 +882,16 @@ class App(PyQt5.QtWidgets.QWidget):
     def clear_focus(self):
         if self.focusWidget() is not None:
             self.focusWidget().clearFocus()
+
+    def track_live_video(self):
+        
+        keep_testing = True
+
+        while keep_testing:
+            error_dialog = PyQt5.QtWidgets.QErrorMessage()
+            error_dialog.showMessage("Can you see the video?")
+            error_dialog.setWindowTitle("Test Live")
+            error_dialog.exec()
 
 
 

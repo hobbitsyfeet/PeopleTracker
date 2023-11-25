@@ -149,7 +149,12 @@ def predict(filename, model="mask_rcnn_coco_person.h5", class_names=["BG", "pers
 
         if ret:
 
-            if progress is not None:
+            
+
+            if progress == True:
+                print("Progress:" + str(frame_num/vid_length), end="\r")
+            
+            elif progress is not None:
                 if progress.wasCanceled():
                     return None, None, None
                 if frame_num == 0:
@@ -158,7 +163,6 @@ def predict(filename, model="mask_rcnn_coco_person.h5", class_names=["BG", "pers
                 progress.setValue(frame_num)
                 
                 QtCore.QCoreApplication.processEvents()
-
             #Segment the image
             segmask, frame = custom_model.segmentFrame(frame, True)
             # train_dataset_keypoints = coco.CocoDataset(task_type="person_keypoints")

@@ -27,9 +27,20 @@ class STFileVideoStream:
         self.stream = cv2.VideoCapture(path)
         self.stopped = False
         self.grabbed = False
+        if type(path) == type(0):
+            self.record_live = True
+        else:
+            self.record_live = False
+
 
 
     def read(self):
+
+        if self.record_live:
+            self.frame_number += 1
+            (self.grabbed, frame) = self.stream.read()
+            return frame, self.frame_number
+
         if self.reset is True:
             self.stream.set(1, self.frame_number)
             self.reset = False
@@ -76,13 +87,17 @@ class FileVideoStream:
         self.stopped = False
         self.grabbed = False
         self.transform = transform
-
+        self.record_live = False
+        if type(path) == type(0):
+            self.record_live = True
+            print(self.record_live)
         # initialize the queue used to store frames read from
         # the video file
-        self.Q = Queue(maxsize=queue_size)
-        # intialize thread
-        self.thread = Thread(target=self.update, args=())
-        self.thread.daemon = True
+        else:
+            self.Q = Queue(maxsize=queue_size)
+            # intialize thread
+            self.thread = Thread(target=self.update, args=())
+            self.thread.daemon = True
 
     def set_next_frame(self, frame_num):
         self.stream.set(1, frame_num)
@@ -166,8 +181,16 @@ class FileVideoStream:
         self.stream.release()
 
     def read(self):
-        # return next frame in the queue
-        return self.Q.get()
+        frame = None
+        if self.record_live:
+            print(self.record_live)
+            ret, frame = self.stream.read()
+            if ret:
+                self.frame_number += 1
+                return frame, self.frame_number
+        else:
+            return self.Q.get()
+
 
     # Insufficient to have consumer use while(more()) which does
     # not take into account if the producer has reached end of
