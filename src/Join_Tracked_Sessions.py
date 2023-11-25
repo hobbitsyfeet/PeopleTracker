@@ -21,7 +21,12 @@ def join_activity(folder):
     accumulated_csv = pd.DataFrame()
     accumulated_time = 0
 
+    for index, file in enumerate(files):
+        files[index] = file.replace("\\", "/")
+        print(files[index])
+
     filename = files[0].split("/")[-1]
+    
     videoname = filename.split("_")[0]
     export_name =  folder + videoname + "_ACTIVITY_LOGGER_COMPILED.csv"
 
@@ -50,13 +55,17 @@ def join_activity(folder):
         
         accumulated_time += tracked_duration
         # print(accumulated_time, tracked_duration)
-
+    print(accumulated_csv)
     accumulated_csv.to_csv(export_name, index=False)
     return accumulated_csv
 
 def join_tracked(folder, video_name):
     files = collect_files(folder, contains = (video_name + "_S"))
     accumulated_csv = pd.DataFrame()
+
+    for index, file in enumerate(files):
+        files[index] = file.replace("\\", "/")
+        print(files[index])
 
     filename = files[0].split("/")[-1]
     videoname = filename.split("_")[0]
@@ -80,5 +89,8 @@ def join_tracked(folder, video_name):
 
 
 if __name__ == "__main__":
-    join_activity(folder="K:/Github/PeopleTracker/Evaluation/People/Justin_Tracked/GP044104_Tracked/")
-    join_tracked(folder="K:/Github/PeopleTracker/Evaluation/People/Justin_Tracked/GP044104_Tracked/", video_name="GP044104")
+    # join_activity(folder="K:/Github/PeopleTracker/Evaluation/People/Justin_Tracked/GP044104_Tracked/")
+    # join_tracked(folder="K:/Github/PeopleTracker/Evaluation/People/Justin_Tracked/GP044104_Tracked/", video_name="GP044104")
+
+    join_activity(folder="K:/Github/PeopleTracker/R_Statistics/R_data/Completed Evaluations-20230726T173343Z-001/Completed Evaluations/Sam/Galleries/Historical/")
+    join_tracked(folder="K:/Github/PeopleTracker/R_Statistics/R_data/Completed Evaluations-20230726T173343Z-001/Completed Evaluations/Sam/Galleries/Historical/", video_name="GP054106")
