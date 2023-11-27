@@ -2258,6 +2258,16 @@ class Monkerunner():
 
     ## Starts the process loop.
     def start_loop(self):
+        '''
+        This loop contains all the functions for the program.
+
+        It loops through testing any if the triggers if activated.
+        It applies any image options such as resize or visual changes from image options
+        It activates the tracker and region drawing functions
+        Finally it processes the trackers and updates them with the new locations and statistical filters
+
+        It applies all changes to a new visual frame and repeats.
+        '''
         try:
             while True:
                 
@@ -2306,6 +2316,28 @@ class Monkerunner():
             crashlogger.log(str(traceback.format_exc()))
 
     def test_triggers(self):
+        '''
+        Test triggers tests many of the videos and applies any of the functions that are triggered.
+
+        loads video
+        backspace/ undo
+        play
+        pause
+        start mask rcnn prediction
+        export all trackers
+        load predictions (mask rcnn)
+        tracks predictions using nearest neighbours
+        export video characteristis
+        export user activity
+        quit program
+        updates video when frame skips
+        disables export when no data is available
+        snap forward skip_frame amount
+        snap backward skip_frame amount
+        resets when the end of the video is reached
+        adds a new tracker tab
+        updates video when the scroll bar is changed
+        '''
 
         self.trigger_load_video()
         self.trigger_delete_pressed()
@@ -2314,7 +2346,7 @@ class Monkerunner():
         self.trigger_predict()
         self.trigger_export_all()
         self.trigger_load_predictions()
-        self.trigger_predictions()
+        self.trigger_track_predictions()
         self.trigger_characteristics()
         self.trigger_export_activity()
         self.trigger_quit()
@@ -2339,9 +2371,30 @@ class Monkerunner():
         
         self.triggered_add_tab()
 
-        self.test_scrollbar_change()
+        self.trigger_scrollbar_change()
 
     def process_tracker(self, tracker, tracker_number):
+        '''
+        Processes each tracker individually.
+
+        Here we grab the current tracker's information and draw that information. The tracker is also updated to a new position
+        We apply all statistical filters along side tracker's position including iou tests and distance measures to assist user in labeling
+        Statistical filters include 
+        -   kalman center
+        -   kalman box
+        -   maskrcnn box
+        -   linear regression
+
+        Kalman and regression are only measured while trackers are not in read only mode. Data is then recorded.
+
+        Read only is displayed as a dot (green active, red inactive)
+        trackers auto init manual assignment when they have no current cv2 trackers or initial bounding boxes.
+
+        mask rcnn predictions are diplayed
+
+        attempt to update total tracked time
+
+        '''
 
         if self.input_dialog.tab_list[tracker_number].other_room:
             tracker.record_data(self.frame_number, input_dialog.num_people.value(), other_room=True)
@@ -2427,11 +2480,11 @@ class Monkerunner():
         
         
         
-
+    # If tracker is empty we start a new one
     def handle_empty_tracker(self):
         '''
-        #If you select a tracker and it is not running, start a new one
-        #If there is no assigned trakcer on selected individual, start one and not allow action until done
+        If you select a tracker and it is not running, start a new one
+        If there is no assigned tracker on selected individual, start one and not allow action until done
         '''
         #If you select a tracker and it is not running, start a new one
         #If there is no assigned trakcer on selected individual, start one and not allow action until done
@@ -2454,8 +2507,13 @@ class Monkerunner():
             input_dialog.del_tab_btn.setEnabled(True)
             input_dialog.export_tab_btn.setEnabled(True)
 
+    ## Assigns a new tracker when triggered
     def trigger_assign_tracker(self):
-        '''
+        '''!
+        A new tracker assignment will pause the video, and make the user draw a new initial bounding box.
+
+        @note an error will be thrown and the user will need to re-try to define a box until one is valid. An example of an invalid box is a box with no size
+
         '''
         #Press space bar to re-assign
         if input_dialog.set_tracker_state is True:
@@ -2476,10 +2534,15 @@ class Monkerunner():
                 input_dialog.tabs.setEnabled(True)
                 input_dialog.set_tracker_state = False
                         
-
+    ## Displays centroid dots, red on inactive and green on selected trackers. Data must be present.
     def display_read_only(self, tracker, tracker_number):
-        '''
-        Display the read_only values
+        '''!
+        Display the read_only tracks. 
+
+        When read only is active trackers will no longer collect data, and their previous data is shown in forms of green and red dots.
+        These dots are green when it is the active selected tracker tab, red otherwise. 
+
+        @note These read only tabs will not have bounding boxes applied to them to demonstrate that no tracker is currently being recorded.
         '''
         try:
             if input_dialog.tab_list[tracker_number].read_only is True:
@@ -2519,9 +2582,14 @@ class Monkerunner():
             crashlogger.log(str(e))
             input_dialog.log("Could not handle read only. List index out of range, Continuing")
 
-            
+    ## Rolling window linear regression. No pause is applied   
     def regression_predict(self, tracker, box):
         '''!
+        Regression calculates the moving window linear regression of the movement. 
+
+        Regression will draw an arrow along the direction of movement.
+        The direction is defined by the newest point that has been recorded compared to the first point.
+
         '''
         if tracker.regression:
             center_x, center_y = self.box_centers(box)
@@ -2545,6 +2613,7 @@ class Monkerunner():
                 except:
                     cv2.line(self.show_frame, (int(center_x),0), (int(center_x),800), (0,0,255), 1)
 
+    ## Kalman filter on the box and centroid, pauses if iou or centroid are too different.
     def kalman_filter_predict(self, tracker, tracker_number, box):
         '''
         Kalman filter uses 2 different difference measures.
@@ -2554,6 +2623,7 @@ class Monkerunner():
         If either of these thresholds are insufficient in similarity, we pause the program.
 
         @note the bounding box measurment takes into account both momentum in scale and shift, while centroild is less sensitive to scale, and more to shift.
+        
 
         '''
         #calculate values used for measuring
@@ -2612,18 +2682,24 @@ class Monkerunner():
                     self.activity_logger.paused(self.frame_number, "KALMAN_CENTER", "KALMAN_Pause", self.tracker_list[tracker_number].get_name())
         except:
             print("Cannot Compute Distance")
-                            
+
+    ## A box into xywh format hint, box is already in xywh form, this just makes me feel better                        
     def box_to_xywh(self, box):
         """
         top_left_x, top_left_y, width and height
         """
         return box[0], box[1], box[2], box[3]
     
+    ## returns the box center if box is in xywh format
     def box_centers(self, box):
+        '''
+        Retruns the center of the bounding box in xywh format
+        '''
         center_x = box[0] - (box[2]/2)
         center_y = box[1] - (box[3]/2)
         return center_x, center_y
 
+    ## maskrcnn either auto assigns if iou is sufficient or pauses if the closest iou is too far off
     def maskrcnn_predictions(self, tracker, tracker_number, box):
         '''
         This function applies mask_rcnn predictions and measures IoU (intersection/union) similarity
@@ -2701,11 +2777,12 @@ class Monkerunner():
                         input_dialog.set_pause_state()
                                     # .index(closest)
 
-
-    def draw_tracker_region(self, tracker, tracker_num):
+    ## a tracker has a region and will be drawn. Also deletes tracker if tracker is not regions
+    def draw_tracker_regnoion(self, tracker, tracker_num):
         '''
         If the tracker is also defined as a region, the name is printed, the region is defined around an individual with said name and region is drawn.
 
+        Also deletes tracjer region when selected off.
         '''
         if tracker.is_region() is True and tracker.get_name().strip() == "":
                         input_dialog.tab_list[tracker_num].getText(input_name="Region Name:",line=input_dialog.tab_list[tracker_num].name_line)
@@ -2722,14 +2799,22 @@ class Monkerunner():
         elif tracker.is_region() is False:
             # If tracker region is no longer selected, delete moving region
             self.regions.del_moving_region(tracker.get_name(), id=tracker.id())
-
+    
+    ## draws non-tracker regions (static)
     def draw_regions(self):
+        '''
+        If regions exist, draw them. This draws regions that are non-tracker based.
+        '''
         #Display all regions on screen if they exist
         if len(self.regions.region_dict) > 0:
             self.show_frame = self.regions.display_region(self.show_frame)
 
 
+    ## draws the tracker centers
     def draw_trackers(self):
+        '''
+        Draws the centers of the trackers 
+        '''
         #Set the selected Tracker to Red
         for tracker in range(len(self.tracker_list)):
             self.app.processEvents()
@@ -2738,16 +2823,21 @@ class Monkerunner():
             else:
                 self.tracker_list[tracker].colour = (255,255,255)
 
+    ## Deletes non-tracker region
     def trigger_delete_region(self):
+        '''
+        calls region delete and resets resets state
+        '''
         if self.input_dialog.del_region_state is True:
             self.input_dialog.log("Select a region to remove...")
             self.regions.del_region()
             self.input_dialog.del_region_state = False
             self.input_dialog.log("Removing region complete.")
 
+    ##Creates a region and resets the trigger state
     def trigger_region(self):
         '''
-        Creates a region
+        Creates a region and resets trigger state
         '''
         if self.input_dialog.region_state is True:
             self.input_dialog.log("Adding region... Write name and then draw boundaries")
@@ -2755,6 +2845,7 @@ class Monkerunner():
             self.input_dialog.region_state = False
             self.input_dialog.log("Adding region complete.")
 
+    ## delete tab is triggered, we change index and delete the tracker
     def trigger_delete_tab(self):
         '''
         When delete tab is pressed, we adjust the current index to one before and remove the previously selected tracker
@@ -2767,9 +2858,7 @@ class Monkerunner():
             self.selected_tracker = self.input_dialog.tabs.currentIndex()
             self.input_dialog.del_tab_state = False
 
-
-
-
+    ## Exports the currently selected tracker
     def trigger_export_current_tracker(self):
         '''!
         Exports the currently selected tracker
@@ -2797,6 +2886,7 @@ class Monkerunner():
                 self.input_dialog.log(err)
                 self.input_dialog.show_warning(str(err) + "\n Please close open CSV and try again.")
 
+    ## Resizes and adjusts colours
     def apply_image_options(self):
         '''
         Image must be resized and if any image modifications are done, they will be applied.
@@ -2845,14 +2935,17 @@ class Monkerunner():
             returned = False
         return returned
 
+    ## Reads new images when play_state is true
     def continue_reading(self):
         '''
-        
+        Allows the frames to continue to read when play state is true. 
+
+        We restrict read when scroll bar is changed since that should be paused after.
+        Updates the scroll bar, and skips if the frame is unable to read.
         '''
         continuing = False
 
         if self.input_dialog.play_state == True and not self.input_dialog.scrollbar_changed:
-            # fvs.stopped = False
             self.frame, self.frame_num = self.fvs.read()
             self.previous_frame = self.frame
 
@@ -2860,18 +2953,13 @@ class Monkerunner():
             if self.frame_num != self.input_dialog.get_scrollbar_value():
                 print("Trying Again:", self.frame_num, self.fvs.frame_number, self.input_dialog.get_scrollbar_value())
                 continuing = True
-            # print("Reading Play:", frame_num)
-            # previous_frame = frame
-            # segmask, frame = custom_model.segmentFrame(frame,True)
-            # skip_frame += input_dialog.get_frame_skip()
             
         else:
-            # frame = input_dialog.get_scrollbar_value()
-            selfframe = self.previous_frame
+            self.frame = self.previous_frame
         return continuing
 
-
-    def test_scrollbar_change(self):
+    ## Scrollbar changes, options are configured
+    def trigger_scrollbar_change(self):
         '''
         If scrollbar changes, a set of things must be updated
         An activity is recorded in the activity logger
@@ -2905,6 +2993,7 @@ class Monkerunner():
             self.input_dialog.scrollbar_changed = False
 
 
+    ## adds a tracker
     def triggered_add_tab(self):
         '''
         When we add a tab, append a new Multitracker object.
@@ -2944,7 +3033,7 @@ class Monkerunner():
                 self.fvs.reset = True
             self.input_dialog.scrollbar_changed = True
 
-
+    ## Left arrow goes backwards one set of skip-frame amount
     def triggered_snap_backward(self):
         '''
         Snap backward is called, use fvs reset, adjust the scroll bar, and check if frame number is less than or equal to original frame
@@ -2962,6 +3051,7 @@ class Monkerunner():
             snap_called = True
             self.fvs.reset = True
 
+    ## Right arrow moves the video forward one step of skip-frame
     def triggered_snap_forward(self):
         '''
         When the forward button (right arrow) is pressed, adjust the scroll bar, pause and call fvs reset.
@@ -2993,6 +3083,7 @@ class Monkerunner():
         elif self.selected_tracker == -1:
             self.input_dialog.export_tab_btn.setEnabled(False)
 
+    ## when skip-frame is adjusted, snap to the closest round number
     def update_skip_frame(self):
         '''
         If skip frame is changed in the UI we update the variable to new values fvs reset is set to TRUE which adjusts streaming values
@@ -3003,9 +3094,10 @@ class Monkerunner():
             # frame = fvs.read()
             self.fvs.skip_value = input_dialog.get_frame_skip()
 
+    ## Quits the program
     def trigger_quit(self):
         '''
-        
+        Quits the program, closing cv2 and UI
         '''
         if self.input_dialog.quit_State is True:
             # sys.exit(app.exec_())
@@ -3027,18 +3119,23 @@ class Monkerunner():
             self.input_dialog.log("Stopping FVS")
             # fvs.stop()
             os._exit(1)
-        
+    
+    ## Records when a user exports something into datalogger.
     def trigger_export_activity(self):
         '''
+        Only records a data-logger activity of export
         '''
         if self.input_dialog.export_activity:
             export_filename = str(self.videoPath[:-4])
             self.activity_logger.export_activity(export_filename)
             self.input_dialog.export_activity = False
 
-
+    ## Exports video characteristics
     def trigger_characteristics(self):
-        '''
+        '''!
+        Exports a set of video characteristics including optical flow, pan and zoom at frame wide median and mean values
+        
+        @note this will take a while since it must calculate the entire video.
         '''
         if self.input_dialog.export_charactoristics:
             print("Exporting")
@@ -3049,19 +3146,28 @@ class Monkerunner():
             self.activity_logger.export_charactoristics(export_filename)
             self.input_dialog.export_charactoristics = False
 
-    def trigger_predictions(self):
+    ## Uses predicted values and tracks them with numbered ids
+    def trigger_track_predictions(self):
         '''
+        when track predictions is triggered, the video will play through with all predictions present. 
+        Each prediction will have a numbered id.
+        The ids are centroids which will track along using a nearest neigbour method.
+
+        The data will be exported into a filename video_name_Predictions_Ids.csv 
         '''
         if self.input_dialog.track_preds_state is True and bool(self.pred_dict) is True:
-            export_filename = str(self.videoPath[:-4]) + "Predictions_Ids.csv"
+            export_filename = str(self.videoPath[:-4]) + "_Predictions_Ids.csv"
             self.input_dialog.track_preds_state = False
             prediction_dict = self.maskrcnn.track_predictions(self.pred_dict, self.videoPath, preview=True)
             prediction_dict.to_csv(export_filename)
 
-    ##
+    ## Exports every tracker that has data.
     def trigger_export_all(self):
-        '''
+        '''!
         Iterates through every tracker and exports their data individually, then returns export all state to false
+        
+        @warning Data will be removed from data_dict. Information will need to be re-loaded in order to re-export.
+            This was set to avoid re-writing duplicate data
         '''
         if self.input_dialog.export_all_state is True:
                 self.input_dialog.export_all_state = False
@@ -3076,19 +3182,28 @@ class Monkerunner():
 
                 # When we export everything assume loaded data is all exported so we do not overwrite
 
+    ## loads the predictions into pred_dict dataframe
     def trigger_load_predictions(self):
+        '''
+        Loads maskRCNN dataframe saved from predictions.
+
+        Loads from video_name_predicted.csv
+
+        This data will be drawn in maskrcnn_predictions() function
+        '''
         if input_dialog.load_predictions_state is True:
             pred_dict = self.maskrcnn.load_predicted((self.videoPath[:-4] + "_predict.csv"))
             print(pred_dict)
             self.input_dialog.load_predictions_state = False
 
+    ## DOES NOTHING
     def trigger_predict(self):
         if input_dialog.predict_state is True:
             #UNCOMMENT BELOW
             # frame, rois, scores = maskrcnn.predict(videoPath, step=input_dialog.skip_frames.value(), display=True, logger=input_dialog.log)
             input_dialog.predict_state = False
 
-    ##
+    ## 
     def trigger_play(self):
         '''
         Changes pause state to play and records activity
