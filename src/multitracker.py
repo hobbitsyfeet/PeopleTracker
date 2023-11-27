@@ -164,6 +164,8 @@ class MultiTracker():
 
         @param frame int
         @param rect (int, int, int, int)
+
+        @returns None
         """
         bgdModel = np.zeros((1,65),np.float64)
         fgdModel = np.zeros((1,65),np.float64)
@@ -185,7 +187,7 @@ class MultiTracker():
     
     ## Tracker ID
     def get_id(self):
-        """ Returns ID of person tracked STRING """
+        """! @returns string """
         return self.pid.text()
 
     # def get_loc(self, frame):
@@ -194,26 +196,31 @@ class MultiTracker():
     
     ## Tacker sex
     def get_sex(self):
-        """ Returns sex of person being tracked STRING"""
+        """! @returns string """
         return self.sex.text()
 
     ## Tracker description
     def get_description(self):
-        """ Returns description of tracker STRING"""
+        """! @returns description of tracker string"""
         return self.description.toPlainText()
 
     ## Tracker's group size
     def get_group(self):
-        """
-        returns group number STRING (can be converted to int)
+        """!
+        Number of individuals in defined group returns a number in string form.
+
+        @returns string
         """
         return self.group.text()
 
     ## Time tracker has been tracking relative to the video
     def get_time_tracked(self, framerate):
-        """ 
-        Returns total time being tracked in video: 
-        @returns  LIST(FLOAT) 
+        """!
+        Returns total time being tracked in video. The value is returned as a list. Idk why, the only place we call it we access it's first (and only) value...
+
+        @note maybe dont return a list...
+
+        @returns  list
         """
         
         # if len(self.data_dict) > 2:
@@ -222,12 +229,15 @@ class MultiTracker():
 
     ## Creates base cv2.Tracker
     def create(self, tracker_type='CSRT'):
-        """ 
+        """ !
         The creation of the Opencvs Tracking mechanism.
+        By default we use the CSRT, or DCF-CSR @cite csrt
+        Please refer to CSRT reference for any work since this is what we use.
 
-        tracker_type = ["BOOSTING", "MIL","KCF", "TLD", "MEDIANFLOW", "GOTURN", "MOSSE", "CSRT"]
+        @param tracker_type ["BOOSTING", "MIL","KCF", "TLD", "MEDIANFLOW", "GOTURN", "MOSSE", "CSRT"]
 
-        https://docs.opencv.org/3.4/d9/df8/group__tracking.html
+        @cite opencv_library
+        <a href="https://docs.opencv.org/3.4/d9/df8/group__tracking.html"> https://docs.opencv.org/3.4/d9/df8/group__tracking.html </a>
 
         @returns CV2.TRACKER
         """
@@ -281,7 +291,7 @@ class MultiTracker():
     ## Creates bounding box of tracker (user draws the box)
     def assign(self, frame, tracker_type="CSRT"):
         """
-        Assigns the box, name and sex of a tracked person.
+        Assigns the box of a tracked person.
         Takes care of reassigning as well.
 
         Leverages cv2.selectROI and creates init_bounding_box value.
@@ -329,7 +339,22 @@ class MultiTracker():
             #     input_dialog.log("Setting Location Failed.")
     
 
+    ## assign() equivelant for automatic tracking (MaskRCNN)
     def auto_assign(self, frame, bounding_box=None, xywh=None, tracker_type="CSRT"):
+        '''!
+        Auto assign creates a new tracker at position defined.
+        Depending on the data at hand, we use either a bounding box as 2 locations or a top left with width and height.
+        Use bounding_box if you have 2 locations, and xywh if you have the top left and dimensions.
+
+        Uses opencv's tracker's init function <a href="https://docs.opencv.org/4.x/d0/d0a/classcv_1_1Tracker.html#a7793a7ccf44ad5c3557ea6029a42a198"> defined here</a>
+
+        @param frame <b>array</b> The cv2 frame in the video
+        @param bounding_box <b>tuple</b> the top left and bottom right locations of the box.
+        @param xywh <b>tuple</b> The top left corner and the width and height as the last 2 values.
+        @param tracker_type string
+
+        @returns None
+        '''
         # try:
         # print(self.init_bounding_box)
         # print(bounding_box)
@@ -344,15 +369,21 @@ class MultiTracker():
         del self.tracker
         self.create(tracker_type)
         try:
+            #
             self.tracker.init(frame, bounding_box)
             input_dialog.log("Setting Location Successful.")
         except Exception as e:
             crashlogger.log(str(e))
             input_dialog.log("Setting Location Failed.")
 
+    ## Cv2 tracker to update for next frame, and we draw the new location onto the frame.
     def update_tracker(self, frame):
         """
-        track and draw box on the frame
+        track and draw box on the frame (image)
+        
+        This function is only done on the one tracker defined on self.
+
+        @param frame <b>array</b> cv2 image
         """
         success = False
         box = None
@@ -374,7 +405,16 @@ class MultiTracker():
                 # cv2.putText(frame,self.get_name(), (x , y - 1), cv2.FONT_HERSHEY_COMPLEX_SMALL, 0.75, (0,0,0),1)
         return success, box, frame
 
+    ## Draws the bounding box of the tracker and places the name ontop.
     def draw_tracker(self, frame, box, opacity=0.5, name=True):
+        '''!
+        Draws the bounding box of the tracker and places the name over top with an white opacity background for readability.
+
+        @param frame <b>array</b> cv2 image
+        @param box <b>tuple</b> (x,y,width,height) x and y are top left coordinates
+        @param opacity <b>float</b> The opacity of the white background behind the name
+        @param name <b>bool</b> Places the self.name value over top left corner of the box
+        '''
         
         (x, y, w, h) = [int(v) for v in box]
 
@@ -393,25 +433,40 @@ class MultiTracker():
 
         return out
 
+    ## Not called anywhere
     def remove(self):
-        """
+        """!
         Removes the tracker from being recorded. DOES NOT YET DELETE INFO
         """
         del self.tracker
         self.init_bounding_box = None
         # del self
 
+    ## Not implemented
     def predict(self,):
-        """
+        """!
         Applies KNN taking into consideration a Hidden Markov Model
+        @Warning Not implemented or used
         """
         pass
 
     def record_data(self, frame, total_people, x=-1, y=-1, w=-1, h=-1, regions=[], other_room=False, image_frame=None):
-        """
-        Appends location and time to a list of data
+        """!
+        Appends location and time to a list of data in data_dict
+        
+        @param frame <b>int</b> frame is the integer number of the current frame
+        @param total_people <b>int</b> a spinbox value that is the TOTAL number of people in the room.
+        @param x <b>int</b> top left x value of the bounding box
+        @param y <b>int</b> top left y value of the bounding box
+        @param w <b>int</b> width of the bounding box
+        @param h <b>int</b> height of the bounding box
+        @param regions <b>list</b> a list of regions (strings) that the current tracker is intersecting with
+        @param other_room <b>bool</b> Other room is defined by a checkbox. Used when individual is still in the scene but occluded.
+            This is exactly the same as read only but continues counting time recording.
 
-        X,Y,W,H No Data are described as -1, and regions is described as []
+        @param image_frame <b>array</b> A cv2 image frame
+        
+        @note X,Y,W,H No Data are described as -1, and regions is described as [] or empty
         """
         # input_dialog.log("recording Frame" + str(frame))
         # self.location_data.append((int(x),int(y))) #(x, y)
@@ -471,11 +526,11 @@ class MultiTracker():
             # print(pred_1, pred_2)
             # print("pred:", pred_2)
             # print(pred_2)
-            a = np.sum(pred_2 == '')
-            b = len(pred_2)
+            # a = np.sum(pred_2 == '')
+            # b = len(pred_2)
 
-            if a/b is not 0 or 1:
-                print(a / b)
+            # if a/b is not 0 or 1:
+                # print(a / b)
             # print(np.mean(probability))
             # print("Probability", np.mean(probability))
         except Exception as e:
@@ -485,16 +540,30 @@ class MultiTracker():
 
     ## NOT IMPLEMENTED
     def append_data(self, dataframe):
-        """
+        """!
         Appends the data into a given dataframe categoriezed with the name given
+        @warning Not implemented
         """
         pass
     
     ## Exports tracked data into csv of the given name and directory of the video
     def export_data(self, vid_width, vid_height, vid_name, fps, new_version=None):
+        """!
+        Exports the recorded data and appends information such as name, box locations, total time recorded, and pixel percent locations, etc. into a csv the same name of the video
+        
+        Uses tracker information saved in data_dict and extends some information passed in from the video which may change such as vid_height and vid_width which is affected by resizeing the video at runtime
+
+        @param vid_width <b>int</b> resized video width
+        @param vid_height <b>int</b> resized video height
+        @param vid_name <b>string</b> video name
+        @param fps <b>float/int</b> fps to reference the rate the video runs at
+        @param new_version <b>int</b> a version to define the revision of the tracker you're working with. Automatically has a new version when you save and then load the tracker back up. This is important if you import a tracker, and re-export the same tracker into the same dataframe, this version will differentiate the two, even if majority if the data is the same. Good to highlight differences between states.
+        
+        @note new_version will export a new csv with the version name attatched.
         """
-        Exports the recorded data and appends constants such as name, total time recorded, and pixel percent Loc
-        """
+
+        
+
         # if not os.path.exists(("./data/" + vid_name[:-4])):
         #     os.makedirs(("./data/" + vid_name[:-4]))
         # self.data_dict[frame] = (point, regions, dimensions, other_room, total_people, self.is_chair())
@@ -688,14 +757,19 @@ class MultiTracker():
         
     ## NOT USED
     def evaluate_data(self):
+        '''
+        @warning not used
+        '''
         te = evaluate.tracker_evaluation()
         
     ## Merges a list of integer segments of beginning/end time into one interval that contains the first and last values of all segments.
     def merge_intervals(self, total_segments):
-        """
+        """!
         On a continous set of intervals, merges them such that intersecting inervals will become a new interval with new limits. 
         Example: [[0, 20], [10, 50]] becomes [[0,50]]
         [[0, 500]] stays the same
+
+        @param total segments is a list of lists where the second dimension of lists is an interval of numbers (start frame and end frame)
         """
         # print("Merge_Interval", total_segments)
         
@@ -717,7 +791,7 @@ class MultiTracker():
 
     ## splits the time into beginning/end intervals given segment size as the largest absent gap
     def part_time_to_segments(self, time_data, segment_size=300):
-        """
+        """!
         Parts the times into segments based on the distance between tracked frames.
             time_data is the entire time of the object tracked.
             segment_size is the distance between frames that should be considered as one segment. Default is 10 seconds at 30fps.
@@ -725,6 +799,9 @@ class MultiTracker():
 
         Example with default segment size of 300:
             [0, 10, 20, 30, 100, 200, 300, 400, 1000, 1010, 1020] results in [[0, 400], [1000, 1020]]
+        
+        @param time_data a list of integers to be split up into interval pairs. The split is defined by the gap between numbers set by segment_size
+        @param segment_size the threshold to split the list
         """
         if len(time_data) < 2:
             return [[0]]
@@ -781,20 +858,37 @@ class MultiTracker():
 
     ## NOT IMPLEMENTED
     def estimate_distance(self, size):
+        '''!
+        @warning not inplemented
+        '''
         pass
     
     ## Calclulates time between two frames at a given framerate
     def calculate_time(self, frame_start, frame_end, fps=30):
-        """
-        Calculates time between two given frames and the FPS rate
+        """!
+        Calculates time between two given frames given the FPS rate.
+
+        frame_end must be larger than frame_start or you will be given a negative number of seconds.
+
+        @param frame_start <b>int</b> the starting frame number
+        @param frame_end <b>int</b> the ending frame number
+        @param fps <b>float</b> the framerate of the video
+
+        @returns <b>float</b> a value in seconds between frames
         """
         time = (frame_end - frame_start)/fps
         return time
     
     # Total time tracked where non-tracked frames are considered.
     def calculate_total_time(self, total_frames, fps=30, segmented=True):
-        """
+        """!
         Calculates total time tracked. This takes into consideration segmented time
+
+        @param total_frames <b>list</b> list of total frames. This will segment the time given default gaps of 300 frames min, then calculate the total time of present frames.
+        @param fps <b>float</b> the fps of the video to determine the rate of frames which defines the real time length between frames
+        @param segmented <b>bool</b> if the data in total_frames is segmented or not.
+        
+        @returns <b>float</b> the total time in seconds
         """
         total_time = 0
         if segmented is False:
@@ -821,6 +915,8 @@ class MultiTracker():
 def export_null_meta(vid_dir):
     '''
     Exports a dataset full of NULL valriables at the beginning. Used if metadata fails to extract.
+    
+    @param vid_dir <b>string</b> the directory which the video exists in
     '''
     #Create path string for exporting the data. It's just a change of extention.
     export_filename = None
@@ -894,12 +990,13 @@ def export_null_meta(vid_dir):
 
 # Exports metadata into the same csv that data is recorded. This is called first and populates the first two rows of data containing metadata.
 def export_meta(vid_dir, output_csv=None):
-    """
+    """!
+
     Exports a start line into a CSV with the same name as the video. This CSV will initialize with a set of columns on the left
     with dashed lines for recorded data, and a set of columns on the right with Metadata.
     This should only be called once, and will only initialize if the file does not exist- will not overwrite.
 
-    Input: vid_dir: directory of filename (string)
+    @param vid_dir <b>string</b> directory of filename
     """
     #get metadata from filepath
     #NOTE: Exiftool must be in path to access, otherwise pass a string to the path.
@@ -1039,6 +1136,9 @@ def load_tracker_data(csv, input_dialog, frame):
     Please note CSV must match the video or data will be uninformative.
 
     If you modify the data by hand errors may occur because of different formats, and how third party programs save NULL and TRUE/FALSE values.
+    
+    @param input_dialog defined in qt_dialog.
+    @param frame cv2 image
     '''
     print("Loading csv")
     new_trackers = []
@@ -1190,10 +1290,12 @@ def load_tracker_data(csv, input_dialog, frame):
     print("End of loading.")
     return new_trackers, frame
 
+
+
 ## Function that runs the entire multitracker program
 def run(video_path=None):
     '''
-    
+    @note this function is VERY long and needs to be refactored.
     '''
     # startup_video = "K:/Github/PeopleTracker/Evaluation/People/John Scott/GP020002.MP4"
     try:
@@ -1292,6 +1394,7 @@ def run(video_path=None):
 
         snap_called = False
 
+        ## STEP1
         while True:
 
             PyQt5.QtCore.QCoreApplication.processEvents()
@@ -1332,7 +1435,7 @@ def run(video_path=None):
                 else:
                     input_dialog.log("No track to remove on this frame.")
                     input_dialog.del_frame = False
-
+            # END trigger delete pressed
 
 
             # This is needed for activity logger to end pause timers
@@ -1661,12 +1764,12 @@ def run(video_path=None):
             #     input_dialog.mediaStateChanged(True)
             # #R is for Radius
             
-            elif input_dialog.region_state is True:
+            if input_dialog.region_state is True:
                 input_dialog.log("Adding region... Write name and then draw boundaries")
                 regions.add_region(show_frame)
                 input_dialog.region_state = False
                 input_dialog.log("Adding region complete.")
-            elif input_dialog.del_region_state is True:
+            if input_dialog.del_region_state is True:
                 input_dialog.log("Select a region to remove...")
                 regions.del_region()
                 input_dialog.del_region_state = False
@@ -2051,6 +2154,1194 @@ def run(video_path=None):
     except Exception as e:
         print(traceback.format_exc())
         crashlogger.log(str(traceback.format_exc()))
+
+
+
+class Monkerunner():
+    '''
+    A class that contains all the methods and variables to run all other components together.
+    The main driver to organize the order that things run and some of the methods to iterate through trackers and interact with the UI.
+    '''
+    def __init__(self, video_path) -> None:
+        
+        ## The default type of tracker is CSRT @cite csrt
+        self.trackerName = 'CSRT'
+
+        #Create QT application for the UI
+        self.app = PyQt5.QtWidgets.QApplication(sys.argv)
+
+        # sets input_dialog as global so we can access it from other functions (For automation)
+        self.input_dialog
+
+        self.input_dialog = qt_dialog.App(video_path)
+        
+
+        #Get the video path from UI
+        self.videoPath = input_dialog.filename
+        self.input_dialog.log("Populating UI")
+
+        # init event process so that we can open the screen
+        if input_dialog.filename is None or input_dialog.filename == "":
+            while input_dialog.nothing_loaded:
+                 PyQt5.QtCore.QCoreApplication.processEvents()
+        
+        #Get the video path from UI
+        self.videoPath = input_dialog.filename
+
+        #Given the path, export the metadata and setup the csv for data collection
+        self.metadata = export_meta(self.videoPath)
+
+        self.activity_logger = datalogger.DataLogger(self.videoPath, video_metadata=self.metadata)
+        
+        #initialize empty list to store trackers
+        self.tracker_list = []
+
+        self.pred_dict = None
+        
+        # initialize OpenCV's special multi object tracker
+        # input_dialog.add_tab()
+        # input_dialog.add_tab_state = False
+        # tracker_list.append(MultiTracker(input_dialog.tab_list[0]))
+        self.selected_tracker = 1
+
+        #initialize regions object to store all regions
+        self.regions = Regions(log=input_dialog.log)
+        
+        #Initialize video, get the first frame and setup the scrollbar to the video length
+        self.cap = cv2.VideoCapture(self.videoPath)
+        
+        # Assign original resolution variable
+        self.input_dialog.original_resolution = (self.cap.get(cv2.CAP_PROP_FRAME_WIDTH), self.cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
+
+        self.resized_ratio_x = input_dialog.resolution_x / self.cap.get(cv2.CAP_PROP_FRAME_WIDTH)
+        self.resized_ratio_y = input_dialog.resolution_y / self.cap.get(cv2.CAP_PROP_FRAME_HEIGHT)
+        # print("WIDTH:", cap.get(cv2.CAP_PROP_FRAME_WIDTH), " HEIGHT:", cv2.CAP_PROP_FRAME_HEIGHT)
+
+        # print(resized_ratio_x, resized_ratio_y)
+
+        self.input_dialog.set_max_scrollbar(self.cap.get(cv2.CAP_PROP_FRAME_COUNT))
+        self.cap.set(cv2.CAP_PROP_FRAME_WIDTH, input_dialog.resolution_x)
+        self.cap.set(cv2.CAP_PROP_FRAME_HEIGHT, input_dialog.resolution_y)
+        # fvs = FileVideoStream(videoPath).start()
+        self.fvs = Video.STFileVideoStream(self.videoPath)
+
+        # ret, frame = cap.read()
+
+        self.frame, self.frame_num = self.fvs.read()
+        self.input_dialog.set_scrollbar(0)
+        self.vs.frame_number = input_dialog.get_scrollbar_value()
+        self.fvs.reset = True
+        self.input_dialog.scrollbar_changed = True
+
+        self.previous_frame = self.frame
+
+        self.frame = cv2.resize(self.frame, (self.input_dialog.resolution_x, self.input_dialog.resolution_y), 0, 0, cv2.INTER_CUBIC)
+        self.show_frame = self.frame.copy()
+
+        self.previous_frame = self.frame
+        #get the video's FPS
+        self.vid_fps = self.cap.get(cv2.CAP_PROP_FPS)
+        self.input_dialog.log("Video FPS set to " + str(self.vid_fps))
+        self.input_dialog.set_fps_info(self.vid_fps)
+        
+        self.skip_frame = 10
+        
+        self.input_dialog.log("Gathering frames...")
+
+        import maskrcnn
+
+        self.input_dialog.splash.close()
+
+        self.snap_called = False
+    
+        ## STEP1
+
+    ## Starts the process loop.
+    def start_loop(self):
+        try:
+            while True:
+                
+                PyQt5.QtCore.QCoreApplication.processEvents()
+                
+                #tests every command that is activated through the UI
+                self.test_triggers()
+
+                continued = self.continue_reading()
+                if continued:
+                    continue
+
+                # Start processing
+                ret = self.apply_image_options()
+                if not ret:
+                    continue
+                
+                #crash the program if no frame exists
+                if self.frame is None:
+                    break
+
+                #Keep tab names up to date
+                input_dialog.set_tab_names()
+
+                # E is for Export
+                self.key = cv2.waitKey(1) & 0xFF
+
+                self.trigger_export_current_tracker()
+                self.trigger_delete_tab()
+                self.trigger_region()
+                self.trigger_delete_region()
+
+                #update selected tracker after we are done adjusting (hopefully no more)
+                self.selected_tracker = self.input_dialog.tabs.currentIndex()
+                self.draw_trackers()
+                self.app.processEvents()
+                self.draw_regions()
+
+                # here we start to iterate through all all the trackers and 
+                for index, tracker in enumerate(self.tracker_list):
+                    self.process_tracker(tracker, index)
+                cv2.imshow("Frame", self.show_frame)
+                
+        except Exception as e:
+            print(traceback.format_exc())
+            crashlogger.log(str(traceback.format_exc()))
+
+    def test_triggers(self):
+
+        self.trigger_load_video()
+        self.trigger_delete_pressed()
+        self.trigger_play()
+        self.trigger_pause()
+        self.trigger_predict()
+        self.trigger_export_all()
+        self.trigger_load_predictions()
+        self.trigger_predictions()
+        self.trigger_characteristics()
+        self.trigger_export_activity()
+        self.trigger_quit()
+
+        ## NOTE do we need these? no
+        # self.previous_skip = fvs.skip_value
+        # self.next_skip = input_dialog.get_frame_skip()
+
+
+        ## We update UI on non-triggering events such as adjusting or changing values
+        self.update_skip_frame()
+
+        #process events
+        self.app.processEvents()
+
+        #update selected tracker
+        self.selected_tracker = self.input_dialog.tabs.currentIndex()
+        self.no_data_disable_export()
+        self.triggered_snap_forward()
+        self.triggered_snap_backward()
+        self.check_end_video()
+        
+        self.triggered_add_tab()
+
+        self.test_scrollbar_change()
+
+    def process_tracker(self, tracker, tracker_number):
+
+        if self.input_dialog.tab_list[tracker_number].other_room:
+            tracker.record_data(self.frame_number, input_dialog.num_people.value(), other_room=True)
+            self.regions.del_moving_region(tracker.get_name(), id=tracker.id())
+
+        # Collect active tracker data
+        elif tracker.init_bounding_box is not None and input_dialog.tab_list[tracker_number].active is True and input_dialog.tab_list[tracker_number].read_only is False:
+            
+            #allocate frames on GPU, reducing CPU load.
+            cv2.UMat(self.frame)    
+
+            self.app.processEvents()
+            #track and draw box on the frame
+            success, box, show_frame = tracker.update_tracker(show_frame)
+            tracker.box = box
+            self.app.processEvents()
+            
+            #NOTE: this can be activated if you want to pause the program when trakcer fails
+            # if not success:
+            #     tracker.assign(frame, trackerName)
+
+            #caluclate info needed this frame
+            top_left_x = box[0]
+            top_left_y = box[1]
+            bb_width = box[2]
+            bb_height = box[3]
+
+
+            center_x = top_left_x + (bb_width/2)
+            center_y = top_left_y + (bb_height/2)
+
+            self.draw_tracker_region(tracker, tracker_number)
+            self.maskrcnn_predictions(tracker, tracker_number, box)
+            #center dot               
+            cv2.circle(self.show_frame, (int(center_x),int(center_y)),1,(0,255,0),-1)
+
+            #test if tracker is in any of the regions
+            in_region, p = self.regions.test_region((center_x, center_y))
+
+            # Defines when to record while play is active
+            play_active = self.input_dialog.play_state == True and self.input_dialog.tab_list[tracker_number].read_only is False
+            paused_snap_active = self.input_dialog.play_state == False and self.input_dialog.tab_list[tracker_number].read_only is False and self.snap_called == True
+                    
+            #adjust settings for live recording
+            if input_dialog.record_live:
+                play_active = True
+                paused_snap_active = True
+
+            #While play is active, apply active prediction filters
+            if play_active or paused_snap_active:
+                self.kalman_filter_predict(tracker, tracker_number, box)
+                self.regression_predict(tracker, box)
+
+                # we apply record_live in here since this shares a common attribute of needing to be in play state to work.
+                if self.input_dialog.record_live:
+                    tracker.record_data(self.fvs.frame_number, self.input_dialog.num_people.value(), center_x, center_y, bb_width, bb_height, in_region, image_frame=self.show_frame)
+                else:
+                    tracker.record_data(input_dialog.get_scrollbar_value(), self.input_dialog.num_people.value(), center_x, center_y, bb_width, bb_height, in_region)
+
+            self.display_read_only(tracker, tracker_number)
+            self.app.processEvents()
+
+        # Snap called is only false after done processing the current frame
+        self.snap_called = False
+        # Make sure all values are valid before changing trackers
+        if self.selected_tracker >= 0 and len(self.tracker_list) > 0 and self.selected_tracker <= len(self.tracker_list):
+            self.handle_empty_tracker()
+            self.trigger_assign_tracker()
+
+        #NOTE move higher up to be with mask_rcnn?
+        if self.pred_dict is not None and self.input_dialog.mcrnn_options.get_active():
+            self.show_frame = self.maskrcnn.display_preds(self.show_frame, input_dialog.get_scrollbar_value(), self.pred_dict, (self.resized_ratio_x,self.resized_ratio_y))            
+
+        #NOTE this is in try-catch because initially there are not enough frames to calculate time. 
+        #This could be done with if statement, though I havent found a way...
+        try:
+            current_tracked_time = self.tracker_list[self.selected_tracker].get_time_tracked(self.vid_fps)[0] + self.tracker_list[self.selected_tracker].previous_time
+            self.input_dialog.tab_list[self.selected_tracker].update_length_tracked(current_tracked_time)
+        except Exception as e:
+            # crashlogger.log(str(e))
+            pass
+    
+        
+        
+        
+
+    def handle_empty_tracker(self):
+        '''
+        #If you select a tracker and it is not running, start a new one
+        #If there is no assigned trakcer on selected individual, start one and not allow action until done
+        '''
+        #If you select a tracker and it is not running, start a new one
+        #If there is no assigned trakcer on selected individual, start one and not allow action until done
+        if self.tracker_list[self.selected_tracker].init_bounding_box is None:
+            input_dialog.tabs.setEnabled(False)
+            #Fix no-Square created issue
+            create_success = False
+            while create_success is False:
+                try:
+                    self.tracker_list[self.selected_tracker].create(self.trackerName)
+                    self.tracker_list[self.selected_tracker].assign(self.frame, self.trackerName) #Breaks if create was not sucessful
+                    create_success = True
+                except Exception as e:
+                    crashlogger.log(str(e))
+                    input_dialog.log("Could not create Tracker, Please Draw and select (Space) a rectangle")
+
+            
+            input_dialog.tabs.setEnabled(True)
+            input_dialog.add_tab_btn.setEnabled(True)
+            input_dialog.del_tab_btn.setEnabled(True)
+            input_dialog.export_tab_btn.setEnabled(True)
+
+    def trigger_assign_tracker(self):
+        '''
+        '''
+        #Press space bar to re-assign
+        if input_dialog.set_tracker_state is True:
+            try:
+                
+                input_dialog.play_state = False
+                input_dialog.tabs.setEnabled(False)
+                
+                self.activity_logger.adjustment(self.frame_number, self.tracker_list[self.selected_tracker].box, "USER_Adjust", self.tracker_list[self.selected_tracker].get_name())
+                self.tracker_list[self.selected_tracker].assign(self.frame, self.trackerName)
+                self.activity_logger.end_adjustment(self.tracker_list[self.selected_tracker].box, "USER_Adjust")
+
+                input_dialog.tabs.setEnabled(True)
+                input_dialog.set_tracker_state = False
+            except Exception as e:
+                crashlogger.log(str(e))
+                input_dialog.log("Could not assign tracker, try again")
+                input_dialog.tabs.setEnabled(True)
+                input_dialog.set_tracker_state = False
+                        
+
+    def display_read_only(self, tracker, tracker_number):
+        '''
+        Display the read_only values
+        '''
+        try:
+            if input_dialog.tab_list[tracker_number].read_only is True:
+
+                #if read only, display the center
+                frame_number = input_dialog.get_scrollbar_value()
+
+                if frame_number in tracker.data_dict:
+                    # If key exists in data
+                    center, _, dim, other_room, total_people, is_chair = tracker.data_dict[frame_number]
+                    
+                    if tracker.is_region() is True and tracker.get_name() != "":
+                        
+                        point = (int(center[0] - dim[0]), int(center[1] - dim[1]))
+                        dim = (int(dim[0]*2), int(dim[1]*2))
+                        self.regions.set_moving_region(tracker.get_name(), point, dim)
+                        # top = (int(center[0]) - dim[0], int(center[1], - dim[1]/2))
+                        # bottom = (int(center[0]) - dim[0], int(center[1], + dim[1]/2))
+
+                     # If tracker region is no longer selected, delete moving region
+                    if tracker.is_region() is False:
+                        self.regions.del_moving_region(tracker.get_name(), id=tracker.id())
+
+                    #active tracker, center dot, green by default
+                    if self.selected_tracker == tracker_number:
+                        cv2.circle(self.show_frame, (int(center[0]),int(center[1])),2,(0,255,0),-1)
+                    
+                    #inactive tracker, red by default
+                    else: 
+                        cv2.circle(self.show_frame, (int(center[0]),int(center[1])),2,(0,0,255),-1)
+                
+                #Exclude if you want regions to not exist
+                elif not input_dialog.retain_region:
+                    self.regions.del_moving_region(tracker.get_name(), id=tracker.id())
+
+        except Exception as e:
+            crashlogger.log(str(e))
+            input_dialog.log("Could not handle read only. List index out of range, Continuing")
+
+            
+    def regression_predict(self, tracker, box):
+        '''!
+        '''
+        if tracker.regression:
+            center_x, center_y = self.box_centers(box)
+            # top_left_x, top_left_y, width, height = self.box_to_xywh(box)
+            slope, intercept, correlation = tracker.regression.predict((center_x,center_y))
+            if slope is not None and correlation is not None and abs(correlation) >= 0.5:
+                # y = Ax + b, therefore x = (y - b) / A
+                try:
+                    if slope == 0:
+                        cv2.line(self.show_frame, (0,int(center_y)), (800,int(center_y)), (0,0,255), 1)
+                    else:
+                        startY = 0
+                        endY = 800
+                        startX = (startY - intercept) / slope
+                        endX = (endY - intercept) / slope
+
+                        cv2.arrowedLine(self.show_frame, (startX,startY), (endX,endY), (0,0,255), 1)
+                        
+                except ZeroDivisionError as e:
+                    cv2.line(self.show_frame, (0,int(center_y)), (800,int(center_y)), (0,0,255), 1)
+                except:
+                    cv2.line(self.show_frame, (int(center_x),0), (int(center_x),800), (0,0,255), 1)
+
+    def kalman_filter_predict(self, tracker, tracker_number, box):
+        '''
+        Kalman filter uses 2 different difference measures.
+        We apply and IoU (intersection/union) measure to tell if the current box is near the predicted box
+        We also apply a centroid kalman filter on the center of the box, and we test the center distance with another defined threshold
+
+        If either of these thresholds are insufficient in similarity, we pause the program.
+
+        @note the bounding box measurment takes into account both momentum in scale and shift, while centroild is less sensitive to scale, and more to shift.
+
+        '''
+        #calculate values used for measuring
+        center_x, center_y = self.box_centers(box)
+        top_left_x, top_left_y, width, height = self.box_to_xywh(box)
+        pred_line = tracker.predictor.predict((center_x,center_y))
+
+        pred_line = tracker.predictor.predict()
+        pred_line = tracker.predictor.predict()
+
+        box_pred_p1 = tracker.box_predictor[0].predict((top_left_x,top_left_y))
+        box_pred_p2 = tracker.box_predictor[1].predict(((top_left_x + width), (top_left_y + height)))
+
+        for i in range(input_dialog.get_frame_skip()):
+            box_pred_p1 = tracker.box_predictor[0].predict()
+            box_pred_p2 = tracker.box_predictor[1].predict()
+
+        pred_p1 = (int((box_pred_p1[0] + box_pred_p1[2])[0]), int((box_pred_p1[1] + box_pred_p1[3])[0]) )
+        pred_p2 = (int((box_pred_p2[0] + box_pred_p2[2])[0]), int((box_pred_p2[1] + box_pred_p2[3])[0]) )
+
+        pred_centroid = (int((pred_line[0] + pred_line[2])[0]), int((pred_line[1] + pred_line[3])[0]) )
+        
+        #save these values to tracker's instance
+        tracker.predicted_bbox = (pred_p1[0],pred_p1[1], pred_p2[0],pred_p2[1])
+        tracker.predicted_centroid = (pred_centroid)
+
+        #test distance of box IoU
+        try:
+            if input_dialog.predictor_options.get_active_iou():
+                # activity_logger.intervention = datalogger.HUMAN_INTERVENTION_KALMAN
+                predicted_bbox_iou, _ = self.maskrcnn.compute_iou(
+                                    box=tracker.predicted_bbox,
+                                    boxes=[(top_left_x,top_left_y,(top_left_x + width), (top_left_y + height) )],
+                                    boxes_area=[(pred_p2[0] - pred_p1[0]), (pred_p2[1] - pred_p1[1]) ]
+                                )
+                cv2.rectangle(self.show_frame, pred_p1, pred_p2, (0,255,0), 1)
+                # print("P_IOU: ", predicted_bbox_iou, end=" | ")
+
+                if predicted_bbox_iou[0] <= input_dialog.predictor_options.get_min_IOU() and predicted_bbox_iou[0] > 0:
+                    print("Pausing")
+                    self.input_dialog.set_pause_state()
+                    self.activity_logger.paused(self.frame_number, "KALMAN_IOU", "KALMAN_Pause", self.tracker_list[tracker_number].get_name())
+
+        except:
+            print("Cannot Compute IOU")
+        
+        #test dinstance of predicted centers
+        try:
+            if self.input_dialog.predictor_options.get_active_centroid():
+                pred_dist = regression.distance_2d((center_x,center_y), (int((pred_line[0] + pred_line[2])[0]), int((pred_line[1] + pred_line[3])[0]) ))
+                # print("POINT_DIST: ", pred_dist)
+                cv2.arrowedLine(self.show_frame, (int(pred_line[0]),int(pred_line[1])), (int((pred_line[0] + pred_line[2])[0]), int((pred_line[1] + pred_line[3])[0]) ),  (0,0,255), 3, tipLength=1)
+                if pred_dist >= self.input_dialog.predictor_options.get_min_distance():
+                    # print("Pausing")
+                    self.input_dialog.set_pause_state()
+                    self.activity_logger.paused(self.frame_number, "KALMAN_CENTER", "KALMAN_Pause", self.tracker_list[tracker_number].get_name())
+        except:
+            print("Cannot Compute Distance")
+                            
+    def box_to_xywh(self, box):
+        """
+        top_left_x, top_left_y, width and height
+        """
+        return box[0], box[1], box[2], box[3]
+    
+    def box_centers(self, box):
+        center_x = box[0] - (box[2]/2)
+        center_y = box[1] - (box[3]/2)
+        return center_x, center_y
+
+    def maskrcnn_predictions(self, tracker, tracker_number, box):
+        '''
+        This function applies mask_rcnn predictions and measures IoU (intersection/union) similarity
+        The best IoU value is selected to be tested if it passes the defined threshold
+        If it passes the threshold, autoassign is triggered. 
+
+        If the best IoU value fails a similarity threshold (different than IoU threshold) the tracker pauses.
+
+        @note We define 2 thresholds and each do a different thing. The Minimum value for an auto assign is 45% IoU, this means the overlap must be very similar to auto-assign to mask-rcnn. 
+            The idea here is that if they are already similar enough, we might as well set MaskRcnn. This may help with drifting values where the tracker may not adjust as well.
+
+            The second threshold is a lower bound. If there are no sufficient nearby trackers, then we must assume that one or the other trackers failed.
+            If this is the case, we force a pause so that this can be corrected by the user.
+
+        '''
+
+        if self.pred_dict and self.input_dialog.mcrnn_options.get_active() is True:
+            if self.input_dialog.get_scrollbar_value() in self.pred_dict.keys():
+                # print("GETTING IOU")
+
+                top_left_x, top_left_y, width, height = self.box_to_xywh(box)
+
+                iou, self.show_frame = self.maskrcnn.compute_iou(
+                        box=(top_left_x, top_left_y, top_left_x + width, top_left_y + height), 
+                        boxes=self.pred_dict[self.input_dialog.get_scrollbar_value()][0], 
+                        boxes_area=self.pred_dict[self.input_dialog.get_scrollbar_value()][1], 
+                        ratios=(self.resized_ratio_x, self.resized_ratio_y),
+                        frame=self.frame
+                    )
+                # print("IOUs", iou)
+
+                closest = max(iou)
+                index = iou.index(closest)
+                pred_box = self.pred_dict[input_dialog.get_scrollbar_value()][0][index]
+                p1 = (int(pred_box[0]*self.resized_ratio_x), int(pred_box[1]*self.resized_ratio_y))
+                p2 = (int(pred_box[2]*self.resized_ratio_x), int(pred_box[3]*self.resized_ratio_y))
+
+                # if closest < 0.45:
+                if closest <= input_dialog.mcrnn_options.get_min_value():
+                    # print("Out of range")
+                    self.show_frame = cv2.rectangle(self.frame, p1, p2, (150, 150, 220), 3)
+                    self.input_dialog.set_pause_state()
+                    self.activity_logger.paused(self.frame_number, "MRCNN", "MRCNN_Pause", self.tracker_list[tracker_number].get_name())
+
+                elif closest >= input_dialog.mcrnn_options.get_auto_assign():
+                    self.show_frame = cv2.rectangle(self.frame, p1, p2, (50, 200, 50), 3)
+                    if tracker.auto_assign_state:
+                        # print("Auto Assigning")
+
+                        if input_dialog.play_state is True:
+                            # Only record auto assignment while video is playing
+                            self.activity_logger.adjustment(frame_number=self.frame_number, 
+                                                        from_box=(top_left_x, top_left_y, (top_left_x + width), (top_left_y + height)), 
+                                                        to_box=(p1[0], p1[1], p2[0], p2[1]), 
+                                                        timer_id="MRCNN_Adjust",
+                                                        tracker_id=self.tracker_list[tracker_number].get_name(),
+                                                        intervention_type="MRCNN"
+                                                        )
+
+                        tracker.auto_assign(self.frame, (p1[0], p1[1], p2[0], p2[1]))
+
+                #iterate through the predictions and check the difference from the closest IoU to the prediction
+                for pred_index, pred in enumerate(iou):
+                    diff = abs(pred - closest)
+
+                    #if there is no sufficent prediction, we pause to allow the user to adjust.
+                    if pred != closest and diff <= input_dialog.mcrnn_options.get_similarity():
+                        # input_dialog.log("Possible ID Switch!")
+                        self.activity_logger.paused(self.frame_num, "MRCNN", "MRCNN_Adjust", self.tracker_list[tracker_number].get_name())
+                        pred_box = self.pred_dict[self.input_dialog.get_scrollbar_value()][0][pred_index]
+                        pred_p1 = (int(pred_box[0]*self.resized_ratio_x), int(pred_box[1]*self.resized_ratio_y))
+                        pred_p2 = (int(pred_box[2]*self.resized_ratio_x), int(pred_box[3]*self.resized_ratio_y))
+                        self.show_frame = cv2.rectangle(self.frame, pred_p1, pred_p2, (255, 0, 255), 1)
+                        self.show_frame = cv2.rectangle(self.frame, p1, p2, (50, 200, 50), 3)
+                        input_dialog.set_pause_state()
+                                    # .index(closest)
+
+
+    def draw_tracker_region(self, tracker, tracker_num):
+        '''
+        If the tracker is also defined as a region, the name is printed, the region is defined around an individual with said name and region is drawn.
+
+        '''
+        if tracker.is_region() is True and tracker.get_name().strip() == "":
+                        input_dialog.tab_list[tracker_num].getText(input_name="Region Name:",line=input_dialog.tab_list[tracker_num].name_line)
+
+        if tracker.is_region() is True and tracker.get_name() != "":
+
+            self.regions.set_moving_region(name = tracker.get_name(), 
+                                    point = (int(self.center_x - self.width), int(self.center_y - self.height)),
+                                    dimensions = (int(self.width*2), int(self.height*2)),
+                                    id=tracker.id()
+                                    )
+            self.regions.display_region(self.show_frame)
+        
+        elif tracker.is_region() is False:
+            # If tracker region is no longer selected, delete moving region
+            self.regions.del_moving_region(tracker.get_name(), id=tracker.id())
+
+    def draw_regions(self):
+        #Display all regions on screen if they exist
+        if len(self.regions.region_dict) > 0:
+            self.show_frame = self.regions.display_region(self.show_frame)
+
+
+    def draw_trackers(self):
+        #Set the selected Tracker to Red
+        for tracker in range(len(self.tracker_list)):
+            self.app.processEvents()
+            if tracker == self.selected_tracker:
+                self.tracker_list[tracker].colour = (0,0,255)
+            else:
+                self.tracker_list[tracker].colour = (255,255,255)
+
+    def trigger_delete_region(self):
+        if self.input_dialog.del_region_state is True:
+            self.input_dialog.log("Select a region to remove...")
+            self.regions.del_region()
+            self.input_dialog.del_region_state = False
+            self.input_dialog.log("Removing region complete.")
+
+    def trigger_region(self):
+        '''
+        Creates a region
+        '''
+        if self.input_dialog.region_state is True:
+            self.input_dialog.log("Adding region... Write name and then draw boundaries")
+            self.regions.add_region(self.show_frame)
+            self.input_dialog.region_state = False
+            self.input_dialog.log("Adding region complete.")
+
+    def trigger_delete_tab(self):
+        '''
+        When delete tab is pressed, we adjust the current index to one before and remove the previously selected tracker
+        '''
+        if self.input_dialog.del_tab_state is True:
+                
+            self.input_dialog.log("Deleting Tracker!")
+            del self.tracker_list[self.selected_tracker]
+            self.input_dialog.tabs.setCurrentIndex(len(self.tracker_list))
+            self.selected_tracker = self.input_dialog.tabs.currentIndex()
+            self.input_dialog.del_tab_state = False
+
+
+
+
+    def trigger_export_current_tracker(self):
+        '''!
+        Exports the currently selected tracker
+
+        Grabs the current width and height of the frame
+        If the tracker contains data, export it and apply information required by the @ref  Multitracker.export_data() function
+        Adds a version if applicable.
+
+        @note If the csv is open by another program, an error will occur and prompt you to close it before exporting, the data will not be removed and everything will stay until this is done.
+        '''
+        # if key == ord("e") or input_dialog.export_state == True:
+        if self.input_dialog.export_state == True:
+            self.input_dialog.export_state = False
+            self.input_dialog.log("Exporting " + self.tracker_list[self.selected_tracker].get_name() + "'s data recorded.")
+            self.width = self.cap.get(cv2.CAP_PROP_FRAME_WIDTH)   # float
+            self.height = self.cap.get(cv2.CAP_PROP_FRAME_HEIGHT) # float
+            try:
+                if self.tracker_list[self.selected_tracker].data_dict: # Ensure data exists in dictionary before exporting
+                    if self.input_dialog.was_loaded:
+                        self.tracker_list[self.selected_tracker].export_data(self.input_dialog.resolution_x, self.input_dialog.resolution_y, self.videoPath, self.vid_fps, new_version=self.input_dialog.get_new_data_version())
+                        self.input_dialog.data_version_updated = False
+                    else:
+                        self.tracker_list[self.selected_tracker].export_data(self.input_dialog.resolution_x, self.input_dialog.resolution_y, self.videoPath, self.vid_fps)
+            except IOError as err:
+                self.input_dialog.log(err)
+                self.input_dialog.show_warning(str(err) + "\n Please close open CSV and try again.")
+
+    def apply_image_options(self):
+        '''
+        Image must be resized and if any image modifications are done, they will be applied.
+
+        If the image fails to apply, the frame might be invalid and will request that we continue until the next frame.
+        '''
+        returned = True
+        try:
+            # ret, frame = cap.read()
+            self.frame = cv2.resize(self.frame, (self.input_dialog.resolution_x, self.input_dialog.resolution_y), 0, 0, cv2.INTER_CUBIC)
+
+        # if input_dialog.image_options.brightness.value() != 0:
+            # frame = input_dialog.image_options.add_brightness(frame)
+
+
+            if self.input_dialog.image_options.roi_normalize_flag:
+                self.input_dialog.image_options.set_normalized_region(self.frame)
+                self.input_dialog.image_options.roi_normalize_flag = False
+
+            # if input_dialog.image_options.get_equalize_clahe_hist() is True:
+            #     frame = input_dialog.image_options.enhance_normalized_roi(frame)
+
+            if self.input_dialog.image_options.get_equalize_hist() is True:
+                self.frame = self.input_dialog.image_options.equalize_hist(self.frame)
+            
+            if self.input_dialog.image_options.get_equalize_clahe_hist():
+                self.frame = self.input_dialog.image_options.equalize_clahe_hist(self.frame)
+
+            if self.input_dialog.image_options.get_alpha() != 10 or self.input_dialog.image_options.get_beta() != 10: 
+                self.frame = self.input_dialog.image_options.enhance_brightness_contrast(self.frame)
+            
+            if self.input_dialog.image_options.get_gamma() != 10:
+                self.frame = input_dialog.image_options.enhance_gamma(self.frame)
+
+            # frame = input_dialog.image_options.enhance_brightness(frame)
+            # _, frame = input_dialog.image_options.auto_enhance(frame)
+
+            self.show_frame = self.frame.copy()
+            
+
+
+        except Exception as e:
+            crashlogger.log(str(e))
+            self.input_dialog.snap_state = "Forward"
+            print("No resize")
+            returned = False
+        return returned
+
+    def continue_reading(self):
+        '''
+        
+        '''
+        continuing = False
+
+        if self.input_dialog.play_state == True and not self.input_dialog.scrollbar_changed:
+            # fvs.stopped = False
+            self.frame, self.frame_num = self.fvs.read()
+            self.previous_frame = self.frame
+
+            self.input_dialog.set_scrollbar(self.frame_num)
+            if self.frame_num != self.input_dialog.get_scrollbar_value():
+                print("Trying Again:", self.frame_num, self.fvs.frame_number, self.input_dialog.get_scrollbar_value())
+                continuing = True
+            # print("Reading Play:", frame_num)
+            # previous_frame = frame
+            # segmask, frame = custom_model.segmentFrame(frame,True)
+            # skip_frame += input_dialog.get_frame_skip()
+            
+        else:
+            # frame = input_dialog.get_scrollbar_value()
+            selfframe = self.previous_frame
+        return continuing
+
+
+    def test_scrollbar_change(self):
+        '''
+        If scrollbar changes, a set of things must be updated
+        An activity is recorded in the activity logger
+        
+        When we scroll, we must keep snapped the the increment of frame skip. We snap to the nearest multiple of frame_skip
+        The state is set to false, and we update frame number
+        Fvs is reset and new frame is then read from fvs
+
+        We end the changed flag
+        '''
+        if self.input_dialog.scrollbar_changed == True:
+            if self.tracker_list:
+                self.activity_logger.slider_moved(self.frame_num, "SLIDER", self.tracker_list[self.selected_tracker].get_name())
+            #If Snapping enabled, snap the scrollbar to the nearest multiple of skip_frame
+            # print("MOD", (input_dialog.get_scrollbar_value() % input_dialog.get_frame_skip()))
+            if self.input_dialog.get_scrollbar_value() % self.input_dialog.get_frame_skip() != 0 and self.input_dialog.snap_to_frame_skip:
+                
+                rounded = round(self.input_dialog.get_scrollbar_value()/self.input_dialog.get_frame_skip())*self.input_dialog.get_frame_skip()
+                # print("Rounding!", rounded)
+                self.input_dialog.set_scrollbar(rounded)
+
+            # input_dialog.mediaStateChanged()
+            self.input_dialog.play_state = False
+            self.fvs.frame_number = input_dialog.get_scrollbar_value()
+            # input_dialog.log("Scrolled.")  
+            self.fvs.reset = True
+            self.frame, self.frame_num = self.fvs.read()
+            # print(frame_num)
+            self.previous_frame = self.frame
+            
+            self.input_dialog.scrollbar_changed = False
+
+
+    def triggered_add_tab(self):
+        '''
+        When we add a tab, append a new Multitracker object.
+        Pauses and disables tabs, add tab, export tab. When we finish creating the tracker, we can then add another tracker.
+        '''
+        #When we add a tab, finish initializing it before anything else can continue
+        if self.input_dialog.add_tab_state == True:
+            self.input_dialog.log("Adding Tab!")
+            self.input_dialog.tabs.setCurrentIndex(len(self.tracker_list))
+            self.selected_tracker = self.input_dialog.tabs.currentIndex()
+            self.tracker_list.append(MultiTracker(self.input_dialog.tab_list[self.selected_tracker]))
+            
+            self.input_dialog.tabs.setEnabled(False)
+
+            self.input_dialog.add_tab_btn.setEnabled(False)
+            self.input_dialog.del_tab_btn.setEnabled(False)
+            self.input_dialog.export_tab_btn.setEnabled(False)
+
+            self.input_dialog.tabs.setEnabled(True)
+            self.input_dialog.add_tab_state = False
+
+    ## Checks if video is at the end
+    def check_end_video(self):
+        '''
+        Checks if the video is at the end, if so set it to the beginning, pause and set everything to read. 
+        Adjusts scrollbar and updates with fvs reset
+        '''
+        #When at the end, go to the beginning and pause
+        if self.input_dialog.get_scrollbar_value() >= self.input_dialog.vidScroll.maximum() or (self.input_dialog.get_scrollbar_value() + self.skip_frame) >= self.input_dialog.vidScroll.maximum():
+            self.fvs.frame_number = input_dialog.get_scrollbar_value()
+            if not self.input_dialog.record_live:
+                self.input_dialog.set_pause_state()
+                self.input_dialog.set_all_tabs("Read")
+
+                self.input_dialog.set_scrollbar(0)
+                self.activity_logger.paused(self.fvs.frame_number, "END_VIDEO", "END_VIDEO", None)
+                self.fvs.reset = True
+            self.input_dialog.scrollbar_changed = True
+
+
+    def triggered_snap_backward(self):
+        '''
+        Snap backward is called, use fvs reset, adjust the scroll bar, and check if frame number is less than or equal to original frame
+        '''
+        if self.input_dialog.snap_state == "Backward":
+            self.fvs.reset = True
+            if self.frame_num - self.input_dialog.get_frame_skip() > 0:
+                self.input_dialog.set_scrollbar(input_dialog.get_scrollbar_value() - self.input_dialog.get_frame_skip())
+            else:
+                self.input_dialog.set_scrollbar(0)
+                self.fvs.frame_number = 0
+
+            self.input_dialog.scrollbar_changed = True
+            self.input_dialog.snap_state = None
+            snap_called = True
+            self.fvs.reset = True
+
+    def triggered_snap_forward(self):
+        '''
+        When the forward button (right arrow) is pressed, adjust the scroll bar, pause and call fvs reset.
+
+        '''
+        # print(frame_num, skip_frame)
+        if input_dialog.snap_state == "Forward":
+            self.fvs.reset = True
+            self.input_dialog.set_scrollbar(self.input_dialog.get_scrollbar_value() + self.input_dialog.get_frame_skip())
+            self.fvs.frame_number = self.input_dialog.get_scrollbar_value() + self.input_dialog.get_frame_skip()
+            
+            self.input_dialog.scrollbar_changed = True
+            self.input_dialog.snap_state = None
+            snap_called = True
+            self.fvs.reset = True
+
+
+    ## Disables export when there is no tracker data
+    def no_data_disable_export(self):
+        '''
+        If there is no tracker data disable the export button
+        '''
+        #if there's no data to export, grey out export button.
+        if self.tracker_list:
+            if not self.tracker_list[self.selected_tracker].data_dict:
+                self.input_dialog.export_tab_btn.setEnabled(False)
+            else:
+                self.input_dialog.export_tab_btn.setEnabled(True)
+        elif self.selected_tracker == -1:
+            self.input_dialog.export_tab_btn.setEnabled(False)
+
+    def update_skip_frame(self):
+        '''
+        If skip frame is changed in the UI we update the variable to new values fvs reset is set to TRUE which adjusts streaming values
+        '''
+        if self.fvs.skip_value != input_dialog.get_frame_skip():
+            print("Skipbo")
+            self.fvs.reset = True
+            # frame = fvs.read()
+            self.fvs.skip_value = input_dialog.get_frame_skip()
+
+    def trigger_quit(self):
+        '''
+        
+        '''
+        if self.input_dialog.quit_State is True:
+            # sys.exit(app.exec_())
+            # cap.release()
+            # fvs.stop()
+            # cv2.destroyAllWindows()
+            
+            self.input_dialog.log("Cap Release")
+            self.cap.release()
+            self.input_dialog.log("Destroy cv2")
+            cv2.destroyAllWindows()
+            self.input_dialog.log("Quitting App")
+            
+            self.input_dialog.log("System Exit")
+            self.input_dialog.close()
+
+
+            self.app.quit()
+            self.input_dialog.log("Stopping FVS")
+            # fvs.stop()
+            os._exit(1)
+        
+    def trigger_export_activity(self):
+        '''
+        '''
+        if self.input_dialog.export_activity:
+            export_filename = str(self.videoPath[:-4])
+            self.activity_logger.export_activity(export_filename)
+            self.input_dialog.export_activity = False
+
+
+    def trigger_characteristics(self):
+        '''
+        '''
+        if self.input_dialog.export_charactoristics:
+            print("Exporting")
+            export_filename = str(self.videoPath[:-4])
+            text, ok = PyQt5.QtWidgets.QInputDialog.getText(self.input_dialog, 'Video Location', 'Enter Recorded Location:')
+            self.activity_logger.video_location = text
+            self.activity_logger.get_video_characteristics()
+            self.activity_logger.export_charactoristics(export_filename)
+            self.input_dialog.export_charactoristics = False
+
+    def trigger_predictions(self):
+        '''
+        '''
+        if self.input_dialog.track_preds_state is True and bool(self.pred_dict) is True:
+            export_filename = str(self.videoPath[:-4]) + "Predictions_Ids.csv"
+            self.input_dialog.track_preds_state = False
+            prediction_dict = self.maskrcnn.track_predictions(self.pred_dict, self.videoPath, preview=True)
+            prediction_dict.to_csv(export_filename)
+
+    ##
+    def trigger_export_all(self):
+        '''
+        Iterates through every tracker and exports their data individually, then returns export all state to false
+        '''
+        if self.input_dialog.export_all_state is True:
+                self.input_dialog.export_all_state = False
+                for tracker in self.tracker_list:
+                    if tracker.data_dict: # Check if dataframe is empty before exporting.
+                        if self.input_dialog.was_loaded:
+                            self.input_dialog.log("Exporting to new version")
+                            tracker.export_data(self.input_dialog.resolution_x, self.input_dialog.resolution_y, self.videoPath, self.vid_fps, new_version=self.input_dialog.get_new_data_version())
+                            input_dialog.data_version_updated = False
+                        else:
+                            tracker.export_data(self.input_dialog.resolution_x, self.input_dialog.resolution_y, self.videoPath, self.vid_fps)
+
+                # When we export everything assume loaded data is all exported so we do not overwrite
+
+    def trigger_load_predictions(self):
+        if input_dialog.load_predictions_state is True:
+            pred_dict = self.maskrcnn.load_predicted((self.videoPath[:-4] + "_predict.csv"))
+            print(pred_dict)
+            self.input_dialog.load_predictions_state = False
+
+    def trigger_predict(self):
+        if input_dialog.predict_state is True:
+            #UNCOMMENT BELOW
+            # frame, rois, scores = maskrcnn.predict(videoPath, step=input_dialog.skip_frames.value(), display=True, logger=input_dialog.log)
+            input_dialog.predict_state = False
+
+    ##
+    def trigger_play(self):
+        '''
+        Changes pause state to play and records activity
+        '''
+        # This is needed for activity logger to end pause timers
+        if input_dialog.pause_to_play:
+            print("Playing...")
+            self.activity_logger.end_pause()
+            self.activity_logger.end_slider(self.fvs.frame_number, "SLIDER")
+            input_dialog.pause_to_play = False
+    
+    ## Turns play state to pause
+    def trigger_pause(self):
+        '''
+        Changes play state to pause and records activity
+        '''
+        if self.input_dialog.play_to_pause:
+            if self.tracker_list:
+                self.activity_logger.paused(self.frame_num, "USER", "USER_Pause",  self.tracker_list[self.selected_tracker].get_name())
+            input_dialog.play_to_pause = False
+
+    ## If load video state is set, load the video
+    def trigger_load_video(self):
+        '''!
+        Triggered if @ref load_tracked_video_state is True.
+
+        helper to @ref load_tracker_data()
+        '''
+        if self.input_dialog.load_tracked_video_state:
+            # import_filename = str(videoPath[:-4]) + ".csv"
+            import_filename = self.input_dialog.openFileNameDialog(task="Select CSV to load Tracker Data", extensions="*.csv")
+            loaded_trackers, frame = load_tracker_data(import_filename, self.input_dialog, frame)
+            self.tracker_list.extend(loaded_trackers)
+            self.input_dialog.load_tracked_video_state = False   
+        
+    ## Loads data from csv into multiple trackers
+    def load_tracker_data(csv, input_dialog, frame):
+        '''!
+        Populates tabs, data_dict and trackers previously labelled from csv.
+        All trackers will start in Read Only mode.
+
+        Useful for when the data needs to be saved/loaded between recording sessions.
+
+        Please note CSV must match the video or data will be uninformative.
+
+        If you modify the data by hand errors may occur because of different formats, and how third party programs save NULL and TRUE/FALSE values.
+        
+        @param input_dialog defined in qt_dialog.
+        @param frame cv2 image
+        '''
+        print("Loading csv")
+        new_trackers = []
+
+        df = pd.read_csv(csv)
+        df = df.loc[1:] # Ignore first line, this is metadata
+        df[["Name"]].fillna("")
+        df[["ID"]].fillna("")
+
+        # make sure columns are the proper data types
+        # df["Present At Beginning"] = df["Present At Beginning"].astype('bool')
+        # df["Other_Room"] = df["Other_Room"].astype('bool')
+        # df["Chair"] = df["Chair"].astype('bool')
+        # df["Frame_Num"] = df["Frame_Num"].astype('int32')
+        # unique_trackers = df.groupby(['Name','ID'], as_index=False).size()
+        # unique_trackers = df.groupby(['Name','ID']).size().reset_index().rename(columns={0:'count'})
+
+        unique_trackers = df[['Name', 'ID']].drop_duplicates()
+        unique_trackers = unique_trackers[unique_trackers['Name'].notna()]
+        for name_index in range(len(unique_trackers)):
+            print(name_index)
+            # get the unique ids
+            name = unique_trackers["Name"].iloc[name_index]
+            pid = unique_trackers["ID"].iloc[name_index]
+
+            # grab all the columns where this data exists.
+            tracker_data = df.loc[(df['Name'] == name)]
+
+            # Add a new tab to the 
+            tab_index, new_tab = input_dialog.add_tab()
+            input_dialog.add_tab_state = False
+
+            # Fill string columns NaN to empty string
+            tracker_data["Name"] = tracker_data["Name"].fillna("")
+            tracker_data["ID"] = tracker_data["ID"].fillna("")
+            tracker_data["Sex"] = tracker_data["Sex"].fillna("")
+            tracker_data["Description"] = tracker_data["Description"].fillna("")
+            tracker_data["Group_Size"] = tracker_data["Group_Size"].fillna(0)
+            tracker_data["Region"] = tracker_data["Region"].fillna("")
+            print(tracker_data.iloc[1])
+
+            # Build tab info, this tab info is used to build the tracker
+            new_tab.name_line.setText(tracker_data["Name"].iloc[1])
+            new_tab.id_line.setText(tracker_data["ID"].iloc[1])
+            new_tab.sex_line.setText(str(tracker_data["Sex"].iloc[1]))
+            new_tab.group_line.setText(str(tracker_data["Group_Size"].iloc[1]))
+
+            description_text = ""
+
+            #check for version number
+            if tracker_data["Description"].iloc[1] == "":
+                description_text = str(tracker_data["Description"].iloc[1]) + "V"
+            else:
+                description_text = str(tracker_data["Description"].iloc[1]) + "\nV"
+
+            description_text += str(input_dialog.newest_version)
+
+            # assign loaded values
+            new_tab.desc_line.setPlainText(description_text)
+            new_tab.update_length_tracked(float(tracker_data["Total_Sec_Rec"].iloc[1]))
+            new_tab.read_only_button.setChecked(True)
+            new_tab.read_only = True
+            tracker_data['Present At Beginning'] = (tracker_data['Present At Beginning'] == 'TRUE')
+
+            # 
+            try:
+                new_tab.beginning_button.setChecked(eval(tracker_data["Present At Beginning"].iloc[1]))
+            except:
+                print(tracker_data["Present At Beginning"].iloc[1])
+                print("Error occured when setting to beginning while loading. Setting it to False by default")
+                new_tab.beginning_button.setChecked(False)
+
+
+
+            
+            # Build new tracker with info loaded
+            tracker = MultiTracker(new_tab)
+            tracker.reset = True
+            
+            # Assign static variables not from tab to Multitracker object
+            # tracker.beginning = 
+
+            
+            # Populate data dict
+            for index, row in tracker_data.iterrows():
+                frame_num = int(row["Frame_Num"])
+                center = (float(row["Pixel_Loc_x"]), float(row["Max_Pixel_y"]) - float(row["Pixel_Loc_y"]) )
+                regions = str(row["Region"]).strip("[]").split(", ")
+                height = abs(float(row["BBox_TopLeft_y"]) - float(row["BBox_BottomRight_y"]))
+                width = abs(float(row["BBox_TopLeft_x"]) - float(row["BBox_BottomRight_x"]) )
+
+                dimensions = (int(width), int(height))
+
+                other_room = eval(str(row["Other_Room"]))
+                is_chair = eval(str(row["Chair"]))
+                total_people = int(row["Total_People"])
+
+
+                tracker.data_dict[frame_num] = (center, regions, dimensions, other_room, total_people, is_chair)
+            
+            current_frame = input_dialog.get_scrollbar_value()
+            tracked_frames = list(tracker.data_dict.keys())
+
+            # Set tracker to closest frame
+            closest = tracked_frames[0]
+            min_difference = abs(current_frame - closest)
+            for value in tracked_frames[1:]:
+                difference = abs(current_frame - value)
+                if difference < min_difference:
+                    closest = value
+                    min_difference = difference
+
+
+            data = tracker.data_dict[closest]
+
+            w = int(data[2][0])
+            h = int(data[2][1])
+            x = int(data[0][0])
+            y = int(data[0][1])
+
+            # Correct for invalid non-area data
+            if w <= 0:
+                w = 5
+            if h <= 0:
+                h = 5
+            if x <= 0:
+                x = 10
+            if y <= 0:
+                y = 10
+
+            tracker.init_bounding_box = (x, y, w, h)
+            frame = cv2.circle(frame, center=(x,y), radius=3, color=(5,5,5), thickness=2)
+            frame = cv2.rectangle(frame, (x-int(w/2), y - int(h/2)), (x + int(w/2), y + int(h/2)), color = (255, 0, 0), thickness = 2)
+            tracker.box = tracker.init_bounding_box
+            tracker.auto_assign(frame, xywh=((x-int(w/2)), (y - int(h/2)), (x + int(w/2)), (y + int(h/2))))
+
+            #cv2.imshow("Loading", frame)
+            # tracker.auto_assign(frame, (p1[0], p1[1], p2[0], p2[1]))
+            # self.tracker.init(frame, init_bounding_box)
+
+            # Append new tracker to list
+            new_trackers.append(tracker)
+
+
+        #Close all applications.
+        # sys.exit(app.exec_())
+        # cap.release()
+        # fvs.stop()
+        # cv2.destroyAllWindows()
+        print("End of loading.")
+        return new_trackers, frame
+    
+    def trigger_delete_pressed(self):
+        '''
+        Triggered if backspace is pressed.
+
+        pauses the video and moves one frame backwards.
+        Toggles read only if it is false (sets it to true) It no longer records new data.
+
+        Deletes current and previous frame
+
+        '''
+
+        # Activate if we delete a frame
+        if self.input_dialog.del_frame:
+            self.input_dialog.snap_state = "Backward"
+            self.selected_tracker = self.input_dialog.tabs.currentIndex()
+            # input_dialog.tab_list[selected_tracker].read_only = True #we set this with a toggle later on
+
+            try:
+                ## NOTE THIS IS WHERE AND ERROR HAPPENS YOOOOO (values in this activity are not available in first iteration)
+                self.activity_logger.adjustment(frame_number=self.frame_number, 
+                                            from_box=(None, top_left_y, (top_left_x + width), (top_left_y + height)), 
+                                            to_box=None, 
+                                            timer_id="DELETE_FRAME",
+                                            tracker_id=self.tracker_list[self.tracker_num].get_name(),
+                                            intervention_type="USER"
+                                            )
+            except:
+                self.activity_logger.adjustment(frame_number=self.frame_number, 
+                            from_box=(None, None, None, None), 
+                            to_box=None, 
+                            timer_id="DELETE_FRAME",
+                            tracker_id=self.tracker_list[self.tracker_num].get_name(),
+                            intervention_type="USER"
+                            )
+            
+            # if read only is false
+            if input_dialog.tab_list[self.selected_tracker].read_only is False:
+                print("RESETTING")
+                input_dialog.tab_list[self.selected_tracker].toggle_read()
+
+            # if frame is in data dict, we delete that data
+            if (self.fvs.frame_number) in self.tracker_list[self.selected_tracker].data_dict.keys():
+                del self.tracker_list[self.selected_tracker].data_dict[(self.fvs.frame_number)]
+                input_dialog.del_frame = False
+
+            # if the previous frame is in data dict, delete that, otherwise no data and we end the trigger
+            if (self.fvs.frame_number-self.fvs.skip_value) in self.tracker_list[self.selected_tracker].data_dict.keys():
+                del self.tracker_list[self.selected_tracker].data_dict[(self.fvs.frame_number-self.fvs.skip_value)]
+                input_dialog.del_frame = False
+            else:
+                input_dialog.log("No track to remove on this frame.")
+                input_dialog.del_frame = False
 
 #This main is used to test the time
 if __name__ == "__main__":
