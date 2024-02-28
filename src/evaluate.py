@@ -171,6 +171,9 @@ class tracker_evaluation:
         pass
 
     def identification_graph(self):
+        '''
+        
+        '''
         fig, ax = plt.subplots()  # Create a figure containing a single axes.
         start_frame = 0
 

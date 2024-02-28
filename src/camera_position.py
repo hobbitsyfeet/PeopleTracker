@@ -12,6 +12,8 @@ from PyQt5.QtCore import Qt, QRect, QCoreApplication, QTimer
 from PyQt5.QtCore import pyqtSlot, pyqtSignal
 from numpy.lib.utils import source
 
+##
+# Camera position is a class that is built to align 2 images when the camera is moved
 class CameraPosition(QWidget):
     """
     Steps to stitching the images
@@ -76,15 +78,18 @@ class CameraPosition(QWidget):
         return fileName
 
 
-
+    ## Sets up UI for user
     def initUI(self):
+        '''
+        
+        '''
         self.setWindowTitle(self.title)
         self.setGeometry(self.left, self.top, self.width, self.height)
         self.layout = QVBoxLayout(self)
         self.setLayout(self.layout)
         self.show()
 
-
+    ## 
     def init_menubar(self):
             bar = QMenuBar(self)
             file = bar.addMenu("File")
@@ -107,6 +112,13 @@ class CameraPosition(QWidget):
             self.layout.addWidget(bar)
 
     def set_view_roomestimation(self):
+        '''
+        View estimation 
+
+        Sets 4 points in a room at the 4 corners. We define an x and y coordinate on the screen for each corner of the room.
+        
+        This function provides a UI to allow the user to finely adjust the coordinates to help get an accurate estimate.
+        '''
         self.room_widget = QWidget()
         self.layout.addWidget(self.room_widget)
         self.room_layout = QVBoxLayout()
@@ -185,6 +197,29 @@ class CameraPosition(QWidget):
             self.show_estimation()
 
     def stitch(self, image_list, out_path=None):
+        '''!
+        Stitching is performed when there are multiple takes in our context. 
+        When a person moves the camera, it may be placed back with imperfect alignment, 
+        therefore we take the first image in the sequence and align all others to that using cv2.ORB detection method
+        
+        @cite orb
+        Ethan Rublee, Vincent Rabaud, Kurt Konolige, Gary R. Bradski: ORB: An efficient alternative to SIFT or SURF. ICCV 2011: 2564-2571.
+
+
+        Steps:
+            1. Every image has ORB features generated
+            2. Each image is compared to each other image in order and a match score is recorded for each to find the best pairs.
+            3. cv2.BFMatcher (Brute Force Matcher) checks a similarity score with knnMatch
+            4. We ignore all the previous work and call cv2.Stitcher and we use cv2.Stitcher_SCANS 
+                "SCANS: 	Mode for composing scans. Expects images under affine transformation does not compensate exposure by default."
+                <a href="https://docs.opencv.org/4.x/d2/d8d/classcv_1_1Stitcher.html" > cv2.Stitcher </a>
+            
+
+        The stitcher creates a stitched image which overlaps the images with the best fit and each image has a translucent opacity to observe
+        each image. If done right, the common parts will overlap nicely and these will checked for quality before use.
+
+        Saves stitched image in ./stitched.jpg
+        '''
         print("Stitching")
         # Test images
         # Initiate ORB detector
@@ -215,6 +250,15 @@ class CameraPosition(QWidget):
         return status, self.stitched_img
 
     def set_source(self, video_path, frame=0):
+        '''
+        Source is the source image that will be static and unchanged for manipulation.
+        
+        When we apply room estimation we look at the source image as the 'key' which all reference images will be aligned to.
+        Source image is also useful for when we need a new, clean frame when we start to draw and define the room in 3D 
+        since visual clutter can accumulate.
+
+
+        '''
         self.source_img = self.collect_frames(video_path, frame,1,1)[0]
         self.room_estimation = re.room_estimation(self.source_img)
         # if self.reference_imgs and self.source_img is not None:
@@ -223,6 +267,10 @@ class CameraPosition(QWidget):
         cv2.waitKey(0)
 
     def add_reference(self, video_path, frame_start, total_frames, step):
+        '''
+        We add reference frames as secondary frames. These frames are a list of frames generated from a list of videos. 
+        It is useful to gather the cleanest frame from each video in use of stitching.
+        '''
         frames = self.collect_frames(video_path,frame_start,step,total_frames)
         self.reference_imgs = frames
         # if self.reference_imgs:
@@ -231,6 +279,16 @@ class CameraPosition(QWidget):
         # cv2.waitKey(0)
 
     def find_reference(self, query_img, train_img):
+        '''!
+        Creates features between a query image and a train image using ORB @cite orb
+        Matches features either use: 0 = BRUTE FORCE KNN or  1 = BRUTE FORCE HAMMING
+            Defaut we use hamming distance
+
+        We grab the best matches and find a homography matrix that best aligns the 2 frames. 
+        This requres ALL KEYPOINTS from both, and best matching descriptors that are in common.
+
+        The output is a dst and a transformation matrix.
+        '''
 
         #find the common features between the two images
         kp1, kp2, des1_umat, des2_umat = self.find_features(query_img, train_img)
@@ -255,6 +313,11 @@ class CameraPosition(QWidget):
         """
         This function finds features between 2 images using ORB
         Desribes keypoints using "steer" BRIEF
+
+        returns keypoints and descriptors. 
+
+        These values are matches between image1 and image2
+        Use keypoints to match and align images.
         """
         #use GPU
         img1, img2 = cv2.UMat(img1), cv2.UMat(img2)
@@ -264,8 +327,16 @@ class CameraPosition(QWidget):
         return kp1, kp2, des1, des2
 
     def match_features(self, des1, des2, mode=0):
-        # 0 = BRUTE FORCE
-        # 1 = BRUTE FORCE HAMMING
+        '''
+        Matches creates pairs of descriptors with a score based on matches and modes we choose.
+
+        Brute Force KNN must find the nearest descriptor within a defined distance. This requires a threshold pixel distance
+        Brute Force Norm Hamming provides matches for every point. We grab all points excluding the lower 20.
+        
+        matches are a list of descriptrrs.
+        '''
+        # 0 = BRUTE FORCE KNN
+        # 1 = BRUTE FORCE Norm HAMMING
         if mode == 0:
             # BFMatcher with default params
             bf = cv2.BFMatcher()
@@ -290,6 +361,14 @@ class CameraPosition(QWidget):
         return matches
 
     def find_homography(self, img1, img2, kp1, kp2, matches):
+        '''
+        Given keypoints and matched descriptors, keypoints will be aligned through cv2.findHomography.
+        Homography: Finds a perspective transformation between two planes. we use RANSAC to fit points
+
+        M is the matrix for the transformation that is done from sourse to destination
+
+        
+        '''
         ## extract the matched keypoints
         # 
         # feature_match = cv2.drawMatches(img1,kp1,img2,kp2,matches,None)
@@ -302,14 +381,20 @@ class CameraPosition(QWidget):
         ## find homography matrix and do perspective transform
         M, mask = cv2.findHomography(src_pts, dst_pts, cv2.RANSAC,5.0)
 
+        ## WHAT IS THIS?? 
         h,w = img1.shape[:2]
         pts = np.array([ [0,0],[0,h-1],[w-1,h-1],[w-1,0] ], dtype=np.float32).reshape(-1, 1, 2)
+        
+        # we apply perspective transform found in find_homography and move source image to destination image
         dst = cv2.perspectiveTransform(pts, M)
 
         # dst = cv2.getAffineTransform(pts, M)
         return dst, M
 
     def show_estimation(self):
+        '''!
+        Displays the camera reference onto the stitched image. This will display a red outline of the image estimate.
+        '''
         
         src_points, matrix = self.find_reference(self.source_img, self.stitched_img)
         cover_img = cv2.polylines(self.stitched_img, src_points, True, (255, 0, 0),5, cv2.LINE_AA)
@@ -324,7 +409,8 @@ class CameraPosition(QWidget):
 
     def collect_frames(self, video_source, start_frame, skip, total_frames):
         """
-        Collects the images for stitching
+        Collects the images for stitching. 
+        @param vid_source
         """
         print(video_source)
         cap = cv2.VideoCapture(video_source)

@@ -22,8 +22,11 @@ class CentroidTracker():
         self.maxDisappeared = maxDisappeared
 
     def register(self, centroid, corners,  filter=None):
-        # when registering an object we use the next available object
-        # ID to store the centroid
+        '''
+        when registering an object we use the next available object
+        ID to store the centroid
+        '''
+
         self.objects[self.nextObjectID] = (centroid, corners)
         self.disappeared[self.nextObjectID] = 0
         if filter is not None:
@@ -32,15 +35,29 @@ class CentroidTracker():
     
 
     def deregister(self, objectID):
-        # to deregister an object ID we delete the object ID from
-        # both of our respective dictionaries
+        '''
+        to deregister an object ID we delete the object ID from
+        both of our respective dictionaries
+        '''
+
         print("Deleting:", objectID)
         del self.objects[objectID]
         del self.disappeared[objectID]
 
     def update(self, rects, are_centroids=False):
-        # check to see if the list of input bounding box rectangles
-        # is empty
+        '''
+        check to see if the list of input bounding box rectangles
+        is empty
+
+        register is creating an ID
+        deregister is removing ID
+
+        1. When there are no bounding boxes left assign the rest as dissapeard and deregister them
+        2. Create bounding boxes and centroids
+        3. If nothing is being tracked, iterate through the objects and register them
+            If there are things being tracked 
+
+        '''
         box_corners = []
         if len(rects) == 0:
             # loop over any existing tracked objects and mark them

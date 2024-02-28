@@ -23,6 +23,10 @@ HUMAN_INTERVENTION_MRCNN_KALMAN_REGRESSION = "USER_KALMAN_REGRESSION_MRCNN" # NO
 NO_INTERVENTION_MODEL = "MRCNN"
 
 class DataLogger:
+    '''!
+    @cite Pan_Zoom_Detection 
+         <a href="https://www.cse.iitb.ac.in/~sharat/icvgip.org/ncvpripg2008/papers/9.pdf"> https://www.cse.iitb.ac.in/~sharat/icvgip.org/ncvpripg2008/papers/9.pdf </a> 
+    '''
     def __init__(self, video, video_location=None, video_metadata=None, intervention_level=NO_INTVERVENTION_TRACKER, ground_truth_folder=None):
         
         live_video = False
@@ -133,15 +137,15 @@ class DataLogger:
     ##
     # ends recording timer 
     def end_recording(self):
-        '''
+        '''!
         Ends recording by setting the second value in the tuple (start, end) to the current time.
         '''
         self.timer_dict[self.start_time_id][1] = time.time()
 
     def start_timer(self, timer_id):
-        """
+        '''!
         Starts the timer from when the project is initiated
-        """
+        '''
 
         # We start recording when the first action is done
         if self.start_time_id not in self.timer_dict:
@@ -153,21 +157,21 @@ class DataLogger:
         return start_time
 
     def get_time_elapsed(self, timer_id):
-        """
+        '''!
         returns elapsed time of a timer in seconds
-        """
+        '''
         return time.time() - self.timer_dict[self.start_time_id][0] - self.timer_dict[timer_id][0]
 
 
     def end_timer(self, timer_id):
-        """
+        '''!
         Ends the timer from when the project is finished
-        """
+        '''
         duration = self.get_time_elapsed(timer_id)
         self.timer_dict[timer_id] = (self.timer_dict[timer_id][0], duration)
 
     def adjustment(self, frame_number, from_box, timer_id, tracker_id, intervention_type="USER", to_box=None):
-        """
+        '''!
         Records the frame number and locations where the tracker is moved from and to.
 
         Records what made the adjustment.
@@ -175,7 +179,7 @@ class DataLogger:
             Human - If the user made the adjustment
             
             Model - If the MaskRCNN model made the automatic adjustment
-        """
+        '''
 
         time_started = self.start_timer(timer_id)
         data = [frame_number,
@@ -196,7 +200,7 @@ class DataLogger:
         # print(self.logger_df)
     
     def end_adjustment(self, to_box, timer_id):
-        '''
+        '''!
         Records the adjustment when final changes are made. This contributes final location and duration.
         '''
         duration = self.get_time_elapsed(timer_id)
@@ -208,11 +212,11 @@ class DataLogger:
 
 
     def paused(self, frame_number, pause_type, timer_id, tracker_id):
-        """
+        '''!
         Records what initiated the pause, and for how long the pause existed for.
 
         This requires an external timer, and will be recorded when *Play* has been selected.
-        """
+        '''
         time_started = self.start_timer(timer_id)
         
         data = [
@@ -230,7 +234,7 @@ class DataLogger:
         
     
     def end_pause(self):
-        '''
+        '''!
         After paused() is called, end_pause is used to end the paused action and add the duration to the logger.
         '''
         if self.paused_data:
@@ -247,9 +251,9 @@ class DataLogger:
             self.paused_data = {}
 
     def slider_moved(self, frame_from, timer_id, tracker_id):
-        """
+        '''!
         Records when the slider was changed, where from, and where to.
-        """
+        '''
         if timer_id not in self.timer_dict.keys():
             # print("Recording Slider")
             time_started = self.start_timer(timer_id)
@@ -267,7 +271,7 @@ class DataLogger:
             # print(self.logger_df)
     
     def end_slider(self, frame_to, timer_id):
-        '''
+        '''!
         When slider_moved() is called, we call end_slider which removes a duration timer and adds the duration and SLIDER action to the logger.
         '''
         if self.slider_data:
@@ -285,13 +289,13 @@ class DataLogger:
             # print(self.logger_df)
     
     def record_errors(self, frame):
-        '''
+        '''!
         Not implemented
         '''
         pass
 
     def get_tracker_score(self):
-        '''
+        '''!
         Not implemented
         '''
         pass
@@ -301,11 +305,11 @@ class DataLogger:
     ################################
 
     def get_video_characteristics(self, video=None):
-        """
+        '''!
         Records all video characteristics. 
             This will be done independently from the user input 
             and will be constants between intervention types
-        """
+        '''
 
         if video is None:
             video = self.video
@@ -387,17 +391,17 @@ class DataLogger:
         return self.video_info_df
 
     def illumination(self, frame):
-        """
+        '''!
         Records the average intensity of the RGB image in greyscale with values between 0 (black) and 255 (white)
         
         Intensity = (R + G + B)/3
-        """
+        '''
         gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
         mean, std = cv2.meanStdDev(gray)
         return mean[0][0], std[0][0]
 
     def optical_flow(self, frame):
-        """
+        '''!
         Uses optical flow to measure the average magnitude of movement from the flow of pixels.
 
         Also records the resolution of the image
@@ -416,8 +420,9 @@ class DataLogger:
             Pan_Dominance_Thresh
             Pan_Magnitude_Thresh
 
-        [66] Gunnar Farnebäck. Two-frame motion estimation based on polynomial expansion. In Image Analysis, pages 363–370. Springer, 2003. 
-        """
+        @cite OpticalFlow 
+        <a href="https://www.ida.liu.se/ext/WITAS-ev/Computer_Vision_Technologies/Papers/scia03_farneback.pdf"> https://www.ida.liu.se/ext/WITAS-ev/Computer_Vision_Technologies/Papers/scia03_farneback.pdf </a> 
+        '''
         if self.previous_frame is None:
             self.previous_frame = frame
             
@@ -448,7 +453,7 @@ class DataLogger:
         return opticalflow_dict
 
     def optical_flow_pan(self, flow, dominance_threshold=0.4, magnitude_threshold=0.5):
-        """
+        '''!
         Vector orientation:
         t+1=current frame, t=previous frame
 
@@ -463,11 +468,12 @@ class DataLogger:
 
         returns the dominant orientation given a threshold, the threshold it passed by, and the average magnitude of movement.
 
-
+        @cite Pan_Zoom_Detection 
+         <a href="https://www.cse.iitb.ac.in/~sharat/icvgip.org/ncvpripg2008/papers/9.pdf"> https://www.cse.iitb.ac.in/~sharat/icvgip.org/ncvpripg2008/papers/9.pdf </a> 
         Makkapati, V. (2008). Robust camera pan and zoom change detection using optical flow. 
         In National conference on computer vision, pattern recognition, 
         image processing and graphics (pp. 73-78).
-        """
+        '''
         # get all vector orientations
         orientation = np.rad2deg(cv2.cartToPolar(flow[..., 0], flow[..., 1])[1])
         magnitude = cv2.cartToPolar(flow[..., 0], flow[..., 1])[0]
@@ -488,7 +494,7 @@ class DataLogger:
         
 
     def optical_flow_zoom(self, flow, dominance_threshold=0.7, magnitude_threshold=1):
-        """
+        '''!
         Describe each vector's direction. 
         
         Returns 
@@ -497,11 +503,12 @@ class DataLogger:
             domenance threshold
             mean magnitude threshold
 
-
+        @cite Pan_Zoom_Detection 
+     <a href="https://www.cse.iitb.ac.in/~sharat/icvgip.org/ncvpripg2008/papers/9.pdf"> https://www.cse.iitb.ac.in/~sharat/icvgip.org/ncvpripg2008/papers/9.pdf </a> 
         Makkapati, V. (2008). Robust camera pan and zoom change detection using optical flow. 
         In National conference on computer vision, pattern recognition, 
         image processing and graphics (pp. 73-78).
-        """
+        '''
 
         orientation = np.rad2deg(cv2.cartToPolar(flow[..., 0], flow[..., 1])[1])
         magnitude = cv2.cartToPolar(flow[..., 0], flow[..., 1])[0]
@@ -552,7 +559,7 @@ class DataLogger:
         #     print(iy, ix)
 
     def ground_truth_characteristics(self, frame_num):
-        '''
+        '''!
         Records ground truth height, width, and distance from last frame
         '''
         ground_truths = self.te.get_ground_truths(frame_num)
@@ -570,9 +577,9 @@ class DataLogger:
         return labels, gt_areas, gt_heights, gt_widths
 
     def objects_occluded(self, folder_path, fps):
-        """
+        '''!
         Records weather the occlusion flag has occured on that frame. Records how many IDs have been occluded.
-        """
+        '''
         occlusion_dict = {}
         for frame in self.te.get_frame_count():
             occlusion_dict[frame] = self.te.count_occlusion(frame)
@@ -583,6 +590,9 @@ class DataLogger:
 
     
     def check_intervention_level(self):
+        '''!
+        Returns the inetervention level depending on the type of data that is recorded
+        '''
         intervention = pd.unique(self.logger_df['Intervention_Type'])
         if "USER" in intervention:
             self.intervention_level = HUMAN_INTERVENTION
@@ -610,15 +620,24 @@ class DataLogger:
         return self.intervention_level
 
     def export_charactoristics(self, file_path):
+        '''!
+        Exports already recorded into a csv file with the filename:
+            {filename}_CHARACTERISTICS.csv
+        '''
+
         print("Saving Characteristics")
 
-        char_filename =  file_path + "CHARACTERISTICS " + ".csv"
+        char_filename =  file_path + "_CHARACTERISTICS " + ".csv"
         self.video_info_df.to_csv(char_filename, index=False)
         
             
         print("Saving complete")
 
     def export_activity(self, file_path):
+        '''!
+        exports the user's activity throughout the session into the filename:
+            {filename}_ACTIVITY_LOGGER_{intervention_level}.csv
+        '''
         if self.logger_df.shape[0] > 0:
             logger_filename =   file_path + "_ACTIVITY_LOGGER_" + self.intervention_level + ".csv"
 
@@ -636,7 +655,7 @@ class DataLogger:
         pass
 
     def occuding_objects(self, occluding_tracks_csv, occluding_threshold=0.8):
-        '''
+        '''!
         Given recorded occluding objects, check the precision of ground truth onto occluding object.
         If precision of ground truth is above threshold, this means that object is occluded.
         This is the same measure as check_occlusion but data in this context is different and 

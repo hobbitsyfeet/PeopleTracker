@@ -6,6 +6,12 @@ from filterpy.common import Q_discrete_white_noise
 from filterpy.kalman import ExtendedKalmanFilter
 
 class KalmanPred():
+    '''!
+    @cite filterpy
+    <a href="">https://github.com/rlabbe/filterpy</a>
+    '''
+
+
     def __init__(self, white=False):
         self.reset(white)
 
