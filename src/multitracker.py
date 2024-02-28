@@ -5,7 +5,6 @@ import sys
 import traceback
 import glob
 # from collections import deque
-# from multiprocessing.pool import ThreadPool
 
 import PyQt5 
 # from PyQt5 import QtCore
@@ -2154,15 +2153,14 @@ def run(video_path=None):
     except Exception as e:
         print(traceback.format_exc())
         crashlogger.log(str(traceback.format_exc()))
-
-
+         
 
 class Monkerunner():
     '''
     A class that contains all the methods and variables to run all other components together.
     The main driver to organize the order that things run and some of the methods to iterate through trackers and interact with the UI.
     '''
-    def __init__(self, video_path) -> None:
+    def __init__(self, video_path, num_pool_threads=5) -> None:
         
         ## The default type of tracker is CSRT @cite csrt
         self.trackerName = 'CSRT'
@@ -2199,6 +2197,9 @@ class Monkerunner():
         
         ## This is a list that contains all the trackers. Use this to access trackers when created
         self.tracker_list = []
+
+        ## Creates a list with a maximum number of trackers containing pre-assigned threads 
+        self.thread_pool = multiprocessing.Pool(processes=num_pool_threads)
 
         ## Contains the maskrcnn prediction data. This dictionary has frame keys and each key contains the list of bounding boxes
         self.pred_dict = None
@@ -2267,6 +2268,16 @@ class Monkerunner():
     
         ## STEP1
 
+    def threaded_process(self):
+
+        arg_list = []
+        for index, tracker in enumerate(self.tracker_list):
+            arg_list.append((tracker, index))
+        
+        results = self.thread_pool.starmap(self.process_tracker, arg_list)
+        
+
+
     ## Starts the process loop.
     def start_loop(self):
         '''
@@ -2318,8 +2329,10 @@ class Monkerunner():
                 self.draw_regions()
 
                 # here we start to iterate through all all the trackers and 
-                for index, tracker in enumerate(self.tracker_list):
-                    self.process_tracker(tracker, index)
+                # for index, tracker in enumerate(self.tracker_list):
+                #     self.process_tracker(tracker, index)
+                self.threaded_process()
+
                 cv2.imshow("Frame", self.show_frame)
                 
         except Exception as e:
@@ -3115,7 +3128,8 @@ class Monkerunner():
             # cap.release()
             # fvs.stop()
             # cv2.destroyAllWindows()
-            
+            self.input_dialog.log("Closing trackers")
+            self.thread_pool.terminate()
             self.input_dialog.log("Cap Release")
             self.cap.release()
             self.input_dialog.log("Destroy cv2")
@@ -3128,6 +3142,7 @@ class Monkerunner():
 
             self.app.quit()
             self.input_dialog.log("Stopping FVS")
+
             # fvs.stop()
             os._exit(1)
     
